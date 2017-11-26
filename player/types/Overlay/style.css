@@ -1,0 +1,159 @@
+/* Timeline Element */
+
+#OverlayTimeline .timelineElement {
+	position: absolute;
+	height: 100%;
+	background: rgba(160, 163, 163, .6);
+	pointer-events: all;
+	-moz-transition-duration: 0.2s;
+    -moz-transition-property: bottom;
+	-webkit-transition-duration: 0.2s;
+    -webkit-transition-property: bottom;
+    -o-transition-duration: 0.2s;
+    -o-transition-property: bottom;
+	transition-duration: 0.2s;
+    transition-property: bottom;
+}
+
+#OverlayTimeline .timelineElement.active {
+	background: rgba(160, 163, 163, 1);
+}
+
+#OverlayTimeline .timelineElement.highlighted {
+	background: #f8f8f8 !important;
+	z-index: 100000;
+}
+
+#OverlayTimeline.editable .timelineElement {
+	background-color: rgba(160, 170, 175, 0.8);
+}
+
+#OverlayTimeline .timelineElement.brushed {
+	background: #cad4d9;
+}
+
+#OverlayTimeline .timelineElement.ui-draggable:hover {
+	cursor: move;
+}
+
+#OverlayTimeline .timelineElement.ui-resizable .ui-resizable-handle {
+	position: absolute;
+	top: -2px;
+	width: 3px;
+	height: 100%;
+	background-color: var(--primary-fg-color);
+	border: 2px solid #000;
+	border-radius: 3px;
+	display: none;
+}
+
+#OverlayTimeline .timelineElement.ui-resizable .ui-resizable-handle:hover {
+	background-color: var(--primary-fg-color);
+}
+
+#OverlayTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-ne {
+	top: -2px;
+	right: -2px;
+	cursor: ne-resize;
+}
+
+#OverlayTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-nw {
+	top: -2px;
+	left: -2px;
+	cursor: nw-resize;
+}
+
+#OverlayTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-se {
+	bottom: -2px;
+	right: -2px;
+	cursor: se-resize;
+}
+
+#OverlayTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-sw {
+	bottom: -2px;
+	left: -2px;
+	cursor: sw-resize;
+}
+
+#OverlayTimeline .timelineElement.ui-resizable:hover .ui-resizable-handle {
+	display: block;
+}
+
+/* Overlay Element */
+
+#OverlayContainer .overlayElement {
+	position: absolute;
+	background: transparent;
+	visibility: hidden;
+}
+
+#OverlayContainer .overlayElement.active {
+	visibility: visible;
+}
+
+#OverlayContainer .overlayElement.highlighted {
+	box-shadow: 0 0 1px 2px #f8f8f8 !important;
+}
+
+#MainContainer.editActive #OverlayContainer .overlayElement.ui-draggable.brushed {
+	box-shadow: 0 0 2px 1px #cfcfcf;
+}
+
+#OverlayContainer .overlayElement.ui-draggable .resourceDetail {
+	pointer-events: none;
+}
+
+#OverlayContainer .overlayElement.ui-draggable:hover {
+	cursor: move;
+}
+
+#OverlayContainer .overlayElement.ui-resizable .ui-resizable-handle {
+	position: absolute;
+	width: 4px;
+	height: 4px;
+	background-color: var(--primary-fg-color);
+	border: 3px solid var(--primary-bg-color);
+	border-radius: 4px;
+	display: none !important;
+}
+
+#OverlayContainer .overlayElement.ui-resizable .ui-resizable-handle:hover {
+	background-color: var(--primary-fg-color);
+}
+
+#OverlayContainer .overlayElement.ui-resizable .ui-resizable-handle.ui-resizable-ne {
+	top: -2px;
+	right: -2px;
+	cursor: ne-resize;
+}
+
+#OverlayContainer .overlayElement.ui-resizable .ui-resizable-handle.ui-resizable-nw {
+	top: -2px;
+	left: -2px;
+	cursor: nw-resize;
+}
+
+#OverlayContainer .overlayElement.ui-resizable .ui-resizable-handle.ui-resizable-se {
+	bottom: -2px;
+	right: -2px;
+	cursor: se-resize;
+}
+
+#OverlayContainer .overlayElement.ui-resizable .ui-resizable-handle.ui-resizable-sw {
+	bottom: -2px;
+	left: -2px;
+	cursor: sw-resize;
+}
+
+#OverlayContainer .overlayElement.ui-resizable:hover .ui-resizable-handle {
+	display: block !important;
+}
+
+/* Edit Overlay Properties */
+
+#EditPropertiesContainer #OverlayOptionsTabs .message {
+	float: right;
+	width: 330px;
+	font-size: 13px;
+	line-height: 16px;
+}

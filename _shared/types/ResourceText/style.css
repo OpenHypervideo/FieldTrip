@@ -1,0 +1,22 @@
+.resourceDetail[data-type="text"] {
+	background-color: transparent;
+}
+
+/* Resource Thumbs for the Text Type are only rendered inside the 'Add Custom Overlay' tab */
+.resourceThumb[data-type="text"] {
+	float: left;
+    height: 80px;
+    margin: 6px;
+    position: relative;
+    width: 120px;
+}
+
+.tileElement[data-type="text"] [class^="icon-"]::before, .tileElement[data-type="text"] [class*=" icon-"]::before {
+    content: "\f0f6";
+}
+
+/* Edit Text Overlay Properties */
+
+#EditPropertiesContainer .propertiesTypeIcon[data-type="text"] [class^="icon-"]::before, #EditPropertiesContainer .propertiesTypeIcon[data-type="text"] [class*=" icon-"]::before {
+	content: "\f0f6";
+}

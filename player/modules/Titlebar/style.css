@@ -1,0 +1,173 @@
+#Titlebar {
+	order: 0;
+    flex: 0 1 40px;
+    align-self: auto;
+	background: var(--primary-bg-color);
+	width: 100%;
+	padding: 0;
+	z-index: 99;
+	font-weight: 200;
+	-webkit-transition: all 200ms linear;
+	-moz-transition: all 200ms linear;
+	-o-transition: all 200ms linear;
+	transition: all 200ms linear;
+}
+
+#Titlebar.sidebarOpen {
+	box-shadow: 202px 0 2px 1px #000;
+}
+
+#Titlebar.sidebarOpen.editActive {
+	box-shadow: none;
+}
+
+#Titlebar.editActive {
+	background: var(--secondary-fg-color);
+}
+
+#Titlebar button {
+	width: 40px;
+	height: 40px;
+	font-size: 19px;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	color: var(--primary-fg-color);
+}
+
+#Titlebar.editActive button {
+	color: var(--primary-bg-color);
+}
+
+#Titlebar #SidebarToggleWidget {
+	float: left;
+	background-color: transparent;
+	display: none;
+}
+
+#Titlebar #SidebarToggleWidget.sidebarActive {
+	background-color: var(--primary-bg-color);
+}
+
+#Titlebar.editActive #SidebarToggleWidget.sidebarActive {
+	background-color: #e0e3e6;
+}
+
+#Titlebar #SidebarToggleWidget.unsavedChanges:after {
+	content: "*";
+	top: 4px;
+	right: 10px;
+	color: #FF9900;
+	font-weight: bold;
+	font-size: 20px;
+	padding-right: 6px;
+}
+
+#TitlebarViewMode {
+	float: left;
+}
+
+#TitlebarViewMode.hidden {
+	display: none;
+}
+
+#Titlebar.editActive #TitlebarViewMode.hidden {
+	display: block;
+}
+
+ #TitlebarViewMode button {
+	float: left;
+	position: relative;
+	opacity: .7;
+}
+
+#Titlebar #TitlebarViewMode button[data-viewmode="video"] {
+	margin-left: 20px;
+}
+
+#Titlebar #TitlebarViewMode button[data-viewmode="video"]:after {
+	content: ">";
+	position: absolute;
+	top: 8px;
+	left: -13px;
+	color: var(--primary-fg-color);
+	font-weight: normal;
+	font-size: 13px;
+}
+
+#Titlebar.editActive #TitlebarViewMode button[data-viewmode="video"]:after {
+	color: var(--primary-bg-color);
+}
+
+#TitlebarViewMode button.unsavedChanges:before {
+	content: "*";
+	position: absolute;
+	top: -4px;
+	right: -5px;
+	color: #FF9900;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#TitlebarViewMode button:hover {
+	opacity: 1;
+}
+
+
+#TitlebarViewMode button.active {
+	background-color: transparent;
+	/*color: var(--primary-fg-color);*/
+	opacity: 1;
+	pointer-events: none;
+}
+
+#Titlebar.editActive #TitlebarViewMode button.active {
+	opacity: 1;
+	pointer-events: none;
+}
+
+#Titlebar #HypervideoActionButtonContainer {
+	position: absolute;
+	top: 0px;
+	left: 160px;
+}
+
+#Titlebar #TitlebarTitle {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	text-align: center;
+	color: var(--primary-fg-color);
+	line-height: 38px;
+	z-index: -1;
+}
+
+#Titlebar.editActive #TitlebarTitle {
+	color: var(--primary-bg-color);
+}
+
+#Titlebar #TitlebarActionButtonContainer, #Titlebar #SharingWidget, #Titlebar #LogoutButton {
+	float: right;
+}
+
+#Titlebar #TitlebarActionButtonContainer #NewHypervideoButton, #Titlebar #TitlebarActionButtonContainer #ManageResourcesButton, #Titlebar #TitlebarActionButtonContainer .startEditButton, #Titlebar #TitlebarActionButtonContainer .leaveEditModeButton, #Titlebar #TitlebarActionButtonContainer .userSettingsButton {
+	float: left;
+}
+
+#NewHypervideoDialog .message.error {
+	position: absolute;
+}
+
+#NewHypervideoDialog #UploadNewVideoResource {
+	position: absolute;
+	right: 0px;
+	top: 6px;
+}
+
+#ShareDialog input[type="text"], #ShareDialog textarea {
+	box-sizing: border-box;
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}

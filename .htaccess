@@ -1,0 +1,41 @@
+########################################################
+# ROUTING -> PLAYER
+########################################################
+<IfModule mod_rewrite.c>
+	#Options +FollowSymLinks
+	# Try to fix conflicting rewrite rules set by Wordpress etc:
+	RewriteEngine Off
+	RewriteEngine On
+	# HTTPS REDIRECT
+	RewriteCond %{HTTPS} !=on
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R,QSA]
+</IfModule>
+########################################################
+# Deny access to users.json file
+########################################################
+<Files "users.json">
+	Order Allow,Deny
+	Deny from all
+</Files>
+########################################################
+# Add Mime Types
+########################################################
+AddType video/ogg .ogm
+AddType video/ogg .ogv
+AddType video/ogg .ogg
+AddType video/webm .webm
+AddType audio/webm .weba
+AddType video/mp4 .mp4
+AddType video/x-m4v .m4v
+AddType text/vtt .vtt
+########################################################
+# Try to set correct server vars
+########################################################
+<IfModule mod_php5.c>
+	php_value post_max_size 900M
+	php_value upload_max_filesize 400M
+	php_value memory_limit 900M
+	php_value max_execution_time 259200
+	php_value max_input_time 259200
+	php_value session.gc_maxlifetime 1200
+</IfModule>

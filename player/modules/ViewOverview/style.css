@@ -1,0 +1,31 @@
+#ViewOverview {
+	display: none;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+#ViewOverview.active {
+	display: block;
+}
+
+#MainContainer.editActive #ViewOverview {
+	border: 10px solid #f8f8f8;
+	box-sizing: border-box;
+}
+
+#ViewOverview #OverviewList {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+}
+
+#ViewOverview #OverviewList .hypervideoThumb {
+	-webkit-transition-property: all;
+	-moz-transition-property: all;
+	-o-transition-property: all;
+	transition-property: all;
+}

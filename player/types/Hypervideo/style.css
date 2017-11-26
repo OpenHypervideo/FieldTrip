@@ -1,0 +1,154 @@
+.hypervideoThumb {
+	float: left;
+	position: relative;
+	width: 200px;
+	height: 120px;
+	margin: 10px;
+	background-color: #333333;
+	border: 2px solid rgba(53,57,60,0.7);
+	background-position: center;
+	background-size: 110%;
+	-webkit-transition-property: background, border;
+	-webkit-transition-duration: 200ms;
+	-webkit-transition-timing-function: linear;
+	-moz-transition-property: background, border;
+	-moz-transition-duration: 200ms;
+	-moz-transition-timing-function: linear;
+	-o-transition-property: background, border;
+	-o-transition-duration: 200ms;
+	-o-transition-timing-function: linear;
+	transition-property: background, border;
+	transition-duration: 200ms;
+	transition-timing-function: linear;
+}
+
+.hypervideoThumb:hover {
+	border-color: #f8f8f8;
+	background-size: 100%;
+}
+
+.ui-tabs-panel .hypervideoThumb {
+	border-color: #F8F8F8;
+}
+
+.ui-tabs-panel .hypervideoThumb:hover {
+	border-color: var(--primary-bg-color);
+}
+
+.hypervideoThumb.activeHypervideo {
+	border-color: var(--primary-fg-color);
+}
+
+.hypervideoThumb .hypervideoThumbContent {
+	height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    box-shadow: 0 30px 75px 3px rgba(23, 28, 34, 0.6) inset;
+}
+
+.hypervideoThumb.activeHypervideo .hypervideoThumbContent {
+	pointer-events: none;
+}
+
+.hypervideoThumb .hypervideoIcon {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+
+.hypervideoThumb .hypervideoIcon [class^="icon-"]::before, .hypervideoThumb .hypervideoIcon [class*=" icon-"]::before {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	font-size: 40px;
+	margin-left: -20px;
+	margin-top: -24px;
+	color: var(--primary-fg-color);
+	text-shadow: 1px 1px 3px var(--primary-bg-color);
+}
+
+.hypervideoThumb.activeHypervideo .hypervideoIcon [class^="icon-"]::before, .hypervideoThumb.activeHypervideo .hypervideoIcon [class*=" icon-"]::before {
+	content: "\e8a9";
+}
+
+.hypervideoThumb .hypervideoTitle {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: auto;
+	background-color: var(--semi-transparent-bg-color);
+	text-align: center;
+	padding: 6px 5px 3px 5px;
+	color: var(--primary-fg-color);
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	opacity: .8;
+}
+
+.hypervideoThumb:hover .hypervideoTitle {
+	opacity: 1;
+}
+
+.hypervideoThumb.dragPlaceholder {
+	outline: 1px dashed var(--primary-bg-color);
+	border-color: transparent;
+	background: none !important;
+}
+
+.hypervideoThumb.dragPlaceholder .hypervideoThumbContent, .hypervideoThumb.dragPlaceholder .hypervideoTitle {
+	opacity: .2;
+}
+
+.hypervideoThumb.ui-draggable-dragging {
+	outline: 1px solid #FF9919;
+	border-color: var(--primary-bg-color);
+	box-shadow: 0 0 3px 2px rgba(100,100,110,.7);
+}
+
+.hypervideoThumb.ui-draggable {
+	cursor: move;
+}
+
+.hypervideoThumb.ui-draggable .hypervideoIcon {
+	pointer-events: none;
+}
+
+.hypervideoThumb .hypervideoOptions {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 3;
+	background-color: var(--semi-transparent-bg-color);
+	display: none;
+}
+
+.hypervideoThumb:hover .hypervideoOptions {
+	display: block;
+}
+
+.hypervideoThumb .hypervideoOptions button {
+	float: right;
+	background-color: transparent;
+    border: 2px solid #F8F8F8;
+    border-color: var(--primary-fg-color);
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    color: var(--primary-fg-color);
+    margin: 8px 8px 8px 0;
+}
+
+.hypervideoThumb .hypervideoOptions button [class^="icon-"]::before, .hypervideoThumb .hypervideoOptions button [class*=" icon-"]::before {
+	font-size: 18px;
+	margin-left: 1px;
+	margin-top: 2px;
+	width: 22px;
+}

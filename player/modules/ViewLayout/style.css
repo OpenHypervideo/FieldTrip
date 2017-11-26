@@ -1,0 +1,340 @@
+/*******************
+* Layout Areas
+*******************/
+
+.layoutArea {
+    overflow: hidden;
+}
+
+/* Layout Area Tabs */
+
+.layoutArea .layoutAreaTabs {
+    position: absolute;
+    display: table-cell;
+    width: 100%;
+    text-align: right;
+    top: 0px;
+    right: 0px;
+    z-index: 2;
+}
+
+.layoutArea[data-area="areaTop"] .layoutAreaTabs {
+    top: auto;
+    bottom: 0px;
+}
+
+.layoutArea[data-area="areaLeft"] .layoutAreaTabs {
+    transform-origin: top right;
+    transform: rotate(-90deg);
+    text-align: right;
+    right: 36px;
+    width: 100vh;
+}
+
+.layoutArea[data-area="areaRight"] .layoutAreaTabs {
+    transform-origin: top right;
+    transform: rotate(-90deg);
+    text-align: right;
+    right: 100%;
+    width: 100vh;
+}
+
+.layoutArea .layoutAreaTabs .contentViewTab {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 2px;
+    background: var(--secondary-bg-color);
+    height: 34px;
+    cursor: pointer;
+    opacity: .6;
+    color: var(--primary-fg-color);
+    box-sizing: border-box;
+    transition-property: all;
+    transition-duration: 40ms;
+}
+
+.layoutArea .layoutAreaTabs .contentViewTab.active {
+    height: 36px;
+    cursor: default;
+    opacity: 1;
+}
+
+.layoutArea[data-area="areaTop"] .layoutAreaTabs .contentViewTab, .layoutArea[data-area="areaLeft"] .layoutAreaTabs .contentViewTab {
+    vertical-align: bottom;
+}
+
+.layoutArea[data-area="areaTop"] .layoutAreaTabs .contentViewTab.active, .layoutArea[data-area="areaLeft"] .layoutAreaTabs .contentViewTab.active {
+    padding-top: 2px;
+}
+
+.layoutArea .layoutAreaTabs .contentViewTab .contentViewTabName {
+    float: left;
+    font-size: 14px;
+    text-align: left;
+    padding: 6px 8px;
+    white-space: nowrap;
+}
+
+/* Layout Area Content */
+
+.layoutArea .layoutAreaContent {
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    position: absolute;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+
+/*******************
+* Layout Manager
+*******************/
+
+#LayoutManagerContainer {
+    width: 100%;
+    height: 100%;
+    color: var(--primary-fg-color);
+    box-sizing: border-box;
+}
+
+#LayoutManagerContainer * {
+    box-sizing: border-box;
+}
+
+#LayoutManagerContainer [class^="icon-"]::before {
+    font-size: 19px;
+}
+
+#LayoutManagerContainer #LayoutManagerMain, #LayoutManagerContainer #LayoutManagerOptions {
+    height: 100%;
+}
+
+#LayoutManagerContainer #LayoutManagerMain {
+    float: left;
+    width: 84%;
+}
+
+#LayoutManagerContainer #LayoutManager {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: flex-start;
+    order: 0;
+    flex: 1 1 auto;
+    align-self: auto;
+    width: 100%;
+    height: 100%;
+    padding-right: 10px;
+    border-right: 1px solid var(--secondary-bg-color);
+}
+
+#LayoutManagerContainer #LayoutManagerOptions {
+    float: right;
+    width: 16%;
+    padding-left: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: var(--primary-fg-color);
+}
+
+#LayoutManagerContainer #LayoutManagerOptions .message {
+    position: relative;
+}
+
+#LayoutManagerContainer #LayoutManagerOptions .message:after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    margin-top: -14px;
+    left: -7px;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    border-right: 6px solid #FF9919;
+}
+
+#LayoutManagerContainer #LayoutManagerOptions .contentViewTemplate, body > .contentViewTemplate {
+    padding: 10px 5px 7px 5px;
+    background: var(--secondary-bg-color);
+    margin-bottom: 10px;
+    cursor: move;
+}
+
+body > .contentViewTemplate {
+    outline: 1px solid var(--primary-bg-color);
+    color: var(--primary-fg-color);
+}
+
+#LayoutManagerContainer .contentViewTemplate .contentViewTemplateSize {
+    text-align: center;
+    overflow: hidden;
+}
+
+#LayoutManagerContainer .contentViewTemplate[data-size="small"] .contentViewTemplateSize [class^="icon-"]::before {
+    font-size: 40px !important;
+    line-height: 30px;
+}
+
+#LayoutManagerContainer .contentViewTemplate[data-size="medium"] .contentViewTemplateSize [class^="icon-"]::before {
+    font-size: 70px !important;
+    line-height: 50px;
+}
+
+#LayoutManagerContainer .contentViewTemplate[data-size="large"] .contentViewTemplateSize [class^="icon-"]::before {
+    font-size: 100px !important;
+    line-height: 70px;
+}
+
+/* Layout Areas */
+
+#LayoutManager .layoutArea {
+    position: relative;
+    order: 0;
+    background: var(--secondary-fg-color);
+    transition-property: all;
+    transition-duration: 100ms;
+}
+
+#LayoutManager .layoutArea[data-area="areaTop"] .layoutAreaTabs {
+    top: auto;
+    right: 10px;
+    bottom: 10px;
+}
+
+#LayoutManager .layoutArea[data-area="areaBottom"] .layoutAreaTabs {
+    top: 10px;
+    right: 10px;
+}
+
+#LayoutManager .layoutArea[data-area="areaLeft"] .layoutAreaTabs {
+    top: 10px;
+    right: 46px;
+}
+
+#LayoutManager .layoutArea[data-area="areaRight"] .layoutAreaTabs {
+    top: 10px;
+    right: calc(100% - 10px);
+}
+
+#LayoutManager .layoutArea .layoutAreaTabs .contentViewTab {
+    background: var(--secondary-bg-color);
+}
+
+#LayoutManager .layoutArea .layoutAreaContent {
+    background: var(--secondary-fg-color);
+    padding: 10px;
+}
+
+#LayoutManager .layoutArea[data-area="areaTop"], #LayoutManager .layoutArea[data-area="areaBottom"] {
+    flex: 0 1 auto;
+    align-self: auto;
+    width: 100%;
+}
+
+#LayoutManager .playerWrapper {
+    padding: 10px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    order: 0;
+    flex: 1 1 auto;
+    width: 100%;
+    align-self: auto;
+}
+
+#LayoutManager .layoutArea[data-area="areaLeft"], #LayoutManager .layoutArea[data-area="areaRight"] {
+    align-self: stretch;
+    min-height: 100%;
+}
+
+#LayoutManager .playerWrapper .playerArea {
+    position: relative;
+    order: 0;
+    flex: 1 1 auto;
+    align-self: stretch;
+    min-height: 100%;
+}
+
+#LayoutManager .playerWrapper .playerArea .icon-play-1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -34px;
+    margin-top: -36px;
+    color: var(--secondary-fg-color);
+}
+
+#LayoutManager .playerWrapper .playerArea .icon-play-1::before {
+    font-size: 60px !important;
+}
+
+/* SIZES */
+
+#LayoutManager .layoutArea[data-area="areaTop"], #LayoutManager .layoutArea[data-area="areaBottom"] {
+    min-height: calc(10px + 20px);
+}
+
+#LayoutManager .layoutArea[data-area="areaTop"][data-size="small"], #LayoutManager .layoutArea[data-area="areaBottom"][data-size="small"] {
+    min-height: calc(50px + 38px + 20px);
+}
+
+#LayoutManager .layoutArea[data-area="areaTop"][data-size="medium"], #LayoutManager .layoutArea[data-area="areaBottom"][data-size="medium"] {
+    min-height: calc(100px + 38px + 20px);
+}
+
+#LayoutManager .layoutArea[data-area="areaTop"][data-size="large"], #LayoutManager .layoutArea[data-area="areaBottom"][data-size="large"] {
+    min-height: calc(300px + 38px + 20px);
+}
+
+#LayoutManager .layoutArea[data-area="areaLeft"], #LayoutManager .layoutArea[data-area="areaRight"] {
+    flex: 0 0 30px;
+    min-width: 30px;
+}
+
+#LayoutManager .layoutArea[data-area="areaLeft"][data-size="small"], #LayoutManager .layoutArea[data-area="areaRight"][data-size="small"] {
+    flex: 0 0 160px;
+    min-width: 160px;
+}
+
+#LayoutManager .layoutArea[data-area="areaLeft"][data-size="medium"], #LayoutManager .layoutArea[data-area="areaRight"][data-size="medium"] {
+    flex: 0 0 200px;
+    min-width: 200px;
+}
+
+#LayoutManager .layoutArea[data-area="areaLeft"][data-size="large"], #LayoutManager .layoutArea[data-area="areaRight"][data-size="large"] {
+    flex: 0 0 400px;
+    min-width: 400px;
+}
+
+/*******************
+* Media Queries
+*******************/
+
+@media (min-height: 920px) {
+    
+}
+
+@media (min-height: 820px) and (max-height: 920px) {
+    
+}
+
+@media (min-height: 680px) and (max-height: 820px) {
+    
+}
+
+@media (min-height: 540px) and (max-height: 680px) {
+    
+}
+
+@media (min-height: 400px) and (max-height: 540px) {
+    
+}
+
+@media (max-height: 400px) {
+    
+}

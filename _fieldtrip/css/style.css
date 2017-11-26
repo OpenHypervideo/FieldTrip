@@ -1,0 +1,170 @@
+body {
+
+}
+
+#ftStartButton {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: 70px;
+	margin-left: -80px;
+	width: 180px;
+	text-align: center;
+	z-index: 30;
+	display: none;
+	border: 2px solid #fff;
+	color: #fff;
+}
+
+.ftLoadingIndicator {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: #262626;
+	z-index: 4;
+}
+
+.ftLoadingIndicator .ftLoadingIcon {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 120px;
+	height: 43px;
+	margin-top: 0px;
+	margin-left: 0px;
+	background-color: transparent;
+	background-image: url(../graphics/FT-white-transparent.png);
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	transition-property: all;
+	transition-duration: 1600ms;
+}
+
+.ftLoadingIndicator.active .ftLoadingIcon {
+	top: 50%;
+	left: 50%;
+	width: 140px;
+	height: 51px;
+	margin-top: -25px;
+	margin-left: -70px;
+}
+
+.ftLayer {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background: #262626;
+}
+
+.ftLayer.active {
+	
+}
+
+.ftLayer .ftLogo {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 120px;
+	height: 43px;
+	z-index: 2;
+}
+
+.ftLayer .ftLayerContent {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	transition-property: all;
+	transition-duration: 1000ms;
+	transform-origin: center;
+	transform: scale(1.6) rotate(0deg);
+}
+
+.ftLayer.active .ftLayerContent {
+	transform: scale(1) rotate(0deg);
+}
+
+.ftLayer.zoomOut .ftLayerContent {
+	transform: scale(0.4) rotate(-6deg)!important;
+}
+
+.ftLayer .ftLayerContent .ftNavigation {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 11;
+}
+
+.ftLayer .ftLayerContent .ftNavigation button {
+	float: right;
+	border: 2px solid #333;
+	margin-left: 12px;
+}
+
+/* INTRO VIDEO */
+
+.ftLayer#ftIntro {
+	z-index: 3;
+}
+
+.ftLayer#ftIntro video {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* OVERVIEW MAP */
+
+.ftLayer#ftOverview {
+	background: #FFFFFF;
+	z-index: 2;
+}
+
+#ftOverviewMap {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	z-index: 1;
+}
+
+.ftMapPin {
+	position: absolute;
+	top: 500px;
+	left: 300px;
+	z-index: 3;
+}
+
+/* VIDEO (FRAMETRAIL) */
+
+.ftLayer#ftVideo {
+	z-index: 1;
+}
+
+/*
+.ftLayer#ftVideo .ftLogo {
+	width: 80px;
+	height: auto;
+}
+*/
+
+iframe {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	border: none;
+	outline: none;
+}

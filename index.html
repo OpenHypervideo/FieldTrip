@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head class="html5">
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="cache-control" content="no-cache">
+        <meta http-equiv="Expires" content="-1">
+
+        <title>Field Trip</title>
+
+        <link rel="shortcut icon" href="favico.png">
+
+        <!-- Libraries -->
+        <script type="text/javascript" src="_lib/jquery/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="_lib/jquery.form/jquery.form.min.js"></script>
+        <script type="text/javascript" src="_lib/jquery.ui/jquery-ui.min.js"></script>
+
+        <script type="text/javascript" src="_fieldtrip/js/jquery.zoomooz.min.js"></script>
+
+        <!--
+            [if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]
+        -->
+
+
+        <!-- FrameTrail Generic Includes -->
+
+        <link rel="stylesheet" type="text/css" id="FrameTrailCSSVariables" href="/_shared/styles/variables.css">
+        <link rel="stylesheet" type="text/css" href="_shared/styles/frametrail-webfont.css">
+        <link rel="stylesheet" type="text/css" href="_shared/styles/generic.css">
+
+        <!-- Custom Field Trip CSS -->
+        
+        <link rel="stylesheet" type="text/css" href="_fieldtrip/css/style.css">
+        
+        <!-- Custom Field Trip JS -->
+        
+        <script type="text/javascript" src="_fieldtrip/js/main.js"></script>
+        
+    </head>
+    <body>
+
+        <button id="ftStartButton">Start</button>
+
+        <div class="ftLoadingIndicator active">
+            <div class="ftLoadingIcon"></div>
+        </div>
+
+        <div id="ftIntro" class="ftLayer">
+            
+            <img class="ftLogo" src="_fieldtrip/graphics/FT-white-transparent.png"/>
+
+            <div class="ftLayerContent">
+                <video id="ftIntroVideo" preload="auto">
+                    <source src="_fieldtrip/zoom-to-white.mp4" type="video/mp4">
+                </video>
+            </div>
+
+        </div>
+
+        <div id="ftOverview" class="ftLayer">
+            
+            <a href="#Intro">
+                <img class="ftLogo" src="_fieldtrip/graphics/FT-black-transparent.png"/>
+            </a>
+
+            <div class="ftLayerContent">
+                
+                <div class="ftNavigation">
+                    <button>About</button>
+                    <button>Share</button>
+                </div>
+                
+                <a href="#Video" class="ftMapPin">PIN</a>
+                <img id="ftOverviewMap" src="_fieldtrip/graphics/overview.jpg"/>
+            </div>
+
+        </div>
+
+        <div id="ftVideo" class="ftLayer">
+            
+            <a href="#Overview">
+                <img class="ftLogo" src="_fieldtrip/graphics/FT-white-transparent.png"/>
+            </a>
+
+            <div class="ftLayerContent">
+                <iframe src="player/index.html?project=1&hypervideo=1" frameborder="0" scrolling="no" allowfullscreen></iframe>
+            </div>
+
+        </div>
+    </body>
+</html>

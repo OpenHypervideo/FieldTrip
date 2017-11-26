@@ -1,0 +1,21 @@
+#UserLoginOverlay {
+	display: none;
+}
+
+#UserLoginOverlay .loginBoxCancelButton {
+	margin-left: 10px;
+}
+
+#UserLoginOverlay .loginBoxTabButton.inactive {
+	font-size: 17px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#UserLoginOverlay #UserTabRegister {
+	display: none;
+}
+
+.ui-dialog[aria-describedby="loggedOutDialog"] {
+	z-index: 100002;
+}

@@ -1,0 +1,34 @@
+#MainContainer {
+	order: 1;
+    flex: 1 1 auto;
+    align-self: auto;
+	background-color: var(--primary-bg-color);
+    margin-left: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+	-webkit-transition: all 200ms linear; /* Firefox */
+	-moz-transition: all 200ms linear; /* WebKit */
+	-o-transition: all 200ms linear; /* Opera */
+	transition: all 200ms linear; /* Standard */
+	color: var(--primary-fg-color);
+}
+
+
+#MainContainer.sidebarOpen {
+	width: calc(100vw - 164px);
+	margin-left: 164px;
+}
+
+#MainContainer.inFullscreen {
+	width: 100%;
+	top: 0px;
+}
+
+#MainContainer.editActive {
+	border-top: 1px solid var(--secondary-bg-color);
+	color: var(--primary-bg-color);
+}
+
+

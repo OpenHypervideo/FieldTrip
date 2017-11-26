@@ -1,0 +1,81 @@
+/* Timeline Element */
+
+#CodeSnippetTimeline .timelineElement {
+    position: absolute;
+    height: 100%;
+    background: rgba(160, 163, 163, .6);
+    pointer-events: all;
+    -moz-transition-duration: 0.2s;
+    -moz-transition-property: bottom;
+    -webkit-transition-duration: 0.2s;
+    -webkit-transition-property: bottom;
+    -o-transition-duration: 0.2s;
+    -o-transition-property: bottom;
+    transition-duration: 0.2s;
+    transition-property: bottom;
+}
+
+#CodeSnippetTimeline .timelineElement.active {
+    background: rgba(160, 163, 163, 1);
+}
+
+#CodeSnippetTimeline .timelineElement.highlighted {
+    background: #f8f8f8 !important;
+    z-index: 100000;
+}
+
+#CodeSnippetTimeline.editable .timelineElement {
+    background-color: rgba(160, 170, 175, 0.8);
+}
+
+#CodeSnippetTimeline .timelineElement.brushed {
+    background: #cad4d9;
+}
+
+#CodeSnippetTimeline .timelineElement.ui-draggable:hover {
+    cursor: move;
+}
+
+/* Edit CodeSnippet Properties */
+
+#EditPropertiesContainer #CodeSnippetCode {
+    height: 400px;
+}
+
+#EditPropertiesContainer .CodeMirror {
+    margin-bottom: 6px;
+}
+
+#EditPropertiesContainer #ExecuteCodeSnippet {
+    float: right;
+}
+
+/* CodeSnippet Editing Tabs */
+
+#CodeSnippetEditingTabs #CodeSnippetList .codeSnippetElement {
+    background: var(--primary-bg-color) none repeat scroll 0 0;
+    border-left: 14px solid #23262e;
+    color: #c5d0d3;
+    float: left;
+    height: 80px;
+    padding: 3px 6px;
+    width: 100px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    cursor: move;
+}
+
+#CodeSnippetEditingTabs #CodeSnippetList .dragPlaceholder {
+    outline: 1px dashed var(--primary-bg-color);
+    background: transparent;
+    border-color: #efefef;
+}
+
+body .codeSnippetElement {
+    background: var(--primary-bg-color) none repeat scroll 0 0;
+    border-left: 14px solid #23262e;
+    color: #c5d0d3;
+    height: 80px;
+    padding: 3px 6px;
+    width: 100px;
+}
