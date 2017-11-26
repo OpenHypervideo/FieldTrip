@@ -5,6 +5,13 @@ $(document).ready(function() {
 
 	initEventListeners();
 
+	//$('#ftIntroVideo').load();
+
+	$('#ftIntroVideo').on('loadedmetadata', function() {
+		$('#ftIntroVideo')[0].pause();
+		$('#ftIntroVideo')[0].currentTime = 0;
+	});
+
 	$('#ftIntroVideo').one('canplaythrough', function() {
 
 		$('#ftStartButton').show().click(function() {
