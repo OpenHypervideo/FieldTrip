@@ -306,14 +306,6 @@ button, input[type="submit"], input[type="button"], .button {
 
 #ftMapContainer {
 	position: absolute;
-<<<<<<< HEAD
-	top: 0px;
-	left: 0px;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	z-index: 1;
-=======
 	top: 50%;
 	left: 50%;
 	max-width: 660px;
@@ -326,7 +318,6 @@ button, input[type="submit"], input[type="button"], .button {
   transform: translateX(-50%) translateY(-50%);
 	object-fit: contain;
 	z-index: 1;	
->>>>>>> 513180667533c0d523a3e67f886f9949ce9bc09c
 }
 
 .ftMapPin {
