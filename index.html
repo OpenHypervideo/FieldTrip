@@ -33,7 +33,7 @@
         <!-- Custom Field Trip CSS -->
         
         <link rel="stylesheet" type="text/css" href="_custom/css/style.css">
-        
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Rubik" rel="stylesheet">
         <!-- Custom Field Trip JS -->
         
         <script type="text/javascript" src="_custom/js/main.js"></script>
@@ -41,7 +41,7 @@
     </head>
     <body>
 
-        <button id="ftStartButton">Start</button>
+        <button id="ftStartButton" class="ftAnimatedButton">Start</button>
 
         <div class="ftLoadingIndicator active">
             <div class="ftLoadingIcon"></div>
@@ -49,7 +49,7 @@
 
         <div id="ftIntro" class="ftLayer">
             
-            <img class="ftLogo" src="_custom/graphics/FT-white-transparent.png"/>
+            <img class="ftLogo" src="_custom/graphics/FT-white-transparent.svg"/>
 
             <div class="ftLayerContent">
                 <video id="ftIntroVideo" preload="auto">
@@ -62,18 +62,32 @@
         <div id="ftOverview" class="ftLayer">
             
             <a href="#Intro">
-                <img class="ftLogo" src="_custom/graphics/FT-black-transparent.png"/>
+                <img class="ftLogo" src="_custom/graphics/FT-white-transparent.svg"/>
             </a>
 
             <div class="ftLayerContent">
                 
                 <div class="ftNavigation">
-                    <button>About</button>
-                    <button>Share</button>
+                    <nav>
+                      <a class="ftSound ftNavIconContainer" href="#" target="_self"><img src="_custom/graphics/FT-sound-off.svg" />
+                      
+                      </a>
+                      <ul class="ftNavItems">
+                        <li><a class="ftNavIconContainer" href="#"><img src="_custom/graphics/FT-pin.svg" /></a></li>
+                        <li><a class="ftNavIconContainer" href="#"><img src="_custom/graphics/FT-nav.svg" /></a></li>
+                        <li><a class="ftNavIconContainer ftAboutIconContainer" href="#"><img src="_custom/graphics/FT-about.svg" /></a></li>
+                      </ul>
+                      <div class="ftNavShare ftNavIconContainer">
+                        <a href="#/share" target="_self"><img src="_custom/graphics/FT-share.svg" /></a>
+                        <span class="">35</span>
+                      </div>
+                    </nav>
                 </div>
                 
-                <a href="#Video" class="ftMapPin">PIN</a>
-                <img id="ftOverviewMap" src="_custom/graphics/overview.jpg"/>
+                <div id="ftMapContainer">   
+                  <img id="ftOverviewMap" src="_custom/graphics/overview.svg"/>
+                  <a href="#Video" id="ftMapPinOne" class="ftMapPin"><img src="_custom/graphics/FT-pin-green.svg" /></a>
+                </div>
             </div>
 
         </div>

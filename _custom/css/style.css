@@ -1,20 +1,123 @@
-body {
-
+*, ::after, ::before {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
+
+html {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+body {
+  font-family: 'Inconsolata', monospace;
+  font-size: 100%;
+}
+
+/* buttons */
+
+button, input[type="submit"], input[type="button"], .button {
+  font-family: 'Rubik', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 22px 0;
+  /* transitions */
+  -webkit-transition: all 200ms ease-in;
+  -moz-transition: all 200ms ease-in;
+  -ms-transition: all 200ms ease-in;
+  -o-transition: all 200ms ease-in;
+  transition: all 200ms ease-in;
+}
+
+.ftAnimatedButton {
+  
+}
+
+.ftAnimatedButton {
+    border: none;
+    position: relative;
+}
+
+.ftAnimatedButton:after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0%;
+    width: 0%;
+    
+    border-top: 1px solid rgba(255,255,255,.5);
+    border-right: 1px solid rgba(255,255,255,.5);
+    animation: borderAfter 1s linear 0s forwards 1;
+}
+
+.ftAnimatedButton:before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 0%;
+    width: 0%;
+    transition-delay: 1s;
+    
+    border-bottom: 1px solid rgba(255,255,255,.5);
+    border-left: 1px solid rgba(255,255,255,.5);
+    animation: borderBefore 1s linear 1s forwards 1;
+}
+
+@keyframes borderAfter{
+    0%{
+        width: 0%;
+        height: 0%;
+    }
+    50%{
+        width: 100%;
+        height: 0%;
+    }
+    100%{
+        width: 100%;
+        height: 97%;
+    }
+}
+@keyframes borderBefore{
+    0%{
+        width: 0%;
+        height: 0%;
+    }
+    50%{
+        width: 100%;
+        height: 0%;
+    }
+    100%{
+        width: 100%;
+        height: 97%;
+    }
+}
+
+
+/* Start Button */
 
 #ftStartButton {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	margin-top: 70px;
-	margin-left: -80px;
+	margin-left: -90px;
 	width: 180px;
 	text-align: center;
 	z-index: 30;
 	display: none;
-	border: 2px solid #fff;
 	color: #fff;
 }
+
+#ftStartButton:hover {
+ background: rgba(255,255,255,.025);
+}
+
+/* Loading Indicator */
 
 .ftLoadingIndicator {
 	position: absolute;
@@ -22,8 +125,12 @@ body {
 	left: 0px;
 	width: 100%;
 	height: 100%;
-	background-color: #262626;
 	z-index: 4;
+	background: #252425 url(../graphics/ftLoadingIndicator.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 .ftLoadingIndicator .ftLoadingIcon {
@@ -35,7 +142,7 @@ body {
 	margin-top: 0px;
 	margin-left: 0px;
 	background-color: transparent;
-	background-image: url(../graphics/FT-white-transparent.png);
+	background-image: url(../graphics/FT-white-transparent.svg);
 	background-size: 100% auto;
 	background-repeat: no-repeat;
 	transition-property: all;
@@ -46,7 +153,7 @@ body {
 	top: 50%;
 	left: 50%;
 	width: 140px;
-	height: 51px;
+	height: 48px;
 	margin-top: -25px;
 	margin-left: -70px;
 }
@@ -66,8 +173,8 @@ body {
 
 .ftLayer .ftLogo {
 	position: absolute;
-	top: 10px;
-	left: 10px;
+	top: 20px;
+	left: 20px;
 	width: 120px;
 	height: 43px;
 	z-index: 2;
@@ -94,10 +201,15 @@ body {
 	transform: scale(0.4) rotate(-6deg)!important;
 }
 
+/* Navigation */
+
 .ftLayer .ftLayerContent .ftNavigation {
 	position: absolute;
-	top: 10px;
-	right: 10px;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	width: 60px;
+	background-color: #191719;
 	z-index: 11;
 }
 
@@ -105,6 +217,69 @@ body {
 	float: right;
 	border: 2px solid #333;
 	margin-left: 12px;
+}
+
+.ftNavItems {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  list-style: none;
+  border-top: 1px solid #333;
+}
+
+.ftNavItems li {
+  border-bottom: 1px solid #333;
+}
+
+.ftNavIconContainer {
+    display: block;
+    position: relative;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    
+}
+
+.ftNavIconContainer img {
+  max-width: 15px;
+  height: auto;
+  vertical-align: middle;
+}
+
+.ftNavIconContainer.ftAboutIconContainer img {
+  max-width: 10px;
+  height: auto;
+}
+
+.ftNavIconContainer span {
+  display: block;
+}
+
+.ftSound, .ftNavShare {
+  position: absolute;  
+}
+
+.ftSound.ftAboutIconContainer img,
+.ftNavShare.ftAboutIconContainer img {
+  max-width: 20px;
+}
+
+.ftSound {
+  top: 0;
+  border-bottom: 1px solid #333;
+}
+
+.ftNavShare {
+  bottom: 0;
+  color: #eee;
+  border-top: 1px solid #333;
 }
 
 /* INTRO VIDEO */
@@ -125,25 +300,46 @@ body {
 /* OVERVIEW MAP */
 
 .ftLayer#ftOverview {
-	background: #FFFFFF;
+	background: #252425;
 	z-index: 2;
 }
 
-#ftOverviewMap {
+#ftMapContainer {
 	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 100%;
-	height: 100%;
+	top: 50%;
+	left: 50%;
+	max-width: 660px;
+	width: 90%;
+	height: auto;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
 	object-fit: contain;
-	z-index: 1;
+	z-index: 1;	
 }
 
 .ftMapPin {
 	position: absolute;
-	top: 500px;
-	left: 300px;
+	width: 25px;
+	height: auto;
 	z-index: 3;
+	/* transitions */
+	-webkit-transition: width 200ms ease-in;
+	-moz-transition: width 200ms ease-in;
+	-ms-transition: width 200ms ease-in;
+	-o-transition: width 200ms ease-in;
+	transition: width 200ms ease-in;
+}
+
+.ftMapPin:hover {
+  width: 28px;
+}
+
+#ftMapPinOne {
+  top: 230px;
+  left: 180px;
 }
 
 /* VIDEO (FRAMETRAIL) */
