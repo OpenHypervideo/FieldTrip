@@ -42,16 +42,29 @@ FrameTrail.defineType(
          */
         renderContent: function() {
 
+            var fileEnding = this.resourceData.src.match(/\.([^\.]+)$/);
+
             var resourceElement = $(
                     '<div class="resourceDetail" data-type="'+ this.resourceData.type +'">'  
                 +       '<img src="'+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src) +'" title="'
                 +       this.resourceData.name
                 +       '">'
                 +    '</div>'
-            ).perfectScrollbar({
-                wheelSpeed: 4,
-                suppressScrollX: true
-            });
+            );
+
+            if ( fileEnding && fileEnding[1] == 'svg' ) {
+
+                $.get(FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src), function(data) {
+                    var $svg = $(data).find('svg');
+                    
+                    $svg = $svg.removeAttr('xmlns:a');
+
+                    resourceElement.append($svg);
+                    resourceElement.find('img').remove();
+                    
+                }, 'xml');
+
+            }
 
             return resourceElement;
 
