@@ -1,3 +1,50 @@
+
+/* Bg Image Size*/
+var image = { width: 2500, height: 1700 };
+
+/* Pointers */
+var target = new Array();
+target[0] = { x: 184, y: 88 };
+target[1] = { x: 284, y: 10 };
+target[2] = { x: 384, y: 188 };
+
+var pointer = new Array();
+pointer[0] = $('#pointer1');
+pointer[1] = $('#pointer2');
+pointer[2] = $('#pointer3');
+
+$(document).ready(updatePointer);
+$(window).resize(updatePointer);
+
+function updatePointer() {
+    var windowWidth = $(window).width();
+    var windowHeight = $(window).height();
+    
+    // Get largest dimension increase
+    var xScale = windowWidth / image.width;
+    var yScale = windowHeight / image.height;
+    var scale;
+    var yOffset = 0;
+    var xOffset = 0;
+    
+    if (xScale > yScale) {
+        scale = xScale;
+        yOffset = (windowHeight - (image.height * scale)) / 2;
+    } else {
+        scale = yScale;
+        xOffset = (windowWidth - (image.width * scale)) / 2;
+    }
+    
+    var arrayLength = target.length;
+
+    for (var i = 0; i < arrayLength; i++) {
+        pointer[i].css('top', (target[i].y) * scale + yOffset);
+        pointer[i].css('left', (target[i].x) * scale + xOffset);
+    }
+}
+
+// end map pointers
+
 var previousLayer,
 	introTimeout;
 
@@ -123,4 +170,4 @@ function startFullscreen() {
         }
     }
 
-}
+} // End Document Ready
