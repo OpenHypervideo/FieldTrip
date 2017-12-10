@@ -7,8 +7,8 @@ $(document).ready(function() {
 
 	initEventListeners();
 
-	$('.ftLoadingIndicator').removeClass('active').fadeOut(1000);
-	activateLayer('Overview');
+	//$('.ftLoadingIndicator').removeClass('active').fadeOut(1000);
+	//activateLayer('Overview');
 
 	$('#ftIntroVideo').on('loadedmetadata', function() {
 		$('#ftIntroVideo')[0].pause();
