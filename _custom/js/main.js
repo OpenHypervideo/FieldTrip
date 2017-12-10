@@ -1,14 +1,17 @@
 var previousLayer,
+	currentLayer = undefined,
+	activeVideoID = undefined,
 	introTimeout;
 
 $(document).ready(function() {
 
 	initEventListeners();
 
-	//$('.ftLoadingIndicator').removeClass('active').fadeOut(1000);
-	//activateLayer('Overview');
+	$('.ftLoadingIndicator').removeClass('active').fadeOut(1000);
+	activateLayer('Overview');
 
 	
+	/*
 	$('#ftIntroVideo').on('loadedmetadata', function() {
 		$('#ftIntroVideo')[0].pause();
 		$('#ftIntroVideo')[0].currentTime = 0;
@@ -29,11 +32,12 @@ $(document).ready(function() {
 				window.history.replaceState({}, '', '#Intro');
 				activateLayer('Intro');
 
-			}, 3000);
+			}, 5000);
 
 		});
 
 	});
+	*/
 
 	$('#ftIntroVideo').on('ended', function() {
 		window.history.pushState({}, '', '#Overview');
@@ -58,11 +62,38 @@ function initEventListeners() {
 
 	});
 
+	// Navigation
+	$('#ftNavUp').click(interfaceUp);
+	$('#ftNavDown').click(interfaceDown);
+
+	// Key Listeners
+	$(document).keydown(function(evt){
+
+		switch (evt.keyCode) {
+			case 38:
+				interfaceUp();
+				break;
+			case 40:
+				interfaceDown();
+				break;
+			case 37:
+				interfaceLeft();
+				break;
+			case 39:
+				interfaceRight();
+				break;
+			default:
+				// default
+		}
+
+	});
+
 }
 
 function activateLayer(layerName) {
 
-	previousLayer = layerName;
+	previousLayer = (currentLayer) ? currentLayer : false;
+	currentLayer = layerName;
 	
 	$('.ftLayer').removeClass('active');
 	
@@ -95,6 +126,10 @@ function activateLayer(layerName) {
 			$('.ftLayer#ftOverview').fadeOut(1000);
 			$('.ftLayer#ftOverview').removeClass('zoomOut');
 			$('.ftLayer#ftVideo').removeClass('zoomOut');
+
+			// TODO: Replace with parsed Video ID
+			activeVideoID = 1;
+
 			break;
 		default:
 			// Default
@@ -103,7 +138,48 @@ function activateLayer(layerName) {
 
 	$('.ftLayer#ft'+ layerName).addClass('active').fadeIn(1000);
 	rescaleMapCanvas();
+	updateButtonStates();
 
+}
+
+function interfaceDown() {
+	if (currentLayer == 'Intro') {
+		window.history.replaceState({}, '', '#Overview');
+		activateLayer('Overview');
+	} else if (currentLayer == 'Overview' && activeVideoID) {
+		window.history.replaceState({}, '', '#Video');
+		activateLayer('Video');
+	}
+}
+
+function interfaceUp() {
+	if (currentLayer == 'Video') {
+		window.history.replaceState({}, '', '#Overview');
+		activateLayer('Overview');
+	} else if (currentLayer == 'Overview') {
+		window.history.replaceState({}, '', '#Intro');
+		activateLayer('Intro');
+	}
+}
+
+function interfaceLeft() {
+	// left key pressed
+}
+
+function interfaceRight() {
+	// right key pressed
+}
+
+function updateButtonStates() {
+	$('.ftNavIconContainer').removeClass('inactive');
+
+	if (currentLayer == 'Video') {
+		$('.ftNavIconContainer#ftNavDown').addClass('inactive');
+	} else if (currentLayer == 'Overview' && !activeVideoID) {
+		$('.ftNavIconContainer#ftNavDown').addClass('inactive');
+	} else if (currentLayer == 'Intro') {
+		$('.ftNavIconContainer#ftNavUp').addClass('inactive');
+	}
 }
 
 function startFullscreen() {
@@ -111,24 +187,24 @@ function startFullscreen() {
 	var element = $('body')[0];
 
 	if (element.requestFullScreen) {
-        if (!document.fullScreen) {
-            element.requestFullscreen();
-        } else {
-            //document.exitFullScreen();
-        }
-    } else if (element.mozRequestFullScreen) {
-        if (!document.mozFullScreen) {
-            element.mozRequestFullScreen();
-        } else {
-            //document.mozCancelFullScreen();
-        }
-    } else if (element.webkitRequestFullScreen) {
-        if (!document.webkitIsFullScreen) {
-            element.webkitRequestFullScreen();
-        } else {
-            //document.webkitCancelFullScreen();
-        }
-    }
+		if (!document.fullScreen) {
+			element.requestFullscreen();
+		} else {
+			//document.exitFullScreen();
+		}
+	} else if (element.mozRequestFullScreen) {
+		if (!document.mozFullScreen) {
+			element.mozRequestFullScreen();
+		} else {
+			//document.mozCancelFullScreen();
+		}
+	} else if (element.webkitRequestFullScreen) {
+		if (!document.webkitIsFullScreen) {
+			element.webkitRequestFullScreen();
+		} else {
+			//document.webkitCancelFullScreen();
+		}
+	}
 
 }
 
@@ -141,25 +217,25 @@ function getScaleOffsets(containerElement, targetImage) {
 		imageNaturalWidth = targetImage[0].naturalWidth,
 		imageNaturalHeight = targetImage[0].naturalHeight,
 		aspectRatio = imageNaturalWidth / imageNaturalHeight;
-    
-    var xScale = containerWidth / imageNaturalWidth,
-    	yScale = containerHeight / imageNaturalHeight;
+	
+	var xScale = containerWidth / imageNaturalWidth,
+		yScale = containerHeight / imageNaturalHeight;
 
-    var	actualImageWidth,
+	var	actualImageWidth,
 		actualImageHeight;
-    
-    if (xScale > yScale) {
-        actualImageWidth = containerWidth;
-        actualImageHeight = containerWidth / aspectRatio;
-    } else {
-        actualImageWidth = containerHeight * aspectRatio;
-        actualImageHeight = containerHeight;
-    }
+	
+	if (xScale > yScale) {
+		actualImageWidth = containerWidth;
+		actualImageHeight = containerWidth / aspectRatio;
+	} else {
+		actualImageWidth = containerHeight * aspectRatio;
+		actualImageHeight = containerHeight;
+	}
 
-    //console.log(containerWidth, imageWidth, actualImageWidth);
-    //console.log(containerHeight, imageHeight, actualImageHeight);
+	//console.log(containerWidth, imageWidth, actualImageWidth);
+	//console.log(containerHeight, imageHeight, actualImageHeight);
 
-    var actualScaleX = actualImageWidth / containerWidth,
+	var actualScaleX = actualImageWidth / containerWidth,
 		actualScaleY = actualImageHeight / containerHeight,
 		actualOffsetX = (containerWidth - actualImageWidth) / 2,
 		actualOffsetY = (containerHeight - actualImageHeight) / 2;
