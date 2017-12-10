@@ -53,7 +53,7 @@
 
             <div class="ftLayerContent">
                 <video id="ftIntroVideo" preload="auto">
-                    <source src="_custom/zoom-to-white.mp4" type="video/mp4">
+                    <source src="_custom/zoom-to-black.mp4" type="video/mp4">
                 </video>
             </div>
 
@@ -61,19 +61,28 @@
 
         <div id="ftOverview" class="ftLayer">
         
-        <!-- Pointers -->
-        <div id="pointer1" class="pointer">
-          <!-- <a href="#Video" id="ftMapPinOne" class="ftMapPin"><img src="_custom/graphics/FT-pin-green.svg" /></a> -->
-        </div>
-        <div id="pointer2" class="pointer"></div>
-        <div id="pointer3" class="pointer"></div>
-            
             <a href="#Intro">
                 <img class="ftLogo" src="_custom/graphics/FT-white-transparent.svg"/>
             </a>
 
             <div class="ftLayerContent">
                 
+                <div id="ftMapContainer">
+                    <img id="ftMapBackground" src="_custom/graphics/map-large.jpg" />
+                    
+                    <div id="ftMapCanvas">
+                        <img id="ftMap" src="_custom/graphics/overview.svg" />
+
+                        <!-- Pointers -->
+                        <a href="#Video/1" style="top: 39%; left: 43%;" id="ftMapPin1" class="ftMapPin">
+                          <!-- <a href="#Video" id="ftMapPinOne" class="ftMapPin"><img src="_custom/graphics/FT-pin-green.svg" /></a> -->
+                        </a>
+                        <a href="#Video/2" style="top: 55%; left: 63%;" id="ftMapPin2" class="ftMapPin"></a>
+                        <a href="#Video/3" style="top: 75%; left: 55%;" id="ftMapPin3" class="ftMapPin"></a>
+                    </div>
+
+                </div>
+
                 <div class="ftNavigation">
                     <nav>
                       <a class="ftSound ftNavIconContainer" href="#" target="_self"><img src="_custom/graphics/FT-sound-off.svg" />

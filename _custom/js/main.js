@@ -1,50 +1,3 @@
-
-/* Bg Image Size*/
-var image = { width: 2500, height: 1700 };
-
-/* Pointers */
-var target = new Array();
-target[0] = { x: 184, y: 88 };
-target[1] = { x: 284, y: 10 };
-target[2] = { x: 384, y: 188 };
-
-var pointer = new Array();
-pointer[0] = $('#pointer1');
-pointer[1] = $('#pointer2');
-pointer[2] = $('#pointer3');
-
-$(document).ready(updatePointer);
-$(window).resize(updatePointer);
-
-function updatePointer() {
-    var windowWidth = $(window).width();
-    var windowHeight = $(window).height();
-    
-    // Get largest dimension increase
-    var xScale = windowWidth / image.width;
-    var yScale = windowHeight / image.height;
-    var scale;
-    var yOffset = 0;
-    var xOffset = 0;
-    
-    if (xScale > yScale) {
-        scale = xScale;
-        yOffset = (windowHeight - (image.height * scale)) / 2;
-    } else {
-        scale = yScale;
-        xOffset = (windowWidth - (image.width * scale)) / 2;
-    }
-    
-    var arrayLength = target.length;
-
-    for (var i = 0; i < arrayLength; i++) {
-        pointer[i].css('top', (target[i].y) * scale + yOffset);
-        pointer[i].css('left', (target[i].x) * scale + xOffset);
-    }
-}
-
-// end map pointers
-
 var previousLayer,
 	introTimeout;
 
@@ -52,8 +5,10 @@ $(document).ready(function() {
 
 	initEventListeners();
 
-	//$('#ftIntroVideo').load();
+	//$('.ftLoadingIndicator').removeClass('active').fadeOut(1000);
+	//activateLayer('Overview');
 
+	
 	$('#ftIntroVideo').on('loadedmetadata', function() {
 		$('#ftIntroVideo')[0].pause();
 		$('#ftIntroVideo')[0].currentTime = 0;
@@ -85,13 +40,17 @@ $(document).ready(function() {
 		activateLayer('Overview');
 	});
 
+}); // End Document Ready
+
+$(window).resize(function() {
+	rescaleMapCanvas();
 });
 
 function initEventListeners() {
 
 	// Hash Change Listener
 	$(window).on('popstate', function() {
-		activateLayer(location.hash.split('#')[1]);
+		activateLayer(location.hash.split('#')[1].split('/')[0]);
 	});
 
 	// Map Pins
@@ -143,6 +102,7 @@ function activateLayer(layerName) {
 	}
 
 	$('.ftLayer#ft'+ layerName).addClass('active').fadeIn(1000);
+	rescaleMapCanvas();
 
 }
 
@@ -170,4 +130,62 @@ function startFullscreen() {
         }
     }
 
-} // End Document Ready
+}
+
+function getScaleOffsets(containerElement, targetImage) {
+
+	var containerWidth = containerElement.width(),
+		containerHeight = containerElement.height(),
+		imageWidth = targetImage.width(),
+		imageHeight = targetImage.height(),
+		imageNaturalWidth = targetImage[0].naturalWidth,
+		imageNaturalHeight = targetImage[0].naturalHeight,
+		aspectRatio = imageNaturalWidth / imageNaturalHeight;
+    
+    var xScale = containerWidth / imageNaturalWidth,
+    	yScale = containerHeight / imageNaturalHeight;
+
+    var	actualImageWidth,
+		actualImageHeight;
+    
+    if (xScale > yScale) {
+        actualImageWidth = containerWidth;
+        actualImageHeight = containerWidth / aspectRatio;
+    } else {
+        actualImageWidth = containerHeight * aspectRatio;
+        actualImageHeight = containerHeight;
+    }
+
+    //console.log(containerWidth, imageWidth, actualImageWidth);
+    //console.log(containerHeight, imageHeight, actualImageHeight);
+
+    var actualScaleX = actualImageWidth / containerWidth,
+		actualScaleY = actualImageHeight / containerHeight,
+		actualOffsetX = (containerWidth - actualImageWidth) / 2,
+		actualOffsetY = (containerHeight - actualImageHeight) / 2;
+
+	var scaleOffsets = {
+		scaleX: actualScaleX,
+		scaleY: actualScaleY,
+		offsetX: actualOffsetX,
+		offsetY: actualOffsetY,
+	}
+
+	return scaleOffsets;
+	
+}
+
+function rescaleMapCanvas() {
+	var scaleOffsets = getScaleOffsets($(window), $('#ftMapBackground')),
+		newElementWidth = $(window).width() * scaleOffsets.scaleX,
+		newElementHeight = $(window).height() * scaleOffsets.scaleY,
+		topOffset = scaleOffsets.offsetY,
+		leftOffset = scaleOffsets.offsetX;
+
+	$('#ftMapCanvas').css({
+		top: topOffset + 'px',
+		left: leftOffset + 'px',
+		width: newElementWidth + 'px',
+		height: newElementHeight + 'px',
+	});
+}

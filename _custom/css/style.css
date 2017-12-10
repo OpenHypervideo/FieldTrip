@@ -1,35 +1,35 @@
 *, ::after, ::before {
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
 }
 
 html {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
 }
 
 body {
-  font-family: 'Inconsolata', monospace;
-  font-size: 100%;
+	font-family: 'Inconsolata', monospace;
+	font-size: 100%;
 }
 
 /* buttons */
 
 button, input[type="submit"], input[type="button"], .button {
-  font-family: 'Rubik', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  padding: 22px 0;
-  /* transitions */
-  -webkit-transition: all 200ms ease-in;
-  -moz-transition: all 200ms ease-in;
-  -ms-transition: all 200ms ease-in;
-  -o-transition: all 200ms ease-in;
-  transition: all 200ms ease-in;
+	font-family: 'Rubik', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	padding: 22px 0;
+	/* transitions */
+	-webkit-transition: all 200ms ease-in;
+	-moz-transition: all 200ms ease-in;
+	-ms-transition: all 200ms ease-in;
+	-o-transition: all 200ms ease-in;
+	transition: all 200ms ease-in;
 }
 
 .ftAnimatedButton {
@@ -37,64 +37,64 @@ button, input[type="submit"], input[type="button"], .button {
 }
 
 .ftAnimatedButton {
-    border: none;
-    position: relative;
+	border: none;
+	position: relative;
 }
 
 .ftAnimatedButton:after{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 0%;
-    width: 0%;
-    
-    border-top: 1px solid rgba(255,255,255,.5);
-    border-right: 1px solid rgba(255,255,255,.5);
-    animation: borderAfter 1s linear 0s forwards 1;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 0%;
+	width: 0%;
+	
+	border-top: 1px solid rgba(255,255,255,.5);
+	border-right: 1px solid rgba(255,255,255,.5);
+	animation: borderAfter 1s linear 0s forwards 1;
 }
 
 .ftAnimatedButton:before{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 0%;
-    width: 0%;
-    transition-delay: 1s;
-    
-    border-bottom: 1px solid rgba(255,255,255,.5);
-    border-left: 1px solid rgba(255,255,255,.5);
-    animation: borderBefore 1s linear 1s forwards 1;
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	height: 0%;
+	width: 0%;
+	transition-delay: 1s;
+	
+	border-bottom: 1px solid rgba(255,255,255,.5);
+	border-left: 1px solid rgba(255,255,255,.5);
+	animation: borderBefore 1s linear 1s forwards 1;
 }
 
 @keyframes borderAfter{
-    0%{
-        width: 0%;
-        height: 0%;
-    }
-    50%{
-        width: 100%;
-        height: 0%;
-    }
-    100%{
-        width: 100%;
-        height: 97%;
-    }
+	0%{
+		width: 0%;
+		height: 0%;
+	}
+	50%{
+		width: 100%;
+		height: 0%;
+	}
+	100%{
+		width: 100%;
+		height: 97%;
+	}
 }
 @keyframes borderBefore{
-    0%{
-        width: 0%;
-        height: 0%;
-    }
-    50%{
-        width: 100%;
-        height: 0%;
-    }
-    100%{
-        width: 100%;
-        height: 97%;
-    }
+	0%{
+		width: 0%;
+		height: 0%;
+	}
+	50%{
+		width: 100%;
+		height: 0%;
+	}
+	100%{
+		width: 100%;
+		height: 97%;
+	}
 }
 
 
@@ -114,7 +114,7 @@ button, input[type="submit"], input[type="button"], .button {
 }
 
 #ftStartButton:hover {
- background: rgba(255,255,255,.025);
+	background: rgba(255,255,255,.025);
 }
 
 /* Loading Indicator */
@@ -220,17 +220,17 @@ button, input[type="submit"], input[type="button"], .button {
 }
 
 .ftNavItems {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  list-style: none;
-  border-top: 1px solid #333;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	list-style: none;
+	border-top: 1px solid #333;
 }
 
 .ftNavItems li {
@@ -238,52 +238,52 @@ button, input[type="submit"], input[type="button"], .button {
 }
 
 .ftNavIconContainer {
-    display: block;
-    position: relative;
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
-    
+	display: block;
+	position: relative;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	
 }
 
 .ftNavIconContainer img {
-  max-width: 15px;
-  height: auto;
-  vertical-align: middle;
-}
+	max-width: 15px;
+	height: auto;
+	vertical-align: middle;
+	}
 
 .ftNavIconContainer.ftAboutIconContainer img {
-  max-width: 10px;
-  height: auto;
+	max-width: 10px;
+	height: auto;
 }
 
 .ftNavIconContainer span {
-  display: block;
+	display: block;
 }
 
 .ftSound, .ftNavShare, .ftNavAbout {
-  position: absolute;  
+	position: absolute;  
 }
 
 .ftSound.ftAboutIconContainer img,
 .ftNavShare.ftAboutIconContainer img {
-  max-width: 20px;
+	max-width: 20px;
 }
 
 .ftSound {
-  top: 0;
-  border-bottom: 1px solid #333;
+	top: 0;
+	border-bottom: 1px solid #333;
 }
 
 .ftNavAbout {
-  bottom: 60px;
-  border-top: 1px solid #333;
+	bottom: 60px;
+	border-top: 1px solid #333;
 }
 
 .ftNavShare {
-  bottom: 0;
-  border-top: 1px solid #333;
+	bottom: 0;
+	border-top: 1px solid #333;
 }
 
 /* INTRO VIDEO */
@@ -304,22 +304,50 @@ button, input[type="submit"], input[type="button"], .button {
 /* OVERVIEW MAP */
 
 #ftOverview {
-    background: #252425 url(../graphics/map-large.jpg) no-repeat center fixed;
-    -webkit-background-size:cover;
-    -moz-background-size:cover;
-    -o-background-size:cover;
-    background-size:cover;
-    z-index: 2;
+	background: #252425;
+	z-index: 2;
 }
 
-.pointer {
-    margin-left:-10px;
-    margin-top:-10px;
-    width:20px;
-    height:20px;
-    border-radius:10px;
-    background-color:#F00;
-    position:fixed;
+#ftOverview #ftMapContainer {
+	
+}
+
+#ftOverview #ftMapContainer img {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+#ftOverview #ftMapContainer img#ftMapBackground {
+	filter: saturate(1) brightness(0.7) contrast(1.2) opacity(0.3);
+	object-fit: cover;
+}
+
+#ftOverview #ftMapContainer #ftMapCanvas {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+#ftOverview #ftMapContainer #ftMapCanvas img#ftMap {
+	top: 11.2%;
+	left: 20%;
+	width: 60.8%;
+	height: auto;
+}
+
+#ftOverview #ftMapContainer #ftMapCanvas .ftMapPin {
+	position: absolute;
+	margin-left: -10px;
+	margin-top: -10px;
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	background-color: #F00;
 }
 
 /* VIDEO (FRAMETRAIL) */
