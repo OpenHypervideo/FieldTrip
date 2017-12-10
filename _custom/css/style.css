@@ -325,6 +325,14 @@ button, input[type="submit"], input[type="button"], .button {
 	
 }
 
+#ftOverview #ftMapContainer #ftWeatherContainer {
+	position: absolute;
+	top: 15px;
+	right: 85px;
+	text-align: right;
+	color: #FFF;
+}
+
 #ftOverview #ftMapContainer img {
 	position: absolute;
 	top: 0px;

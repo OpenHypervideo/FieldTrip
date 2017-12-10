@@ -10,8 +10,6 @@ $(document).ready(function() {
 	$('.ftLoadingIndicator').removeClass('active').fadeOut(1000);
 	activateLayer('Overview');
 
-	
-	/*
 	$('#ftIntroVideo').on('loadedmetadata', function() {
 		$('#ftIntroVideo')[0].pause();
 		$('#ftIntroVideo')[0].currentTime = 0;
@@ -37,12 +35,34 @@ $(document).ready(function() {
 		});
 
 	});
-	*/
 
 	$('#ftIntroVideo').on('ended', function() {
 		window.history.pushState({}, '', '#Overview');
 		activateLayer('Overview');
 	});
+
+	$.getScript("https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js").then( function() {
+  		
+	    $.simpleWeather({
+	        location: 'Berlin, DE',
+	        woeid: '20065632',
+	        unit: 'c',
+	        success: function(weather) {
+	            console.log(weather);
+	            $('#ftWeatherTemperature').text(weather.temp + ' °C');
+	            
+	        },
+	        error: function(error) {
+	            
+	        }
+	    });
+	  
+	});
+
+	updateTime();
+	window.setInterval(function() {
+		updateTime();
+	}, 3000);
 
 }); // End Document Ready
 
@@ -264,4 +284,14 @@ function rescaleMapCanvas() {
 		width: newElementWidth + 'px',
 		height: newElementHeight + 'px',
 	});
+}
+
+function updateTime() {
+	var d = new Date(),
+		utc = d.getTime() + (d.getTimezoneOffset() * 60000),
+		newDate = new Date(utc + (3600000*1)).toLocaleString('de-DE', {
+			hour: '2-digit',
+			minute: '2-digit'
+		});
+	$('#ftWeatherTime').text(newDate);
 }
