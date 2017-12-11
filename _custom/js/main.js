@@ -10,6 +10,8 @@ $(document).ready(function() {
 	//$('.ftLoadingIndicator').removeClass('active').fadeOut(1000);
 	//activateLayer('Overview');
 
+	window.history.replaceState({}, '', '#');
+
 	$('#ftIntroVideo').on('loadedmetadata', function() {
 		$('#ftIntroVideo')[0].pause();
 		$('#ftIntroVideo')[0].currentTime = 0;
@@ -27,6 +29,7 @@ $(document).ready(function() {
 			window.setTimeout(function() {
 				
 				$('.ftLoadingIndicator').removeClass('active').fadeOut(1000);
+				
 				window.history.replaceState({}, '', '#Intro');
 				activateLayer('Intro');
 
@@ -79,12 +82,15 @@ function initEventListeners() {
 
 	// Map Pins
 	$('.ftMapPin').click(function() {
-
+		var videoID = $(this).attr('href').split('Video/')[1];
+		
+		$('#ftVideo iframe').removeClass('active');
+		$('#ftVideo iframe[src="player/index.html?project=1&hypervideo='+ videoID +'"]').addClass('active');
 	});
 
 	// Navigation
-	$('#ftNavUp').click(interfaceUp);
-	$('#ftNavDown').click(interfaceDown);
+	$('.ftNavUp').click(interfaceUp);
+	$('.ftNavDown').click(interfaceDown);
 
 	// Key Listeners
 	$(document).keydown(function(evt){
@@ -123,7 +129,7 @@ function activateLayer(layerName) {
 			introTimeout = window.setTimeout(function() {
 				$('#ftIntroVideo')[0].currentTime = 0;
 				$('#ftIntroVideo')[0].play();
-			}, 1000);
+			}, 2000);
 			
 			$('.ftLayer#ftOverview').addClass('zoomOut');
 			$('.ftLayer#ftVideo').addClass('zoomOut');
@@ -194,11 +200,11 @@ function updateButtonStates() {
 	$('.ftNavIconContainer').removeClass('inactive');
 
 	if (currentLayer == 'Video') {
-		$('.ftNavIconContainer#ftNavDown').addClass('inactive');
+		$('.ftNavIconContainer.ftNavDown').addClass('inactive');
 	} else if (currentLayer == 'Overview' && !activeVideoID) {
-		$('.ftNavIconContainer#ftNavDown').addClass('inactive');
+		$('.ftNavIconContainer.ftNavDown').addClass('inactive');
 	} else if (currentLayer == 'Intro') {
-		$('.ftNavIconContainer#ftNavUp').addClass('inactive');
+		$('.ftNavIconContainer.ftNavUp').addClass('inactive');
 	}
 }
 

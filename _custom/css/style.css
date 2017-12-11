@@ -258,6 +258,7 @@ button, input[type="submit"], input[type="button"], .button {
 
 .ftNavIconContainer.inactive {
 	opacity: .35;
+	pointer-events: none;
 }
 
 .ftNavIconContainer img {
@@ -425,19 +426,27 @@ button, input[type="submit"], input[type="button"], .button {
 	z-index: 1;
 }
 
-/*
+
 .ftLayer#ftVideo .ftLogo {
-	width: 80px;
+	top: 10px;
+	left: 10px;
+	width: 82px;
 	height: auto;
 }
-*/
 
-iframe {
+.ftLayer#ftVideo iframe {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	width: 100%;
+	width: calc(100% - 60px);
 	height: 100%;
 	border: none;
 	outline: none;
+	visibility: hidden;
+	z-index: 0;
+}
+
+.ftLayer#ftVideo iframe.active {
+	visibility: visible;
+	z-index: 3;
 }
