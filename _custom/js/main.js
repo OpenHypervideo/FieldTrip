@@ -12,12 +12,15 @@ $(document).ready(function() {
 
 	window.history.replaceState({}, '', '#');
 
+	//$('#ftIntroVideo').load();
+
 	$('#ftIntroVideo').on('loadedmetadata', function() {
+		$('#ftIntroVideo')[0].play();
 		$('#ftIntroVideo')[0].pause();
 		$('#ftIntroVideo')[0].currentTime = 0;
 	});
 
-	$('#ftIntroVideo').one('canplaythrough', function() {
+	$('#ftIntroVideo').one('canplay', function() {
 
 		$('#ftStartButton').show().click(function() {
 
