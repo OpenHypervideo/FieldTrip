@@ -86,9 +86,9 @@ function initEventListeners() {
 	// Map Pins
 	$('.ftMapPin').click(function() {
 		var videoID = $(this).attr('href').split('Video/')[1];
-		
+
 		$('#ftVideo iframe').removeClass('active');
-		$('#ftVideo iframe[src="player/index.html?project=1&hypervideo='+ videoID +'"]').addClass('active');
+		$('#ftVideo iframe[src^="player/index.html?project=1&hypervideo='+ videoID +'"]').addClass('active');
 	});
 
 	// Navigation
