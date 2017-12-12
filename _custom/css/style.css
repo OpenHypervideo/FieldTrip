@@ -383,6 +383,7 @@ button, input[type="submit"], input[type="button"], .button {
 
 #ftOverview #ftMapContainer #ftMapCanvas .ftMapPin:hover {
 	transform: scale(1);
+	z-index: 2;
 	/*background-color: #191719;*/
 }
 
@@ -396,9 +397,9 @@ button, input[type="submit"], input[type="button"], .button {
 
 #ftOverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription {
 	position: absolute;
-	top: 45px;
-	left: -80px;
-	width: 330px;
+	top: 40px;
+	left: -60px;
+	width: 230px;
 	height: auto;
 	padding: 8px;
 	background-color: #191719;
