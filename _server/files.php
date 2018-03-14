@@ -174,6 +174,42 @@ function fileUpload($type, $name, $description="", $attributes, $files, $lat, $l
 			$newResource["attributes"] = ($attributes) ? $attributes : Array();
 			move_uploaded_file($files["pdf"]["tmp_name"], $conf["dir"]["data"]."/resources/".$filename);
 		break;
+		case "audio":
+			if ($uploadsAllowed === false) {
+				$return["status"] = "fail";
+				$return["code"] = 20;
+				$return["string"] = "User not allowed to upload files";
+				return $return;
+				exit;
+			}
+
+			if ((!$files["audio"]) || (!$files["audio"]["size"])) {
+				$return["status"] = "fail";
+				$return["code"] = 4;
+				$return["string"] = "No audio file to upload";
+				return $return;
+				exit;
+			}
+
+			/* TODO: Check file size correctly */
+			/*
+			if ( $_FILES["audio"]["size"] >= $upload_mb ) {
+				$return["status"] = "fail";
+				$return["code"] = 10;
+				$return["string"] = "File too big";
+				return $return;
+				exit;
+			}
+			*/
+
+			$filearray = preg_split("/\./", $files["audio"]["name"]);
+			$filetype = array_pop($filearray);
+			$filename = substr($_SESSION["ohv"]["user"]["id"]."_".$cTime."_".sanitize($name),0,90).".".$filetype;
+			$newResource["src"] = $filename;
+			$newResource["type"] = "audio";
+			$newResource["attributes"] = ($attributes) ? $attributes : Array();
+			move_uploaded_file($files["audio"]["tmp_name"], $conf["dir"]["data"]."/resources/".$filename);
+		break;
 		case "video":
 			if ($uploadsAllowed === false) {
 				$return["status"] = "fail";

@@ -39,9 +39,9 @@ FrameTrail.defineType(
                 )
 
 
-                if (    this.data.type === 'video'
+                if (    (this.data.type === 'video' || this.data.type === 'audio')
                      && this.data.attributes.autoPlay) {
-                    // Note: Currently, the only synced media type is 'video', so we shortcut it
+                    // Note: Currently, the only synced media types are 'video' and 'audio', so we shortcut it
 
                     this.syncedMedia = true;
 
@@ -181,27 +181,27 @@ FrameTrail.defineType(
 
 
                 /**
-                 * I prepare the event listeners for a synced HTML5 video used as overlay.
+                 * I prepare the event listeners for a synced HTML5 video or audio used as overlay.
                  *
-                 * @method prepareSyncedHTML5Video
-                 * @param {jQuery} newOverlayVideo
+                 * @method prepareSyncedHTML5Media
+                 * @param {jQuery} newOverlayMedia
                  */
-                prepareSyncedHTML5Video: function (newOverlayVideo) {
+                prepareSyncedHTML5Media: function (newOverlayMedia) {
 
                     var self = this,
                         HypervideoController = FrameTrail.module('HypervideoController'),
                         timeout = null;
 
-                    newOverlayVideo.on('waiting', checkForStall);
+                    newOverlayMedia.on('waiting', checkForStall);
 
-                    newOverlayVideo.attr('preload', 'auto');
-        			newOverlayVideo.get(0).load();
+                    newOverlayMedia.attr('preload', 'auto');
+        			newOverlayMedia.get(0).load();
 
                     function checkForStall() {
 
                         if (self.activeState) {
 
-                			if (newOverlayVideo.get(0).readyState > 0) {
+                			if (newOverlayMedia.get(0).readyState > 0) {
                 				HypervideoController.playbackStalled(false, self);
                 			} else {
                                 HypervideoController.playbackStalled(true, self);
@@ -325,12 +325,12 @@ FrameTrail.defineType(
 
 
                 /**
-                 * I update my behavior, wether my time-based content (video) should be synchronized with the main
+                 * I update my behavior, wether my time-based content (video or audio) should be synchronized with the main
                  * video or not.
                  *
-                 * I control accordingly, wether the video controls should be shown or not.
+                 * I control accordingly, wether the video / audio controls should be shown or not.
                  *
-                 * I append dynamically an attribute to myself (this.videoElement).
+                 * I append dynamically an attribute to myself (this.mediaElement).
                  *
                  * Note: My attribute {{#crossLink "Overlay/syncedMedia:attribute"}}syncedMedia{{/crossLink}}
                  * is independent of this method and stores the current state for use in
@@ -343,11 +343,16 @@ FrameTrail.defineType(
                 setSyncedMedia: function (synced) {
 
                     if (synced) {
-                        this.videoElement = this.overlayElement.find('.resourceDetail video')[0];
-                        this.videoElement.removeAttribute('controls');
+                        if (this.overlayElement.find('.resourceDetail audio').length != 0) {
+                            this.mediaElement = this.overlayElement.find('.resourceDetail audio')[0]
+                        } else {
+                            this.mediaElement = this.overlayElement.find('.resourceDetail video')[0]
+                        }
+                        
+                        this.mediaElement.removeAttribute('controls');
                     } else {
-                        this.videoElement.setAttribute('controls', 'controls');
-                        delete this.videoElement;
+                        this.mediaElement.setAttribute('controls', 'controls');
+                        delete this.mediaElement;
                     }
 
                 },

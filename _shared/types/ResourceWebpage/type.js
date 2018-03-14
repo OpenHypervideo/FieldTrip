@@ -49,7 +49,7 @@ FrameTrail.defineType(
                         pdfjsViewerPathPrefix = (this.resourceData.src.indexOf('//') != -1) ? '' : '../../';
 
                     if ( iFrameSource.substr( (iFrameSource.lastIndexOf('.') +1) ) == 'pdf' ) {
-                        iFrameSource = '../_lib/pdfjs/web/viewer.html?file='+ pdfjsViewerPathPrefix + iFrameSource;
+                        iFrameSource = '_lib/pdfjs/web/viewer.html?file='+ pdfjsViewerPathPrefix + iFrameSource;
                     }
 
                     var iFrame = $(

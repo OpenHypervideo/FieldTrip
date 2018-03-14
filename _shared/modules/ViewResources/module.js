@@ -26,6 +26,8 @@ FrameTrail.defineModule('ViewResources', function(FrameTrail){
                         +  '        <input name="ResourceFilterType" type="radio" value="ALL" checked>All Types</input>'
                         +  '        <input name="ResourceFilterType" type="radio" value="video">Video</input>'
                         +  '        <input name="ResourceFilterType" type="radio" value="image">Image</input>'
+                        +  '        <input name="ResourceFilterType" type="radio" value="pdf">PDF</input>'
+                        +  '        <input name="ResourceFilterType" type="radio" value="audio">Audio</input>'
                         +  '        <input name="ResourceFilterType" type="radio" value="webpage">Webpage</input>'
                         +  '        <input name="ResourceFilterType" type="radio" value="location">Location</input>'
                         +  '        <input name="ResourceFilterType" type="radio" value="wikipedia">Wikipedia</input>'

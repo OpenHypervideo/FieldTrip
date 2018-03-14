@@ -74,9 +74,9 @@ FrameTrail.defineModule('OverlaysController', function(FrameTrail){
                 if (overlay.syncedMedia) {
 
                     // endOffset
-                    if (overlay.videoElement.currentTime > overlay.videoElement.duration - overlay.data.endOffset) {
-                        overlay.videoElement.pause();
-                        overlay.videoElement.currentTime = overlay.videoElement.duration - overlay.data.endOffset;
+                    if (overlay.mediaElement.currentTime > overlay.mediaElement.duration - overlay.data.endOffset) {
+                        overlay.mediaElement.pause();
+                        overlay.mediaElement.currentTime = overlay.mediaElement.duration - overlay.data.endOffset;
                     }
 
                 }
@@ -136,8 +136,8 @@ FrameTrail.defineModule('OverlaysController', function(FrameTrail){
 
         if (idx > -1) {
             syncedMedia.splice(idx, 1);
-            // Note: Currently, the only synced media type is 'video', so we shortcut it
-            overlay.videoElement.pause();
+            // Note: Currently, the only synced media type is 'video' and 'audio', so we shortcut it
+            overlay.mediaElement.pause();
         }
 
     };
@@ -162,26 +162,26 @@ FrameTrail.defineModule('OverlaysController', function(FrameTrail){
 
             // Note: Currently, the only synced media type is 'video', so we shortcut it
 
-            overlay.videoElement.currentTime = currentTime - overlay.data.start + overlay.data.startOffset;
+            overlay.mediaElement.currentTime = currentTime - overlay.data.start + overlay.data.startOffset;
 
 
-            if (overlay.videoElement.currentTime > overlay.videoElement.duration - overlay.data.endOffset) {
+            if (overlay.mediaElement.currentTime > overlay.mediaElement.duration - overlay.data.endOffset) {
 
-                overlay.videoElement.pause();
-                overlay.videoElement.currentTime = overlay.videoElement.duration - overlay.data.endOffset;
+                overlay.mediaElement.pause();
+                overlay.mediaElement.currentTime = overlay.mediaElement.duration - overlay.data.endOffset;
 
             }
 
             if (isPlaying) {
 
-                if (overlay.videoElement.paused) {
-                    var promise = overlay.videoElement.play();
+                if (overlay.mediaElement.paused) {
+                    var promise = overlay.mediaElement.play();
                     if (promise) {
                         promise.catch(function(){});
                     }
                 }
             } else {
-                overlay.videoElement.pause();
+                overlay.mediaElement.pause();
             }
 
 
@@ -207,13 +207,13 @@ FrameTrail.defineModule('OverlaysController', function(FrameTrail){
         for (var i = 0, l = syncedMedia.length; i < l; i++) {
             overlay = syncedMedia[i];
 
-            if (overlay.videoElement) {
+            if (overlay.mediaElement) {
 
                 // off by 0.01 seconds
-                if (overlay.videoElement.currentTime - (currentTime - overlay.data.start + overlay.data.startOffset) > 0.01) {
+                if (overlay.mediaElement.currentTime - (currentTime - overlay.data.start + overlay.data.startOffset) > 0.01) {
 
-                    //console.log('lag detected', overlay.videoElement.currentTime - (currentTime + overlay.data.start));
-                    overlay.videoElement.currentTime = currentTime - overlay.data.start + overlay.data.startOffset;
+                    //console.log('lag detected', overlay.mediaElement.currentTime - (currentTime + overlay.data.start));
+                    overlay.mediaElement.currentTime = currentTime - overlay.data.start + overlay.data.startOffset;
 
                 }
 
@@ -239,9 +239,9 @@ FrameTrail.defineModule('OverlaysController', function(FrameTrail){
 
             overlay = overlays[idx];
 
-            if ( overlay.data.type == 'video' ) {
+            if ( overlay.data.type == 'video' || overlay.data.type == 'audio' ) {
                 try {
-                    overlay.videoElement.muted = muted;
+                    overlay.mediaElement.muted = muted;
                 } catch(e) {}
             }
 

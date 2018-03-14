@@ -79,6 +79,7 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
                                         + '                <li data-type="url"><a href="#resourceInputTabURL">Paste URL</a></li>'
                                         + '                <li data-type="image"><a href="#resourceInputTabImage">Upload Image</a></li>'
                                         + '                <li data-type="video"><a href="#resourceInputTabVideo">Upload Video</a></li>'
+                                        + '                <li data-type="audio"><a href="#resourceInputTabAudio">Upload Audio</a></li>'
                                         + '                <li data-type="pdf"><a href="#resourceInputTabPDF">Upload PDF</a></li>'
                                         + '                <li data-type="map"><a href="#resourceInputTabMap">Add Map</a></li>'
                                         + '            </ul>'
@@ -89,6 +90,10 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
                                         + '            <div id="resourceInputTabImage">'
                                         + '                <div class="message active">Add image file in the format <b>jpg, jpeg, gif, png</b>. Maximum File Size: <b>3 MB</b></div>'
                                         + '                <input type="file" name="image">'
+                                        + '            </div>'
+                                        + '            <div id="resourceInputTabAudio">'
+                                        + '                <div class="audioInputMessage message active">Add audio file in <b>MP3</b> format. Maximum File Size: <b>3 MB</b>.</div>'
+                                        + '                <input type="file" name="audio"> .mp3'
                                         + '            </div>'
                                         + '            <div id="resourceInputTabPDF">'
                                         + '                <div class="pdfInputMessage message active">Add video file in <b>PDF</b> format. Maximum File Size: <b>3 MB</b>.</div>'
@@ -221,16 +226,25 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
                             else if (tmpType == 'image') {
                                 uploadDialog.find('#resourceInputTabVideo input').prop('disabled',true);
                                 uploadDialog.find('#resourceInputTabPDF input').prop('disabled',true);
+                                uploadDialog.find('#resourceInputTabAudio input').prop('disabled',true);
                             }
 
                             else if (tmpType == 'video') {
                                 uploadDialog.find('#resourceInputTabImage input').prop('disabled',true);
+                                uploadDialog.find('#resourceInputTabPDF input').prop('disabled',true);
+                                uploadDialog.find('#resourceInputTabAudio input').prop('disabled',true);
+                            }
+
+                            else if (tmpType == 'audio') {
+                                uploadDialog.find('#resourceInputTabImage input').prop('disabled',true);
+                                uploadDialog.find('#resourceInputTabVideo input').prop('disabled',true);
                                 uploadDialog.find('#resourceInputTabPDF input').prop('disabled',true);
                             }
 
                             else if (tmpType == 'pdf') {
                                 uploadDialog.find('#resourceInputTabImage input').prop('disabled',true);
                                 uploadDialog.find('#resourceInputTabVideo input').prop('disabled',true);
+                                uploadDialog.find('#resourceInputTabAudio input').prop('disabled',true);
                             }
 
                             var percentVal = '0%';
@@ -630,6 +644,32 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
                     // Video
                     if (/\.(mp4)$/i.exec(src)) {
                         return createResource(src, "video", name, src);
+                    } else {
+                        // We should do a HEAD request and check the
+                        // content-type but it is not possible to do sync
+                        // cross-domain requests, so we should return a
+                        // Future value.
+                        return null;
+                    }
+                    return null;
+                },
+                function (src, name) {
+                    // Audio
+                    if (/\.(mp3)$/i.exec(src)) {
+                        return createResource(src, "audio", name, src);
+                    } else {
+                        // We should do a HEAD request and check the
+                        // content-type but it is not possible to do sync
+                        // cross-domain requests, so we should return a
+                        // Future value.
+                        return null;
+                    }
+                    return null;
+                },
+                function (src, name) {
+                    // PDF
+                    if (/\.(pdf)$/i.exec(src)) {
+                        return createResource(src, "pdf", name, src);
                     } else {
                         // We should do a HEAD request and check the
                         // content-type but it is not possible to do sync

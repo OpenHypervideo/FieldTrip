@@ -4,18 +4,17 @@
 
 
 /**
- * I am the type definition of a ResourcePdf. I represent a PDF document.
+ * I am the type definition of a ResourceAudio. I represent a audio file resource on the server.
  *
- * @class ResourcePdf
+ * @class ResourceAudio
  * @category TypeDefinition
  * @extends Resource
  */
 
 
-
 FrameTrail.defineType(
 
-    'ResourcePdf',
+    'ResourceAudio',
 
     function (FrameTrail) {
         return {
@@ -28,7 +27,7 @@ FrameTrail.defineType(
             prototype: {
 
                 /**
-                 * I hold the data object of a ResourcePdf, which is stored in the {{#crossLink "Database"}}Database{{/crossLink}} and saved in the resource's _index.json.
+                 * I hold the data object of a ResourceAudio, which is stored in the {{#crossLink "Database"}}Database{{/crossLink}} and saved in the resource's _index.json.
                  * @attribute resourceData
                  * @type {}
                  */
@@ -36,36 +35,19 @@ FrameTrail.defineType(
 
 
                 /**
-                 * I render the content of myself, which is a PDF wrapped in a &lt;div class="resourceDetail" ...&gt;
+                 * I render the content of myself, which is a &lt;audio&gt; wrapped in a &lt;div class="resourceDetail" ...&gt;
                  *
                  * @method renderContent
                  * @return HTMLElement
                  */
                 renderContent: function() {
 
-                	var resourceDetail = $('<div class="resourceDetail" data-type="'+ this.resourceData.type +'"></div>');
-
-                    var iFrameSource = (this.resourceData.src.indexOf('//') != -1) ? this.resourceData.src.replace('http:', '').replace('https:', '') : FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src),
-                        pdfjsViewerPathPrefix = (this.resourceData.src.indexOf('//') != -1) ? '' : '../../../';
-
-                    if ( iFrameSource.substr( (iFrameSource.lastIndexOf('.') +1) ) == 'pdf' ) {
-                        iFrameSource = '_lib/pdfjs/web/viewer.html?file='+ pdfjsViewerPathPrefix + iFrameSource;
-                    }
-
-                    var iFrame = $(
-                            '<iframe frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen src="'
-                        +   iFrameSource
-                        +   '" sandbox="allow-same-origin allow-scripts allow-popups allow-forms">'
-                        +    '</iframe>'
-                    ).bind('error, message', function() {
-                        return true;
-                    });
-
-                    resourceDetail.append(iFrame);
-
-                    resourceDetail.append('<div class="licenseInformation">'+ this.resourceData.licenseType +' - '+ this.resourceData.licenseAttribution +'</div>');
-
-                    return resourceDetail;
+                    return $('<div class="resourceDetail" data-type="'+ this.resourceData.type +'">'
+                           + '    <audio controls autobuffer>'
+                           +        '<source src="'+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src) +'" type="audio/mp3">'
+                           + '    </audio>'
+                           + '    <div class="licenseInformation">'+ this.resourceData.licenseType +' - '+ this.resourceData.licenseAttribution +'</div>'
+                           + '</div>');
 
                 },
 
@@ -96,7 +78,7 @@ FrameTrail.defineType(
 
                     var thumbElement = $('<div class="resourceThumb" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="'+ thumbBackground +'">'
                         + '                  <div class="resourceOverlay">'
-                        + '                      <div class="resourceIcon"><span class="icon-file-pdf"></span></div>'
+                        + '                      <div class="resourceIcon"><span class="icon-volume-up"></span></div>'
                         + '                  </div>'
                         + '                  <div class="resourceTitle">'+ this.resourceData.name +'</div>'
                         + '              </div>');
@@ -113,16 +95,52 @@ FrameTrail.defineType(
 
                 },
 
-
                 /**
-                 * See {{#crossLink "Resource/renderBasicPropertiesControls:method"}}Resource/renderBasicPropertiesControls(){{/crossLink}}
+                 * See also {{#crossLink "Resource/renderBasicPropertiesControls:method"}}Resource/renderBasicPropertiesControls(){{/crossLink}}
+                 *
+                 * I extend the PropertiesControls user interface element with special controls for an audio overlay.
+                 * This special control is an radio button chooser, to choose, wether the audio overlay should be synchronized with the main video.
+                 *
                  * @method renderPropertiesControls
                  * @param {Overlay} overlay
                  * @return &#123; controlsContainer: HTMLElement, changeStart: Function, changeEnd: Function, changeDimensions: Function &#125;
                  */
                 renderPropertiesControls: function(overlay) {
 
-                    return this.renderBasicPropertiesControls(overlay);
+                    var basicControls = this.renderBasicPropertiesControls(overlay);
+
+                    /* Add Video Type  Controls */
+
+                    var syncedLabel = $('<div>Synchronization</div>'),
+
+                        syncedRadio = $('<div class="syncedRadio">'
+                                      + '    <input type="radio" id="SyncedTrue" name="radio" value="on" '
+                                      +      (overlay.data.attributes.autoPlay ? 'checked="checked"' : '')
+                                      + '    ><label for="SyncedTrue">Autoplay</label>'
+                                      + '    <input type="radio" id="SyncedFalse" name="radio" value="off" '
+                                      +      (!overlay.data.attributes.autoPlay ? 'checked="checked"' : '')
+                                      + '    ><label for="SyncedFalse">No Synchronization</label>'
+                                      + '</div>').buttonset();
+
+                        syncedRadio.find('input[name="radio"]').on('change', function () {
+
+                                        if (this.value == 'on') {
+                                            overlay.data.attributes.autoPlay = true;
+                                            overlay.syncedMedia = true;
+                                            overlay.setSyncedMedia(true);
+                                        } else {
+                                            overlay.data.attributes.autoPlay = false;
+                                            overlay.syncedMedia = false;
+                                            overlay.setSyncedMedia(false);
+                                        }
+
+                                        FrameTrail.module('HypervideoModel').newUnsavedChange('overlays');
+
+                                    });
+
+                    basicControls.controlsContainer.find('#OverlayOptions').append(syncedLabel, syncedRadio);
+
+                    return basicControls;
 
                 },
 
@@ -146,6 +164,5 @@ FrameTrail.defineType(
 
         }
     }
-
 
 );
