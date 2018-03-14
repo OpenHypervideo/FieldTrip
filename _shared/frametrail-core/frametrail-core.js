@@ -2,274 +2,391 @@
 (function(){
 
 
-	var APPNAME = "FrameTrail";
-	
+    var defs_modules = {},
+        defs_types	 = {},
 
-	var state			= {},
-		modules 		= {},
-		updateQueue 	= [],
-		inUpdateThread  = false,
-		defs_modules 	= {},
-		defs_types	    = {};
+        instances    = [];
 
+    window.FrameTrail = {
+        defineModule: 	_defineModule,
+        defineType: 	_defineType,
+        init:           _init,
 
+        getActiveInstance: null,
+        setActiveInstance: null,
+        get instances() { return instances; }
+    };
 
-	function _start(mainModule, runtimeConfig) {
 
-		state = runtimeConfig || {};
-		_initModule(mainModule);
+    function _defineModule(name, definition) {
 
-	}
+        if (typeof definition !== 'function') {
+            throw new Error('Module definition must be a function object, which returns a public interface.');
+        }
 
-	
-	function _defineModule(name, definition) {
+        defs_modules[name] = definition;
 
-		if (typeof definition !== 'function') {
-			throw new Error('Module definition must be a function object, which returns a public interface.');
-		}
+    }
 
-		defs_modules[name] = definition;
+    function _defineType(name, definition) {
 
-	}
+        if (typeof definition !== 'function') {
+            throw new Error('Type definition must be a function object, which returns type definition { parent constructor proto }.');
+        }
 
+        defs_types[name] = definition;
 
-	function _initModule(name) {
+    }
 
-		if (!defs_modules[name]) {
-			throw new Error('The module to initialize (named "'+name+'") is not defined.')
-		}
 
-		var publicInterface = defs_modules[name].call(this);
+    function _init(tmp, options) {
 
+    	var FrameTrail = {
+    		start: 			_start,
+    		initModule: 	_initModule,
+            unloadModule: 	_unloadModule,
+    		modules: 		_modules,
+    		module: 		_module,
+    		getState: 		_getState,
+    		changeState: 	_changeState,
+    		get types()		{ return types },
+    		type: 			_type,
+    		newObject: 		_newObject,
+            triggerEvent:   triggerEvent,
+            addEventListener: addEventListener,
+            removeEventListener: removeEventListener
+    	};
 
-		if(typeof publicInterface === 'object' && publicInterface !== null){
+    	var state			= {},
+    		modules 		= {},
+            types           = {},
+    		updateQueue 	= [],
+    		inUpdateThread  = false,
+            listeners       = {};
 
-			modules[name] = publicInterface;
-			return publicInterface;
-			
-		}
 
-	}
 
+        _initTypes();
+        _start(tmp, options);
 
-	function _unloadModule(name) {
 
-		if (!modules[name]) {
-			throw new Error('The module to unload (named "'+name+'") is not defined.')
-		}
+    	function _start(mainModule, runtimeConfig) {
 
-		if (modules[name].onUnload && typeof modules[name].onUnload === 'function') {
-			modules[name].onUnload.call(this);
-		}
+    		// TODO: Check if this belongs here
+            $(runtimeConfig.target).addClass('frametrail-body');
 
-		delete modules[name];
+            state = runtimeConfig || {};
+    		_initModule(mainModule);
 
-	}
+    	}
 
 
-	function _module(name) {
+        var publicInstanceAPI = {
 
-		return modules[name];
+            startEditing: function(){
+                FrameTrail.module('UserManagement').ensureAuthenticated(
+                    function(){
+                        FrameTrail.changeState('editMode', 'preview');
+                    },
+                    function(){ /* Start edit mode canceled */ }
+                );
+            },
 
-	}
+            stopEditing: function(){
+                FrameTrail.module('HypervideoModel').leaveEditMode();
+            },
 
+            destroy: function () {
 
-	function _modules() {
+            },
 
-		return modules;
+            play: (FrameTrail.module('HypervideoController')) ? FrameTrail.module('HypervideoController').play : null,
+            pause: (FrameTrail.module('HypervideoController')) ? FrameTrail.module('HypervideoController').pause : null,
 
-	}
+            get duration()    { return FrameTrail.module('HypervideoModel').duration },
+            get currentTime() { return FrameTrail.module('HypervideoController').currentTime },
+            set currentTime(aNumber) { return FrameTrail.module('HypervideoController').currentTime = aNumber },
 
+            onReady:            function (handler) { addEventListener('ready', handler) },
+            onTimeupdate:       function (handler) { addEventListener('timeupdate', handler) },
+            onSeeking:          function (handler) { addEventListener('seeking', handler) },
+            onSeeked:           function (handler) { addEventListener('seeked', handler) },
+            onPlay:             function (handler) { addEventListener('play', handler) },
+            onPlaying:          function (handler) { addEventListener('playing', handler) },
+            onPause:            function (handler) { addEventListener('pause', handler) },
+            onEnded:            function (handler) { addEventListener('ended', handler) },
+            onTimelineEvent:    function (handler) { addEventListener('timelineEvent', handler) },
+            onUserAction:       function (handler) { addEventListener('userAction', handler) },
+            on: addEventListener,
+            off: removeEventListener,
+            addEventListener: addEventListener,
+            removeEventListener: removeEventListener,
+            dispatchEvent: dispatchEvent,
 
-	function _getState(key) {
+            metadata: {
+                get creator()       { return FrameTrail.module('HypervideoModel').creator },
+                get creatorId()     { return FrameTrail.module('HypervideoModel').creatorId },
+                get created()       { return FrameTrail.module('HypervideoModel').created },
+                get lastchanged()   { return FrameTrail.module('HypervideoModel').lastchanged },
+                get hidden()        { return FrameTrail.module('HypervideoModel').hidden },
+                get hypervideoName(){ return FrameTrail.module('HypervideoModel').hypervideoName },
+                get description()   { return FrameTrail.module('HypervideoModel').description },
+            },
 
-		return key ? state[key] : state;
+            get subtitles()      { return FrameTrail.module('HypervideoModel').subtitles },
+            get overlays()       { return FrameTrail.module('HypervideoModel').overlays },
+            get codeSnippets()   { return FrameTrail.module('HypervideoModel').codeSnippets },
+            get annotationSets() { return FrameTrail.module('HypervideoModel').annotationSets },
+            get annotations()    { return FrameTrail.module('HypervideoModel').annotations },
+            get allAnnotations() { return FrameTrail.module('HypervideoModel').allAnnotations },
 
-	}
+            traces: {
+                startTrace:     (FrameTrail.module('UserTraces')) ? FrameTrail.module('UserTraces').startTrace : null,
+                endTrace:       (FrameTrail.module('UserTraces')) ? FrameTrail.module('UserTraces').endTrace : null,
+                addTraceEvent:  (FrameTrail.module('UserTraces')) ? FrameTrail.module('UserTraces').addTraceEvent : null,
+                deleteTraces:   (FrameTrail.module('UserTraces')) ? FrameTrail.module('UserTraces').deleteTraces : null,
+                get data()      { return FrameTrail.module('UserTraces').traces }
+            }
 
 
-	function _changeState(param1, param2) {
+        }
 
+        instances.push(publicInstanceAPI);
 
-		if (typeof param1 === 'string') {
 
-			updateQueue.push([param1, param2, state[param1]]);
+    	function _initModule(name) {
 
-		} else if (typeof param1 === 'object' && param1 !== null) {
+    		if (!defs_modules[name]) {
+    			throw new Error('The module to initialize (named "'+name+'") is not defined.')
+    		}
 
-			for (var key in param1) {
+    		var publicInterface = defs_modules[name].call(this, FrameTrail);
 
-				updateQueue.push([key, param1[key], state[key]]);
 
-			}
+    		if(typeof publicInterface === 'object' && publicInterface !== null){
 
-		} else {
+    			modules[name] = publicInterface;
+    			return publicInterface;
 
-			throw new Error('Illegal arguments.')
+    		}
 
-		}
+    	}
 
 
-		if(!inUpdateThread){
+        function _initTypes() {
 
-			inUpdateThread = true;
+            var typeNames = Object.keys(defs_types),
+                idx = 0;
 
-			while (updateQueue[0]) {
+            while (typeNames.length > 0) {
 
-				var updateFrame = updateQueue.splice(0, 1)[0];
+                var typeName = typeNames[idx];
 
-				state[updateFrame[0]] = updateFrame[1];
+                var definitionFnValue = defs_types[typeName].call(this, FrameTrail);
 
-				for(var name in modules){
+                var parentName  = definitionFnValue.parent,
+                    proto       = definitionFnValue.prototype   || {},
+                    obj         = definitionFnValue.constructor || function () {};
 
-					if (typeof modules[name].onChange === 'object' && modules[name].onChange !== null){
+                var parent, type, attribute, newProto;
 
-						if (typeof modules[name].onChange[updateFrame[0]] === 'function'){
 
-							modules[name].onChange[updateFrame[0]].call(this, updateFrame[1], updateFrame[2]);
+                if (parentName) {
+                    parent = types[parentName];
+                    if (!parent) {
+                        idx++;
+                        if (idx >= typeNames.length) { idx = 0; }
+                        continue;
+                    }
+                } else {
+                    parent = null;
+                }
 
-						}
 
-					}
+                if (parent) {
 
-				}
+                    type = (function (parent, obj) {
+                        return function() {
+                            parent.apply(this, arguments);
+                            obj.apply(this, arguments);
+                            return this;
+                        };
+                    })(parent, obj);
 
+                    newProto = {};
 
-			}
+                    for (attribute in parent.prototype) {
+                        newProto[attribute] = parent.prototype[attribute];
+                    }
 
-			inUpdateThread = false;
+                    for (attribute in proto) {
+                        newProto[attribute] = proto[attribute];
+                    }
 
-		}
+                    type.prototype = newProto
 
-	}
+                } else {
 
+                    type = obj;
+                    type.prototype = proto;
 
+                }
 
-	function _defineType(name, def1, def2, def3) {
+                types[typeName] = type;
 
-		var obj, proto, parent, type, attribute, newProto;
+                typeNames.splice(idx, 1);
 
-		if (typeof def1 === 'string') {
+            }
 
-			parent = defs_types[def1];
+        }
 
-			if (typeof def2 === 'function') {
 
-				obj = def2
+    	function _unloadModule(name) {
 
-				if (typeof def3 === 'object') {
+    		if (!modules[name]) {
+    			throw new Error('The module to unload (named "'+name+'") is not defined.')
+    		}
 
-					proto = def3
+    		if (modules[name].onUnload && typeof modules[name].onUnload === 'function') {
+    			modules[name].onUnload.call(this);
+    		}
 
-				}
+    		delete modules[name];
 
-			} else if (typeof def2 === 'object') {
+    	}
 
-				proto = def2
 
-			}
+    	function _module(name) {
 
-		} else {
+    		return modules[name];
 
-			if (typeof def1 === 'function') {
+    	}
 
-				obj = def1
 
-				if (typeof def2 === 'object') {
+    	function _modules() {
 
-					proto = def2
+    		return modules;
 
-				}
+    	}
 
-			} else if (typeof def1 === 'object') {
 
-				obj = function(){};
-				proto = def1
+    	function _getState(key) {
 
-			}
+    		return key ? state[key] : state;
 
-		}
+    	}
 
 
-		if (parent) {
+    	function _changeState(param1, param2) {
 
-			type = function() {
-				parent.apply(this, arguments);
-				obj.apply(this, arguments);
-				return this;
-			}
 
-			newProto = {};
+    		if (typeof param1 === 'string') {
 
-			for (attribute in parent.prototype) { 
-				newProto[attribute] = parent.prototype[attribute];
-			}
+    			updateQueue.push([param1, param2, state[param1]]);
 
-			for (attribute in proto) { 
-				newProto[attribute] = proto[attribute];
-			}
+    		} else if (typeof param1 === 'object' && param1 !== null) {
 
-			type.prototype = newProto
+    			for (var key in param1) {
 
-		} else {
+    				updateQueue.push([key, param1[key], state[key]]);
 
-			type = obj;
-			type.prototype = proto;
+    			}
 
-		}
+    		} else {
 
+    			throw new Error('Illegal arguments.')
 
-		defs_types[name] = type;
+    		}
 
 
-	}
+    		if(!inUpdateThread){
 
+    			inUpdateThread = true;
 
-	function _type(name) {
+    			while (updateQueue[0]) {
 
-		return defs_types[name];
+    				var updateFrame = updateQueue.splice(0, 1)[0];
 
-	}
+    				state[updateFrame[0]] = updateFrame[1];
 
+    				for(var name in modules){
 
-	function _newObject(name, param1, param2, param3, param4, param5, param6, param7) {
+    					if (typeof modules[name].onChange === 'object' && modules[name].onChange !== null){
 
-		return new defs_types[name](param1, param2, param3, param4, param5, param6, param7);
+    						if (typeof modules[name].onChange[updateFrame[0]] === 'function'){
 
-	}
+    							modules[name].onChange[updateFrame[0]].call(this, updateFrame[1], updateFrame[2]);
 
+    						}
 
+    					}
 
+    				}
 
-	this[APPNAME] = {
 
-		start: 			_start,
+    			}
 
-		defineModule: 	_defineModule,
+    			inUpdateThread = false;
 
-		initModule: 	_initModule,
+    		}
 
-		unloadModule: 	_unloadModule,
+    	}
 
-		modules: 		_modules,
 
-		module: 		_module,
+    	function _type(name) {
 
-		getState: 		_getState,
+    		return types[name];
 
-		changeState: 	_changeState,
+    	}
 
-		defineType: 	_defineType,
 
-		//TODO: Check if it's ok to export the types
-		types: 			defs_types,
+    	function _newObject(name, param1, param2, param3, param4, param5, param6, param7) {
 
-		type: 			_type,
+    		return new types[name](param1, param2, param3, param4, param5, param6, param7);
 
-		newObject: 		_newObject
+    	}
 
-	}
+        function addEventListener(type, handler) {
+            if (!(type in listeners)) {
+                listeners[type] = [];
+            }
+            listeners[type].push(handler);
+        }
 
+        function removeEventListener(type, handler) {
+            if (!(type in listeners)) {
+                return;
+            }
+            var stack = listeners[type];
+            for (var i = 0; i < stack.length; i++) {
+                if (stack[i] === handler){
+                    stack.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+
+        function dispatchEvent(event) {
+            if (!(event.type in listeners)) {
+                return true;
+            }
+            var stack = listeners[event.type];
+            for (var i = 0, l = stack.length; i < l; i++) {
+                stack[i].call(this, event);
+            }
+            return !event.defaultPrevented;
+        }
+
+
+        function triggerEvent(eventType, eventData) {
+            return dispatchEvent(new CustomEvent(eventType, { detail: eventData }));
+        }
+
+
+        return publicInstanceAPI;
+
+
+    }
 
 
 }).call(this);

@@ -12,7 +12,7 @@
  */
 
 
-FrameTrail.defineModule('OverlaysController', function(){
+FrameTrail.defineModule('OverlaysController', function(FrameTrail){
 
 
     var ViewVideo               = FrameTrail.module('ViewVideo'),
@@ -396,7 +396,7 @@ FrameTrail.defineModule('OverlaysController', function(){
                         if (ui.helper.attr('data-type') == 'text') {
 
                             newOverlay = FrameTrail.module('HypervideoModel').newOverlay({
-                                "name":         "Custom HTML",
+                                "name":         "Custom Text/HTML",
                                 "type":         ui.helper.attr('data-type'),
                                 "start":        startTime,
                                 "end":          endTime,
@@ -498,7 +498,7 @@ FrameTrail.defineModule('OverlaysController', function(){
         updateControlsEnd          = propertiesControlsInterface.changeEnd;
         updateControlsDimensions   = propertiesControlsInterface.changeDimensions;
 
-        ViewVideo.EditPropertiesContainer.find('#OverlayOptionsTabs').tabs('refresh');
+        ViewVideo.EditPropertiesContainer.find('.overlayOptionsTabs').tabs('refresh');
 
         if ( ViewVideo.EditPropertiesContainer.find('.CodeMirror').length != 0 ) {
             ViewVideo.EditPropertiesContainer.find('.CodeMirror')[0].CodeMirror.refresh();
@@ -557,10 +557,10 @@ FrameTrail.defineModule('OverlaysController', function(){
 
         ViewVideo.EditingOptions.empty();
 
-        var overlayEditingOptions = $('<div id="OverlayEditingTabs">'
+        var overlayEditingOptions = $('<div class="overlayEditingTabs">'
                                   +   '    <ul>'
                                   +   '        <li>'
-                                  +   '            <a href="#ResourceList">Choose Resource</a>'
+                                  +   '            <a href="#ResourceList">Add Resource</a>'
                                   +   '        </li>'
                                   +   '        <li>'
                                   +   '            <a href="#CustomOverlay">Add Custom Overlay</a>'
@@ -585,11 +585,11 @@ FrameTrail.defineModule('OverlaysController', function(){
                 + '                  <div class="resourceOverlay">'
                 + '                      <div class="resourceIcon"></div>'
                 + '                  </div>'
-                + '                  <div class="resourceTitle">Custom HTML</div>'
+                + '                  <div class="resourceTitle">Custom Text/HTML</div>'
                 + '              </div>');
 
         textElement.draggable({
-            containment:    '#MainContainer',
+            containment:    '.mainContainer',
             helper:         'clone',
             revert:         'invalid',
             revertDuration: 100,

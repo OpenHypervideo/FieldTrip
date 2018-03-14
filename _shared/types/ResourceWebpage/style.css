@@ -26,6 +26,6 @@
 
 /* Edit Webpage Overlay Properties */
 
-#EditPropertiesContainer .propertiesTypeIcon[data-type="webpage"] [class^="icon-"]::before, #EditPropertiesContainer .propertiesTypeIcon[data-type="webpage"] [class*=" icon-"]::before {
+.editPropertiesContainer .propertiesTypeIcon[data-type="webpage"] [class^="icon-"]::before, .editPropertiesContainer .propertiesTypeIcon[data-type="webpage"] [class*=" icon-"]::before {
     content: "\e931";
 }

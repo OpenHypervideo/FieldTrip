@@ -1,10 +1,9 @@
 <?php
 
 require_once("./config.php");
-
+require_once("./user.php");
 
 /**
- * @param $projectID
  * @param $type
  * @param $name
  * @param $description
@@ -17,9 +16,8 @@ require_once("./config.php");
  *
 Returning Code:
 	0		=	Success. In $return["response"]["resource"] will the new JSON be returned. in $return["response"]["resId"] you can find the new ID
-	1		=	failed. User is not logged in into the Project. (or projectID is wrong)
-	2		=	failed. User is not activated.
-	3		= 	failed. Could not find the projects resources folder
+	1		=	failed. User is not logged in into the Project. Or User is not activated.
+	3		= 	failed. Could not find the resources folder
 	4		= 	failed. Type "image" was expected but the file wasn't transferred.
 	5		= 	failed. Type "video" was expected but not both video files has been transferred.
 	6		= 	failed. Type "video" was expected but attached File-Mimetypes seem to be incorrect.
@@ -31,35 +29,29 @@ Returning Code:
  *
  *
  */
-function fileUpload($projectID, $type, $name, $description="", $attributes, $files, $lat, $lon, $boundingBox) {
+function fileUpload($type, $name, $description="", $attributes, $files, $lat, $lon, $boundingBox) {
 	global $conf;
 
-	if ($_SESSION["ohv"]["projects"][$projectID]["login"] != 1) {
+	$login = userCheckLogin();
+
+	if ($login["code"] != 1) {
 		$return["status"] = "fail";
 		$return["code"] = 1;
-		$return["string"] = "Not logged in or projectID is wrong.";
+		$return["string"] = $login["string"];
 		return $return;
-		exit;
 	} else {
-		$file = new sharedFile($conf["dir"]["projects"]."/".$projectID."/users.json");
+		$file = new sharedFile($conf["dir"]["data"]."/users.json");
 		$json = $file->read();
 		$file->close();
 		$u = json_decode($json,true);
-		$_SESSION["ohv"]["projects"][$projectID]["user"] = array_replace_recursive($_SESSION["ohv"]["projects"][$projectID]["user"], $u["user"][$_SESSION["ohv"]["projects"][$projectID]["user"]["id"]]);
+		$_SESSION["ohv"]["user"] = array_replace_recursive($_SESSION["ohv"]["user"], $u["user"][$_SESSION["ohv"]["user"]["id"]]);
 	}
 
-	if ($_SESSION["ohv"]["projects"][$projectID]["user"]["active"] != 1) {
-		$return["status"] = "fail";
-		$return["code"] = 2;
-		$return["string"] = "User not activated";
-		return $return;
-		exit;
-	}
 
-	if (!is_dir($conf["dir"]["projects"]."/".$projectID."/resources")) {
+	if (!is_dir($conf["dir"]["data"]."/resources")) {
 		$return["status"] = "fail";
 		$return["code"] = 3;
-		$return["string"] = "Could not find the projects resources folder";
+		$return["string"] = "Could not find the resources folder";
 		return $return;
 		exit;
 	}
@@ -87,8 +79,8 @@ function fileUpload($projectID, $type, $name, $description="", $attributes, $fil
 
 	$cTime = time();
 	$newResource["name"] = $name;
-	$newResource["creator"] = (string)$_SESSION["ohv"]["projects"][$projectID]["user"]["name"];
-	$newResource["creatorId"] = (string)$_SESSION["ohv"]["projects"][$projectID]["user"]["id"];
+	$newResource["creator"] = (string)$_SESSION["ohv"]["user"]["name"];
+	$newResource["creatorId"] = (string)$_SESSION["ohv"]["user"]["id"];
 	$newResource["created"] = (int)$cTime;
 	$newResource["description"] = $description;
 
@@ -138,12 +130,49 @@ function fileUpload($projectID, $type, $name, $description="", $attributes, $fil
 			}
 			*/
 
-			$filetype = array_pop(preg_split("/\./", $files["image"]["name"]));
-			$filename = substr($_SESSION["ohv"]["projects"][$projectID]["user"]["id"]."_".$cTime."_".sanitize($name),0,90).".".$filetype;
+			$filearray = preg_split("/\./", $files["image"]["name"]);
+			$filetype = array_pop($filearray);
+			$filename = substr($_SESSION["ohv"]["user"]["id"]."_".$cTime."_".sanitize($name),0,90).".".$filetype;
 			$newResource["src"] = $filename;
 			$newResource["type"] = "image";
 			$newResource["attributes"] = ($attributes) ? $attributes : Array();
-			move_uploaded_file($files["image"]["tmp_name"], $conf["dir"]["projects"]."/".$projectID."/resources/".$filename);
+			move_uploaded_file($files["image"]["tmp_name"], $conf["dir"]["data"]."/resources/".$filename);
+		break;
+		case "pdf":
+			if ($uploadsAllowed === false) {
+				$return["status"] = "fail";
+				$return["code"] = 20;
+				$return["string"] = "User not allowed to upload files";
+				return $return;
+				exit;
+			}
+
+			if ((!$files["pdf"]) || (!$files["pdf"]["size"])) {
+				$return["status"] = "fail";
+				$return["code"] = 4;
+				$return["string"] = "No PDF file to upload";
+				return $return;
+				exit;
+			}
+
+			/* TODO: Check file size correctly */
+			/*
+			if ( $_FILES["pdf"]["size"] >= $upload_mb ) {
+				$return["status"] = "fail";
+				$return["code"] = 10;
+				$return["string"] = "File too big";
+				return $return;
+				exit;
+			}
+			*/
+
+			$filearray = preg_split("/\./", $files["pdf"]["name"]);
+			$filetype = array_pop($filearray);
+			$filename = substr($_SESSION["ohv"]["user"]["id"]."_".$cTime."_".sanitize($name),0,90).".".$filetype;
+			$newResource["src"] = $filename;
+			$newResource["type"] = "pdf";
+			$newResource["attributes"] = ($attributes) ? $attributes : Array();
+			move_uploaded_file($files["pdf"]["tmp_name"], $conf["dir"]["data"]."/resources/".$filename);
 		break;
 		case "video":
 			if ($uploadsAllowed === false) {
@@ -179,14 +208,14 @@ function fileUpload($projectID, $type, $name, $description="", $attributes, $fil
 			*/
 
 
-			$filename = substr($_SESSION["ohv"]["projects"][$projectID]["user"]["id"]."_".$cTime."_".sanitize($name),0,90);
-			move_uploaded_file($files["mp4"]["tmp_name"], $conf["dir"]["projects"]."/".$projectID."/resources/".$filename.".mp4");
+			$filename = substr($_SESSION["ohv"]["user"]["id"]."_".$cTime."_".sanitize($name),0,90);
+			move_uploaded_file($files["mp4"]["tmp_name"], $conf["dir"]["data"]."/resources/".$filename.".mp4");
 			$newResource["src"] = $filename.".mp4";
 			$newResource["attributes"] = ($attributes) ? $attributes : Array();
 			foreach ($files["subtitles"]["name"] as $k=>$v) {
 				$filetype = array_pop(preg_split("/\./", $v));
-				$filename = substr($_SESSION["ohv"]["projects"][$projectID]["user"]["id"]."_".$cTime."_".sanitize($name),0,90)."_sub_".$k.".".$filetype;
-				move_uploaded_file($files["subtitles"]["tmp_name"][$k], $conf["dir"]["projects"]."/".$projectID."/resources/".$filename);
+				$filename = substr($_SESSION["ohv"]["user"]["id"]."_".$cTime."_".sanitize($name),0,90)."_sub_".$k.".".$filetype;
+				move_uploaded_file($files["subtitles"]["tmp_name"][$k], $conf["dir"]["data"]."/resources/".$filename);
 				$newResource["subtitles"][$k] = $filename;
 			}
 
@@ -215,7 +244,7 @@ function fileUpload($projectID, $type, $name, $description="", $attributes, $fil
 			exit;
 		break;
 	}
-	$file = new sharedFile($conf["dir"]["projects"]."/".$projectID."/resources/_index.json");
+	$file = new sharedFile($conf["dir"]["data"]."/resources/_index.json");
 	$json = $file->read();
 	$res = json_decode($json,true);
 	if (!$res["resources-increment"]) {
@@ -234,49 +263,41 @@ function fileUpload($projectID, $type, $name, $description="", $attributes, $fil
 }
 
 /**
- * @param $projectID
  * @param $resourcesID
  * @param $thumb
  * @return mixed
  *
 Returning Code:
 0		=	Success. In $return["response"] will the full Object of manipulated Resource be returned.
-1		=	failed. User is not logged in into the Project. (or projectID is wrong)
-2		=	failed. User is not activated.
-3		= 	failed. Could not find the projects resources folder
+1		=	failed. User is not logged in into the Project. Or User is not activated.
+3		= 	failed. Could not find the resources folder
 4		= 	failed. resourcesID or thumb are not transferred
 5		= 	failed. No valid resourcesID
 6		= 	failed. Not permitted. Its not your resource and you're not an admin!
  *
  */
-function fileUploadThumb($projectID,$resourcesID,$thumb) {
+function fileUploadThumb($resourcesID,$thumb) {
 	global $conf;
-	if ($_SESSION["ohv"]["projects"][$projectID]["login"] != 1) {
+
+	$login = userCheckLogin();
+
+	if ($login["code"] != 1) {
 		$return["status"] = "fail";
 		$return["code"] = 1;
-		$return["string"] = "Not logged in or projectID is wrong.";
+		$return["string"] = $login["string"];
 		return $return;
-		exit;
 	} else {
-		$file = new sharedFile($conf["dir"]["projects"]."/".$projectID."/users.json");
+		$file = new sharedFile($conf["dir"]["data"]."/users.json");
 		$json = $file->read();
 		$file->close();
 		$u = json_decode($json,true);
-		$_SESSION["ohv"]["projects"][$projectID]["user"] = array_replace_recursive($_SESSION["ohv"]["projects"][$projectID]["user"], $u["user"][$_SESSION["ohv"]["projects"][$projectID]["user"]["id"]]);
+		$_SESSION["ohv"]["user"] = array_replace_recursive($_SESSION["ohv"]["user"], $u["user"][$_SESSION["ohv"]["user"]["id"]]);
 	}
 
-	if ($_SESSION["ohv"]["projects"][$projectID]["user"]["active"] != 1) {
-		$return["status"] = "fail";
-		$return["code"] = 2;
-		$return["string"] = "User not activated";
-		return $return;
-		exit;
-	}
-
-	if (!is_dir($conf["dir"]["projects"]."/".$projectID."/resources")) {
+	if (!is_dir($conf["dir"]["data"]."/resources")) {
 		$return["status"] = "fail";
 		$return["code"] = 3;
-		$return["string"] = "Could not find the projects resources folder";
+		$return["string"] = "Could not find the resources folder";
 		return $return;
 		exit;
 	}
@@ -288,7 +309,7 @@ function fileUploadThumb($projectID,$resourcesID,$thumb) {
 		return $return;
 		exit;
 	}
-	$file = new sharedFile($conf["dir"]["projects"]."/".$projectID."/resources/_index.json");
+	$file = new sharedFile($conf["dir"]["data"]."/resources/_index.json");
 	$json = $file->read();
 	$res = json_decode($json,true);
 	if (!is_array($res["resources"][$resourcesID])) {
@@ -300,7 +321,7 @@ function fileUploadThumb($projectID,$resourcesID,$thumb) {
 		return $return;
 		exit;
 	}
-	if (($res["resources"][$resourcesID]["creatorId"] != $_SESSION["ohv"]["projects"][$projectID]["user"]["id"]) && ($_SESSION["ohv"]["projects"][$projectID]["user"]["role"] != "admin")) {
+	if (($res["resources"][$resourcesID]["creatorId"] != $_SESSION["ohv"]["user"]["id"]) && ($_SESSION["ohv"]["user"]["role"] != "admin")) {
 		$return["status"] = "fail";
 		$return["code"] = 6;
 		$return["string"] = "Not permitted. Its not your resource and you're not an admin!";
@@ -313,8 +334,8 @@ function fileUploadThumb($projectID,$resourcesID,$thumb) {
 	//echo $_REQUEST["thumb"];
 	$data = base64_decode($thumb);
 
-	$filename = substr($_SESSION["ohv"]["projects"][$projectID]["user"]["id"]."_".$res["resources"][$resourcesID]["created"]."_thumb_".sanitize($res["resources"][$resourcesID]["name"]),0,90);
-	file_put_contents($conf["dir"]["projects"]."/".$projectID."/resources/".$filename.".png", $data);
+	$filename = substr($_SESSION["ohv"]["user"]["id"]."_".$res["resources"][$resourcesID]["created"]."_thumb_".sanitize($res["resources"][$resourcesID]["name"]),0,90);
+	file_put_contents($conf["dir"]["data"]."/resources/".$filename.".png", $data);
 
 	$res["resources"][$resourcesID]["thumb"] = $filename.".png";
 	$file->writeClose(json_encode($res, $conf["settings"]["json_flags"]));
@@ -326,43 +347,43 @@ function fileUploadThumb($projectID,$resourcesID,$thumb) {
 }
 
 /**
- * @param $projectID
  * @param $resourcesID
  * @return mixed
  *
 Returning Code:
 0		=	Success. Resource and its thumbs have been deleted.
-1		=	failed. User is not logged in into the Project. (or projectID is wrong)
+1		=	failed. User is not logged in or is inactive
 2		=	failed. Could not find resources database (json)
 3		= 	failed. resourcesID was not found. Missing or wrong ID
 4		= 	failed. Not permitted. Its not your resource and you're no admin!
 5		= 	failed. Resource is in use. Check out $return["used"] where
  *
  */
-function fileDelete($projectID,$resourcesID) {
+function fileDelete($resourcesID) {
 	global $conf;
-	if ($_SESSION["ohv"]["projects"][$projectID]["login"] != 1) {
+	$login = userCheckLogin();
+
+	if ($login["code"] != 1) {
 		$return["status"] = "fail";
 		$return["code"] = 1;
-		$return["string"] = "Not logged in or projectID is wrong.";
+		$return["string"] = $login["string"];
 		return $return;
-		exit;
 	} else {
-		$file = new sharedFile($conf["dir"]["projects"]."/".$projectID."/users.json");
+		$file = new sharedFile($conf["dir"]["data"]."/users.json");
 		$json = $file->read();
 		$file->close();
 		$u = json_decode($json,true);
-		$_SESSION["ohv"]["projects"][$projectID]["user"] = array_replace_recursive($_SESSION["ohv"]["projects"][$projectID]["user"], $u["user"][$_SESSION["ohv"]["projects"][$projectID]["user"]["id"]]);
+		$_SESSION["ohv"]["user"] = array_replace_recursive($_SESSION["ohv"]["user"], $u["user"][$_SESSION["ohv"]["user"]["id"]]);
 	}
 
-	if (!file_exists($conf["dir"]["projects"]."/".$projectID."/resources/_index.json")) {
+	if (!file_exists($conf["dir"]["data"]."/resources/_index.json")) {
 		$return["status"] = "fail";
 		$return["code"] = 2;
 		$return["string"] = "Could not find resources database";
 		return $return;
 		exit;
 	}
-	$file = new sharedFile($conf["dir"]["projects"]."/".$projectID."/resources/_index.json");
+	$file = new sharedFile($conf["dir"]["data"]."/resources/_index.json");
 	$json = $file->read();
 	$res = json_decode($json,true);
 	if (!$res["resources"][$resourcesID]) {
@@ -373,7 +394,7 @@ function fileDelete($projectID,$resourcesID) {
 		return $return;
 		exit;
 	}
-	if (($res["resources"][$resourcesID]["creatorId"] != $_SESSION["ohv"]["projects"][$projectID]["user"]["id"]) && ($_SESSION["ohv"]["projects"][$projectID]["user"]["role"] != "admin")) {
+	if (($res["resources"][$resourcesID]["creatorId"] != $_SESSION["ohv"]["user"]["id"]) && ($_SESSION["ohv"]["user"]["role"] != "admin")) {
 		$return["status"] = "fail";
 		$return["code"] = 4;
 		$return["string"] = "Not permitted. Its not your resource and you're no admin!";
@@ -381,65 +402,63 @@ function fileDelete($projectID,$resourcesID) {
 		return $return;
 		exit;
 	}
-	$json = file_get_contents($conf["dir"]["projects"]."/".$projectID."/hypervideos/_index.json");
+
+
+	$json = file_get_contents($conf["dir"]["data"]."/hypervideos/_index.json");
 	$hv = json_decode($json,true);
 	$usedcnt = 0;
 	$used = array();
 	foreach ($hv["hypervideos"] as $hvk=>$hvc) {
-		foreach ($hvc["annotationfiles"] as $afk=>$af) {
-
-			$afc = json_decode(file_get_contents($conf["dir"]["projects"]."/".$projectID."/hypervideos/".$hvk."/annotationfiles/".$afk.".json"),true);
-			foreach($afc as $tmpRes) {
-				if ($tmpRes["resourceId"] == $resourcesID) {
+		$hvannotationJson = file_get_contents($conf["dir"]["data"]."/hypervideos/".$hvk."/annotations/_index.json");
+		$hvannotationIndex = json_decode($hvannotationJson,true);
+		foreach ($hvannotationIndex["annotationfiles"] as $hvak=>$hvac) {
+			$hvannotationFileJson = file_get_contents($conf["dir"]["data"]."/hypervideos/".$hvk."/annotations/".$hvak.".json");
+			$hvannotationFile = json_decode($hvannotationFileJson,true);
+			foreach ($hvannotationFile as $hvannotationFileItem) {
+				
+				if ($hvannotationFileItem["body"]["frametrail:resourceId"] == $resourcesID) {
 					$usedcnt++;
 					$tmp = array();
 					$tmp["hypervideoId"] = $hvk;
-					$tmp["annotationfilesId"] = $afk;
-					$tmp["annotationfilesName"] = $af["name"];
+					$tmp["annotationfilesId"] = $hvak;
+					$tmp["annotationfilesName"] = $hvac["name"];
 					$tmp["type"] = "annotationsfile";
-					$tmp["owner"] = $af["owner"];
-					$tmp["ownerId"] = $af["ownerId"];
+					$tmp["owner"] = $hvac["owner"];
+					$tmp["ownerId"] = $hvac["ownerId"];
 					array_push($used, $tmp);
 				}
+				
 			}
 		}
-		$olf = json_decode(file_get_contents($conf["dir"]["projects"]."/".$projectID."/hypervideos/".$hvk."/overlays.json"),true);
-		foreach ($olf as $ol) {
-			if ($ol["resourceId"] == $resourcesID) {
+		
+		$hvJson = file_get_contents($conf["dir"]["data"]."/hypervideos/".$hvk."/hypervideo.json");
+		$hvIndex = json_decode($hvJson,true);
+		foreach ($hvJson["contents"] as $hvcontentsKey=>$hvcontentsVal) {
+			if ($hvcontentsVal["body"]["frametrail:resourceId"] == $resourcesID) {
 				$usedcnt++;
 				$tmp = array();
 				$tmp["hypervideoId"] = $hvk;
-				$tmp["type"] = "overlay";
-				$tmp["owner"] = $hvc["creator"];
-				$tmp["ownerId"] = $hvc["creatorId"];
+				$tmp["type"] = $hvcontentsVal["frametrail:type"];
+				$tmp["owner"] = $hvcontentsVal["creator"]["nickname"];
+				$tmp["ownerId"] = $hvcontentsVal["creator"]["id"];
 				array_push($used, $tmp);
 			}
 		}
-
-		$hvf = json_decode(file_get_contents($conf["dir"]["projects"]."/".$projectID."/hypervideos/".$hvk."/hypervideo.json"),true);
-		foreach ($hvf["clips"] as $hvfc) {
-			/* Old: Clips containing sources and not resourcesId
-			 * if ((strtolower($hvfc["sources"]["mp4"]) == strtolower($res["resources"][$resourcesID]["src"])) ||
-				(strtolower($hvfc["sources"]["webm"]) == strtolower($res["resources"][$resourcesID]["src"]))) {
+		foreach ($hvJson["clips"] as $hvclipsKey=>$hvclipsVal) {
+			if ($hvclipsVal["resourceId"] == $resourcesID) {
 				$usedcnt++;
 				$tmp = array();
 				$tmp["hypervideoId"] = $hvk;
-				$tmp["type"] = "source";
-				$tmp["owner"] = $hvc["creator"];
-				$tmp["ownerId"] = $hvc["creatorId"];
-				array_push($used, $tmp);
-			}*/
-			if ($hvfc["resourceId"] == $resourcesID) {
-				$usedcnt++;
-				$tmp = array();
-				$tmp["hypervideoId"] = $hvk;
-				$tmp["type"] = "source-clip";
-				$tmp["owner"] = $hvc["creator"];
-				$tmp["ownerId"] = $hvc["creatorId"];
+				$tmp["type"] = "clip";
+				$tmp["obj"] = $hvclipsVal;
 				array_push($used, $tmp);
 			}
 		}
+		
+		
 	}
+	
+	
 	if ($usedcnt > 0) {
 		$return["status"] = "fail";
 		$return["code"] = 5;
@@ -452,27 +471,29 @@ function fileDelete($projectID,$resourcesID) {
 	}
 
 	if ($res["resources"][$resourcesID]["type"] == "video") {
-		if (file_exists($conf["dir"]["projects"]."/".$projectID."/resources/".$res["resources"][$resourcesID]["src"])) {
-			unlink($conf["dir"]["projects"]."/".$projectID."/resources/".$res["resources"][$resourcesID]["src"]);
+		if (file_exists($conf["dir"]["data"]."/resources/".$res["resources"][$resourcesID]["src"])) {
+			unlink($conf["dir"]["data"]."/resources/".$res["resources"][$resourcesID]["src"]);
 		}
-		if (file_exists($conf["dir"]["projects"]."/".$projectID."/resources/".$res["resources"][$resourcesID]["thumb"])) {
-			unlink($conf["dir"]["projects"]."/".$projectID."/resources/".$res["resources"][$resourcesID]["thumb"]);
-		}
-		foreach ($res["resources"][$resourcesID]["subtitles"] as $v) {
-			if (file_exists($conf["dir"]["projects"]."/".$projectID."/resources/".$v)) {
-				unlink($conf["dir"]["projects"]."/".$projectID."/resources/".$v);
-			}
+		if (file_exists($conf["dir"]["data"]."/resources/".$res["resources"][$resourcesID]["thumb"])) {
+			unlink($conf["dir"]["data"]."/resources/".$res["resources"][$resourcesID]["thumb"]);
 		}
 	} else if ($res["resources"][$resourcesID]["type"] == "image") {
-		if (file_exists($conf["dir"]["projects"]."/".$projectID."/resources/".$res["resources"][$resourcesID]["src"])) {
-			unlink($conf["dir"]["projects"]."/".$projectID."/resources/".$res["resources"][$resourcesID]["src"]);
+		if (file_exists($conf["dir"]["data"]."/resources/".$res["resources"][$resourcesID]["src"])) {
+			unlink($conf["dir"]["data"]."/resources/".$res["resources"][$resourcesID]["src"]);
 		}
-		if (file_exists($conf["dir"]["projects"]."/".$projectID."/resources/".$res["resources"][$resourcesID]["thumb"])) {
-			unlink($conf["dir"]["projects"]."/".$projectID."/resources/".$res["resources"][$resourcesID]["thumb"]);
+		if (file_exists($conf["dir"]["data"]."/resources/".$res["resources"][$resourcesID]["thumb"])) {
+			unlink($conf["dir"]["data"]."/resources/".$res["resources"][$resourcesID]["thumb"]);
+		}
+	} else if ($res["resources"][$resourcesID]["type"] == "pdf") {
+		if (file_exists($conf["dir"]["data"]."/resources/".$res["resources"][$resourcesID]["src"])) {
+			unlink($conf["dir"]["data"]."/resources/".$res["resources"][$resourcesID]["src"]);
+		}
+		if (file_exists($conf["dir"]["data"]."/resources/".$res["resources"][$resourcesID]["thumb"])) {
+			unlink($conf["dir"]["data"]."/resources/".$res["resources"][$resourcesID]["thumb"]);
 		}
 	} else {
-		if (file_exists($conf["dir"]["projects"]."/".$projectID."/resources/".$res["resources"][$resourcesID]["thumb"])) {
-			unlink($conf["dir"]["projects"]."/".$projectID."/resources/".$res["resources"][$resourcesID]["thumb"]);
+		if (file_exists($conf["dir"]["data"]."/resources/".$res["resources"][$resourcesID]["thumb"])) {
+			unlink($conf["dir"]["data"]."/resources/".$res["resources"][$resourcesID]["thumb"]);
 		}
 	}
 	unset($res["resources"][$resourcesID]);
@@ -485,7 +506,6 @@ function fileDelete($projectID,$resourcesID) {
 }
 
 /**
- * @param $projectID
  * @param $key
  * @param $condition
  * @param $value
@@ -493,19 +513,19 @@ function fileDelete($projectID,$resourcesID) {
  *
  *
 Returning Code:
-0		=	Success. Resource and its thumbs have been deleted.
+0		=	Success. Resource and its thumbs have been found
 1		=	failed. Missing parameter
  *
  */
-function fileGetByFilter($projectID,$key,$condition,$value) {
+function fileGetByFilter($key,$condition,$value) {
 	global $conf;
-	if ((!$projectID) || (!$key) || (!$condition) || (!$value)) {
+	if ((!$key) || (!$condition) || (!$value)) {
 		$return["status"] = "fail";
 		$return["code"] = 1;
 		$return["string"] = "Parameter missing!";
 		return $return;
 	}
-	$json = file_get_contents($conf["dir"]["projects"]."/".$projectID."/resources/_index.json");
+	$json = file_get_contents($conf["dir"]["data"]."/resources/_index.json");
 	$res = json_decode($json,true);
 	$return["result"] = Array();
 	$return["resultCount"] = 0;
@@ -571,5 +591,94 @@ function parse_size($size) {
 		return round($size);
 	}
 }
+
+/**
+ * @param $configstring
+ * @return mixed
+ *
+ * Returning Code:
+ * 0	=	Success. Config file saved.
+ * 1	=	failed. User is not logged in or is inactive or not admin (see resp["string"])
+ * 2	=	failed. Config file not found or not writable
+ * 3	= 	failed. Config string must be > 3 characters
+ *
+ */
+function updateConfigFile($configstring) {
+	
+	global $conf;
+	$login = userCheckLogin("admin");
+	if ($login["code"] != 1) {
+		$return["status"] = "fail";
+		$return["code"] = 1;
+		$return["string"] = $login["string"];
+		return $return;
+	} else {
+
+		if (!is_writable($conf["dir"]["data"]."/config.json")) {
+			$return["status"] = "fail";
+			$return["code"] = 2;
+			$return["string"] = "Config file (config.json) not writable.";
+			return $return;
+		}
+
+		if ((strlen($_REQUEST["src"]) <3)) {
+			$return["status"] = "fail";
+			$return["code"] = 3;
+			$return["string"] = "Config string length must be > 3 characters.";
+			return $return;
+		}
+
+		$file = new sharedFile($conf["dir"]["data"]."/config.json");
+		$src = json_decode($configstring, true);
+		$jsonsrc = json_encode($src,$conf["settings"]["json_flags"]);
+		$file->writeClose($jsonsrc);
+
+		$return["status"] = "success";
+		$return["code"] = 0;
+		$return["string"] = "Config successfully saved.";
+		return $return;
+
+	}
+}
+
+/**
+ * @param $cssstring
+ * @return mixed
+ *
+ * Returning Code:
+ * 0	=	Success. CSS file saved.
+ * 1	=	failed. User is not logged in or is inactive or not admin (see resp["string"])
+ * 2	=	failed. CSS file not found or not writable
+ *
+ */
+function updateCSSFile($cssstring) {
+	
+	global $conf;
+	$login = userCheckLogin("admin");
+	if ($login["code"] != 1) {
+		$return["status"] = "fail";
+		$return["code"] = 1;
+		$return["string"] = $login["string"];
+		return $return;
+	} else {
+
+		if (!is_writable($conf["dir"]["data"]."/custom.css")) {
+			$return["status"] = "fail";
+			$return["code"] = 2;
+			$return["string"] = "CSS file (custom.css) not writable.";
+			return $return;
+		}
+
+		$file = new sharedFile($conf["dir"]["data"]."/custom.css");
+		$file->writeClose($cssstring);
+
+		$return["status"] = "success";
+		$return["code"] = 0;
+		$return["string"] = "CSS file successfully saved.";
+		return $return;
+
+	}
+}
+
 
 ?>

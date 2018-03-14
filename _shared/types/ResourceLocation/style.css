@@ -14,6 +14,6 @@
 
 /* Edit Location Overlay Properties */
 
-#EditPropertiesContainer .propertiesTypeIcon[data-type="location"] [class^="icon-"]::before, #EditPropertiesContainer .propertiesTypeIcon[data-type="location"] [class*=" icon-"]::before {
+.editPropertiesContainer .propertiesTypeIcon[data-type="location"] [class^="icon-"]::before, .editPropertiesContainer .propertiesTypeIcon[data-type="location"] [class*=" icon-"]::before {
 	content: "\e8c8";
 }

@@ -10,6 +10,6 @@
 
 /* Edit Youtube Overlay Properties */
 
-#EditPropertiesContainer .propertiesTypeIcon[data-type="youtube"] [class^="icon-"]::before, #EditPropertiesContainer .propertiesTypeIcon[data-type="youtube"] [class*=" icon-"]::before {
+.editPropertiesContainer .propertiesTypeIcon[data-type="youtube"] [class^="icon-"]::before, .editPropertiesContainer .propertiesTypeIcon[data-type="youtube"] [class*=" icon-"]::before {
 	content: "\f167";
 }

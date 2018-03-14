@@ -1,4 +1,4 @@
-FrameTrail.defineModule('myAppModule', function(){
+FrameTrail.defineModule('myAppModule', function(FrameTrail){
 
 
     // Declaration of local vars
@@ -53,8 +53,8 @@ FrameTrail.defineModule('myAppModule', function(){
 
         onUnload:       privateFunctionUnload,
 
-        onChange:       { 
-                            'globalStateVar2': privateFunctionListener1 
+        onChange:       {
+                            'globalStateVar2': privateFunctionListener1
                         }
 
     }

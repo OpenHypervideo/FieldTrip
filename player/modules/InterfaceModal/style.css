@@ -1,4 +1,4 @@
-#loadingScreen {
+.loadingScreen {
 	position: absolute;
 	z-index: 9000;
 	top: 0px;
@@ -18,7 +18,7 @@
 	display: none;
 }
 
-#loadingScreen #LoadingTitle {
+.loadingScreen .loadingTitle {
 	color: var(--primary-fg-color);
     font-size: 22px;
     font-weight: 100;
@@ -30,7 +30,7 @@
     width: 80%;
 }
 
-#loadingScreen .workingSpinner {
+.loadingScreen .workingSpinner {
 	top: 110%;
 	-webkit-transition: top 0.6s ease;
 	-moz-transition: top 0.6s ease;
@@ -38,11 +38,11 @@
 	transition: top 0.6s ease;
 }
 
-#loadingScreen.active .workingSpinner {
+.loadingScreen.active .workingSpinner {
 	top: 50%;
 }
 
-#statusMessage {
+.statusMessage {
 	display: none;
 	position: absolute;
 	top: -30px;
@@ -56,7 +56,7 @@
 	transition: top 0.6s ease;
 }
 
-#statusMessage.active {
+.statusMessage.active {
 	display: block;
 	top: 8px;
 	z-index: 100001;

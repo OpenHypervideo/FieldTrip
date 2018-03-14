@@ -17,11 +17,10 @@
  *
  * I perform the following tasks:
  * * I init the necessary modules
- * * I load the project data from the server
- * * I ensure the user is logged
+ * * I ensure the user is logged in
  * * I prepare the interface
  *
- * I am a "one-pass" module, this is: I don't export any public methods or properties, and 
+ * I am a "one-pass" module, this is: I don't export any public methods or properties, and
  * my sole purpose is to start other modules, after which I am discarded.
  *
  * @class ResourceManagerLauncher
@@ -29,7 +28,7 @@
  * @main
  */
 
- FrameTrail.defineModule('ResourceManagerLauncher', function(){
+ FrameTrail.defineModule('ResourceManagerLauncher', function(FrameTrail){
 
 
     // Set up the various data models
@@ -40,36 +39,33 @@
     FrameTrail.initModule('ViewResources');
 
 
-    FrameTrail.module('Database').loadProjectData(
-        function(){
-
-            FrameTrail.module('UserManagement').ensureAuthenticated(
-                function(){
-                    
-                    appendTitlebar();
-
-                    $('body').append($('<div id="MainContainer"></div>'));
-
-                    FrameTrail.module('ViewResources').create(true);
-
-                    FrameTrail.module('ViewResources').open();
-
-                    initWindowResizeHandler();
-
-                },
-                function(){
-                    alert('Log in was aborted... :(')
-                }, true
-            );
-
-
-        },
-        function(){
-
-            alert('Project does not exist!');
-
+	FrameTrail.module('Database').loadConfigData(function() {
+        if (FrameTrail.module('Database').config.alwaysForceLogin) {
+            FrameTrail.module('UserManagement').ensureAuthenticated(function() {
+                initResourceManager();
+            }, function() {}, true);
+        } else {
+            initResourceManager();
         }
-    );
+    });
+
+    function initResourceManager() {
+
+        appendTitlebar();
+
+        $(FrameTrail.getState('target')).append($('<div class="mainContainer"></div>'));
+
+        FrameTrail.module('ViewResources').create(true);
+
+        FrameTrail.module('ViewResources').open();
+
+        FrameTrail.module('UserManagement').isLoggedIn(function(loginState) {
+            toggleLoginState(loginState);
+        });
+
+        initWindowResizeHandler();
+
+    }
 
     /**
      * I append the title bar.
@@ -77,19 +73,51 @@
      */
     function appendTitlebar() {
 
-        var titlebar = $(  '<div id="Titlebar">Resource Manager - Project: '
-                         + FrameTrail.module('Database').project.name 
-                         + '    <button type="button" id="LogoutButton" data-tooltip-bottom-right="Logout"><span class="icon-logout"></span></button>'
+        var titlebar = $(  '<div class="titlebar">Resource Manager'
+                         + '    <button type="button" class="startEditButton" data-tooltip-bottom-left="Edit"><span class="icon-edit"></span></button>'
+                         + '    <button type="button" class="logoutButton" data-tooltip-bottom-right="Logout"><span class="icon-logout"></span></button>'
                          + '</div>');
-    
-        titlebar.appendTo($('body'));
 
-        titlebar.find('#LogoutButton').click(function(){
+        titlebar.appendTo($(FrameTrail.getState('target')));
+
+        titlebar.find('.logoutButton').click(function(){
             FrameTrail.module('UserManagement').logout();
-            location.reload();
+            toggleLoginState(false);
         });
 
+        titlebar.find('.startEditButton').click(function(){
+            FrameTrail.module('UserManagement').ensureAuthenticated(function() {
+                
+                // login success
+                toggleLoginState(true);
 
+            }, function() {
+                // login aborted
+            });
+        });
+
+    }
+
+
+    /**
+     * I toggle the login state (hide / show editing UI).
+     * @method toggleLoginState
+     * @param {Boolean} loggedIn
+     * @private
+     */
+    function toggleLoginState(loggedIn) {
+
+        if (loggedIn) {
+            $('.resourcesControls, .logoutButton').show();
+            $('.startEditButton').hide();
+            $('.titlebar, .mainContainer').addClass('editActive');
+            $('.viewResources').removeClass('resourceManager');
+        } else {
+            $('.resourcesControls, .logoutButton').hide();
+            $('.startEditButton').show();
+            $('.titlebar, .mainContainer').removeClass('editActive');
+            $('.viewResources').addClass('resourceManager');
+        }
 
     }
 
@@ -107,10 +135,10 @@
             var width   = _window.width(),
                 height  = _window.height();
 
-            $('#MainContainer').height( height );
-            $('#ViewResources').css({
+            $('.mainContainer').height( height );
+            $('.viewResources').css({
                 margin: 10 + 'px',
-                height: height - 20 - $('#Titlebar').height() + 'px'
+                height: height - 20 - $('.titlebar').height() + 'px'
             });
             FrameTrail.changeState('viewSize', [width, height])
 
@@ -118,11 +146,11 @@
 
         _window.resize();
 
-        
+
     }
 
 
-    
+
     return null;
 
 });

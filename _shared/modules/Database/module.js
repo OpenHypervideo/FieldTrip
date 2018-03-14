@@ -15,12 +15,10 @@
  * @static
  */
 
- FrameTrail.defineModule('Database', function(){
+ FrameTrail.defineModule('Database', function(FrameTrail){
 
 
-    var projectID    = FrameTrail.module('RouteNavigation').projectID || '',
-        hypervideoID = '',
-        project      = {},
+    var hypervideoID = '',
         hypervideos  = {},
         hypervideo   = {},
         sequence     = {},
@@ -28,6 +26,7 @@
         overlays     = [],
         codeSnippets = {},
         resources    = {},
+        config       = {},
 
         annotations            = {},
         annotationfileIDs      = {},
@@ -43,65 +42,48 @@
 
 
 
-
-
     /**
-     * I load the project index data (../_data/projects/_index.json) from the server
-     * and save the data for my projectID (from {{#crossLink "RouteNavigation/projectID:attribute"}}RouteNavigation/projectID{{/crossLink}})
-     * in my attribute {{#crossLink "Database/project:attribute"}}Database/project{{/crossLink}}.
+     * I load the config data (_data/config.json) from the server
+     * and save the data in my attribute {{#crossLink "Database/config:attribute"}}Database/config{{/crossLink}}.
      * I call my success or fail callback respectively.
      *
-     * @method loadProjectData
+     * @method loadConfigData
      * @param {Function} success
      * @param {Function} fail
-     * @private
      */
-    function loadProjectData(success, fail) {
+    function loadConfigData(success, fail) {
 
         $.ajax({
-            type:     "GET",
-            url:      '../_data/projects/_index.json',
-            cache:    false,
+
+            type:   "GET",
+            url:    ('_data/config.json'),
+            cache:  false,
             dataType: "json",
             mimeType: "application/json"
         }).done(function(data){
 
-            $.ajax({
-                type:     "GET",
-                url:      '../_data/projects/' + data.projects[projectID] + '/project.json',
-                cache:    false,
-                dataType: "json",
-                mimeType: "application/json"
-            }).done(function (projectData) {
-                project = projectData;
-                //console.log('project', project);
+            config = data;
+            
+            // TODO: Check if this makes sense here
+            if (data.theme) {
+                $(FrameTrail.getState('target')).attr('data-frametrail-theme', data.theme);
+            } else {
+                $(FrameTrail.getState('target')).attr('data-frametrail-theme', '');
+            }
 
-                // TODO: MOVE WHERE IT ACTUALLY MAKES SENSE
-                if (project.theme) {
-                    $('html').attr('class', project.theme);
-                } else {
-                    $('html').attr('class', '');
-                }
-                // TODO: MOVE WHERE IT ACTUALLY MAKES SENSE
-
-                success.call(this);
-            }).fail(function () {
-                fail('No project.json file.');
-            });
-
+            success.call(this);
 
         }).fail(function(){
 
-            fail('No project index file.');
+            fail('No resources index file.');
 
         });
-
 
     };
 
 
     /**
-     * I load the resource index data (../_data/projects/ {{#crossLink "RouteNavigation/projectID:attribute"}}RouteNavigation/projectID{{/crossLink}} /resources/_index.json) from the server
+     * I load the resource index data (_data/resources/_index.json) from the server
      * and save the data in my attribute {{#crossLink "Database/resources:attribute"}}Database/resources{{/crossLink}}.
      * I call my success or fail callback respectively.
      *
@@ -114,7 +96,7 @@
         $.ajax({
 
             type:   "GET",
-            url:    ('../_data/projects/' + projectID + '/resources/_index.json'),
+            url:    ('_data/resources/_index.json'),
             cache:  false,
             dataType: "json",
             mimeType: "application/json"
@@ -134,7 +116,7 @@
 
 
     /**
-     * I load the user.json of the current project from the server
+     * I load the user.json from the server
      * and save the  data in my attribute {{#crossLink "Database/users:attribute"}}Database/users{{/crossLink}}.
      * I call my success or fail callback respectively.
      *
@@ -148,7 +130,7 @@
 
             $.ajax({
                 type:   "GET",
-                url:    ('../_data/projects/' + projectID + '/users.json'),
+                url:    ('_data/users.json'),
                 cache:  false,
                 dataType: "json",
                 mimeType: "application/json"
@@ -168,14 +150,13 @@
             $.ajax({
 
                 type:   "POST",
-                url:    ('../_server/ajaxServer.php'),
+                url:    ('_server/ajaxServer.php'),
                 cache:  false,
                 dataType: "json",
                 mimeType: "application/json",
                 data:   {
 
-                    a:          'userGet',
-                    projectID:  projectID
+                    a:          'userGet'
 
                 }
 
@@ -199,7 +180,7 @@
 
 
     /**
-     * I load the hypervideo index data (../_data/projects/ {{#crossLink "RouteNavigation/projectID:attribute"}}RouteNavigation/projectID{{/crossLink}} /hypervideos/_index.json) from the server
+     * I load the hypervideo index data (_data/hypervideos/_index.json) from the server
      * and save the data in my attribute {{#crossLink "Database/hypervideos:attribute"}}Database/hypervideos{{/crossLink}}.
      * I call my success or fail callback respectively.
      *
@@ -213,13 +194,13 @@
         $.ajax({
 
             type:   "GET",
-            url:    ('../_data/projects/' + projectID + '/hypervideos/_index.json'),
+            url:    ('_data/hypervideos/_index.json'),
             cache:  false,
             dataType: "json",
             mimeType: "application/json"
         }).done(function(data){
 
-            
+
             var countdown = Object.keys(data.hypervideos).length,
                 bufferedData = {};
 
@@ -228,13 +209,13 @@
                 success.call(this);
                 return;
             }
-            
+
             for (var key in data.hypervideos) {
                 (function (hypervideoID) {
 
                     $.ajax({
                         type:   "GET",
-                        url:    ('../_data/projects/' + projectID + '/hypervideos/' + data.hypervideos[key] + '/hypervideo.json'),
+                        url:    ('_data/hypervideos/' + data.hypervideos[key] + '/hypervideo.json'),
                         cache:  false,
                         dataType: "json",
                         mimeType: "application/json"
@@ -242,7 +223,7 @@
 
                         $.ajax({
                             type:   "GET",
-                            url:    ('../_data/projects/' + projectID + '/hypervideos/' + data.hypervideos[key] + '/annotations/_index.json'),
+                            url:    ('_data/hypervideos/' + data.hypervideos[key] + '/annotations/_index.json'),
                             cache:  false,
                             dataType: "json",
                             mimeType: "application/json"
@@ -302,9 +283,9 @@
 
 
     /**
-     * I load the hypervideo sequence data (../_data/projects/ {{#crossLink "RouteNavigation/projectID:attribute"}}RouteNavigation/projectID{{/crossLink}}
-     * /hypervideos/ {{#crossLink "RouteNavigation/hypervideoID:attribute"}}RouteNavigation/hypervideoID{{/crossLink}} /hypervideo.json) from the server
-     * and save the data in my attribute {{#crossLink "Database/hypervideo:attribute"}}Database/hypervideos{{/crossLink}}.
+     * I load the hypervideo sequence data (_data/hypervideos/ 
+     * {{#crossLink "RouteNavigation/hypervideoID:attribute"}}RouteNavigation/hypervideoID{{/crossLink}} /hypervideo.json) 
+     * from the server and save the data in my attribute {{#crossLink "Database/hypervideo:attribute"}}Database/hypervideos{{/crossLink}}.
      * I call my success or fail callback respectively.
      *
      * @method loadSequenceData
@@ -318,14 +299,6 @@
             clips: hypervideos[hypervideoID].clips
         }
         //console.log('sequence', sequence);
-
-        // TODO: MOVE WHERE IT ACTUALLY MAKES SENSE
-        if (hypervideos[hypervideoID].config.theme) {
-            $('html').attr('class', hypervideos[hypervideoID].config.theme);
-        } else {
-            $('html').attr('class', '');
-        }
-        // TODO: MOVE WHERE IT ACTUALLY MAKES SENSE
 
         success();
     };
@@ -426,8 +399,7 @@
 
 
     /**
-     * I load the annotation data (../_data/projects/ {{#crossLink "RouteNavigation/projectID:attribute"}}RouteNavigation/projectID{{/crossLink}}
-     * /hypervideos/ {{#crossLink "RouteNavigation/hypervideoID:attribute"}}RouteNavigation/hypervideoID{{/crossLink}} /hypervideo.json) from the server
+     * I load the annotation data (_data/hypervideos/ {{#crossLink "RouteNavigation/hypervideoID:attribute"}}RouteNavigation/hypervideoID{{/crossLink}} /hypervideo.json) from the server
      * and save the data in my attribute {{#crossLink "Database/annotations:attribute"}}Database/annotations{{/crossLink}},
      * and the respective annotationfileIDs in my attribute {{#crossLink "Database/annotationfileIDs:attribute"}}Database/annotationfileIDs{{/crossLink}},
      *
@@ -454,7 +426,7 @@
 
                 $.ajax({
                     type: "GET",
-                    url: ('../_data/projects/' + projectID + '/hypervideos/' + hypervideoID + '/annotations/' + id + '.json'),
+                    url: ('_data/hypervideos/' + hypervideoID + '/annotations/' + id + '.json'),
                     cache: false,
                     dataType: "json",
                     mimeType: "application/json"
@@ -480,10 +452,10 @@
                             "start": parseFloat(/t=(\d+\.?\d*)/g.exec(data[i].target.selector.value)[1]),
                             "end": parseFloat(/t=(\d+\.?\d*),(\d+\.?\d*)/g.exec(data[i].target.selector.value)[2]),
                             "resourceId": data[i].body["frametrail:resourceId"],
-                            "attributes": data[i]['frametrail:attributes'] || {},
+                            "attributes": data[i].body['frametrail:attributes'] || {},
                             "tags": data[i]['frametrail:tags']
                         });
-
+                        
                         if (annotationData[annotationData.length-1].type === 'location') {
                             var locationAttributes = annotationData[annotationData.length-1].attributes;
                             locationAttributes.lat = parseFloat(data[i].body['frametrail:lat']);
@@ -532,8 +504,7 @@
 
 
     /**
-     * I load the subtitles data (../_data/projects/ {{#crossLink "RouteNavigation/projectID:attribute"}}RouteNavigation/projectID{{/crossLink}}
-     * /hypervideos/ {{#crossLink "RouteNavigation/hypervideoID:attribute"}}RouteNavigation/hypervideoID{{/crossLink}} /subtitles/...) from the server
+     * I load the subtitles data (_data/hypervideos/ {{#crossLink "RouteNavigation/hypervideoID:attribute"}}RouteNavigation/hypervideoID{{/crossLink}} /subtitles/...) from the server
      * and save the data in my attribute {{#crossLink "Database/subtitles:attribute"}}Database/subtitles{{/crossLink}}
      *
      * I call my success or fail callback respectively.
@@ -564,7 +535,7 @@
                     $.ajax({
 
                         type: "GET",
-                        url: ('../_data/projects/' + projectID + '/hypervideos/' + hypervideoID + '/subtitles/' + currentSubtitles.src),
+                        url: ('_data/hypervideos/' + hypervideoID + '/subtitles/' + currentSubtitles.src),
                         cache: false
 
                     }).done(function(data){
@@ -631,8 +602,7 @@
     /**
      * I initialise the load process of the database
      *
-     * First I look for the {{#crossLink "RouteNavigation/projectID:attribute"}}RouteNavigation/projectID{{/crossLink}} and
-     * {{#crossLink "RouteNavigation/hypervideoID:attribute"}}RouteNavigation/hypervideoID{{/crossLink}}.
+     * First I look for the {{#crossLink "RouteNavigation/hypervideoID:attribute"}}RouteNavigation/hypervideoID{{/crossLink}}.
      *
      * Then I call the nested load functions to fetch all data from the server.
      * I call my success or fail callback respectively.
@@ -644,18 +614,10 @@
     function loadData(success, fail) {
 
 
-        projectID    = FrameTrail.module('RouteNavigation').projectID;
         hypervideoID = FrameTrail.module('RouteNavigation').hypervideoID;
 
 
-        if(projectID === undefined){
-
-            return fail('No Project was selected.');
-
-        }
-
-
-        if(hypervideoID === undefined){
+       if(hypervideoID === undefined){
 
             //FrameTrail.module('InterfaceModal').showStatusMessage('No Hypervideo is selected.');
 
@@ -665,69 +627,69 @@
             overlays     = [];
             codeSnippets = {};
 
-            return  loadProjectData(function(){
+            return  loadConfigData(function(){
 
                         loadResourceData(function(){
 
-                            loadUserData(function(){
+    						loadUserData(function(){
 
-                                loadHypervideoData(function(){
+    							loadHypervideoData(function(){
 
-                                    success.call();
+    								success.call();
 
-                                }, fail);
+    							}, fail);
 
-                            }, fail);
+    						}, fail);
 
-                        }, fail);
+    					}, fail);
 
                     }, fail);
-
         }
 
 
-        loadProjectData(function(){
+
+		loadConfigData(function(){
 
             loadResourceData(function(){
 
-                loadUserData(function(){
+    			loadUserData(function(){
 
-                    loadHypervideoData(function(){
-
-
-                        hypervideo = hypervideos[hypervideoID];
-
-                        if(!hypervideo){
-
-                            return fail('This hypervideo does not exist.');
-
-                        }
-
-                        loadSequenceData(function(){
-
-                            loadSubtitleData(function(){
-
-                                loadContentData(function(){
-
-                                    loadAnnotationData(function(){
-
-                                        success.call();
-
-                                    }, fail);
-
-                                }, fail);
-
-                            }, fail);
-
-                        }, fail);
+    				loadHypervideoData(function(){
 
 
-                    }, fail);
+    					hypervideo = hypervideos[hypervideoID];
+
+    					if(!hypervideo){
+
+    						return fail('This hypervideo does not exist.');
+
+    					}
+
+    					loadSequenceData(function(){
+
+    						loadSubtitleData(function(){
+
+    							loadContentData(function(){
+
+    								loadAnnotationData(function(){
+
+    									success.call();
+
+    								}, fail);
+
+    							}, fail);
+
+    						}, fail);
+
+    					}, fail);
 
 
-                }, fail);
+    				}, fail);
 
-            }, fail);
+
+    			}, fail);
+
+    		}, fail);
 
         }, fail);
 
@@ -807,7 +769,6 @@
         		"autohideControls": hypervideos[thisHypervideoID].config.autohideControls,
         		"captionsVisible": hypervideos[thisHypervideoID].config.captionsVisible,
         		"hidden": hypervideos[thisHypervideoID].hidden,
-                "theme": hypervideos[thisHypervideoID].config.theme,
                 "layoutArea": FrameTrail.module('ViewLayout').getLayoutAreaData()
         	},
         	"clips": hypervideos[thisHypervideoID].clips,
@@ -967,6 +928,112 @@
 
 
     /**
+     * I save the config data back to the server.
+     *
+     * My success callback gets one argument, which is either
+     *
+     *     { success: true }
+     * or
+     *     { failed: 'config', error: ... }
+     *
+     * @method saveConfig
+     * @param {Function} callback
+     */
+    function saveConfig(callback) {
+
+        $.ajax({
+            type:   'POST',
+            url:    '_server/ajaxServer.php',
+            cache:  false,
+
+            data: {
+                a:              'configChange',
+                src:            JSON.stringify(config, null, 4)
+            }
+
+        }).done(function(data) {
+
+            if (data.code === 0) {
+
+                callback.call(window, { success: true });
+
+            } else {
+
+                callback.call(window, {
+                    failed: 'config',
+                    error: data.string,
+                    code: data.code
+                });
+
+            }
+
+        }).fail(function(error){
+
+            callback.call(window, {
+                failed: 'config',
+                error: error
+            });
+
+        });
+
+    };
+
+
+    /**
+     * I save the global custom CSS back to the server (/_data/custom.css).
+     *
+     * My success callback gets one argument, which is either
+     *
+     *     { success: true }
+     * or
+     *     { failed: 'globalcss', error: ... }
+     *
+     * @method saveGlobalCSS
+     * @param {Function} callback
+     */
+    function saveGlobalCSS(callback) {
+
+        var styles = $('head > style.FrameTrailGlobalCustomCSS').html();
+
+        $.ajax({
+            type:   'POST',
+            url:    '_server/ajaxServer.php',
+            cache:  false,
+
+            data: {
+                a:              'globalCSSChange',
+                src:            styles
+            }
+
+        }).done(function(data) {
+
+            if (data.code === 0) {
+
+                callback.call(window, { success: true });
+
+            } else {
+
+                callback.call(window, {
+                    failed: 'globalcss',
+                    error: 'ServerError',
+                    code: data.code
+                });
+
+            }
+
+        }).fail(function(error){
+
+            callback.call(window, {
+                failed: 'globalcss',
+                error: error
+            });
+
+        });
+
+    };
+
+
+    /**
      * I save the complete hypervideo data back to the server.
      *
      * My success callback gets one argument, which is either
@@ -978,7 +1045,7 @@
      * @method saveOverlays
      * @param {Function} callback
      */
-    function saveHypervideo (callback, thisHypervideoID) {
+    function saveHypervideo(callback, thisHypervideoID) {
 
         thisHypervideoID = thisHypervideoID || hypervideoID;
 
@@ -987,12 +1054,11 @@
 
         $.ajax({
             type:   'POST',
-            url:    '../_server/ajaxServer.php',
+            url:    '_server/ajaxServer.php',
             cache:  false,
 
             data: {
                 a:              'hypervideoChange',
-                projectID:      projectID,
                 hypervideoID:   thisHypervideoID,
                 src:            JSON.stringify(saveData, null, 4)
             }
@@ -1023,7 +1089,6 @@
         });
 
     };
-
 
 
     /**
@@ -1142,7 +1207,8 @@
                             return undefined;
                         }
                     })(),
-                    "frametrail:resourceId": annotationItem.resourceId
+                    "frametrail:resourceId": annotationItem.resourceId,
+                    "frametrail:attributes": annotationItem.attributes
         		}
             });
             if (annotationsToSave[annotationsToSave.length-1].body['frametrail:type'] === 'location') {
@@ -1158,13 +1224,12 @@
 
         $.ajax({
             type:   'POST',
-            url:    '../_server/ajaxServer.php',
+            url:    '_server/ajaxServer.php',
             cache:  false,
 
             data: {
 
                 a:                'annotationfileSave',
-                projectID:        projectID,
                 hypervideoID:     hypervideoID,
                 action:           action,
                 annotationfileID: annotationfileID,
@@ -1234,7 +1299,7 @@
                 }
             }
         }
-        
+
         return null;
     };
 
@@ -1261,13 +1326,7 @@
     return {
 
         /**
-         * I store the project index data (from the server's ../_data/projects/_index.json)
-         * @attribute project
-         */
-        get project()       { return project },
-
-        /**
-         * I store the hypervideo index data (from the server's ../_data/projects/<ID>/hypervideos/_index.json)
+         * I store the hypervideo index data (from the server's _data/hypervideos/_index.json)
          * @attribute hypervideos
          */
         get hypervideos()   { return hypervideos },
@@ -1281,23 +1340,23 @@
         set hypervideo(data) { return hypervideo = data },
 
         /**
-         * I store the hypervideo sequence data (from the server's ../_data/projects/<ID>/hypervideos/<ID>/hypervideo.json)
+         * I store the hypervideo sequence data (from the server's _data/hypervideos/<ID>/hypervideo.json)
          * @attribute sequence
          */
         get sequence()      { return sequence },
         /**
-         * I store the overlays data (from the server's ../_data/projects/<ID>/hypervideos/<ID>/overlays.json)
+         * I store the overlays data (from the server's _data/hypervideos/<ID>/overlays.json)
          * @attribute overlays
          */
         get overlays()      { return overlays },
         /**
-         * I store the code snippets data (from the server's ../_data/projects/<ID>/hypervideos/<ID>/codeSnippets.json)
+         * I store the code snippets data (from the server's _data/hypervideos/<ID>/codeSnippets.json)
          * @attribute codesnippets
          */
         get codeSnippets()         { return codeSnippets },
 
         /**
-         * I store the annotation data (from all json files from the server's ../_data/projects/<ID>/hypervideos/<ID>/annotationfiles/).
+         * I store the annotation data (from all json files from the server's _data/hypervideos/<ID>/annotationfiles/).
          *
          * I am a map of keys (userIDs) to an array of all annotations from that user.
          *
@@ -1324,7 +1383,7 @@
         get annotationfileIDs()  { return annotationfileIDs },
 
         /**
-         * I store the subtitle data (from all .vtt files from the server's ../_data/projects/<ID>/hypervideos/<ID>/subtitles/).
+         * I store the subtitle data (from all .vtt files from the server's _data/hypervideos/<ID>/subtitles/).
          *
          * @attribute annotations
          */
@@ -1338,24 +1397,30 @@
         get subtitlesLangMapping() { return subtitlesLangMapping },
 
         /**
-         * I store the resource index data (from the server's ../_data/projects/<ID>/resources/_index.json)
+         * I store the resource index data (from the server's _data/resources/_index.json)
          * @attribute resources
          */
         get resources()     { return resources },
 
         /**
-         * I store the user data (from the projects user.json). The keys are the userIDs, and the values are maps of the user's attributes.
+         * I store the user data (user.json). The keys are the userIDs, and the values are maps of the user's attributes.
          * @attribute users
          */
         get users()     { return users },
+
+        /**
+         * I store the config data (config.json).
+         * @attribute users
+         */
+        get config()     { return config },
 
 
         getIdOfResource:       getIdOfResource,
         getIdOfHypervideo:     getIdOfHypervideo,
 
         loadData:              loadData,
-        loadProjectData:       loadProjectData,
         loadResourceData:      loadResourceData,
+        loadConfigData:        loadConfigData,
 
         loadHypervideoData:    loadHypervideoData,
         updateHypervideoData:  updateHypervideoData,
@@ -1364,6 +1429,8 @@
 
         saveHypervideo:        saveHypervideo,
         saveAnnotations:       saveAnnotations,
+        saveConfig:            saveConfig,
+        saveGlobalCSS:         saveGlobalCSS,
 
         //TODO only shortcut for now
         convertToDatabaseFormat: convertToDatabaseFormat

@@ -3,14 +3,13 @@
 require_once("./config.php");
 
 /**
- * @param $projectID // ID of Project
  * @param $userID // (optional) ID of User - if send the function will just return the User
  * @return mixed
  */
-function userGet($projectID, $userID) {
+function userGet($userID) {
 	global $conf;
 
-	$json = file_get_contents($conf["dir"]["projects"]."/".$projectID."/users.json");
+	$json = file_get_contents($conf["dir"]["data"]."/users.json");
 
 	$uDB = json_decode($json,true);
 	//if ($_SESSION["ohv"]["projects"][$projectID]["user"]["role"] != "admin") {
@@ -28,7 +27,6 @@ function userGet($projectID, $userID) {
 }
 
 /**
- * @param $projectID
  * @param $name
  * @param $mail
  * @param $passwd
@@ -36,20 +34,21 @@ function userGet($projectID, $userID) {
 
  * Returning codes:
  * 0 = success
- * 1 = Mail or Password arent given or Mail is not a valid adress
+ * 1 = Mail or Password arent given or Mail is not a valid address
  * 2 = User already registered
  * 3 = Registration success but user needs to be activated
 
  */
-function userRegister($projectID, $name, $mail, $passwd) {
+function userRegister($name, $mail, $passwd) {
 	global $conf;
-	$json = file_get_contents($conf["dir"]["projects"]."/". $projectID ."/project.json");
+	$tmpFirstUser = false;
+	$json = file_get_contents($conf["dir"]["data"]."/config.json");
 	$configDB = json_decode($json, true);
 	
-	$userFile = $conf["dir"]["projects"]."/".$projectID."/users.json";
+	$userFile = $conf["dir"]["data"]."/users.json";
 
 
-	if (!$mail || !$passwd || (!filter_var($mail, FILTER_VALIDATE_EMAIL)) || !$name || !$projectID) {
+	if (!$mail || !$passwd || (!filter_var($mail, FILTER_VALIDATE_EMAIL)) || !$name) {
 		$return["status"] = "fail";
 		$return["code"] = 1;
 		$return["string"] = "Fill out all fields";
@@ -59,6 +58,7 @@ function userRegister($projectID, $name, $mail, $passwd) {
 	if (!file_exists($userFile)) {
 		$tmp["user-increment"] = 0;
 		$tmp["user"] = array();
+		$tmpFirstUser = true;
 		file_put_contents($userFile, json_encode($tmp, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 	}
 
@@ -81,11 +81,11 @@ function userRegister($projectID, $name, $mail, $passwd) {
 	$user["user"][$user["user-increment"]]["name"] = $name;
 	$user["user"][$user["user-increment"]]["mail"] = strtolower($mail);
 	$user["user"][$user["user-increment"]]["registrationDate"] =  time();
-	$user["user"][$user["user-increment"]]["passwd"] = md5($passwd.$user["user"][$user["user-increment"]]["registrationDate"]);
-	$user["user"][$user["user-increment"]]["role"] = $configDB["defaultUserRole"];
+	$user["user"][$user["user-increment"]]["passwd"] = hash("sha256",$passwd.$user["user"][$user["user-increment"]]["registrationDate"]);
+	$user["user"][$user["user-increment"]]["role"] = (($tmpFirstUser) ? "admin" : $configDB["defaultUserRole"]);
 	$user["user"][$user["user-increment"]]["active"] = ($configDB["userNeedsConfirmation"]) ? 0 : 1;
 	$user["user"][$user["user-increment"]]["lastLogin"] = "";
-	$user["user"][$user["user-increment"]]["color"] = getUserColors($projectID)["freeColors"][0];
+	$user["user"][$user["user-increment"]]["color"] = getUserColors()["freeColors"][0];
 
 	$file->writeClose(json_encode($user, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 
@@ -97,7 +97,6 @@ function userRegister($projectID, $name, $mail, $passwd) {
 
 
 /**
- * @param $projectID
  * @param $mail
  * @param $passwd
 
@@ -110,12 +109,12 @@ function userRegister($projectID, $name, $mail, $passwd) {
  * 5 = User is not active
 
  */
-function userLogin($projectID, $mail, $passwd) {
+function userLogin($mail, $passwd) {
 	global $conf;
 
-	$userFile = $conf["dir"]["projects"]."/".$projectID."/users.json";
+	$userFile = $conf["dir"]["data"]."/users.json";
 
-	if ((!$passwd) || (!$mail) || (!$projectID)) {
+	if ((!$passwd) || (!$mail)) {
 		$return["status"] = "fail";
 		$return["code"] = 1;
 		$return["string"] = "Fill out all fields";
@@ -156,7 +155,7 @@ function userLogin($projectID, $mail, $passwd) {
 		$file->close();
 		return $return;
 	}
-	if ($user["passwd"] != md5($passwd.$user["registrationDate"])) {
+	if ($user["passwd"] != hash("sha256",$passwd.$user["registrationDate"])) {
 		$return["status"] = "fail";
 		$return["code"] = 3;
 		$return["string"] = "Wrong password!";
@@ -165,8 +164,8 @@ function userLogin($projectID, $mail, $passwd) {
 	}
 
 
-	$_SESSION["ohv"]["projects"][$projectID]["login"] = 1;
-	$_SESSION["ohv"]["projects"][$projectID]["user"] = $user;
+	$_SESSION["ohv"]["login"] = 1;
+	$_SESSION["ohv"]["user"] = $user;
 
 	$return["status"] = "success";
 	$return["code"] = 0;
@@ -190,73 +189,74 @@ function userLogin($projectID, $mail, $passwd) {
 
 
 /**
- * @param $projectID
-
  * Returning codes:
  * 0 = success for one project
  * 1 = success for all projects
 
  */
-function userLogout($projectID) {
+function userLogout() {
 	$return["status"] = "success";
-	if ($projectID) {
-		unset($_SESSION["ohv"]["projects"][$projectID]);
-		$return["code"] = 0;
-		$return["string"] = "Logout of Project #".$projectID;
-	} else {
-		session_destroy();
-		$return["code"] = 1;
-		$return["string"] = "Logout of all Projects";
-	}
+	session_destroy();
+	$return["code"] = 1;
+	$return["string"] = "Logout success";
+
 	return $return;
 }
 
 
 
 /**
- * checks if User is logged in to a project
- * @param $projectID
-
+ * @param $userRole // Optional. Beside checking for login, also returns if user has this role.
+ *
+ * checks if User is logged in and/or has given userlevel
  * Returning codes:
- * 2 = project not correct
+ * 2 = Userfile missing
  * 1 = success
  * 0 = nope
+ * 3 = yes, but inactive
+ * 4 = yes, but has not given user role
  *
-
  */
-function userCheckLogin($projectID) {
+function userCheckLogin($userRole = false) {
 	global $conf;
 
-	if ((!$projectID) || (!file_exists($conf["dir"]["projects"]."/".$projectID."/users.json"))) {
+	if (!file_exists($conf["dir"]["data"]."/users.json")) {
 		$return["status"] = "fail";
 		$return["code"] = 2;
-		$return["string"] = "there is no project with the given projectID";
-	} elseif ($_SESSION["ohv"]["projects"][$projectID]["login"] == 1) {
+		$return["string"] = "Userfile is missing";
+	} elseif ($_SESSION["ohv"]["login"] == 1) {
 
-		$userFile = $conf["dir"]["projects"]."/".$projectID."/users.json";
+		$userFile = $conf["dir"]["data"]."/users.json";
 		$file = new sharedFile($userFile);
 
 		$json = $file->read();
 		$userdb = json_decode($json,true);
 
 		//Update own data to check if user is still admin or other things have changed
-		$tmpUserID = $_SESSION["ohv"]["projects"][$projectID]["user"]["id"];
-		$_SESSION["ohv"]["projects"][$projectID]["user"] = $userdb["user"][$tmpUserID];
-		$_SESSION["ohv"]["projects"][$projectID]["user"]["id"] = $tmpUserID;
+		$tmpUserID = $_SESSION["ohv"]["user"]["id"];
+		$_SESSION["ohv"]["user"] = $userdb["user"][$tmpUserID];
+		$_SESSION["ohv"]["user"]["id"] = $tmpUserID;
 		$file->close();
 
 		$return["status"] = "success";
 		$return["code"] = 1;
-		$return["string"] = "user logged in to project #".$projectID;
+		$return["string"] = "user logged in";
 		$return["session_lifetime"] = $conf["server"]["session_lifetime"];
 
-		if ($_SESSION["ohv"]["projects"][$projectID]["user"]["active"] == 0) {
+		if ($_SESSION["ohv"]["user"]["active"] == 0) {
 			$return["status"] = "success";
 			$return["code"] = 3;
-			$return["string"] = "user is logged in but not active";
+			$return["string"] = "User is logged in but not active";
 		}
 
-		$return["response"] = $_SESSION["ohv"]["projects"][$projectID]["user"];
+		if ($userRole && ($_SESSION["ohv"]["user"]["role"] != $userRole)) {
+			$return["status"] = "success";
+			$return["code"] = 4;
+			$return["string"] = "User is logged in but does not have the required user role";
+		}
+
+
+		$return["response"] = $_SESSION["ohv"]["user"];
 		unset($return["response"]["passwd"]);
 	} else {
 		$return["status"] = "fail";
@@ -267,7 +267,6 @@ function userCheckLogin($projectID) {
 }
 
 /**
- * @param $projectID
  * @param $userID
  * @param $mail
  * @param $name
@@ -278,48 +277,43 @@ function userCheckLogin($projectID) {
 
  * Returning codes:
  * 0 = success
- * 1 = Project UserDB could not be find
+ * 1 = UserDB could not be find
  * 2 = User is not Admin and not himself
  * 3 = All data has been saved but mail because its not valid. so old mailadress will still be saved/used
 
  */
-function userChange($projectID,$userID,$mail,$name,$passwd,$color,$role,$active) {
+function userChange($userID,$mail,$name,$passwd,$color,$role,$active) {
 	global $conf;
-	$userFile = $conf["dir"]["projects"]."/".$projectID."/users.json";
+	$userFile = $conf["dir"]["data"]."/users.json";
 
 
 
-	if ((!$projectID) || (!file_exists($userFile))) {
+	if (!file_exists($userFile)) {
 		$return["status"] = "fail";
 		$return["code"] = 1;
-		$return["string"] = "there is no project with the given projectID";
+		$return["string"] = "User DB missing";
 		return $return;
 	}
 
-	if (($_SESSION["ohv"]["projects"][$projectID]["login"] == 1) || ($_SESSION["masterpassword"])) {
+	if ($_SESSION["ohv"]["login"] == 1) {
 		$file = new sharedFile($userFile);
 
 		$json = $file->read();
 		$userdb = json_decode($json,true);
 
 		//Update own data to check if user is still admin
-		$tmpUserID = $_SESSION["ohv"]["projects"][$projectID]["user"]["id"];
-		$_SESSION["ohv"]["projects"][$projectID]["user"] = $userdb["user"][$tmpUserID];
-		$_SESSION["ohv"]["projects"][$projectID]["user"]["id"] = $tmpUserID;
-		include_once($conf["dir"]["data"]."/masterpassword.php");
-		if (($_SESSION["masterpassword"]) && ($masterpassword != $_SESSION["masterpassword"])) {
-			$return["status"] = "fail";
-			$return["code"] = 7;
-			$return["string"] = "user has set masterpassword but its wrong. logout on projectmanager.";
-		} elseif ((($_SESSION["ohv"]["projects"][$projectID]["user"]["role"] != "admin") && ($userID != $tmpUserID)) && (!$_SESSION["masterpassword"])) {
+		$tmpUserID = $_SESSION["ohv"]["user"]["id"];
+		$_SESSION["ohv"]["user"] = $userdb["user"][$tmpUserID];
+		$_SESSION["ohv"]["user"]["id"] = $tmpUserID;
+		if ((($_SESSION["ohv"]["user"]["role"] != "admin") && ($userID != $tmpUserID))) {
 			$return["status"] = "fail";
 			$return["code"] = 2;
 			$return["string"] = "user is not admin nor himself";
-		} elseif (($_SESSION["ohv"]["projects"][$projectID]["user"]["active"] != 1) && (!$_SESSION["masterpassword"])) {
+		} elseif (($_SESSION["ohv"]["user"]["active"] != 1)) {
 			$return["status"] = "fail";
 			$return["code"] = 5;
 			$return["string"] = "user is not active";
-			unset($_SESSION["ohv"]["projects"][$projectID]);
+			unset($_SESSION["ohv"]);
 		} else {
 			if ($userdb["user"][$userID]) {
 				$return["code"] = 0;
@@ -329,12 +323,12 @@ function userChange($projectID,$userID,$mail,$name,$passwd,$color,$role,$active)
 				} else {
 					$mail = strtolower($mail);
 				}
-				$userdb["user"][$userID]["role"] = (($role) && (($_SESSION["ohv"]["projects"][$projectID]["user"]["role"] == "admin") || $_SESSION["masterpassword"])) ? $role : $userdb["user"][$userID]["role"];
+				$userdb["user"][$userID]["role"] = ((($role) && ($_SESSION["ohv"]["user"]["role"] == "admin")) ? $role : $userdb["user"][$userID]["role"]);
 				$userdb["user"][$userID]["name"] = $name;
 				$userdb["user"][$userID]["mail"] = $mail;
 				$userdb["user"][$userID]["color"] = $color;
-				$userdb["user"][$userID]["active"] = ((($active==="1" || $active==="0") && (($_SESSION["ohv"]["projects"][$projectID]["user"]["role"] == "admin") || $_SESSION["masterpassword"])) ? $active*1 : $userdb["user"][$userID]["active"]*1);
-				$userdb["user"][$userID]["passwd"] = ($passwd) ? md5($passwd.$userdb["user"][$userID]["registrationDate"]) : $userdb["user"][$userID]["passwd"];
+				$userdb["user"][$userID]["active"] = ((($active==="1" || $active==="0") && (($_SESSION["ohv"]["user"]["role"] == "admin"))) ? $active*1 : $userdb["user"][$userID]["active"]*1);
+				$userdb["user"][$userID]["passwd"] = ($passwd) ? hash("sha256",$passwd.$userdb["user"][$userID]["registrationDate"]) : $userdb["user"][$userID]["passwd"];
 				$file->write(json_encode($userdb, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));				
 				$return["status"] = "success";
 				$return["string"] = "userdata updated";
@@ -356,32 +350,29 @@ function userChange($projectID,$userID,$mail,$name,$passwd,$color,$role,$active)
 	return $return;
 }
 
-function getUserColors($projectID) {
+function getUserColors() {
 	global $conf;
 	$json = file_get_contents($conf["dir"]["data"]."/config.json");
 	$configDB = json_decode($json, true);
 	$return["colorCollection"] = $configDB["userColorCollection"];
 
-	if ($projectID) {
-		$json = file_get_contents($conf["dir"]["projects"]."/".$projectID."/users.json");
-		$user = json_decode($json, true);
-		foreach ($user["user"] as $k => $u) {
-			$used[$k] = $u["color"];
-		}
-		$return["user"] = $used;
-
-		//because array_diff returns keys too.
-		foreach ($return["colorCollection"] as $c) {
-			if (!in_array($c, $used)) {
-				$return["freeColors"][] = $c;
-			}
-		}
-
-		if (count($return["freeColors"]) < 1) {
-			$return["freeColors"] = $return["colorCollection"][0];
-		}
-	} else {
-		$return["freeColors"] = $return["colorCollection"];
+	$json = file_get_contents($conf["dir"]["data"]."/users.json");
+	$user = json_decode($json, true);
+	foreach ($user["user"] as $k => $u) {
+		$used[$k] = $u["color"];
 	}
+	$return["user"] = $used;
+
+	//because array_diff returns keys too.
+	foreach ($return["colorCollection"] as $c) {
+		if (!in_array($c, $used)) {
+			$return["freeColors"][] = $c;
+		}
+	}
+
+	if (count($return["freeColors"]) < 1) {
+		$return["freeColors"] = $return["colorCollection"][0];
+	}
+
 	return $return;
 }

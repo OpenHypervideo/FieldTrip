@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head class="html5">
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="Expires" content="-1">
+
+	<title>FrameTrail</title>
+
+	<link rel="stylesheet" type="text/css" href="_lib/html5reset/html5.reset.css">
+	<link rel="stylesheet" type="text/css" href="_lib/jquery.ui/jquery-ui.min.css">
+
+	<link rel="shortcut icon" href="favico.png">
+
+	<script type="text/javascript" src="_lib/jquery/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="_lib/jquery.ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="_lib/jquery.form/jquery.form.min.js"></script>
+
+	<!--
+            [if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]
+        -->
+
+	<link rel="stylesheet" type="text/css" href="_shared/styles/variables.css">
+	<link rel="stylesheet" type="text/css" href="_shared/styles/frametrail-webfont.css">
+	<link rel="stylesheet" type="text/css" href="_shared/styles/generic.css">
+
+	<script type="text/javascript">
+
+		$(document).ready( function() {
+
+			var title = $('.boxTitle'),
+				message = $('#message'),
+				content = $('#content');
+
+			//TODO
+
+			$("#initSetup").ajaxForm({
+				url: "_server/ajaxServer.php",
+				type: "POST",
+				data: {"a": "setupInit"},
+				dataType: "json",
+				success: function (ret) {
+					if (ret["code"] != 1) {
+						$("#returnFromSetup").show().append(ret["string"] + "<br>");
+					} else {
+						location.reload();
+					}
+				}
+			});
+
+			if (!!document.location.host) {
+
+				$.ajax({
+					"type": "POST",
+					url: "_server/ajaxServer.php",
+					data: {"a":"setupCheck"},
+					dataType: "json",
+					success: function(ret) {
+
+						if (ret["code"] != "1") {
+							$("#setupForm").show();
+						} else {
+							var playerUrl = window.location.href.replace('setup.html', '');
+							window.location.replace(playerUrl);
+						}
+
+					}
+				})
+
+
+			} else {
+
+				title.html('No Webserver').show();
+				message.addClass('error').html('This application needs to run on a webserver. You can also use a local server environment like <a href="https://www.apachefriends.org/index.html">XAMPP</a> (Windows, Linux, OS X) or <a href="https://www.mamp.info/">MAMP</a> (Windows, OS X).').show();
+
+			}
+
+
+		});
+
+	</script>
+
+
+</head>
+<body class="frametrail-body">
+<div class="ui-blocking-overlay">
+	<div class="ui-overlay-box">
+		<div class="boxTitle" style="display: none;"></div>
+		<div id="message" class="message"></div>
+		<div id="content">
+			  <div id="setupForm" style="display: none">
+				<form id="initSetup">
+					<input name="mail" placeholder="Admin Mail-Address (login name)" type="text">
+					<input name="name" placeholder="Admin Username" type="text">
+					<input name="passwd" placeholder="Admin Password" type="password">
+					<button type="submit" id="submitBtn">OK</button>
+					<div id="returnFromSetup" class="message error" style="margin-top: 10px;">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

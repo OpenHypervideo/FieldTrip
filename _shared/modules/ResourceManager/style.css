@@ -1,10 +1,10 @@
-#ResourcePicker {
+.resourcePicker {
 	position: relative;
 	width: 100%;
 	height: 100%;
 }
 
-#ResourcePicker #ResourcePickerControls {
+.resourcePicker .resourcePickerControls {
 	position: absolute;
 	right: 0px;
 	bottom: 0px;
@@ -13,7 +13,7 @@
 	z-index: 1;
 }
 
-#ResourcePicker #ResourcePickerControls button {
+.resourcePicker .resourcePickerControls button {
 	background-color: transparent;
     background-position: center center;
     background-repeat: no-repeat;
@@ -24,20 +24,24 @@
     width: 40px;
 }
 
-#ResourcePicker #ResourcePickerControls button [class^="icon-"]::before, #ResourcePicker #ResourcePickerControls button [class*=" icon-"]::before {
+.resourcePicker .resourcePickerControls button:hover {
+	background-color: var(--primary-bg-color);
+}
+
+.resourcePicker .resourcePickerControls button [class^="icon-"]::before, .resourcePicker .resourcePickerControls button [class*=" icon-"]::before {
 	font-size: 18px;
 	margin-left: 1px;
 	margin-top: 2px;
 	width: 22px;
 }
 
-#ResourcePicker #ResourcePickerList {
+.resourcePicker .resourcePickerList {
 	width: 100%;
 	height: 100%;
 	overflow: auto;
 }
 
-#ResourcePicker #ResourcePickerList .resourceThumb {
+.resourcePicker .resourcePickerList .resourceThumb {
 	float: left;
 	position: relative;
 	width: 120px;

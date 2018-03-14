@@ -1,6 +1,6 @@
 /* Subtitle Element */
 
-#CaptionContainer .subtitleElement {
+.captionContainer .subtitleElement {
 	color: #ffffff;
     font-size: 20px;
     font-weight: 200;
@@ -12,6 +12,6 @@
 	display: none;
 }
 
-#CaptionContainer .subtitleElement.active {
+.captionContainer .subtitleElement.active {
 	display: block;
 }

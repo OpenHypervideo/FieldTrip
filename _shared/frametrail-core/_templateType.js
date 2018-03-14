@@ -2,28 +2,42 @@ FrameTrail.defineType(
 
     'Person',   // Name of Type
 
-    // Init function, #this is the new object
-    function(name){
+    function (FrameTrail) {
+        return {
 
-        var nameParts = name.split(' ');
-        this.firstname = nameParts[0];
-        this.lastname  = nameParts[1];
+            // parent type (string with name of parent type)
+            parent: undefined
 
-    },
+            // Init function, #this is the new object
+            constructor: function(name){
 
-    // prototype object
-    {
-        firstname:      '',
-        lastname:       '',
-        profession:     '',
-        birthday:       0,
-        setBirthday:    function(aString){
-                            this.birthday = (new Date(aString)).getTime()
-                        }
-        getAge:         function(){
-                            return (Date.now() - this.birthday) / 1000 / 60 / 60 / 24 / 365.24 + ' years'
-                        }
+                var nameParts = name.split(' ');
+                this.firstname = nameParts[0];
+                this.lastname  = nameParts[1];
+
+            },
+
+            // prototype object
+            prototype: {
+                firstname:      '',
+                lastname:       '',
+                profession:     '',
+                birthday:       0,
+                setBirthday:    function(aString){
+                                    this.birthday = (new Date(aString)).getTime()
+                                }
+                getAge:         function(){
+                                    return (Date.now() - this.birthday) / 1000 / 60 / 60 / 24 / 365.24 + ' years'
+                                }
+            }
+
+        }
     }
+
+
+
+
+
 
 );
 
@@ -44,29 +58,34 @@ FrameTrail.defineType(
 
     'Person',
 
-    {
-        firstname:  '',
-        lastname:   '',
+    function (FrameTrail) {
+        return {
+            prototype: {
+                firstname:  '',
+                lastname:   '',
 
-        _birthday:  0,
+                _birthday:  0,
 
-        get age()   {
-                        return (Date.now() - this._birthday) / 1000 / 60 / 60 / 24 / 365.24 + ' years'
-                    },
+                get age()   {
+                                return (Date.now() - this._birthday) / 1000 / 60 / 60 / 24 / 365.24 + ' years'
+                            },
 
 
-        get birthday()  {
+                get birthday()  {
 
-                            return new Date(this._birthday)
+                                    return new Date(this._birthday)
 
-                        },
+                                },
 
-        set birthday(input) {
+                set birthday(input) {
 
-                                this._birthday = (new Date(input)).getTime();
+                                        this._birthday = (new Date(input)).getTime();
 
-                            }
+                                    }
 
+            }
+
+        }
     }
 
 );

@@ -1,6 +1,6 @@
 /* Timeline Element */
 
-#AnnotationTimeline .timelineElement {
+.annotationTimeline .timelineElement {
 	position: absolute;
 	height: 100%;
 	background: var(--semi-transparent-fg-color);
@@ -15,32 +15,32 @@
     transition-property: bottom;
 }
 
-#AnnotationTimeline .timelineElement.active {
+.annotationTimeline .timelineElement.active {
 	background: var(--primary-fg-color);
 }
 
-#AnnotationTimeline .timelineElement.highlighted {
+.annotationTimeline .timelineElement.highlighted {
 	background: var(--primary-fg-color) !important;
 	z-index: 100000;
 }
 
-#AnnotationTimeline.editable .timelineElement {
+.annotationTimeline.editable .timelineElement {
 	background-color: var(--secondary-fg-color);
 }
 
-#AnnotationTimeline .timelineElement.brushed {
+.annotationTimeline .timelineElement.brushed {
 	background: var(--semi-transparent-fg-highlight-color);
 }
 
-#AnnotationTimeline .timelineElement.brushed.active, #AnnotationTimeline.editable .timelineElement.brushed {
+.annotationTimeline .timelineElement.brushed.active, .annotationTimeline.editable .timelineElement.brushed {
 	background-color: var(--primary-fg-color);
 }
 
-#AnnotationTimeline .timelineElement.ui-draggable:hover {
+.annotationTimeline .timelineElement.ui-draggable:hover {
 	cursor: move;
 }
 
-#AnnotationTimeline .timelineElement.ui-resizable .ui-resizable-handle {
+.annotationTimeline .timelineElement.ui-resizable .ui-resizable-handle {
 	position: absolute;
 	top: -2px;
 	width: 3px;
@@ -51,57 +51,57 @@
 	display: none;
 }
 
-#AnnotationTimeline .timelineElement.ui-resizable .ui-resizable-handle:hover {
+.annotationTimeline .timelineElement.ui-resizable .ui-resizable-handle:hover {
 	background-color: var(--primary-fg-color);
 }
 
-#AnnotationTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-ne {
+.annotationTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-ne {
 	top: -2px;
 	right: -2px;
 	cursor: ne-resize;
 }
 
-#AnnotationTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-nw {
+.annotationTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-nw {
 	top: -2px;
 	left: -2px;
 	cursor: nw-resize;
 }
 
-#AnnotationTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-se {
+.annotationTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-se {
 	bottom: -2px;
 	right: -2px;
 	cursor: se-resize;
 }
 
-#AnnotationTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-sw {
+.annotationTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-sw {
 	bottom: -2px;
 	left: -2px;
 	cursor: sw-resize;
 }
 
-#AnnotationTimeline .timelineElement.ui-resizable:hover .ui-resizable-handle {
+.annotationTimeline .timelineElement.ui-resizable:hover .ui-resizable-handle {
 	display: block;
 }
 
 /* Compare Timeline Element */
 
-#TimelineList .userTimelineWrapper {
+.timelineList .userTimelineWrapper {
 	margin-top: 20px;
 }
 
-#TimelineList .userLabel {
+.timelineList .userLabel {
 	font-weight: 300;
 	margin-bottom: 2px;
 }
 
-#TimelineList .userTimeline .compareTimelineElement {
+.timelineList .userTimeline .compareTimelineElement {
 	position: absolute;
 	height: 20px;
 	background: #888;
 	opacity: .3;
 }
 
-#TimelineList .userTimeline .compareTimelineElement .previewWrapper, body > .compareTimelineElement .previewWrapper {
+.timelineList .userTimeline .compareTimelineElement .previewWrapper, body > .compareTimelineElement .previewWrapper {
 	background: none repeat scroll 0 0 #3F4759;
 	box-shadow: 0 0 1px 3px #222222;
 	height: 70px;
@@ -114,11 +114,11 @@
 	display: none;
 }
 
-#TimelineList .userTimeline .compareTimelineElement:hover .previewWrapper {
+.timelineList .userTimeline .compareTimelineElement:hover .previewWrapper {
 	display: block;
 }
 
-#TimelineList .userTimeline .compareTimelineElement .previewWrapper:after, body > .compareTimelineElement .previewWrapper:after {
+.timelineList .userTimeline .compareTimelineElement .previewWrapper:after, body > .compareTimelineElement .previewWrapper:after {
 	position: absolute;
 	bottom: -14px;
 	left: 50%;
@@ -130,7 +130,7 @@
 	font-weight: 300;
 }
 
-#TimelineList .userTimeline .compareTimelineElement .previewWrapper .resourceThumb, body > .compareTimelineElement .previewWrapper .resourceThumb {
+.timelineList .userTimeline .compareTimelineElement .previewWrapper .resourceThumb, body > .compareTimelineElement .previewWrapper .resourceThumb {
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -143,7 +143,7 @@
 	outline: 4px solid #3F4759;
 }
 
-#TimelineList .userTimeline .compareTimelineElement .previewWrapper .resourceThumb .resourceTitle, body > .compareTimelineElement .previewWrapper .resourceThumb .resourceTitle {
+.timelineList .userTimeline .compareTimelineElement .previewWrapper .resourceThumb .resourceTitle, body > .compareTimelineElement .previewWrapper .resourceThumb .resourceTitle {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -158,7 +158,7 @@
 	box-sizing: border-box;
 }
 
-#TimelineList .userTimeline .compareTimelineElement .previewWrapper .resourceThumb .resourceOverlay {
+.timelineList .userTimeline .compareTimelineElement .previewWrapper .resourceThumb .resourceOverlay {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -168,7 +168,7 @@
 }
 
 
-#TimelineList .userTimeline .compareTimelineElement .previewWrapper .resourceOverlay .resourceIcon, body > .compareTimelineElement .previewWrapper .resourceOverlay .resourceIcon {
+.timelineList .userTimeline .compareTimelineElement .previewWrapper .resourceOverlay .resourceIcon, body > .compareTimelineElement .previewWrapper .resourceOverlay .resourceIcon {
 	position: absolute;
 	right: 10px;
 	bottom: 10px;
@@ -176,7 +176,7 @@
 	height: auto;
 }
 
-#TimelineList .userTimeline .compareTimelineElement:hover {
+.timelineList .userTimeline .compareTimelineElement:hover {
 	opacity: 1;
 	cursor: move;
 }

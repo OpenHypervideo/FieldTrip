@@ -12,7 +12,7 @@
  */
 
 
-FrameTrail.defineModule('SubtitlesController', function(){
+FrameTrail.defineModule('SubtitlesController', function(FrameTrail){
 
 
     var HypervideoModel   = FrameTrail.module('HypervideoModel'),
@@ -21,7 +21,7 @@ FrameTrail.defineModule('SubtitlesController', function(){
         subtitles       = FrameTrail.module('HypervideoModel').subtitles
 
     /**
-     * I tell all subtitles in the 
+     * I tell all subtitles in the
      * {{#crossLink "HypervideoModel/subtitles:attribute"}}HypervideoModel/overlays attribute{{/crossLink}}
      * to render themselves into the DOM.
      *
@@ -37,7 +37,7 @@ FrameTrail.defineModule('SubtitlesController', function(){
 
 
     /**
-     * I first empty all DOM elements, and then ask all 
+     * I first empty all DOM elements, and then ask all
      * subtitles of the current data model, to append new DOM elements.
      * I am also responsible for displaying the captions button & choose menu based on subtitle availability
      *
@@ -48,16 +48,16 @@ FrameTrail.defineModule('SubtitlesController', function(){
 
         subtitles = FrameTrail.module('HypervideoModel').subtitles;
         subtitleFiles = FrameTrail.module('HypervideoModel').subtitleFiles;
-        
+
         ViewVideo.CaptionContainer.empty();
-        ViewVideo.CaptionsButton.find('#CaptionSelectList').empty();
+        ViewVideo.CaptionsButton.find('.captionSelectList').empty();
 
         if ( !subtitleFiles || !subtitles ) {
-            
+
             ViewVideo.CaptionsButton.hide();
 
         } else {
-            
+
             for (var s = 0; s < subtitleFiles.length; s++) {
                 var captionSelect = $('<div class="captionSelect" data-lang="'+ subtitleFiles[s].srclang +'" data-config="hv_config_captionsVisible">'+ FrameTrail.module('Database').subtitles[subtitleFiles[s].srclang].label +'</div>')
                         .click(function(evt) {
@@ -69,12 +69,12 @@ FrameTrail.defineModule('SubtitlesController', function(){
                             FrameTrail.changeState('hv_config_captionsVisible', true);
 
                         });
-                ViewVideo.CaptionsButton.find('#CaptionSelectList').append(captionSelect);
+                ViewVideo.CaptionsButton.find('.captionSelectList').append(captionSelect);
             }
 
 
             for (var i = 0; i < subtitles.length; i++) {
-                subtitles[i].renderInDOM();  
+                subtitles[i].renderInDOM();
             }
 
             ViewVideo.CaptionsButton.show();
@@ -157,7 +157,7 @@ FrameTrail.defineModule('SubtitlesController', function(){
 
     };
 
-    
+
     return {
 
         onChange: {

@@ -10,12 +10,50 @@
 
         <link rel="shortcut icon" href="favico.png">
 
-        <!-- Libraries -->
+        <!-- Library Code -->
+
+        <link rel="stylesheet" type="text/css" href="_lib/html5reset/html5.reset.css">
+        <link rel="stylesheet" type="text/css" href="_lib/perfectscrollbar/perfect-scrollbar.min.css">
+        <link rel="stylesheet" type="text/css" href="_lib/jquery.ui/jquery-ui.min.css">
+        <link rel="stylesheet" type="text/css" href="_lib/openlayers/ol.css">
+        <link rel="stylesheet" type="text/css" href="_lib/codemirror/codemirror.css">
+        <link rel="stylesheet" type="text/css" href="_lib/codemirror/lint.css">
+        <link rel="stylesheet" type="text/css" href="_lib/codemirror/theme/hopscotch.css">
+        <link rel="stylesheet" type="text/css" href="_lib/flexicolorpicker/colorpicker.css">
+
+        <link rel="shortcut icon" href="favico.png">
+
+        <script type="text/javascript" src="_lib/parsers/vtt.min.js"></script>
         <script type="text/javascript" src="_lib/jquery/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="_lib/jquery.form/jquery.form.min.js"></script>
         <script type="text/javascript" src="_lib/jquery.ui/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="_lib/jquery.mousewheel/jquery.mousewheel.min.js"></script>
+        <script type="text/javascript" src="_lib/perfectscrollbar/perfect-scrollbar.min.js"></script>
+        <script type="text/javascript" src="_lib/openlayers/ol.js"></script>
+        <script type="text/javascript" src="_lib/raphaeljs/raphael-min.js"></script>
+        <script type="text/javascript" src="_lib/raphaeljs/raphael-connections.js"></script>
+        <script type="text/javascript" src="_lib/jquery.collisiondetection/jquery.collisiondetection.js"></script>
+        <script type="text/javascript" src="_lib/animejs/anime.min.js"></script>
 
-        <script type="text/javascript" src="_custom/js/jquery.zoomooz.min.js"></script>
+        <script type="text/javascript" src="_lib/codemirror/codemirror.js"></script>
+        <script type="text/javascript" src="_lib/codemirror/javascript.js"></script>
+        <script type="text/javascript" src="_lib/codemirror/jshint.js"></script>
+        <script type="text/javascript" src="_lib/codemirror/css.js"></script>
+        <script type="text/javascript" src="_lib/codemirror/css-hint.js"></script>
+        <script type="text/javascript" src="_lib/codemirror/xml.js"></script>
+        <script type="text/javascript" src="_lib/codemirror/html-hint.js"></script>
+        <script type="text/javascript" src="_lib/codemirror/lint.js"></script>
+        <script type="text/javascript" src="_lib/codemirror/javascript-lint.js"></script>
+        <script type="text/javascript" src="_lib/codemirror/css-lint.js"></script>
+        <script type="text/javascript" src="_lib/codemirror/html-lint.js"></script>
+        <script type="text/javascript" src="_lib/codemirror/formatting.js"></script>
+
+        <script type="text/javascript" src="_lib/wysihtml5/wysihtml5-parser.js"></script>
+        <script type="text/javascript" src="_lib/wysihtml5/wysihtml5.js"></script>
+        <script type="text/javascript" src="_lib/flexicolorpicker/colorpicker.js"></script>
+
+
+        <script type="text/javascript" src="_shared/frametrail-core/frametrail-core.js"></script>
 
         <!--
             [if lt IE 9]>
@@ -24,24 +62,106 @@
         -->
 
 
-        <!-- FrameTrail Generic Includes -->
+        <!-- Application Code -->
 
-        <link rel="stylesheet" type="text/css" id="FrameTrailCSSVariables" href="/_shared/styles/variables.css">
+        <link rel="stylesheet" type="text/css" id="FrameTrailCSSVariables" href="_shared/styles/variables.css">
         <link rel="stylesheet" type="text/css" href="_shared/styles/frametrail-webfont.css">
         <link rel="stylesheet" type="text/css" href="_shared/styles/generic.css">
+
+        <link rel="stylesheet" type="text/css" href="player/types/Annotation/style.css">
+        <link rel="stylesheet" type="text/css" href="player/types/Hypervideo/style.css">
+        <link rel="stylesheet" type="text/css" href="player/types/Overlay/style.css">
+        <link rel="stylesheet" type="text/css" href="_shared/types/Resource/style.css">
+        <link rel="stylesheet" type="text/css" href="_shared/types/ResourceImage/style.css">
+        <link rel="stylesheet" type="text/css" href="_shared/types/ResourceLocation/style.css">
+        <link rel="stylesheet" type="text/css" href="_shared/types/ResourcePDF/style.css">
+        <link rel="stylesheet" type="text/css" href="_shared/types/ResourceVideo/style.css">
+        <link rel="stylesheet" type="text/css" href="_shared/types/ResourceVimeo/style.css">
+        <link rel="stylesheet" type="text/css" href="_shared/types/ResourceWebpage/style.css">
+        <link rel="stylesheet" type="text/css" href="_shared/types/ResourceWikipedia/style.css">
+        <link rel="stylesheet" type="text/css" href="_shared/types/ResourceYoutube/style.css">
+        <link rel="stylesheet" type="text/css" href="_shared/types/ResourceText/style.css">
+        <link rel="stylesheet" type="text/css" href="player/types/Subtitle/style.css">
+        <link rel="stylesheet" type="text/css" href="player/types/CodeSnippet/style.css">
+        <link rel="stylesheet" type="text/css" href="player/types/ContentView/style.css">
+
+        <link rel="stylesheet" type="text/css" href="_shared/modules/ResourceManager/style.css">
+        <link rel="stylesheet" type="text/css" href="_shared/modules/UserManagement/style.css">
+        <link rel="stylesheet" type="text/css" href="_shared/modules/ViewResources/style.css">
+
+        <link rel="stylesheet" type="text/css" href="player/modules/Interface/style.css">
+        <link rel="stylesheet" type="text/css" href="player/modules/InterfaceModal/style.css">
+        <link rel="stylesheet" type="text/css" href="player/modules/Sidebar/style.css">
+        <link rel="stylesheet" type="text/css" href="player/modules/Titlebar/style.css">
+        <link rel="stylesheet" type="text/css" href="player/modules/ViewOverview/style.css">
+        <link rel="stylesheet" type="text/css" href="player/modules/ViewVideo/style.css">
+        <link rel="stylesheet" type="text/css" href="player/modules/ViewLayout/style.css">
+
+        <script type="text/javascript" src="player/types/Annotation/type.js"></script>
+        <script type="text/javascript" src="player/types/Hypervideo/type.js"></script>
+        <script type="text/javascript" src="player/types/Overlay/type.js"></script>
+        <script type="text/javascript" src="_shared/types/Resource/type.js"></script>
+        <script type="text/javascript" src="_shared/types/ResourceImage/type.js"></script>
+        <script type="text/javascript" src="_shared/types/ResourceLocation/type.js"></script>
+        <script type="text/javascript" src="_shared/types/ResourcePDF/type.js"></script>
+        <script type="text/javascript" src="_shared/types/ResourceVideo/type.js"></script>
+        <script type="text/javascript" src="_shared/types/ResourceVimeo/type.js"></script>
+        <script type="text/javascript" src="_shared/types/ResourceWebpage/type.js"></script>
+        <script type="text/javascript" src="_shared/types/ResourceWikipedia/type.js"></script>
+        <script type="text/javascript" src="_shared/types/ResourceYoutube/type.js"></script>
+        <script type="text/javascript" src="_shared/types/ResourceText/type.js"></script>
+        <script type="text/javascript" src="player/types/Subtitle/type.js"></script>
+        <script type="text/javascript" src="player/types/CodeSnippet/type.js"></script>
+        <script type="text/javascript" src="player/types/ContentView/type.js"></script>
+
+        <script type="text/javascript" src="_shared/modules/Database/module.js"></script>
+        <script type="text/javascript" src="_shared/modules/TagModel/module.js"></script>
+        <script type="text/javascript" src="_shared/modules/ResourceManager/module.js"></script>
+        <script type="text/javascript" src="_shared/modules/UserManagement/module.js"></script>
+        <script type="text/javascript" src="_shared/modules/ViewResources/module.js"></script>
+        <script type="text/javascript" src="_shared/modules/RouteNavigation/module.js"></script>
+
+        <script type="text/javascript" src="_shared/modules/UserTraces/module.js"></script>
+
+        <script type="text/javascript" src="player/modules/AnnotationsController/module.js"></script>
+        <script type="text/javascript" src="player/modules/PlayerLauncher/module.js"></script>
+        <script type="text/javascript" src="player/modules/HypervideoModel/module.js"></script>
+        <script type="text/javascript" src="player/modules/HypervideoController/module.js"></script>
+        <script type="text/javascript" src="player/modules/InteractionController/module.js"></script>
+        <script type="text/javascript" src="player/modules/Interface/module.js"></script>
+        <script type="text/javascript" src="player/modules/InterfaceModal/module.js"></script>
+        <script type="text/javascript" src="player/modules/OverlaysController/module.js"></script>
+        <script type="text/javascript" src="player/modules/Sidebar/module.js"></script>
+        <script type="text/javascript" src="player/modules/SubtitlesController/module.js"></script>
+        <script type="text/javascript" src="player/modules/Titlebar/module.js"></script>
+        <script type="text/javascript" src="player/modules/CodeSnippetsController/module.js"></script>
+        <script type="text/javascript" src="player/modules/ViewOverview/module.js"></script>
+        <script type="text/javascript" src="player/modules/ViewVideo/module.js"></script>
+        <script type="text/javascript" src="player/modules/ViewLayout/module.js"></script>
+
+        <!-- Custom CSS in /_data/ -->
+        <link rel="stylesheet" type="text/css" href="_data/custom.css">
+
+        <!--
+            [if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]
+        -->
 
         <!-- Custom Field Trip CSS -->
         
         <link rel="stylesheet" type="text/css" href="_custom/css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Inconsolata|Rubik" rel="stylesheet">
+
         <!-- Custom Field Trip JS -->
         
+        <script type="text/javascript" src="_custom/js/jquery.zoomooz.min.js"></script>
         <script type="text/javascript" src="_custom/js/main.js"></script>
         
     </head>
     <body>
 
-        <button id="ftStartButton" class="ftAnimatedButton">Start</button>
+        <button id="ftStartButton" class="ftButton ftAnimatedButton">Start</button>
 
         <div class="ftLoadingIndicator active">
             <div class="ftLoadingIcon"></div>
@@ -146,11 +266,14 @@
 
             <div class="ftLayerContent">
                 
-                <iframe src="player/index.html?project=1&hypervideo=5#t=22" frameborder="0" scrolling="no" allowfullscreen></iframe>
-                <iframe src="player/index.html?project=1&hypervideo=6#t=17" frameborder="0" scrolling="no" allowfullscreen></iframe>
-                <iframe src="player/index.html?project=1&hypervideo=2" frameborder="0" scrolling="no" allowfullscreen></iframe>
-                <iframe src="player/index.html?project=1&hypervideo=4" frameborder="0" scrolling="no" allowfullscreen></iframe>
-                <iframe src="player/index.html?project=1&hypervideo=8#t=2" frameborder="0" scrolling="no" allowfullscreen></iframe>
+                <!--
+                <iframe src="player/index.html?hypervideo=5#t=22" frameborder="0" scrolling="no" allowfullscreen></iframe>
+                <iframe src="player/index.html?hypervideo=6#t=17" frameborder="0" scrolling="no" allowfullscreen></iframe>
+                <iframe src="player/index.html?hypervideo=2" frameborder="0" scrolling="no" allowfullscreen></iframe>
+                <iframe src="player/index.html?hypervideo=4" frameborder="0" scrolling="no" allowfullscreen></iframe>
+                <iframe src="player/index.html?hypervideo=8#t=2" frameborder="0" scrolling="no" allowfullscreen></iframe>
+                -->
+                <div id="VideoPlayer"></div>
 
                 <!-- NAVIGATION IS DOUBLED IN LAYERS FOR ANIMATION PURPOSES -->
                 <div class="ftNavigation">

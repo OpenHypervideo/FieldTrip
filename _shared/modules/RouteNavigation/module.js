@@ -15,11 +15,10 @@
 
 
 
-FrameTrail.defineModule('RouteNavigation', function(){
+FrameTrail.defineModule('RouteNavigation', function(FrameTrail){
 
 
-	var projectID    = getQueryVariable('project'),
-		hypervideoID = getQueryVariable('hypervideo'),
+	var hypervideoID = getQueryVariable('hypervideo'),
 		annotationID = '',
 		hashTime     = '',
 
@@ -39,12 +38,12 @@ FrameTrail.defineModule('RouteNavigation', function(){
 	function getResourceURL(src) {
 
 		if (/^https?:/.exec(src)) {
-	        
+
 	        return src;
 
 	    } else {
-	    
-	    	return '../_data/projects/' + projectID + '/resources/' + src;
+
+	    	return '_data/resources/' + src;
 
 	    }
 
@@ -78,7 +77,7 @@ FrameTrail.defineModule('RouteNavigation', function(){
 	 * @method getHashVariable
 	 * @param {String} variable
 	 * @return String
-	 * @private 
+	 * @private
 	 */
 	function getHashVariable(variable) {
 
@@ -99,7 +98,7 @@ FrameTrail.defineModule('RouteNavigation', function(){
 	 * I return an object with various info about the execution environment.
 	 * @method checkEnvironment
 	 * @return Object
-	 * @private 
+	 * @private
 	 */
 	function checkEnvironment() {
 
@@ -107,13 +106,13 @@ FrameTrail.defineModule('RouteNavigation', function(){
 			'server': (document.location.protocol == 'file:') ? false : true,
 			'hostname': document.location.hostname
 		}
-		
+
 		return environmentObj;
 
 	}
 
 	/**
-	 * I set the hypervideo id 
+	 * I set the hypervideo id
 	 * (in case it changes while the application is running).
 	 * @method setHashVariable
 	 * @param {String} id
@@ -160,7 +159,7 @@ FrameTrail.defineModule('RouteNavigation', function(){
 	 * @private
 	 */
 	function routeHasChanged(){
-		
+
 		annotationID = getHashVariable('annotations');
 
 		if (annotationID !== oldAnnotationID) {
@@ -177,14 +176,14 @@ FrameTrail.defineModule('RouteNavigation', function(){
 
 	}
 
-	
+
 	$(window).on('hashchange', routeHasChanged);
 
-	
+
 	$(window).on('popstate', function(event) {
-         
-        /* 
-        * when accessed from the overview panel, 
+
+        /*
+        * when accessed from the overview panel,
         * event.originalEvent.state.editMode
         * contains the previous editMode state
         */
@@ -194,7 +193,7 @@ FrameTrail.defineModule('RouteNavigation', function(){
     	var hypervideoID = getQueryVariable('hypervideo');
 
     	if ( hypervideoID ) {
-    		    		
+
     		if ( FrameTrail.getState('editMode') ) {
     			FrameTrail.changeState('editMode', false);
     			FrameTrail.module('HypervideoModel').updateHypervideo(hypervideoID, true);
@@ -203,9 +202,9 @@ FrameTrail.defineModule('RouteNavigation', function(){
     			FrameTrail.module('HypervideoModel').updateHypervideo(hypervideoID);
     		}
 
-    		
+
     	}
-    	
+
 
      });
 
@@ -214,18 +213,8 @@ FrameTrail.defineModule('RouteNavigation', function(){
 
 
 
-	
+
    	return {
-
-
-   		/**
-	     * The projectID, as parsed from the query part of the URL.
-	     * @attribute projectID
-	     * @type String
-	     * @readOnly
-	     */
-	    get projectID()    {  return projectID    },
-
 
 		/**
 	     * The hypervideoID, as parsed from the query part of the URL.

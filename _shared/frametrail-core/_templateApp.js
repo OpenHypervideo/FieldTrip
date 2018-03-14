@@ -1,6 +1,6 @@
 
 
-FrameTrail.start('theMainAppModule', {
+FrameTrail.init('theMainAppModule', {
 
 	// Initial state of the app:
 

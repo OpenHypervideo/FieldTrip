@@ -8,6 +8,19 @@
 	background-size: 100% 100%;
 }
 
+.resourceDetail .licenseInformation {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	width: auto;
+	max-width: 100%;
+	padding: 4px 14px 4px 6px;
+	font-size: 10px;
+	color: #555;
+	background: rgba(255,255,255,.7);
+	display: none;
+}
+
 /* Resource Thumb */
 
 .resourceThumb {
@@ -59,6 +72,7 @@
 	height: 16px;
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
+	z-index: 2;
 }
 
 .resourceThumb .resourceOverlay .resourceIcon [class^="icon-"]::before, .resourceThumb .resourceOverlay .resourceIcon [class*=" icon-"]::before {
@@ -123,29 +137,29 @@
 
 /* Edit Overlay Properties */
 
-#EditPropertiesContainer .controlsWrapper {
+.editPropertiesContainer .controlsWrapper {
 	width: 100%;
 	height: 100%;
 }
 
-#EditPropertiesContainer #PreviewThumbContainer {
+.editPropertiesContainer .previewThumbContainer {
 	float: right;
-	height: 130px;
-	width: 200px;
+	height: 100px;
+	width: 140px;
 }
 
-#EditPropertiesContainer #PreviewThumbContainer .resourceThumb {
+.editPropertiesContainer .previewThumbContainer .resourceThumb {
 	position: relative;
 	width: 100%;
 	height: 100%;
 }
 
-#EditPropertiesContainer .tagManagementUI {
+.editPropertiesContainer .tagManagementUI {
 	padding-top: 10px;
 	clear: both;
 }
 
-#EditPropertiesContainer .propertiesTypeIcon {
+.editPropertiesContainer .propertiesTypeIcon {
 	background-position: left 3px;
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -154,37 +168,37 @@
     width: 32px;
 }
 
-#EditPropertiesContainer .propertiesTypeIcon [class^="icon-"]::before, #EditPropertiesContainer .propertiesTypeIcon [class*=" icon-"]::before {
+.editPropertiesContainer .propertiesTypeIcon [class^="icon-"]::before, .editPropertiesContainer .propertiesTypeIcon [class*=" icon-"]::before {
 	font-size: 25px;
 	margin-left: 0px;
 	color: var(--primary-bg-color);
 }
 
-#EditPropertiesContainer .ui-spinner {
+.editPropertiesContainer .ui-spinner {
 	border: 1px solid var(--primary-bg-color);
-    margin-right: 10px;
+    margin-right: 0px;
     padding: 2px;
     width: 53px;
     background: var(--primary-fg-color);
 }
 
-#EditPropertiesContainer .ui-spinner input {
+.editPropertiesContainer .ui-spinner input {
 	width: 31px;
 	margin-top: 0px;
 	margin-bottom: 0px;
 	overflow: hidden;
 }
 
-#EditPropertiesContainer .ui-spinner .ui-spinner-button {
+.editPropertiesContainer .ui-spinner .ui-spinner-button {
 	background-color: var(--secondary-bg-color);
 }
 
-#EditPropertiesContainer .ui-spinner .ui-spinner-button [class^="icon-"], #EditPropertiesContainer .ui-spinner .ui-spinner-button [class*=" icon-"] {
+.editPropertiesContainer .ui-spinner .ui-spinner-button [class^="icon-"], .editPropertiesContainer .ui-spinner .ui-spinner-button [class*=" icon-"] {
 	overflow: visible;
 	line-height: 14px;
 }
 
-#EditPropertiesContainer .ui-spinner .ui-spinner-button [class^="icon-"]::before, #EditPropertiesContainer .ui-spinner .ui-spinner-button [class*=" icon-"]::before {
+.editPropertiesContainer .ui-spinner .ui-spinner-button [class^="icon-"]::before, .editPropertiesContainer .ui-spinner .ui-spinner-button [class*=" icon-"]::before {
 	position: absolute;
 	left: 0px;
 	text-indent: 0;
@@ -193,38 +207,44 @@
 	line-height: 15px;
 }
 
-#EditPropertiesContainer .ui-spinner .ui-spinner-button:hover {
+.editPropertiesContainer .ui-spinner .ui-spinner-button:hover {
 	background-color: var(--primary-bg-color);
 	cursor: pointer;
 }
 
-#EditPropertiesContainer #TimeControls {
+.editPropertiesContainer .timeControls {
 	float: left;
 	position: relative;
-	width: 132px;
+	width: 126px;
 	overflow: hidden;
 }
 
-#EditPropertiesContainer #TimeControls label, #EditPropertiesContainer #TimeControls .ui-spinner {
-	width: 120px;
+.editPropertiesContainer .timeControls .ui-spinner {
+	width: 70px;
+	margin: 5px 0 5px 0;
+	display: inline-block;
+}
+
+.editPropertiesContainer .timeControls label {
+	width: 40px;
 	margin-bottom: 0px;
-	display: block;
+	display: inline-block;
 }
 
-#EditPropertiesContainer #TimeControls .ui-spinner input {
-	width: 100px;
+.editPropertiesContainer .timeControls .ui-spinner input {
+	width: 52px;
 	overflow: hidden;
 }
 
-#EditPropertiesContainer #TimeControls #DeleteOverlay, #EditPropertiesContainer #TimeControls #DeleteAnnotation {
+.editPropertiesContainer .timeControls .deleteOverlay, .editPropertiesContainer .timeControls .deleteAnnotation {
 	padding: 0 6px;
     position: absolute;
     right: 7px;
     top: 0;
 }
 
-#EditPropertiesContainer #PositionControls {
-	float: left;
+.editPropertiesContainer .positionControls {
+	float: right;
 	position: relative;
 	margin-bottom: 10px;
 	width: 232px;
@@ -236,52 +256,68 @@
 	overflow: hidden;
 }
 
-#EditPropertiesContainer #PositionControls .ui-spinner[data-input-id="PositionTop"] {
+.editPropertiesContainer .positionControls .ui-spinner[data-input-id="PositionTop"] {
 	left: 31%;
     position: absolute;
     top: 8%;
 }
 
-#EditPropertiesContainer #PositionControls .ui-spinner[data-input-id="PositionLeft"] {
+.editPropertiesContainer .positionControls .ui-spinner[data-input-id="PositionLeft"] {
 	left: 4%;
     position: absolute;
     top: 31.6%;
 }
 
-#EditPropertiesContainer #PositionControls .ui-spinner[data-input-id="PositionWidth"] {
+.editPropertiesContainer .positionControls .ui-spinner[data-input-id="PositionWidth"] {
 	left: 52%;
     position: absolute;
     top: 72%;
 }
 
-#EditPropertiesContainer #PositionControls .ui-spinner[data-input-id="PositionHeight"] {
+.editPropertiesContainer .positionControls .ui-spinner[data-input-id="PositionHeight"] {
 	left: 70%;
     position: absolute;
     top: 50%;
 }
 
-#EditPropertiesContainer #OverlayOptionsTabs {
-	clear: both;
+.editPropertiesContainer .textContentEditorContainer {
+	height: 100%;
 }
 
-#EditPropertiesContainer #OpacitySlider {
+.editPropertiesContainer .overlayOptionsWrapper {
+	clear: both;
+	height: calc(100% - 140px);
+}
+
+.editPropertiesContainer .annotationOptionsWrapper {
+	clear: both;
+	height: calc(100% - 104px);
+}
+
+.editPropertiesContainer .overlayOptionsTabs, .editPropertiesContainer .annotationOptionsTabs {
+	clear: both;
+	height: 100%;
+}
+
+.editPropertiesContainer .opacitySlider {
 	margin: 10px 5px;
 	height: 6px;
 	background: #cfcfcf;
 }
 
-#EditPropertiesContainer #OpacitySlider .ui-slider-range {
+.editPropertiesContainer .opacitySlider .ui-slider-range {
 	background: rgba(47, 50, 58, .5);
 }
 
-#EditPropertiesContainer #OpacitySlider .ui-slider-handle {
+.editPropertiesContainer .opacitySlider .ui-slider-handle {
 	background: var(--primary-bg-color);
 	height: 14px;
 	width: 10px;
 	margin-left: -5px;
 }
 
-#EditPropertiesContainer textarea {
+.editPropertiesContainer textarea {
 	box-sizing: border-box;
     width: 100%;
+    /*visibility: hidden;*/
 }

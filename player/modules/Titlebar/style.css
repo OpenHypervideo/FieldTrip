@@ -1,4 +1,4 @@
-#Titlebar {
+.titlebar {
 	order: 0;
     flex: 0 1 40px;
     align-self: auto;
@@ -13,19 +13,19 @@
 	transition: all 200ms linear;
 }
 
-#Titlebar.sidebarOpen {
+.titlebar.sidebarOpen {
 	box-shadow: 202px 0 2px 1px #000;
 }
 
-#Titlebar.sidebarOpen.editActive {
+.titlebar.sidebarOpen.editActive {
 	box-shadow: none;
 }
 
-#Titlebar.editActive {
+.titlebar.editActive {
 	background: var(--secondary-fg-color);
 }
 
-#Titlebar button {
+.titlebar button {
 	width: 40px;
 	height: 40px;
 	font-size: 19px;
@@ -35,25 +35,25 @@
 	color: var(--primary-fg-color);
 }
 
-#Titlebar.editActive button {
+.titlebar.editActive button {
 	color: var(--primary-bg-color);
 }
 
-#Titlebar #SidebarToggleWidget {
+.titlebar .sidebarToggleWidget {
 	float: left;
 	background-color: transparent;
 	display: none;
 }
 
-#Titlebar #SidebarToggleWidget.sidebarActive {
+.titlebar .sidebarToggleWidget.sidebarActive {
 	background-color: var(--primary-bg-color);
 }
 
-#Titlebar.editActive #SidebarToggleWidget.sidebarActive {
+.titlebar.editActive .sidebarToggleWidget.sidebarActive {
 	background-color: #e0e3e6;
 }
 
-#Titlebar #SidebarToggleWidget.unsavedChanges:after {
+.titlebar .sidebarToggleWidget.unsavedChanges:after {
 	content: "*";
 	top: 4px;
 	right: 10px;
@@ -63,29 +63,29 @@
 	padding-right: 6px;
 }
 
-#TitlebarViewMode {
+.titlebarViewMode {
 	float: left;
 }
 
-#TitlebarViewMode.hidden {
+.titlebarViewMode.hidden {
 	display: none;
 }
 
-#Titlebar.editActive #TitlebarViewMode.hidden {
+.titlebar.editActive .titlebarViewMode.hidden {
 	display: block;
 }
 
- #TitlebarViewMode button {
+ .titlebarViewMode button {
 	float: left;
 	position: relative;
 	opacity: .7;
 }
 
-#Titlebar #TitlebarViewMode button[data-viewmode="video"] {
+.titlebar .titlebarViewMode button[data-viewmode="video"] {
 	margin-left: 20px;
 }
 
-#Titlebar #TitlebarViewMode button[data-viewmode="video"]:after {
+.titlebar .titlebarViewMode button[data-viewmode="video"]:after {
 	content: ">";
 	position: absolute;
 	top: 8px;
@@ -95,11 +95,11 @@
 	font-size: 13px;
 }
 
-#Titlebar.editActive #TitlebarViewMode button[data-viewmode="video"]:after {
+.titlebar.editActive .titlebarViewMode button[data-viewmode="video"]:after {
 	color: var(--primary-bg-color);
 }
 
-#TitlebarViewMode button.unsavedChanges:before {
+.titlebarViewMode button.unsavedChanges:before {
 	content: "*";
 	position: absolute;
 	top: -4px;
@@ -109,30 +109,30 @@
 	font-size: 20px;
 }
 
-#TitlebarViewMode button:hover {
+.titlebarViewMode button:hover {
 	opacity: 1;
 }
 
 
-#TitlebarViewMode button.active {
+.titlebarViewMode button.active {
 	background-color: transparent;
 	/*color: var(--primary-fg-color);*/
 	opacity: 1;
 	pointer-events: none;
 }
 
-#Titlebar.editActive #TitlebarViewMode button.active {
+.titlebar.editActive .titlebarViewMode button.active {
 	opacity: 1;
 	pointer-events: none;
 }
 
-#Titlebar #HypervideoActionButtonContainer {
+.titlebar .hypervideoActionButtonContainer {
 	position: absolute;
 	top: 0px;
 	left: 160px;
 }
 
-#Titlebar #TitlebarTitle {
+.titlebar .titlebarTitle {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -143,29 +143,29 @@
 	z-index: -1;
 }
 
-#Titlebar.editActive #TitlebarTitle {
+.titlebar.editActive .titlebarTitle {
 	color: var(--primary-bg-color);
 }
 
-#Titlebar #TitlebarActionButtonContainer, #Titlebar #SharingWidget, #Titlebar #LogoutButton {
+.titlebar .titlebarActionButtonContainer, .titlebar .sharingWidget, .titlebar .logoutButton {
 	float: right;
 }
 
-#Titlebar #TitlebarActionButtonContainer #NewHypervideoButton, #Titlebar #TitlebarActionButtonContainer #ManageResourcesButton, #Titlebar #TitlebarActionButtonContainer .startEditButton, #Titlebar #TitlebarActionButtonContainer .leaveEditModeButton, #Titlebar #TitlebarActionButtonContainer .userSettingsButton {
+.titlebar .titlebarActionButtonContainer .newHypervideoButton, .titlebar .titlebarActionButtonContainer .manageResourcesButton, .titlebar .titlebarActionButtonContainer .startEditButton, .titlebar .titlebarActionButtonContainer .leaveEditModeButton, .titlebar .titlebarActionButtonContainer .userSettingsButton {
 	float: left;
 }
 
-#NewHypervideoDialog .message.error {
+.newHypervideoDialog .message.error {
 	position: absolute;
 }
 
-#NewHypervideoDialog #UploadNewVideoResource {
+.newHypervideoDialog .uploadNewVideoResource {
 	position: absolute;
 	right: 0px;
 	top: 6px;
 }
 
-#ShareDialog input[type="text"], #ShareDialog textarea {
+.shareDialog input[type="text"], .shareDialog textarea {
 	box-sizing: border-box;
     display: block;
     width: 100%;

@@ -1,4 +1,4 @@
-#MainContainer {
+.mainContainer {
 	order: 1;
     flex: 1 1 auto;
     align-self: auto;
@@ -16,18 +16,18 @@
 }
 
 
-#MainContainer.sidebarOpen {
-	width: calc(100vw - 164px);
+.mainContainer.sidebarOpen {
+	width: calc(100% - 164px);
 	margin-left: 164px;
 }
 
-#MainContainer.inFullscreen {
+.mainContainer.inFullscreen:not(.editActive) {
 	width: 100%;
 	top: 0px;
 }
 
-#MainContainer.editActive {
-	border-top: 1px solid var(--secondary-bg-color);
+.mainContainer.editActive {
+	border-top: 1px solid rgba(73, 76, 81, .6);
 	color: var(--primary-bg-color);
 }
 

@@ -1,36 +1,36 @@
-#ViewResources {
+.viewResources {
 	color: var(--primary-bg-color);
 }
 
-#ViewResources #ResourcesControls {
+.viewResources .resourcesControls {
 	width: 100%;
 	border-bottom: 1px solid #afafaf;
     height: 48px;
 }
 
-#ViewResources #ResourcesControls button {
+.viewResources .resourcesControls button {
 	float: left;
 	margin-right: 6px;
 }
 
 
-#ViewResources #ResourcesControls #ResourceDelete.active {
+.viewResources .resourcesControls .resourceDelete.active {
 	border-color: #cd0a0a;
 	box-shadow: inset 0 0 2px 2px #333;
 	margin-right: 0px;
 }
 
-#ViewResources #ResourcesControls #ResourceDeleteConfirm {
+.viewResources .resourcesControls .resourceDeleteConfirm {
 	background-color: rgba(205, 10, 10, .6) !important;
 	border-color: #cd0a0a;
 	color: var(--primary-fg-color);
 }
 
-#ViewResources #ResourcesControls #ResourceDeleteConfirm:hover {
+.viewResources .resourcesControls .resourceDeleteConfirm:hover {
 	background-color: rgba(205, 10, 10, 1) !important;
 }
 
-#ViewResources #ResourcesControls .message {
+.viewResources .resourcesControls .message {
 	display: none;
     margin-left: 20px;
     margin-top: 6px;
@@ -38,23 +38,23 @@
     width: 250px;
 }
 
-#ViewResources #ResourcesControls .message.active {
+.viewResources .resourcesControls .message.active {
 	display: inline-block;
 }
 
-#ViewResources #ResourcesFilter {
+.viewResources .resourcesFilter {
 	width: 100%;
 	padding: 10px 0;
 	clear: both;
 }
 
-#ViewResources #ResourcesList {
+.viewResources .resourcesList {
 	position: relative;
 	width: 100%;
 	overflow: auto;
 }
 
-#ViewResources #ResourcesList .resourceThumb, #NewHypervideoDialog #NewHypervideoDialogResources .resourceThumb {
+.viewResources .resourcesList .resourceThumb, .newHypervideoDialog .newHypervideoDialogResources .resourceThumb {
 	float: left;
 	position: relative;
 	width: 120px;
@@ -62,19 +62,19 @@
 	margin: 6px;
 }
 
-#ViewResources #ResourcesList .resourceThumb.selected, #NewHypervideoDialog #NewHypervideoDialogResources .resourceThumb.selected {
+.viewResources .resourcesList .resourceThumb.selected, .newHypervideoDialog .newHypervideoDialogResources .resourceThumb.selected {
 	outline: 2px solid var(--primary-bg-color);
 }
 
-#ViewResources #ResourcesList .resourceThumb.markedForDeletion { 
+.viewResources .resourcesList .resourceThumb.markedForDeletion { 
 	box-shadow: 0 0 2px 2px #cd0a0a;
 }
 
-#ViewResources #ResourcesList .resourceThumb.markedForDeletion .resourceOverlay {
+.viewResources .resourcesList .resourceThumb.markedForDeletion .resourceOverlay {
 	background: rgba(205, 10, 10, .6);
 }
 
-#ViewResources #ResourcesList #LoadingScreen {
+.viewResources .resourcesList .loadingScreen {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -84,7 +84,7 @@
 	background-color: rgba(248, 248, 248, 0.4);
 }
 
-#ViewResources #ResourcesList #LoadingErrorMessage {
+.viewResources .resourcesList .loadingErrorMessage {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -94,7 +94,7 @@
 	background-color: rgba(248, 248, 248, 0.9);
 }
 
-#ViewResources #ResourcesList #LoadingErrorMessage .message {
+.viewResources .resourcesList .loadingErrorMessage .message {
 	position: absolute;
 	top: 40%;
 	left: 50%;
@@ -104,7 +104,7 @@
 
 /* Upload Dialog */
 
-#UploadDialog .progress {
+.uploadDialog .progress {
 	background: #666 none repeat scroll 0 0;
     display: none;
     height: 100%;
@@ -117,14 +117,14 @@
     z-index: 10000;
 }
 
-#UploadDialog .progress .bar {
+.uploadDialog .progress .bar {
 	background-color: #7fc07f;
 	width: 0%;
 	height: 100%;
 	border-radius: 3px;
 }
 
-#UploadDialog .progress .percent {
+.uploadDialog .progress .percent {
 	position: absolute;
 	display: block;
 	top: 40%;
@@ -135,7 +135,7 @@
 	font-size: 30px;
 }
 
-#UploadDialog .progress .uploadStatus {
+.uploadDialog .progress .uploadStatus {
 	position: absolute;
 	display: block;
 	bottom: 18%;
@@ -145,17 +145,17 @@
 	text-align: center;
 }
 
-#UploadDialog #locationSearchWrapper {
+.uploadDialog .locationSearchWrapper {
 	position: relative;
 	margin-bottom: 10px;
 }
 
-#UploadDialog #locationSearchWrapper #locationSearchCopyright {
+.uploadDialog .locationSearchWrapper .locationSearchCopyright {
 	color: #afafaf;
     font-size: 11px;
 }
 
-#UploadDialog #locationSearchWrapper #locationSearchSuggestions {
+.uploadDialog .locationSearchWrapper .locationSearchSuggestions {
 	position: absolute;
 	top: 41px;
 	background: #d5d6da;
@@ -167,7 +167,7 @@
 	display: none;
 }
 
-#UploadDialog #locationSearchWrapper #locationSearchSuggestions li {
+.uploadDialog .locationSearchWrapper .locationSearchSuggestions li {
 	list-style: none;
 	font-size: 13px;
     font-weight: 100;
@@ -175,7 +175,7 @@
 	padding: 2px 6px;
 }
 
-#UploadDialog #locationSearchWrapper #locationSearchSuggestions li:hover {
+.uploadDialog .locationSearchWrapper .locationSearchSuggestions li:hover {
 	background: #bfbfbf;
 	cursor: pointer;
 }

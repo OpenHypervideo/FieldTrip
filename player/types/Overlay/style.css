@@ -1,6 +1,6 @@
 /* Timeline Element */
 
-#OverlayTimeline .timelineElement {
+.overlayTimeline .timelineElement {
 	position: absolute;
 	height: 100%;
 	background: rgba(160, 163, 163, .6);
@@ -15,28 +15,28 @@
     transition-property: bottom;
 }
 
-#OverlayTimeline .timelineElement.active {
+.overlayTimeline .timelineElement.active {
 	background: rgba(160, 163, 163, 1);
 }
 
-#OverlayTimeline .timelineElement.highlighted {
+.overlayTimeline .timelineElement.highlighted {
 	background: #f8f8f8 !important;
 	z-index: 100000;
 }
 
-#OverlayTimeline.editable .timelineElement {
+.overlayTimeline.editable .timelineElement {
 	background-color: rgba(160, 170, 175, 0.8);
 }
 
-#OverlayTimeline .timelineElement.brushed {
+.overlayTimeline .timelineElement.brushed {
 	background: #cad4d9;
 }
 
-#OverlayTimeline .timelineElement.ui-draggable:hover {
+.overlayTimeline .timelineElement.ui-draggable:hover {
 	cursor: move;
 }
 
-#OverlayTimeline .timelineElement.ui-resizable .ui-resizable-handle {
+.overlayTimeline .timelineElement.ui-resizable .ui-resizable-handle {
 	position: absolute;
 	top: -2px;
 	width: 3px;
@@ -47,67 +47,67 @@
 	display: none;
 }
 
-#OverlayTimeline .timelineElement.ui-resizable .ui-resizable-handle:hover {
+.overlayTimeline .timelineElement.ui-resizable .ui-resizable-handle:hover {
 	background-color: var(--primary-fg-color);
 }
 
-#OverlayTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-ne {
+.overlayTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-ne {
 	top: -2px;
 	right: -2px;
 	cursor: ne-resize;
 }
 
-#OverlayTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-nw {
+.overlayTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-nw {
 	top: -2px;
 	left: -2px;
 	cursor: nw-resize;
 }
 
-#OverlayTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-se {
+.overlayTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-se {
 	bottom: -2px;
 	right: -2px;
 	cursor: se-resize;
 }
 
-#OverlayTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-sw {
+.overlayTimeline .timelineElement.ui-resizable .ui-resizable-handle.ui-resizable-sw {
 	bottom: -2px;
 	left: -2px;
 	cursor: sw-resize;
 }
 
-#OverlayTimeline .timelineElement.ui-resizable:hover .ui-resizable-handle {
+.overlayTimeline .timelineElement.ui-resizable:hover .ui-resizable-handle {
 	display: block;
 }
 
 /* Overlay Element */
 
-#OverlayContainer .overlayElement {
+.overlayContainer .overlayElement {
 	position: absolute;
 	background: transparent;
 	visibility: hidden;
 }
 
-#OverlayContainer .overlayElement.active {
+.overlayContainer .overlayElement.active {
 	visibility: visible;
 }
 
-#OverlayContainer .overlayElement.highlighted {
+.overlayContainer .overlayElement.highlighted {
 	box-shadow: 0 0 1px 2px #f8f8f8 !important;
 }
 
-#MainContainer.editActive #OverlayContainer .overlayElement.ui-draggable.brushed {
+.mainContainer.editActive .overlayContainer .overlayElement.ui-draggable.brushed {
 	box-shadow: 0 0 2px 1px #cfcfcf;
 }
 
-#OverlayContainer .overlayElement.ui-draggable .resourceDetail {
+.overlayContainer .overlayElement.ui-draggable .resourceDetail {
 	pointer-events: none;
 }
 
-#OverlayContainer .overlayElement.ui-draggable:hover {
+.overlayContainer .overlayElement.ui-draggable:hover {
 	cursor: move;
 }
 
-#OverlayContainer .overlayElement.ui-resizable .ui-resizable-handle {
+.overlayContainer .overlayElement.ui-resizable .ui-resizable-handle {
 	position: absolute;
 	width: 4px;
 	height: 4px;
@@ -117,41 +117,41 @@
 	display: none !important;
 }
 
-#OverlayContainer .overlayElement.ui-resizable .ui-resizable-handle:hover {
+.overlayContainer .overlayElement.ui-resizable .ui-resizable-handle:hover {
 	background-color: var(--primary-fg-color);
 }
 
-#OverlayContainer .overlayElement.ui-resizable .ui-resizable-handle.ui-resizable-ne {
+.overlayContainer .overlayElement.ui-resizable .ui-resizable-handle.ui-resizable-ne {
 	top: -2px;
 	right: -2px;
 	cursor: ne-resize;
 }
 
-#OverlayContainer .overlayElement.ui-resizable .ui-resizable-handle.ui-resizable-nw {
+.overlayContainer .overlayElement.ui-resizable .ui-resizable-handle.ui-resizable-nw {
 	top: -2px;
 	left: -2px;
 	cursor: nw-resize;
 }
 
-#OverlayContainer .overlayElement.ui-resizable .ui-resizable-handle.ui-resizable-se {
+.overlayContainer .overlayElement.ui-resizable .ui-resizable-handle.ui-resizable-se {
 	bottom: -2px;
 	right: -2px;
 	cursor: se-resize;
 }
 
-#OverlayContainer .overlayElement.ui-resizable .ui-resizable-handle.ui-resizable-sw {
+.overlayContainer .overlayElement.ui-resizable .ui-resizable-handle.ui-resizable-sw {
 	bottom: -2px;
 	left: -2px;
 	cursor: sw-resize;
 }
 
-#OverlayContainer .overlayElement.ui-resizable:hover .ui-resizable-handle {
+.overlayContainer .overlayElement.ui-resizable:hover .ui-resizable-handle {
 	display: block !important;
 }
 
 /* Edit Overlay Properties */
 
-#EditPropertiesContainer #OverlayOptionsTabs .message {
+.editPropertiesContainer .overlayOptionsTabs .message {
 	float: right;
 	width: 330px;
 	font-size: 13px;

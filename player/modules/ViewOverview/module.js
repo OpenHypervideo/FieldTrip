@@ -11,13 +11,13 @@
  */
 
 
-FrameTrail.defineModule('ViewOverview', function(){
+FrameTrail.defineModule('ViewOverview', function(FrameTrail){
 
-    var domElement = $(    '<div id="ViewOverview">'
-                        +  '    <div id="OverviewList"></div>'
+    var domElement = $(    '<div class="viewOverview">'
+                        +  '    <div class="overviewList"></div>'
                         +  '</div>'),
 
-        OverviewList     = domElement.find('#OverviewList'),
+        OverviewList     = domElement.find('.overviewList'),
         listWidthState;
 
 
@@ -30,7 +30,7 @@ FrameTrail.defineModule('ViewOverview', function(){
      */
     function create() {
 
-        $('#MainContainer').append(domElement);
+        $('.mainContainer').append(domElement);
 
         toggleViewMode(FrameTrail.getState('viewMode'));
         toggleEditMode(FrameTrail.getState('editMode'));
@@ -56,7 +56,6 @@ FrameTrail.defineModule('ViewOverview', function(){
             thumb,
             owner,
             admin = FrameTrail.module('UserManagement').userRole === 'admin',
-            projectID = FrameTrail.module('RouteNavigation').projectID,
             editMode = FrameTrail.getState('editMode');
             userColor = FrameTrail.getState('userColor');
 
@@ -117,7 +116,7 @@ FrameTrail.defineModule('ViewOverview', function(){
 
                         if ( FrameTrail.getState('editMode') && FrameTrail.getState('unsavedChanges') ) {
 
-                            var confirmDialog = $('<div id="ConfirmSaveChanges" title="Save changes?">'
+                            var confirmDialog = $('<div class="confirmSaveChanges" title="Save changes?">'
                                                 + '    <div class="message active">Your changes in the current video will be lost if you don\'t save them.</div>'
                                                 + '    <p>Do you want to save your changes?</p>'
                                                 + '</div>');
@@ -137,7 +136,7 @@ FrameTrail.defineModule('ViewOverview', function(){
 
                                         history.pushState({
                                             editMode: FrameTrail.getState('editMode')
-                                        }, "", "?project=" + FrameTrail.module('RouteNavigation').projectID + "&hypervideo=" + newHypervideoID);
+                                        }, "", "?hypervideo=" + newHypervideoID);
 
                                         FrameTrail.changeState('editMode', false);
 
@@ -176,7 +175,7 @@ FrameTrail.defineModule('ViewOverview', function(){
 
                             history.pushState({
                                 editMode: FrameTrail.getState('editMode')
-                            }, "", "?project=" + FrameTrail.module('RouteNavigation').projectID + "&hypervideo=" + newHypervideoID);
+                            }, "", "?hypervideo=" + newHypervideoID);
 
                             if ( FrameTrail.getState('editMode') ) {
 
@@ -243,10 +242,10 @@ FrameTrail.defineModule('ViewOverview', function(){
 
         if ( FrameTrail.getState('viewMode') != 'overview' ) return;
 
-        var overviewListHeight = $('#MainContainer').outerHeight()
+        var overviewListHeight = $('.mainContainer').outerHeight()
                                     - (FrameTrail.getState('editMode') ? 24 : 0),
-            overviewListWidth = $(window).width()
-                                    - (FrameTrail.getState('sidebarOpen') ? $('#Sidebar').width() : 0);
+            overviewListWidth = $(FrameTrail.getState('target')).width()
+                                    - (FrameTrail.getState('sidebarOpen') ? $('.sidebar').width() : 0);
 
         OverviewList.height( overviewListHeight );
 
@@ -363,7 +362,7 @@ FrameTrail.defineModule('ViewOverview', function(){
             listWidthState = false;
             changeViewSize();
             domElement.addClass('active');
-            FrameTrail.module('Titlebar').title = FrameTrail.module('Database').project.name;
+            FrameTrail.module('Titlebar').title = 'Overview';
         } else if (viewMode != 'resources') {
             domElement.removeClass('active');
         }
@@ -380,9 +379,9 @@ FrameTrail.defineModule('ViewOverview', function(){
     function toggleEditMode(editMode) {
 
         if (editMode) {
-            
+
         } else {
-            
+
         }
 
         initList();

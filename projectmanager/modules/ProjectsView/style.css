@@ -1,9 +1,0 @@
-#ProjectsView #ProjectManagerOptions {
-	border-bottom: 1px solid #afafaf;
-    height: 48px;
-    margin-bottom: 10px;
-}
-
-#ProjectsView #ProjectsList {
-	overflow: auto;
-}

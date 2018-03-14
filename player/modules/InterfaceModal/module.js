@@ -16,17 +16,17 @@
  */
 
 
-FrameTrail.defineModule('InterfaceModal', function(){
+FrameTrail.defineModule('InterfaceModal', function(FrameTrail){
 
 
-	var loadingScreen = $('<div id="loadingScreen">'
-						+ '    <div id="LoadingTitle"></div>'
+	var loadingScreen = $('<div class="loadingScreen">'
+						+ '    <div class="loadingTitle"></div>'
 						+ '    <div class="workingSpinner"></div>'
 						+ '</div>'),
-		statusMessage = $('<div id="statusMessage" class="message"></div>');
+		statusMessage = $('<div class="statusMessage message"></div>');
 
-	$('body').append(loadingScreen);
-   	$('body').append(statusMessage);
+	$(FrameTrail.getState('target')).append(loadingScreen);
+   	$(FrameTrail.getState('target')).append(statusMessage);
 
 
 
@@ -105,7 +105,7 @@ FrameTrail.defineModule('InterfaceModal', function(){
 				top: '',
 				backgroundColor: ''
 			});
-		}).children('#LoadingTitle').delay( 1000 ).animate({
+		}).children('.loadingTitle').delay( 1000 ).animate({
 			top: 20 + 'px',
 			fontSize: 10 + 'px'
 		}, 600, function() {
@@ -118,13 +118,13 @@ FrameTrail.defineModule('InterfaceModal', function(){
 	}
 
 	/**
-	 * I set the loading screen title to either the hypervideo name or the project name.
+	 * I set the loading screen title.
 	 * @method setLoadingTitle
 	 * @param {String} title
 	 */
 	function setLoadingTitle(title) {
 
-		loadingScreen.children('#LoadingTitle').text(title);
+		loadingScreen.children('.loadingTitle').text(title);
 
 	}
 

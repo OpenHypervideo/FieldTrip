@@ -14,6 +14,6 @@
 
 /* Edit Vimeo Overlay Properties */
 
-#EditPropertiesContainer .propertiesTypeIcon[data-type="vimeo"] [class^="icon-"]::before, #EditPropertiesContainer .propertiesTypeIcon[data-type="vimeo"] [class*=" icon-"]::before {
+.editPropertiesContainer .propertiesTypeIcon[data-type="vimeo"] [class^="icon-"]::before, .editPropertiesContainer .propertiesTypeIcon[data-type="vimeo"] [class*=" icon-"]::before {
 	content: "\f194";
 }

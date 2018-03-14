@@ -5,7 +5,51 @@ var previousLayer,
 
 $(document).ready(function() {
 
-	initEventListeners();
+	// Check Setup
+    if (!!document.location.host) {
+        $.ajax({
+            "type": "POST",
+            url: "_server/ajaxServer.php",
+            data: {"a":"setupCheck"},
+            dataType: "json",
+            success: function(ret) {
+                if (ret["code"] != "1") {
+                    var setupUrl = window.location.href.replace('index.html', '') + 'setup.html';
+                    window.location.replace(setupUrl);
+                }
+            }
+        });
+    }
+
+    window.FieldTripInstance = FrameTrail.init('PlayerLauncher', {
+
+        target:             '#VideoPlayer',
+        contentTargets:     {},
+        contents:           {
+                                hypervideo: '',
+                                annotationsIndex: '',
+                                annotations: [],
+                                resources: [],
+                                users: ''
+                            },
+
+        loggedIn:           false,
+        username:           '',
+        viewMode:           'video',
+        editMode:           false,
+        slidePosition:      'middle',
+        sidebarOpen:        false,
+        fullscreen:         false,
+        viewSize:           [0,0],
+        unsavedChanges:     false
+
+    });
+
+    FieldTripInstance.on('ready', function() {
+    	FieldTripInstance.play();
+    });
+
+    initEventListeners();
 
 	//$('.ftLoadingIndicator').removeClass('active').fadeOut(1000);
 	//activateLayer('Overview');
@@ -87,8 +131,8 @@ function initEventListeners() {
 	$('.ftMapPin').click(function() {
 		var videoID = $(this).attr('href').split('Video/')[1];
 
-		$('#ftVideo iframe').removeClass('active');
-		$('#ftVideo iframe[src^="player/index.html?project=1&hypervideo='+ videoID +'"]').addClass('active');
+		$('.viewOverview .hypervideoThumb[data-hypervideoid="'+ videoID +'"]').click();
+		$('#ftVideo #VideoPlayer').addClass('active');
 	});
 
 	// Navigation

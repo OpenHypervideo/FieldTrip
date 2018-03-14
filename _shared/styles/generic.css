@@ -16,8 +16,9 @@
     src: url("../fonts/Titillium_Web/TitilliumWeb-Light.ttf") format("truetype");
 }
 
-body {
-	background: var(--primary-bg-color);
+.frametrail-body {
+	position: relative;
+    background: var(--primary-bg-color);
 	font-family: TitilliumWeb,"Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 14px;
     font-weight: 400;
@@ -29,6 +30,38 @@ body {
     justify-content: flex-start;
     align-content: stretch;
     align-items: flex-start;
+}
+
+.wysihtml5-editor {
+    height: 100%;
+    overflow: auto !important;
+    font-family: TitilliumWeb,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.wysihtml5-editor p {
+    margin: 0;
+}
+
+.wysihtml5-editor ol, .wysihtml5-editor ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.frametrail-body.editActive {
+    position: fixed !important;
+    top: 0px !important;
+    left: 0px !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+body > .ui-dialog, body > .ui-draggable, body > .contentViewPreview {
+    background-color: var(--primary-bg-color);
+    font-family: TitilliumWeb,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 button, input[type="submit"], input[type="button"], .button {
@@ -72,7 +105,7 @@ input[type="text"], input[type="password"], textarea {
 	font-family: TitilliumWeb,"Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 14px;
 	margin: 4px 8px 4px 0;
-    padding: 8px 6px;
+    padding: 3px 5px;
     border: 2px solid var(--semi-transparent-bg-color);
     background: var(--primary-fg-color);
     color: var(--primary-bg-color);
@@ -154,6 +187,7 @@ input[readonly], textarea[readonly] {
     position: absolute;
     font-size: 26px;
     background: var(--primary-bg-color);
+    color: var(--primary-fg-color);
     opacity: .7;
     overflow: hidden;
 }
@@ -927,12 +961,12 @@ input[readonly], textarea[readonly] {
 
 /* Generic User Management CSS */
 
-#SelectUserContainer {
+.selectUserContainer {
     float: left;
     margin: 10px 0;
 }
 
-#UserDataContainer {
+.userDataContainer {
     display: none;
     float: left;
     margin-left: 25px;
@@ -956,4 +990,9 @@ input[readonly], textarea[readonly] {
 .userColorCollectionItem.selected {
     outline: 3px solid var(--primary-bg-color);
     opacity: 1;
+}
+
+.admin-only {
+    opacity: .4;
+    pointer-events: none;
 }

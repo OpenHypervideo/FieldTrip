@@ -20,93 +20,99 @@ FrameTrail.defineType(
 
     'Subtitle',
 
-    function(data){
+    function (FrameTrail) {
+        return {
+            constructor: function(data){
 
-        this.data = data;
+                this.data = data;
 
-        this.subtitleElement = $('<div class="subtitleElement"></div>');
+                this.subtitleElement = $('<div class="subtitleElement"></div>');
 
-    },
+            },
+            prototype: {
+                /**
+                 * I hold the data object of a single Subtitle, which is stored in the {{#crossLink "Database"}}Database{{/crossLink}}.
+                 * @attribute data
+                 * @type {}
+                 */
+                data:                   {},
 
-    {
-        /**
-         * I hold the data object of a single Subtitle, which is stored in the {{#crossLink "Database"}}Database{{/crossLink}}.
-         * @attribute data
-         * @type {}
-         */
-        data:                   {},
+                /**
+                 * I store my state, wether I am "active" (visible) or not active (invisible).
+                 * @attribute activeState
+                 * @type Boolean
+                 */
+                activeState:            false,
 
-        /**
-         * I store my state, wether I am "active" (visible) or not active (invisible).
-         * @attribute activeState
-         * @type Boolean
-         */
-        activeState:            false,
+                /**
+                 * I hold the subtitleElement (a jquery-enabled HTMLElement), which indicates my start and end time.
+                 * @attribute subtitleElement
+                 * @type HTMLElement
+                 */
+                subtitleElement:        null,
 
-        /**
-         * I hold the subtitleElement (a jquery-enabled HTMLElement), which indicates my start and end time.
-         * @attribute subtitleElement
-         * @type HTMLElement
-         */
-        subtitleElement:        null,
-
-        /**
-         * I render my DOM elements ({{#crossLink "Overlay/timelineElement:attribute"}}Overlay/timelineElement{{/crossLink}}
-         * and {{#crossLink "Overlay/overlayElement:attribute"}}Overlay/overlayElement{{/crossLink}}) into the DOM.
-         *
-         * I am called, when the Overlay is initialized. My counterpart ist {{#crossLink "Overlay/removeFromDOM:method"}}Overlay/removeFromDOM{{/crossLink}}.
-         *
-         * @method renderInDOM
-         */
-        renderInDOM: function () {
-
-            
-            var ViewVideo = FrameTrail.module('ViewVideo');
-
-            ViewVideo.CaptionContainer.append(this.subtitleElement);
-
-            this.subtitleElement.empty().append( this.data.text );
-
-        },
-
-        /**
-         * I remove my DOM element ({{#crossLink "Subtitle/subtitleElement:attribute"}}Subtitle/subtitleElement{{/crossLink}} from the DOM.
-         *
-         * I am called when the single Subtitle is to be deleted.
-         *
-         * @method removeFromDOM
-         */
-        removeFromDOM: function () {
-
-            this.subtitleElement.remove();
-
-        },
+                /**
+                 * I render my DOM elements ({{#crossLink "Overlay/timelineElement:attribute"}}Overlay/timelineElement{{/crossLink}}
+                 * and {{#crossLink "Overlay/overlayElement:attribute"}}Overlay/overlayElement{{/crossLink}}) into the DOM.
+                 *
+                 * I am called, when the Overlay is initialized. My counterpart ist {{#crossLink "Overlay/removeFromDOM:method"}}Overlay/removeFromDOM{{/crossLink}}.
+                 *
+                 * @method renderInDOM
+                 */
+                renderInDOM: function () {
 
 
-        /**
-         * When I am scheduled to be displayed, this is the method to be called.
-         * @method setActive
-         */
-        setActive: function () {
+                    var ViewVideo = FrameTrail.module('ViewVideo');
 
-            this.subtitleElement.addClass('active');
-            this.activeState = true;
+                    ViewVideo.CaptionContainer.append(this.subtitleElement);
 
-        },
+                    this.subtitleElement.empty().append( this.data.text );
 
-        /**
-         * When I am scheduled to disappear, this is the method to be called.
-         * @method setInactive
-         */
-        setInactive: function () {
+                },
 
-            this.subtitleElement.removeClass('active');
-            this.activeState = false;
+                /**
+                 * I remove my DOM element ({{#crossLink "Subtitle/subtitleElement:attribute"}}Subtitle/subtitleElement{{/crossLink}} from the DOM.
+                 *
+                 * I am called when the single Subtitle is to be deleted.
+                 *
+                 * @method removeFromDOM
+                 */
+                removeFromDOM: function () {
+
+                    this.subtitleElement.remove();
+
+                },
+
+
+                /**
+                 * When I am scheduled to be displayed, this is the method to be called.
+                 * @method setActive
+                 */
+                setActive: function () {
+
+                    this.subtitleElement.addClass('active');
+                    this.activeState = true;
+
+                },
+
+                /**
+                 * When I am scheduled to disappear, this is the method to be called.
+                 * @method setInactive
+                 */
+                setInactive: function () {
+
+                    this.subtitleElement.removeClass('active');
+                    this.activeState = false;
+
+                }
+
+
+
+            }
+
 
         }
-
-
-
     }
+
 
 );

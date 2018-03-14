@@ -1,4 +1,4 @@
-#ViewOverview {
+.viewOverview {
 	display: none;
 	position: absolute;
 	top: 0px;
@@ -8,22 +8,22 @@
 	overflow: hidden;
 }
 
-#ViewOverview.active {
+.viewOverview.active {
 	display: block;
 }
 
-#MainContainer.editActive #ViewOverview {
+.mainContainer.editActive .viewOverview {
 	border: 10px solid #f8f8f8;
 	box-sizing: border-box;
 }
 
-#ViewOverview #OverviewList {
+.viewOverview .overviewList {
 	position: relative;
 	overflow: hidden;
 	width: 100%;
 }
 
-#ViewOverview #OverviewList .hypervideoThumb {
+.viewOverview .overviewList .hypervideoThumb {
 	-webkit-transition-property: all;
 	-moz-transition-property: all;
 	-o-transition-property: all;

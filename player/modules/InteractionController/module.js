@@ -14,7 +14,7 @@
  */
 
 
-FrameTrail.defineModule('InteractionController', function(){
+FrameTrail.defineModule('InteractionController', function(FrameTrail){
 
 
     var keyBindings = {
@@ -68,10 +68,10 @@ FrameTrail.defineModule('InteractionController', function(){
 
     	});
 
-        $('body').off('mousewheel', '#ViewVideo').on('mousewheel', '#ViewVideo', function(evt) {
-            
+        $('body').off('mousewheel', '.viewVideo').on('mousewheel', '.viewVideo', function(evt) {
+
             if (evt.deltaY >= scrollThreshold && !scrollUpBlocked) {
-                
+
                 scrollUpBlocked = true;
                 interfaceUp();
                 window.setTimeout(function() {
@@ -79,7 +79,7 @@ FrameTrail.defineModule('InteractionController', function(){
                 }, 700);
 
             } else if (evt.deltaY <= - scrollThreshold && !scrollDownBlocked) {
-                
+
                 scrollDownBlocked = true;
                 interfaceDown();
                 window.setTimeout(function() {
@@ -87,7 +87,7 @@ FrameTrail.defineModule('InteractionController', function(){
                 }, 700);
 
             } else if (evt.deltaX >= scrollThreshold && !scrollRightBlocked) {
-                
+
                 scrollRightBlocked = true;
                 interfaceRight();
                 window.setTimeout(function() {
@@ -95,7 +95,7 @@ FrameTrail.defineModule('InteractionController', function(){
                 }, 500);
 
             } else if (evt.deltaX <= - scrollThreshold && !scrollLeftBlocked) {
-                
+
                 scrollLeftBlocked = true;
                 interfaceLeft();
                 window.setTimeout(function() {
@@ -112,7 +112,7 @@ FrameTrail.defineModule('InteractionController', function(){
 
     /**
      * I {{#crossLink "ViewVideo/slidePositionUp:method"}}slide the video view up{{#crossLink}}.
-     * 
+     *
      * In case the annotation position is set to 'top' and no annotation has been opened before, I try to {{#crossLink "Annotation/openAnnotation:method"}}open the first annotation{{/crossLink}}.
      *
      * @method interfaceUp
@@ -121,10 +121,10 @@ FrameTrail.defineModule('InteractionController', function(){
 
         var ViewVideo = FrameTrail.module('ViewVideo');
 
-        if ( FrameTrail.getState('slidePosition') == 'middle' 
-            && ViewVideo.AreaTopContainer.attr('data-size') != 'large' 
+        if ( FrameTrail.getState('slidePosition') == 'middle'
+            && ViewVideo.AreaTopContainer.attr('data-size') != 'large'
             && ViewVideo.AreaTopDetails.find('.collectionElement').length != 0 ) {
-            
+
             var activeContentViewContainer = ViewVideo.AreaTopContainer.find('.contentViewContainer.active');
             if ( activeContentViewContainer && activeContentViewContainer.find('.collectionElement.open').length == 0 ) {
                 activeContentViewContainer.find('.collectionElement').eq(0).click();
@@ -157,7 +157,7 @@ FrameTrail.defineModule('InteractionController', function(){
 
     /**
      * I {{#crossLink "ViewVideo/slidePositionDown:method"}}slide the video view down{{#crossLink}}.
-     * 
+     *
      * In case the annotation position is set to 'bottom' and no annotation has been opened before, I try to {{#crossLink "Annotation/openAnnotation:method"}}open the first annotation{{/crossLink}}.
      * @method interfaceDown
      */
@@ -165,10 +165,10 @@ FrameTrail.defineModule('InteractionController', function(){
 
         var ViewVideo = FrameTrail.module('ViewVideo');
 
-        if ( FrameTrail.getState('slidePosition') == 'middle' 
-            && ViewVideo.AreaBottomContainer.attr('data-size') != 'large' 
+        if ( FrameTrail.getState('slidePosition') == 'middle'
+            && ViewVideo.AreaBottomContainer.attr('data-size') != 'large'
             && ViewVideo.AreaBottomDetails.find('.collectionElement').length != 0 ) {
-            
+
             var activeContentViewContainer = ViewVideo.AreaBottomContainer.find('.contentViewContainer.active');
             if ( activeContentViewContainer && activeContentViewContainer.find('.collectionElement.open').length == 0 ) {
                 activeContentViewContainer.find('.collectionElement').eq(0).click();
@@ -195,7 +195,7 @@ FrameTrail.defineModule('InteractionController', function(){
 
 	    }
         */
-    	
+
     };
 
 
@@ -205,18 +205,18 @@ FrameTrail.defineModule('InteractionController', function(){
      * @method interfaceLeft
      */
     function interfaceLeft(evt) {
-    	
+
         var ViewVideo = FrameTrail.module('ViewVideo');
 
         if ( FrameTrail.getState('slidePosition') == 'top' ) {
-            
+
             var activeContentViewContainer = ViewVideo.AreaTopContainer.find('.contentViewContainer.active');
             if ( activeContentViewContainer && activeContentViewContainer.find('.collectionElement.open').length != 0 ) {
                 activeContentViewContainer.find('.collectionElement.open').prev('.collectionElement').click();
             }
 
         } else if ( FrameTrail.getState('slidePosition') == 'bottom' ) {
-            
+
             var activeContentViewContainer = ViewVideo.AreaBottomContainer.find('.contentViewContainer.active');
             if ( activeContentViewContainer && activeContentViewContainer.find('.collectionElement.open').length != 0 ) {
                 activeContentViewContainer.find('.collectionElement.open').prev('.collectionElement').click();
@@ -225,7 +225,7 @@ FrameTrail.defineModule('InteractionController', function(){
         }
         /*
         if ( FrameTrail.module('ViewVideo').shownDetails == 'annotations' ) {
-            
+
             var currentAnnotation   = FrameTrail.module('AnnotationsController').openedAnnotation,
                 annotations         = FrameTrail.module('HypervideoModel').annotations,
                 idx                 = annotations.indexOf(currentAnnotation);
@@ -251,14 +251,14 @@ FrameTrail.defineModule('InteractionController', function(){
     	var ViewVideo = FrameTrail.module('ViewVideo');
 
         if ( FrameTrail.getState('slidePosition') == 'top' ) {
-            
+
             var activeContentViewContainer = ViewVideo.AreaTopContainer.find('.contentViewContainer.active');
             if ( activeContentViewContainer && activeContentViewContainer.find('.collectionElement.open').length != 0 ) {
                 activeContentViewContainer.find('.collectionElement.open').next('.collectionElement').click();
             }
 
         } else if ( FrameTrail.getState('slidePosition') == 'bottom' ) {
-            
+
             var activeContentViewContainer = ViewVideo.AreaBottomContainer.find('.contentViewContainer.active');
             if ( activeContentViewContainer && activeContentViewContainer.find('.collectionElement.open').length != 0 ) {
                 activeContentViewContainer.find('.collectionElement.open').next('.collectionElement').click();
@@ -281,7 +281,7 @@ FrameTrail.defineModule('InteractionController', function(){
 
     };
 
-    
+
     /**
      * When the space key is pressed, I toggle play / pause in the player
      *
@@ -323,11 +323,11 @@ FrameTrail.defineModule('InteractionController', function(){
 
     };
 
-        
+
     return {
 
         onChange: {
-            
+
         },
 
         initController: initController

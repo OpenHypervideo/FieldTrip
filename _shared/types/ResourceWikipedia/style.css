@@ -14,6 +14,6 @@
 
 /* Edit Wikipedia Overlay Properties */
 
-#EditPropertiesContainer .propertiesTypeIcon[data-type="wikipedia"] [class^="icon-"]::before, #EditPropertiesContainer .propertiesTypeIcon[data-type="wikipedia"] [class*=" icon-"]::before {
+.editPropertiesContainer .propertiesTypeIcon[data-type="wikipedia"] [class^="icon-"]::before, .editPropertiesContainer .propertiesTypeIcon[data-type="wikipedia"] [class*=" icon-"]::before {
 	content: "\f266";
 }

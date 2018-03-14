@@ -92,31 +92,31 @@
 * Layout Manager
 *******************/
 
-#LayoutManagerContainer {
+.layoutManagerContainer {
     width: 100%;
     height: 100%;
     color: var(--primary-fg-color);
     box-sizing: border-box;
 }
 
-#LayoutManagerContainer * {
+.layoutManagerContainer * {
     box-sizing: border-box;
 }
 
-#LayoutManagerContainer [class^="icon-"]::before {
+.layoutManagerContainer [class^="icon-"]::before {
     font-size: 19px;
 }
 
-#LayoutManagerContainer #LayoutManagerMain, #LayoutManagerContainer #LayoutManagerOptions {
+.layoutManagerContainer .layoutManagerMain, .layoutManagerContainer .layoutManagerOptions {
     height: 100%;
 }
 
-#LayoutManagerContainer #LayoutManagerMain {
+.layoutManagerContainer .layoutManagerMain {
     float: left;
     width: 84%;
 }
 
-#LayoutManagerContainer #LayoutManager {
+.layoutManagerContainer .layoutManager {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -132,7 +132,7 @@
     border-right: 1px solid var(--secondary-bg-color);
 }
 
-#LayoutManagerContainer #LayoutManagerOptions {
+.layoutManagerContainer .layoutManagerOptions {
     float: right;
     width: 16%;
     padding-left: 10px;
@@ -141,11 +141,11 @@
     background: var(--primary-fg-color);
 }
 
-#LayoutManagerContainer #LayoutManagerOptions .message {
+.layoutManagerContainer .layoutManagerOptions .message {
     position: relative;
 }
 
-#LayoutManagerContainer #LayoutManagerOptions .message:after {
+.layoutManagerContainer .layoutManagerOptions .message:after {
     position: absolute;
     content: "";
     top: 50%;
@@ -156,7 +156,7 @@
     border-right: 6px solid #FF9919;
 }
 
-#LayoutManagerContainer #LayoutManagerOptions .contentViewTemplate, body > .contentViewTemplate {
+.layoutManagerContainer .layoutManagerOptions .contentViewTemplate, body > .contentViewTemplate {
     padding: 10px 5px 7px 5px;
     background: var(--secondary-bg-color);
     margin-bottom: 10px;
@@ -168,29 +168,29 @@ body > .contentViewTemplate {
     color: var(--primary-fg-color);
 }
 
-#LayoutManagerContainer .contentViewTemplate .contentViewTemplateSize {
+.layoutManagerContainer .contentViewTemplate .contentViewTemplateSize {
     text-align: center;
     overflow: hidden;
 }
 
-#LayoutManagerContainer .contentViewTemplate[data-size="small"] .contentViewTemplateSize [class^="icon-"]::before {
+.layoutManagerContainer .contentViewTemplate[data-size="small"] .contentViewTemplateSize [class^="icon-"]::before {
     font-size: 40px !important;
     line-height: 30px;
 }
 
-#LayoutManagerContainer .contentViewTemplate[data-size="medium"] .contentViewTemplateSize [class^="icon-"]::before {
+.layoutManagerContainer .contentViewTemplate[data-size="medium"] .contentViewTemplateSize [class^="icon-"]::before {
     font-size: 70px !important;
     line-height: 50px;
 }
 
-#LayoutManagerContainer .contentViewTemplate[data-size="large"] .contentViewTemplateSize [class^="icon-"]::before {
+.layoutManagerContainer .contentViewTemplate[data-size="large"] .contentViewTemplateSize [class^="icon-"]::before {
     font-size: 100px !important;
     line-height: 70px;
 }
 
 /* Layout Areas */
 
-#LayoutManager .layoutArea {
+.layoutManager .layoutArea {
     position: relative;
     order: 0;
     background: var(--secondary-fg-color);
@@ -198,43 +198,43 @@ body > .contentViewTemplate {
     transition-duration: 100ms;
 }
 
-#LayoutManager .layoutArea[data-area="areaTop"] .layoutAreaTabs {
+.layoutManager .layoutArea[data-area="areaTop"] .layoutAreaTabs {
     top: auto;
     right: 10px;
     bottom: 10px;
 }
 
-#LayoutManager .layoutArea[data-area="areaBottom"] .layoutAreaTabs {
+.layoutManager .layoutArea[data-area="areaBottom"] .layoutAreaTabs {
     top: 10px;
     right: 10px;
 }
 
-#LayoutManager .layoutArea[data-area="areaLeft"] .layoutAreaTabs {
+.layoutManager .layoutArea[data-area="areaLeft"] .layoutAreaTabs {
     top: 10px;
     right: 46px;
 }
 
-#LayoutManager .layoutArea[data-area="areaRight"] .layoutAreaTabs {
+.layoutManager .layoutArea[data-area="areaRight"] .layoutAreaTabs {
     top: 10px;
     right: calc(100% - 10px);
 }
 
-#LayoutManager .layoutArea .layoutAreaTabs .contentViewTab {
+.layoutManager .layoutArea .layoutAreaTabs .contentViewTab {
     background: var(--secondary-bg-color);
 }
 
-#LayoutManager .layoutArea .layoutAreaContent {
+.layoutManager .layoutArea .layoutAreaContent {
     background: var(--secondary-fg-color);
     padding: 10px;
 }
 
-#LayoutManager .layoutArea[data-area="areaTop"], #LayoutManager .layoutArea[data-area="areaBottom"] {
+.layoutManager .layoutArea[data-area="areaTop"], .layoutManager .layoutArea[data-area="areaBottom"] {
     flex: 0 1 auto;
     align-self: auto;
     width: 100%;
 }
 
-#LayoutManager .playerWrapper {
+.layoutManager .playerWrapper {
     padding: 10px 0;
     position: relative;
     display: flex;
@@ -247,12 +247,12 @@ body > .contentViewTemplate {
     align-self: auto;
 }
 
-#LayoutManager .layoutArea[data-area="areaLeft"], #LayoutManager .layoutArea[data-area="areaRight"] {
+.layoutManager .layoutArea[data-area="areaLeft"], .layoutManager .layoutArea[data-area="areaRight"] {
     align-self: stretch;
     min-height: 100%;
 }
 
-#LayoutManager .playerWrapper .playerArea {
+.layoutManager .playerWrapper .playerArea {
     position: relative;
     order: 0;
     flex: 1 1 auto;
@@ -260,7 +260,7 @@ body > .contentViewTemplate {
     min-height: 100%;
 }
 
-#LayoutManager .playerWrapper .playerArea .icon-play-1 {
+.layoutManager .playerWrapper .playerArea .icon-play-1 {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -269,44 +269,44 @@ body > .contentViewTemplate {
     color: var(--secondary-fg-color);
 }
 
-#LayoutManager .playerWrapper .playerArea .icon-play-1::before {
+.layoutManager .playerWrapper .playerArea .icon-play-1::before {
     font-size: 60px !important;
 }
 
 /* SIZES */
 
-#LayoutManager .layoutArea[data-area="areaTop"], #LayoutManager .layoutArea[data-area="areaBottom"] {
+.layoutManager .layoutArea[data-area="areaTop"], .layoutManager .layoutArea[data-area="areaBottom"] {
     min-height: calc(10px + 20px);
 }
 
-#LayoutManager .layoutArea[data-area="areaTop"][data-size="small"], #LayoutManager .layoutArea[data-area="areaBottom"][data-size="small"] {
+.layoutManager .layoutArea[data-area="areaTop"][data-size="small"], .layoutManager .layoutArea[data-area="areaBottom"][data-size="small"] {
     min-height: calc(50px + 38px + 20px);
 }
 
-#LayoutManager .layoutArea[data-area="areaTop"][data-size="medium"], #LayoutManager .layoutArea[data-area="areaBottom"][data-size="medium"] {
+.layoutManager .layoutArea[data-area="areaTop"][data-size="medium"], .layoutManager .layoutArea[data-area="areaBottom"][data-size="medium"] {
     min-height: calc(100px + 38px + 20px);
 }
 
-#LayoutManager .layoutArea[data-area="areaTop"][data-size="large"], #LayoutManager .layoutArea[data-area="areaBottom"][data-size="large"] {
+.layoutManager .layoutArea[data-area="areaTop"][data-size="large"], .layoutManager .layoutArea[data-area="areaBottom"][data-size="large"] {
     min-height: calc(300px + 38px + 20px);
 }
 
-#LayoutManager .layoutArea[data-area="areaLeft"], #LayoutManager .layoutArea[data-area="areaRight"] {
+.layoutManager .layoutArea[data-area="areaLeft"], .layoutManager .layoutArea[data-area="areaRight"] {
     flex: 0 0 30px;
     min-width: 30px;
 }
 
-#LayoutManager .layoutArea[data-area="areaLeft"][data-size="small"], #LayoutManager .layoutArea[data-area="areaRight"][data-size="small"] {
+.layoutManager .layoutArea[data-area="areaLeft"][data-size="small"], .layoutManager .layoutArea[data-area="areaRight"][data-size="small"] {
     flex: 0 0 160px;
     min-width: 160px;
 }
 
-#LayoutManager .layoutArea[data-area="areaLeft"][data-size="medium"], #LayoutManager .layoutArea[data-area="areaRight"][data-size="medium"] {
+.layoutManager .layoutArea[data-area="areaLeft"][data-size="medium"], .layoutManager .layoutArea[data-area="areaRight"][data-size="medium"] {
     flex: 0 0 200px;
     min-width: 200px;
 }
 
-#LayoutManager .layoutArea[data-area="areaLeft"][data-size="large"], #LayoutManager .layoutArea[data-area="areaRight"][data-size="large"] {
+.layoutManager .layoutArea[data-area="areaLeft"][data-size="large"], .layoutManager .layoutArea[data-area="areaRight"][data-size="large"] {
     flex: 0 0 400px;
     min-width: 400px;
 }

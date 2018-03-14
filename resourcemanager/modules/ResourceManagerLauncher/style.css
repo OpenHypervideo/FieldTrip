@@ -1,4 +1,12 @@
-#Titlebar {
+body {
+	background: var(--primary-bg-color);
+	-webkit-transition: all 200ms linear; /* Firefox */
+	-moz-transition: all 200ms linear; /* WebKit */
+	-o-transition: all 200ms linear; /* Opera */
+	transition: all 200ms linear; /* Standard */
+}
+
+.titlebar {
 	background: var(--primary-bg-color);
 	font-weight: 200;
     height: 40px;
@@ -9,7 +17,7 @@
 	line-height: 38px;
 }
 
-#Titlebar #LogoutButton {
+.titlebar button {
 	float: right;
 	background-color: transparent;
     border: medium none;
@@ -18,4 +26,53 @@
     width: 40px;
     font-size: 19px;
     color: var(--primary-fg-color);
+    display: none;
+}
+
+.titlebar.editActive, .titlebar.editActive button {
+	background: var(--secondary-fg-color);
+	color: var(--primary-bg-color);
+}
+
+.resourcesControls {
+	display: none;
+}
+
+.mainContainer {
+	width: 100%;
+	background: var(--primary-bg-color);
+	color: var(--primary-fg-color);
+}
+
+.mainContainer.editActive {
+	border-top: 1px solid rgba(73, 76, 81, .6);
+	background-color: #ffffff;
+	color: var(--primary-bg-color);
+}
+
+.mainContainer .resourceManagerContent {
+	background: var(--secondary-bg-color);
+	height: 100%;
+	position: absolute;
+	width: 100%;
+}
+
+.mainContainer.editActive .resourceManagerContent {
+	background: transparent;
+}
+
+.mainContainer .viewResources {
+	color: var(--primary-fg-color);
+}
+
+.mainContainer.editActive .viewResources {
+	color: var(--primary-bg-color);
+}
+
+.mainContainer .viewResources .resourcesList .loadingScreen {
+	background-color: transparent;
+}
+
+.mainContainer.editActive .viewResources .resourcesList .loadingScreen {
+	background-color: rgba(248, 248, 248, 0.4);
 }

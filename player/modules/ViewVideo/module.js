@@ -17,75 +17,75 @@
 
 
 
-FrameTrail.defineModule('ViewVideo', function(){
+FrameTrail.defineModule('ViewVideo', function(FrameTrail){
 
-    var domElement  = $(  '<div id="ViewVideo">'
-                        + '    <div id="AreaLeftDetails" class="layoutAreaDetails" data-area="areaLeft"></div>'
-                        + '    <div id="SlideArea">'
-                        + '        <div id="AreaTopDetails" class="layoutAreaDetails" data-area="areaTop"></div>'
-                        + '        <div id="AreaTopContainer" class="layoutArea" data-area="areaTop">'
+    var domElement  = $(  '<div class="viewVideo">'
+                        + '    <div class="areaLeftDetails layoutAreaDetails" data-area="areaLeft"></div>'
+                        + '    <div class="slideArea">'
+                        + '        <div class="areaTopDetails layoutAreaDetails" data-area="areaTop"></div>'
+                        + '        <div class="areaTopContainer layoutArea" data-area="areaTop">'
                         + '            <div class="layoutAreaTabs"></div>'
                         + '            <div class="layoutAreaContent"></div>'
                         + '        </div>'
-                        + '        <div id="PlayerContainer">'
-                        + '            <div id="PlayerProgress"></div>'
-                        + '            <div id="HypervideoContainer">'
-                        + '                <div id="AreaLeftContainer" class="layoutArea" data-area="areaLeft">'
+                        + '        <div class="playerContainer">'
+                        + '            <div class="playerProgress"></div>'
+                        + '            <div class="hypervideoContainer">'
+                        + '                <div class="areaLeftContainer layoutArea" data-area="areaLeft">'
                         + '                    <div class="layoutAreaTabs"></div>'
                         + '                    <div class="layoutAreaContent"></div>'
                         + '                </div>'
-                        + '                <div id="VideoContainer">'
-                        + '                    <div id="Hypervideo">'
-                        + '                        <video id="Video"></video>'
-                        + '                        <div id="OverlayContainer"></div>'
-                        + '                        <div id="CaptionContainer"></div>'
+                        + '                <div class="videoContainer">'
+                        + '                    <div class="hypervideo">'
+                        + '                        <video class="video"></video>'
+                        + '                        <div class="overlayContainer"></div>'
+                        + '                        <div class="captionContainer"></div>'
                         + '                    </div>'
-                        + '                    <div id="VideoStartOverlay">'
-                        + '                        <div id="PlayButtonBig"><span class="icon-play-circled"></span></div>'
+                        + '                    <div class="videoStartOverlay">'
+                        + '                        <div class="playButtonBig"><span class="icon-play-circled"></span></div>'
                         + '                    </div>'
-                        + '                    <div id="ExpandButton">'
-                        + '                        <div id="ExpandLabel"><span class="icon-resize-full-1"></span></div>'
+                        + '                    <div class="expandButton">'
+                        + '                        <div class="expandLabel"><span class="icon-resize-full-1"></span></div>'
                         + '                    </div>'
-                        + '                    <div id="WorkingIndicator">'
+                        + '                    <div class="workingIndicator">'
                         + '                        <div class="workingSpinner"></div>'
                         + '                    </div>'
                         + '                </div>'
-                        + '                <div id="AreaRightContainer" class="layoutArea" data-area="areaRight">'
+                        + '                <div class="areaRightContainer layoutArea" data-area="areaRight">'
                         + '                    <div class="layoutAreaTabs"></div>'
                         + '                    <div class="layoutAreaContent"></div>'
                         + '                </div>'
-                        + '                <div id="InfoAreaRight">'
-                        + '                    <div id="EditPropertiesContainer"></div>'
+                        + '                <div class="infoAreaRight">'
+                        + '                    <div class="editPropertiesContainer"></div>'
                         + '                </div>'
                         + '            </div>'
-                        + '            <div id="CodeSnippetTimeline" class="timeline"></div>'
-                        + '            <div id="OverlayTimeline" class="timeline"></div>'
-                        + '            <div id="Controls">'
-                        + '                <div id="LeftControlPanel">'
-                        + '                    <div class="playerControl" id="PlayButton"><span class="icon-play-1"></span></div>'
-                        + '                    <div class="playerControl" id="TimeDisplay">'
-                        + '                        <div id="CurrentTime">00:00</div>'
-                        + '                        <div id="TotalDuration">00:00</div>'
+                        + '            <div class="codeSnippetTimeline timeline"></div>'
+                        + '            <div class="overlayTimeline timeline"></div>'
+                        + '            <div class="controls">'
+                        + '                <div class="leftControlPanel">'
+                        + '                    <div class="playButton playerControl"><span class="icon-play-1"></span></div>'
+                        + '                    <div class="timeDisplay playerControl">'
+                        + '                        <div class="currentTime">00:00</div>'
+                        + '                        <div class="totalDuration">00:00</div>'
                         + '                    </div>'
                         + '                </div>'
-                        + '                <div id="RightControlPanel">'
-                        + '                    <div class="playerControl contextButton" id="AnnotationSearchButton">'
+                        + '                <div class="rightControlPanel">'
+                        + '                    <div class="annotationSearchButton playerControl contextButton">'
                         + '                        <span class="icon-search"></span>'
-                        + '                        <div id="AnnotationSearchContainer" class="contextButtonContainer">'
+                        + '                        <div class="annotationSearchContainer contextButtonContainer">'
                         + '                        </div>'
                         + '                    </div>'
-                        + '                    <div class="playerControl contextButton" id="SettingsButton">'
+                        + '                    <div class="settingsButton playerControl contextButton">'
                         + '                        <span class="icon-cog"></span>'
-                        + '                        <div id="SettingsContainer" class="contextButtonContainer">'
-                        + '                            <div id="LayoutSettingsWrapper">'
+                        + '                        <div class="settingsContainer contextButtonContainer">'
+                        + '                            <div class="layoutSettingsWrapper">'
                         + '                                <div data-config="hv_config_areaTopVisible">LayoutArea Top</div>'
-                        + '                                <div id="PlayerWrapper">'
+                        + '                                <div class="playerWrapper">'
                         + '                                    <div data-config="hv_config_overlaysVisible">Overlays</div>'
                         + '                                    <div data-config="hv_config_areaRightVisible">LayoutArea Right</div>'
                         + '                                </div>'
                         + '                                <div data-config="hv_config_areaBottomVisible">Layout Area Bottom</div>'
                         + '                            </div>'
-                        + '                            <div id="GenericSettingsWrapper">Layout Mode'
+                        + '                            <div class="genericSettingsWrapper">Layout Mode'
                         + '                                <div data-config="hv_config_slidingMode">'
                         + '                                    <div class="slidingMode" data-value="adjust">Adjust</div>'
                         + '                                    <div class="slidingMode" data-value="overlay">Overlay</div>'
@@ -93,80 +93,80 @@ FrameTrail.defineModule('ViewVideo', function(){
                         + '                            </div>'
                         + '                        </div>'
                         + '                    </div>'
-                        + '                    <div class="playerControl" id="CaptionsButton">'
+                        + '                    <div class="captionsButton playerControl">'
                         + '                        <span class="icon-captions-off"></span>'
-                        + '                        <div id="CaptionSelectContainer">'
+                        + '                        <div class="captionSelectContainer">'
                         + '                            <div class="captionSelect none" data-lang="" data-config="hv_config_captionsVisible">None</div>'
-                        + '                            <div id="CaptionSelectList"></div>'
+                        + '                            <div class="captionSelectList"></div>'
                         + '                        </div>'
                         + '                    </div>'
-                        + '                    <div class="playerControl" id="VolumeButton"><span class="icon-volume-up"></span></div>'
-                        + '                    <div class="playerControl" id="FullscreenButton"><span class="icon-resize-full-alt"></span></div>'
+                        + '                    <div class="volumeButton playerControl"><span class="icon-volume-up"></span></div>'
+                        + '                    <div class="fullscreenButton playerControl"><span class="icon-resize-full-alt"></span></div>'
                         + '                </div>'
                         + '            </div>'
-                        + '            <div id="AnnotationTimeline" class="timeline"></div>'
+                        + '            <div class="annotationTimeline timeline"></div>'
                         + '        </div>'
-                        + '        <div id="AreaBottomContainer" class="layoutArea" data-area="areaBottom">'
+                        + '        <div class="areaBottomContainer layoutArea" data-area="areaBottom">'
                         + '            <div class="layoutAreaTabs"></div>'
                         + '            <div class="layoutAreaContent"></div>'
                         + '        </div>'
-                        + '        <div id="AreaBottomDetails" class="layoutAreaDetails" data-area="areaBottom"></div>'
+                        + '        <div class="areaBottomDetails layoutAreaDetails" data-area="areaBottom"></div>'
                         + '    </div>'
-                        + '    <div id="AreaRightDetails" class="layoutAreaDetails" data-area="areaRight"></div>'
-                        + '    <div id="EditingOptions"></div>'
-                        + '    <div id="HypervideoLayoutContainer"></div>'
+                        + '    <div class="areaRightDetails layoutAreaDetails" data-area="areaRight"></div>'
+                        + '    <div class="editingOptions"></div>'
+                        + '    <div class="hypervideoLayoutContainer"></div>'
                         + '</div>'),
 
 
-        slideArea                   = domElement.children('#SlideArea'),
+        slideArea                   = domElement.children('.slideArea'),
 
-        PlayerContainer             = domElement.find('#PlayerContainer'),
-        HypervideoContainer         = domElement.find('#HypervideoContainer'),
-        VideoContainer              = domElement.find('#VideoContainer'),
-        Hypervideo                  = domElement.find('#Hypervideo'),
-        CaptionContainer            = domElement.find('#CaptionContainer'),
+        PlayerContainer             = domElement.find('.playerContainer'),
+        HypervideoContainer         = domElement.find('.hypervideoContainer'),
+        VideoContainer              = domElement.find('.videoContainer'),
+        Hypervideo                  = domElement.find('.hypervideo'),
+        CaptionContainer            = domElement.find('.captionContainer'),
 
-        AreaTopDetails              = domElement.find('#AreaTopDetails'),
-        AreaTopContainer            = domElement.find('#AreaTopContainer'),
+        AreaTopDetails              = domElement.find('.areaTopDetails'),
+        AreaTopContainer            = domElement.find('.areaTopContainer'),
 
-        AreaBottomDetails           = domElement.find('#AreaBottomDetails'),
-        AreaBottomContainer         = domElement.find('#AreaBottomContainer'),
+        AreaBottomDetails           = domElement.find('.areaBottomDetails'),
+        AreaBottomContainer         = domElement.find('.areaBottomContainer'),
 
-        AreaLeftDetails             = domElement.find('#AreaLeftDetails'),
-        AreaLeftContainer           = domElement.find('#AreaLeftContainer'),
-        
-        AreaRightDetails            = domElement.find('#AreaRightDetails'),
-        AreaRightContainer          = domElement.find('#AreaRightContainer'),
+        AreaLeftDetails             = domElement.find('.areaLeftDetails'),
+        AreaLeftContainer           = domElement.find('.areaLeftContainer'),
 
-        AnnotationTimeline          = domElement.find('#AnnotationTimeline'),
+        AreaRightDetails            = domElement.find('.areaRightDetails'),
+        AreaRightContainer          = domElement.find('.areaRightContainer'),
 
-        OverlayTimeline             = domElement.find('#OverlayTimeline'),
-        OverlayContainer            = domElement.find('#OverlayContainer'),
+        AnnotationTimeline          = domElement.find('.annotationTimeline'),
 
-        CodeSnippetTimeline         = domElement.find('#CodeSnippetTimeline'),
+        OverlayTimeline             = domElement.find('.overlayTimeline'),
+        OverlayContainer            = domElement.find('.overlayContainer'),
 
-        Controls                    = domElement.find('#Controls'),
-        AnnotationSearchButton      = domElement.find('#AnnotationSearchButton'),
-        EditingOptions              = domElement.find('#EditingOptions'),
-        HypervideoLayoutContainer   = domElement.find('#HypervideoLayoutContainer'),
+        CodeSnippetTimeline         = domElement.find('.codeSnippetTimeline'),
+
+        Controls                    = domElement.find('.controls'),
+        AnnotationSearchButton      = domElement.find('.annotationSearchButton'),
+        EditingOptions              = domElement.find('.editingOptions'),
+        HypervideoLayoutContainer   = domElement.find('.hypervideoLayoutContainer'),
 
 
-        CurrentTime                 = domElement.find('#CurrentTime'),
-        TotalDuration               = domElement.find('#TotalDuration'),
-        PlayButton                  = domElement.find('#PlayButton'),
-        VideoStartOverlay           = domElement.find('#VideoStartOverlay'),
-        VolumeButton                = domElement.find('#VolumeButton'),
-        FullscreenButton            = domElement.find('#FullscreenButton'),
+        CurrentTime                 = domElement.find('.currentTime'),
+        TotalDuration               = domElement.find('.totalDuration'),
+        PlayButton                  = domElement.find('.playButton'),
+        VideoStartOverlay           = domElement.find('.videoStartOverlay'),
+        VolumeButton                = domElement.find('.volumeButton'),
+        FullscreenButton            = domElement.find('.fullscreenButton'),
 
-        PlayerProgress              = domElement.find('#PlayerProgress'),
+        PlayerProgress              = domElement.find('.playerProgress'),
 
-        Video                       = domElement.find('#Video')[0],
+        Video                       = domElement.find('.video')[0],
 
-        EditPropertiesContainer     = domElement.find('#EditPropertiesContainer'),
+        EditPropertiesContainer     = domElement.find('.editPropertiesContainer'),
 
-        ExpandButton                = domElement.find('#ExpandButton'),
+        ExpandButton                = domElement.find('.expandButton'),
 
-        WorkingIndicator            = VideoContainer.find('#WorkingIndicator'),
+        WorkingIndicator            = VideoContainer.find('.workingIndicator'),
 
         shownDetails                = null,
         wasPlaying                  = false;
@@ -176,18 +176,18 @@ FrameTrail.defineModule('ViewVideo', function(){
         showDetails(false);
     });
 
-    Controls.find('#CaptionsButton').click(function() {
+    Controls.find('.captionsButton').click(function() {
 
-        Controls.find('#RightControlPanel .active').not('[data-config], #CaptionsButton, #CaptionSelectContainer, .annotationSetButton').removeClass('active');
+        Controls.find('.rightControlPanel .active').not('[data-config], .captionsButton, .captionSelectContainer, .annotationSetButton').removeClass('active');
 
-        if ( !$(this).children('#CaptionSelectContainer').hasClass('active') ) {
-            $(this).children('#CaptionSelectContainer').addClass('active');
+        if ( !$(this).children('.captionSelectContainer').hasClass('active') ) {
+            $(this).children('.captionSelectContainer').addClass('active');
             VideoContainer.css('opacity', 0.3);
-            domElement.find('#AreaLeftContainer, #AreaRightContainer').css('opacity', 0.3);
+            domElement.find('.areaLeftContainer, .areaRightContainer').css('opacity', 0.3);
         } else {
-            $(this).children('#CaptionSelectContainer').removeClass('active');
+            $(this).children('.captionSelectContainer').removeClass('active');
             VideoContainer.css('opacity', 1);
-            domElement.find('#AreaLeftContainer, #AreaRightContainer').css('opacity', 1);
+            domElement.find('.areaLeftContainer, .areaRightContainer').css('opacity', 1);
         }
 
     });
@@ -207,7 +207,7 @@ FrameTrail.defineModule('ViewVideo', function(){
                 if ( !$(evt.target).attr('data-config') && !$(evt.target).hasClass('contextButton') ) {
                     settingsButton.removeClass('active');
                     VideoContainer.css('opacity', 1);
-                    domElement.find('#AreaLeftContainer, #AreaRightContainer').css('opacity', 1);
+                    domElement.find('.areaLeftContainer, .areaRightContainer').css('opacity', 1);
                     $('body').off('mouseup');
                     evt.preventDefault();
                     evt.stopPropagation();
@@ -215,17 +215,17 @@ FrameTrail.defineModule('ViewVideo', function(){
 
             });
 
-            Controls.find('#RightControlPanel .active').not('[data-config], #CaptionsButton, .annotationSetButton').removeClass('active');
+            Controls.find('.rightControlPanel .active').not('[data-config], .captionsButton, .annotationSetButton').removeClass('active');
 
             settingsButton.addClass('active');
             VideoContainer.css('opacity', 0.3);
-            domElement.find('#AreaLeftContainer, #AreaRightContainer').css('opacity', 0.3);
+            domElement.find('.areaLeftContainer, .areaRightContainer').css('opacity', 0.3);
 
         } else {
 
             settingsButton.removeClass('active');
             VideoContainer.css('opacity', 1);
-            domElement.find('#AreaLeftContainer, #AreaRightContainer').css('opacity', 1);
+            domElement.find('.areaLeftContainer, .areaRightContainer').css('opacity', 1);
 
         }
 
@@ -233,7 +233,7 @@ FrameTrail.defineModule('ViewVideo', function(){
 
     });
 
-    Controls.find('#SettingsContainer').click(function(evt) {
+    Controls.find('.settingsContainer').click(function(evt) {
 
         if ( $(evt.target).attr('data-config') ) {
 
@@ -283,7 +283,7 @@ FrameTrail.defineModule('ViewVideo', function(){
 
     AreaBottomContainer.click(function(evt) {
 
-        if ( FrameTrail.module('AnnotationsController').openedAnnotation && $(evt.target).attr('id') == 'AreaBottomContainer' ) {
+        if ( FrameTrail.module('AnnotationsController').openedAnnotation && $(evt.target).hasClass('areaBottomContainer') ) {
             FrameTrail.module('AnnotationsController').openedAnnotation = null;
         }
 
@@ -292,7 +292,7 @@ FrameTrail.defineModule('ViewVideo', function(){
     document.addEventListener("fullscreenchange", toggleFullscreenState, false);
     document.addEventListener("webkitfullscreenchange", toggleFullscreenState, false);
     document.addEventListener("mozfullscreenchange", toggleFullscreenState, false);
-    Controls.find('#FullscreenButton').click(toggleNativeFullscreenState);
+    Controls.find('.fullscreenButton').click(toggleNativeFullscreenState);
 
 
     /**
@@ -302,25 +302,25 @@ FrameTrail.defineModule('ViewVideo', function(){
      */
     function create() {
 
-        $('#MainContainer').append(domElement);
+        $('.mainContainer').append(domElement);
 
         if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
             fixGoddamnSafariBug();
         };
 
         toggleViewMode(FrameTrail.getState('viewMode'));
-        
+
         toggleConfig_captionsVisible(FrameTrail.getState('hv_config_captionsVisible'))
 
         FrameTrail.changeState('hv_config_overlaysVisible', true);
-        
+
         changeSlidePosition('middle');
 
     }
 
     function fixGoddamnSafariBug() {
-        
-        $($('#Sidebar'), $('#MainContainer'), $('#ViewVideo'), $('#SlideArea') ).css({
+
+        $($('.sidebar'), $('.mainContainer'), $('.viewVideo'), $('.slideArea') ).css({
             'transition-duration': '0ms',
             '-moz-transition-duration': '0ms',
             '-webkit-transition-duration': '0ms',
@@ -328,7 +328,7 @@ FrameTrail.defineModule('ViewVideo', function(){
         });
 
         window.setTimeout(function() {
-            
+
             slidePositionDown();
             showDetails(false);
 
@@ -344,7 +344,7 @@ FrameTrail.defineModule('ViewVideo', function(){
                 });
             }, 300);
             */
-            
+
         }, 6000);
     }
 
@@ -451,13 +451,13 @@ FrameTrail.defineModule('ViewVideo', function(){
             areaBottomVisible   = ( (editMode != false && editMode != 'preview' && editMode != 'settings') ? false : FrameTrail.getState('hv_config_areaBottomVisible') ),
             areaLeftVisible     = ( (editMode != false && editMode != 'preview' && editMode != 'settings') ? false : FrameTrail.getState('hv_config_areaLeftVisible') ),
             areaRightVisible    = ( (editMode != false && editMode != 'preview' && editMode != 'settings') ? false : FrameTrail.getState('hv_config_areaRightVisible') );
-            
+
         if (slidingMode == 'overlay') {
             PlayerContainer.css({
                 'flex-grow': 0,
                 'flex-shrink': 0,
                 'flex-basis':
-                    $('#MainContainer').height()
+                    $('.mainContainer').height()
                     - ((areaTopVisible) ? (AreaTopContainer.height() + playerMargin) : 0)
                     - ((areaBottomVisible) ? (AreaBottomContainer.height() + playerMargin) : 0)
                     - editBorder
@@ -478,7 +478,7 @@ FrameTrail.defineModule('ViewVideo', function(){
                         - ((editMode != false && editMode != 'preview' && editMode != 'settings') ? playerMargin : 0)
                         + 'px',
                     minHeight:
-                        $('#MainContainer').height()
+                        $('.mainContainer').height()
                         + (areaBottomVisible ? AreaBottomDetails.height() + AreaBottomContainer.height() : 0)
                         + playerMargin
                         - editBorder
@@ -529,7 +529,7 @@ FrameTrail.defineModule('ViewVideo', function(){
                         - playerMargin
                         + 'px',
                     minHeight:
-                        $('#MainContainer').height()
+                        $('.mainContainer').height()
                         + (areaTopVisible ? AreaTopDetails.height() + AreaTopContainer.height() : 0)
                         - editBorder
                         + 'px'
@@ -575,7 +575,7 @@ FrameTrail.defineModule('ViewVideo', function(){
                     - topMargin
                     + 'px',
                 minHeight:
-                    $('#MainContainer').height()
+                    $('.mainContainer').height()
                     + ((areaTopVisible && editMode != 'settings') ? AreaTopDetails.height() : playerMargin)
                     + ((areaBottomVisible && editMode != 'settings') ? AreaBottomDetails.height() : playerMargin)
                     - editBorder
@@ -614,7 +614,7 @@ FrameTrail.defineModule('ViewVideo', function(){
             });
         }
 
-        domElement.find('#PlayerProgress .ui-slider-handle-circle').css({
+        domElement.find('.playerProgress .ui-slider-handle-circle').css({
             bottom:
                 Controls.height()
             +   CodeSnippetTimeline.height()
@@ -644,11 +644,11 @@ FrameTrail.defineModule('ViewVideo', function(){
 
 
         var editBorder = (FrameTrail.getState('editMode') != false) ? (parseInt(domElement.css('borderTopWidth'))*2) : 0;
-            mainContainerWidth  = $(window).width()
+            mainContainerWidth  = $(FrameTrail.getState('target')).width()
                                     - ((FrameTrail.getState('sidebarOpen') && !FrameTrail.getState('fullscreen')) ? FrameTrail.module('Sidebar').width : 0)
                                     - editBorder,
-            mainContainerHeight = $(window).height()
-                                    - $('#Titlebar').height()
+            mainContainerHeight = $(FrameTrail.getState('target')).height()
+                                    - $('.titlebar').height()
                                     - editBorder,
             _video              = $(Video);
 
@@ -686,10 +686,10 @@ FrameTrail.defineModule('ViewVideo', function(){
         var videoContainerWidth;
 
         if ( ( FrameTrail.getState('editMode') != false && FrameTrail.getState('editMode') != 'preview' && FrameTrail.getState('editMode') != 'settings' ) ) {
-            videoContainerWidth = mainContainerWidth - domElement.find('#InfoAreaRight').outerWidth();
+            videoContainerWidth = mainContainerWidth - domElement.find('.infoAreaRight').outerWidth();
         } else {
             videoContainerWidth = mainContainerWidth
-            - (FrameTrail.getState('hv_config_areaLeftVisible') ? AreaLeftContainer.outerWidth() : 0) 
+            - (FrameTrail.getState('hv_config_areaLeftVisible') ? AreaLeftContainer.outerWidth() : 0)
             - (FrameTrail.getState('hv_config_areaRightVisible') ? AreaRightContainer.outerWidth() : 0);
         }
 
@@ -743,11 +743,11 @@ FrameTrail.defineModule('ViewVideo', function(){
     function toggleFullscreen(aBoolean) {
 
         if (aBoolean) {
-            $('#FullscreenButton').addClass('active');
-            $('#MainContainer').addClass('inFullscreen');
+            $('.fullscreenButton').addClass('active');
+            $('.mainContainer').addClass('inFullscreen');
         } else {
-            $('#FullscreenButton').removeClass('active');
-            $('#MainContainer').removeClass('inFullscreen');
+            $('.fullscreenButton').removeClass('active');
+            $('.mainContainer').removeClass('inFullscreen');
         }
 
     };
@@ -838,7 +838,7 @@ FrameTrail.defineModule('ViewVideo', function(){
     function resetEditMode() {
         domElement.find('.timeline').removeClass('editable').css('flex-basis', '');
         AnnotationTimeline.hide();
-        domElement.find('#InfoAreaRight').hide();
+        domElement.find('.infoAreaRight').hide();
         HypervideoLayoutContainer.empty().removeClass('active');
     }
 
@@ -854,7 +854,7 @@ FrameTrail.defineModule('ViewVideo', function(){
             opacity: 1
         });
 
-        domElement.find('#InfoAreaRight').css({
+        domElement.find('.infoAreaRight').css({
             opacity: 1
         });
 
@@ -865,14 +865,14 @@ FrameTrail.defineModule('ViewVideo', function(){
         AreaLeftContainer.hide();
         AreaRightContainer.hide();
 
-        domElement.find('.timeline').not('#CodeSnippetTimeline, #AnnotationTimeline').show();
+        domElement.find('.timeline').not('.codeSnippetTimeline, .annotationTimeline').show();
 
         EditingOptions.addClass('active');
 
-        domElement.find('#InfoAreaRight').show();
+        domElement.find('.infoAreaRight').show();
         EditPropertiesContainer.show();
 
-        Controls.find('#RightControlPanel').hide();
+        Controls.find('.rightControlPanel').hide();
 
     }
 
@@ -896,7 +896,7 @@ FrameTrail.defineModule('ViewVideo', function(){
 
         changeSlidePosition(FrameTrail.getState('slidePosition'));
 
-        Controls.find('#RightControlPanel').show();
+        Controls.find('.rightControlPanel').show();
     }
 
     /**
@@ -912,7 +912,7 @@ FrameTrail.defineModule('ViewVideo', function(){
      * @method enterSettingsMode
      */
     function enterSettingsMode() {
-        
+
         EditingOptions.addClass('active');
 
         toggleConfig_areaTopVisible(FrameTrail.getState('hv_config_areaTopVisible'));
@@ -934,6 +934,9 @@ FrameTrail.defineModule('ViewVideo', function(){
      * @method enterLayoutMode
      */
     function enterLayoutMode() {
+        AreaTopDetails.hide();
+        AreaBottomDetails.hide();
+        
         FrameTrail.module('ViewLayout').initLayoutManager();
         HypervideoLayoutContainer.addClass('active');
     }
@@ -997,10 +1000,10 @@ FrameTrail.defineModule('ViewVideo', function(){
      */
     function toggleConfig_areaTopVisible(newState, oldState) {
         if (newState == true) {
-            domElement.find('#AreaTopContainer, #AreaTopDetails').show();
+            domElement.find('.areaTopContainer, .areaTopDetails').show();
             Controls.find('[data-config="hv_config_areaTopVisible"]').addClass('active');
         } else {
-            domElement.find('#AreaTopContainer, #AreaTopDetails').hide();
+            domElement.find('.areaTopContainer, .areaTopDetails').hide();
             Controls.find('[data-config="hv_config_areaTopVisible"]').removeClass('active');
         }
         if ( FrameTrail.getState('slidePosition') != 'middle' ) {
@@ -1019,10 +1022,10 @@ FrameTrail.defineModule('ViewVideo', function(){
      */
     function toggleConfig_areaBottomVisible(newState, oldState) {
         if (newState == true) {
-            domElement.find('#AreaBottomContainer, #AreaBottomDetails').show();
+            domElement.find('.areaBottomContainer, .areaBottomDetails').show();
             Controls.find('[data-config="hv_config_areaBottomVisible"]').addClass('active');
         } else {
-            domElement.find('#AreaBottomContainer, #AreaBottomDetails').hide();
+            domElement.find('.areaBottomContainer, .areaBottomDetails').hide();
             Controls.find('[data-config="hv_config_areaBottomVisible"]').removeClass('active');
         }
         if ( FrameTrail.getState('slidePosition') != 'middle' ) {
@@ -1158,15 +1161,15 @@ FrameTrail.defineModule('ViewVideo', function(){
      * @param {Boolean} oldState
      */
     function toggleConfig_captionsVisible(newState, oldState) {
-        if (newState == true && Controls.find('#CaptionsButton').find('.captionSelect[data-lang="'+ FrameTrail.module('HypervideoModel').selectedLang +'"]').length > 0 ) {
-            Controls.find('#CaptionsButton').addClass('active');
-            Controls.find('#CaptionsButton').find('.captionSelect').removeClass('active');
-            Controls.find('#CaptionsButton').find('.captionSelect[data-lang="'+ FrameTrail.module('HypervideoModel').selectedLang +'"]').addClass('active');
+        if (newState == true && Controls.find('.captionsButton').find('.captionSelect[data-lang="'+ FrameTrail.module('HypervideoModel').selectedLang +'"]').length > 0 ) {
+            Controls.find('.captionsButton').addClass('active');
+            Controls.find('.captionsButton').find('.captionSelect').removeClass('active');
+            Controls.find('.captionsButton').find('.captionSelect[data-lang="'+ FrameTrail.module('HypervideoModel').selectedLang +'"]').addClass('active');
             CaptionContainer.show();
         } else {
-            Controls.find('#CaptionsButton').removeClass('active');
-            Controls.find('#CaptionsButton').find('.captionSelect').removeClass('active');
-            Controls.find('#CaptionsButton').find('.captionSelect.none').addClass('active');
+            Controls.find('.captionsButton').removeClass('active');
+            Controls.find('.captionsButton').find('.captionSelect').removeClass('active');
+            Controls.find('.captionsButton').find('.captionSelect.none').addClass('active');
             CaptionContainer.hide();
         }
     };
@@ -1301,7 +1304,7 @@ FrameTrail.defineModule('ViewVideo', function(){
 
     /**
      * This method is used to show the details (aka the content) of either the LayoutArea top or bottom.
-     * 
+     *
      * @method showDetails
      * @param {String} area
      */
@@ -1336,7 +1339,7 @@ FrameTrail.defineModule('ViewVideo', function(){
 
         var timelineItems = $('.timelineElement').not('.ui-draggable'),
             draggableElements = $('.timelineElement.ui-draggableable');
-            GridContainer = $('<div id="GridContainer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3"></div>');
+            GridContainer = $('<div class="gridContainer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3"></div>');
 
 
         if ( visible ) {
@@ -1369,7 +1372,7 @@ FrameTrail.defineModule('ViewVideo', function(){
 
         } else {
 
-            PlayerProgress.find('#GridContainer').remove();
+            PlayerProgress.find('.gridContainer').remove();
 
         }
 
@@ -1436,7 +1439,7 @@ FrameTrail.defineModule('ViewVideo', function(){
      */
     function toggleNativeFullscreenState() {
 
-        var element = $('#MainContainer')[0];
+        var element = $('.mainContainer')[0];
 
         if (element.requestFullScreen) {
             if (!document.fullScreen) {
@@ -1467,7 +1470,7 @@ FrameTrail.defineModule('ViewVideo', function(){
      */
     function toggleFullscreenState() {
 
-        var element = $('#MainContainer')[0];
+        var element = $('.mainContainer')[0];
 
         if (element.requestFullScreen) {
             if (!document.fullScreen) {
@@ -1639,7 +1642,7 @@ FrameTrail.defineModule('ViewVideo', function(){
          * @type HTMLElement
          */
         get AreaBottomContainer()     { return AreaBottomContainer     },
-        
+
         /**
          * I contain the AreaLeftDetails element.
          * @attribute AreaLeftDetails
@@ -1672,7 +1675,7 @@ FrameTrail.defineModule('ViewVideo', function(){
          * @type HTMLElement
          */
         get AnnotationTimeline()  { return AnnotationTimeline  },
-        
+
         /**
          * I contain the EditPropertiesContainer element (where properties of an overlay/annotation can be viewed and – in the case ov overlays – changed).
          * @attribute EditPropertiesContainer
@@ -1709,7 +1712,7 @@ FrameTrail.defineModule('ViewVideo', function(){
          * @attribute CaptionsButton
          * @type HTMLElement
          */
-        get CaptionsButton() { return Controls.find('#CaptionsButton') }
+        get CaptionsButton() { return Controls.find('.captionsButton') }
 
     };
 

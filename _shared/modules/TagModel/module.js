@@ -4,7 +4,7 @@
 
 /**
  * I am the TagModel.
- * I manage the tag definitions stored on the server for each project, and localize their labels and descriptions.
+ * I manage the tag definitions stored on the server, and localize their labels and descriptions.
  *
  * I query the {{#crossLink "HypervideoModel"}}HypervideoModel{{/crossLink}} for filtered collections of Overlays and Annotations
  *
@@ -12,11 +12,10 @@
  * @static
  */
 
- FrameTrail.defineModule('TagModel', function(){
+ FrameTrail.defineModule('TagModel', function(FrameTrail){
 
 
-    var projectID   = FrameTrail.module('RouteNavigation').projectID || '',
-        tags        = {};
+    var tags        = {};
 
 
 
@@ -31,7 +30,7 @@
 
         $.ajax({
             type:     "GET",
-            url:      '../_data/projects/' + projectID + '/tagdefinitions.json',
+            url:      '_data/tagdefinitions.json',
             cache:    false,
             dataType: "json",
             mimeType: "application/json"
@@ -66,11 +65,10 @@
 
         $.ajax({
             type:   'POST',
-            url:    '../_server/ajaxServer.php',
+            url:    '_server/ajaxServer.php',
             cache:  false,
             data: {
                 a:              'tagSet',
-                projectID:      projectID,
                 tagName:        tagname,
                 lang:           language,
                 label:          label,
@@ -87,11 +85,10 @@
 
         $.ajax({
             type:   'POST',
-            url:    '../_server/ajaxServer.php',
+            url:    '_server/ajaxServer.php',
             cache:  false,
             data: {
                 a:              'tagLangDelete',
-                projectID:      projectID,
                 tagName:        tagname,
                 language:       language
             }
@@ -106,11 +103,10 @@
 
         $.ajax({
             type:   'POST',
-            url:    '../_server/ajaxServer.php',
+            url:    '_server/ajaxServer.php',
             cache:  false,
             data: {
                 a:              'tagDelete',
-                projectID:      projectID,
                 tagName:        tagname
             }
 
@@ -169,7 +165,7 @@
                     match = false;
                 }
             }
-            
+
             return match;
 
         });

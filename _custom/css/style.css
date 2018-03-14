@@ -15,6 +15,7 @@ html {
 body {
 	font-family: 'Inconsolata', monospace;
 	font-size: 100%;
+	overflow: hidden;
 }
 
 h3 {
@@ -23,7 +24,7 @@ h3 {
 
 /* buttons */
 
-button, input[type="submit"], input[type="button"], .button {
+.ftButton {
 	font-family: 'Rubik', sans-serif;
 	text-transform: uppercase;
 	letter-spacing: 3px;
@@ -435,6 +436,30 @@ button, input[type="submit"], input[type="button"], .button {
 	height: auto;
 }
 
+.ftLayer#ftVideo #VideoPlayer {
+	position: absolute !important;
+	top: 0px;
+	left: 0px;
+	width: calc(100% - 60px) !important;
+	height: 100%;
+	border: none;
+	outline: none;
+	visibility: hidden;
+	z-index: 0;
+	font-family: 'Inconsolata', monospace;
+	letter-spacing: -0.9px;
+}
+
+.ftLayer#ftVideo #VideoPlayer.active {
+	visibility: visible;
+	z-index: 3;
+}
+
+.ftLayer#ftVideo #VideoPlayer h3 {
+	font-size: 100%;
+}
+
+/*
 .ftLayer#ftVideo iframe {
 	position: absolute;
 	top: 0px;
@@ -450,4 +475,64 @@ button, input[type="submit"], input[type="button"], .button {
 .ftLayer#ftVideo iframe.active {
 	visibility: visible;
 	z-index: 3;
+}
+*/
+
+/* CUSTOM PLAYER (to be integrated as CodeSnippet) */
+
+#VideoPlayer ::after, #VideoPlayer ::before {
+	-moz-box-sizing: initial;
+	box-sizing: initial;
+}
+
+#VideoPlayer .fullscreenButton, #VideoPlayer .volumeButton, #VideoPlayer .sharingWidget, #VideoPlayer .userSettingsButton, #VideoPlayer .logoutButton {
+	display: none !important;
+}
+
+#VideoPlayer .titlebar.editActive .userSettingsButton, #VideoPlayer .titlebar.editActive .logoutButton {
+	display: block !important;
+}
+
+#VideoPlayer .titlebarViewMode {
+	display: none !important;
+}
+
+#VideoPlayer .titlebar:not(.editActive) {
+	background: #191719;
+}
+
+#VideoPlayer .titlebarActionButtonContainer {
+	border-right: 1px solid #333;
+}
+
+#VideoPlayer .SidebarContainer {
+	/*margin-top: 70px;*/
+}
+
+#VideoPlayer .titlebarViewMode {
+	margin-left: 164px;
+}
+
+#VideoPlayer .ui-tabs .ui-tabs-nav li a, #VideoPlayer .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+	padding: 2px 4px;
+}
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .controls {
+	position: absolute;
+	flex: none;
+	bottom: 0px;
+}
+
+/* buttons */
+
+#VideoPlayer button, #VideoPlayer input[type="submit"], #VideoPlayer input[type="button"], #VideoPlayer .button {
+	/*font-family: 'Rubik', sans-serif;*/
+	font-family: 'Inconsolata', monospace;
+	letter-spacing: -0.9px;
+	text-transform: inherit;
+}
+
+#VideoPlayer input[type="text"], #VideoPlayer input[type="password"], #VideoPlayer textarea {
+	font-family: 'Inconsolata', monospace;
+	letter-spacing: 0px;
 }

@@ -12,22 +12,22 @@
 
 
 
-FrameTrail.defineModule('Sidebar', function(){
+FrameTrail.defineModule('Sidebar', function(FrameTrail){
 
 
-    
 
-    var domElement  = $(      '<div id="Sidebar">'
-                            + '    <div id="SidebarContainer">'
+
+    var domElement  = $(      '<div class="sidebar">'
+                            + '    <div class="sidebarContainer">'
                             + '        <div data-viewmode="overview">'
                             + '            <div class="viewmodeControls">'
                             + '                <div class="viewModeActionButtonContainer">'
-                            + '                    <button class="exportButton" data-tooltip-bottom-left="Export Project"><span class="icon-download"></span></button>'
+                            + '                    <button class="exportButton" data-tooltip-bottom-left="Export Site"><span class="icon-download"></span></button>'
                             + '                    <div style="clear: both;"></div>'
                             + '                </div>'
                             + '            </div>'
                             + '            <div class="viewmodeInfo">'
-                            + '                <span id="ProjectDescription"></span>'
+                            + '                <span class="siteDescription"><!--TODO--></span>'
                             + '            </div>'
                             + '        </div>'
                             + '        <div data-viewmode="video">'
@@ -46,14 +46,14 @@ FrameTrail.defineModule('Sidebar', function(){
                             + '                <button class="editMode" data-editmode="annotations"><span class="icon-annotations"></span>My Annotations</button>'
                             + '            </div>'
                             + '            <div class="viewmodeInfo">'
-                            + '                <span id="VideoDescription"></span>'
+                            + '                <span class="videoDescription"></span>'
                             + '            </div>'
-                            + '            <button id="HypervideoDeleteButton" data-tooltip-top-left="Delete Hypervideo"><span class="icon-trash"></span></button>'
+                            + '            <button class="hypervideoDeleteButton" data-tooltip-top-left="Delete Hypervideo"><span class="icon-trash"></span></button>'
                             /*
-                            + '            <div id="SelectAnnotationContainer" class="ui-front">'
+                            + '            <div class="selectAnnotationContainer" class="ui-front">'
                             + '                <div class="descriptionLabel">Annotations</div>'
-                            + '                <select id="SelectAnnotation" name=""></select>'
-                            + '                <div id="SelectAnnotationSingle"></div>'
+                            + '                <select class="selectAnnotation" name=""></select>'
+                            + '                <div class="selectAnnotationSingle"></div>'
                             + '            </div>'
                             */
                             + '        </div>'
@@ -62,7 +62,7 @@ FrameTrail.defineModule('Sidebar', function(){
                             + '</div>'
                         ),
 
-        sidebarContainer       = domElement.find('#SidebarContainer'),
+        sidebarContainer       = domElement.find('.sidebarContainer'),
         overviewContainer      = sidebarContainer.children('[data-viewmode="overview"]'),
         videoContainer         = sidebarContainer.children('[data-viewmode="video"]'),
         videoContainerInfo     = videoContainer.children('.viewmodeInfo'),
@@ -72,10 +72,8 @@ FrameTrail.defineModule('Sidebar', function(){
         SaveButton             = domElement.find('.saveButton'),
         ForkButton             = domElement.find('.forkButton'),
         ExportButton           = domElement.find('.exportButton'),
-        DeleteButton           = domElement.find('#HypervideoDeleteButton'),
-        
-        ProjectDescription     = sidebarContainer.find('#ProjectDescription'),
-        VideoDescription       = sidebarContainer.find('#VideoDescription');
+        DeleteButton           = domElement.find('.hypervideoDeleteButton'),
+        VideoDescription       = sidebarContainer.find('.videoDescription');
 
 
     SaveButton.click(function(){
@@ -83,39 +81,38 @@ FrameTrail.defineModule('Sidebar', function(){
     });
 
     ForkButton.click(function(evt) {
-        
+
         evt.preventDefault();
         evt.stopPropagation();
 
         var thisID = FrameTrail.module('RouteNavigation').hypervideoID,
-            thisHypervideo = FrameTrail.module('Database').hypervideo,
-            projectID = FrameTrail.module('RouteNavigation').projectID;
+            thisHypervideo = FrameTrail.module('Database').hypervideo;
 
-        var forkDialog = $('<div id="ForkHypervideoDialog" title="Fork Hypervideo">'
+        var forkDialog = $('<div class="forkHypervideoDialog" title="Fork Hypervideo">'
                          + '    <div class="message active">By forking a hypervideo, you create a copy for yourself that you are able to edit.</div>'
-                         + '    <form method="POST" id="ForkHypervideoForm">'
+                         + '    <form method="POST" class="forkHypervideoForm">'
                          + '        <input type="text" name="name" placeholder="Name of new Hypervideo" value="'+ thisHypervideo.name +'"><br>'
                          + '        <textarea name="description" placeholder="Description for new Hypervideo">'+ thisHypervideo.description +'</textarea><br>'
                          + '        <div class="message error"></div>'
                          + '    </form>'
                          + '</div>');
 
-        forkDialog.find('#ForkHypervideoForm').ajaxForm({
+        forkDialog.find('.forkHypervideoForm').ajaxForm({
             method:     'POST',
             url:        '../_server/ajaxServer.php',
             dataType:   'json',
             thisID: thisID,
-            data: {'a': 'hypervideoClone', 'projectID': projectID, 'hypervideoID': thisID},
+            data: {'a': 'hypervideoClone', 'hypervideoID': thisID},
             beforeSubmit: function (array, form, options) {
-                
+
                 var currentData = FrameTrail.module("Database").convertToDatabaseFormat(thisID);
 
                 //console.log(currentData);
-                currentData.meta.name = $('#ForkHypervideoForm').find('input[name="name"]').val();
-                currentData.meta.description = $('#ForkHypervideoForm').find('textarea[name="description"]').val();
+                currentData.meta.name = $('.forkHypervideoForm').find('input[name="name"]').val();
+                currentData.meta.description = $('.forkHypervideoForm').find('textarea[name="description"]').val();
                 currentData.meta.creator = FrameTrail.module('Database').users[FrameTrail.module('UserManagement').userID].name;
                 currentData.meta.creatorId = FrameTrail.module('UserManagement').userID;
-                
+
                 array.push({ name: 'src', value: JSON.stringify(currentData, null, 4) });
 
             },
@@ -151,8 +148,8 @@ FrameTrail.defineModule('Sidebar', function(){
             buttons: [
                 { text: 'Fork Hypervideo',
                     click: function() {
-                        
-                        $('#ForkHypervideoForm').submit();
+
+                        $('.forkHypervideoForm').submit();
 
                     }
                 },
@@ -176,26 +173,25 @@ FrameTrail.defineModule('Sidebar', function(){
         evt.stopPropagation();
 
         var thisID = FrameTrail.module('RouteNavigation').hypervideoID,
-            hypervideos = FrameTrail.module('Database').hypervideos,
-            projectID = FrameTrail.module('RouteNavigation').projectID;
+            hypervideos = FrameTrail.module('Database').hypervideos;
 
-        var deleteDialog = $('<div id="DeleteHypervideoDialog" title="Delete Hypervideo">'
+        var deleteDialog = $('<div class="deleteHypervideoDialog" title="Delete Hypervideo">'
                            + '<div>Do you really want to delete the this Hypervideo?</div>'
-                           + '    <input id="thisHypervideoName" type="text" value="'+ hypervideos[thisID]['name'] +'" readonly>'
+                           + '    <input class="thisHypervideoName" type="text" value="'+ hypervideos[thisID]['name'] +'" readonly>'
                            + '    <div class="message active">Please paste / re-enter the name:</div>'
-                           + '    <form method="POST" id="DeleteHypervideoForm">'
+                           + '    <form method="POST" class="deleteHypervideoForm">'
                            + '        <input type="text" name="hypervideoName" placeholder="Name of Hypervideo"><br>'
                            + '        <div class="message error"></div>'
                            + '    </form>'
                            + '</div>');
 
 
-        deleteDialog.find('#DeleteHypervideoForm').ajaxForm({
+        deleteDialog.find('.deleteHypervideoForm').ajaxForm({
             method:     'POST',
             url:        '../_server/ajaxServer.php',
             dataType:   'json',
             thisID: thisID,
-            data: {a: 'hypervideoDelete', projectID: projectID, hypervideoID: thisID},
+            data: {a: 'hypervideoDelete', hypervideoID: thisID},
             success: function(response) {
                 switch(response['code']) {
                     case 0:
@@ -206,7 +202,7 @@ FrameTrail.defineModule('Sidebar', function(){
                         // Redirect to Overview when current Hypervideo has been deleted
                         if ( thisID == FrameTrail.module('RouteNavigation').hypervideoID ) {
                             alert('You deleted the current Hypervideo and will be redirected to the Overview.')
-                            window.location.search = '?project=' + projectID;
+                            window.location.search = "?";
                         }
 
                     break;
@@ -217,7 +213,7 @@ FrameTrail.defineModule('Sidebar', function(){
                         deleteDialog.find('.message.error').addClass('active').html('User not active');
                     break;
                     case 3:
-                        deleteDialog.find('.message.error').addClass('active').html('Could not find the projects hypervideosID folder');
+                        deleteDialog.find('.message.error').addClass('active').html('Could not find the hypervideos/ID folder');
                     break;
                     case 4:
                         deleteDialog.find('.message.error').addClass('active').html('hypervideoID could not be found in database.');
@@ -237,7 +233,7 @@ FrameTrail.defineModule('Sidebar', function(){
                 modal: true,
                 resizable: false,
                 open: function() {
-                    deleteDialog.find('#thisHypervideoName').focus().select();
+                    deleteDialog.find('.thisHypervideoName').focus().select();
                 },
                 close: function() {
                     $(this).dialog('close');
@@ -246,7 +242,7 @@ FrameTrail.defineModule('Sidebar', function(){
                 buttons: [
                     { text: 'Delete Hypervideo',
                         click: function() {
-                            $('#DeleteHypervideoForm').submit();
+                            $('.deleteHypervideoForm').submit();
                         }
                     },
                     { text: 'Cancel',
@@ -278,14 +274,12 @@ FrameTrail.defineModule('Sidebar', function(){
         toggleViewMode(FrameTrail.getState('viewMode'));
         toggleEditMode(FrameTrail.getState('editMode'));
 
-        $('body').append(domElement);
+        $(FrameTrail.getState('target')).append(domElement);
 
         if ( FrameTrail.getState('embed') ) {
             //domElement.find('.viewmodeControls').hide();
         }
 
-        // parse project description here in case we can't use the HypervideoController
-        FrameTrail.module('Sidebar').ProjectDescription = FrameTrail.module('Database').project.description;
 
 
     };
@@ -314,10 +308,10 @@ FrameTrail.defineModule('Sidebar', function(){
      */
     function changeViewSize(arrayWidthAndHeight) {
 
-        var controlsHeight          = domElement.find('#SidebarContainer > div.active > .viewmodeControls').height(),
+        var controlsHeight          = domElement.find('.sidebarContainer > div.active > .viewmodeControls').height(),
             viewModeInfoHeight      = domElement.height() - FrameTrail.module('Titlebar').height - controlsHeight;
 
-        domElement.find('#SidebarContainer > div.active > .viewmodeInfo').css('max-height', viewModeInfoHeight - 80);
+        domElement.find('.sidebarContainer > div.active > .viewmodeInfo').css('max-height', viewModeInfoHeight - 80);
 
     };
 
@@ -349,7 +343,7 @@ FrameTrail.defineModule('Sidebar', function(){
             domElement.find('button.editMode').removeClass('unsavedChanges')
             SaveButton.removeClass('unsavedChanges')
         }
-        
+
     };
 
     /**
@@ -365,6 +359,8 @@ FrameTrail.defineModule('Sidebar', function(){
         if (category == 'codeSnippets' || category == 'events' || category == 'customCSS') {
             // camelCase not valid in attributes
             domElement.find('button[data-editmode="codesnippets"]').addClass('unsavedChanges');
+        } else if (category == 'config' || category == 'globalCSS') {
+            domElement.find('button[data-editmode="settings"]').addClass('unsavedChanges');
         } else {
             domElement.find('button[data-editmode="'+category+'"]').addClass('unsavedChanges');
         }
@@ -419,7 +415,7 @@ FrameTrail.defineModule('Sidebar', function(){
         } else {
 
             domElement.removeClass('editActive');
-            
+
             //ExportButton.show();
             SaveButton.hide();
 
@@ -445,7 +441,9 @@ FrameTrail.defineModule('Sidebar', function(){
         if (loggedIn) {
 
             if ( FrameTrail.module('RouteNavigation').hypervideoID ) {
-                if (FrameTrail.module('UserManagement').userRole == 'admin') {
+                //console.log(FrameTrail.module('HypervideoModel').creatorId);
+                //console.log(FrameTrail.module('UserManagement').userID);
+                if (FrameTrail.module('UserManagement').userRole == 'admin' || parseInt(FrameTrail.module('HypervideoModel').creatorId) == FrameTrail.module('UserManagement').userID) {
 
                     videoContainerControls.find('.editMode').removeClass('disabled');
 
@@ -494,13 +492,6 @@ FrameTrail.defineModule('Sidebar', function(){
          */
         get width() { return domElement.width() },
 
-        /**
-         * I am the text which should be displayed in the "Overview" tab of the sidebar.
-         * @attribute ProjectDescription
-         * @type String
-         * @writeOnly
-         */
-        set ProjectDescription(aString)   { return ProjectDescription.html(aString) },
 
         /**
          * I am the text which should be displayed in the "Video" tab of the sidebar.

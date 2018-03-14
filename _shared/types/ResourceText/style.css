@@ -1,9 +1,48 @@
 .resourceDetail[data-type="text"] {
 	background-color: transparent;
+	padding: 10px;
+	box-sizing: border-box;
+	color: var(--primary-fg-color);
 }
 
-/* Resource Thumbs for the Text Type are only rendered inside the 'Add Custom Overlay' tab */
-.resourceThumb[data-type="text"] {
+.resourcePreviewDialog .resourceDetail[data-type="text"] {
+	color: var(--primary-bg-color);
+}
+
+.overlayElement .resourceDetail[data-type="text"] {
+	padding: 0px;
+	color: #000;
+}
+
+.resourceDetail[data-type="text"] ol, .resourceDetail[data-type="text"] ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.resourceThumb[data-type="text"] .resourceTextPreview {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+	color: var(--primary-fg-color);
+	opacity: .6;
+	overflow: hidden;
+}
+
+.resourceThumb[data-type="text"] .resourceTextPreview:after {
+	content: '';
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	height: 40%;
+	background-image: linear-gradient(to top, var(--primary-bg-color) 0%, var(--primary-bg-color) 30%, transparent 100%);
+	width: 100%;
+}
+
+.editingOptions .resourceThumb[data-type="text"] {
 	float: left;
     height: 80px;
     margin: 6px;
@@ -11,12 +50,297 @@
     width: 120px;
 }
 
-.tileElement[data-type="text"] [class^="icon-"]::before, .tileElement[data-type="text"] [class*=" icon-"]::before {
-    content: "\f0f6";
+.resourceThumb[data-type="text"] .resourceOverlay {
+	background: transparent;
+}
+
+.resourceThumb[data-type="text"] .resourceTitle {
+	display: none;
+}
+
+.editingOptions .resourceThumb[data-type="text"] .resourceTitle, body > .resourceThumb[data-type="text"]:not(.resourceAnimationDiv) .resourceTitle {
+	display: block;
+}
+
+.contentViewContainer[data-size="small"] .resourceThumb[data-type="text"] .resourceTextPreview {
+	display: none;
 }
 
 /* Edit Text Overlay Properties */
 
-#EditPropertiesContainer .propertiesTypeIcon[data-type="text"] [class^="icon-"]::before, #EditPropertiesContainer .propertiesTypeIcon[data-type="text"] [class*=" icon-"]::before {
+.editPropertiesContainer .propertiesTypeIcon[data-type="text"] [class^="icon-"]::before, .editPropertiesContainer .propertiesTypeIcon[data-type="text"] [class*=" icon-"]::before {
 	content: "\f0f6";
+}
+
+.editPropertiesContainer .textEditorTab {
+	display: inline-block;
+	padding: 3px 6px;
+	margin-right: 2px;
+	border-width: 1px 1px 0 1px;
+	border-style: solid;
+	border-color: var(--primary-bg-color);
+	border-radius: 5px 5px 0 0;
+}
+
+.editPropertiesContainer .textEditorTab:hover, .editPropertiesContainer .textEditorTab.active {
+	cursor: pointer;
+	background: var(--primary-bg-color);
+	color: var(--primary-fg-color);
+}
+
+.editPropertiesContainer .textEditorContent {
+	border-top: 4px solid var(--primary-bg-color);
+	height: calc(100% - 30px);
+}
+
+.editPropertiesContainer .textEditorContent.visualEditorContent {
+	padding-top: 10px;
+	box-sizing: border-box;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"]  {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .btn-group {
+	float: left;
+	position: relative;
+	height: 24px;
+	margin: 0 8px 8px 0;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .btn-group .btn .icon-down-open {
+	font-size: 8px;
+	margin-right: 2px;
+	vertical-align: middle;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .dropdown-toggle {
+	padding-right: 10px;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .dropdown-toggle.open, .editPropertiesContainer .hyperlink.wysihtml5-command-dialog-opened {
+	background: var(--primary-fg-color);
+	color: var(--primary-bg-color);
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .dropdown-toggle.open:not(.right):after, .editPropertiesContainer .hyperlink.wysihtml5-command-dialog-opened:after {
+	position: absolute;
+	left: 4px;
+	bottom: -4px;
+	content: "";
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 7px 4px 7px;
+	border-color: transparent transparent var(--primary-bg-color) transparent;
+	z-index: 2;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .dropdown-toggle.right {
+	padding-right: 18px;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .dropdown-toggle .caret {
+	position: absolute;
+	right: 4px;
+	top: 10px;
+	border-right: 4px solid transparent;
+	border-left: 4px solid transparent;
+	border-top: 4px solid var(--primary-bg-color);
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .dropdown-toggle .caretRight {
+	position: absolute;
+	right: 7px;
+	top: 8px;
+	border-bottom: 4px solid transparent;
+	border-right: 4px solid var(--primary-bg-color);
+	border-top: 4px solid transparent;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .dropdown-menu, .editPropertiesContainer .hyperlink-dropdown {
+	position: absolute;
+	top: 28px;
+	left: -7px;
+	width: 200px;
+	max-height: 100px;
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+	background: var(--primary-fg-color);
+	color: var(--primary-bg-color);
+	z-index: 1;
+	border: 2px solid var(--primary-bg-color);
+	list-style: none;
+	display: none;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .hyperlink-dropdown {
+	display: block;
+	left: auto;
+	right: -18px;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .dropdown-menu.small {
+	width: 84px;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .dropdown-menu.input-append, .editPropertiesContainer .hyperlink-dropdown.input-append {
+	width: 185px;
+	color: var(--primary-fg-color);
+	background-color: var(--primary-bg-color);
+	padding: 4px;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .dropdown-menu.input-append input, .editPropertiesContainer .hyperlink-dropdown.input-append input {
+	float: left;
+	border: none;
+	margin: 0px;
+	padding: 4px;
+	height: 22px;
+	width: 116px;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .dropdown-menu.input-append a, .editPropertiesContainer .hyperlink-dropdown.input-append a {
+	position: relative;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	margin: 0;
+	border: none;
+	outline: none;
+	overflow: visible;
+	background-color: rgb(255, 41, 61);
+	background-repeat: no-repeat;
+	background-size: 30px auto;
+	background-position: center;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .dropdown-menu.input-append a:hover, .editPropertiesContainer .hyperlink-dropdown.input-append a:hover {
+	background-color: rgb(183, 12, 29);
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .hyperlink-dropdown.input-append a[data-wysihtml5-dialog-action="save"] {
+	background-image: url(./icons/confirm.svg);
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .hyperlink-dropdown.input-append a[data-wysihtml5-command="removeLink"] {
+	background-image: url(./icons/unlink.svg);
+	opacity: .6;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .hyperlink-dropdown.input-append a[data-wysihtml5-command="removeLink"]:hover {
+	background-color: rgb(255, 41, 61);
+	cursor: default;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .hyperlink-dropdown.input-append a[data-wysihtml5-command="removeLink"].wysihtml5-command-active {
+	opacity: 1;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .hyperlink-dropdown.input-append a[data-wysihtml5-command="removeLink"].wysihtml5-command-active:hover {
+	background-color: rgb(183, 12, 29);
+	cursor:	pointer;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .hyperlink-dropdown.input-append a[data-wysihtml5-dialog-action="cancel"] {
+	display: none;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .dropdown-menu.active {
+	display: block !important;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .dropdown-menu li, .editPropertiesContainer .dropdown-menu li a {
+	display: block;
+	color: var(--primary-bg-color);
+	font-size: 12px;
+	height: auto;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .dropdown-menu li a {
+	padding: 3px 6px;
+	text-decoration: none;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .dropdown-menu li a.wysihtml5-command-active {
+	background: var(--primary-fg-color);
+	color: var(--primary-bg-color);
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] a {
+	border: 1px solid transparent;
+	color: var(--primary-bg-color);
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] a:hover {
+	border-color: var(--primary-bg-color);
+	cursor: pointer;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] a.wysihtml5-command-active {
+	background: var(--primary-bg-color);
+	color: var(--primary-fg-color);
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] a.hyperlink.wysihtml5-command-active:not(.wysihtml5-command-dialog-opened) {
+	background: var(--primary-bg-color);
+	color: var(--primary-fg-color);
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .colorpicker-container-text {
+	position: absolute;
+	background-color: var(--primary-bg-color);
+	border:	2px solid var(--primary-bg-color);
+	padding: 5px;
+	box-sizing: border-box;
+	top: 28px;
+	left: -20px;
+	display: none;
+	z-index: 1;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .colorpicker-container-text.active {
+	display: block;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .colorpicker-container-text.active:after {
+	position: absolute;
+	left: 22px;
+	top: -6px;
+	content: "";
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 7px 4px 7px;
+	border-color: transparent transparent var(--primary-bg-color) transparent;
+	z-index: 2;
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .colorpicker-container-text .colorpicker-container {
+	background-color: var(--primary-bg-color);
+}
+
+.editPropertiesContainer [data-role="editor-toolbar"] .colorpicker .picker, .editPropertiesContainer [data-role="editor-toolbar"] .colorpicker .slide, .editPropertiesContainer [data-role="editor-toolbar"] .colorpicker-top-colors span, .editPropertiesContainer [data-role="editor-toolbar"] .colorpicker-transparent {
+	outline: 1px solid var(--primary-fg-color);
+}
+
+.editPropertiesContainer .visualEditorWrapper {
+	clear: both;
+	position: relative;
+	background: #cfcfcf;
+	height: calc(100% - 27px);
+}
+
+.editPropertiesContainer .visualEditorWrapper textarea {
+	height: 100%;
+}
+
+.editPropertiesContainer .wysihtml5-sandbox {
+	width: 100%;
+	height: 100%;
 }

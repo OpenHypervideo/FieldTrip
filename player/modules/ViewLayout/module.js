@@ -12,7 +12,7 @@
 
 
 
-FrameTrail.defineModule('ViewLayout', function(){
+FrameTrail.defineModule('ViewLayout', function(FrameTrail){
 
 	var configLayoutArea,
 
@@ -145,7 +145,7 @@ FrameTrail.defineModule('ViewLayout', function(){
             contentViewToRemove.removeContentCollectionElements(contentItem);
         });
 		contentViewToRemove.removeDOMElement();
-		
+
 		layoutAreaToRemovefrom.splice(
 			layoutAreaToRemovefrom.indexOf(contentViewToRemove),
 			1
@@ -185,7 +185,7 @@ FrameTrail.defineModule('ViewLayout', function(){
 		}
 
 		//console.log(managedAnnotations);
-		
+
 	}
 
 
@@ -207,7 +207,7 @@ FrameTrail.defineModule('ViewLayout', function(){
 
 
 	function updateTimedStateOfContentViews(currentTime) {
-		
+
 		var self = this;
 
 		for (var idx in managedAnnotations) {
@@ -269,9 +269,9 @@ FrameTrail.defineModule('ViewLayout', function(){
 
 
 	function initLayoutManager() {
-		var domElement = $('<div id="LayoutManagerContainer">'
-						+  '    <div id="LayoutManagerMain">'
-						+  '        <div id="LayoutManager">'
+		var domElement = $('<div class="layoutManagerContainer">'
+						+  '    <div class="layoutManagerMain">'
+						+  '        <div class="layoutManager">'
 						+  '            <div data-area="areaTop" class="layoutArea">'
 						+  '                <div class="layoutAreaTabs"></div>'
 						+  '                <div class="layoutAreaContent"></div>'
@@ -295,18 +295,18 @@ FrameTrail.defineModule('ViewLayout', function(){
 						+  '            </div>'
 						+  '        </div>'
 						+  '    </div>'
-						+  '    <div id="LayoutManagerOptions">'
+						+  '    <div class="layoutManagerOptions">'
 						+  '        <div class="message active">Drag and Drop Content Views into Layout Areas</div>'
 						+  '        <div class="contentViewTemplate" data-type="TimedContent" data-size="small">'
-						+  '            <div class="contentViewTemplateType"><span class="icon-docs">Collection (Tile)</span></div>'
+						+  '            <div class="contentViewTemplateType"><span class="icon-docs">Annotation Collection</span></div>'
 						+  '            <div class="contentViewTemplateSize"><span class="icon-coverflow"></span></div>'
 						+  '        </div>'
 						+  '        <div class="contentViewTemplate" data-type="TimedContent" data-size="medium">'
-						+  '            <div class="contentViewTemplateType"><span class="icon-docs">Collection (Preview)</span></div>'
+						+  '            <div class="contentViewTemplateType"><span class="icon-docs">Annotation Collection</span></div>'
 						+  '            <div class="contentViewTemplateSize"><span class="icon-coverflow"></span></div>'
 						+  '        </div>'
 						+  '        <div class="contentViewTemplate" data-type="TimedContent" data-size="large">'
-						+  '            <div class="contentViewTemplateType"><span class="icon-docs">Collection (Full)</span></div>'
+						+  '            <div class="contentViewTemplateType"><span class="icon-docs">Annotation Collection</span></div>'
 						+  '            <div class="contentViewTemplateSize"><span class="icon-coverflow"></span></div>'
 						+  '        </div>'
 						+  '        <div class="contentViewTemplate" data-type="CustomHTML" data-size="medium">'
@@ -317,9 +317,9 @@ FrameTrail.defineModule('ViewLayout', function(){
 						+  '        </div>'
 						+  '    </div>'
 						+  '</div>'),
-		
-		LayoutManager        = domElement.find('#LayoutManager'),
-		LayoutManagerOptions = domElement.find('#LayoutManagerOptions'),
+
+		LayoutManager        = domElement.find('.layoutManager'),
+		LayoutManagerOptions = domElement.find('.layoutManagerOptions'),
 		self = this;
 
 		HypervideoLayoutContainer.append(domElement);
@@ -344,7 +344,7 @@ FrameTrail.defineModule('ViewLayout', function(){
 			hoverClass: 'droppableHover',
 			tolerance: 'pointer',
 			drop: function( event, ui ) {
-				
+
 				var layoutArea = $(event.target).parent().data('area'),
 					contentAxis = (layoutArea == 'areaTop' || layoutArea == 'areaBottom') ? 'x' : 'y',
 					templateContentViewData = {
@@ -366,7 +366,7 @@ FrameTrail.defineModule('ViewLayout', function(){
 						'autoSync': false,
 						'onClickContentItem': ''
 					};
-				
+
 				var whichArea = layoutArea.split('area')[1].toLowerCase(),
 					renderPreview = true;
 
@@ -382,7 +382,7 @@ FrameTrail.defineModule('ViewLayout', function(){
 		initLayoutAreaPreview(contentViewsBottom);
 		initLayoutAreaPreview(contentViewsLeft);
 		initLayoutAreaPreview(contentViewsRight);
-		
+
 
 
 	}
@@ -395,11 +395,11 @@ FrameTrail.defineModule('ViewLayout', function(){
 	 * @param {Array} contentViews
 	 */
 	function initLayoutAreaPreview(contentViews) {
-	    	    
+
 	    for (var i=0; i < contentViews.length; i++) {
 	        contentViews[i].renderContentViewPreview();
 	    }
-	    
+
 	}
 
 
@@ -444,7 +444,7 @@ FrameTrail.defineModule('ViewLayout', function(){
 		}
 
 	    return layoutAreaData;
-	    
+
 	}
 
 
@@ -500,7 +500,7 @@ FrameTrail.defineModule('ViewLayout', function(){
     	if ( FrameTrail.getState('viewMode') != 'video' ) {
         	return;
         }
-        
+
         //TODO: CHECK WHY THIS THROWS ERROR RIGHT AFTER DELETING A CONTENT VIEW
 		var currentTime = FrameTrail.module('HypervideoController').currentTime;
 		updateTimedStateOfContentViews(currentTime);
@@ -519,7 +519,7 @@ FrameTrail.defineModule('ViewLayout', function(){
 
 
     /**
-     * When the state of the sidebar changes, I have to re-arrange 
+     * When the state of the sidebar changes, I have to re-arrange
      * the tileElements and the annotationElements, to fit the new
      * width of the #mainContainer.
      * @method toggleSidebarOpen
@@ -527,14 +527,14 @@ FrameTrail.defineModule('ViewLayout', function(){
      */
     function toggleSidebarOpen() {
 
-        
+
         var maxSlideDuration = 280,
             interval;
 
         interval = window.setInterval(function(){
             changeViewSize(FrameTrail.getState('viewSize'));
         }, 40);
-        
+
         window.setTimeout(function(){
 
             window.clearInterval(interval);
@@ -551,7 +551,7 @@ FrameTrail.defineModule('ViewLayout', function(){
      * @method toggleViewMode
      * @param {String} viewMode
      * @param {String} oldViewMode
-     * @return 
+     * @return
      */
     function toggleViewMode(viewMode, oldViewMode){
 
@@ -579,7 +579,7 @@ FrameTrail.defineModule('ViewLayout', function(){
 
     	// TODO: find way to avoid jQuery selector
     	if ( newState == 'middle' ) {
-    		$('#ViewVideo').find('.collectionElement.open').removeClass('open');
+    		$('.viewVideo').find('.collectionElement.open').removeClass('open');
     	}
 
     }
@@ -587,7 +587,7 @@ FrameTrail.defineModule('ViewLayout', function(){
 
 
 	return {
-		
+
 		onChange: {
             viewSize:        changeViewSize,
             viewSizeChanged: onViewSizeChanged,

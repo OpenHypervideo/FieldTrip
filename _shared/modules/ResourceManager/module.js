@@ -15,7 +15,7 @@
  */
 
 
-FrameTrail.defineModule('ResourceManager', function(){
+FrameTrail.defineModule('ResourceManager', function(FrameTrail){
 
 	var maxUploadBytes,
         tmpObj;
@@ -35,17 +35,17 @@ FrameTrail.defineModule('ResourceManager', function(){
 
 
 	//Check for valid URL
-    $(document).on('paste blur input', '#resourceInputTabURL input', function(evt) {
-        checkResourceInput( this.value, $('#resourceNameInput')[0].value );
+    $(document).on('paste blur input', '.resourceInputTabURL input', function(evt) {
+        checkResourceInput( this.value, $('.resourceNameInput')[0].value );
         evt.stopPropagation();
     });
 
     //Check for Name Length
-    $(document).on('change paste keyup input', '#resourceNameInput', function(evt) {
+    $(document).on('change paste keyup input', '.resourceNameInput', function(evt) {
         if ( $(this).val().length > 2 ) {
-            $('#NewResourceConfirm').button('enable');
+            $('.newResourceConfirm').button('enable');
         } else {
-            $('#NewResourceConfirm').button('disable');
+            $('.newResourceConfirm').button('disable');
         }
         evt.stopPropagation();
     });
@@ -66,53 +66,56 @@ FrameTrail.defineModule('ResourceManager', function(){
 
             $.ajax({
                 type:     'GET',
-                url:        '../_server/ajaxServer.php',
+                url:        '_server/ajaxServer.php',
                 data:       {'a':'fileGetMaxUploadSize'},
                 success: function(response) {
 
                     maxUploadBytes = response.maxuploadbytes;
 
-                    var projectID = FrameTrail.module('RouteNavigation').projectID,
-                        uploadDialog =  $('<div id="UploadDialog" title="Add New Resource">'
-                                        + '    <form id="UploadForm" method="post">'
+                    var uploadDialog =  $('<div class="uploadDialog" title="Add New Resource">'
+                                        + '    <form class="uploadForm" method="post">'
                                         + '        <div class="resourceInputTabContainer">'
                                         + '            <ul class="resourceInputTabList">'
                                         + '                <li data-type="url"><a href="#resourceInputTabURL">Paste URL</a></li>'
                                         + '                <li data-type="image"><a href="#resourceInputTabImage">Upload Image</a></li>'
                                         + '                <li data-type="video"><a href="#resourceInputTabVideo">Upload Video</a></li>'
+                                        + '                <li data-type="pdf"><a href="#resourceInputTabPDF">Upload PDF</a></li>'
                                         + '                <li data-type="map"><a href="#resourceInputTabMap">Add Map</a></li>'
                                         + '            </ul>'
                                         + '            <div id="resourceInputTabURL">'
-                                        + '                <div id="resourceInputMessage" class="message active">Paste any URL (eg. http://example.com).<br>Some types will be detected automatically (ie. Image, Wikipedia, Youtube, Vimeo).</div>'
-                                        + '                <input type="text" name="test" placeholder="URL" id="resourceInput">'
+                                        + '                <div class="resourceInputMessage message active">Paste any URL (eg. http://example.com).<br>Some types will be detected automatically (ie. Image, Wikipedia, Youtube, Vimeo).</div>'
+                                        + '                <input type="text" name="test" placeholder="URL" class="resourceInput">'
                                         + '            </div>'
                                         + '            <div id="resourceInputTabImage">'
                                         + '                <div class="message active">Add image file in the format <b>jpg, jpeg, gif, png</b>. Maximum File Size: <b>3 MB</b></div>'
                                         + '                <input type="file" name="image">'
                                         + '            </div>'
+                                        + '            <div id="resourceInputTabPDF">'
+                                        + '                <div class="pdfInputMessage message active">Add video file in <b>PDF</b> format. Maximum File Size: <b>3 MB</b>.</div>'
+                                        + '                <input type="file" name="pdf"> .pdf'
+                                        + '            </div>'
                                         + '            <div id="resourceInputTabVideo">'
-                                        + '                <div id="videoInputMessage" class="message active">Add video file in <b>mp4</b> format. Maximum File Size: <b>'+ bytesToSize(maxUploadBytes) +'</b>.<br>For more info on video conversion see http://www.mirovideoconverter.com.</div>'
+                                        + '                <div class="videoInputMessage message active">Add video file in <b>mp4</b> format. Maximum File Size: <b>'+ bytesToSize(maxUploadBytes) +'</b>.<br>For more info on video conversion see http://www.mirovideoconverter.com.</div>'
                                         + '                <input type="file" name="mp4"> .mp4'
                                         + '            </div>'
                                         + '            <div id="resourceInputTabMap">'
-                                        + '                <div id="locationSearchWrapper">'
-                                        + '                    <input type="text" name="locationQ" id="locationQ" placeholder="Location Search">'
-                                        + '                    <span id="locationSearchCopyright">Data © OpenStreetMap contributors, ODbL 1.0.</span>'
-                                        + '                    <ul id="locationSearchSuggestions"></ul>'
+                                        + '                <div class="locationSearchWrapper">'
+                                        + '                    <input type="text" name="locationQ" class="locationQ" placeholder="Location Search">'
+                                        + '                    <span class="locationSearchCopyright">Data © OpenStreetMap contributors, ODbL 1.0.</span>'
+                                        + '                    <ul class="locationSearchSuggestions"></ul>'
                                         + '                </div>'
                                         + '                <input type="text" name="lat" placeholder="latitude">'
                                         + '                <input type="text" name="lon" placeholder="longitude">'
-                                        + '                <input type="hidden" name="boundingBox[]" id="BB1">'
-                                        + '                <input type="hidden" name="boundingBox[]" id="BB2">'
-                                        + '                <input type="hidden" name="boundingBox[]" id="BB3">'
-                                        + '                <input type="hidden" name="boundingBox[]" id="BB4">'
+                                        + '                <input type="hidden" name="boundingBox[]" class="BB1">'
+                                        + '                <input type="hidden" name="boundingBox[]" class="BB2">'
+                                        + '                <input type="hidden" name="boundingBox[]" class="BB3">'
+                                        + '                <input type="hidden" name="boundingBox[]" class="BB4">'
                                         + '            </div>'
                                         + '        </div>'
-                                        + '        <div id="nameInputContainer">'
-                                        + '            <div id="nameInputMessage">Name</div>'
-                                        + '            <input type="text" name="name" placeholder="Enter a name for the new resource" id="resourceNameInput">'
+                                        + '        <div class="nameInputContainer">'
+                                        + '            <div class="nameInputMessage">Name</div>'
+                                        + '            <input type="text" name="name" placeholder="Enter a name for the new resource" class="resourceNameInput">'
                                         + '            <input type="hidden" name="a" value="fileUpload">'
-                                        + '            <input type="hidden" name="projectID" value="'+ projectID +'">'
                                         + '            <input type="hidden" name="attributes" value="">'
                                         + '            <input type="hidden" name="type" value="url">'
                                         + '        </div>'
@@ -129,10 +132,10 @@ FrameTrail.defineModule('ResourceManager', function(){
                     uploadDialog.find('input[type="file"]').on('change', function() {
 
                         if (this.files[0].size > maxUploadBytes) {
-                            uploadDialog.find('#NewResourceConfirm').prop('disabled', true);
-                            $('#UploadDialog').append('<div class="message active error">File size is too big. Maximum size due to server settings: '+ bytesToSize(maxUploadBytes) +'. <br>Please ask your server administrator to allow a bigger upload size, post size, memory limit and longer execution time in the PHP settings.</div>');
+                            uploadDialog.find('.newResourceConfirm').prop('disabled', true);
+                            $('.uploadDialog').append('<div class="message active error">File size is too big. Maximum size due to server settings: '+ bytesToSize(maxUploadBytes) +'. <br>Please ask your server administrator to allow a bigger upload size, post size, memory limit and longer execution time in the PHP settings.</div>');
                         } else {
-                            uploadDialog.find('#NewResourceConfirm').prop('disabled', false);
+                            uploadDialog.find('.newResourceConfirm').prop('disabled', false);
                             uploadDialog.find('.message.error').remove();
 
                         }
@@ -142,8 +145,8 @@ FrameTrail.defineModule('ResourceManager', function(){
                     uploadDialog.find('.resourceInputTabContainer').tabs({
                         activate: function(e,ui) {
 
-                            uploadDialog.find('#nameInputContainer input[name="attributes"]').val('');
-                            uploadDialog.find('#nameInputContainer input[name="type"]').val($(ui.newTab[0]).data('type'));
+                            uploadDialog.find('.nameInputContainer input[name="attributes"]').val('');
+                            uploadDialog.find('.nameInputContainer input[name="type"]').val($(ui.newTab[0]).data('type'));
                             uploadDialog.find('.message.error').remove();
 
                         },
@@ -168,13 +171,13 @@ FrameTrail.defineModule('ResourceManager', function(){
 
                     });
 
-                    uploadDialog.find('#locationQ').keyup(function(e) {
+                    uploadDialog.find('.locationQ').keyup(function(e) {
 
-                        $.getJSON('//nominatim.openstreetmap.org/search?q='+ uploadDialog.find('#locationQ').val() + '&format=json')
+                        $.getJSON('//nominatim.openstreetmap.org/search?q='+ uploadDialog.find('.locationQ').val() + '&format=json')
                             .done(function(respText) {
 
-                                uploadDialog.find('#locationSearchSuggestions').empty();
-                                uploadDialog.find('#locationSearchSuggestions').show();
+                                uploadDialog.find('.locationSearchSuggestions').empty();
+                                uploadDialog.find('.locationSearchSuggestions').show();
 
                                 for (var location in respText) {
 
@@ -182,14 +185,14 @@ FrameTrail.defineModule('ResourceManager', function(){
                                         .click(function() {
                                             uploadDialog.find('input[name="lon"]').val( $(this).attr('data-lon') );
                                             uploadDialog.find('input[name="lat"]').val( $(this).attr('data-lat') );
-                                            uploadDialog.find('input#BB1').val( $(this).attr('data-bb1') );
-                                            uploadDialog.find('input#BB2').val( $(this).attr('data-bb2') );
-                                            uploadDialog.find('input#BB3').val( $(this).attr('data-bb3') );
-                                            uploadDialog.find('input#BB4').val( $(this).attr('data-bb4') );
+                                            uploadDialog.find('input.BB1').val( $(this).attr('data-bb1') );
+                                            uploadDialog.find('input.BB2').val( $(this).attr('data-bb2') );
+                                            uploadDialog.find('input.BB3').val( $(this).attr('data-bb3') );
+                                            uploadDialog.find('input.BB4').val( $(this).attr('data-bb4') );
                                             uploadDialog.find('input[name="name"]').val( $(this).attr('data-display-name') );
-                                            uploadDialog.find('#locationSearchSuggestions').hide();
+                                            uploadDialog.find('.locationSearchSuggestions').hide();
                                         })
-                                        .appendTo( uploadDialog.find('#locationSearchSuggestions') );
+                                        .appendTo( uploadDialog.find('.locationSearchSuggestions') );
                                 }
                                 //console.log(respText);
                             });
@@ -200,27 +203,34 @@ FrameTrail.defineModule('ResourceManager', function(){
 
 
                     //Ajaxform
-                    uploadDialog.find('#UploadForm').ajaxForm({
+                    uploadDialog.find('.uploadForm').ajaxForm({
                         method:     'POST',
-                        url:        '../_server/ajaxServer.php',
+                        url:        '_server/ajaxServer.php',
                         beforeSerialize: function() {
 
                             uploadDialog.find('.message.error').remove();
 
-                            var tmpType = uploadDialog.find('#nameInputContainer input[name="type"]').val();
+                            var tmpType = uploadDialog.find('.nameInputContainer input[name="type"]').val();
 
                             if (tmpType == 'url') {
-                                tmpObj = checkResourceInput( uploadDialog.find('#resourceInput').val(), uploadDialog.find('#resourceNameInput').val() );
-                                uploadDialog.find('#nameInputContainer input[name="attributes"]').val(JSON.stringify(tmpObj));
+                                tmpObj = checkResourceInput( uploadDialog.find('.resourceInput').val(), uploadDialog.find('.resourceNameInput').val() );
+                                uploadDialog.find('.nameInputContainer input[name="attributes"]').val(JSON.stringify(tmpObj));
                                 tmpObj = [];
                             }
 
                             else if (tmpType == 'image') {
                                 uploadDialog.find('#resourceInputTabVideo input').prop('disabled',true);
+                                uploadDialog.find('#resourceInputTabPDF input').prop('disabled',true);
                             }
 
                             else if (tmpType == 'video') {
                                 uploadDialog.find('#resourceInputTabImage input').prop('disabled',true);
+                                uploadDialog.find('#resourceInputTabPDF input').prop('disabled',true);
+                            }
+
+                            else if (tmpType == 'pdf') {
+                                uploadDialog.find('#resourceInputTabImage input').prop('disabled',true);
+                                uploadDialog.find('#resourceInputTabVideo input').prop('disabled',true);
                             }
 
                             var percentVal = '0%';
@@ -230,18 +240,18 @@ FrameTrail.defineModule('ResourceManager', function(){
                             uploadDialog.find('.uploadStatus').html('Uploading Resource ...');
                             uploadDialog.find('.progress').show();
 
-                            $('#NewResourceConfirm').prop('disabled', true);
+                            $('.newResourceConfirm').prop('disabled', true);
 
                         },
                         beforeSend: function(xhr) {
-                            var tmpType = uploadDialog.find('#nameInputContainer input[name="type"]').val();
+                            var tmpType = uploadDialog.find('.nameInputContainer input[name="type"]').val();
 
-                            // client side pre-validation to prevent upload of one file (server checks again)
+                            // client side pre-validation (server checks again)
                             if (tmpType == 'video') {
                                 if( uploadDialog.find('[name="mp4"]').val().length < 4) {
                                     uploadDialog.find('.progress').hide();
-                                    uploadDialog.find('#NewResourceConfirm').prop('disabled', false);
-                                    $('#UploadDialog').append('<div class="message active error">Please choose a video file.</div>');
+                                    uploadDialog.find('.newResourceConfirm').prop('disabled', false);
+                                    $('.uploadDialog').append('<div class="message active error">Please choose a video file.</div>');
                                     xhr.abort();
                                 }
 
@@ -304,9 +314,9 @@ FrameTrail.defineModule('ResourceManager', function(){
                                                 canvas.toDataURL();
 
                                                 $.ajax({
-                                                    url:        '../_server/ajaxServer.php',
+                                                    url:        '_server/ajaxServer.php',
                                                     type:       'post',
-                                                    data:       {'a':'fileUploadThumb','projectID':projectID,'resourcesID':respText['response']['resId'],'type':respText['response']['resource']['type'],'thumb':canvas.toDataURL()},
+                                                    data:       {'a':'fileUploadThumb','resourcesID':respText['response']['resId'],'type':respText['response']['resource']['type'],'thumb':canvas.toDataURL()},
                                                     /**
                                                      * Description
                                                      * @method success
@@ -359,9 +369,9 @@ FrameTrail.defineModule('ResourceManager', function(){
                                                 canvas.toDataURL();
 
                                                 $.ajax({
-                                                    url:        '../_server/ajaxServer.php',
+                                                    url:        '_server/ajaxServer.php',
                                                     type:       'post',
-                                                    data:       {'a':'fileUploadThumb','projectID':projectID,'resourcesID':respText['response']['resId'],'type':respText['response']['resource']['type'],'thumb':canvas.toDataURL()},
+                                                    data:       {'a':'fileUploadThumb','resourcesID':respText['response']['resId'],'type':respText['response']['resource']['type'],'thumb':canvas.toDataURL()},
                                                     success: function() {
                                                         $(image).remove();
                                                         $(canvas).remove();
@@ -398,68 +408,68 @@ FrameTrail.defineModule('ResourceManager', function(){
                                     break;
                                 case 1:
                                     uploadDialog.find('.progress').hide();
-                                    uploadDialog.find('#NewResourceConfirm').prop('disabled', false);
-                                    $('#UploadDialog').append('<div class="message active error">You are not logged in anymore.</div>');
+                                    uploadDialog.find('.newResourceConfirm').prop('disabled', false);
+                                    $('.uploadDialog').append('<div class="message active error">You are not logged in anymore.</div>');
                                     break;
                                 case 2:
                                     uploadDialog.find('.progress').hide();
-                                    uploadDialog.find('#NewResourceConfirm').prop('disabled', false);
-                                    $('#UploadDialog').append('<div class="message active error">You are not activated.</div>');
+                                    uploadDialog.find('.newResourceConfirm').prop('disabled', false);
+                                    $('.uploadDialog').append('<div class="message active error">You are not activated.</div>');
                                     break;
                                 case 3:
                                     uploadDialog.find('.progress').hide();
-                                    uploadDialog.find('#NewResourceConfirm').prop('disabled', false);
-                                    $('#UploadDialog').append('<div class="message active error">Could not find the projects resources folder.</div>');
+                                    uploadDialog.find('.newResourceConfirm').prop('disabled', false);
+                                    $('.uploadDialog').append('<div class="message active error">Could not find resources folder.</div>');
                                     break;
                                 case 4:
                                     uploadDialog.find('.progress').hide();
-                                    uploadDialog.find('#NewResourceConfirm').prop('disabled', false);
-                                    $('#UploadDialog').append('<div class="message active error">Please choose an image file</div>');
+                                    uploadDialog.find('.newResourceConfirm').prop('disabled', false);
+                                    $('.uploadDialog').append('<div class="message active error">Please choose an image file</div>');
                                     break;
                                 case 5:
                                     uploadDialog.find('.progress').hide();
-                                    uploadDialog.find('#NewResourceConfirm').prop('disabled', false);
-                                    $('#UploadDialog').append('<div class="message active error">Please choose a video file</div>');
+                                    uploadDialog.find('.newResourceConfirm').prop('disabled', false);
+                                    $('.uploadDialog').append('<div class="message active error">Please choose a video file</div>');
                                     break;
                                 case 6:
                                     uploadDialog.find('.progress').hide();
-                                    uploadDialog.find('#NewResourceConfirm').prop('disabled', false);
-                                    $('#UploadDialog').append('<div class="message active error">Please make sure you choose the right video format (.mp4)</div>');
+                                    uploadDialog.find('.newResourceConfirm').prop('disabled', false);
+                                    $('.uploadDialog').append('<div class="message active error">Please make sure you choose the right video format (.mp4)</div>');
                                     break;
                                 case 7:
                                     uploadDialog.find('.progress').hide();
-                                    uploadDialog.find('#NewResourceConfirm').prop('disabled', false);
-                                    $('#UploadDialog').append('<div class="message active error">Type "map" was expected but $lat or $lon are empty</div>');
+                                    uploadDialog.find('.newResourceConfirm').prop('disabled', false);
+                                    $('.uploadDialog').append('<div class="message active error">Type "map" was expected but $lat or $lon are empty</div>');
                                     break;
                                 case 8:
                                     uploadDialog.find('.progress').hide();
-                                    uploadDialog.find('#NewResourceConfirm').prop('disabled', false);
-                                    $('#UploadDialog').append('<div class="message active error">Type or Name were empty. Did you add a Resource Name?</div>');
+                                    uploadDialog.find('.newResourceConfirm').prop('disabled', false);
+                                    $('.uploadDialog').append('<div class="message active error">Type or Name were empty. Did you add a Resource Name?</div>');
                                     break;
                                 case 9:
                                     uploadDialog.find('.progress').hide();
-                                    uploadDialog.find('#NewResourceConfirm').prop('disabled', false);
-                                    $('#UploadDialog').append('<div class="message active error">Wrong Type</div>');
+                                    uploadDialog.find('.newResourceConfirm').prop('disabled', false);
+                                    $('.uploadDialog').append('<div class="message active error">Wrong Type</div>');
                                     break;
                                 case 10:
                                     uploadDialog.find('.progress').hide();
-                                    uploadDialog.find('#NewResourceConfirm').prop('disabled', false);
-                                    $('#UploadDialog').append('<div class="message active error">File size is too big. Please ask the server administrator to allow a bigger upload size, post size and longer execution time.</div>');
+                                    uploadDialog.find('.newResourceConfirm').prop('disabled', false);
+                                    $('.uploadDialog').append('<div class="message active error">File size is too big. Please ask the server administrator to allow a bigger upload size, post size and longer execution time.</div>');
                                     break;
                                 case 11:
                                     uploadDialog.find('.progress').hide();
-                                    uploadDialog.find('#NewResourceConfirm').prop('disabled', false);
-                                    $('#UploadDialog').append('<div class="message active error">Empty field: URL. Please provide a valid url.</div>');
+                                    uploadDialog.find('.newResourceConfirm').prop('disabled', false);
+                                    $('.uploadDialog').append('<div class="message active error">Empty field: URL. Please provide a valid url.</div>');
                                     break;
                                 case 20:
                                     uploadDialog.find('.progress').hide();
-                                    uploadDialog.find('#NewResourceConfirm').prop('disabled', false);
-                                    $('#UploadDialog').append('<div class="message active error">You are not allowed to upload files.</div>');
+                                    uploadDialog.find('.newResourceConfirm').prop('disabled', false);
+                                    $('.uploadDialog').append('<div class="message active error">You are not allowed to upload files.</div>');
                                     break;
                                 default:
                                     uploadDialog.find('.progress').hide();
-                                    uploadDialog.find('#NewResourceConfirm').prop('disabled', false);
-                                    $('#UploadDialog').append('<div class="message active error">Something went wrong</div>');
+                                    uploadDialog.find('.newResourceConfirm').prop('disabled', false);
+                                    $('.uploadDialog').append('<div class="message active error">Something went wrong</div>');
                                     break;
                             }
                         }
@@ -473,7 +483,7 @@ FrameTrail.defineModule('ResourceManager', function(){
                         modal: true,
                         close: function() {
                             $(this).dialog('close');
-                            //$(this).find('#UploadForm').resetForm();
+                            //$(this).find('.uploadForm').resetForm();
                             $(this).remove();
                         },
                         closeOnEscape: false,
@@ -482,8 +492,8 @@ FrameTrail.defineModule('ResourceManager', function(){
                                 id: 'NewResourceConfirm',
                                 text: 'Add Resource',
                                 click: function() {
-                                    //addResource( checkResourceInput( $('#resourceInput')[0].value, $('#resourceNameInput')[0].value ) );
-                                    $('#UploadForm').submit();
+                                    //addResource( checkResourceInput( $('.resourceInput')[0].value, $('.resourceNameInput')[0].value ) );
+                                    $('.uploadForm').submit();
                                 }
                             },
                             {
@@ -494,7 +504,7 @@ FrameTrail.defineModule('ResourceManager', function(){
                             }
                         ],
                         open: function( event, ui ) {
-                            $('#NewResourceConfirm').prop('disabled', true);
+                            $('.newResourceConfirm').prop('disabled', true);
                         }
                     });
 
@@ -579,7 +589,7 @@ FrameTrail.defineModule('ResourceManager', function(){
                                 }
                             }
                         });
-                        
+
                         return r;
                     } else {
                         return null;
@@ -617,6 +627,19 @@ FrameTrail.defineModule('ResourceManager', function(){
                     return null;
                 },
                 function (src, name) {
+                    // Video
+                    if (/\.(mp4)$/i.exec(src)) {
+                        return createResource(src, "video", name, src);
+                    } else {
+                        // We should do a HEAD request and check the
+                        // content-type but it is not possible to do sync
+                        // cross-domain requests, so we should return a
+                        // Future value.
+                        return null;
+                    }
+                    return null;
+                },
+                function (src, name) {
                     // Default fallback, will work for any URL
                     if (/(http|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])/.exec(src)) {
                         var r = createResource(src, "webpage", name);
@@ -630,11 +653,11 @@ FrameTrail.defineModule('ResourceManager', function(){
             for (var i in checkers) {
                 newResource = checkers[i](uriValue, nameValue);
                 if (newResource !== null) {
-                    $('#resourceInputMessage').attr('class', 'message active success').text('Valid '+ newResource.type +' URL' );
+                    $('.resourceInputMessage').attr('class', 'message active success').text('Valid '+ newResource.type +' URL' );
                     return newResource;
                     break;
                 } else {
-                    $('#resourceInputMessage').attr('class', 'message active error').text('Not a valid URL (try adding http://)');
+                    $('.resourceInputMessage').attr('class', 'message active error').text('Not a valid URL (try adding http://)');
                 }
             }
 
@@ -678,20 +701,18 @@ FrameTrail.defineModule('ResourceManager', function(){
 	 * I delete a resource from the server.
 	 *
 	 * @method deleteResource
-	 * @param {String} projectID
 	 * @param {String} resourceID
 	 * @param {Function} successCallback
 	 * @param {Function} cancelCallback
 	 */
-	function deleteResource(projectID, resourceID, successCallback, cancelCallback) {
+	function deleteResource(resourceID, successCallback, cancelCallback) {
 
 		$.ajax({
 			type:   'POST',
-			url:    '../_server/ajaxServer.php',
+			url:    '_server/ajaxServer.php',
 			cache:  false,
 			data: {
 				a: 			'fileDelete',
-				projectID: 	projectID,
 				resourcesID: resourceID
 			}
 		}).done(function(data) {
@@ -710,7 +731,7 @@ FrameTrail.defineModule('ResourceManager', function(){
 
 
 	/**
-	 * I render a list of thumbnails for either all resource items of the project,
+	 * I render a list of thumbnails for either all resource items,
 	 * or a narrowed down set of them.
 	 *
 	 * The targetElement should be a &lt;div&gt; or likewise, and will afterwards contain
@@ -718,25 +739,22 @@ FrameTrail.defineModule('ResourceManager', function(){
 	 *
 	 * If filter is true, then the method will ask the server only for a list of resources which meet the key-condition-value requirements (e.g. "type" "==" "video"). See also server docs!
 	 *
-	 * Note: projectID must be set!
-	 *
 	 * @method renderList
 	 * @param {HTMLElement} targetElement
 	 * @param {Boolean} filter
-	 * @param {String} projectID
 	 * @param {String} key
 	 * @param {String} condition
 	 * @param {String} value
 	 */
-	function renderList(targetElement, filter, projectID, key, condition, value) {
+	function renderList(targetElement, filter, key, condition, value) {
 
 		targetElement.empty();
-		targetElement.append('<div id="LoadingScreen"><div class="workingSpinner dark"></div></div>');
+		targetElement.append('<div class="loadingScreen"><div class="workingSpinner dark"></div></div>');
 
 
 		if (filter) {
 
-			getFilteredList(targetElement, projectID, key, condition, value)
+			getFilteredList(targetElement, key, condition, value)
 
 		} else {
 
@@ -800,7 +818,7 @@ FrameTrail.defineModule('ResourceManager', function(){
 
 	    		renderResult(targetElement, database.resources);
 
-				targetElement.find('#LoadingScreen').fadeOut(600, function() {
+				targetElement.find('.loadingScreen').fadeOut(600, function() {
                     $(this).remove();
                 });
 
@@ -808,8 +826,8 @@ FrameTrail.defineModule('ResourceManager', function(){
 
 			function(errorMessage){
 
-				targetElement.find('#LoadingScreen').remove();
-				targetElement.append('<div id="LoadingErrorMessage"><div class="message error active">' + errorMessage + '</div></div>');
+				targetElement.find('.loadingScreen').remove();
+				targetElement.append('<div class="loadingErrorMessage"><div class="message error active">' + errorMessage + '</div></div>');
 
 			}
 
@@ -828,23 +846,21 @@ FrameTrail.defineModule('ResourceManager', function(){
 	 *
 	 * @method getFilteredList
 	 * @param {HTMLElement} targetElement
-	 * @param {String} projectID
 	 * @param {String} key
 	 * @param {String} condition
 	 * @param {String} value
 	 * @private
 	 */
-	function getFilteredList(targetElement, projectID, key, condition, value) {
+	function getFilteredList(targetElement, key, condition, value) {
 
 		$.ajax({
 
             type:   'POST',
-            url:    '../_server/ajaxServer.php',
+            url:    '_server/ajaxServer.php',
             cache:  false,
 
             data: {
             	a: 			'fileGetByFilter',
-            	projectID: 	projectID,
             	key: 		key,
             	condition: 	condition,
             	value: 		value
@@ -858,15 +874,15 @@ FrameTrail.defineModule('ResourceManager', function(){
 
         	}
 
-			targetElement.find('#LoadingScreen').fadeOut(600, function() {
+			targetElement.find('.loadingScreen').fadeOut(600, function() {
                 $(this).remove();
             });
 
 
 		}).fail(function(errorMessage){
 
-			targetElement.find('#LoadingScreen').remove();
-			targetElement.append('<div id="LoadingErrorMessage"><div class="message error active">' + errorMessage + '</div></div>');
+			targetElement.find('.loadingScreen').remove();
+			targetElement.append('<div class="loadingErrorMessage"><div class="message error active">' + errorMessage + '</div></div>');
 
 		});
 
@@ -877,7 +893,7 @@ FrameTrail.defineModule('ResourceManager', function(){
 
 	/**
 	 * I render into the targetElement, which should be a &lt;div&gt; or likewise, a set of thumbnails.
-	 * These thumbnails are draggable in the &lt;div id="MainContainer"&gt; to allow drop actions into timelines or into the overlay container.
+	 * These thumbnails are draggable in the &lt;div class="mainContainer"&gt; to allow drop actions into timelines or into the overlay container.
 	 *
 	 * @method renderResourcePicker
 	 * @param {HTMLElement} targetElement
@@ -885,17 +901,17 @@ FrameTrail.defineModule('ResourceManager', function(){
 	function renderResourcePicker(targetElement) {
 
 		var resourceDatabase 	= FrameTrail.module('Database').resources,
-			container		 	= $(	'<div id="ResourcePicker">'
-									  + '    <div id="ResourcePickerControls">'
-									  //+ '        <button id="ManageResourcesButton">Manage Resources</button>'
-                                      + '        <button id="AddResourcesButton" data-tooltip-right="Add Resource"><span class="icon-doc-new"></span></button>'
+			container		 	= $(	'<div class="resourcePicker">'
+									  + '    <div class="resourcePickerControls">'
+									  //+ '        <button class="manageResourcesButton">Manage Resources</button>'
+                                      + '        <button class="addResourcesButton" data-tooltip-right="Add Resource"><span class="icon-doc-new"></span></button>'
 									  + '    </div>'
-									  + '    <div id="ResourcePickerList"></div>'
+									  + '    <div class="resourcePickerList"></div>'
 									  + '</div>'),
-			resourceList 		= container.find('#ResourcePickerList'),
+			resourceList 		= container.find('.resourcePickerList'),
 			resourceThumb;
 
-		container.find('#AddResourcesButton').click(function() {
+		container.find('.addResourcesButton').click(function() {
 
             FrameTrail.module('ResourceManager').uploadResource(function(){
 
@@ -920,7 +936,7 @@ FrameTrail.defineModule('ResourceManager', function(){
 
 
 			resourceThumb.draggable({
-				containment: 	'#MainContainer',
+				containment: 	'.mainContainer',
 				helper: 		'clone',
 				revert: 		'invalid',
 				revertDuration: 100,

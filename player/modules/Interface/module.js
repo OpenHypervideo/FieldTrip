@@ -20,7 +20,7 @@
  */
 
 
-FrameTrail.defineModule('Interface', function(){
+FrameTrail.defineModule('Interface', function(FrameTrail){
 
 
 	FrameTrail.initModule('Titlebar');
@@ -35,7 +35,7 @@ FrameTrail.defineModule('Interface', function(){
 
   	FrameTrail.initModule('ViewResources');
 
-  	var mainContainer = $('<div id="MainContainer"></div>');
+  	var mainContainer = $('<div class="mainContainer"></div>');
 
 
 
@@ -64,7 +64,7 @@ FrameTrail.defineModule('Interface', function(){
 		FrameTrail.module('Sidebar').create();
 
 
-		$('body').append(mainContainer);
+		$(FrameTrail.getState('target')).append(mainContainer);
 
 
 		FrameTrail.module('ViewOverview').create();
@@ -95,15 +95,15 @@ FrameTrail.defineModule('Interface', function(){
 	 */
 	function initWindowResizeHandler() {
 
-		var _window = $(window),
+		var _window = $(FrameTrail.getState('target')),
 			resizeTimeout = false;
 
-		_window.resize(function(){
+		$(window).resize(function(){
 
 		 	var width   = _window.width(),
 		 		height  = _window.height();
 
-		 	//$('#MainContainer').height( height - FrameTrail.module('Titlebar').height );
+		 	//$('.mainContainer').height( height - FrameTrail.module('Titlebar').height );
 		 	FrameTrail.changeState('viewSize', [width, height]);
 
 		 	if ( resizeTimeout !== false ) {
@@ -117,7 +117,7 @@ FrameTrail.defineModule('Interface', function(){
 		});
 
 
-		_window.resize();
+		$(window).resize();
 
 
 
@@ -160,10 +160,12 @@ FrameTrail.defineModule('Interface', function(){
 
         if (editMode) {
 
+            $(FrameTrail.getState('target')).addClass('editActive');
             mainContainer.addClass('editActive').attr('data-edit-mode', editMode);
 
         } else {
 
+            $(FrameTrail.getState('target')).removeClass('editActive');
             mainContainer.removeClass('editActive').removeAttr('data-edit-mode');
 
         }

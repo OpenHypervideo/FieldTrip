@@ -1,6 +1,6 @@
 /* Timeline Element */
 
-#CodeSnippetTimeline .timelineElement {
+.codeSnippetTimeline .timelineElement {
     position: absolute;
     height: 100%;
     background: rgba(160, 163, 163, .6);
@@ -15,44 +15,44 @@
     transition-property: bottom;
 }
 
-#CodeSnippetTimeline .timelineElement.active {
+.codeSnippetTimeline .timelineElement.active {
     background: rgba(160, 163, 163, 1);
 }
 
-#CodeSnippetTimeline .timelineElement.highlighted {
+.codeSnippetTimeline .timelineElement.highlighted {
     background: #f8f8f8 !important;
     z-index: 100000;
 }
 
-#CodeSnippetTimeline.editable .timelineElement {
+.codeSnippetTimeline.editable .timelineElement {
     background-color: rgba(160, 170, 175, 0.8);
 }
 
-#CodeSnippetTimeline .timelineElement.brushed {
+.codeSnippetTimeline .timelineElement.brushed {
     background: #cad4d9;
 }
 
-#CodeSnippetTimeline .timelineElement.ui-draggable:hover {
+.codeSnippetTimeline .timelineElement.ui-draggable:hover {
     cursor: move;
 }
 
 /* Edit CodeSnippet Properties */
 
-#EditPropertiesContainer #CodeSnippetCode {
+.editPropertiesContainer .codeSnippetCode {
     height: 400px;
 }
 
-#EditPropertiesContainer .CodeMirror {
+.editPropertiesContainer .CodeMirror {
     margin-bottom: 6px;
 }
 
-#EditPropertiesContainer #ExecuteCodeSnippet {
+.editPropertiesContainer .executeCodeSnippet {
     float: right;
 }
 
 /* CodeSnippet Editing Tabs */
 
-#CodeSnippetEditingTabs #CodeSnippetList .codeSnippetElement {
+.codeSnippetEditingTabs .codeSnippetList .codeSnippetElement {
     background: var(--primary-bg-color) none repeat scroll 0 0;
     border-left: 14px solid #23262e;
     color: #c5d0d3;
@@ -65,7 +65,7 @@
     cursor: move;
 }
 
-#CodeSnippetEditingTabs #CodeSnippetList .dragPlaceholder {
+.codeSnippetEditingTabs .codeSnippetList .dragPlaceholder {
     outline: 1px dashed var(--primary-bg-color);
     background: transparent;
     border-color: #efefef;

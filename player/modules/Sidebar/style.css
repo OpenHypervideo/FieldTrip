@@ -1,4 +1,4 @@
-#Sidebar {
+.sidebar {
 	position: absolute;
 	left: -164px;
 	top: 0px;
@@ -15,12 +15,12 @@
 	transition: all 200ms linear; /* Standard */
 }
 
-#Sidebar.open {
+.sidebar.open {
 	box-shadow: 0 0 2px 1px var(--primary-fg-color);
 	left: 0px;
 }
 
-#Sidebar.editActive {
+.sidebar.editActive {
 	background-color: var(--secondary-fg-color);
 	color: var(--primary-bg-color);
 	box-shadow: none;
@@ -41,20 +41,20 @@
 	opacity: .7;
 }
 
-#SidebarContainer .viewmodeControls button.editMode  {
+.sidebarContainer .viewmodeControls button.editMode  {
 	display: none;
 }
 
-#SidebarContainer .viewmodeControls button.editMode.inEditMode  {
+.sidebarContainer .viewmodeControls button.editMode.inEditMode  {
 	display: block;
 }
 
-#SidebarContainer .viewmodeControls button.editMode.disabled  {
+.sidebarContainer .viewmodeControls button.editMode.disabled  {
 	pointer-events: none;
 	opacity: .4;
 }
 
-#SidebarContainer .viewmodeControls button.editMode.unsavedChanges:before {
+.sidebarContainer .viewmodeControls button.editMode.unsavedChanges:before {
 	content: "*";
 	position: absolute;
 	top: 6px;
@@ -92,60 +92,60 @@
 	width: 26px;
 }
 
-#SidebarContainer {
+.sidebarContainer {
 	display: block;
 	margin-top: 40px;
 }
 
-#SidebarContainer > div {
+.sidebarContainer > div {
 	display: none;
 }
 
-#SidebarContainer > div.active {
+.sidebarContainer > div.active {
 	display: block;
 }
 
-#SidebarContainer .viewmodeInfo {
+.sidebarContainer .viewmodeInfo {
 	padding: 10px;
 	overflow: auto;
 }
 
-#SidebarContainer .viewmodeInfo a {
+.sidebarContainer .viewmodeInfo a {
 	color: var(--primary-fg-color);
 }
 
-#Sidebar.editActive #SidebarContainer .viewmodeInfo a {
+.sidebar.editActive .sidebarContainer .viewmodeInfo a {
 	color: var(--primary-bg-color);
 }
 
-#SidebarContainer .descriptionLabel {
+.sidebarContainer .descriptionLabel {
 	margin-top: 10px;
 	color: var(--secondary-fg-color);
 }
 
-#Sidebar.editActive #SidebarContainer .descriptionLabel {
+.sidebar.editActive .sidebarContainer .descriptionLabel {
 	color: var(--secondary-bg-color);
 }
 
-#SidebarContainer .descriptionDates {
+.sidebarContainer .descriptionDates {
 	display: none;
 }
 
-#Sidebar.editActive #SidebarContainer .descriptionDates {
+.sidebar.editActive .sidebarContainer .descriptionDates {
 	/*display: block;*/
 }
 
-#SidebarContainer .viewmodeControls {
+.sidebarContainer .viewmodeControls {
 	position: relative;
 	width: 100%;
 }
 
-#SidebarContainer .viewmodeControls .viewModeActionButtonContainer {
+.sidebarContainer .viewmodeControls .viewModeActionButtonContainer {
 	padding: 10px;
 	/*border-bottom: 1px solid #a8a8a8;*/
 }
 
-#SidebarContainer .viewmodeControls .viewModeActionButtonContainer button, #HypervideoDeleteButton {
+.sidebarContainer .viewmodeControls .viewModeActionButtonContainer button, .hypervideoDeleteButton {
 	float: left;
 	height: 40px;
     margin-right: 8px;
@@ -155,32 +155,37 @@
 	background-color: transparent;
 }
 
-#Sidebar.editActive #SidebarContainer .viewmodeControls .viewModeActionButtonContainer button, #HypervideoDeleteButton {
+.sidebarContainer .viewmodeControls .viewModeActionButtonContainer button:hover, .hypervideoDeleteButton:hover {
+	background-color: var(--primary-bg-color);
+}
+
+.sidebar.editActive .sidebarContainer .viewmodeControls .viewModeActionButtonContainer button, .hypervideoDeleteButton {
 	border-color: var(--primary-bg-color);
 }
 
-#SidebarContainer .viewmodeControls .viewModeActionButtonContainer button.unsavedChanges {
+.sidebarContainer .viewmodeControls .viewModeActionButtonContainer button.unsavedChanges {
 	border-color: #FF9900 !important;
 	background-color: rgba(255, 153, 0, .15);
+	color: var(--primary-bg-color);
 }
 
-#SidebarContainer .viewmodeControls .viewModeActionButtonContainer button [class^="icon-"]::before, #SidebarContainer .viewmodeControls .viewModeActionButtonContainer button [class*=" icon-"]::before {
+.sidebarContainer .viewmodeControls .viewModeActionButtonContainer button [class^="icon-"]::before, .sidebarContainer .viewmodeControls .viewModeActionButtonContainer button [class*=" icon-"]::before {
 	font-size: 20px;
 	margin-left: 2px;
 	margin-top: 2px;
 }
 
-#SidebarContainer .viewmodeControls .exportButton {
+.sidebarContainer .viewmodeControls .exportButton {
 	display: none;
 }
 
-#SidebarContainer #HypervideoDeleteButton {
+.sidebarContainer .hypervideoDeleteButton {
 	position: absolute;
 	bottom: 10px;
 	left: 10px;
 }
 
-#SidebarContainer #HypervideoDeleteButton .icon-trash::before {
+.sidebarContainer .hypervideoDeleteButton .icon-trash::before {
 	font-size: 20px;
 	margin-left: 2px;
 	margin-top: 2px;

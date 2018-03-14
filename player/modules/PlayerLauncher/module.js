@@ -26,14 +26,12 @@
  * @main
  */
 
- FrameTrail.defineModule('PlayerLauncher', function(){
-
+ FrameTrail.defineModule('PlayerLauncher', function(FrameTrail){
 
     // Set up Overlay interface
     FrameTrail.initModule('InterfaceModal');
     FrameTrail.module('InterfaceModal').showStatusMessage('Loading Data ...');
     FrameTrail.module('InterfaceModal').showLoadingScreen();
-
 
     // Set up the various data models
     FrameTrail.initModule('RouteNavigation');
@@ -43,7 +41,6 @@
     FrameTrail.initModule('ResourceManager');
     FrameTrail.initModule('HypervideoModel');
 
-
     // Set up the interface
     FrameTrail.initModule('Interface');
 
@@ -52,8 +49,10 @@
         FrameTrail.initModule('HypervideoController');
     }
 
+    // Set up User Traces
+    FrameTrail.initModule('UserTraces');
 
-
+    
     // start the actual init process
 
     if (FrameTrail.module('RouteNavigation').hypervideoID) {
@@ -62,49 +61,65 @@
 
             function () {
 
-                FrameTrail.module('TagModel').initTagModel(
+                FrameTrail.module('UserTraces').initTraces();
 
-                    function () {
+                if (FrameTrail.module('Database').config.alwaysForceLogin) {
+                    FrameTrail.module('InterfaceModal').hideMessage();
+                    FrameTrail.module('UserManagement').ensureAuthenticated(function() {
+                        initHypervideo();
+                    }, function() {}, true);
+                } else {
+                    initHypervideo();
+                }
+                
+                function initHypervideo() {
 
-                        FrameTrail.module('InterfaceModal').setLoadingTitle(FrameTrail.module('Database').hypervideo.name);
+                    FrameTrail.module('TagModel').initTagModel(
 
-                        FrameTrail.module('HypervideoModel').initModel(function(){
+                        function () {
 
-                            FrameTrail.module('Interface').create(function(){
+                            FrameTrail.module('InterfaceModal').setLoadingTitle(FrameTrail.module('Database').hypervideo.name);
 
-                                FrameTrail.module('InterfaceModal').hideLoadingScreen();
+                            FrameTrail.module('HypervideoModel').initModel(function(){
 
-                                FrameTrail.module('HypervideoController').initController(
+                                FrameTrail.module('Interface').create(function(){
 
-                                    function(){
+                                    FrameTrail.module('InterfaceModal').hideLoadingScreen();
 
-                                        // Finished
-                                        FrameTrail.module('InterfaceModal').hideMessage();
+                                    FrameTrail.module('HypervideoController').initController(
 
-                                    },
+                                        function(){
 
-                                    function(errorMsg){
+                                            // Finished
+                                            FrameTrail.module('InterfaceModal').hideMessage();
 
-                                        // Fail: Init thread was aborted with:
-                                        FrameTrail.module('InterfaceModal').showErrorMessage(errorMsg);
+                                        },
 
-                                    }
+                                        function(errorMsg){
 
-                                );
+                                            // Fail: Init thread was aborted with:
+                                            FrameTrail.module('InterfaceModal').showErrorMessage(errorMsg);
+
+                                        }
+
+                                    );
+
+                                });
+
 
                             });
 
 
-                        });
+                        },
 
+                        function () {
+                            FrameTrail.module('InterfaceModal').showErrorMessage('Could not init TagModel.');
+                        }
 
-                    },
+                    );
 
-                    function () {
-                        FrameTrail.module('InterfaceModal').showErrorMessage('Could not init TagModel.');
-                    }
+                }
 
-                );
             },
 
             function(errorMsg){
@@ -124,15 +139,30 @@
 
             function(){
 
-                FrameTrail.module('InterfaceModal').setLoadingTitle(FrameTrail.module('Database').project.name);
-
-                FrameTrail.module('Interface').create(function(){
-
-                    // Finished
+                FrameTrail.module('UserTraces').initTraces();
+                
+                if (FrameTrail.module('Database').config.alwaysForceLogin) {
                     FrameTrail.module('InterfaceModal').hideMessage();
-                    FrameTrail.module('InterfaceModal').hideLoadingScreen();
+                    FrameTrail.module('UserManagement').ensureAuthenticated(function() {
+                        initOverview();
+                    }, function() {}, true);
+                } else {
+                    initOverview();
+                }
 
-                });
+                function initOverview() {
+
+                    FrameTrail.module('InterfaceModal').setLoadingTitle('Overview');
+
+                    FrameTrail.module('Interface').create(function(){
+
+                        // Finished
+                        FrameTrail.module('InterfaceModal').hideMessage();
+                        FrameTrail.module('InterfaceModal').hideLoadingScreen();
+
+                    });
+
+                }
 
             },
 

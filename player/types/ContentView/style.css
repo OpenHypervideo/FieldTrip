@@ -276,6 +276,24 @@
 	opacity: 1;
 }
 
+.layoutArea .contentViewContainer .contentViewContents .customhtmlContainer {
+	margin: 0px 4px 4px 4px;
+	max-height: calc(100% - 8px);
+	box-sizing: border-box;
+	position: relative;
+	padding: 7px;
+	overflow: auto;
+}
+
+.layoutArea .contentViewContainer .contentViewContents .customhtmlContainer .timebased {
+	background-color: rgba(100,100,100,.1);
+}
+
+.layoutArea .contentViewContainer .contentViewContents .customhtmlContainer .timebased:hover, .layoutArea .contentViewContainer .contentViewContents .customhtmlContainer .timebased.active {
+	background-color: rgba(100,110,100,.3);
+	cursor: pointer;
+}
+
 /* Content View Details */
 
 .layoutAreaDetails .contentViewDetailsContainer {
@@ -317,7 +335,7 @@
 
 /* View Layout Manager */
 
-#LayoutManager .layoutArea .contentViewPreview {
+.layoutManager .layoutArea .contentViewPreview {
 	position: absolute;
 	top: 46px;
 	width: calc(100% - 20px);
@@ -325,29 +343,29 @@
 	display: none;
 }
 
-#LayoutManager .layoutArea[data-area="areaTop"] .contentViewPreview {
+.layoutManager .layoutArea[data-area="areaTop"] .contentViewPreview {
 	top: 10px;
 }
 
-#LayoutManager .layoutArea[data-area="areaLeft"] .contentViewPreview {
+.layoutManager .layoutArea[data-area="areaLeft"] .contentViewPreview {
 	top: 10px;
 	right: 46px;
 	height: calc(100% - 20px);
 	width: calc(100% - 56px);
 }
 
-#LayoutManager .layoutArea[data-area="areaRight"] .contentViewPreview {
+.layoutManager .layoutArea[data-area="areaRight"] .contentViewPreview {
 	top: 10px;
 	left: 46px;
 	height: calc(100% - 20px);
 	width: calc(100% - 56px);
 }
 
-#LayoutManager .layoutArea .contentViewPreview.active {
+.layoutManager .layoutArea .contentViewPreview.active {
 	display: block;
 }
 
-#LayoutManager .layoutArea .contentViewPreview .contentViewPreviewDescription {
+.layoutManager .layoutArea .contentViewPreview .contentViewPreviewDescription {
 	position: absolute;
 	top: 50%;
 	left: 0px;
@@ -357,19 +375,19 @@
 	pointer-events: none;
 }
 
-#LayoutManager .layoutArea .contentViewPreview, .contentViewAnimationDiv {
-	background: var(--secondary-bg-color);
+.layoutManager .layoutArea .contentViewPreview, .contentViewAnimationDiv {
+	background: var(--secondary-bg-color) !important;
 	padding: 10px;
 	box-sizing: border-box;
 }
 
 .contentViewAnimationDiv {
 	border: 2px solid var(--primary-bg-color);
-	color: var(--primary-fg-color);
+	color: transparent;
 	pointer-events: none;
 }
 
-#LayoutManager .layoutArea .contentViewPreview .contentViewOptions {
+.layoutManager .layoutArea .contentViewPreview .contentViewOptions {
 	position: absolute;
 	top: 10px;
 	right: 10px;
@@ -380,12 +398,12 @@
 	z-index: 2;
 }
 
-#LayoutManager .layoutArea .contentViewPreview:hover .contentViewOptions {
+.layoutManager .layoutArea .contentViewPreview:hover .contentViewOptions {
 	opacity: 1;
 	pointer-events: all;
 }
 
-#LayoutManager .layoutArea .contentViewPreview .contentViewOptions button {
+.layoutManager .layoutArea .contentViewPreview .contentViewOptions button {
 	color: var(--primary-fg-color);
 	border-color: var(--primary-fg-color);
 }
@@ -402,13 +420,13 @@
 
 .contentViewEditingUI input[type="text"] {
 	box-sizing: border-box;
-	height: 42px;
+	height: 32px;
 }
 .contentViewEditingUI textarea {
 	display: block;
 	box-sizing: border-box;
 	width: 96%;
-	height: 42px;
+	height: 32px;
 }
 .contentViewEditingUI .typeSpecific {
 	position: relative;
@@ -420,7 +438,7 @@
 }
 
 .contentViewEditingUI .typeSpecific.codeEditorSmall {
-	height: 100px;
+	height: 80px;
 }
 
 .contentViewEditingUI .typeSpecific.codeEditorLarge {

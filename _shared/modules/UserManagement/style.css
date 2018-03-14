@@ -1,19 +1,30 @@
-#UserLoginOverlay {
+.userLoginOverlay {
 	display: none;
 }
 
-#UserLoginOverlay .loginBoxCancelButton {
+.userLoginOverlay .loginBoxCancelButton {
 	margin-left: 10px;
 }
 
-#UserLoginOverlay .loginBoxTabButton.inactive {
+.userLoginOverlay .loginBoxTabButton.inactive {
 	font-size: 17px;
 	text-decoration: underline;
 	cursor: pointer;
 }
 
-#UserLoginOverlay #UserTabRegister {
+.userLoginOverlay .userTabRegister {
 	display: none;
+}
+
+.userLoginOverlay input[type="text"], .userLoginOverlay input[type="password"], .userLoginOverlay textarea {
+	background: transparent;
+	color: var(--primary-fg-color);
+	border-color: var(--primary-fg-color);
+}
+
+.userLoginOverlay.ui-blocking-overlay .ui-overlay-box input[type="submit"]:hover, .userLoginOverlay.ui-blocking-overlay .ui-overlay-box button:hover {
+	background-color: var(--primary-fg-color);
+	color: var(--primary-bg-color);
 }
 
 .ui-dialog[aria-describedby="loggedOutDialog"] {
