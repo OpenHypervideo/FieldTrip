@@ -303,11 +303,11 @@ h3 {
 
 /* INTRO VIDEO */
 
-.ftLayer#ftIntro {
+.ftLayer#ftintro {
 	z-index: 3;
 }
 
-.ftLayer#ftIntro video {
+.ftLayer#ftintro video {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -318,16 +318,16 @@ h3 {
 
 /* OVERVIEW MAP */
 
-#ftOverview {
+#ftoverview {
 	background: #252425;
 	z-index: 2;
 }
 
-#ftOverview #ftMapContainer {
+#ftoverview #ftMapContainer {
 	
 }
 
-#ftOverview #ftMapContainer #ftWeatherContainer {
+#ftoverview #ftMapContainer #ftWeatherContainer {
 	position: absolute;
 	top: 15px;
 	right: 85px;
@@ -335,7 +335,7 @@ h3 {
 	color: #FFF;
 }
 
-#ftOverview #ftMapContainer img {
+#ftoverview #ftMapContainer img {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -348,12 +348,12 @@ h3 {
     user-select: none; 
 }
 
-#ftOverview #ftMapContainer img#ftMapBackground {
+#ftoverview #ftMapContainer img#ftMapBackground {
 	filter: saturate(1) brightness(0.7) contrast(1.2) opacity(0.3) hue-rotate(180deg);
 	object-fit: cover;
 }
 
-#ftOverview #ftMapContainer #ftMapCanvas {
+#ftoverview #ftMapContainer #ftMapCanvas {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -361,14 +361,14 @@ h3 {
 	height: 100%;
 }
 
-#ftOverview #ftMapContainer #ftMapCanvas img#ftMap {
+#ftoverview #ftMapContainer #ftMapCanvas img#ftMap {
 	top: 11.2%;
 	left: 20%;
 	width: 60.8%;
 	height: auto;
 }
 
-#ftOverview #ftMapContainer #ftMapCanvas .ftMapPin {
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin {
 	position: absolute;
 	margin-left: -18px;
 	margin-top: -18px;
@@ -382,13 +382,13 @@ h3 {
 	transform: scale(0.8);
 }
 
-#ftOverview #ftMapContainer #ftMapCanvas .ftMapPin:hover {
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:hover {
 	transform: scale(1);
 	z-index: 2;
 	/*background-color: #191719;*/
 }
 
-#ftOverview #ftMapContainer #ftMapCanvas .ftMapPin img {
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin img {
 	width: 80%;
 	height: 80%;
 	margin-top: 10%;
@@ -396,7 +396,7 @@ h3 {
 	object-fit: contain;
 }
 
-#ftOverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription {
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription {
 	position: absolute;
 	top: 40px;
 	left: -60px;
@@ -408,35 +408,35 @@ h3 {
 	display: none;
 }
 
-#ftOverview #ftMapContainer #ftMapCanvas .ftMapPin:hover .ftMapPinDescription {
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:hover .ftMapPinDescription {
 	display: block;
 }
 
-#ftOverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription h3 {
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription h3 {
 	margin: 0 0 10px 0;
 	padding: 0;
 }
 
-#ftOverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription p {
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription p {
 	margin: 0;
 	padding: 0;
 }
 
 /* VIDEO (FRAMETRAIL) */
 
-.ftLayer#ftVideo {
+.ftLayer#fthypervideo {
 	z-index: 1;
 }
 
 
-.ftLayer#ftVideo .ftLogo {
+.ftLayer#fthypervideo .ftLogo {
 	top: 10px;
 	left: 10px;
 	width: 82px;
 	height: auto;
 }
 
-.ftLayer#ftVideo #VideoPlayer {
+.ftLayer#fthypervideo #VideoPlayer {
 	position: absolute !important;
 	top: 0px;
 	left: 0px;
@@ -450,17 +450,17 @@ h3 {
 	letter-spacing: -0.9px;
 }
 
-.ftLayer#ftVideo #VideoPlayer.active {
+.ftLayer#fthypervideo #VideoPlayer.active {
 	visibility: visible;
 	z-index: 3;
 }
 
-.ftLayer#ftVideo #VideoPlayer h3 {
+.ftLayer#fthypervideo #VideoPlayer h3 {
 	font-size: 100%;
 }
 
 /*
-.ftLayer#ftVideo iframe {
+.ftLayer#fthypervideo iframe {
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -472,67 +472,32 @@ h3 {
 	z-index: 0;
 }
 
-.ftLayer#ftVideo iframe.active {
+.ftLayer#fthypervideo iframe.active {
 	visibility: visible;
 	z-index: 3;
 }
 */
 
-/* CUSTOM PLAYER (to be integrated as CodeSnippet) */
+/*******************
+* Media Queries
+*******************/
 
-#VideoPlayer ::after, #VideoPlayer ::before {
-	-moz-box-sizing: initial;
-	box-sizing: initial;
+@media (min-width: 1220px) and (max-width: 2000px) {
+	
 }
 
-#VideoPlayer .fullscreenButton, #VideoPlayer .volumeButton, #VideoPlayer .sharingWidget, #VideoPlayer .userSettingsButton, #VideoPlayer .logoutButton {
-	display: none !important;
+@media (min-width: 1010px) and (max-width: 1220px) {
+	
 }
 
-#VideoPlayer .titlebar.editActive .userSettingsButton, #VideoPlayer .titlebar.editActive .logoutButton {
-	display: block !important;
+@media (min-width: 650px) and (max-width: 1010px) {
+	
 }
 
-#VideoPlayer .titlebarViewMode {
-	display: none !important;
+@media (max-width: 650px) {
+
 }
 
-#VideoPlayer .titlebar:not(.editActive) {
-	background: #191719;
-}
-
-#VideoPlayer .titlebarActionButtonContainer {
-	border-right: 1px solid #333;
-}
-
-#VideoPlayer .SidebarContainer {
-	/*margin-top: 70px;*/
-}
-
-#VideoPlayer .titlebarViewMode {
-	margin-left: 164px;
-}
-
-#VideoPlayer .ui-tabs .ui-tabs-nav li a, #VideoPlayer .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
-	padding: 2px 4px;
-}
-
-#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .controls {
-	position: absolute;
-	flex: none;
-	bottom: 0px;
-}
-
-/* buttons */
-
-#VideoPlayer button, #VideoPlayer input[type="submit"], #VideoPlayer input[type="button"], #VideoPlayer .button {
-	/*font-family: 'Rubik', sans-serif;*/
-	font-family: 'Inconsolata', monospace;
-	letter-spacing: -0.9px;
-	text-transform: inherit;
-}
-
-#VideoPlayer input[type="text"], #VideoPlayer input[type="password"], #VideoPlayer textarea {
-	font-family: 'Inconsolata', monospace;
-	letter-spacing: 0px;
+@media screen and (max-width: 480px) {
+	
 }

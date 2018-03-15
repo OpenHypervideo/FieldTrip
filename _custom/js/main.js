@@ -6,50 +6,64 @@ var previousLayer,
 $(document).ready(function() {
 
 	// Check Setup
-    if (!!document.location.host) {
-        $.ajax({
-            "type": "POST",
-            url: "_server/ajaxServer.php",
-            data: {"a":"setupCheck"},
-            dataType: "json",
-            success: function(ret) {
-                if (ret["code"] != "1") {
-                    var setupUrl = window.location.href.replace('index.html', '') + 'setup.html';
-                    window.location.replace(setupUrl);
-                }
-            }
-        });
-    }
+	if (!!document.location.host) {
+		$.ajax({
+			"type": "POST",
+			url: "_server/ajaxServer.php",
+			data: {"a":"setupCheck"},
+			dataType: "json",
+			success: function(ret) {
+				if (ret["code"] != "1") {
+					var setupUrl = window.location.href.replace('index.html', '') + 'setup.html';
+					window.location.replace(setupUrl);
+				}
+			}
+		});
+	}
 
-    window.FieldTripInstance = FrameTrail.init('PlayerLauncher', {
+	window.FieldTrip = FrameTrail.init('PlayerLauncher', {
 
-        target:             '#VideoPlayer',
-        contentTargets:     {},
-        contents:           {
-                                hypervideo: '',
-                                annotationsIndex: '',
-                                annotations: [],
-                                resources: [],
-                                users: ''
-                            },
+		target:             '#VideoPlayer',
+		contentTargets:     {},
+		contents:           {
+								hypervideo: '',
+								annotationsIndex: '',
+								annotations: [],
+								resources: [],
+								users: ''
+							},
 
-        loggedIn:           false,
-        username:           '',
-        viewMode:           'video',
-        editMode:           false,
-        slidePosition:      'middle',
-        sidebarOpen:        false,
-        fullscreen:         false,
-        viewSize:           [0,0],
-        unsavedChanges:     false
+		loggedIn:           false,
+		username:           '',
+		viewMode:           'video',
+		editMode:           false,
+		slidePosition:      'middle',
+		sidebarOpen:        false,
+		fullscreen:         false,
+		viewSize:           [0,0],
+		unsavedChanges:     false
 
-    });
+	});
 
-    FieldTripInstance.on('ready', function() {
-    	FieldTripInstance.play();
-    });
+	FieldTrip.on('ready', function() {
+		if (FieldTrip.play) {
+			$('.hypervideo .video').css('transition-duration', '0ms').addClass('nocolor');
+			FieldTrip.play();
+		}
+	});
 
-    initEventListeners();
+	FieldTrip.on('play', function() {
+		window.setTimeout(function() {
+			$('.hypervideo .video').css('transition-duration', '').removeClass('nocolor');
+		}, 600);
+	});
+
+	FieldTrip.on('ended', function() {
+		window.history.pushState({}, '', '#overview');
+		activateLayer('overview');
+	});
+
+	initEventListeners();
 
 	//$('.ftLoadingIndicator').removeClass('active').fadeOut(1000);
 	//activateLayer('Overview');
@@ -77,8 +91,8 @@ $(document).ready(function() {
 				
 				$('.ftLoadingIndicator').removeClass('active').fadeOut(1000);
 				
-				window.history.replaceState({}, '', '#Intro');
-				activateLayer('Intro');
+				window.history.replaceState({}, '', '#intro');
+				activateLayer('intro');
 
 			}, 5000);
 
@@ -87,25 +101,25 @@ $(document).ready(function() {
 	});
 
 	$('#ftIntroVideo').on('ended', function() {
-		window.history.pushState({}, '', '#Overview');
-		activateLayer('Overview');
+		window.history.pushState({}, '', '#overview');
+		activateLayer('overview');
 	});
 
 	$.getScript("https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js").then( function() {
-  		
-	    $.simpleWeather({
-	        location: 'Berlin, DE',
-	        woeid: '20065632',
-	        unit: 'c',
-	        success: function(weather) {
-	            console.log(weather);
-	            $('#ftWeatherTemperature').text(weather.temp + ' °C');
-	            
-	        },
-	        error: function(error) {
-	            
-	        }
-	    });
+		
+		$.simpleWeather({
+			location: 'Berlin, DE',
+			woeid: '20065632',
+			unit: 'c',
+			success: function(weather) {
+				console.log(weather);
+				$('#ftWeatherTemperature').text(weather.temp + ' °C');
+				
+			},
+			error: function(error) {
+				
+			}
+		});
 	  
 	});
 
@@ -124,15 +138,15 @@ function initEventListeners() {
 
 	// Hash Change Listener
 	$(window).on('popstate', function() {
-		activateLayer(location.hash.split('#')[1].split('/')[0]);
+		var hash = location.hash.split('#')[1].split('=')[0];
+		if (hash) {
+			activateLayer(hash);
+		}
 	});
 
 	// Map Pins
-	$('.ftMapPin').click(function() {
-		var videoID = $(this).attr('href').split('Video/')[1];
-
-		$('.viewOverview .hypervideoThumb[data-hypervideoid="'+ videoID +'"]').click();
-		$('#ftVideo #VideoPlayer').addClass('active');
+	$('.ftMapPin').click(function(evt) {
+		$('#fthypervideo #VideoPlayer').addClass('active');
 	});
 
 	// Navigation
@@ -171,34 +185,34 @@ function activateLayer(layerName) {
 	$('.ftLayer').removeClass('active');
 	
 	switch (layerName) {
-		case 'Intro':
+		case 'intro':
 			// Intro
 			introTimeout = window.setTimeout(function() {
 				$('#ftIntroVideo')[0].currentTime = 0;
 				$('#ftIntroVideo')[0].play();
 			}, 2000);
 			
-			$('.ftLayer#ftOverview').addClass('zoomOut');
-			$('.ftLayer#ftVideo').addClass('zoomOut');
+			$('.ftLayer#ftoverview').addClass('zoomOut');
+			$('.ftLayer#fthypervideo').addClass('zoomOut');
 			break;
-		case 'Overview':
+		case 'overview':
 			// Overview
 			$('#ftIntroVideo')[0].pause();
 			window.clearTimeout(introTimeout);
 
-			$('.ftLayer#ftIntro').fadeOut(1000);
-			$('.ftLayer#ftOverview').removeClass('zoomOut');
-			$('.ftLayer#ftVideo').addClass('zoomOut');
+			$('.ftLayer#ftintro').fadeOut(1000);
+			$('.ftLayer#ftoverview').removeClass('zoomOut');
+			$('.ftLayer#fthypervideo').addClass('zoomOut');
 			break;
-		case 'Video':
+		case 'hypervideo':
 			// Video
 			$('#ftIntroVideo')[0].pause();
 			window.clearTimeout(introTimeout);
 			
-			$('.ftLayer#ftIntro').fadeOut(1000);
-			$('.ftLayer#ftOverview').fadeOut(1000);
-			$('.ftLayer#ftOverview').removeClass('zoomOut');
-			$('.ftLayer#ftVideo').removeClass('zoomOut');
+			$('.ftLayer#ftintro').fadeOut(1000);
+			$('.ftLayer#ftoverview').fadeOut(1000);
+			$('.ftLayer#ftoverview').removeClass('zoomOut');
+			$('.ftLayer#fthypervideo').removeClass('zoomOut');
 
 			// TODO: Replace with parsed Video ID
 			activeVideoID = 1;
@@ -216,22 +230,22 @@ function activateLayer(layerName) {
 }
 
 function interfaceDown() {
-	if (currentLayer == 'Intro') {
-		window.history.replaceState({}, '', '#Overview');
-		activateLayer('Overview');
-	} else if (currentLayer == 'Overview' && activeVideoID) {
-		window.history.replaceState({}, '', '#Video');
-		activateLayer('Video');
+	if (currentLayer == 'intro') {
+		window.history.replaceState({}, '', '#overview');
+		activateLayer('overview');
+	} else if (currentLayer == 'overview' && activeVideoID) {
+		window.history.replaceState({}, '', '#hypervideo');
+		activateLayer('hypervideo');
 	}
 }
 
 function interfaceUp() {
-	if (currentLayer == 'Video') {
-		window.history.replaceState({}, '', '#Overview');
-		activateLayer('Overview');
-	} else if (currentLayer == 'Overview') {
-		window.history.replaceState({}, '', '#Intro');
-		activateLayer('Intro');
+	if (currentLayer == 'hypervideo') {
+		window.history.replaceState({}, '', '#overview');
+		activateLayer('overview');
+	} else if (currentLayer == 'overview') {
+		window.history.replaceState({}, '', '#intro');
+		activateLayer('intro');
 	}
 }
 
@@ -246,11 +260,11 @@ function interfaceRight() {
 function updateButtonStates() {
 	$('.ftNavIconContainer').removeClass('inactive');
 
-	if (currentLayer == 'Video') {
+	if (currentLayer == 'hypervideo') {
 		$('.ftNavIconContainer.ftNavDown').addClass('inactive');
-	} else if (currentLayer == 'Overview' && !activeVideoID) {
+	} else if (currentLayer == 'overview' && !activeVideoID) {
 		$('.ftNavIconContainer.ftNavDown').addClass('inactive');
-	} else if (currentLayer == 'Intro') {
+	} else if (currentLayer == 'intro') {
 		$('.ftNavIconContainer.ftNavUp').addClass('inactive');
 	}
 }
