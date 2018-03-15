@@ -255,6 +255,7 @@ h3 {
 	line-height: 60px;
 	text-align: center;
 	opacity: 1;
+	cursor: pointer;
 }
 
 .ftNavIconContainer.inactive {
@@ -277,7 +278,7 @@ h3 {
 	display: block;
 }
 
-.ftSound, .ftNavShare, .ftNavAbout {
+.ftSound, .ftNavShare, .ftNavAbout, .ftEdit {
 	position: absolute;  
 }
 
@@ -288,6 +289,11 @@ h3 {
 
 .ftSound {
 	top: 0;
+	border-bottom: 1px solid #333;
+}
+
+.ftEdit {
+	top: 60px;
 	border-bottom: 1px solid #333;
 }
 
@@ -349,7 +355,7 @@ h3 {
 }
 
 #ftoverview #ftMapContainer img#ftMapBackground {
-	filter: saturate(1) brightness(0.7) contrast(1.2) opacity(0.3) hue-rotate(180deg);
+	/*filter: saturate(1) brightness(0.7) contrast(1.2) opacity(0.3) hue-rotate(180deg);*/
 	object-fit: cover;
 }
 

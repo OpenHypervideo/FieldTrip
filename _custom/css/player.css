@@ -5,24 +5,29 @@
 	box-sizing: initial;
 }
 
-#VideoPlayer .fullscreenButton, #VideoPlayer .volumeButton, #VideoPlayer .sharingWidget, #VideoPlayer .userSettingsButton, #VideoPlayer .logoutButton {
-	display: none !important;
-}
-
-#VideoPlayer .titlebar.editActive .userSettingsButton, #VideoPlayer .titlebar.editActive .logoutButton {
-	display: block !important;
-}
-
 #VideoPlayer .titlebarViewMode {
 	display: none !important;
 }
 
 #VideoPlayer .titlebar:not(.editActive) {
-	background: #191719;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	flex: none;
+	height: 23px;
+	background: var(--secondary-bg-color);
 }
 
-#VideoPlayer .titlebarActionButtonContainer {
-	border-right: 1px solid #333;
+#VideoPlayer .titlebar:not(.editActive) .titlebarTitle {
+	line-height: 20px;
+	font-size: 13px;
+}
+
+#VideoPlayer .titlebar:not(.editActive) .titlebarActionButtonContainer, 
+#VideoPlayer .sharingWidget, 
+#VideoPlayer .titlebar .leaveEditModeButton,
+#VideoPlayer .controls .rightControlPanel {
+	display: none !important;
 }
 
 #VideoPlayer .SidebarContainer {
@@ -37,10 +42,42 @@
 	padding: 2px 4px;
 }
 
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .ui-slider-handle-circle {
+	display: none;
+}
+
 #VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .controls {
 	position: absolute;
 	flex: none;
 	bottom: 0px;
+	height: 20px;
+	min-height: 0;
+}
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .controls .playButton {
+	height: 20px;
+	width: 30px;
+	margin-left: -5px;
+}
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .controls .playButton [class^="icon-"]::before {
+	font-size: 15px;
+	margin-top: -10px;
+}
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .controls .timeDisplay div {
+	float: left;
+	margin-top: -3px;
+	margin-left: 3px;
+}
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .controls .timeDisplay div.totalDuration {
+	display: none;
+}
+
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .hypervideoContainer {
+	margin-bottom: 20px;
 }
 
 /* buttons */
@@ -62,11 +99,11 @@
 .hypervideo .video {
 	filter: blur(0px) grayscale(0%) brightness(1);
 	transition-property: filter;
-	transition-duration: 2s;
+	transition-duration: 3s;
 }
 
 .hypervideo .video.nocolor {
-	filter: blur(1px) grayscale(90%) brightness(0.7);
+	filter: blur(1px) grayscale(90%) brightness(0.5);
 }
 
 .hypervideo .video.dark {
