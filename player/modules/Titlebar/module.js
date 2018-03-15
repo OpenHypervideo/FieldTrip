@@ -226,7 +226,7 @@ FrameTrail.defineModule('Titlebar', function(FrameTrail){
 
         newDialog.find('.newHypervideoForm').ajaxForm({
             method:     'POST',
-            url:        '../_server/ajaxServer.php',
+            url:        '_server/ajaxServer.php',
             beforeSubmit: function (array, form, options) {
 
                 var selectedResourcesID = $('.newHypervideoForm').find('input[name="resourcesID"]').val();

@@ -136,7 +136,7 @@ FrameTrail.defineModule('ViewOverview', function(FrameTrail){
 
                                         history.pushState({
                                             editMode: FrameTrail.getState('editMode')
-                                        }, "", "?hypervideo=" + newHypervideoID);
+                                        }, "", "#hypervideo=" + newHypervideoID);
 
                                         FrameTrail.changeState('editMode', false);
 
@@ -175,7 +175,7 @@ FrameTrail.defineModule('ViewOverview', function(FrameTrail){
 
                             history.pushState({
                                 editMode: FrameTrail.getState('editMode')
-                            }, "", "?hypervideo=" + newHypervideoID);
+                            }, "", "#hypervideo=" + newHypervideoID);
 
                             if ( FrameTrail.getState('editMode') ) {
 

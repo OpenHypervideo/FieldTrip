@@ -1100,12 +1100,14 @@
 			FrameTrail.module('HypervideoController').clearIntervals();
 		}
 
-		//TODO: Implement proper destroy method
-		$(FrameTrail.getState('target')).find('.viewVideo').remove();
-		ra = false;
+		// Set a fake timeout to get the highest timeout id
+		var highestTimeoutId = setTimeout(";");
+		for (var i = 0 ; i < highestTimeoutId ; i++) {
+			clearTimeout(i); 
+		}
 
 		FrameTrail.module('RouteNavigation').hypervideoID = newHypervideoID;
-		FrameTrail.module('RouteNavigation').hashTime = undefined;
+		//FrameTrail.module('RouteNavigation').hashTime = undefined;
 
 		FrameTrail.module('Database').updateHypervideoData(function() {
 
@@ -1120,6 +1122,10 @@
 			
 			function reInitHypervideo() {
 
+				//TODO: Implement proper destroy method
+				$(FrameTrail.getState('target')).find('.viewVideo').remove();
+				ra = false;
+
 				FrameTrail.initModule('ViewVideo');
 				FrameTrail.initModule('HypervideoModel');
 				FrameTrail.initModule('HypervideoController');
@@ -1128,7 +1134,9 @@
 
 
 					FrameTrail.module('ViewLayout').create();
+					FrameTrail.module('ViewOverview').refreshList();
 					FrameTrail.module('ViewVideo').create();
+					$(FrameTrail.getState('target')).find('.videoStartOverlay').hide();
 
 					FrameTrail.module('HypervideoController').initController(
 
@@ -1162,8 +1170,8 @@
 			}
 
 
-		}, function() {
-			console.log('FAIL');
+		}, function(errorMsg) {
+			FrameTrail.module('InterfaceModal').showErrorMessage(errorMsg);
 		});
 
 	}
@@ -1433,7 +1441,7 @@
 
 		EditHypervideoForm.ajaxForm({
 			method:     'POST',
-			url:        '../_server/ajaxServer.php',
+			url:        '_server/ajaxServer.php',
 			beforeSubmit: function (array, form, options) {
 
 				updateDatabaseFromForm();

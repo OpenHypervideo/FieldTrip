@@ -100,8 +100,8 @@
 
             },
 
-            play: (FrameTrail.module('HypervideoController')) ? FrameTrail.module('HypervideoController').play : null,
-            pause: (FrameTrail.module('HypervideoController')) ? FrameTrail.module('HypervideoController').pause : null,
+            play: function() { (FrameTrail.module('HypervideoController')) ? FrameTrail.module('HypervideoController').play() : null },
+            pause: function() { (FrameTrail.module('HypervideoController')) ? FrameTrail.module('HypervideoController').pause() : null },
 
             get duration()    { return FrameTrail.module('HypervideoModel').duration },
             get currentTime() { return FrameTrail.module('HypervideoController').currentTime },

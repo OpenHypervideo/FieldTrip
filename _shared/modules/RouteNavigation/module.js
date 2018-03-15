@@ -18,7 +18,7 @@
 FrameTrail.defineModule('RouteNavigation', function(FrameTrail){
 
 
-	var hypervideoID = getQueryVariable('hypervideo'),
+	var hypervideoID = getHashVariable('hypervideo'),
 		annotationID = '',
 		hashTime     = '',
 
@@ -114,7 +114,7 @@ FrameTrail.defineModule('RouteNavigation', function(FrameTrail){
 	/**
 	 * I set the hypervideo id
 	 * (in case it changes while the application is running).
-	 * @method setHashVariable
+	 * @method setHypervideoID
 	 * @param {String} id
 	 * @private
 	 */
@@ -136,6 +136,8 @@ FrameTrail.defineModule('RouteNavigation', function(FrameTrail){
 		var hash = window.location.hash.substring(1),
 			vars = hash.split("&"),
 			pair;
+
+		console.log(key, value);
 
 		for (var i = 0; i < vars.length; i++) {
 			pair = vars[i].split("=");
@@ -160,16 +162,39 @@ FrameTrail.defineModule('RouteNavigation', function(FrameTrail){
 	 */
 	function routeHasChanged(){
 
+		/*
+        * when accessed from the overview panel,
+        * event.originalEvent.state.editMode
+        * contains the previous editMode state
+        */
+
+    	//console.log(FrameTrail.module('RouteNavigation').hypervideoID, getQueryVariable('hypervideo'));
+
+    	var hypervideoID = getHashVariable('hypervideo'),
+    		hypervideoChange = ( hypervideoID && FrameTrail.module('RouteNavigation') && FrameTrail.module('RouteNavigation').hypervideoID != hypervideoID );
+
+    	if ( hypervideoChange ) {
+
+    		if ( FrameTrail.getState('editMode') ) {
+    			FrameTrail.changeState('editMode', false);
+    			FrameTrail.module('HypervideoModel').updateHypervideo(hypervideoID, true);
+    		} else {
+    			//console.log('change');
+    			FrameTrail.module('HypervideoModel').updateHypervideo(hypervideoID);
+    		}
+
+    	}
+
 		annotationID = getHashVariable('annotations');
 
-		if (annotationID !== oldAnnotationID) {
+		if ((annotationID !== oldAnnotationID) && !hypervideoChange) {
 			oldAnnotationID = annotationID;
 			onAnnotationChange && onAnnotationChange.call();
 		}
 
 		hashTime = getHashVariable('t');
 
-		if (hashTime !== oldHashTime) {
+		if ((hashTime !== oldHashTime) && !hypervideoChange) {
 			oldHashTime = hashTime;
 			onHashTimeChange && onHashTimeChange.call();
 		}
@@ -177,10 +202,10 @@ FrameTrail.defineModule('RouteNavigation', function(FrameTrail){
 	}
 
 
-	$(window).on('hashchange', routeHasChanged);
+	//$(window).on('hashchange', routeHasChanged);
 
-
-	$(window).on('popstate', function(event) {
+	$(window).on('popstate', routeHasChanged);
+	//$(window).on('popstate', function(event) {
 
         /*
         * when accessed from the overview panel,
@@ -190,6 +215,7 @@ FrameTrail.defineModule('RouteNavigation', function(FrameTrail){
 
     	//console.log(FrameTrail.module('RouteNavigation').hypervideoID, getQueryVariable('hypervideo'));
 
+    	/*
     	var hypervideoID = getQueryVariable('hypervideo');
 
     	if ( hypervideoID ) {
@@ -202,11 +228,11 @@ FrameTrail.defineModule('RouteNavigation', function(FrameTrail){
     			FrameTrail.module('HypervideoModel').updateHypervideo(hypervideoID);
     		}
 
-
     	}
+    	*/
 
 
-     });
+     //});
 
 
 	routeHasChanged();

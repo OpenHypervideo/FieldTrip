@@ -99,7 +99,7 @@ FrameTrail.defineModule('Sidebar', function(FrameTrail){
 
         forkDialog.find('.forkHypervideoForm').ajaxForm({
             method:     'POST',
-            url:        '../_server/ajaxServer.php',
+            url:        '_server/ajaxServer.php',
             dataType:   'json',
             thisID: thisID,
             data: {'a': 'hypervideoClone', 'hypervideoID': thisID},
@@ -188,7 +188,7 @@ FrameTrail.defineModule('Sidebar', function(FrameTrail){
 
         deleteDialog.find('.deleteHypervideoForm').ajaxForm({
             method:     'POST',
-            url:        '../_server/ajaxServer.php',
+            url:        '_server/ajaxServer.php',
             dataType:   'json',
             thisID: thisID,
             data: {a: 'hypervideoDelete', hypervideoID: thisID},
