@@ -1,232 +1,204 @@
-/* FRAMETRAIL CUSTOM PLAYER CSS */
-
-html {
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
-	font-smoothing: antialiased;
-}
-
-body {
-	font-family: 'Inconsolata', monospace;
-	letter-spacing: -0.9px;
-}
-
-h3 {
-	font-size: 100%;
-}
-
 /* CUSTOM PLAYER (to be integrated as CodeSnippet) */
 
-#FullscreenButton, #VolumeButton, #SharingWidget, .userSettingsButton, #LogoutButton {
+#VideoPlayer ::after, #VideoPlayer ::before {
+	-moz-box-sizing: initial;
+	box-sizing: initial;
+}
+
+#VideoPlayer .fullscreenButton, #VideoPlayer .volumeButton, #VideoPlayer .sharingWidget, #VideoPlayer .userSettingsButton, #VideoPlayer .logoutButton {
 	display: none !important;
 }
 
-#Titlebar.editActive .userSettingsButton, #Titlebar.editActive #LogoutButton {
+#VideoPlayer .titlebar.editActive .userSettingsButton, #VideoPlayer .titlebar.editActive .logoutButton {
 	display: block !important;
 }
 
-#TitlebarViewMode {
+#VideoPlayer .titlebarViewMode {
 	display: none !important;
 }
 
-#Titlebar {
+#VideoPlayer .titlebar:not(.editActive) {
 	background: #191719;
 }
 
-#TitlebarActionButtonContainer {
+#VideoPlayer .titlebarActionButtonContainer {
 	border-right: 1px solid #333;
 }
 
-#SidebarContainer {
+#VideoPlayer .SidebarContainer {
 	/*margin-top: 70px;*/
 }
 
-#TitlebarViewMode {
+#VideoPlayer .titlebarViewMode {
 	margin-left: 164px;
 }
 
-.ui-tabs .ui-tabs-nav li a, .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+#VideoPlayer .ui-tabs .ui-tabs-nav li a, #VideoPlayer .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
 	padding: 2px 4px;
+}
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .controls {
+	position: absolute;
+	flex: none;
+	bottom: 0px;
 }
 
 /* buttons */
 
-button, input[type="submit"], input[type="button"], .button {
+#VideoPlayer button, #VideoPlayer input[type="submit"], #VideoPlayer input[type="button"], #VideoPlayer .button {
 	/*font-family: 'Rubik', sans-serif;*/
 	font-family: 'Inconsolata', monospace;
 	letter-spacing: -0.9px;
+	text-transform: inherit;
 }
 
-input[type="text"], input[type="password"], textarea {
+#VideoPlayer input[type="text"], #VideoPlayer input[type="password"], #VideoPlayer textarea {
 	font-family: 'Inconsolata', monospace;
 	letter-spacing: 0px;
 }
 
-.ftAnimatedButton {
-  
+/* Inside Hypervideo */
+
+.hypervideo .video {
+	filter: blur(0px) grayscale(0%) brightness(1);
+	transition-property: filter;
+	transition-duration: 2s;
 }
 
-.ftAnimatedButton {
-	border: none;
-	position: relative;
+.hypervideo .video.nocolor {
+	filter: blur(1px) grayscale(90%) brightness(0.7);
 }
 
-.ftAnimatedButton:after{
-	content: "";
+.hypervideo .video.dark {
+	filter: blur(1px) grayscale(90%) brightness(0.1);
+}
+
+.overlayElement .resourceDetail[data-type="image"] img {
+	transform: scale(1,1);
+	transition-property: all;
+	transition-duration: 300ms;
+}
+
+.overlayElement .resourceDetail[data-type="image"] img:hover {
+	cursor: pointer;
+  	transform: scale(1.2,1.2);
+}
+
+.overlayElement svg {
+	top: 10px;
+	left: 10px;
+  	width: calc(100% - 20px);
+}
+
+.overlayElement svg {
 	position: absolute;
-	top: 0;
-	left: 0;
-	height: 0%;
-	width: 0%;
-	
-	border-top: 1px solid rgba(255,255,255,.5);
-	border-right: 1px solid rgba(255,255,255,.5);
-	animation: borderAfter 1s linear 0s forwards 1;
-}
-
-.ftAnimatedButton:before{
-	content: "";
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	height: 0%;
-	width: 0%;
-	transition-delay: 1s;
-	
-	border-bottom: 1px solid rgba(255,255,255,.5);
-	border-left: 1px solid rgba(255,255,255,.5);
-	animation: borderBefore 1s linear 1s forwards 1;
-}
-
-@keyframes borderAfter{
-	0%{
-		width: 0%;
-		height: 0%;
-	}
-	50%{
-		width: 100%;
-		height: 0%;
-	}
-	100%{
-		width: 100%;
-		height: 97%;
-	}
-}
-@keyframes borderBefore{
-	0%{
-		width: 0%;
-		height: 0%;
-	}
-	50%{
-		width: 100%;
-		height: 0%;
-	}
-	100%{
-		width: 100%;
-		height: 97%;
-	}
-}
-
-
-/* Navigation */
-
-.ftLayer .ftLayerContent .ftNavigation {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	width: 60px;
-	background-color: #191719;
 	z-index: 11;
+	overflow: visible !important;
+	transition-property: all;
+	transition-duration: 1300ms;
+	pointer-events: none;
 }
 
-.ftLayer .ftLayerContent .ftNavigation button {
-	float: right;
-	border: 2px solid #333;
-	margin-left: 12px;
-}
-
-.ftNavItems {
+.overlayElement svg.centered {
 	position: absolute;
-	top: 50%;
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	-o-transform: translateY(-50%);
-	transform: translateY(-50%);
-	padding: 0;
-	margin: 0;
-	width: 100%;
-	list-style: none;
-	border-top: 1px solid #333;
+	top: 50% !important;
+	left: 50% !important;
+	margin-top: -30px;
+	margin-left: -30px;
+	width: 65px !important;
+	height: 65px !important;
+	-webkit-animation: spin 2s linear infinite;
+    -moz-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    animation-delay: 1s
 }
 
-.ftNavItems li {
-  border-bottom: 1px solid #333;
+.overlayElement svg.centered polygon {
+	width: 100% !important;
+	height: 100% !important;
 }
 
-.ftNavIconContainer {
-	display: block;
-	position: relative;
-	width: 60px;
-	height: 60px;
-	line-height: 60px;
-	text-align: center;
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.overlayElement .resourceDetail[data-type="image"] svg path, .overlayElement .resourceDetail[data-type="image"] svg polygon {
+	stroke: #fff;
+	stroke-miterlimit: 1;
+	stroke-width: 2px;
+	transition-property: fill, opacity;
+	transition-duration: 800ms;
+	pointer-events: none;
+}
+
+.overlayElement svg.active {
+	pointer-events: all;
+}
+
+.overlayElement svg.active path, .overlayElement svg.active polygon {
 	opacity: 1;
+	pointer-events: all;
 }
 
-.ftNavIconContainer.inactive {
-	opacity: .35;
+.overlayElement svg.active path:hover, .overlayElement svg.active polygon:hover {
+	cursor: pointer;
+	fill: rgba(255,255,255,.4);
 }
 
-.ftNavIconContainer img {
-	max-width: 15px;
-	height: auto;
-	vertical-align: middle;
+.continueButton {
+	position: absolute;
+	bottom: -60px;
+	right: 20px;
+	width: 70px;
+	height: 34px;
+	transition-property: all;
+	transition-duration: 800ms;
+	background: transparent;
+	z-index: 14;
+	opacity: 0;
+	pointer-events: none;
 }
 
-.ftNavIconContainer.ftAboutIconContainer img {
-	max-width: 10px;
-	height: auto;
+.continueButton svg, .continueButton svg polygon {
+	opacity: 1;
+	stroke-width: 1px;
 }
 
-.ftNavIconContainer span {
-	display: block;
+.continueButton span {
+	position: absolute;
+	color: #fff;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	text-align: center;
+	font-size: 26px;
+	line-height: 30px;
 }
 
-.ftSound, .ftNavShare, .ftNavAbout {
-	position: absolute;  
+.continueButton.active {
+	bottom: 20px;
+	opacity: 1;
+	pointer-events: all;
 }
 
-.ftSound.ftAboutIconContainer img,
-.ftNavShare.ftAboutIconContainer img {
-	max-width: 20px;
+.continueButton.active:hover {
+	cursor: pointer;
+	background: rgba(255,255,255,.4);
 }
-
-.ftSound {
-	top: 0;
-	border-bottom: 1px solid #333;
-}
-
-.ftNavAbout {
-	bottom: 60px;
-	border-top: 1px solid #333;
-}
-
-.ftNavShare {
-	bottom: 0;
-	border-top: 1px solid #333;
-}
-
-/* VIDEO (FRAMETRAIL) */
 
 /*
-.ftLayer#ftVideo {
-	z-index: 1;
+.continueButton.full {
+	bottom: 0px;
+	right: 0px;
+	width: 100%;
+	height: 100%;
 }
 
-.ftLayer#ftVideo .ftLogo {
-	width: 80px;
-	height: auto;
+.continueButton.full:hover {
+	background:transparent;
+}
+
+.continueButton.full span {
+	opacity: 0;
 }
 */
-
