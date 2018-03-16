@@ -1153,6 +1153,9 @@
 							window.setTimeout(function() {
 								//FrameTrail.changeState('viewSize', FrameTrail.getState('viewSize'));
 								$(window).resize();
+								
+								$(FrameTrail.getState('target')).find('.hypervideo video.video').removeClass('nocolor dark');
+
 							}, 300);
 
 						},

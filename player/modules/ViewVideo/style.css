@@ -712,6 +712,9 @@
     width: 1920px;
     height: 1080px;
     background: #101010;
+    filter: blur(0px) grayscale(0%) brightness(1);
+    transition-property: filter;
+    transition-duration: 3s;
     /*
     -moz-transition-property: width, height;
     -moz-transition-duration: 200ms;
@@ -726,6 +729,14 @@
     transition-duration: 200ms;
     transition-timing-function: linear;
     */
+}
+
+.hypervideoContainer .videoContainer .hypervideo video.video.nocolor {
+    filter: blur(1px) grayscale(90%) brightness(0.5);
+}
+
+.hypervideoContainer .videoContainer .hypervideo video.video.dark {
+    filter: blur(1px) grayscale(90%) brightness(0.1);
 }
 
 .hypervideoContainer .videoContainer .hypervideo .overlayContainer {

@@ -36,7 +36,7 @@ FrameTrail.defineModule('ViewVideo', function(FrameTrail){
                         + '                </div>'
                         + '                <div class="videoContainer">'
                         + '                    <div class="hypervideo">'
-                        + '                        <video class="video"></video>'
+                        + '                        <video class="video nocolor"></video>'
                         + '                        <div class="overlayContainer"></div>'
                         + '                        <div class="captionContainer"></div>'
                         + '                    </div>'

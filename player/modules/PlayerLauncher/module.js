@@ -93,6 +93,8 @@
                                             // Finished
                                             FrameTrail.module('InterfaceModal').hideMessage();
 
+                                            $(FrameTrail.getState('target')).find('.hypervideo video.video').removeClass('nocolor dark');
+
                                         },
 
                                         function(errorMsg){
