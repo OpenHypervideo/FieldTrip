@@ -198,7 +198,7 @@ h3 {
 	height: 100%;
 	z-index: 1;
 	transition-property: all;
-	transition-duration: 1000ms;
+	transition-duration: 800ms;
 	transform-origin: center;
 	transform: scale(1.6) rotate(0deg);
 }
@@ -208,7 +208,7 @@ h3 {
 }
 
 .ftLayer.zoomOut .ftLayerContent {
-	transform: scale(0.4) rotate(-6deg)!important;
+	transform: scale(0.4) rotate(-6deg) !important;
 }
 
 /* Navigation */

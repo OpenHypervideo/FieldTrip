@@ -5,6 +5,15 @@
 	box-sizing: initial;
 }
 
+#VideoPlayer .message.statusMessage.active {
+	display: none !important;
+}
+
+#VideoPlayer .message.statusMessage.active.error {
+	top: 0px;
+	display: block !important;
+}
+
 #VideoPlayer .titlebarViewMode {
 	display: none !important;
 }
@@ -80,6 +89,10 @@
 	margin-bottom: 20px;
 }
 
+#VideoPlayer .videoStartOverlay {
+	display: none !important;
+}
+
 /* buttons */
 
 #VideoPlayer button, #VideoPlayer input[type="submit"], #VideoPlayer input[type="button"], #VideoPlayer .button {
@@ -96,29 +109,24 @@
 
 /* Inside Hypervideo */
 
-.hypervideo .video {
-	filter: blur(0px) grayscale(0%) brightness(1);
-	transition-property: filter;
-	transition-duration: 3s;
-}
-
 .hypervideo .video.nocolor {
-	filter: blur(1px) grayscale(90%) brightness(0.5);
+	filter: blur(1px) grayscale(90%) brightness(0.4);
 }
 
 .hypervideo .video.dark {
-	filter: blur(1px) grayscale(90%) brightness(0.1);
+	filter: blur(2px) grayscale(90%) brightness(0.1);
 }
 
 .overlayElement .resourceDetail[data-type="image"] img {
-	transform: scale(1,1);
+	transform: scale(0.8, 0.8);
+	transform-origin: center;
 	transition-property: all;
 	transition-duration: 300ms;
 }
 
 .overlayElement .resourceDetail[data-type="image"] img:hover {
 	cursor: pointer;
-  	transform: scale(1.2,1.2);
+  	transform: scale(1,1);
 }
 
 .overlayElement svg {

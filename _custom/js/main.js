@@ -45,13 +45,11 @@ $(document).ready(function() {
 
 	});
 
+	/*
 	FieldTrip.on('ready', function() {
-		$('.hypervideo .video').css('transition-duration', '0ms').addClass('nocolor');
-		/*
 		if (FieldTrip.play && previousLayer) {
 			FieldTrip.play();
 		}
-		*/
 	});
 
 	FieldTrip.on('play', function() {
@@ -59,6 +57,7 @@ $(document).ready(function() {
 			$('.hypervideo .video').css('transition-duration', '').removeClass('nocolor');
 		}, 600);
 	});
+	*/
 
 	FieldTrip.on('ended', function() {
 		window.history.pushState({}, '', '#overview');
@@ -234,8 +233,11 @@ function activateLayer(layerName) {
 			if (FieldTrip.play && previousLayer) {
 				window.setTimeout(function() {
 					$(window).resize();
-					FieldTrip.play();
-				}, 1000);
+					window.setTimeout(function() {
+						$(window).resize();
+						FieldTrip.play();
+					}, 500);
+				}, 1100);
 			}
 			$('.hypervideo .video').stop(true, false).animate({
 				volume: 1
