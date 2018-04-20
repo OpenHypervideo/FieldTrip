@@ -5,6 +5,22 @@
 	box-sizing: initial;
 }
 
+.frametrail-body .mainContainer ::before, 
+.frametrail-body .mainContainer ::after, 
+.frametrail-body .ui-resizable-handle {
+	-moz-box-sizing: unset;
+	box-sizing: unset;
+}
+
+.frametrail-body .ui-tabs-panel {
+	-moz-box-sizing: inherit;
+	box-sizing: inherit;
+}
+
+.editPropertiesContainer .overlayOptionsTabs .message {
+	width: 360px;
+}
+
 #VideoPlayer .message.statusMessage.active {
 	display: none !important;
 }
@@ -110,11 +126,24 @@
 /* Inside Hypervideo */
 
 .hypervideo .video.nocolor {
-	filter: blur(1px) grayscale(90%) brightness(0.4);
+	filter: grayscale(80%) brightness(0.8) hue-rotate(-162deg);
 }
 
 .hypervideo .video.dark {
-	filter: blur(2px) grayscale(90%) brightness(0.1);
+	filter: grayscale(90%) brightness(0.1);
+}
+
+.overlayContainer .overlayElement {
+	opacity: 0;
+	visibility: visible;
+	pointer-events: none;
+	transition-property: opacity;
+	transition-duration: 800ms;
+}
+
+.overlayContainer .overlayElement.active {
+	opacity: 1;
+	pointer-events: all;
 }
 
 .overlayElement .resourceDetail[data-type="image"] img {

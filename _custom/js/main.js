@@ -139,9 +139,11 @@ function initEventListeners() {
 
 	// Hash Change Listener
 	$(window).on('popstate', function() {
-		var hash = location.hash.split('#')[1].split('=')[0];
-		if (hash) {
-			activateLayer(hash);
+		var hash = location.hash.split('#')[1].split('=');
+		if (hash[1]) {
+			activateLayer(hash[0], hash[1].split('&')[0]);
+		} else if (hash) {
+			activateLayer(hash[0]);
 		}
 	});
 
@@ -187,7 +189,7 @@ function initEventListeners() {
 
 }
 
-function activateLayer(layerName) {
+function activateLayer(layerName, videoID) {
 
 	previousLayer = (currentLayer) ? currentLayer : false;
 	currentLayer = layerName;
@@ -236,12 +238,13 @@ function activateLayer(layerName) {
 					window.setTimeout(function() {
 						$(window).resize();
 						FieldTrip.play();
-					}, 500);
+						$('.hypervideo .video').stop(true, false).animate({
+							volume: 1
+						}, 600);
+					}, 800);
 				}, 1100);
 			}
-			$('.hypervideo .video').stop(true, false).animate({
-				volume: 1
-			}, 600);
+			
 			$('#ftIntroVideo')[0].pause();
 			window.clearTimeout(introTimeout);
 			
@@ -251,7 +254,9 @@ function activateLayer(layerName) {
 			$('.ftLayer#fthypervideo').removeClass('zoomOut');
 
 			// TODO: Replace with parsed Video ID
-			activeVideoID = 1;
+			$('.ftMapPin').removeClass('active');
+			$('.ftMapPin[href="#hypervideo='+ videoID +'"]').addClass('active');
+			activeVideoID = videoID;
 
 			break;
 		default:
@@ -270,8 +275,8 @@ function interfaceDown() {
 		window.history.replaceState({}, '', '#overview');
 		activateLayer('overview');
 	} else if (currentLayer == 'overview' && activeVideoID) {
-		window.history.replaceState({}, '', '#hypervideo');
-		activateLayer('hypervideo');
+		window.history.replaceState({}, '', '#hypervideo='+ activeVideoID);
+		activateLayer('hypervideo', activeVideoID);
 	}
 }
 

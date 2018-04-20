@@ -184,10 +184,10 @@ switch($_REQUEST["a"]) {
 
 	case "setupCheck":
 
-		if ( version_compare(phpversion(), '5.6.2', '<') ) {
+		if ( version_compare(phpversion(), '5.4.4', '<') ) {
 			$return["status"] = "fail";
 			$return["code"] = 2;
-			$return["string"] = "Server does not meet the requirements. PHP version needs to be 5.6.20 or later.";
+			$return["string"] = "Server does not meet the requirements. PHP version needs to be 5.4.4 or later (".phpversion()." is installed)";
 			echo json_encode($return);
 			exit;
 		}

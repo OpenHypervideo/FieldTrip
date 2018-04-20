@@ -385,13 +385,18 @@ h3 {
 	transition-property: all;
 	transition-duration: 300ms;
 	transform-origin: center;
-	transform: scale(0.8);
+	transform: scale(0.8, 0.8);
 }
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:hover {
-	transform: scale(1);
+	transform: scale(1, 1);
 	z-index: 2;
 	/*background-color: #191719;*/
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin.active {
+	transform: scale(1, 1);
+	border: 4px solid #3bf690;
 }
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin img {
@@ -399,7 +404,6 @@ h3 {
 	height: 80%;
 	margin-top: 10%;
 	margin-left: 10%;
-	object-fit: contain;
 }
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription {
