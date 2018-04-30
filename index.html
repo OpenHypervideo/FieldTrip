@@ -168,13 +168,13 @@
         <button id="ftStartButton" class="ftButton ftAnimatedButton">Start</button>
 
         <div class="ftLoadingIndicator active">
-            <div class="ftLoadingIcon"></div>
+            <div class="ftLoadingIcon">
+              <i class="fticon-logo-fieldtrip"></i>
+            </div>
         </div>
 
         <div id="ftintro" class="ftLayer">
-            
-            <img class="ftLogo" src="_custom/graphics/FT-white-transparent.svg"/>
-
+            <i class="fticon-logo-fieldtrip ftLogo"></i>
             <div class="ftLayerContent">
                 <video id="ftIntroVideo" preload="auto">
                     <source src="_custom/zoom-to-black.mp4" type="video/mp4">
@@ -186,7 +186,7 @@
         <div id="ftoverview" class="ftLayer">
         
             <a href="#intro">
-                <img class="ftLogo" src="_custom/graphics/FT-white-transparent.svg"/>
+                <i class="fticon-logo-fieldtrip ftLogo"></i>
             </a>
 
             <div class="ftLayerContent">
@@ -198,63 +198,143 @@
                         <img id="ftMap" src="_custom/graphics/overview.svg" />
 
                         <!-- Pointers -->
-                        <a href="#hypervideo=5" style="top: 31%; left: 23%;" id="ftMapPin1" class="ftMapPin">
-                            <img src="_custom/graphics/FT-pin-green.svg">
-                            <span class="ftMapPinDescription">
-                                <p>Farzad, ein junger Mann aus Afghanistan, bei seinem Alltag in der Notunterkunft im Hangar 7</p>
-                            </span>
-                        </a>
-                        <a href="#hypervideo=6" style="top: 25%; left: 30%;" id="ftMapPin2" class="ftMapPin">
-                            <img src="_custom/graphics/FT-pin-green.svg">
-                            <span class="ftMapPinDescription">
-                                <p>Fous de Danse, ein 10-stündiger Tanz auf dem Vorfeld des Flughafens eröffnet die Theaterbühne der Volksbühne in Tempelhof</p>
-                            </span>
-                        </a>
-						<a href="#hypervideo=2" style="top: 24%; left: 47%;" id="ftMapPin3" class="ftMapPin">
-                            <img src="_custom/graphics/FT-pin-green.svg">
-                            <span class="ftMapPinDescription">
-                                <p>Der Mutlauf, ein ungewöhnlicher Marathon auf der ehemaligen Rollbahn</p>
-                            </span>
-                        </a>
-                        <a href="#hypervideo=4" style="top: 62%; left: 57%;" id="ftMapPin4" class="ftMapPin">
-                            <img src="_custom/graphics/FT-pin-green.svg">
-                            <span class="ftMapPinDescription">
-                                <p>Ein Chanson für das Tempelhofer Feld - von Antoine Léchevin von der Band Franz Geil.</p>
-                            </span>
-                        </a>
-                        <a href="#hypervideo=8" style="top: 46.5%; left: 40%;" id="ftMapPin5" class="ftMapPin">
-                            <img src="_custom/graphics/FT-pin-green.svg">
-                            <span class="ftMapPinDescription">
-                                <p>1948, Bilder der weltberühmten Berliner Luftbrücke. Rosinenbomber landen und werden entladen</p>
-                            </span>
-                        </a>
+                        <div style="top: 31%; left: 23%;" id="ftMapPin1" class="ftMapPin">
+                            <i class="fticon-silhouette"></i> 
+                            <a href="#hypervideo=5" class="ftMapPinDescription">
+                                <figure class="chart" data-percent="100">
+                                  <svg width="300" height="300">
+                                    <circle class="circle" cx="150" cy="150" r="140"/>
+                                  </svg>
+                                </figure>
+                                <div class="ftMapPinDescriptionImg">
+                                  <img src="_custom/graphics/placeholders/5.jpg" alt="" />
+                                </div>
+                                <div class="ftMapPinDescriptionContent">
+                                  <i class="fticon-right"></i>
+                                </div>
+                                <span>Der Drachenbauer</span>
+                            </a>
+                        </div>
+                        <div style="top: 25%; left: 30%;" id="ftMapPin2" class="ftMapPin">
+                            <i class="fticon-silhouette"></i> 
+                            <a href="#hypervideo=6" class="ftMapPinDescription">
+                                <figure class="chart" data-percent="100">
+                                  <svg width="300" height="300">
+                                    <circle class="circle" cx="150" cy="150" r="140"/>
+                                  </svg>
+                                </figure>
+                                <div class="ftMapPinDescriptionImg">
+                                  <img src="_custom/graphics/placeholders/4.jpg" alt="" />
+                                </div>
+                                <div class="ftMapPinDescriptionContent">
+                                  <i class="fticon-right"></i>
+                                </div>
+                                <span>Die Feldtänzerin</span>
+                            </a>
+                        </div>
+						            <div style="top: 24%; left: 47%;" id="ftMapPin3" class="ftMapPin">
+                            <i class="fticon-silhouette"></i> 
+                            <a href="#hypervideo=2" class="ftMapPinDescription">
+                                <figure class="chart" data-percent="100">
+                                  <svg width="300" height="300">
+                                    <circle class="circle" cx="150" cy="150" r="140"/>
+                                  </svg>
+                                </figure>
+                                <div class="ftMapPinDescriptionImg">
+                                  <img src="_custom/graphics/placeholders/1.jpg" alt="" />
+                                </div>
+                                <div class="ftMapPinDescriptionContent">
+                                  <i class="fticon-right"></i>
+                                </div>
+                                <span>Der Mutläufer</span>
+                            </a>
+                        </div>
+                        <div style="top: 62%; left: 57%;" id="ftMapPin4" class="ftMapPin">
+                            <i class="fticon-silhouette"></i> 
+                            <a href="#hypervideo=4" class="ftMapPinDescription">
+                              <figure class="chart" data-percent="100">
+                                <svg width="300" height="300">
+                                  <circle class="circle" cx="150" cy="150" r="140"/>
+                                </svg>
+                              </figure>
+                              <div class="ftMapPinDescriptionImg">
+                                <img src="_custom/graphics/placeholders/2.jpg" alt="" />
+                              </div>
+                              <div class="ftMapPinDescriptionContent">
+                                <i class="fticon-right"></i>
+                              </div>
+                              <span>Der Charmeur</span>
+                            </a>
+                        </div>
+                        <div style="top: 46.5%; left: 40%;" id="ftMapPin5" class="ftMapPin">
+                            <i class="fticon-silhouette"></i> 
+                            <a href="#hypervideo=8" class="ftMapPinDescription">
+                                 <figure class="chart" data-percent="100">
+                                   <svg width="300" height="300">
+                                     <circle class="circle" cx="150" cy="150" r="140"/>
+                                   </svg>
+                                 </figure>
+                                <div class="ftMapPinDescriptionImg">
+                                  <img src="_custom/graphics/placeholders/6.jpg" alt="" />
+                                </div>
+                                <div class="ftMapPinDescriptionContent">
+                                  <i class="fticon-right"></i>
+                                </div>                                
+                                <span>Die Rosinensammlerin</span>
+                            </a>
+                        </div>
 
                     </div>
 
+                    <!-- Weather Widget -->
+                    
                     <div id="ftWeatherContainer">
-                        <div id="ftWeatherTime"></div>
-                        <div id="ftWeatherTemperature"></div>
+                        <div id="ftWeatherData" class="clearfix">
+                          <span id="ftWeatherTime"></span>
+                          <span id="ftWeatherTemperature">19 °C</span>
+                        </div>
+                        <div id="ftWeatherIcon"><i class="weathericon-30"></i></div>
                     </div>
+                    
+                    <!-- Night/Day Mode Switcher -->
+                    
+                    <div class="switch-container">
+                      <i class="fticon-day"></i>
+                      <label id="ftSwitchCheckbox" class="switch"><input type="checkbox" />
+                        <div></div>
+                      </label>
+                      <i class="fticon-night"></i>
+                    </div> <!-- end switch -->
 
                 </div>
 
                 <!-- NAVIGATION IS DOUBLED IN LAYERS FOR ANIMATION PURPOSES -->
                 <div class="ftNavigation">
                     <nav>
-                      <div class="ftSound ftNavIconContainer"><img src="_custom/graphics/FT-sound-off.svg" />
-                      </div>
+                      <div class="ftSound ftSoundOff ftNavIconContainer"><i class="fticon-sound-off"></i></div> 
+                      <div class="ftSound ftSoundOn ftNavIconContainer"><i class="fticon-sound-on"></i></div> 
+                      
+                      <div class="ftScreen ftScreenEnlarge ftNavIconContainer"><i class="fticon-enlarge"></i></div> 
+                      <div class="ftScreen ftScreenReduce ftNavIconContainer"><i class="fticon-reduce"></i></div>
+                      
                       <ul class="ftNavItems">
-                        <li><div class="ftNavIconContainer ftNavUp active"><img src="_custom/graphics/FT-arrow-up.svg" /></div></li>
-                        <li><div class="ftNavIconContainer ftNavDown"><img src="_custom/graphics/FT-arrow-down.svg" /></div></li>
+                        <li><div class="ftNavIconContainer ftNavUp active"><i class="fticon-up"></i></div></li>
+                        <li><div class="ftNavIconContainer ftNavDown"><i class="fticon-down"></i></div></li>
                       </ul>
-                      <div class="ftNavAbout ftNavIconContainer">
-                        <div class="ftNavIconContainer ftAboutIconContainer"><img src="_custom/graphics/FT-about.svg" /></div>
-                      </div>
+                      
                       <div class="ftNavShare ftNavIconContainer">
-                        <div><img src="_custom/graphics/FT-share.svg" /></div>
-                        <span class="">35</span>
+                        <div><i class="fticon-share ftSocialTrigger"></i></div>
+                        <ul class="ftSocialNav">
+                          <li><a href="http://"><i class="fticon-twitter"></i></a></li>
+                          <li><a href="http://"><i class="fticon-facebook"></i></a></li>
+                          <li><a href="http://"><i class="fticon-google-plus"></i></a></li>
+                        </ul>
                       </div>
                     </nav>
+                </div>
+                
+                <div class="ftNavAbout ftNavIconContainer">
+                  <a href="#about" class="ftNavIconContainer ftAboutIconContainer"><i class="fticon-about"></i></a>
                 </div>
 
             </div>
@@ -264,7 +344,7 @@
         <div id="fthypervideo" class="ftLayer">
             
             <a href="#overview">
-                <img class="ftLogo" src="_custom/graphics/FT-white-transparent.png"/>
+                <i class="fticon-logo-fieldtrip ftLogo"></i>
             </a>
 
             <div class="ftLayerContent">
@@ -281,26 +361,198 @@
                 <!-- NAVIGATION IS DOUBLED IN LAYERS FOR ANIMATION PURPOSES -->
                 <div class="ftNavigation">
                     <nav>
-                      <div class="ftSound ftNavIconContainer"><img src="_custom/graphics/FT-sound-off.svg" />
-                      </div>
-                      <div class="ftEdit ftNavIconContainer"><img src="" />
+                      <div class="ftSound ftSoundOff ftNavIconContainer"><i class="fticon-sound-off"></i></div> 
+                      <div class="ftSound ftSoundOn ftNavIconContainer"><i class="fticon-sound-on"></i></div> 
+                      
+                      <div class="ftScreen ftScreenEnlarge ftNavIconContainer"><i class="fticon-enlarge"></i></div> 
+                      <div class="ftScreen ftScreenReduce ftNavIconContainer"><i class="fticon-reduce"></i></div>
+  
+                      <div class="ftEdit ftNavIconContainer">
+                        <img src="_custom/graphics/FT-edit.svg" />
                       </div>
                       <ul class="ftNavItems">
-                        <li><div class="ftNavIconContainer ftNavUp active"><img src="_custom/graphics/FT-arrow-up.svg" /></div></li>
-                        <li><div class="ftNavIconContainer ftNavDown"><img src="_custom/graphics/FT-arrow-down.svg" /></div></li>
+                        <li><div class="ftNavIconContainer ftNavUp active"><i class="fticon-up"></i></div></li>
+                        <li><div class="ftNavIconContainer ftNavDown"><i class="fticon-down"></i></div></li>
                       </ul>
-                      <div class="ftNavAbout ftNavIconContainer">
-                        <div class="ftNavIconContainer ftAboutIconContainer"><img src="_custom/graphics/FT-about.svg" /></div>
-                      </div>
+                      
                       <div class="ftNavShare ftNavIconContainer">
-                        <div><img src="_custom/graphics/FT-share.svg" /></div>
-                        <span class="">35</span>
+                        <div><i class="fticon-share ftSocialTrigger"></i></div>
+                        <ul class="ftSocialNav">
+                          <li><a href="http://"><i class="fticon-twitter"></i></a></li>
+                          <li><a href="http://"><i class="fticon-facebook"></i></a></li>
+                          <li><a href="http://"><i class="fticon-google-plus"></i></a></li>
+                        </ul>
                       </div>
                     </nav>
+                </div>
+                
+                <div class="ftNavAbout ftNavIconContainer">
+                  <a href="#about" class="ftNavIconContainer ftAboutIconContainer"><i class="fticon-about"></i></a>
                 </div>
 
             </div>
 
         </div>
+        
+
+        <!-- Info Overlay-->
+        
+        <div id="fthyperInfo" class="ftLayer">
+        
+          <a href="#overview">
+              <i class="fticon-logo-fieldtrip ftLogo"></i>
+          </a>
+          
+          <span id="ftCloseInfo" class="ftCloseInfo"><i class="fticon-close"></i></span>
+                    
+          <div id="autoscroll" class="ftLayerContent autoscroll">
+              
+                <div class="ftInfoNavigation">
+                  <nav>
+                    <ul>
+                      <li><a class="ftInfoLink" href="#imprint">Imprint</a></li>
+                      <li><a class="ftInfoLink" href="#credits">Credits</a></li>
+                      <li><a class="ftInfoLink" href="#resources">Resources</a></li>
+                      <li><a class="ftInfoLink is-active" href="#about">About</a></li>
+                    </ul>
+                  </nav>
+                </div>
+                
+                <div id="ftInfoContainer" class="ftInfoContainer">
+                  <div id="about" class="ftInfoSection">
+                    <div class="ftInfoContent">
+                      <p>Field Trip is an open source documentary about an unconventional place: Tempelhof Field - an airfield in the heart of Berlin metropolis. Field Trip tells the story of what, for some, is a 300 hectare free urban paradise, for others a place of forced labour, and for yet more a safe haven. By using the technique of open hypervideo and intense on-site and online community development, Field Trip aims at becoming a living documentary.
+                      </p>
+                      <div class="ftAboutPartners clearfix">
+                        <span>THIS PROJECT IS SUPPORTED BY MIZ-BABELSBERG</span> 
+                        <a href="http://www.miz-babelsberg.de" target="_blank"><i class="fticon-logo-miz"></i></a>
+                      </div>
+                    </div> 
+                    <a class="ftNextSection" href="#resources"><i class="fticon-down"></i></a>                     
+                  </div>
+                  
+                  <div id="resources" class="ftInfoSection">
+                    <div class="ftInfoContent">
+                      <p>RESOURCES</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim gravida nisl vitae sodales. Proin eget maximus augue, euismod pretium lorem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque varius feugiat nisl et volutpat. Sed hendrerit sit amet justo ut congue. Aliquam erat volutpat. Integer iaculis imperdiet odio, vitae tristique eros malesuada in. Phasellus volutpat ante mauris, vitae tincidunt nisi iaculis id. Cras neque libero, sollicitudin in commodo a, efficitur tempus sem. In nec nisi purus. Curabitur nec luctus tellus, nec maximus dui.</p>
+                    </div> 
+                    <a class="ftNextSection" href="#credits"><i class="fticon-down"></i></a>                 
+                  </div>
+                  
+                  <div id="credits" class="ftInfoSection">
+                    <div class="ftInfoContent">
+                      
+                      <div class="team-member">
+                          <h3>Eva Stotz</h3>
+                        	<h4>Author & Director</h4>
+                        	<div class="ico-list">
+                          	<!--<a class="contact-email" href="mailto:eva@fieldtrip.berlin" target="_blank">eva@fieldtrip.berlin</a>-->
+                        	</div>
+                      </div>
+
+                      <div class="team-member">
+                        <h3>Frédéric Dubois</h3>
+                        <h4>Author & UX Designer</h4>
+                        <div class="ico-list">
+                            <!--<a class="contact-email" href="mailto:frederic@fieldtrip.berlin" target="_blank">frederic@fieldtrip.berlin</a>-->
+                        </div>                
+                      </div>
+
+                      <div class="team-member">
+                        <h3>Joscha Jäger</h3>
+                        <h4>Creative Technologist</h4>
+                        <div class="ico-list">
+                            <!--<a class="contact-email" href="mailto:joscha@fieldtrip.berlin" target="_blank">joscha@fieldtrip.berlin</a>-->
+                        </div>
+                      </div>
+                      
+                      <div class="team-member">
+                        <h3 class="second-raw">Svenja Klüh</h3>
+                    	  <h4>Creative Producer</h4>
+                    	  <div class="ico-list">
+                      	  <!--<a class="contact-email" href="mailto:svenja@fieldtrip.berlin" target="_blank">svenja@fieldtrip.berlin</a>-->
+                    	  </div>
+                      </div>
+                      
+                      <div class="team-member">
+                        <h3 class="second-raw">Filippo Letizi</h3>
+                        <h4>Illustrator & Animator</h4>
+                        <div class="ico-list">
+                            <!--<a class="contact-email" href="mailto:filippo@fieldtrip.berlin" target="_blank">filippo@fieldtrip.berlin</a>-->
+                        </div>
+                      </div>
+                      
+                      <div class="team-member">
+                        <h3 class="second-raw">Olivier Guillard</h3>
+                        <h4>Design & Front-end Dev</h4>
+                        <div class="ico-list">
+                        	<!--<a class="contact-email" href="mailto:olivier@fieldtrip.berlin" target="_blank">olivier@fieldtrip.berlin</a>-->
+                        </div>
+                      </div>
+                    </div> 
+                    <a class="ftNextSection" href="#imprint"><i class="fticon-down"></i></a>                 
+                  </div>
+                  
+                  <div id="imprint" class="ftInfoSection">
+                    <div class="ftInfoContent">
+                      <span>ronjafilm / Peter kommt auch<br />
+                       Am Weichselplatz 3<br />
+                       12045 Berlin </span>
+                       <div class="divider"></div>
+                       
+                       <span>Represented by: Eva Stotz<br />
+                       Contact: <a href="mailto:info@fieldtrip.berlin">info@fieldtrip.berlin</a></span><br />
+                       <div class="divider"></div>
+                       <span>Design & Programming:<br />
+                       <a href="/" target="_blank">John Doe</a>
+                       </span>
+                       <div class="divider"></div>
+                       <div class="divider"></div>
+                       
+                       <p>The following legal information is only in the original German language of the applicable jurisdiction. Sorry.</p>
+    
+                       <h5>Haftungsausschluss:</h5> 
+                       
+                       <h5>Haftung für Inhalte</h5>
+                       
+                       <p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+                       
+                       <h5>Haftung für Links</h5>
+                       
+                       <p>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+                       
+                       <h5>Urheberrecht</h5>
+                       
+                       <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+                       
+                       <h5>Datenschutz</h5>
+                       
+                       <p>Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben. <br />
+                       Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich. <br />
+                       Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.</p>
+                       
+                       
+                       <h5>Google Analytics</h5>
+                       
+                       <p>Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. (''Google''). Google Analytics verwendet sog. ''Cookies'', Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Website durch Sie ermöglicht. Die durch den Cookie erzeugten Informationen über Ihre Benutzung diese Website (einschließlich Ihrer IP-Adresse) wird an einen Server von Google in den USA übertragen und dort gespeichert. Google wird diese Informationen benutzen, um Ihre Nutzung der Website auszuwerten, um Reports über die Websiteaktivitäten für die Websitebetreiber zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen zu erbringen. Auch wird Google diese Informationen gegebenenfalls an Dritte übertragen, sofern dies gesetzlich vorgeschrieben oder soweit Dritte diese Daten im Auftrag von Google verarbeiten. Google wird in keinem Fall Ihre IP-Adresse mit anderen Daten der Google in Verbindung bringen. Sie können die Installation der Cookies durch eine entsprechende Einstellung Ihrer Browser Software verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website voll umfänglich nutzen können. Durch die Nutzung dieser Website erklären Sie sich mit der Bearbeitung der über Sie erhobenen Daten durch Google in der zuvor beschriebenen Art und Weise und zu dem zuvor benannten Zweck einverstanden.</p>                                              
+                            
+                      
+                    </div>                  
+                  </div>
+                  
+                  <div class="ftInfoGithub">
+                    <a href="https://github.com/twwli/fieldtrip" target="_blank"><i class="fticon-logo-github"></i></a>
+                  </div>
+              </div>
+          </div>
+          <div class="ftNavAbout ftNavIconContainer">
+            <div class="ftNavIconContainer ftAboutIconContainer"><i class="fticon-about"></i></div>
+          </div>
+      </div>
+      <div class="custom-cursor">
+        <svg>
+          <rect width="20" height="20" fill="#f0f" />
+        </svg>
+      </div>
     </body>
 </html>

@@ -213,11 +213,11 @@
 		}
 
 
-		for (var ownerId in database.annotationfileIDs) {
-			if (database.annotationfileIDs[ownerId] === FrameTrail.module('Database').hypervideo.mainAnnotation) {
-				selectedAnnotationSet = mainAnnotationSet = ownerId;
-			}
-		}
+		// for (var ownerId in database.annotations) {
+			// if (database.annotations[ownerId] === FrameTrail.module('Database').hypervideo.mainAnnotation) {
+		          selectedAnnotationSet = mainAnnotationSet = FrameTrail.module('Database').hypervideo.mainAnnotation;
+		// 	}
+		// }
 
 
 	};
@@ -340,7 +340,7 @@
 		}
 
 		newUnsavedChange('annotations');
-		
+
 		FrameTrail.triggerEvent('userAction', {
 			action: 'AnnotationDelete',
 			annotation: annotationData
@@ -454,7 +454,7 @@
 			newUnsavedChange('codeSnippets');
 
 			var codesnippetData = newData;
-			
+
 			FrameTrail.triggerEvent('userAction', {
 				action: 'CodeSnippetAdd',
 				codesnippet: codesnippetData
@@ -634,8 +634,8 @@
 
 		for (var ownerId in annotationSets) {
 
-			annotationfileId    = database.annotationfileIDs[ownerId];
-			hypervideoIndexItem = database.hypervideo.annotationfiles[annotationfileId];
+			// annotationfileId    = database.annotationfileIDs[ownerId];
+			hypervideoIndexItem = database.hypervideo.annotationfiles[ownerId];
 
 			if (hypervideoIndexItem) {
 
@@ -1103,8 +1103,11 @@
 		// Set a fake timeout to get the highest timeout id
 		var highestTimeoutId = setTimeout(";");
 		for (var i = 0 ; i < highestTimeoutId ; i++) {
-			clearTimeout(i); 
+			clearTimeout(i);
 		}
+
+		$(FrameTrail.getState('target')).find('.viewVideo').remove();
+		FrameTrail.changeState('viewMode', 'video');
 
 		FrameTrail.module('RouteNavigation').hypervideoID = newHypervideoID;
 		//FrameTrail.module('RouteNavigation').hashTime = undefined;
@@ -1119,11 +1122,11 @@
 			} else {
 				reInitHypervideo();
 			}
-			
+
 			function reInitHypervideo() {
 
 				//TODO: Implement proper destroy method
-				$(FrameTrail.getState('target')).find('.viewVideo').remove();
+				
 				ra = false;
 
 				FrameTrail.initModule('ViewVideo');
@@ -1153,7 +1156,7 @@
 							window.setTimeout(function() {
 								//FrameTrail.changeState('viewSize', FrameTrail.getState('viewSize'));
 								$(window).resize();
-								
+
 								$(FrameTrail.getState('target')).find('.hypervideo video.video').removeClass('nocolor dark');
 
 							}, 300);
@@ -1670,7 +1673,7 @@
 		/* Global CSS Editing UI */
 
 		var cssText = ($('head > style.FrameTrailGlobalCustomCSS').length != 0) ? $('head > style.FrameTrailGlobalCustomCSS').html() : '';
-		
+
 		var globalCSSEditingUI = $('<div class="globalCSSEditingUI" style="height: 110px;">'
 								 + '    <textarea class="globalCSS">'+ cssText +'</textarea>'
 								 + '</div>');
@@ -1693,7 +1696,7 @@
 			});
 		codeEditor.on('change', function(instance, changeObj) {
 
-			console.log('TEST 2');
+			// console.log('TEST 2');
 			var thisTextarea = $(instance.getTextArea());
 
 			thisTextarea.val(instance.getValue());
@@ -1710,7 +1713,7 @@
 		// this is necessary to be able to manipulate the css live
 
 		if ( $('head > style.FrameTrailGlobalCustomCSS').length == 0 && $('head link[href$="custom.css"]').length != 0 ) {
-			
+
 			$.get($('head link[href$="custom.css"]').attr('href'))
 				.done(function (cssString) {
 					codeEditor.setValue(cssString);
@@ -1723,7 +1726,7 @@
 
 
 		/* Configuration Editing UI */
-		
+
 		var configData = FrameTrail.module('Database').config,
 			configurationUI = $('<div class="configEditingForm">'
 							+   '    <div class="formColumn column1">'

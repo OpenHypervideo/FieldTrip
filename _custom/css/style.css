@@ -1,3 +1,318 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+input {
+    -webkit-appearance: none !important;
+}
+
+ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+em, i {
+  font-style: italic;
+}
+
+a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
+       cursor: pointer;
+}
+
+/* ==========================================================================
+Icons
+========================================================================== */
+
+@font-face {
+  font-family: 'fieldtrip';
+  src:  url('../fonts/fieldtrip.eot?nk2dig');
+  src:  url('../fonts/fieldtrip.eot?nk2dig#iefix') format('embedded-opentype'),
+    url('../fonts/fieldtrip.ttf?nk2dig') format('truetype'),
+    url('../fonts/fieldtrip.woff?nk2dig') format('woff'),
+    url('../fonts/fieldtrip.svg?nk2dig#fieldtrip') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="fticon-"], [class*=" fticon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'fieldtrip' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fticon-zero:before {
+  content: "\e900";
+}
+.fticon-one:before {
+  content: "\e901";
+}
+.fticon-two:before {
+  content: "\e902";
+}
+.fticon-three:before {
+  content: "\e903";
+}
+.fticon-four:before {
+  content: "\e904";
+}
+.fticon-five:before {
+  content: "\e905";
+}
+.fticon-six:before {
+  content: "\e906";
+}
+.fticon-seven:before {
+  content: "\e907";
+}
+.fticon-eight:before {
+  content: "\e908";
+}
+.fticon-nine:before {
+  content: "\e909";
+}
+.fticon-up:before {
+  content: "\e90a";
+}
+.fticon-right:before {
+  content: "\e90b";
+}
+.fticon-down:before {
+  content: "\e90c";
+}
+.fticon-left:before {
+  content: "\e90d";
+}
+.fticon-close:before {
+  content: "\e90e";
+}
+.fticon-enlarge:before {
+  content: "\e90f";
+}
+.fticon-reduce:before {
+  content: "\e910";
+}
+.fticon-about:before {
+  content: "\e911";
+}
+.fticon-share:before {
+  content: "\e912";
+}
+.fticon-facebook:before {
+  content: "\e913";
+}
+.fticon-twitter:before {
+  content: "\e914";
+}
+.fticon-google-plus:before {
+  content: "\e915";
+}
+.fticon-night:before {
+  content: "\e916";
+}
+.fticon-day:before {
+  content: "\e917";
+}
+.fticon-pause:before {
+  content: "\e918";
+}
+.fticon-pause-large:before {
+  content: "\e919";
+}
+.fticon-play-large:before {
+  content: "\e91a";
+}
+.fticon-silhouette:before {
+  content: "\e91b";
+}
+.fticon-switch-off:before {
+  content: "\e91c";
+}
+.fticon-switch-on:before {
+  content: "\e91d";
+}
+.fticon-sound-off:before {
+  content: "\e91e";
+}
+.fticon-sound-on:before {
+  content: "\e91f";
+}
+.fticon-volume-one:before {
+  content: "\e920";
+}
+.fticon-volume-two:before {
+  content: "\e921";
+}
+.fticon-volume-three:before {
+  content: "\e922";
+}
+.fticon-logo-fieldtrip:before {
+  content: "\e923";
+}
+.fticon-logo-miz:before {
+  content: "\e924";
+}
+.fticon-logo-github:before {
+  content: "\e925";
+}
+
+
+/* Weather icon font from http://fonts.artill.de/collection/artill-weather-icons */
+
+@font-face {
+    font-family: 'weather';
+    src: url('../fonts/artill_clean_icons-webfont.eot');
+    src: url('../fonts/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/artill_clean_icons-webfont.woff') format('woff'),
+         url('../fonts/artill_clean_icons-webfont.ttf') format('truetype'),
+         url('../fonts/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="weathericon-"], [class*=" weathericon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'weather' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.weathericon-0:before { content: ":"; }
+.weathericon-1:before { content: "p"; }
+.weathericon-2:before { content: "S"; }
+.weathericon-3:before { content: "Q"; }
+.weathericon-4:before { content: "S"; }
+.weathericon-5:before { content: "W"; }
+.weathericon-6:before { content: "W"; }
+.weathericon-7:before { content: "W"; }
+.weathericon-8:before { content: "W"; }
+.weathericon-9:before { content: "I"; }
+.weathericon-10:before { content: "W"; }
+.weathericon-11:before { content: "I"; }
+.weathericon-12:before { content: "I"; }
+.weathericon-13:before { content: "I"; }
+.weathericon-14:before { content: "I"; }
+.weathericon-15:before { content: "W"; }
+.weathericon-16:before { content: "I"; }
+.weathericon-17:before { content: "W"; }
+.weathericon-18:before { content: "U"; }
+.weathericon-19:before { content: "Z"; }
+.weathericon-20:before { content: "Z"; }
+.weathericon-21:before { content: "Z"; }
+.weathericon-22:before { content: "Z"; }
+.weathericon-23:before { content: "Z"; }
+.weathericon-24:before { content: "E"; }
+.weathericon-25:before { content: "E"; }
+.weathericon-26:before { content: "3"; }
+.weathericon-27:before { content: "a"; }
+.weathericon-28:before { content: "A"; }
+.weathericon-29:before { content: "a"; }
+.weathericon-30:before { content: "A"; }
+.weathericon-31:before { content: "6"; }
+.weathericon-32:before { content: "1"; }
+.weathericon-33:before { content: "6"; }
+.weathericon-34:before { content: "1"; }
+.weathericon-35:before { content: "W"; }
+.weathericon-36:before { content: "1"; }
+.weathericon-37:before { content: "S"; }
+.weathericon-38:before { content: "S"; }
+.weathericon-39:before { content: "S"; }
+.weathericon-40:before { content: "M"; }
+.weathericon-41:before { content: "W"; }
+.weathericon-42:before { content: "I"; }
+.weathericon-43:before { content: "W"; }
+.weathericon-44:before { content: "a"; }
+.weathericon-45:before { content: "S"; }
+.weathericon-46:before { content: "U"; }
+.weathericon-47:before { content: "S"; }
+
+
+/* ==========================================================================
+Theme Custom Style
+========================================================================== */
+
+
+
 *, ::after, ::before {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -15,11 +330,17 @@ html {
 body {
 	font-family: 'Inconsolata', monospace;
 	font-size: 100%;
+	color: #fff;
 	overflow: hidden;
 }
 
 h3 {
 	font-size: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 /* buttons */
@@ -102,6 +423,16 @@ h3 {
 	}
 }
 
+/* Custom Cursor */
+
+.custom-cursor {
+  position: absolute;
+  cursor: none;
+  z-index: 3;
+  
+  display: none;
+}
+
 
 /* Start Button */
 
@@ -147,11 +478,11 @@ h3 {
 	margin-top: 0px;
 	margin-left: 0px;
 	background-color: transparent;
-	background-image: url(../graphics/FT-white-transparent.svg);
 	background-size: 100% auto;
 	background-repeat: no-repeat;
 	transition-property: all;
 	transition-duration: 1600ms;
+	font-size: 3em;
 }
 
 .ftLoadingIndicator.active .ftLoadingIcon {
@@ -180,8 +511,8 @@ h3 {
 	position: absolute;
 	top: 20px;
 	left: 20px;
-	width: 120px;
-	height: 43px;
+	color: #fff;
+	font-size: 2.5em;
 	z-index: 2;
 	-webkit-user-select: none;  
     -khtml-user-select: none;   
@@ -203,12 +534,30 @@ h3 {
 	transform: scale(1.6) rotate(0deg);
 }
 
+#ftMapContainer::before {
+  content: "";
+  background: rgba(2, 5, 15, .75);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 400ms ease-in-out;
+  -moz-transition: all 400ms ease-in-out;
+  -ms-transition: all 400ms ease-in-out;
+  -o-transition: all 400ms ease-in-out;
+  transition: all 400ms ease-in-out;
+}
+
 .ftLayer.active .ftLayerContent {
 	transform: scale(1) rotate(0deg);
 }
 
 .ftLayer.zoomOut .ftLayerContent {
-	transform: scale(0.4) rotate(-6deg) !important;
+	transform: scale(0.8) rotate(-4deg) !important;
 }
 
 /* Navigation */
@@ -219,13 +568,11 @@ h3 {
 	bottom: 0;
 	right: 0;
 	width: 60px;
-	background-color: #191719;
 	z-index: 11;
 }
 
 .ftLayer .ftLayerContent .ftNavigation button {
 	float: right;
-	border: 2px solid #333;
 	margin-left: 12px;
 }
 
@@ -240,11 +587,11 @@ h3 {
 	margin: 0;
 	width: 100%;
 	list-style: none;
-	border-top: 1px solid #333;
+
 }
 
 .ftNavItems li {
-  border-bottom: 1px solid #333;
+  
 }
 
 .ftNavIconContainer {
@@ -252,10 +599,14 @@ h3 {
 	position: relative;
 	width: 60px;
 	height: 60px;
-	line-height: 60px;
+	line-height: 60px; 
 	text-align: center;
 	opacity: 1;
-	cursor: pointer;
+	font-size: 1.25em;
+}
+
+.ftNavIconContainer i {
+  cursor: pointer;
 }
 
 .ftNavIconContainer.inactive {
@@ -264,7 +615,7 @@ h3 {
 }
 
 .ftNavIconContainer img {
-	max-width: 15px;
+	max-width: 22px;
 	height: auto;
 	vertical-align: middle;
 }
@@ -278,8 +629,12 @@ h3 {
 	display: block;
 }
 
-.ftSound, .ftNavShare, .ftNavAbout, .ftEdit {
+.ftSound, .ftNavShare, .ftScreen, .ftNavAbout, .ftEdit {
 	position: absolute;  
+}
+
+.ftNavShare {
+  font-size: 1.65em;
 }
 
 .ftSound.ftAboutIconContainer img,
@@ -288,23 +643,59 @@ h3 {
 }
 
 .ftSound {
-	top: 0;
-	border-bottom: 1px solid #333;
+	top: 20px;
+}
+
+.ftSoundOff {
+  display: none;
+}
+
+.ftScreen {
+	top: 70px;
 }
 
 .ftEdit {
-	top: 60px;
-	border-bottom: 1px solid #333;
+	top: 125px;
+	cursor: pointer;
 }
 
 .ftNavAbout {
-	bottom: 60px;
-	border-top: 1px solid #333;
+	bottom: -2px;
+	z-index: 10;
 }
 
 .ftNavShare {
 	bottom: 0;
-	border-top: 1px solid #333;
+}
+
+/* SHARING BUTTONS */
+
+.ftSocialNav {
+  position: absolute;
+  bottom: 55px;
+  right: 17px;
+  line-height: 1;
+  
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 400ms ease-in-out;
+  -moz-transition: all 400ms ease-in-out;
+  -ms-transition: all 400ms ease-in-out;
+  -o-transition: all 400ms ease-in-out;
+  transition: all 400ms ease-in-out;
+}
+
+.ftSocialNav li {
+  margin-top: 10px;
+}
+
+.ftSocialNav.is-open  {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ftSocialNav i {
+  vertical-align: bottom;
 }
 
 /* INTRO VIDEO */
@@ -329,16 +720,57 @@ h3 {
 	z-index: 2;
 }
 
-#ftoverview #ftMapContainer {
-	
+#ftoverview #ftMapContainer:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuNjUiLz4KICA8L3JhZGlhbEdyYWRpZW50PgogIDxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
 }
+
+/* Weather Widget */
 
 #ftoverview #ftMapContainer #ftWeatherContainer {
 	position: absolute;
-	top: 15px;
-	right: 85px;
+	top: 20px;
+	right: 80px;
 	text-align: right;
 	color: #FFF;
+	padding: 8px 10px;
+	background: rgba(255, 255, 255, .1);
+	z-index: 10;
+}
+
+#ftWeatherData span {
+  display: block;
+  font-size: .95em;
+  padding: 2px 0;
+}
+
+#ftWeatherData, #ftWeatherIcon {
+  float: left;
+}
+
+#ftWeatherData {
+  padding-right: 10px;
+  margin-right: 10px;
+  border-right: 1px solid #fff;
+}
+
+#ftWeatherIcon i {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 50px;
+  line-height: 25px;
+  padding: 7px 0 6px;
 }
 
 #ftoverview #ftMapContainer img {
@@ -372,6 +804,15 @@ h3 {
 	left: 20%;
 	width: 60.8%;
 	height: auto;
+	z-index: 1;
+	
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: all 400ms ease-in-out;
+	-moz-transition: all 400ms ease-in-out;
+	-ms-transition: all 400ms ease-in-out;
+	-o-transition: all 400ms ease-in-out;
+	transition: all 400ms ease-in-out;
 }
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin {
@@ -380,46 +821,306 @@ h3 {
 	margin-top: -18px;
 	width: 36px;
 	height: 36px;
+	line-height: 36px;
+	font-size: 2.5em;
+	text-align: center;
 	border-radius: 50%;
 	background-color: transparent;
 	transition-property: all;
 	transition-duration: 300ms;
 	transform-origin: center;
 	transform: scale(0.8, 0.8);
+	z-index: 1000;
+	cursor: pointer;
 }
 
-#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:hover {
-	transform: scale(1, 1);
-	z-index: 2;
-	/*background-color: #191719;*/
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:hover::before,
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin.active::before,
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:visited::before  {
+  content: "";
+  position: absolute;
+  -webkit-animation: pulse-one 3s infinite; /* Chrome, Safari, Opera */
+  animation: pulse-one 3s infinite;
+  background: rgba(254, 197, 112, .5);
+  border-radius: 50%;
+  height: 0em;
+  width: 0em;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  z-index: -1;
+}
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:hover::after,
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin.active::after,
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:visited::after {
+  content: "";
+  position: absolute;
+  -webkit-animation: pulse-two 3s infinite; 
+  animation: pulse-two 3s infinite;
+  background: rgba(254, 197, 112, .25);
+  border-radius: 50%;
+  height: 0em;
+  width: 0em;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  z-index: -1;
 }
 
-#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin.active {
-	transform: scale(1, 1);
-	border: 4px solid #3bf690;
+@-moz-keyframes pulse-one {
+  0% {
+    opacity: 0.2;
+    height: .5em;
+    width: .5em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 1em;
+    width: 1em;
+  }
+  100% {
+    opacity: 0.2;
+    height: .5em;
+    width: .5em;
+  }
 }
+@-webkit-keyframes pulse-one {
+  0% {
+    opacity: 0.2;
+    height: .5em;
+    width: .5em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 1em;
+    width: 1em;
+  }
+  100% {
+    opacity: 0.2;
+    height: .5em;
+    width: .5em;
+  }
+}
+@-o-keyframes pulse-one {
+  0% {
+    opacity: 0.2;
+    height: .5em;
+    width: .5em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 1em;
+    width: 1em;
+  }
+  100% {
+    opacity: 0.2;
+    height: .5em;
+    width: .5em;
+  }
+}
+@keyframes pulse-one {
+  0% {
+    opacity: 0.2;
+    height: .5em;
+    width: .5em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 1em;
+    width: 1em;
+  }
+  100% {
+    opacity: 0.2;
+    height: .5em;
+    width: .5em;
+  }
+}
+
+
+@-moz-keyframes pulse-two {
+  0% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 2em;
+    width: 2em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+}
+@-webkit-keyframes pulse-two {
+  0% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 2em;
+    width: 2em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+}
+@-o-keyframes pulse-two {
+  0% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 2em;
+    width: 2em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+}
+@keyframes pulse-two {
+  0% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 2em;
+    width: 2em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+}
+
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin img {
-	width: 80%;
-	height: 80%;
-	margin-top: 10%;
-	margin-left: 10%;
+	width: 102%;
+	height: 102%;
+	margin-top: -1%;
+	margin-left: -1%;
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+	filter: grayscale(100%);
 }
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription {
 	position: absolute;
-	top: 40px;
-	left: -60px;
-	width: 230px;
-	height: auto;
-	padding: 8px;
-	background-color: #191719;
+	top: 0;
+	left: -50px;
+	width: 290px;
+	height: 290px;
+	border-radius: 100%;
+	background: rgba(5,3,5,.75);
 	color: #FFF;
-	display: none;
+	opacity: 1;
+	transition-property: all;
+	transition-duration: 300ms;
+	transform-origin: center;
+	transform: scale(0.5, 0.5);
+	-webkit-transition: all 300ms ease-in-out;
+	-moz-transition: all 300ms ease-in-out;
+	-ms-transition: all 300ms ease-in-out;
+	-o-transition: all 300ms ease-in-out;
+	transition: all 300ms ease-in-out;
+	-webkit-box-shadow: 0 0 15px 5px rgba(0,0,0,.15);
+	box-shadow: 0 0 15px 5px rgba(0,0,0,.15);
+	opacity: 0;
+	pointer-events: none;
 }
 
-#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:hover .ftMapPinDescription {
-	display: block;
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription.is-visible {
+  opacity: 1;
+  transform: scale(.8, .8);
+  z-index: 2;
+  pointer-events: all;
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .15);
+  border-radius: 100%;
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription .ftMapPinDescriptionImg {
+  position: absolute;
+  width: 290px;
+  height: 290px;
+  border-radius: 100%;
+  overflow: hidden;
+  top: 0;
+}
+
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription .ftMapPinDescriptionContent {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription .ftMapPinDescriptionContent i {
+  display: block;
+  color: #fec570;
+  opacity: 0;
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -ms-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescriptionContent.is-visible i {
+  opacity: 1;
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription span {
+  display: block;
+  font-family: 'Rubik', helvetica, sans-serif;
+  font-weight: 600;
+  font-size: .55em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.25em;
+  margin-top: 5px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, .15);
+}
+
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin.active .ftMapPinDescription {
+	transform: scale(1, 1);
 }
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription h3 {
@@ -429,15 +1130,155 @@ h3 {
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription p {
 	margin: 0;
-	padding: 0;
+	padding: 4px 10px 5px;
+	font-size: 16px;
+	line-height: 1.25em;
 }
+
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription figure {
+  position: relative;
+  z-index: 10;
+}
+
+.circle {
+  fill: transparent !important;
+}
+
+.outer {
+  fill: transparent !important;
+  stroke: #fec570;
+  stroke-width: 10;
+  stroke-dasharray: 880;
+  transition: stroke-dashoffset 1s;
+  -webkit-animation-play-state: running;
+  
+  /* firefox bug fix - won't rotate at 90deg angles */
+  transform: rotate(-88deg) translateX(-290px);
+ -moz-transform: rotate(-88deg) translateX(-290px);
+ 
+}
+
+
+/* Set the initial values for the animation */
+.chart[data-percent='100'] .outer {
+  stroke-dashoffset: 0;
+  -webkit-animation: show100 2s;
+  animation: show100 2s;
+}
+
+.chart[data-percent='75'] .outer {
+  stroke-dashoffset: 133;
+  -webkit-animation: show75 2s;
+  animation: show75 2s;
+}
+
+.chart[data-percent='50'] .outer {
+  stroke-dashoffset: 267;
+  -webkit-animation: show50 2s;
+  animation: show50 2s;
+}
+
+.chart[data-percent='25'] .outer {
+  stroke-dashoffset: 401;
+  -webkit-animation: show25 2s;
+  animation: show25 2s;
+}
+/* END set initial animation values */
+
+/* Keyframes for the initial animation */
+@-webkit-keyframes show100 {
+  from {
+    stroke-dashoffset: 880;
+  }
+  
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes show100 {
+  from {
+    stroke-dashoffset: 880;
+  }
+  
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes show75 {
+  from {
+    stroke-dashoffset: 880;
+  }
+  
+  to {
+    stroke-dashoffset: 134;
+  }
+}
+
+@keyframes show75 {
+  from {
+    stroke-dashoffset: 880;
+  }
+  
+  to {
+    stroke-dashoffset: 124;
+  }
+}
+
+@-webkit-keyframes show50 {
+  from {
+    stroke-dashoffset: 880;
+  }
+  
+  to {
+    stroke-dashoffset: 267;
+  }
+}
+
+@keyframes show50 {
+  from {
+    stroke-dashoffset: 880;
+  }
+  
+  to {
+    stroke-dashoffset: 267;
+  }
+}
+
+@-webkit-keyframes show25 {
+  from {
+    stroke-dashoffset: 880;
+  }
+  
+  to {
+    stroke-dashoffset: 401;
+  }
+}
+
+@keyframes show25 {
+  from {
+    stroke-dashoffset: 880;
+  }
+  
+  to {
+    stroke-dashoffset: 401;
+  }
+}
+/* END Keyframes for the initial animation */
+
+
+
+
+
+
 
 /* VIDEO (FRAMETRAIL) */
 
 .ftLayer#fthypervideo {
 	z-index: 1;
 }
-
 
 .ftLayer#fthypervideo .ftLogo {
 	top: 10px;
@@ -450,7 +1291,7 @@ h3 {
 	position: absolute !important;
 	top: 0px;
 	left: 0px;
-	width: calc(100% - 60px) !important;
+	width: 100%;
 	height: 100%;
 	border: none;
 	outline: none;
@@ -458,6 +1299,11 @@ h3 {
 	z-index: 0;
 	font-family: 'Inconsolata', monospace;
 	letter-spacing: -0.9px;
+	background: #000;
+}
+
+.frametrail-body.editActive {
+	width: calc(100% - 64px) !important;
 }
 
 .ftLayer#fthypervideo #VideoPlayer.active {
@@ -469,24 +1315,410 @@ h3 {
 	font-size: 100%;
 }
 
-/*
-.ftLayer#fthypervideo iframe {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: calc(100% - 60px);
-	height: 100%;
-	border: none;
-	outline: none;
-	visibility: hidden;
-	z-index: 0;
+#VideoPlayer .titlebar:not(.editActive) {
+  display: none !important;
 }
 
-.ftLayer#fthypervideo iframe.active {
-	visibility: visible;
-	z-index: 3;
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .controls {
+  background: transparent;
+  height: 60px !important;
 }
-*/
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .controls .leftControlPanel {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  bottom: 0;
+  height: 60px;
+}
+
+/* Progress Bar */
+
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .playerProgress {
+  top: auto;
+  bottom: 30px;
+  height: 1px;
+  background: rgba(255, 255, 255, .6);
+  z-index: 10;
+  left: 120px;
+  right: 120px;
+  width: auto;
+}
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .playerProgress .ui-slider-range {
+  background: #ffc669;
+}
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .playerProgress .ui-slider-handle::before {
+  opacity: 0;
+}
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .playerProgress .ui-slider-handle::after {
+    content: "";
+    position: absolute;
+    left: -5.5px;
+    width: 11px;
+    height: 11px;
+    border-radius: 100%;
+    top: -5.5px;
+    background: #ffc669;
+    z-index: 1;
+    cursor: pointer;
+}
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .playerProgress .ui-slider-handle {
+  opacity: 1;
+}
+
+/* Player */
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playButton.playerControl,
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .timeDisplay.playerControl {
+  position: absolute !important;
+}
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playButton.playerControl {
+  bottom: 21px;
+  left: 20px;  
+  background: url('../graphics/FT-play.svg') no-repeat center center;
+  font-size: 0;
+}
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playButton.playerControl span {
+  display: none;
+}
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playButton.playerControl.playing {
+  background: url('../graphics/FT-pause.svg') no-repeat center center;
+}
+
+#VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .timeDisplay.playerControl {
+  bottom: 11px;
+  right: 5px;
+}
+
+/* ==========================================================================
+ABOUT / CREDITS / IMPRINT
+========================================================================== */
+
+
+#fthyperInfo {
+  background: #fec570;
+  color: #111;
+  z-index: 4;
+  opacity: 0;
+  visibility: hidden;
+  
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+#fthyperInfo.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+#fthyperInfo .ftLogo {
+  color: #111;
+}
+
+#fthyperInfo .ftLayerContent {
+  transition-property: none;
+  transition-duration: 0;
+  transform-origin: none;
+  transform: none;
+  overflow-y: scroll;
+}
+
+.ftCloseInfo {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  color: #fff;
+  font-size: 1.25em;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.divider {
+    width: 100%;
+    padding: 10px 0;
+}
+
+/* Navigation */
+
+#fthyperInfo .ftInfoNavigation {
+  position: fixed;
+  background: #fff;
+  width: 20%;
+  top: 0;
+  left: 0;
+  bottom: 0;  
+}
+
+#fthyperInfo .ftInfoNavigation nav ul {
+  position: absolute;
+  left: 30px;  
+  width: 100vh;
+  top: 50%;
+  -moz-transform: rotate(-90deg) translateX(-50%);
+  -webkit-transform: rotate(-90deg) translateX(-50%);
+  -o-transform: rotate(-90deg) translateX(-50%);
+  -ms-transform: rotate(-90deg) translateX(-50%);
+  transform: rotate(-90deg) translateX(-50%);
+  text-align: center;
+}
+
+#fthyperInfo .ftInfoNavigation li {
+  display: inline-block;
+  position: relative;
+  font-family: 'Rubik', helvetica, sans-serif;
+  font-weight: 600;
+  font-size: .85em;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin: 0 2vh;
+}
+
+#fthyperInfo .ftInfoNavigation li:before {
+  content: "";
+  float: left;
+  width: 20px;
+  height: 2px;
+  background: #111;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+#fthyperInfo .ftInfoNavigation li a:hover,
+.is-active {
+  color: #fec570;
+}
+
+
+/* content */
+
+#fthyperInfo .ftInfoContainer {
+  margin-left: 20%;
+} 
+
+.ftInfoSection {
+  position: relative;
+  height: 100vh;
+  font-size: 1.15em;
+  line-height: 1.45em;
+}
+
+.ftInfoContent {
+  padding: 0 30% 0 10%;
+}
+
+.ftNextSection {
+  position: absolute;
+  left: 10%;
+  bottom: 30px;
+  font-size: 1.25em;
+  color: #fff;
+}
+
+.ftNextSection:hover {
+  opacity: .75;
+}
+
+/* About */
+
+#about .ftInfoContent {
+  position: absolute;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#about .ftAboutPartners {
+  color: #fff;
+  margin-top: 50px;
+}
+
+#about .ftAboutPartners span, .ftAboutPartners a {
+  float: left;
+}
+
+#about .ftAboutPartners span {
+  margin: 10px 30px 0 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: .75em;
+  line-height: 1.45;
+  max-width: 200px;
+}
+
+#about .ftAboutPartners a {
+  font-size: 3.5em;
+}
+
+#about .ftAboutPartners a:hover {
+  opacity: .75;
+}
+
+/* Github Logo */
+
+.ftInfoGithub {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  font-size: 1.25em;
+  
+}
+
+.ftInfoGithub a {
+  color: #fff;
+  opacity: .5;
+}
+
+.ftInfoGithub a:hover {
+  opacity: .75;
+}
+
+/* Credits */
+
+#credits, #resources {
+  padding: 100px 0;
+}
+
+.team-member {
+  font-size: .85em;
+  line-height: 1.25em;
+}
+
+.team-member h3{
+  font-family: 'Rubik', helvetica, sans-serif;
+  font-weight: 600;
+  font-size: .85em;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+#credits a {
+  display: block;
+}
+
+.contact-email {
+  margin: 1px 0 30px;
+}
+
+/* Imprint */
+
+#imprint {
+  font-size: .75em;
+  padding: 100px 0;
+}
+
+#imprint.ftInfoSection {
+  height: auto;
+}
+
+#imprint span {
+   font-size: 1.5em;
+   line-height: 1.45em;
+}
+
+#imprint  h5 {
+  font-size: 1.25em;
+  margin: 1.5em 0 .25em;
+}
+
+/* Night/Day Mode */
+
+.switch-container {
+  position: absolute;
+  bottom: 24px; 
+  left: 80px;
+  height: 16px;
+  margin: auto;
+  text-align: center;
+  z-index: 10;
+}
+
+/** Switch
+ -------------------------------------*/
+
+.switch input {
+  position: absolute;
+  opacity: 0;
+}
+
+/**
+ * 1. Adjust this to size
+ */
+
+.switch {
+  display: inline-block;
+  font-size: 16px; /* 1 */
+  height: 16px;
+  width: 32px;
+  background: none;
+  background: rgba(255,255,255,.25);
+  border-radius: 1em;
+  cursor: pointer;
+}
+
+.switch div {
+  height: 16px;
+  width: 16px;
+  border-radius: 1em;
+  background: #FFF;
+  box-shadow: 0 0.1em 0.3em rgba(0,0,0,0.3);
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  transition: all 300ms;
+  
+}
+
+.switch input:checked + div {
+ -webkit-transform: translate3d(100%, 0, 0);
+ -moz-transform: translate3d(100%, 0, 0);
+ transform: translate3d(100%, 0, 0);
+}
+
+.fticon-night {
+  font-size: .85em;
+}
+
+/* Night */
+
+.night .fticon-silhouette {
+  color: #fec570;
+}
+
+.night #ftMapContainer::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.night #ftoverview #ftMapContainer #ftMapCanvas img#ftMap {
+  opacity: .25;
+  visibility: visible;
+}
+
+.night #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription {
+  background: rgba(255, 255, 255, .75);
+}
+
+.night #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription p {
+	color: #222;
+}
+
+.night #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription::after {
+  background: url('../graphics/FT-pin-description-arrow-dark.svg') no-repeat right center;
+}
+
 
 /*******************
 * Media Queries

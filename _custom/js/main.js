@@ -1,10 +1,12 @@
+/* */
+
+
 var previousLayer,
 	currentLayer = undefined,
 	activeVideoID = undefined,
 	introTimeout;
 
 $(document).ready(function() {
-
 	// Check Setup
 	if (!!document.location.host) {
 		$.ajax({
@@ -85,7 +87,7 @@ $(document).ready(function() {
 
 			$(this).hide();
 
-			startFullscreen();
+			toggleNativeFullscreen();
 
 			// Fake Loading Routine
 			window.setTimeout(function() {
@@ -113,9 +115,9 @@ $(document).ready(function() {
 			woeid: '20065632',
 			unit: 'c',
 			success: function(weather) {
-				console.log(weather);
-				$('#ftWeatherTemperature').text(weather.temp + ' °C');
-				
+				//console.log(weather);
+				$('#ftWeatherTemperature').text(weather.temp + '°C'),
+				$('#ftWeatherIcon').html('<i class="weathericon-'+weather.code+'"></i>');	
 			},
 			error: function(error) {
 				
@@ -128,8 +130,72 @@ $(document).ready(function() {
 	window.setInterval(function() {
 		updateTime();
 	}, 3000);
+	
+
 
 }); // End Document Ready
+
+
+/* Credits AutoScroll */
+/*function autoScroll() {
+  var $el = $(".autoscroll");
+  function anim() {
+    var st = $el.scrollTop();
+    var sb = $el.prop("scrollHeight")-$el.innerHeight();
+    $el.animate({scrollTop: st<sb/2 ? sb : 0}, 10000, anim);
+  }
+  function stop(){
+    $el.stop();
+  }
+  anim();
+  $el.hover(stop, anim);
+}*/
+/* End AutoScroll */
+
+
+/* Info Smoothscroll */
+
+/*
+$(document).ready(function() {
+	$(document).on("scroll", onScroll);
+  $('.ftInfoLink[href^="#"], .ftNextSection').on('click', function(e) {
+		e.preventDefault();
+		$(document).off("scroll");
+
+		$('.ftInfoLink').each(function() {
+			$(this).removeClass('is-active');
+		})
+		$(this).addClass('is-active');
+
+		var target = this.hash,
+			menu = target;
+		$target = $(target);
+		$('#autoscroll').stop().animate({
+			'scrollTop': $target.offset().top + 2
+		}, 500, 'swing', function() {
+			window.location.hash = target;
+			$(document).on("scroll", onScroll);
+		});
+	});
+});
+
+function onScroll(event) {
+	var scrollPos = $(document).scrollTop();
+	$('.ftInfoLink, .ftNextSection').each(function() {
+		var currLink = $(this);
+		var refElement = $(currLink.attr("href"));
+		if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+			$('.ftInfoLink').removeClass("is-active");
+			currLink.addClass("is-active");
+		} else {
+			currLink.removeClass("is-active");
+		}
+	});
+} 
+*/
+
+
+/* End Info Smoothscroll */
 
 $(window).resize(function() {
 	rescaleMapCanvas();
@@ -147,17 +213,14 @@ function initEventListeners() {
 		}
 	});
 
-	// Map Pins
-	$('.ftMapPin').click(function(evt) {
-		$('#fthypervideo #VideoPlayer').addClass('active');
-	});
-
 	// Edit Button
 	$('.ftEdit').click(function() {
 		if ($('#VideoPlayer').hasClass('editActive')) {
 			FieldTrip.stopEditing();
+			$('.ftNavAbout, .ftNavShare').show();
 		} else {
 			FieldTrip.startEditing();
+			$('.ftNavAbout, .ftNavShare').hide();
 		}
 	});
 
@@ -187,9 +250,78 @@ function initEventListeners() {
 
 	});
 
+	/* Info: open/close */
+	
+	$('.ftNavAbout').click(function() {
+	    $('#fthyperInfo').addClass('is-open');
+	});   
+	
+	$('#ftCloseInfo').click(function() {
+	    $('#fthyperInfo').removeClass('is-open');
+	}); 
+	
+	/* Social Network */
+	
+	$('.ftSocialTrigger').click(function() {
+	    $('.ftSocialNav').toggleClass('is-open');
+	}); 	
+	
+	/* Switch Button / Night Mode */
+		  
+	$('#ftSwitchCheckbox input:checkbox').change(function(){
+	    if ($(this).is(':checked')) {
+	        $('body').addClass("night");
+	    }
+	    else {
+	        $('body').removeClass("night");
+	    }
+	});
+	
+
+	/* Thumbnails appears on click*/
+	
+
+	$('.ftMapPin').click(function(){
+	  
+	  $('#fthypervideo #VideoPlayer').addClass('active');
+
+	  var description = $(this).find('.ftMapPinDescription');
+	  var circle = $(this).find('.circle');
+	  var player = $(this).find('.ftMapPinDescriptionContent')
+	  description.addClass('is-visible');
+	  setTimeout(function(){
+	   circle.addClass('outer');
+	  }, 500); 
+	  setTimeout(function(){
+	   player.addClass('is-visible');
+	  }, 2350); 
+
+	  	$(".ftMapPinDescription").not($(this).find(".ftMapPinDescription")).removeClass('is-visible');
+		$(".circle").not($(this).find(".circle")).removeClass('outer');
+		$(".ftMapPinDescriptionContent").not($(this).find(".ftMapPinDescriptionContent")).removeClass('is-visible');
+	});
+
+	/* Fullscreen Button */
+
+	$('.ftScreen').click(function() {
+		toggleNativeFullscreen();
+	});
+
+	document.addEventListener("fullscreenchange", toggleFullscreen, false);
+    document.addEventListener("webkitfullscreenchange", toggleFullscreen, false);
+	document.addEventListener("mozfullscreenchange", toggleFullscreen, false);
+
 }
 
 function activateLayer(layerName, videoID) {
+
+	if (layerName == 'about' || layerName == 'resources' || layerName == 'credits' || layerName == 'imprint') {
+		$('.ftInfoLink').removeClass('is-active');
+		$('.ftInfoLink[href="#'+layerName+'"]').addClass('is-active');
+		return;
+	}
+
+	updateTime();
 
 	previousLayer = (currentLayer) ? currentLayer : false;
 	currentLayer = layerName;
@@ -254,8 +386,11 @@ function activateLayer(layerName, videoID) {
 			$('.ftLayer#fthypervideo').removeClass('zoomOut');
 
 			// TODO: Replace with parsed Video ID
-			$('.ftMapPin').removeClass('active');
-			$('.ftMapPin[href="#hypervideo='+ videoID +'"]').addClass('active');
+			$('.ftMapPin .ftMapPinDescription').removeClass('is-visible');
+			$('.ftMapPin .ftMapPinDescription[href="#hypervideo='+ videoID +'"]').addClass('is-visible');
+			$('.ftMapPin .ftMapPinDescription[href="#hypervideo='+ videoID +'"] circle').addClass('outer');
+			$('.ftMapPin .ftMapPinDescription[href="#hypervideo='+ videoID +'"] .ftMapPinDescriptionContent').addClass('is-visible');
+			
 			activeVideoID = videoID;
 
 			break;
@@ -310,7 +445,7 @@ function updateButtonStates() {
 	}
 }
 
-function startFullscreen() {
+function toggleNativeFullscreen() {
 
 	var element = $('body')[0];
 
@@ -318,19 +453,51 @@ function startFullscreen() {
 		if (!document.fullScreen) {
 			element.requestFullscreen();
 		} else {
-			//document.exitFullScreen();
+			document.exitFullScreen();
 		}
 	} else if (element.mozRequestFullScreen) {
 		if (!document.mozFullScreen) {
 			element.mozRequestFullScreen();
 		} else {
-			//document.mozCancelFullScreen();
+			document.mozCancelFullScreen();
 		}
 	} else if (element.webkitRequestFullScreen) {
 		if (!document.webkitIsFullScreen) {
 			element.webkitRequestFullScreen();
 		} else {
-			//document.webkitCancelFullScreen();
+			document.webkitCancelFullScreen();
+		}
+	}
+
+}
+
+function toggleFullscreen() {
+
+	var element = $('body')[0];
+
+	if (element.requestFullScreen) {
+		if (document.fullScreen) {
+			$('.ftScreen').removeClass('ftScreenEnlarge').addClass('ftScreenReduce');
+			$('.ftScreen > i').removeClass('fticon-enlarge').addClass('fticon-reduce');
+		} else {
+			$('.ftScreen').removeClass('ftScreenReduce').addClass('ftScreenEnlarge');
+			$('.ftScreen > i').removeClass('fticon-reduce').addClass('fticon-enlarge');
+		}
+	} else if (element.mozRequestFullScreen) {
+		if (document.mozFullScreen) {
+			$('.ftScreen').removeClass('ftScreenEnlarge').addClass('ftScreenReduce');
+			$('.ftScreen > i').removeClass('fticon-enlarge').addClass('fticon-reduce');
+		} else {
+			$('.ftScreen').removeClass('ftScreenReduce').addClass('ftScreenEnlarge');
+			$('.ftScreen > i').removeClass('fticon-reduce').addClass('fticon-enlarge');
+		}
+	} else if (element.webkitRequestFullScreen) {
+		if (document.webkitIsFullScreen) {
+			$('.ftScreen').removeClass('ftScreenEnlarge').addClass('ftScreenReduce');
+			$('.ftScreen > i').removeClass('fticon-enlarge').addClass('fticon-reduce');
+		} else {
+			$('.ftScreen').removeClass('ftScreenReduce').addClass('ftScreenEnlarge');
+			$('.ftScreen > i').removeClass('fticon-reduce').addClass('fticon-enlarge');
 		}
 	}
 
@@ -395,11 +562,18 @@ function rescaleMapCanvas() {
 }
 
 function updateTime() {
-	var d = new Date(),
+	var daylightSavingsOffset = (isDST(new Date()) ? 2 : 1),
+		d = new Date(),
 		utc = d.getTime() + (d.getTimezoneOffset() * 60000),
-		newDate = new Date(utc + (3600000*1)).toLocaleString('de-DE', {
+		newDate = new Date(utc + (3600000*daylightSavingsOffset)).toLocaleString('de-DE', {
 			hour: '2-digit',
 			minute: '2-digit'
 		});
 	$('#ftWeatherTime').text(newDate);
+}
+
+ function isDST(t) {
+    var jan = new Date(t.getFullYear(),0,1);
+    var jul = new Date(t.getFullYear(),6,1);
+    return Math.min(jan.getTimezoneOffset(),jul.getTimezoneOffset()) == t.getTimezoneOffset();  
 }

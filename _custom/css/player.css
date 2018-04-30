@@ -55,8 +55,8 @@
 	display: none !important;
 }
 
-#VideoPlayer .SidebarContainer {
-	/*margin-top: 70px;*/
+#VideoPlayer .sidebarContainer {
+	margin-top: 54px;
 }
 
 #VideoPlayer .titlebarViewMode {
@@ -102,7 +102,7 @@
 
 
 #VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .hypervideoContainer {
-	margin-bottom: 20px;
+	margin-bottom: 0px;
 }
 
 #VideoPlayer .videoStartOverlay {
