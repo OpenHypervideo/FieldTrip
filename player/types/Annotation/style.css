@@ -101,82 +101,126 @@
 	opacity: .3;
 }
 
-.timelineList .userTimeline .compareTimelineElement .previewWrapper, body > .compareTimelineElement .previewWrapper {
-	background: none repeat scroll 0 0 #3F4759;
-	box-shadow: 0 0 1px 3px #222222;
-	height: 70px;
+/* Timeline Element Preview */
+
+.compareTimelineElement .previewWrapper, 
+.timelineElement .previewWrapper, 
+body > .compareTimelineElement .previewWrapper,
+body > .timelineElement .previewWrapper {
+	background: none repeat scroll 0 0 var(--primary-bg-color);
+	border: 2px solid var(--primary-bg-color);
+	/*box-shadow: 0 0 2px 1px var(--primary-fg-color);*/
+	height: 60px;
 	left: 50%;
-	margin-left: -50px;
+	margin-left: -40px;
 	position: absolute;
-	top: -85px;
-	width: 100px;
+	top: -66px;
+	width: 80px;
 	z-index: 2;
+	box-sizing: border-box;
 	display: none;
 }
 
-.timelineList .userTimeline .compareTimelineElement:hover .previewWrapper {
+.compareTimelineElement:hover .previewWrapper,
+.timelineElement:hover .previewWrapper {
 	display: block;
 }
 
-.timelineList .userTimeline .compareTimelineElement .previewWrapper:after, body > .compareTimelineElement .previewWrapper:after {
+.compareTimelineElement.ui-draggable-dragging:hover .previewWrapper,
+.timelineElement.ui-draggable-dragging:hover .previewWrapper {
+	display: none;
+}
+
+.compareTimelineElement .previewWrapper:after, 
+.timelineElement .previewWrapper:after, 
+body > .compareTimelineElement .previewWrapper:after,
+body > .timelineElement .previewWrapper:after {
 	position: absolute;
-	bottom: -14px;
+	bottom: -8px;
 	left: 50%;
-	margin-left: -10px;
-	border-top: 10px solid #3F4759;
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;
+	margin-left: -12px;
+	border-top: 8px solid var(--primary-bg-color);
+	border-left: 12px solid transparent;
+	border-right: 12px solid transparent;
 	content: '';
 	font-weight: 300;
 }
 
-.timelineList .userTimeline .compareTimelineElement .previewWrapper .resourceThumb, body > .compareTimelineElement .previewWrapper .resourceThumb {
+.compareTimelineElement .previewWrapper .resourceThumb, 
+.timelineElement .previewWrapper .resourceThumb, 
+body > .compareTimelineElement .previewWrapper .resourceThumb,
+body > .timelineElement .previewWrapper .resourceThumb {
 	position: relative;
-	width: 100%;
-	height: 100%;
+	width: 100% !important;
+	height: 100% !important;
 	cursor: pointer;
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: var(--primary-bg-color);
 	background-size: 130% auto;
 	background-repeat: no-repeat;
 	background-position: top center;
 	text-align: center;
-	outline: 4px solid #3F4759;
+	margin: 0px !important;
+	font-size: 11px;
+	text-align: left;
 }
 
-.timelineList .userTimeline .compareTimelineElement .previewWrapper .resourceThumb .resourceTitle, body > .compareTimelineElement .previewWrapper .resourceThumb .resourceTitle {
+.compareTimelineElement .previewWrapper .resourceThumb .resourceTitle, 
+.timelineElement .previewWrapper .resourceThumb .resourceTitle, 
+body > .compareTimelineElement .previewWrapper .resourceThumb .resourceTitle,
+body > .timelineElement .previewWrapper .resourceThumb .resourceTitle {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: auto;
-	background-color: rgba(60, 73, 94, 0.8);
+	background-color: var(--primary-bg-color);
 	font-size: 11px;
-	padding: 3px;
-	color: #E2EDF8;
+	padding: 0 3px 3px 3px;
+	color: var(--primary-fg-color);
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
-.timelineList .userTimeline .compareTimelineElement .previewWrapper .resourceThumb .resourceOverlay {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: transparent;
+.compareTimelineElement .previewWrapper .resourceThumb[data-type="text"] .resourceTitle, 
+.timelineElement .previewWrapper .resourceThumb[data-type="text"] .resourceTitle, 
+body > .compareTimelineElement .previewWrapper .resourceThumb[data-type="text"] .resourceTitle,
+body > .timelineElement .previewWrapper .resourceThumb[data-type="text"] .resourceTitle {
+	display: none;
 }
 
-
-.timelineList .userTimeline .compareTimelineElement .previewWrapper .resourceOverlay .resourceIcon, body > .compareTimelineElement .previewWrapper .resourceOverlay .resourceIcon {
+.compareTimelineElement .previewWrapper .resourceThumb .resourceOverlay .resourceIcon, 
+.timelineElement .previewWrapper .resourceThumb .resourceOverlay .resourceIcon, 
+body > .compareTimelineElement .previewWrapper .resourceThumb .resourceOverlay .resourceIcon,
+body > .timelineElement .previewWrapper .resourceThumb .resourceOverlay .resourceIcon {
 	position: absolute;
-	right: 10px;
-	bottom: 10px;
+	right: 6px;
+	bottom: 5px;
 	width: 25px;
 	height: auto;
 }
 
-.timelineList .userTimeline .compareTimelineElement:hover {
-	opacity: 1;
+.compareTimelineElement .previewWrapper .resourcePreviewButton,
+.timelineElement .previewWrapper .resourcePreviewButton {
+	width: 22px;
+	height: 22px;
+}
+
+.compareTimelineElement .previewWrapper .resourcePreviewButton [class^="icon-"]::before, 
+.compareTimelineElement .previewWrapper .resourcePreviewButton [class*=" icon-"]::before,
+.timelineElement .previewWrapper .resourcePreviewButton [class^="icon-"]::before, 
+.timelineElement .previewWrapper .resourcePreviewButton [class*=" icon-"]::before {
+	font-size: 15px;
+	line-height: 22px;
+}
+
+.compareTimelineElement .previewWrapper .resourceThumb[data-type="text"] .resourceTextPreview,
+.timelineElement .previewWrapper .resourceThumb[data-type="text"] .resourceTextPreview {
+	padding: 0px 2px;
+}
+
+.timelineElement:hover, .compareTimelineElement:hover {
+	opacity: 1 !important;
+	z-index: 101;
 	cursor: move;
 }

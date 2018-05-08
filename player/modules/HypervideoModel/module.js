@@ -496,6 +496,20 @@
 					"attributes":   protoData.attributes,
 					"tags":         []
 				}
+			} else if (!protoData.resourceId) {
+				newData = {
+					"name":         protoData.name,
+					"creator":      FrameTrail.getState('username'),
+					"creatorId":    FrameTrail.module('UserManagement').userID,
+					"created":      Date.now(),
+					"type":         protoData.type,
+					"src":          protoData.src,
+					"thumb":        protoData.thumb,
+					"start":        protoData.start,
+					"end":          protoData.end,
+					"attributes":   protoData.attributes,
+					"tags":         protoData.tags
+				};
 			} else {
 				newData = {
 					"name":         resourceDatabase[protoData.resourceId].name,

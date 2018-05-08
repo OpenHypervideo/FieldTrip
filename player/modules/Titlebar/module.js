@@ -85,15 +85,15 @@ FrameTrail.defineModule('Titlebar', function(FrameTrail){
     SharingWidget.find('.sharingWidgetButton').click(function(){
 
         var RouteNavigation = FrameTrail.module('RouteNavigation'),
-            baseUrl = window.location.href.split('?'),
-            url = baseUrl[0] + '?',
+            baseUrl = window.location.href.split('?')[0].split('#'),
+            url = baseUrl[0] + '#',
             secUrl = '//'+ window.location.host + window.location.pathname,
-            iframeUrl = secUrl + '?',
+            iframeUrl = secUrl + '#',
             label = 'Site';
 
         if ( FrameTrail.getState('viewMode') == 'video' && RouteNavigation.hypervideoID ) {
-            url += '&hypervideo='+ RouteNavigation.hypervideoID;
-            iframeUrl += '&hypervideo='+ RouteNavigation.hypervideoID;
+            url += 'hypervideo='+ RouteNavigation.hypervideoID;
+            iframeUrl += 'hypervideo='+ RouteNavigation.hypervideoID;
             label = 'Hypervideo'
         }
 

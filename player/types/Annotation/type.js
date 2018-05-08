@@ -34,7 +34,7 @@ FrameTrail.defineType(
                     data
                 )
 
-                this.timelineElement   = $('<div class="timelineElement"></div>');
+                this.timelineElement   = $('<div class="timelineElement"><div class="previewWrapper"></div></div>');
                 this.contentViewElements = [];
                 this.contentViewDetailElements = [];
 
@@ -91,6 +91,11 @@ FrameTrail.defineType(
                     var ViewVideo = FrameTrail.module('ViewVideo');
 
                     ViewVideo.AnnotationTimeline.append(this.timelineElement);
+
+                    this.timelineElement.find('.previewWrapper').empty().append(
+                        this.resourceItem.renderThumb()
+                    );
+
                     this.updateTimelineElement();
 
                     /*
@@ -597,8 +602,6 @@ FrameTrail.defineType(
                         +   this.data.start
                         +   '" data-end="'
                         +   this.data.end
-                        +   '" data-resourceId="'
-                        +   this.data.resourceId
                         +   '">'
                         +   '    <div class="previewWrapper">'
                         +   '    </div>'
@@ -618,6 +621,8 @@ FrameTrail.defineType(
                         this.resourceItem.renderThumb()
                     );
 
+                    var self = this;
+
                     compareTimelineElement.draggable({
                         containment:    '.mainContainer',
                         axis:           'y',
@@ -632,6 +637,8 @@ FrameTrail.defineType(
                                 height: $(event.currentTarget).height() + "px",
                                 backgroundColor: $(event.currentTarget).css('background-color')
                             });
+
+                            ui.helper.data('originResourceData', self.data);
                         },
 
                         drag: function( event, ui ) {

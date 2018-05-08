@@ -639,6 +639,21 @@
                                 }
                             });
 
+                        } else if (!resourceID) {
+
+                            var resourceData = ui.helper.data('originResourceData');
+
+                            newAnnotation = FrameTrail.module('HypervideoModel').newAnnotation({
+                                "name":         resourceData.name,
+                                "type":         resourceData.type,
+                                "src":          resourceData.src,
+                                "thumb":        resourceData.thumb,
+                                "start":        startTime,
+                                "end":          endTime,
+                                "attributes":   resourceData.attributes,
+                                "tags":         resourceData.tags
+                            });
+
                         } else {
 
                             newAnnotation = FrameTrail.module('HypervideoModel').newAnnotation({
