@@ -37,9 +37,7 @@
 		events                  = {},
 		customCSS               = '',
 
-		annotationSets          = {},
-		selectedAnnotationSet   = '',
-		mainAnnotationSet       = '',
+		annotations             = [],
 
 		unsavedSettings         = false;
 		unsavedOverlays         = false,
@@ -95,7 +93,11 @@
 		}
 
 		// Set video source or NullVideo
-		if (!videoData.resourceId) {
+		if (videoData.src && videoData.src.length > 3) {
+
+			sourceFiles.mp4  = videoData.src;
+
+		} else if (!videoData.resourceId) {
 
 			hasHTML5Video = false;
 			duration      = videoData.duration;
@@ -103,6 +105,7 @@
 
 		} else {
 
+			// TODO: Remove when compatibility no longer needed
 			sourceFiles.mp4  = database.resources[videoData.resourceId].src;
 
 		}
@@ -194,28 +197,22 @@
 	function initModelOfAnnotations(database) {
 
 		// clear previous data
-		annotationSets = {};
+		annotations = [];
+		//console.log(database.annotations);
+		for (var idx in database.annotations) {
 
-		for (var ownerId in database.annotations) {
-
-			annotationSets[ownerId] = [];
-
-			for (var idx in database.annotations[ownerId]) {
-
-				annotationSets[ownerId].push(
-					FrameTrail.newObject('Annotation',
-						database.annotations[ownerId][idx]
-					)
-				);
-
-			}
+			annotations.push(
+				FrameTrail.newObject('Annotation',
+					database.annotations[idx]
+				)
+			);
 
 		}
 
 
 		// for (var ownerId in database.annotations) {
 			// if (database.annotations[ownerId] === FrameTrail.module('Database').hypervideo.mainAnnotation) {
-		          selectedAnnotationSet = mainAnnotationSet = FrameTrail.module('Database').hypervideo.mainAnnotation;
+		          // selectedAnnotationSet = mainAnnotationSet = FrameTrail.module('Database').hypervideo.mainAnnotation;
 		// 	}
 		// }
 
@@ -331,13 +328,8 @@
 			idx,
 			annotationData = annotation.data;
 
-		idx = annotationSets[selectedAnnotationSet].indexOf(annotation);
-		annotationSets[selectedAnnotationSet].splice(idx, 1);
-
-		if (database.annotations[selectedAnnotationSet]) {
-			idx = database.annotations[selectedAnnotationSet].indexOf(annotation.data);
-			database.annotations[selectedAnnotationSet].splice(idx, 1);
-		}
+		annotations.splice(annotations.indexOf(annotation), 1);
+        database.annotations.splice(database.annotations.indexOf(annotation.data), 1);
 
 		newUnsavedChange('annotations');
 
@@ -487,20 +479,24 @@
 				newData = {
 					"name":         protoData.name,
 					"creator":      FrameTrail.getState('username'),
-					"creatorId":    FrameTrail.module('UserManagement').userID,
+					"creatorId":    ownerId,
 					"created":      Date.now(),
 					"type":         protoData.type,
 					"src":          '',
 					"start":        protoData.start,
 					"end":          protoData.end,
 					"attributes":   protoData.attributes,
-					"tags":         []
+					"tags":         [],
+                    "source": {
+                        frametrail: true,
+                        url: "_data/hypervideos/"
+                    }
 				}
 			} else if (!protoData.resourceId) {
 				newData = {
 					"name":         protoData.name,
 					"creator":      FrameTrail.getState('username'),
-					"creatorId":    FrameTrail.module('UserManagement').userID,
+					"creatorId":    ownerId,
 					"created":      Date.now(),
 					"type":         protoData.type,
 					"src":          protoData.src,
@@ -508,13 +504,17 @@
 					"start":        protoData.start,
 					"end":          protoData.end,
 					"attributes":   protoData.attributes,
-					"tags":         protoData.tags
+					"tags":         protoData.tags,
+                    "source": {
+                        frametrail: true,
+                        url: "_data/hypervideos/"
+                    }
 				};
 			} else {
 				newData = {
 					"name":         resourceDatabase[protoData.resourceId].name,
 					"creator":      FrameTrail.getState('username'),
-					"creatorId":    FrameTrail.module('UserManagement').userID,
+					"creatorId":    ownerId,
 					"created":      Date.now(),
 					"type":         resourceDatabase[protoData.resourceId].type,
 					"src":          resourceDatabase[protoData.resourceId].src,
@@ -523,21 +523,19 @@
 					"end":          protoData.end,
 					"resourceId":   protoData.resourceId,
 					"attributes":   resourceDatabase[protoData.resourceId].attributes,
-					"tags":         []
+					"tags":         [],
+                    "source": {
+                        frametrail: true,
+                        url: "_data/hypervideos/"
+                    }
 				};
 			}
 
-			if (!database.annotations[ownerId]) {
-				database.annotations[ownerId] = []
-			}
-			FrameTrail.module('Database').annotations[ownerId].push(newData);
 
+			FrameTrail.module('Database').annotations.push(newData);
 
-			if (!annotationSets[ownerId]) {
-				annotationSets[ownerId] = []
-			}
 			newAnnotation = FrameTrail.newObject('Annotation', newData);
-			annotationSets[ownerId].push(newAnnotation);
+			annotations.push(newAnnotation);
 
 			newUnsavedChange('annotations');
 
@@ -624,62 +622,62 @@
 
 
 
-	/**
-	 * Needed for the {{#crossLinks "HypervideoModel/annotationSets:attribute"}}annotationSets attribute{{/crossLinks}}.
-	 * This attribute' purpose is to tell, what users have an annotationfile for the current hypervideo.
-	 *
-	 * I return an array of maps in the format
-	 *
-	 *     [ { id: ownerid, name: ownerName }, ... ]
-	 *
-	 *
-	 * @method getAnnotationSets
-	 * @return Array of { id: ownerId, name: ownerName}
-	 * @private
-	 */
-	function getAnnotationSets() {
-
-		var database = FrameTrail.module('Database'),
-			ids = [],
-			ownerName,
-			ownerColor,
-			hypervideoIndexItem,
-			annotationfileId;
-
-		for (var ownerId in annotationSets) {
-
-			// annotationfileId    = database.annotationfileIDs[ownerId];
-			hypervideoIndexItem = database.hypervideo.annotationfiles[ownerId];
-
-			if (hypervideoIndexItem) {
-
-				ownerName  = hypervideoIndexItem.owner;
-				ownerColor = FrameTrail.module('Database').users[ownerId].color;
-
-			} else if (ownerId === FrameTrail.module('UserManagement').userID) {
-
-				ownerName  = FrameTrail.getState('username');
-				ownerColor = FrameTrail.getState('userColor');
-
-			} else {
-
-				ownerName  = 'unknown';
-				ownerColor = 'FFFFFF';
-
-			}
-
-
-			ids.push({
-				id:      ownerId,
-				name:    ownerName,
-				color:   ownerColor
-			});
-
-		}
-
-		return ids;
-
-	};
+	// /**
+	//  * Needed for the {{#crossLinks "HypervideoModel/annotationSets:attribute"}}annotationSets attribute{{/crossLinks}}.
+	//  * This attribute' purpose is to tell, what users have an annotationfile for the current hypervideo.
+	//  *
+	//  * I return an array of maps in the format
+	//  *
+	//  *     [ { id: ownerid, name: ownerName }, ... ]
+	//  *
+	//  *
+	//  * @method getAnnotationSets
+	//  * @return Array of { id: ownerId, name: ownerName}
+	//  * @private
+	//  */
+	// function getAnnotationSets() {
+    //
+	// 	var database = FrameTrail.module('Database'),
+	// 		ids = [],
+	// 		ownerName,
+	// 		ownerColor,
+	// 		hypervideoIndexItem,
+	// 		annotationfileId;
+    //
+	// 	for (var ownerId in annotationSets) {
+    //
+	// 		// annotationfileId    = database.annotationfileIDs[ownerId];
+	// 		hypervideoIndexItem = database.hypervideo.annotationfiles[ownerId];
+    //
+	// 		if (hypervideoIndexItem) {
+    //
+	// 			ownerName  = hypervideoIndexItem.owner;
+	// 			ownerColor = FrameTrail.module('Database').users[ownerId].color;
+    //
+	// 		} else if (ownerId === FrameTrail.module('UserManagement').userID) {
+    //
+	// 			ownerName  = FrameTrail.getState('username');
+	// 			ownerColor = FrameTrail.getState('userColor');
+    //
+	// 		} else {
+    //
+	// 			ownerName  = 'unknown';
+	// 			ownerColor = 'FFFFFF';
+    //
+	// 		}
+    //
+    //
+	// 		ids.push({
+	// 			id:      ownerId,
+	// 			name:    ownerName,
+	// 			color:   ownerColor
+	// 		});
+    //
+	// 	}
+    //
+	// 	return ids;
+    //
+	// };
 
 
 
@@ -694,7 +692,7 @@
 	 */
 	function getAnnotations() {
 
-		return annotationSets[selectedAnnotationSet].sort(function(a, b){
+		return annotations.sort(function(a, b){
 
 			if(a.data.start > b.data.start) {
 				return 1;
@@ -710,97 +708,97 @@
 
 
 
-	/**
-	 * When the {{#crossLinks "HypervideoModel/allAnnotations:attribute"}}attribute allAnnotations{{/crossLinks}} is accessed,
-	 * it needs to return an array of all annotations by all users.
-	 * The array needs to be sorted by the start time.
-	 *
-	 * @method getAllAnnotations
-	 * @return Array of Annotations
-	 * @private
-	 */
-	function getAllAnnotations() {
-
-		var userSets = getAnnotationSets(),
-			allAnnotations = new Array();
-
-		for (var i=0; i<userSets.length; i++) {
-			var userSet = annotationSets[userSets[i].id];
-			allAnnotations = allAnnotations.concat(userSet);
-		}
-
-		return allAnnotations.sort(function(a, b){
-
-			if(a.data.start > b.data.start) {
-				return 1;
-			} else if(a.data.start < b.data.start) {
-				return -1;
-			} else {
-				return 0;
-			}
-
-		});
-
-	};
-
-
-
-	/**
-	 * I am needed by the {{#crossLinks "HypervideoModel/annotationSet:attribute"}}annotationSet attribute{{/crossLinks}}.
-	 *
-	 * My parameter can be set in three ways:
-	 * * when the argument is null, I select the main annotation file (from the hypervideo's _index.json entry)
-	 * * when the special string '#myAnnotationSet' is given as argument, I select the logged-in user's ID
-	 * * an all other cases, I take the literal string as the ID to select.
-	 *
-	 * When my user changes the currently selected annotation sets, I have to assure, that both myself and the
-	 * {{#crossLinks "Database"}}Database{{/crossLinks}} have under the respective attribute name an [Array] present, for
-	 * manipulating annotation objects inside them.
-	 *
-	 * @method selectAnnotationSet
-	 * @param {String or null} anID
-	 * @return String
-	 * @private
-	 */
-	function selectAnnotationSet(anID) {
-
-		var database = FrameTrail.module('Database'),
-			selectID;
+	// /**
+	//  * When the {{#crossLinks "HypervideoModel/allAnnotations:attribute"}}attribute allAnnotations{{/crossLinks}} is accessed,
+	//  * it needs to return an array of all annotations by all users.
+	//  * The array needs to be sorted by the start time.
+	//  *
+	//  * @method getAllAnnotations
+	//  * @return Array of Annotations
+	//  * @private
+	//  */
+	// function getAllAnnotations() {
+    //
+	// 	var userSets = getAnnotationSets(),
+	// 		allAnnotations = new Array();
+    //
+	// 	for (var i=0; i<userSets.length; i++) {
+	// 		var userSet = annotationSets[userSets[i].id];
+	// 		allAnnotations = allAnnotations.concat(userSet);
+	// 	}
+    //
+	// 	return allAnnotations.sort(function(a, b){
+    //
+	// 		if(a.data.start > b.data.start) {
+	// 			return 1;
+	// 		} else if(a.data.start < b.data.start) {
+	// 			return -1;
+	// 		} else {
+	// 			return 0;
+	// 		}
+    //
+	// 	});
+    //
+	// };
 
 
-		if (anID === null) {
 
-			return selectedAnnotationSet = mainAnnotationSet;
-
-		}
-
-
-		if (anID === '#myAnnotationSet') {
-
-			selectID = FrameTrail.module('UserManagement').userID;
-
-		} else {
-
-			selectID = anID;
-
-		}
-
-
-		if (!annotationSets.hasOwnProperty(selectID)) {
-
-			annotationSets[selectID] = [];
-
-		}
-
-		if (!database.annotations.hasOwnProperty(selectID)) {
-
-			database.annotations[selectID] = [];
-
-		}
-
-		return selectedAnnotationSet = selectID;
-
-	};
+	// /**
+	//  * I am needed by the {{#crossLinks "HypervideoModel/annotationSet:attribute"}}annotationSet attribute{{/crossLinks}}.
+	//  *
+	//  * My parameter can be set in three ways:
+	//  * * when the argument is null, I select the main annotation file (from the hypervideo's _index.json entry)
+	//  * * when the special string '#myAnnotationSet' is given as argument, I select the logged-in user's ID
+	//  * * an all other cases, I take the literal string as the ID to select.
+	//  *
+	//  * When my user changes the currently selected annotation sets, I have to assure, that both myself and the
+	//  * {{#crossLinks "Database"}}Database{{/crossLinks}} have under the respective attribute name an [Array] present, for
+	//  * manipulating annotation objects inside them.
+	//  *
+	//  * @method selectAnnotationSet
+	//  * @param {String or null} anID
+	//  * @return String
+	//  * @private
+	//  */
+	// function selectAnnotationSet(anID) {
+    //
+	// 	var database = FrameTrail.module('Database'),
+	// 		selectID;
+    //
+    //
+	// 	if (anID === null) {
+    //
+	// 		return selectedAnnotationSet = mainAnnotationSet;
+    //
+	// 	}
+    //
+    //
+	// 	if (anID === '#myAnnotationSet') {
+    //
+	// 		selectID = FrameTrail.module('UserManagement').userID;
+    //
+	// 	} else {
+    //
+	// 		selectID = anID;
+    //
+	// 	}
+    //
+    //
+	// 	if (!annotationSets.hasOwnProperty(selectID)) {
+    //
+	// 		annotationSets[selectID] = [];
+    //
+	// 	}
+    //
+	// 	if (!database.annotations.hasOwnProperty(selectID)) {
+    //
+	// 		database.annotations[selectID] = [];
+    //
+	// 	}
+    //
+	// 	return selectedAnnotationSet = selectID;
+    //
+	// };
 
 
 
@@ -1140,7 +1138,7 @@
 			function reInitHypervideo() {
 
 				//TODO: Implement proper destroy method
-				
+
 				ra = false;
 
 				FrameTrail.initModule('ViewVideo');
@@ -1942,13 +1940,13 @@
 		get customCSS()           { return customCSS                  },
 		set customCSS(cssString)  { return updateCustomCSS(cssString) },
 
-		/**
-		 * The annotation sets of the hypervideo (fetched via {{#crossLink "HypervideoModel/getAnnotationSets:method"}}getAnnotationSets(){{/crossLinks}}).
-		 * @type Array of { id: String, name: String }
-		 * @attribute annotationSets
-		 * @readOnly
-		 */
-		get annotationSets()    { return getAnnotationSets() },
+		// /**
+		//  * The annotation sets of the hypervideo (fetched via {{#crossLink "HypervideoModel/getAnnotationSets:method"}}getAnnotationSets(){{/crossLinks}}).
+		//  * @type Array of { id: String, name: String }
+		//  * @attribute annotationSets
+		//  * @readOnly
+		//  */
+		// get annotationSets()    { return getAnnotationSets() },
 
 		/**
 		 * The currently selected annotations of the hypervideo (fetched via {{#crossLink "HypervideoModel/getAnnotations:method"}}getAnnotations(){{/crossLinks}}).
@@ -1958,20 +1956,20 @@
 		 */
 		get annotations()       { return getAnnotations() },
 
-		/**
-		 * All annotations in all sets by all users (fetched via {{#crossLink "HypervideoModel/getAllAnnotations:method"}}getAllAnnotations(){{/crossLinks}}).
-		 * @type Array of Annotation
-		 * @attribute allAnnotations
-		 * @readOnly
-		 */
-		get allAnnotations()       { return getAllAnnotations() },
-
-		/**
-		 * All annotations sets of the hypervideo in a map of userIDs to their respective annotation set.
-		 * @type Object of Array of Annotation
-		 * @attribute annotationAllSets
-		 */
-		get annotationAllSets() { return annotationSets },
+		// /**
+		//  * All annotations in all sets by all users (fetched via {{#crossLink "HypervideoModel/getAllAnnotations:method"}}getAllAnnotations(){{/crossLinks}}).
+		//  * @type Array of Annotation
+		//  * @attribute allAnnotations
+		//  * @readOnly
+		//  */
+		// get allAnnotations()       { return getAllAnnotations() },
+        //
+		// /**
+		//  * All annotations sets of the hypervideo in a map of userIDs to their respective annotation set.
+		//  * @type Object of Array of Annotation
+		//  * @attribute annotationAllSets
+		//  */
+		// get annotationAllSets() { return annotationSets },
 
 		/**
 		 * Get or set the hypervideo name
@@ -1991,14 +1989,14 @@
 		get description()         { return description           },
 		set description(aString)  { return description = aString },
 
-		/**
-		 * The currently selected userID, to decide which annotations should be displayed (setting this attribute is done via {{#crossLink "HypervideoModel/selectAnnotationSet:method"}}selectAnnotationSet(){{/crossLinks}}).
-		 * @type Array of Annotation
-		 * @attribute annotationSet
-		 * @param {} anID
-		 */
-		set annotationSet(anID) { return selectAnnotationSet(anID) },
-		get annotationSet()     { return selectedAnnotationSet     },
+		// /**
+		//  * The currently selected userID, to decide which annotations should be displayed (setting this attribute is done via {{#crossLink "HypervideoModel/selectAnnotationSet:method"}}selectAnnotationSet(){{/crossLinks}}).
+		//  * @type Array of Annotation
+		//  * @attribute annotationSet
+		//  * @param {} anID
+		//  */
+		// set annotationSet(anID) { return selectAnnotationSet(anID) },
+		// get annotationSet()     { return selectedAnnotationSet     },
 
 		/**
 		 * The hypervideo's duration.

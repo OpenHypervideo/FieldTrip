@@ -318,7 +318,9 @@ FrameTrail.defineType(
                                     $(overlayOrAnnotation.contentViewElements).each(function() {
                                         $(this).find('.resourceThumb .resourceTextPreview').html(textOnly);
                                     });
-
+                                    
+                                    overlayOrAnnotation.timelineElement.find('.previewWrapper .resourceTextPreview').html(textOnly);
+                                    
                                     $(FrameTrail.getState('target')).find('.editPropertiesContainer .resourceTextPreview').html(textOnly);
 
                                     FrameTrail.triggerEvent('userAction', {

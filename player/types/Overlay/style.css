@@ -82,6 +82,11 @@
 /* Overlay Element */
 
 .overlayContainer .overlayElement {
+	-webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    backface-visibility: hidden;
 	position: absolute;
 	background: transparent;
 	visibility: hidden;
@@ -93,6 +98,15 @@
 
 .overlayContainer .overlayElement.highlighted {
 	box-shadow: 0 0 1px 2px #f8f8f8 !important;
+}
+
+.overlayContainer .overlayElement img {
+	-webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    backface-visibility: hidden;
+    will-change: scale;
 }
 
 .mainContainer.editActive .overlayContainer .overlayElement.ui-draggable.brushed {

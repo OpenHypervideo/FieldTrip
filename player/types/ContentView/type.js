@@ -59,7 +59,7 @@ FrameTrail.defineType(
                     var self = this;
 
                     self.contentViewTab.attr('data-type', self.contentViewData.type);
-                    self.contentViewTab.find('.contentViewTabName').text(self.contentViewData.name);
+                    self.contentViewTab.find('.contentViewTabName').html(self.contentViewData.name);
 
                     self.contentViewContainer.attr('data-type', self.contentViewData.type);
                     self.contentViewContainer.attr('data-size', self.contentViewData.contentSize);
@@ -585,7 +585,7 @@ FrameTrail.defineType(
                     var self = this;
 
                     self.contentViewPreviewTab.attr('data-type', self.contentViewData.type);
-                    self.contentViewPreviewTab.find('.contentViewTabName').text(self.contentViewData.name);
+                    self.contentViewPreviewTab.find('.contentViewTabName').html(self.contentViewData.name);
 
                     self.contentViewPreviewElement.attr('data-type', self.contentViewData.type);
                     self.contentViewPreviewElement.attr('data-size', self.contentViewData.contentSize);

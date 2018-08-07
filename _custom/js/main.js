@@ -23,37 +23,49 @@ $(document).ready(function() {
 		});
 	}
 
-	window.FieldTrip = FrameTrail.init('PlayerLauncher', {
+	window.FieldTrip = FrameTrail.init({
 
 		target:             '#VideoPlayer',
 		contentTargets:     {},
-		contents:           {
-								hypervideo: '',
-								annotationsIndex: '',
-								annotations: [],
-								resources: [],
-								users: ''
-							},
-
-		loggedIn:           false,
-		username:           '',
-		viewMode:           'video',
-		editMode:           false,
-		slidePosition:      'middle',
-		sidebarOpen:        false,
-		fullscreen:         false,
-		viewSize:           [0,0],
-		unsavedChanges:     false
-
+		contents:           null,
+        startID:            null,
+        resources:          [{
+            label: "Choose Resources",
+            data: "_data/resources/_index.json",
+            type: "frametrail"
+        }],
+        tagdefinitions:      null,
+        config:              null
 	});
 
-	/*
+	
 	FieldTrip.on('ready', function() {
+		initTransitions('.mainContainer');
+		/*
 		if (FieldTrip.play && previousLayer) {
 			FieldTrip.play();
 		}
+		*/
+		$('.hypervideo .video').prop('volume', 0);
+		
+		if (FieldTrip.play && previousLayer) {
+			window.setTimeout(function() {
+				$(window).resize();
+				window.setTimeout(function() {
+					$(window).resize();
+					window.transitionLoading.addEventListener('loopComplete', function() {
+						transitionLoading.stop();
+						audioLoading.pause();
+						audioLoading.currentTime = 0;
+						playTransitionOut();
+						window.transitionLoading.removeEventListener('loopComplete');
+					});
+				}, 800);
+			}, 1600);
+		}
 	});
 
+	/*
 	FieldTrip.on('play', function() {
 		window.setTimeout(function() {
 			$('.hypervideo .video').css('transition-duration', '').removeClass('nocolor');
@@ -364,7 +376,29 @@ function activateLayer(layerName, videoID) {
 			break;
 		case 'hypervideo':
 			// Video
-			if (FieldTrip.play && previousLayer) {
+			
+			$('.hypervideo .video').prop('volume', 0);
+			initTransitions('.mainContainer');
+			
+			//console.log(activeVideoID, videoID);
+			if (!activeVideoID) {
+				playTransitionLoading();
+				window.setTimeout(function() {
+					$(window).resize();
+					window.setTimeout(function() {
+						$(window).resize();
+						window.transitionLoading.addEventListener('loopComplete', function() {
+							transitionLoading.stop();
+							audioLoading.pause();
+							audioLoading.currentTime = 0;
+							playTransitionOut();
+							window.transitionLoading.removeEventListener('loopComplete');
+						});
+					}, 800);
+				}, 1600);
+			} else if (activeVideoID != videoID) {
+				playTransitionLoading();
+			} else {
 				window.setTimeout(function() {
 					$(window).resize();
 					window.setTimeout(function() {
@@ -372,9 +406,9 @@ function activateLayer(layerName, videoID) {
 						FieldTrip.play();
 						$('.hypervideo .video').stop(true, false).animate({
 							volume: 1
-						}, 600);
+						}, 2000);
 					}, 800);
-				}, 1100);
+				}, 1600);
 			}
 			
 			$('#ftIntroVideo')[0].pause();

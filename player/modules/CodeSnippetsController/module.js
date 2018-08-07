@@ -217,8 +217,8 @@ FrameTrail.defineModule('CodeSnippetsController', function(FrameTrail){
         codeSnippetEditingOptions.find('.executeEventCode').click(function(evt) {
             var textarea = $(evt.currentTarget).siblings('textarea');
             try {
-                var testRun = new Function(textarea.val());
-                testRun();
+                var testRun = new Function('FrameTrail', textarea.val());
+                testRun(FrameTrail);
             } catch (exception) {
                 alert('Code contains errors: '+ exception.message);
             }

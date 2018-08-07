@@ -152,8 +152,8 @@ FrameTrail.defineType(
 
                     if (this.data.events.onReady) {
                         try {
-                            var readyEvent = new Function(this.data.events.onReady);
-                            readyEvent.call(this);
+                            var readyEvent = new Function('FrameTrail', this.data.events.onReady);
+                            readyEvent.call(this, FrameTrail);
                         } catch (exception) {
                             // could not parse and compile JS code!
                             console.warn('Event handler contains errors: '+ exception.message);
@@ -165,8 +165,8 @@ FrameTrail.defineType(
                         var self = evt.data.overlayObject;
                         if (self.data.events.onClick && FrameTrail.getState('editMode') != 'overlays') {
                             try {
-                                var clickEvent = new Function(self.data.events.onClick);
-                                clickEvent.call(self);
+                                var clickEvent = new Function('FrameTrail', self.data.events.onClick);
+                                clickEvent.call(self, FrameTrail);
                             } catch (exception) {
                                 // could not parse and compile JS code!
                                 console.warn('Event handler contains errors: '+ exception.message);
@@ -383,8 +383,8 @@ FrameTrail.defineType(
 
                     if (this.data.events.onStart && !this.activeState && !this.permanentFocusState) {
                         try {
-                            var thisEvent = new Function(this.data.events.onStart);
-                            thisEvent.call(this);
+                            var thisEvent = new Function('FrameTrail', this.data.events.onStart);
+                            thisEvent.call(this, FrameTrail);
                         } catch (exception) {
                             // could not parse and compile JS code!
                             console.warn('Event handler contains errors: '+ exception.message);
@@ -412,8 +412,8 @@ FrameTrail.defineType(
 
                     if (this.data.events.onEnd && this.activeState && !this.permanentFocusState) {
                         try {
-                            var thisEvent = new Function(this.data.events.onEnd);
-                            thisEvent.call(this);
+                            var thisEvent = new Function('FrameTrail', this.data.events.onEnd);
+                            thisEvent.call(this, FrameTrail);
                         } catch (exception) {
                             // could not parse and compile JS code!
                             console.warn('Event handler contains errors: '+ exception.message);
@@ -532,11 +532,19 @@ FrameTrail.defineType(
                  */
                 stopEditing: function () {
 
-                    this.timelineElement.draggable('destroy');
-                    this.timelineElement.resizable('destroy');
+                    if (this.timelineElement.data('ui-draggable')) {
+                        this.timelineElement.draggable('destroy');
+                    }
+                    if (this.timelineElement.data('ui-resizable')) {
+                        this.timelineElement.resizable('destroy');
+                    }
 
-                    this.overlayElement.draggable('destroy');
-                    this.overlayElement.resizable('destroy');
+                    if (this.overlayElement.data('ui-draggable')) {
+                        this.overlayElement.draggable('destroy');
+                    }
+                    if (this.overlayElement.data('ui-resizable')) {
+                        this.overlayElement.resizable('destroy');
+                    }
 
                     this.timelineElement.unbind('click.edit');
                     this.overlayElement.unbind('click.edit');

@@ -113,7 +113,7 @@ FrameTrail.defineType(
                 initCodeSnippetFunction: function () {
 
                     try {
-                        this.codeSnippetFunction = new Function(this.data.snippet);
+                        this.codeSnippetFunction = new Function('FrameTrail', this.data.snippet);
                     } catch (exception) {
                         // could not parse and compile JS code!
                         console.warn('Code Snippet contains errors: '+ exception.message);
@@ -164,7 +164,7 @@ FrameTrail.defineType(
                     this.timelineElement.addClass('active');
 
                     try {
-                        this.codeSnippetFunction();
+                        this.codeSnippetFunction(FrameTrail);
                     } catch (exception) {
                         // do some user error feedback (ex.message)
                         console.warn('Code Snippet contains errors: '+ exception.message);
@@ -246,7 +246,10 @@ FrameTrail.defineType(
                  */
                 stopEditing: function () {
 
-                    this.timelineElement.draggable('destroy');
+                    if (this.timelineElement.data('ui-draggable')) {
+                        this.timelineElement.draggable('destroy');
+                    }
+                    
                     this.timelineElement.unbind('click');
 
 
@@ -361,8 +364,8 @@ FrameTrail.defineType(
 
                     propertiesControls.find('.executeCodeSnippet').click(function() {
                         try {
-                            var testRun = new Function(self.data.snippet);
-                            testRun();
+                            var testRun = new Function('FrameTrail', self.data.snippet);
+                            testRun(FrameTrail);
                         } catch (exception) {
                             alert('Code contains errors: '+ exception.message);
                         }

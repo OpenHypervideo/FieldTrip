@@ -68,6 +68,7 @@ FrameTrail.defineModule('InteractionController', function(FrameTrail){
 
     	});
 
+        /*
         $('body').off('mousewheel', '.viewVideo').on('mousewheel', '.viewVideo', function(evt) {
 
             if (evt.deltaY >= scrollThreshold && !scrollUpBlocked) {
@@ -105,6 +106,7 @@ FrameTrail.defineModule('InteractionController', function(FrameTrail){
             }
 
         });
+        */
 
 
     };

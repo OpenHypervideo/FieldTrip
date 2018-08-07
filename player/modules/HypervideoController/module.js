@@ -904,6 +904,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
         playbackStalled: playbackStalled,
 
 		updateDescriptions: updateDescriptions,
+		formatTime: 		formatTime,
 		clearIntervals:     clearIntervals,
 
 

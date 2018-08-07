@@ -597,8 +597,8 @@ FrameTrail.defineType(
                     controlsContainer.find('.executeActionCode').click(function(evt) {
                         var textarea = $(evt.currentTarget).siblings('textarea');
                         try {
-                            var testRun = new Function(textarea.val());
-                            testRun.call(overlay);
+                            var testRun = new Function('FrameTrail', textarea.val());
+                                testRun.call(overlay, FrameTrail);
                         } catch (exception) {
                             alert('Code contains errors: '+ exception.message);
                         }

@@ -219,6 +219,34 @@ body > .timelineElement .previewWrapper .resourceThumb .resourceOverlay .resourc
 	padding: 0px 2px;
 }
 
+.compareTimelineElement .compareTimelineElementTime {
+	position: absolute;
+	bottom: -4px;
+	left: 0px;
+	width: 100%;
+	display: none;
+}
+
+.compareTimelineElement .compareTimelineElementTime .compareTimeStart,
+.compareTimelineElement .compareTimelineElementTime .compareTimeEnd {
+	position: absolute;
+	top: 0px;
+	left: calc(100% - 10px);
+	font-size: 11px;
+	width: 30px;
+	overflow: hidden;
+	color: var(--primary-bg-color);
+}
+
+.compareTimelineElement .compareTimelineElementTime .compareTimeStart {
+	left: auto;
+	right: calc(100% - 10px);
+}
+
+.compareTimelineElement:hover .compareTimelineElementTime {
+	display: block;
+}
+
 .timelineElement:hover, .compareTimelineElement:hover {
 	opacity: 1 !important;
 	z-index: 101;

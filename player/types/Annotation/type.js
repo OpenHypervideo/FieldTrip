@@ -305,8 +305,13 @@ FrameTrail.defineType(
                  */
                 stopEditing: function () {
 
-                    this.timelineElement.draggable('destroy');
-                    this.timelineElement.resizable('destroy');
+                    if (this.timelineElement.data('ui-draggable')) {
+                        this.timelineElement.draggable('destroy');
+                    }
+                    if (this.timelineElement.data('ui-resizable')) {
+                        this.timelineElement.resizable('destroy');
+                    }
+                    
                     this.timelineElement.unbind('click');
 
                 },
@@ -596,14 +601,23 @@ FrameTrail.defineType(
                  */
                 renderCompareTimelineItem: function() {
 
-                    var compareTimelineElement = $(
+                    var cleanStart = FrameTrail.module('HypervideoController').formatTime(this.data.start),
+                        cleanEnd = FrameTrail.module('HypervideoController').formatTime(this.data.end),
+                        compareTimelineElement = $(
                             '<div class="compareTimelineElement" '
                         +   ' data-start="'
                         +   this.data.start
                         +   '" data-end="'
                         +   this.data.end
                         +   '">'
-                        +   '    <div class="previewWrapper">'
+                        +   '    <div class="previewWrapper"></div>'
+                        +   '    <div class="compareTimelineElementTime">'
+                        +   '        <div class="compareTimeStart">'
+                        +   cleanStart
+                        +   '        </div>'
+                        +   '        <div class="compareTimeEnd">'
+                        +   cleanEnd
+                        +   '        </div>'
                         +   '    </div>'
                         +   '</div>'
                     ),

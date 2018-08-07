@@ -52,7 +52,7 @@
     // Set up User Traces
     FrameTrail.initModule('UserTraces');
 
-    
+
     // start the actual init process
 
     if (FrameTrail.module('RouteNavigation').hypervideoID) {
@@ -71,7 +71,7 @@
                 } else {
                     initHypervideo();
                 }
-                
+
                 function initHypervideo() {
 
                     FrameTrail.module('TagModel').initTagModel(
@@ -135,14 +135,14 @@
 
     } else {
 
-        FrameTrail.changeState('viewMode', 'overview')
+        FrameTrail.changeState('viewMode', 'overview');
 
         FrameTrail.module('Database').loadData(
 
             function(){
 
                 FrameTrail.module('UserTraces').initTraces();
-                
+
                 if (FrameTrail.module('Database').config.alwaysForceLogin) {
                     FrameTrail.module('InterfaceModal').hideMessage();
                     FrameTrail.module('UserManagement').ensureAuthenticated(function() {

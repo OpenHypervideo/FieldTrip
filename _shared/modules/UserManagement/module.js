@@ -211,6 +211,11 @@ FrameTrail.defineModule('UserManagement', function(FrameTrail){
             data: 		"a=userGet",
 			success: function(data) {
 
+				if (!data.response) {
+					console.error('User file is missing.');
+					return;
+				}
+
 				var allUsers = data.response.user;
 
 				domElement.find("#user_change_user").html('<option value="" selected disabled>Select a User</option>');
@@ -553,15 +558,22 @@ FrameTrail.defineModule('UserManagement', function(FrameTrail){
 						break;
 
 					case 2:
-						throw new Error('User file is missing.');
+						console.error('User file is missing.');
+						FrameTrail.changeState({
+							editMode: false,
+							loggedIn: false,
+							username: '',
+							userColor: ''
+						});
+						callback.call(window, false);
 						break;
 
 					case 3:
-						throw new Error('Logged in but user not active');
+						console.error('Logged in but user not active');
 						break;
 
 					case 4:
-						throw new Error('Logged in but not with required role.');
+						console.error('Logged in but not with required role.');
 						break;
 
 				}

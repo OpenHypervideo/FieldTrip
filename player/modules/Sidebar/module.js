@@ -202,7 +202,7 @@ FrameTrail.defineModule('Sidebar', function(FrameTrail){
                         // Redirect to Overview when current Hypervideo has been deleted
                         if ( thisID == FrameTrail.module('RouteNavigation').hypervideoID ) {
                             alert('You deleted the current Hypervideo and will be redirected to the Overview.')
-                            window.location.search = "?";
+                            window.location.hash = "#";
                         }
 
                     break;

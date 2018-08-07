@@ -18,7 +18,7 @@
 FrameTrail.defineModule('RouteNavigation', function(FrameTrail){
 
 
-	var hypervideoID = getHashVariable('hypervideo'),
+	var hypervideoID = (getHashVariable('hypervideo') || FrameTrail.getState('startID')),
 		annotationID = '',
 		hashTime     = '',
 

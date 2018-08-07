@@ -41,6 +41,8 @@ function annotationfileSave($hypervideoID, $annotationfileID, $action, $name, $d
 		$_SESSION["ohv"]["user"] = array_replace_recursive($_SESSION["ohv"]["user"], $u["user"][$_SESSION["ohv"]["user"]["id"]]);
 	}
 
+    $annotationfileID = $_SESSION["ohv"]["user"]["id"];
+
 
 	if (($action != "save") && ($action != "saveAs")) {
 		$return["status"] = "fail";
@@ -60,10 +62,9 @@ function annotationfileSave($hypervideoID, $annotationfileID, $action, $name, $d
 		mkdir($conf["dir"]["data"]."/hypervideos/".$hypervideoID."/annotations/");
 	}
 	if (!file_exists($conf["dir"]["data"]."/hypervideos/".$hypervideoID."/annotations/_index.json")) {
-		$tmp["mainAnnotation"] = "1";
+		$tmp["mainAnnotation"] = $_SESSION["ohv"]["user"]["id"];
 		$tmp["annotationfiles"] = (object)array();
-		$tmp["annotation-increment"] = 1;
-		$annotationfileID = "1";
+		$annotationfileID = $_SESSION["ohv"]["user"]["id"];
 		file_put_contents($conf["dir"]["data"]."/hypervideos/".$hypervideoID."/annotations/_index.json", json_encode($tmp,$conf["settings"]["json_flags"]));
 	}
 
@@ -71,21 +72,21 @@ function annotationfileSave($hypervideoID, $annotationfileID, $action, $name, $d
 	$json = $file->read();
 	$an = json_decode($json,true);
 
-	if (($action == "save") && ((!is_array($an["annotationfiles"][$annotationfileID])) || (!file_exists($conf["dir"]["data"]."/hypervideos/".$hypervideoID."/annotations/".$annotationfileID.".json")))) {
-		$return["status"] = "fail";
-		$return["code"] = 6;
-		$return["string"] = "Annotation with id=".$annotationfileID." has not been found.";
-		$file->close();
-		return $return;
-	}
+	// if (($action == "save") && ((!is_array($an["annotationfiles"][$annotationfileID])) || (!file_exists($conf["dir"]["data"]."/hypervideos/".$hypervideoID."/annotations/".$annotationfileID.".json")))) {
+	// 	$return["status"] = "fail";
+	// 	$return["code"] = 6;
+	// 	$return["string"] = "Annotation with id=".$annotationfileID." has not been found.";
+	// 	$file->close();
+	// 	return $return;
+	// }
 
-	if (($action == "save") && (($_SESSION["ohv"]["user"]["id"] != $an["annotationfiles"][$annotationfileID]["ownerId"]) && ($_SESSION["ohv"]["user"]["role"] != "admin"))) {
-		$return["status"] = "fail";
-		$return["code"] = 7;
-		$return["string"] = "Permission denied. You are not the annotations owner and no administrator!";
-		$file->close();
-		return $return;
-	}
+	// if (($action == "save") && (($_SESSION["ohv"]["user"]["id"] != $an["annotationfiles"][$annotationfileID]["ownerId"]) && ($_SESSION["ohv"]["user"]["role"] != "admin"))) {
+	// 	$return["status"] = "fail";
+	// 	$return["code"] = 7;
+	// 	$return["string"] = "Permission denied. You are not the annotations owner and no administrator!";
+	// 	$file->close();
+	// 	return $return;
+	// }
 	$time = time();
 
 	if ($hidden === "false") {
@@ -98,8 +99,9 @@ function annotationfileSave($hypervideoID, $annotationfileID, $action, $name, $d
 		$anID = $annotationfileID;
 		$created = $an["annotationfiles"][$anID]["created"];
 	} else {
-		$an["annotation-increment"]++;
-		$anID = $an["annotation-increment"];
+		// $an["annotation-increment"]++;
+		// $anID = $an["annotation-increment"];
+        $anID = $annotationfileID;
 		$created = $time;
 	}
 
@@ -161,6 +163,8 @@ function annotationfileDelete($hypervideoID,$annotationfileID) {
 		$_SESSION["ohv"]["user"] = array_replace_recursive($_SESSION["ohv"]["user"], $u["user"][$_SESSION["ohv"]["user"]["id"]]);
 	}
 
+    $annotationfileID = $_SESSION["ohv"]["user"];
+
 	if (!is_dir($conf["dir"]["data"]."/hypervideos/".$hypervideoID."/annotations")) {
 		$return["status"] = "fail";
 		$return["code"] = 3;
@@ -190,13 +194,13 @@ function annotationfileDelete($hypervideoID,$annotationfileID) {
 
 	$currAnnotation = $hvannotationsIndex["annotationfiles"][$annotationfileID];
 
-	if (($_SESSION["ohv"]["user"]["id"] != $currAnnotation["ownerId"]) && ($_SESSION["ohv"]["user"]["role"] != "admin")) {
-		$return["status"] = "fail";
-		$return["code"] = 6;
-		$return["string"] = "Permission denied. You are not the annotations owner and no administrator!";
-		$file->close();
-		return $return;
-	}
+	// if (($_SESSION["ohv"]["user"]["id"] != $currAnnotation["ownerId"]) && ($_SESSION["ohv"]["user"]["role"] != "admin")) {
+	// 	$return["status"] = "fail";
+	// 	$return["code"] = 6;
+	// 	$return["string"] = "Permission denied. You are not the annotations owner and no administrator!";
+	// 	$file->close();
+	// 	return $return;
+	// }
 
 	unlink($conf["dir"]["data"]."/hypervideos/".$hypervideoID."/annotations/".$annotationfileID.".json");
 	unset($hvannotationsIndex["annotationfiles"][$annotationfileID]);

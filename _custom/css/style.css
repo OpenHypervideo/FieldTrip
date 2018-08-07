@@ -534,6 +534,10 @@ a {
 	transform: scale(1.6) rotate(0deg);
 }
 
+.ftLayer#ftoverview .ftLayerContent {
+	transform: scale(1) rotate(0deg);
+}
+
 #ftMapContainer::before {
   content: "";
   background: rgba(2, 5, 15, .75);
@@ -817,11 +821,11 @@ a {
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin {
 	position: absolute;
-	margin-left: -18px;
-	margin-top: -18px;
-	width: 36px;
-	height: 36px;
-	line-height: 36px;
+	margin-left: -28px;
+	margin-top: -28px;
+	width: 56px;
+	height: 56px;
+	line-height: 50px;
 	font-size: 2.5em;
 	text-align: center;
 	border-radius: 50%;
@@ -832,6 +836,54 @@ a {
 	transform: scale(0.8, 0.8);
 	z-index: 1000;
 	cursor: pointer;
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .fticon-silhouette {
+	display: block;
+	width: 56px;
+	height: 56px;
+	background-image: url(../graphics/FT-pin-girl-1.png);
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	background-position: center;
+	-moz-animation: wobble 1s linear infinite;
+	-moz-transform-origin:center bottom;
+	-webkit-animation: wobble 1s linear infinite;
+	-webkit-transform-origin:center bottom;
+	animation: wobble 1s linear infinite;
+	transform-origin:center bottom;
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:nth-child(even) .fticon-silhouette {
+	background-image: url(../graphics/FT-pin-girl-2.png);
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:nth-child(1) .fticon-silhouette {
+	animation-delay: .2s
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:nth-child(2) .fticon-silhouette {
+	animation-delay: .5s
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:nth-child(3) .fticon-silhouette {
+	animation-delay: .8s
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:nth-child(4) .fticon-silhouette {
+	animation-delay: 1s
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:nth-child(5) .fticon-silhouette {
+	animation-delay: 1.2s
+}
+
+@-moz-keyframes wobble { 33%{ -moz-transform:rotate(3deg); } 66%{-moz-transform:rotate(-3deg); } }
+@-webkit-keyframes wobble { 33%{ -webkit-transform:rotate(3deg); } 66%{-webkit-transform:rotate(-3deg); } }
+@keyframes wobble { 33%{ transform:rotate(3deg); } 66%{transform:rotate(-3deg); } }
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .fticon-silhouette::before {
+	display: none;
 }
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:hover::before,

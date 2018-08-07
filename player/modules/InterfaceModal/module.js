@@ -124,7 +124,7 @@ FrameTrail.defineModule('InterfaceModal', function(FrameTrail){
 	 */
 	function setLoadingTitle(title) {
 
-		loadingScreen.children('.loadingTitle').text(title);
+		loadingScreen.children('.loadingTitle').html(title);
 
 	}
 

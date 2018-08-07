@@ -124,13 +124,22 @@
 }
 
 /* Inside Hypervideo */
+.hypervideo .video {
+	-webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    backface-visibility: hidden;
+    will-change: filter;
+    transition-duration: 1s;
+}
 
 .hypervideo .video.nocolor {
-	filter: grayscale(80%) brightness(0.8) hue-rotate(-162deg);
+	
 }
 
 .hypervideo .video.dark {
-	filter: grayscale(90%) brightness(0.1);
+	
 }
 
 .overlayContainer .overlayElement {
@@ -147,6 +156,12 @@
 }
 
 .overlayElement .resourceDetail[data-type="image"] img {
+	-webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    backface-visibility: hidden;
+    will-change: scale;
 	transform: scale(0.8, 0.8);
 	transform-origin: center;
 	transition-property: all;
@@ -217,6 +232,42 @@
 .overlayElement svg.active path:hover, .overlayElement svg.active polygon:hover {
 	cursor: pointer;
 	fill: rgba(255,255,255,.4);
+}
+
+#transitionContainer {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	z-index: 10;
+	pointer-events: none;
+	transition-property: opacity;
+	transition-duration: 1s;
+	background: rgba(0,0,0,.8);
+}
+
+#transitionContainer.active {
+	opacity: 1;
+	pointer-events: all;
+}
+
+#transitionContainer audio {
+	position: absolute;
+}
+
+.transitionCanvas {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+.transitionCanvas svg {
+	position: absolute;
+	top: 0px;
+	left: 0px;
 }
 
 .continueButton {

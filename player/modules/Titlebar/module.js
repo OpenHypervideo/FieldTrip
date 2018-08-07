@@ -259,6 +259,7 @@ FrameTrail.defineModule('Titlebar', function(FrameTrail){
                     "clips": [
                         {
                             "resourceId": (selectedResourcesID.length > 0) ? selectedResourcesID : null,
+                            "src": (selectedResourcesID.length > 0) ? FrameTrail.module('Database').resources[parseInt(selectedResourcesID)].src : null,
                             "duration": ($('.newHypervideoForm').find('input[name="duration"]').val().length > 0) ? parseFloat($('.newHypervideoForm').find('input[name="duration"]').val()) : 0,
                             "start": 0,
                             "end": 0,
@@ -613,7 +614,7 @@ FrameTrail.defineModule('Titlebar', function(FrameTrail){
          * @writeOnly
          */
         set title(aString) {
-            domElement.find('.titlebarTitle').text(aString);
+            domElement.find('.titlebarTitle').html(aString);
         },
 
         /**

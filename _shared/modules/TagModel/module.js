@@ -28,9 +28,21 @@
 
     function updateTagModel (success, fail) {
 
+        var tagInitOptions = FrameTrail.getState('tagdefinitions');
+
+        if (typeof tagInitOptions === 'object' && tagInitOptions !== null) {
+
+            tags = tagInitOptions;
+
+            return success();
+
+        }
+
         $.ajax({
             type:     "GET",
-            url:      '_data/tagdefinitions.json',
+            url:      typeof tagInitOptions === 'string'
+                        ? tagInitOptions
+                        : '_data/tagdefinitions.json',
             cache:    false,
             dataType: "json",
             mimeType: "application/json"
@@ -126,7 +138,7 @@
         arrayOfContentTypes // frametrail:type
     ) {
 
-        var result = FrameTrail.module('HypervideoModel').allAnnotations.filter(function (annotationItem) {
+        var result = FrameTrail.module('HypervideoModel').annotations.filter(function (annotationItem) {
 
             var match = false,
                 annotationData = annotationItem.data;

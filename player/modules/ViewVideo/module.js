@@ -650,7 +650,8 @@ FrameTrail.defineModule('ViewVideo', function(FrameTrail){
             mainContainerHeight = $(FrameTrail.getState('target')).height()
                                     - $('.titlebar').height()
                                     - editBorder,
-            _video              = $(Video);
+            _video              = $(Video),
+            videoFit            = (FrameTrail.module('Database').config.videoFit) ? FrameTrail.module('Database').config.videoFit : 'contain';
 
         if (animate) {
             VideoContainer.css({
@@ -695,25 +696,43 @@ FrameTrail.defineModule('ViewVideo', function(FrameTrail){
 
         VideoContainer.width(videoContainerWidth);
 
-        if ( (_video.height() < VideoContainer.height() && widthAuto) || (_video.width() < videoContainerWidth && heightAuto) ) {
+        //if ( (_video.height() < VideoContainer.height() && widthAuto) || (_video.width() < videoContainerWidth && heightAuto) ) {
+        if ( (_video.height() < VideoContainer.height()) || (_video.width() < videoContainerWidth) ) {
             _video.css({
                 height: FrameTrail.getState('viewSize')[1] + 'px',
                 width: FrameTrail.getState('viewSize')[0] + 'px'
             });
         }
 
-        if (_video.height() >= VideoContainer.height()) {
-            _video.css({
-                height: VideoContainer.height() + 'px',
-                width: 'auto'
-            });
-        }
+        if (videoFit == 'cover') {
+            
+            var videoWidth = (_video[0].videoWidth) ? _video[0].videoWidth : 1920;
+            var videoHeight = (_video[0].videoHeight) ? _video[0].videoHeight : 1080;
+            var ratio = Math.max(VideoContainer.width() / videoWidth, VideoContainer.height() /videoHeight);
+            var scaledWidth = videoWidth * ratio;
+            var scaledHeight = videoHeight * ratio;
 
-        if (_video.width() >= videoContainerWidth) {
             _video.css({
-                height: 'auto',
-                width: videoContainerWidth + 'px'
+                height: scaledHeight + 'px',
+                width: scaledWidth + 'px'
             });
+
+        } else {
+
+            if (_video.height() >= VideoContainer.height()) {
+                _video.css({
+                    height: VideoContainer.height() + 'px',
+                    width: 'auto'
+                });
+            }
+
+            if (_video.width() >= videoContainerWidth) {
+                _video.css({
+                    height: 'auto',
+                    width: videoContainerWidth + 'px'
+                });
+            }
+
         }
 
         Hypervideo.css({
@@ -1439,7 +1458,7 @@ FrameTrail.defineModule('ViewVideo', function(FrameTrail){
      */
     function toggleNativeFullscreenState() {
 
-        var element = $('.mainContainer')[0];
+        var element = $(FrameTrail.getState('target'))[0];
 
         if (element.requestFullScreen) {
             if (!document.fullScreen) {
