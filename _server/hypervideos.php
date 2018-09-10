@@ -53,6 +53,10 @@ function hypervideoAdd($src, $subtitles = false) {
 	$file = new sharedFile($conf["dir"]["data"]."/hypervideos/_index.json");
 	$json = $file->read();
 	$hvi = json_decode($json,true);
+	// BUGFIX: First video won't be linked as the initial value is null.
+	if (!$hvi["hypervideo-increment"]) {
+		$hvi["hypervideo-increment"] = 0;
+	}
 	$hvi["hypervideo-increment"]++;
 	$hvi["hypervideos"][$hvi["hypervideo-increment"]] = "./".$hvi["hypervideo-increment"];
 	$file->writeClose(json_encode($hvi, $conf["settings"]["json_flags"]));

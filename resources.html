@@ -103,23 +103,17 @@
                     });
                 }
                 
-                window.myInstance = FrameTrail.init('ResourceManagerLauncher', {
-
+                
+                window.myInstance = FrameTrail.init({
                     target:             'body',
-
-                    contentTargets:     {},
-                    contents:           {
-                                            hypervideo: '',
-                                            annotationsIndex: '',
-                                            annotations: [],
-                                            resources: [],
-                                            users: ''
-                                        },
-
-                    loggedIn:           false,
-                    username:           ''
-
-                });
+                    resources:          [{
+                        label: "Choose Resources",
+                        data: "_data/resources/_index.json",
+                        type: "frametrail"
+                    }],
+                    config:              null
+                }, 'ResourceManagerLauncher');
+                
 
             });
 

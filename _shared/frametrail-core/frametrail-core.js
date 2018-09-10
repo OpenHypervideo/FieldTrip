@@ -39,7 +39,7 @@
     }
 
 
-    function _init(options) {
+    function _init(options, appName) {
 
     	var FrameTrail = {
     		start: 			_start,
@@ -67,10 +67,10 @@
 
 
         _initTypes();
-        _start(options);
+        _start(options, appName);
 
 
-    	function _start(runtimeConfig) {
+    	function _start(runtimeConfig, appName) {
 
     		// TODO: Check if this belongs here
             $(runtimeConfig.target).addClass('frametrail-body');
@@ -95,7 +95,11 @@
                 unsavedChanges:     false
             };
 
-    		_initModule('PlayerLauncher');
+    		if (appName) {
+                _initModule(appName);
+            } else {
+                _initModule('PlayerLauncher');
+            }
 
     	}
 

@@ -35,7 +35,8 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
 
 
 	//Check for valid URL
-    $(document).on('paste blur input', '.resourceInputTabURL input', function(evt) {
+    $(document).on('paste blur keyup', '#resourceInputTabURL input', function(evt) {
+        console.log(this.value);
         checkResourceInput( this.value, $('.resourceNameInput')[0].value );
         evt.stopPropagation();
     });
@@ -85,7 +86,7 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
                                         + '            </ul>'
                                         + '            <div id="resourceInputTabURL">'
                                         + '                <div class="resourceInputMessage message active">Paste any URL (eg. http://example.com).<br>Some types will be detected automatically (ie. Image, Wikipedia, Youtube, Vimeo).</div>'
-                                        + '                <input type="text" name="test" placeholder="URL" class="resourceInput">'
+                                        + '                <input type="text" name="url" placeholder="URL" class="resourceInput">'
                                         + '            </div>'
                                         + '            <div id="resourceInputTabImage">'
                                         + '                <div class="message active">Add image file in the format <b>jpg, jpeg, gif, png</b>. Maximum File Size: <b>3 MB</b></div>'
@@ -178,7 +179,7 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
 
                     uploadDialog.find('.locationQ').keyup(function(e) {
 
-                        $.getJSON('//nominatim.openstreetmap.org/search?q='+ uploadDialog.find('.locationQ').val() + '&format=json')
+                        $.getJSON('https://nominatim.openstreetmap.org/search?q='+ uploadDialog.find('.locationQ').val() + '&format=json')
                             .done(function(respText) {
 
                                 uploadDialog.find('.locationSearchSuggestions').empty();
@@ -475,6 +476,11 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
                                     uploadDialog.find('.newResourceConfirm').prop('disabled', false);
                                     $('.uploadDialog').append('<div class="message active error">Empty field: URL. Please provide a valid url.</div>');
                                     break;
+                                case 12:
+                                    uploadDialog.find('.progress').hide();
+                                    uploadDialog.find('.newResourceConfirm').prop('disabled', false);
+                                    $('.uploadDialog').append('<div class="message active error">Owner does not allow this URL to be embedded in other pages (Same Origin Policy).</div>');
+                                    break;
                                 case 20:
                                     uploadDialog.find('.progress').hide();
                                     uploadDialog.find('.newResourceConfirm').prop('disabled', false);
@@ -503,7 +509,7 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
                         closeOnEscape: false,
                         buttons: [
                             {
-                                id: 'NewResourceConfirm',
+                                class: 'newResourceConfirm',
                                 text: 'Add Resource',
                                 click: function() {
                                     //addResource( checkResourceInput( $('.resourceInput')[0].value, $('.resourceNameInput')[0].value ) );
@@ -692,12 +698,13 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
 
             for (var i in checkers) {
                 newResource = checkers[i](uriValue, nameValue);
+                console.log(newResource);
                 if (newResource !== null) {
-                    $('.resourceInputMessage').attr('class', 'message active success').text('Valid '+ newResource.type +' URL' );
+                    $('.resourceInputMessage').attr('class', 'resourceInputMessage message active success').text('Valid '+ newResource.type +' URL' );
                     return newResource;
                     break;
                 } else {
-                    $('.resourceInputMessage').attr('class', 'message active error').text('Not a valid URL (try adding http://)');
+                    $('.resourceInputMessage').attr('class', 'resourceInputMessage message active error').text('Not a valid URL (try adding http://)');
                 }
             }
 

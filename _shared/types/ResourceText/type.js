@@ -95,10 +95,12 @@ FrameTrail.defineType(
                     });
                     thumbElement.append(previewButton);
 
+                    //var decoded_string = $("<div/>").html(self.resourceData.attributes.text).text();
+                    //var textOnly = $("<div/>").html(decoded_string).text();
+                    //thumbElement.append('<div class="resourceTextPreview">'+ textOnly +'</div>');
+
                     var decoded_string = $("<div/>").html(self.resourceData.attributes.text).text();
-                    var textOnly = $("<div/>").html(decoded_string).text();
-                                        
-                    thumbElement.append('<div class="resourceTextPreview">'+ textOnly +'</div>');
+                    thumbElement.append('<div class="resourceTextPreview">'+ decoded_string +'</div>');
 
                     return thumbElement;
 
@@ -312,16 +314,16 @@ FrameTrail.defineType(
                                         $(this).find('.resourceDetail').html(instance.getValue());
                                     });
 
-                                    var decoded_string = $("<div/>").html(instance.getValue()).text();
-                                    var textOnly = $("<div/>").html(decoded_string).text();
+                                    //var decoded_string = $("<div/>").html(instance.getValue()).text();
+                                    //var textOnly = $("<div/>").html(decoded_string).text();
 
                                     $(overlayOrAnnotation.contentViewElements).each(function() {
-                                        $(this).find('.resourceThumb .resourceTextPreview').html(textOnly);
+                                        $(this).find('.resourceThumb .resourceTextPreview').html(instance.getValue());
                                     });
                                     
-                                    overlayOrAnnotation.timelineElement.find('.previewWrapper .resourceTextPreview').html(textOnly);
+                                    overlayOrAnnotation.timelineElement.find('.previewWrapper .resourceTextPreview').html(instance.getValue());
                                     
-                                    $(FrameTrail.getState('target')).find('.editPropertiesContainer .resourceTextPreview').html(textOnly);
+                                    $(FrameTrail.getState('target')).find('.editPropertiesContainer .resourceTextPreview').html(instance.getValue());
 
                                     FrameTrail.triggerEvent('userAction', {
                                         action: 'AnnotationChange',

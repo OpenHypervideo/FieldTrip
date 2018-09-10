@@ -27,9 +27,16 @@
 	height: 100%;
 	padding: 8px;
 	box-sizing: border-box;
-	color: var(--primary-fg-color);
+	color: var(--primary-fg-color) !important;
+	line-height: 1.2em !important;
 	opacity: .6;
 	overflow: hidden;
+}
+
+.resourceThumb[data-type="text"] .resourceTextPreview * {
+	font-size: 100% !important;
+	color: var(--primary-fg-color) !important;
+	line-height: 1.2em !important;
 }
 
 .resourceThumb[data-type="text"] .resourceTextPreview:after {

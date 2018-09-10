@@ -26,6 +26,7 @@ Returning Code:
 	9		= 	failed. $type was wrong.
 	10		=	failed. File size too big.
 	11		=	failed. Type "url" was expected but url is empty.
+	12		=	failed. Type "url" was expected but embed not allowed.
  *
  *
  */
@@ -93,6 +94,31 @@ function fileUpload($type, $name, $description="", $attributes, $files, $lat, $l
 				$return["status"] = "fail";
 				$return["code"] = 11;
 				$return["string"] = "Empty field: URL.";
+				return $return;
+				exit;
+			}
+			stream_context_set_default( [
+			    'ssl' => [
+			        'verify_peer' => false,
+			        'verify_peer_name' => false,
+			    ],
+			]);
+			$headers = get_headers($urlAttr["src"], 1);
+
+			if (isset($headers["X-Frame-Options"])) {
+				if (is_array($headers["X-Frame-Options"])) {
+					end($headers["X-Frame-Options"]);
+					$xFrameResult = current($headers["X-Frame-Options"]);
+					reset($headers["X-Frame-Options"]);
+				} else {
+					$xFrameResult = $headers["X-Frame-Options"];
+				}
+			}
+
+			if ( (string)$xFrameResult == 'SAMEORIGIN' ) {
+				$return["status"] = "fail";
+				$return["code"] = 12;
+				$return["string"] = "Embedding not allowed.";
 				return $return;
 				exit;
 			}

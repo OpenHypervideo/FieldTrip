@@ -108,6 +108,9 @@
      */
     function loadResourceData(success, fail) {
 
+        //clear previous resources to allow deletion as we use object assign
+        resources = {};
+
         var initOptionsResources = FrameTrail.getState('resources'),
             countdown = initOptionsResources.length;
 
