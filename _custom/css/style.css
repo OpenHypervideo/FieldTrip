@@ -928,6 +928,14 @@ a {
 	display: none;
 }
 
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .fticon-photo-booth {
+	display: block;
+  width: 22px;
+  height: 40px;
+  background: url(../graphics/FT-pin-phone-booth.svg) no-repeat;
+  margin: 10px 17px 0;
+}
+
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:hover::before,
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin.active::before,
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:visited::before  {
