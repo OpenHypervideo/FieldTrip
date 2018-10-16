@@ -34,7 +34,7 @@
         <script type="text/javascript" src="_lib/raphaeljs/raphael-connections.js"></script>
         <script type="text/javascript" src="_lib/jquery.collisiondetection/jquery.collisiondetection.js"></script>
         <script type="text/javascript" src="_lib/animejs/anime.min.js"></script>
-
+                
         <script type="text/javascript" src="_lib/codemirror/codemirror.js"></script>
         <script type="text/javascript" src="_lib/codemirror/javascript.js"></script>
         <script type="text/javascript" src="_lib/codemirror/jshint.js"></script>
@@ -158,7 +158,7 @@
         <link rel="stylesheet" type="text/css" href="_custom/css/player.css">
 
         <!-- Custom Field Trip JS -->
-        
+        <script type="text/javascript" src="_custom/js/TweenMax.min.js"></script>
         <script type="text/javascript" src="_custom/js/jquery.zoomooz.min.js"></script>
         <script type="text/javascript" src="_custom/js/bodymovin.js"></script>
         <script type="text/javascript" src="_custom/js/main.js"></script>
@@ -166,14 +166,16 @@
         
     </head>
     <body>
-
-        <button id="ftStartButton" class="ftButton ftAnimatedButton">Start</button>
-
-        <div class="ftLoadingIndicator active">
-            <div class="ftLoadingIcon">
-              <i class="fticon-logo-fieldtrip"></i>
-            </div>
-        </div>
+      <div id="ftPointer" class="custom-cursor"></div>
+      
+      <button id="ftStartButton" class="ftButton ftAnimatedButton ftEvent">
+        <figure class="chart" data-percent="100">
+          <svg width="300" height="300">
+            <circle class="circle" cx="150" cy="150" r="143"/>
+          </svg>
+        </figure>
+        <i class="fticon-right"></i>
+      </button>
 
         <div id="ftintro" class="ftLayer">
             <i class="fticon-logo-fieldtrip ftLogo"></i>
@@ -354,7 +356,7 @@
                 </div>
                 
                 <div class="ftNavAbout ftNavIconContainer">
-                  <a href="#about" class="ftNavIconContainer ftAboutIconContainer"><i class="fticon-about"></i></a>
+                  <a href="#about" class="ftNavIconContainer ftAboutIconContainer ftEvent"><i class="fticon-about"></i></a>
                 </div>
 
             </div>

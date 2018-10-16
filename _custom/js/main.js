@@ -1,5 +1,39 @@
-/* */
+/* Custom cursor */
 
+document.addEventListener("DOMContentLoaded", function(event) {
+  var cursor = document.querySelector(".custom-cursor");
+  var links = document.querySelectorAll(".ftEvent");
+  var initCursor = true;
+
+  for (var i = 0; i < links.length; i++) {
+    var selfLink = links[i];
+
+    selfLink.addEventListener("mouseover", function() {
+      cursor.classList.add("custom-cursor-outline");
+    });
+    selfLink.addEventListener("mouseout", function() {
+      cursor.classList.remove("custom-cursor-outline");
+    });
+  }
+
+   window.onmousemove = function(e) {
+    var mouseX = e.clientX;
+    var mouseY = e.clientY;
+
+   if (!initCursor) {
+      cursor.style.opacity = 1;
+      initCursor = true;
+    }
+
+    TweenLite.to(cursor, 0, {
+      top: mouseY + "px",
+      left: mouseX + "px"
+    });
+  };
+
+});
+
+/* End custom cursor */
 
 var previousLayer,
 	currentLayer = undefined,
@@ -64,8 +98,8 @@ $(document).ready(function() {
 			}, 1600);
 		}
 	});
-
-	/*
+  
+  /*
 	FieldTrip.on('play', function() {
 		window.setTimeout(function() {
 			$('.hypervideo .video').css('transition-duration', '').removeClass('nocolor');
@@ -143,69 +177,7 @@ $(document).ready(function() {
 		updateTime();
 	}, 3000);
 	
-
-
 }); // End Document Ready
-
-
-/* Credits AutoScroll */
-/*function autoScroll() {
-  var $el = $(".autoscroll");
-  function anim() {
-    var st = $el.scrollTop();
-    var sb = $el.prop("scrollHeight")-$el.innerHeight();
-    $el.animate({scrollTop: st<sb/2 ? sb : 0}, 10000, anim);
-  }
-  function stop(){
-    $el.stop();
-  }
-  anim();
-  $el.hover(stop, anim);
-}*/
-/* End AutoScroll */
-
-
-/* Info Smoothscroll */
-
-/*
-$(document).ready(function() {
-	$(document).on("scroll", onScroll);
-  $('.ftInfoLink[href^="#"], .ftNextSection').on('click', function(e) {
-		e.preventDefault();
-		$(document).off("scroll");
-
-		$('.ftInfoLink').each(function() {
-			$(this).removeClass('is-active');
-		})
-		$(this).addClass('is-active');
-
-		var target = this.hash,
-			menu = target;
-		$target = $(target);
-		$('#autoscroll').stop().animate({
-			'scrollTop': $target.offset().top + 2
-		}, 500, 'swing', function() {
-			window.location.hash = target;
-			$(document).on("scroll", onScroll);
-		});
-	});
-});
-
-function onScroll(event) {
-	var scrollPos = $(document).scrollTop();
-	$('.ftInfoLink, .ftNextSection').each(function() {
-		var currLink = $(this);
-		var refElement = $(currLink.attr("href"));
-		if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-			$('.ftInfoLink').removeClass("is-active");
-			currLink.addClass("is-active");
-		} else {
-			currLink.removeClass("is-active");
-		}
-	});
-} 
-*/
-
 
 /* End Info Smoothscroll */
 
