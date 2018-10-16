@@ -327,7 +327,7 @@ function initEventListeners() {
 
 function activateLayer(layerName, videoID) {
 
-	if (layerName == 'about' || layerName == 'resources' || layerName == 'credits' || layerName == 'imprint') {
+	if (layerName == 'ueber-uns' || layerName == 'team' || layerName == 'abspann' || layerName == 'resourcen' || layerName == 'impressum' || layerName == 'datenschutz') {
 		$('.ftInfoLink').removeClass('is-active');
 		$('.ftInfoLink[href="#'+layerName+'"]').addClass('is-active');
 		return;

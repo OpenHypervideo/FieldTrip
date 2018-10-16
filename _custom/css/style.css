@@ -32,6 +32,7 @@ footer, header, hgroup, menu, nav, section {
 
 body {
 	line-height: 1;
+  letter-spacing: 0.05em;
 }
 
 ol, ul {
@@ -82,6 +83,29 @@ em, i {
 
 a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
        cursor: pointer;
+}
+
+.highlighted {
+  position: relative;
+  display: inline-block;
+}
+
+.highlighted:before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 9px;
+  bottom: 0;
+  z-index: -1;
+}
+
+.highlighted--white:before {
+  background: #fff;
+}
+
+.highlighted--yellow:before {
+ background: #fec570; 
 }
 
 /* ==========================================================================
@@ -838,6 +862,24 @@ a {
 	cursor: pointer;
 }
 
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 20px;
+  opacity: .5;
+  position: absolute;
+  bottom: -10px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+60&0.65+0,0+60 */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC42NSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2MCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMCIvPgogIDwvcmFkaWFsR3JhZGllbnQ+CiAgPHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+  background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 60%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 60%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 60%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+}
+
+
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .fticon-silhouette {
 	display: block;
 	width: 56px;
@@ -1078,8 +1120,8 @@ a {
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription {
 	position: absolute;
-	top: 0;
-	left: -50px;
+	top: -115px;
+	left: -115px;
 	width: 290px;
 	height: 290px;
 	border-radius: 100%;
@@ -1200,8 +1242,8 @@ a {
 .outer {
   fill: transparent !important;
   stroke: #fec570;
-  stroke-width: 10;
-  stroke-dasharray: 880;
+  stroke-width: 5;
+  stroke-dasharray: 900;
   transition: stroke-dashoffset 1s;
   -webkit-animation-play-state: running;
   
@@ -1509,48 +1551,42 @@ ABOUT / CREDITS / IMPRINT
   width: 20%;
   top: 0;
   left: 0;
-  bottom: 0;  
+  bottom: 0;
 }
 
 #fthyperInfo .ftInfoNavigation nav ul {
   position: absolute;
   left: 30px;  
-  width: 100vh;
   top: 50%;
-  -moz-transform: rotate(-90deg) translateX(-50%);
-  -webkit-transform: rotate(-90deg) translateX(-50%);
-  -o-transform: rotate(-90deg) translateX(-50%);
-  -ms-transform: rotate(-90deg) translateX(-50%);
-  transform: rotate(-90deg) translateX(-50%);
-  text-align: center;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 #fthyperInfo .ftInfoNavigation li {
-  display: inline-block;
+  display: block;
   position: relative;
   font-family: 'Rubik', helvetica, sans-serif;
   font-weight: 600;
-  font-size: .85em;
   text-transform: uppercase;
-  letter-spacing: .05em;
-  margin: 0 2vh;
+  margin: 2.5vh 0;
 }
 
-#fthyperInfo .ftInfoNavigation li:before {
-  content: "";
-  float: left;
-  width: 20px;
-  height: 2px;
-  background: #111;
-  margin-top: 10px;
-  margin-right: 10px;
+#fthyperInfo .ftInfoNavigation li a:before {
+ opacity: 0;
+  -webkit-transition: opacity 200ms ease-in-out;
+  -moz-transition: opacity 200ms ease-in-out;
+  -ms-transition: opacity 200ms ease-in-out;
+  -o-transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
 }
 
-#fthyperInfo .ftInfoNavigation li a:hover,
-.is-active {
-  color: #fec570;
+#fthyperInfo .ftInfoNavigation li a:hover:before,
+#fthyperInfo .ftInfoNavigation li .is-active:before {
+ opacity: 1;
 }
-
 
 /* content */
 
@@ -1561,13 +1597,38 @@ ABOUT / CREDITS / IMPRINT
 .ftInfoSection {
   position: relative;
   height: 100vh;
-  font-size: 1.15em;
   line-height: 1.45em;
 }
 
-.ftInfoContent {
-  padding: 0 30% 0 10%;
+.ftInfoSection.vertical-aligned {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.ftInfoSection.padding-top {
+  padding-top: 10vh;
+}
+
+.ftInfoContent {
+  padding: 0 10%;
+  width: 100%;
+}
+
+.ftInfoContent h5 {
+  font-family: 'Rubik', helvetica, sans-serif;
+  font-weight: 600;
+  
+  line-height: 1em;
+}
+
+.ftInfoContent p {
+  font-size: .85em; 
+  line-height: 1.45em;
+  margin: 1em 0;
+}
+
+/* Next btn */
 
 .ftNextSection {
   position: absolute;
@@ -1583,107 +1644,146 @@ ABOUT / CREDITS / IMPRINT
 
 /* About */
 
-#about .ftInfoContent {
-  position: absolute;
-  top: 50%;
-  -moz-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+#ueber-uns .ftHero {
+  max-width: 700px;
+  font-size: 1.35em;
+  line-height: 1.45em;
 }
 
-#about .ftAboutPartners {
-  color: #fff;
-  margin-top: 50px;
-}
+/* Team */
 
-#about .ftAboutPartners span, .ftAboutPartners a {
+#team .ftTeam-member {
   float: left;
+  width: 50%;
+  font-size: .85em;
+  line-height: 1.25em;
+  margin: 5vh 0;
 }
 
-#about .ftAboutPartners span {
-  margin: 10px 30px 0 0;
+#team .ftTeam-member--portrait {
+  float: left;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  overflow: hidden; 
+  margin-right: 15px;
+}
+
+#team .ftTeam-member--portrait img {
+  width: 100%;
+  height: auto;
+}
+
+#team .ftTeam-member--details {
+  float: left;
+  margin-top: 10px;
+}
+
+#team .ftTeam-member h3 {
+  font-family: 'Rubik', helvetica, sans-serif;
+  font-weight: 600;
+  font-size: .85em;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: .75em;
-  line-height: 1.45;
-  max-width: 200px;
+  
 }
 
-#about .ftAboutPartners a {
-  font-size: 3.5em;
+#team .ftTeam-member h4 {
+  font-weight: 700;
+  
 }
 
-#about .ftAboutPartners a:hover {
-  opacity: .75;
+/* Partners */
+
+#abspann .parterns-list {
+  margin-top: 5vh;
 }
 
-/* Github Logo */
+#abspann .partners--row {
+  border-bottom: 1px solid #fff;
+}
+
+#abspann .partners--row:last-child {
+  border: none !important;
+}
+
+#abspann li {
+  float: left;
+  width: 20%;
+  position: relative;
+  border-right: 1px solid #fff;
+}
+
+#abspann li:nth-child(1),
+#abspann li:nth-child(2),
+#abspann li:nth-child(3),
+#abspann li:nth-child(4),
+#abspann li:nth-child(5),
+#abspann li:nth-child(6),
+#abspann li:nth-child(7),
+#abspann li:nth-child(8),
+#abspann li:nth-child(9),
+#abspann li:nth-child(10) {
+  border-bottom: 1px solid #fff;
+}
+
+#abspann li:nth-child(5),
+#abspann li:nth-child(10) {
+  border-right: none
+}
+
+#abspann li:last-child {
+  border: none;
+}
+
+#abspann li:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+#abspann .partner-logo {
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  top: 15%;
+  left: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#abspann .partner-logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Resourcen */
 
 .ftInfoGithub {
-  position: fixed;
-  right: 30px;
-  bottom: 30px;
-  font-size: 1.25em;
-  
+  margin-top: 5vh; 
 }
 
 .ftInfoGithub a {
   color: #fff;
-  opacity: .5;
+  opacity: .75;
 }
 
 .ftInfoGithub a:hover {
   opacity: .75;
 }
 
-/* Credits */
-
-#credits, #resources {
-  padding: 100px 0;
-}
-
-.team-member {
-  font-size: .85em;
-  line-height: 1.25em;
-}
-
-.team-member h3{
-  font-family: 'Rubik', helvetica, sans-serif;
-  font-weight: 600;
-  font-size: .85em;
-  text-transform: uppercase;
-  letter-spacing: .05em;
-}
-
-#credits a {
-  display: block;
-}
-
-.contact-email {
-  margin: 1px 0 30px;
-}
-
 /* Imprint */
 
-#imprint {
-  font-size: .75em;
-  padding: 100px 0;
+#impressum .ftImpressum-intro {
+  font-family: 'Rubik', helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1.15em;
 }
 
-#imprint.ftInfoSection {
-  height: auto;
-}
+/* Datenschutz */
 
-#imprint span {
-   font-size: 1.5em;
-   line-height: 1.45em;
-}
-
-#imprint  h5 {
-  font-size: 1.25em;
-  margin: 1.5em 0 .25em;
+#datenschutz p:last-of-type {
+  margin-bottom: 10vh;
 }
 
 /* Night/Day Mode */
@@ -1786,12 +1886,173 @@ ABOUT / CREDITS / IMPRINT
 
 @media (min-width: 650px) and (max-width: 1010px) {
 	
+  /* About */
+  
+  #fthyperInfo .ftInfoNavigation {
+    width: 25%;
+  }
+  
+  #fthyperInfo .ftInfoContainer {
+    margin-left: 25%;
+  }
+  
+  #abspann li {
+    width: 25%;
+  }
+  
+  #abspann li {
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+  }
+  
+  #abspann li:nth-child(5), #abspann li:nth-child(10) {
+    border-right: 1px solid #fff;
+  }  
+  
+  #abspann li:nth-child(4),
+  #abspann li:nth-child(8),
+  #abspann li:nth-child(12) {
+    border-right: none;
+  } 
+ 
+  #abspann li:nth-child(13),
+  #abspann li:nth-child(14),
+  #abspann li:nth-child(15) {
+   border-bottom: none;
+  }   
 }
 
 @media (max-width: 650px) {
+  #fthyperInfo .ftInfoNavigation {
+    width: 100%;
+    height: 80px;
+    z-index: 1;
+    background: rgba(255,255,255,.9);
+  }
+  
+  #fthyperInfo .ftInfoNavigation ul {
+    display: none;
+  }
+  
+  #fthyperInfo .ftInfoNavigation li {
+    display: inline-block;
+    font-size: .75em;
+    margin: 0;
+  }
+  
+  .ftInfoSection {
+    height: auto;
+  }
+  
+  .ftInfoSection.padding-top {
+    padding-top: 0;
+  }
+  
+  .ftInfoSection.vertical-aligned {
+    display: block;
+  }
+  
+  .ftInfoContent {
+    padding: 5vh 5%;
+    width: 100%;
+    border-bottom: 1px solid #fff;
+  }
+  
+  #fthyperInfo .ftInfoContainer {
+    margin-left: 0;
+  }
 
+  #ueber-uns .ftHero {
+    font-size: 1em;
+    margin-top: 80px;
+  }
+  #team .ftTeam-member {
+    width: 100%;
+    margin: 2.5vh 0;
+  }
+  
+  #abspann li {
+    width: 33.333%;
+  }
+  
+  #abspann li:nth-child(1),
+  #abspann li:nth-child(2),
+  #abspann li:nth-child(3),
+  #abspann li:nth-child(4),
+  #abspann li:nth-child(5),
+  #abspann li:nth-child(6),
+  #abspann li:nth-child(7),
+  #abspann li:nth-child(8),
+  #abspann li:nth-child(9),
+  #abspann li:nth-child(10),
+  #abspann li:nth-child(11),
+  #abspann li:nth-child(12) {
+    border-bottom: 1px solid #fff;
+  }
+  
+  #abspann li:nth-child(5),
+  #abspann li:nth-child(10),
+  #abspann li:nth-child(13) {
+    border-right: 1px solid #fff;
+  }
+  
+  #abspann li:nth-child(3),
+  #abspann li:nth-child(6),
+  #abspann li:nth-child(9),
+  #abspann li:nth-child(12),
+  #abspann li:nth-child(15) {
+    border-right: none;
+  }  
 }
 
 @media screen and (max-width: 480px) {
-	
+  
+  #fthyperInfo .ftInfoNavigation {
+    height: 52px;
+  }
+  
+	.ftLayer .ftLogo {
+    top: 10px;
+    left: 12px;
+    font-size: 2em;
+  }
+  .ftCloseInfo {
+    color: #000;
+    font-size: 1em;
+    top: 17px;
+    right: 12px;
+  }
+  
+  #ueber-uns .ftHero {
+    margin-top: 52px;
+  }
+  
+  #team .ftTeam-member {
+    text-align: center;
+    margin: 2.5vh 0;
+  }
+  #team .ftTeam-member--portrait, #team .ftTeam-member--details {
+    float: none;
+    display: block;
+    margin: 0 auto 1vh;
+  }
+  
+  #abspann li {
+    width: 50%;
+    border-bottom: 1px solid #fff !important;
+  }
+  
+  #abspann li:nth-child(even) {
+    border-right: none !important;
+  }
+  
+  #abspann li:nth-child(odd) {
+    border-right: 1px solid #fff !important;
+  }
+  
+  #abspann li:last-child {
+    border-bottom: none !important;
+  }
+  
+  
 }
