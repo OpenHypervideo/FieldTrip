@@ -1868,11 +1868,55 @@ ABOUT / CREDITS / IMPRINT
 }
 
 @media (max-width: 650px) {
+  
+  #ftPointer {
+    display: none !important;
+  }
+  
+  #ftStartButton {
+    left: 50%;
+  }
+
   #fthyperInfo .ftInfoNavigation {
     width: 100%;
     height: 80px;
     z-index: 1;
     background: rgba(255,255,255,.9);
+  }
+  
+  .ftNavIconContainer {
+    width: 40px;
+    height: 40px;
+    line-height: 40px; 
+  }
+  
+  .ftSound {
+    top: 0;
+    right: 0;
+  }
+  
+  .ftScreen {
+    top: 40px;
+    right: 0;
+  }
+  
+  .ftNavItems {
+    width: 40px;
+    right: 0;
+  }
+  
+  .ftNavShare {
+    bottom: 0;
+    right: 0;
+  }
+  
+  .switch-container {
+    left: 50px;
+    bottom: 12px;
+  }
+  #ftoverview #ftMapContainer #ftWeatherContainer {
+    top: 5px;
+    right: 45px;
   }
   
   #fthyperInfo .ftInfoNavigation ul {
@@ -1947,7 +1991,15 @@ ABOUT / CREDITS / IMPRINT
   #abspann li:nth-child(12),
   #abspann li:nth-child(15) {
     border-right: none;
-  }  
+  }
+  
+  .ftCloseInfo {
+    display: block;
+  }
+  
+  .ftHiddenMobile {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 480px) {

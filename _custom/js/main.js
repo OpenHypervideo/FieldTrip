@@ -240,9 +240,9 @@ function initEventListeners() {
 	    $('#fthyperInfo').toggleClass('is-open');
 	});   
 	
-	/* $('#ftCloseInfo').click(function() {
+	$('#ftCloseInfo').click(function() {
 	    $('#fthyperInfo').removeClass('is-open');
-	}); */
+	}); 
 	
 	/* Social Network */
 	
