@@ -1817,6 +1817,33 @@ ABOUT / CREDITS / IMPRINT
 }
 
 
+/* Mobile Turn */
+
+#ftMobile-turn {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  
+  background: rgba(0,0,0,.85);
+  color: #fff;
+  z-index: 100;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  opacity: 0;
+  visibility: hidden;
+}
+
+#ftMobile-turn span {
+  font-size: 6vw;
+  line-height: 1.15em;
+}
+
+
 /*******************
 * Media Queries
 *******************/
@@ -2003,6 +2030,11 @@ ABOUT / CREDITS / IMPRINT
 }
 
 @media screen and (max-width: 480px) {
+  
+  #ftMobile-turn {
+    opacity: 1;
+    visibility: visible;
+  }  
   
   #fthyperInfo .ftInfoNavigation {
     height: 52px;
