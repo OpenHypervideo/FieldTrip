@@ -237,12 +237,12 @@ function initEventListeners() {
 	/* Info: open/close */
 	
 	$('.ftNavAbout').click(function() {
-	    $('#fthyperInfo').addClass('is-open');
+	    $('#fthyperInfo').toggleClass('is-open');
 	});   
 	
-	$('#ftCloseInfo').click(function() {
+	/* $('#ftCloseInfo').click(function() {
 	    $('#fthyperInfo').removeClass('is-open');
-	}); 
+	}); */
 	
 	/* Social Network */
 	
