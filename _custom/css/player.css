@@ -21,6 +21,40 @@
 	width: 360px;
 }
 
+#VideoPlayer .playerContainer #playCircleContainer {
+	position: absolute;
+	top: 50%;
+	left: 25%;
+	margin-top: -90px;
+	margin-left: -90px;
+	width: 180px;
+	height: 180px;
+	text-align: center;
+	font-size: 2em;
+	z-index: 30;
+	color: #fec570;
+	border-radius: 100%;
+}
+
+#VideoPlayer .playerContainer #playCircleContainer .fticon-right, #VideoPlayer .playerContainer #playCircleContainer svg {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	line-height: 180px;
+}
+
+#VideoPlayer .playerContainer #playCircleContainer svg > circle {
+	fill: transparent !important;
+	stroke: #fec570;
+	stroke-width: 3;
+	stroke-dasharray: 900;
+	/* firefox bug fix - won't rotate at 90deg angles */
+	transform: rotate(-90deg) translateX(-179px);
+	-moz-transform: rotate(-90deg) translateX(-179px);
+}
+
 #VideoPlayer .message.statusMessage.active {
 	display: none !important;
 }

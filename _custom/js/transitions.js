@@ -106,6 +106,8 @@ function initTransitions(parentSelector) {
 		if (FieldTrip.play) {
 			window.setTimeout(function() {
 				$(window).resize();
+				updateMuted();
+				renderPlayCircleLinks();
 				FieldTrip.play();
 				$('.hypervideo .video').stop(true, false).animate({
 					volume: 1

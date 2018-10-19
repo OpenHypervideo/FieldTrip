@@ -1193,7 +1193,9 @@ a {
   stroke: #fec570;
   stroke-width: 5;
   stroke-dasharray: 900;
-  transition: stroke-dashoffset 1s;
+  transition-property: stroke-dashoffset;
+  transition-duration: 1s;
+  /*transition: stroke-dashoffset 1s;*/
   -webkit-animation-play-state: running;
   
   /* firefox bug fix - won't rotate at 90deg angles */
@@ -1210,23 +1212,20 @@ a {
   animation: show100 2s;
 }
 
-.chart[data-percent='75'] .outer {
-  stroke-dashoffset: 133;
-  -webkit-animation: show75 2s;
-  animation: show75 2s;
+.chart svg {
+  overflow: visible;
 }
 
-.chart[data-percent='50'] .outer {
-  stroke-dashoffset: 267;
-  -webkit-animation: show50 2s;
-  animation: show50 2s;
+.linkPointer {
+  fill: #FFF;
+  stroke: #fec570;
+  stroke-width: 2px;
 }
 
-.chart[data-percent='25'] .outer {
-  stroke-dashoffset: 401;
-  -webkit-animation: show25 2s;
-  animation: show25 2s;
+.pointer-group.active .linkPointer, .pointer-group-player.active .linkPointer {
+  fill: #fec570;
 }
+
 /* END set initial animation values */
 
 /* Keyframes for the initial animation */

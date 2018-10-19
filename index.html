@@ -166,6 +166,7 @@
         
     </head>
     <body>
+      
       <div id="ftPointer" class="custom-cursor"></div>
       
       <button id="ftStartButton" class="ftButton ftAnimatedButton ftEvent">
@@ -188,7 +189,9 @@
         </div>
 
         <div id="ftoverview" class="ftLayer">
-        
+            
+            <audio id="audioAtmoDay" src="_custom/audio/tempelhof_atmo_day.mp3" loop preload="auto" style="display: none;"></audio>
+
             <a href="#intro">
                 <i class="fticon-logo-fieldtrip ftLogo"></i>
             </a>
@@ -204,9 +207,9 @@
                         <!-- Pointers -->
                         <div style="top: 31%; left: 23%;" id="ftMapPin1" class="ftMapPin ftEvent">
                             <i class="fticon-silhouette"></i> 
-                            <a href="#hypervideo=5" class="ftMapPinDescription">
-                                <figure class="chart" data-percent="100">
-                                  <svg width="300" height="300">
+                            <a href="#hypervideo=9&t=0" class="ftMapPinDescription">
+                                <figure class="chart">
+                                  <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
                                     <circle class="circle" cx="150" cy="150" r="143"/>
                                   </svg>
                                 </figure>
@@ -219,11 +222,63 @@
                                 <span>Der Drachenbauer</span>
                             </a>
                         </div>
+                        <div style="top: 61.7%; left: 55%;" id="ftMapPin7" class="ftMapPin ftEvent">
+                            <i class="fticon-silhouette"></i> 
+                            <a href="#hypervideo=10&t=0" class="ftMapPinDescription">
+                                <figure class="chart">
+                                  <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+                                    <circle class="circle" cx="150" cy="150" r="143"/>
+                                  </svg>
+                                </figure>
+                                <div class="ftMapPinDescriptionImg">
+                                  <img src="_custom/graphics/placeholders/8.jpg" alt="" />
+                                </div>
+                                <div class="ftMapPinDescriptionContent">
+                                  <i class="fticon-right"></i>
+                                </div>
+                                <span>Der Filmemacher</span>
+                            </a>
+                        </div>
+                        <div style="top: 37%; left: 66%;" id="ftMapPin8" class="ftMapPin ftEvent">
+                            <i class="fticon-silhouette"></i> 
+                            <a href="#hypervideo=11&t=0" class="ftMapPinDescription">
+                                <figure class="chart">
+                                  <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+                                    <circle class="circle" cx="150" cy="150" r="143"/>
+                                  </svg>
+                                </figure>
+                                <div class="ftMapPinDescriptionImg">
+                                  <img src="_custom/graphics/placeholders/9.jpg" alt="" />
+                                </div>
+                                <div class="ftMapPinDescriptionContent">
+                                  <i class="fticon-right"></i>
+                                </div>
+                                <span>Das Kriegskind</span>
+                            </a>
+                        </div>
+                        <div style="top: 49%; right: 24%;" id="ftMapPin6" class="ftMapPin ftEvent">
+                            <i class="fticon-photo-booth"></i> 
+                            <a href="#hypervideo=30&t=0" class="ftMapPinDescription">
+                                 <figure class="chart">
+                                   <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+                                     <circle class="circle" cx="150" cy="150" r="143"/>
+                                   </svg>
+                                 </figure>
+                                <div class="ftMapPinDescriptionImg">
+                                  <img src="_custom/graphics/placeholders/7.jpg" alt="" />
+                                </div>
+                                <div class="ftMapPinDescriptionContent">
+                                  <i class="fticon-right"></i>
+                                </div>                                
+                                <span>Die StoryboXX</span>
+                            </a>
+                        </div>
+                        <!--
                         <div style="top: 25%; left: 30%;" id="ftMapPin2" class="ftMapPin ftEvent">
                             <i class="fticon-silhouette"></i> 
-                            <a href="#hypervideo=6" class="ftMapPinDescription">
-                                <figure class="chart" data-percent="100">
-                                  <svg width="300" height="300">
+                            <a href="#hypervideo=6&t=0" class="ftMapPinDescription">
+                                <figure class="chart">
+                                  <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
                                     <circle class="circle" cx="150" cy="150" r="143"/>
                                   </svg>
                                 </figure>
@@ -236,11 +291,11 @@
                                 <span>Die Feldtänzerin</span>
                             </a>
                         </div>
-						            <div style="top: 24%; left: 47%;" id="ftMapPin3" class="ftMapPin ftEvent">
+						<div style="top: 24%; left: 47%;" id="ftMapPin3" class="ftMapPin ftEvent">
                             <i class="fticon-silhouette"></i> 
-                            <a href="#hypervideo=2" class="ftMapPinDescription">
-                                <figure class="chart" data-percent="100">
-                                  <svg width="300" height="300">
+                            <a href="#hypervideo=2&t=0" class="ftMapPinDescription">
+                                <figure class="chart">
+                                  <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
                                     <circle class="circle" cx="150" cy="150" r="143"/>
                                   </svg>
                                 </figure>
@@ -255,9 +310,9 @@
                         </div>
                         <div style="top: 62%; left: 57%;" id="ftMapPin4" class="ftMapPin ftEvent">
                             <i class="fticon-silhouette"></i> 
-                            <a href="#hypervideo=4" class="ftMapPinDescription">
-                              <figure class="chart" data-percent="100">
-                                <svg width="300" height="300">
+                            <a href="#hypervideo=4&t=0" class="ftMapPinDescription">
+                              <figure class="chart">
+                                <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
                                   <circle class="circle" cx="150" cy="150" r="143"/>
                                 </svg>
                               </figure>
@@ -272,9 +327,9 @@
                         </div>
                         <div style="top: 46.5%; left: 40%;" id="ftMapPin5" class="ftMapPin ftEvent">
                             <i class="fticon-silhouette"></i> 
-                            <a href="#hypervideo=8" class="ftMapPinDescription">
-                                 <figure class="chart" data-percent="100">
-                                   <svg width="300" height="300">
+                            <a href="#hypervideo=8&t=0" class="ftMapPinDescription">
+                                 <figure class="chart">
+                                   <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
                                      <circle class="circle" cx="150" cy="150" r="143"/>
                                    </svg>
                                  </figure>
@@ -287,24 +342,7 @@
                                 <span>Die Rosinensammlerin</span>
                             </a>
                         </div>
-                        
-                        <div style="top: 48%; right: 24%;" id="ftMapPin5" class="ftMapPin ftEvent">
-                            <i class="fticon-photo-booth"></i> 
-                            <a href="#" class="ftMapPinDescription">
-                                 <figure class="chart" data-percent="100">
-                                   <svg width="300" height="300">
-                                     <circle class="circle" cx="150" cy="150" r="143"/>
-                                   </svg>
-                                 </figure>
-                                <div class="ftMapPinDescriptionImg">
-                                  <img src="_custom/graphics/placeholders/7.jpg" alt="" />
-                                </div>
-                                <div class="ftMapPinDescriptionContent">
-                                  <i class="fticon-right"></i>
-                                </div>                                
-                                <span>Die StoryboXX</span>
-                            </a>
-                        </div>
+                        -->
 
                     </div>
 
@@ -340,8 +378,8 @@
                       <div class="ftScreen ftScreenReduce ftNavIconContainer ftEvent"><i class="fticon-reduce"></i></div>
                       
                       <ul class="ftNavItems">
-                        <li><div class="ftNavIconContainer ftNavUp active ftEventftEvent"><i class="fticon-up"></i></div></li>
-                        <li><div class="ftNavIconContainer ftNavDown"><i class="fticon-down"></i></div></li>
+                        <li><div class="ftNavIconContainer ftNavUp active ftEvent"><i class="fticon-up"></i></div></li>
+                        <li><div class="ftNavIconContainer ftNavDown ftEvent"><i class="fticon-down"></i></div></li>
                       </ul>
                       
                       <div class="ftNavShare ftNavIconContainer">
@@ -394,7 +432,7 @@
                       </div>
                       <ul class="ftNavItems">
                         <li><div class="ftNavIconContainer ftNavUp active ftEvent"><i class="fticon-up"></i></div></li>
-                        <li><div class="ftNavIconContainer ftNavDown"><i class="fticon-down"></i></div></li>
+                        <li><div class="ftNavIconContainer ftNavDown ftEvent"><i class="fticon-down"></i></div></li>
                       </ul>
                       
                       <div class="ftNavShare ftNavIconContainer">
