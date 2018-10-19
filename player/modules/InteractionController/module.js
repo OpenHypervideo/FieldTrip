@@ -49,7 +49,7 @@ FrameTrail.defineModule('InteractionController', function(FrameTrail){
         scrollLeftBlocked = false,
         scrollRightBlocked = false;
 
-    	$(document).off('keydown').on('keydown', function(evt){
+    	$(document).off('keydown.FrameTrail').on('keydown.FrameTrail', function(evt){
 
     		// Save when ctrl+s or command+s
             if ((evt.metaKey || evt.ctrlKey) && evt.keyCode == 83) {
