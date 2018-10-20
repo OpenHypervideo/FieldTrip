@@ -1381,6 +1381,7 @@ a {
   left: 120px;
   right: 120px;
   width: auto;
+  display: none;
 }
 
 #VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .playerProgress .ui-slider-range {

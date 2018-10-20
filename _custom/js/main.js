@@ -137,14 +137,14 @@ $(document).ready(function() {
 		}
 
 	});
-  
-  /*
+  	
 	FieldTrip.on('play', function() {
-		window.setTimeout(function() {
-			$('.hypervideo .video').css('transition-duration', '').removeClass('nocolor');
-		}, 600);
+		$('#playCircleContainer').addClass('playing');
 	});
-	*/
+
+	FieldTrip.on('pause', function() {
+		$('#playCircleContainer').removeClass('playing');
+	});
 
 	FieldTrip.on('ended', function() {
 		FieldTrip.play();
@@ -169,7 +169,7 @@ $(document).ready(function() {
 		$('#ftIntroVideo')[0].currentTime = 0;
 	});
 
-	$('#ftIntroVideo').one('canplay', function() {
+	window.setTimeout(function() {
 
 		$('#ftStartButton').show().click(function() {
 
@@ -185,11 +185,11 @@ $(document).ready(function() {
 				window.history.replaceState({}, '', '#intro');
 				activateLayer('intro');
 
-			}, 5000);
+			}, 1000);
 
 		});
 
-	});
+	}, 2000);
 
 	$('#ftIntroVideo').on('ended', function() {
 		updateEpisodeTimings();
@@ -768,13 +768,34 @@ function updateEpisodeCircles() {
 
 function initPlayCircle() {
 
-	var playCircleContainer = $('<figure id="playCircleContainer" class="chart"></figure>');
+	var playCircleContainer = $('<figure id="playCircleContainer" class="chart ftEvent"></figure>');
+
+	playCircleContainer.click(function() {
+		if ($(this).hasClass('playing')) {
+			FieldTrip.pause();
+		} else {
+			FieldTrip.play();
+		}
+	});
+
+	playCircleContainer.on("mouseover", function() {
+      $('.custom-cursor').addClass("custom-cursor-outline");
+    });
+    playCircleContainer.on("mouseout", function() {
+      $('.custom-cursor').removeClass("custom-cursor-outline");
+    });
 
 	var ns = 'http://www.w3.org/2000/svg';
 	var playCircleSVG = document.createElementNS(ns, 'svg');
 	playCircleSVG.setAttribute('width', '180');
 	playCircleSVG.setAttribute('height', '180');
 	
+	var playCircleBG = document.createElementNS(ns, 'circle');
+	playCircleBG.classList.add('circle-bg');
+	playCircleBG.setAttribute('cx', '90');
+	playCircleBG.setAttribute('cy', '90');
+	playCircleBG.setAttribute('r', '88');
+
 	var playCircle = document.createElementNS(ns, 'circle');
 	playCircle.classList.add('circle');
 	playCircle.classList.add('outer');
@@ -782,6 +803,7 @@ function initPlayCircle() {
 	playCircle.setAttribute('cy', '90');
 	playCircle.setAttribute('r', '88');
 
+	playCircleSVG.appendChild(playCircleBG);
 	playCircleSVG.appendChild(playCircle);
 	
 	playCircleContainer[0].appendChild(playCircleSVG);
@@ -799,7 +821,7 @@ function updatePlayCircle() {
 	if (!parentSVG) {
 		return;
 	}
-	var svgCircle = parentSVG.querySelector('.chart svg > circle');
+	var svgCircle = parentSVG.querySelector('.chart svg > .circle');
 		
 	var length = Math.PI * 2 * parseInt(svgCircle.getAttribute('r'));
 	var offset = - length - length * FieldTrip.currentTime / (FieldTrip.duration);

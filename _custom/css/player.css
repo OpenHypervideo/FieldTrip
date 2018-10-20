@@ -34,6 +34,13 @@
 	z-index: 30;
 	color: #fec570;
 	border-radius: 100%;
+	background: url('../graphics/FT-play.svg') no-repeat center center;
+	background-size: 25px;
+	cursor: pointer;
+}
+
+#VideoPlayer .playerContainer #playCircleContainer.playing {
+	background-image: url('../graphics/FT-pause.svg')
 }
 
 #VideoPlayer .playerContainer #playCircleContainer .fticon-right, #VideoPlayer .playerContainer #playCircleContainer svg {
@@ -45,14 +52,27 @@
 	line-height: 180px;
 }
 
-#VideoPlayer .playerContainer #playCircleContainer svg > circle {
+#VideoPlayer .playerContainer #playCircleContainer svg > .circle {
 	fill: transparent !important;
 	stroke: #fec570;
 	stroke-width: 3;
 	stroke-dasharray: 900;
+	transition-duration: 0ms !important;
 	/* firefox bug fix - won't rotate at 90deg angles */
 	transform: rotate(-90deg) translateX(-179px);
 	-moz-transform: rotate(-90deg) translateX(-179px);
+}
+
+#VideoPlayer .playerContainer #playCircleContainer svg > .circle-bg {
+	fill: transparent !important;
+	stroke: #FFFFFF;
+	stroke-width: 2;
+	stroke-dasharray: none;
+	transition-duration: 0ms !important;
+	/* firefox bug fix - won't rotate at 90deg angles */
+	transform: rotate(-90deg) translateX(-179px);
+	-moz-transform: rotate(-90deg) translateX(-179px);
+	opacity: .5;
 }
 
 #VideoPlayer .message.statusMessage.active {
@@ -111,6 +131,7 @@
 	bottom: 0px;
 	height: 20px;
 	min-height: 0;
+	display: none;
 }
 
 #VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .controls .playButton {
