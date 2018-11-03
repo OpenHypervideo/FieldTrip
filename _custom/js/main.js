@@ -312,7 +312,33 @@ function initEventListeners() {
 	$('.ftSocialTrigger').click(function() {
 	    $('.ftSocialNav').toggleClass('is-open');
 	});
+  
+  /* Info: Go to Sections */
+  
+  $('#ueber-uns-link').click(function() {
+      document.getElementById('ueber-uns').scrollIntoView(true);
+  }); 
 
+  $('#team-link').click(function() {
+    document.getElementById('team').scrollIntoView(true);
+  }); 
+  
+  $('#abspann-link').click(function() {
+    document.getElementById('abspann').scrollIntoView(true);
+  }); 
+  
+  $('#resourcen-link').click(function() {
+    document.getElementById('resourcen').scrollIntoView(true);
+  }); 
+  
+  $('#impressum-link').click(function() {
+    document.getElementById('impressum').scrollIntoView(true);
+  }); 
+  
+  $('#datenschutz-link').click(function() {
+    document.getElementById('datenschutz').scrollIntoView(true);
+  }); 
+  
 	/* Toogle Mute */
 
 	$('.ftSound').click(function() {
@@ -338,7 +364,12 @@ function initEventListeners() {
 	
 
 	/* Thumbnails appears on click*/
-	
+
+	hide = true;
+	$('body').on("click", function () {
+	    if (hide) $('.ftMapPinDescription').removeClass('is-visible');
+	    hide = true;
+	});
 
 	$('.ftMapPin').click(function(evt){
 	  	
@@ -352,7 +383,7 @@ function initEventListeners() {
 		var circle = $(this).find('.circle');
 		var player = $(this).find('.ftMapPinDescriptionContent')
 		description.addClass('is-visible');
-	  
+	  hide = false;
 
 		setTimeout(function(){
 			circle.addClass('outer');
@@ -362,7 +393,7 @@ function initEventListeners() {
 			player.addClass('is-visible');
 		}, 1000); 
 
-	  	$(".ftMapPinDescription").not($(this).find(".ftMapPinDescription")).removeClass('is-visible');
+	  $(".ftMapPinDescription").not($(this).find(".ftMapPinDescription")).removeClass('is-visible');
 		$(".circle").not($(this).find(".circle")).removeClass('outer');
 		$(".ftMapPinDescriptionContent").not($(this).find(".ftMapPinDescriptionContent")).removeClass('is-visible');
 	});
@@ -372,9 +403,9 @@ function initEventListeners() {
 	$('.ftScreen').click(function() {
 		toggleNativeFullscreen();
 	});
-
+  
 	document.addEventListener("fullscreenchange", toggleFullscreen, false);
-    document.addEventListener("webkitfullscreenchange", toggleFullscreen, false);
+  document.addEventListener("webkitfullscreenchange", toggleFullscreen, false);
 	document.addEventListener("mozfullscreenchange", toggleFullscreen, false);
 
 }

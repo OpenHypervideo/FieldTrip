@@ -1480,7 +1480,6 @@ ABOUT / CREDITS / IMPRINT
   font-size: 1.25em;
   cursor: pointer;
   z-index: 10;
-  display: none;
 }
 
 .divider {
@@ -1517,6 +1516,10 @@ ABOUT / CREDITS / IMPRINT
   font-weight: 600;
   text-transform: uppercase;
   margin: 2.5vh 0;
+}
+
+#fthyperInfo .ftInfoNavigation li a {
+  cursor: pointer;
 }
 
 #fthyperInfo .ftInfoNavigation li a:before {
@@ -1703,6 +1706,10 @@ ABOUT / CREDITS / IMPRINT
 }
 
 /* Resourcen */
+
+#resourcen {
+  height: auto;
+}
 
 .ftInfoGithub {
   margin-top: 5vh; 
@@ -1896,6 +1903,16 @@ ABOUT / CREDITS / IMPRINT
 
 @media (max-width: 650px) {
   
+  .ftLayer .ftLogo {
+    top: 10px;
+    left: 12px;
+    font-size: 2em;
+  }
+  
+  [class^="fticon-"], [class*=" fticon-"] {
+    font-size: 80%;
+  }
+  
   #ftPointer {
     display: none !important;
   }
@@ -2026,6 +2043,10 @@ ABOUT / CREDITS / IMPRINT
   
   .ftHiddenMobile {
     display: none;
+  }
+  
+  .ftCloseInfo {
+    color: #000;
   }
 }
 
