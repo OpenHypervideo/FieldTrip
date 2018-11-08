@@ -17,6 +17,23 @@
 	box-sizing: inherit;
 }
 
+
+
+body.userinactive .mainContainer:not(.editActive) .playerContainer #playCircleContainer, 
+body.userinactive #ftPointer,
+body.userinactive #fthypervideo .ftNavigation,
+body.userinactive #fthypervideo .ftAboutIconContainer,
+body.userinactive #fthypervideo .ftLogo {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: visibility 1.5s, opacity 1.5s;
+     -moz-transition: visibility 1.5s, opacity 1.5s;
+      -ms-transition: visibility 1.5s, opacity 1.5s;
+       -o-transition: visibility 1.5s, opacity 1.5s;
+          transition: visibility 1.5s, opacity 1.5s;
+}
+
 .editPropertiesContainer .overlayOptionsTabs .message {
 	width: 360px;
 }
@@ -37,6 +54,10 @@
 	background: url('../graphics/FT-play.svg') no-repeat center center;
 	background-size: 25px;
 	cursor: pointer;
+}
+
+.mainContainer.editActive #playCircleContainer {
+	display: none;
 }
 
 #VideoPlayer .playerContainer #playCircleContainer.playing {

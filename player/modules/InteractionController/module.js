@@ -36,6 +36,8 @@ FrameTrail.defineModule('InteractionController', function(FrameTrail){
         scrollLeftBlocked = false,
         scrollRightBlocked = false;
 
+    var activityCheck, inactivityTimeout;
+
 
     /**
      * I set the event listener which triggers the appropriate event-handler.
@@ -67,6 +69,14 @@ FrameTrail.defineModule('InteractionController', function(FrameTrail){
     		return keyBindings[evt.keyCode] && keyBindings[evt.keyCode].call(this, evt);
 
     	});
+
+        $(document).off('mousemove.FrameTrail').on('mousemove.FrameTrail', function(evt){
+
+            FrameTrail.changeState('userActivity', true);
+
+        });
+
+        initActivityCheck();
 
         /*
         $('body').off('mousewheel', '.viewVideo').on('mousewheel', '.viewVideo', function(evt) {
@@ -325,11 +335,49 @@ FrameTrail.defineModule('InteractionController', function(FrameTrail){
 
     };
 
+    function initActivityCheck() {
+        
+        if (!activityCheck) {
+            activityCheck = setInterval(function() {
+
+                // Check to see if the mouse has been moved
+                if ( FrameTrail.getState('userActivity') || !FrameTrail.module('HypervideoController').isPlaying ) {
+
+                    // Reset the activity tracker
+                    FrameTrail.changeState('userActivity', false);
+
+                    // If the user state was inactive, set the state to active
+                    if (FrameTrail.getState('userActive') === false) {
+                        FrameTrail.changeState('userActive', true);
+                    }
+
+                    // Clear any existing inactivity timeout to start the timer over
+                    clearTimeout(inactivityTimeout);
+
+                    // In X seconds, if no more activity has occurred 
+                    // the user will be considered inactive
+                    inactivityTimeout = setTimeout(function() {
+                        // Protect against the case where the inactivity timeout can trigger
+                        // before the next user activity is picked up  by the 
+                        // activityCheck loop.
+
+                        if (!FrameTrail.getState('userActivity')) {
+                            FrameTrail.changeState('userActive', false);
+                        }
+                    }, 2000);
+                }
+
+            }, 250);
+        }
+        
+
+    }
+
 
     return {
 
         onChange: {
-
+            
         },
 
         initController: initController
