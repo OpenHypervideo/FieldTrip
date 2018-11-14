@@ -352,7 +352,13 @@ function initEventListeners() {
 	});
 	
 	/* Switch Button / Night Mode */
-		  
+	
+	var currentHours = new Date().getHours();  
+	if (currentHours >= 17) {
+		$('#ftSwitchCheckbox input:checkbox').prop('checked', true);
+		$('body').addClass("night");
+	}
+
 	$('#ftSwitchCheckbox input:checkbox').change(function(){
 	    if ($(this).is(':checked')) {
 	        $('body').addClass("night");
@@ -361,14 +367,16 @@ function initEventListeners() {
 	        $('body').removeClass("night");
 	    }
 	});
-	
 
 	/* Thumbnails appears on click*/
 
-	hide = true;
-	$('body').on("click", function () {
-	    if (hide) $('.ftMapPinDescription').removeClass('is-visible');
-	    hide = true;
+	//hide = true;
+	$('#ftoverview').on("click", function (evt) {
+	    
+	    if ($(evt.target).attr('id') == 'ftMapContainer' || $(evt.target).attr('id') == 'ftMap') {
+	    	$('.ftMapPinDescription').removeClass('is-visible');
+	    }
+	    //hide = true;
 	});
 
 	$('.ftMapPin').click(function(evt){
@@ -383,7 +391,7 @@ function initEventListeners() {
 		var circle = $(this).find('.circle');
 		var player = $(this).find('.ftMapPinDescriptionContent')
 		description.addClass('is-visible');
-	  hide = false;
+	  	//hide = false;
 
 		setTimeout(function(){
 			circle.addClass('outer');
@@ -568,10 +576,44 @@ function interfaceUp() {
 
 function interfaceLeft() {
 	// left key pressed
+	if (currentLayer != 'hypervideo') { return; }
+
+	$(document).trigger('mousemove');
+	
+	var previousTimeStep = 0;
+	var hypervideoID = location.href.split('#hypervideo=')[1].split('&')[0];
+
+	if (videoLinks[hypervideoID]) {
+		videoLinks[hypervideoID]['links'].forEach(function(videoLink){
+			if (videoLink.time <= FieldTrip.currentTime) {
+				previousTimeStep = videoLink.time - 3;
+			}
+		});
+	}
+
+	FieldTrip.currentTime = previousTimeStep;
 }
 
 function interfaceRight() {
 	// right key pressed
+	if (currentLayer != 'hypervideo') { return; }
+
+	$(document).trigger('mousemove');
+
+	var nextTimeStep = FieldTrip.duration - 3;
+	var hypervideoID = location.href.split('#hypervideo=')[1].split('&')[0];
+
+	if (videoLinks[hypervideoID]) {
+		videoLinks[hypervideoID]['links'].forEach(function(videoLink){
+			if (videoLink.time >= FieldTrip.currentTime) {
+				nextTimeStep = videoLink.time - 3;
+				FieldTrip.currentTime = nextTimeStep;
+				return;
+			}
+		});
+	}
+
+	FieldTrip.currentTime = nextTimeStep;
 }
 
 function updateButtonStates() {

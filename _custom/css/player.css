@@ -22,8 +22,7 @@
 body.userinactive .mainContainer:not(.editActive) .playerContainer #playCircleContainer, 
 body.userinactive #ftPointer,
 body.userinactive #fthypervideo .ftNavigation,
-body.userinactive #fthypervideo .ftAboutIconContainer,
-body.userinactive #fthypervideo .ftLogo {
+body.userinactive #fthypervideo .ftAboutIconContainer {
     display: block;
     visibility: hidden;
     opacity: 0;
@@ -94,6 +93,18 @@ body.userinactive #fthypervideo .ftLogo {
 	transform: rotate(-90deg) translateX(-179px);
 	-moz-transform: rotate(-90deg) translateX(-179px);
 	opacity: .5;
+}
+
+.hypervideoContainer .videoContainer .hypervideo .captionContainer {
+	position: fixed !important;
+}
+
+.mainContainer.editActive .hypervideoContainer .videoContainer .hypervideo .captionContainer {
+	display: none !important;
+}
+
+.hypervideoContainer .videoContainer .hypervideo .captionContainer .subtitleElement {
+	margin: 16px 50px;
 }
 
 #VideoPlayer .message.statusMessage.active {
@@ -231,6 +242,16 @@ body.userinactive #fthypervideo .ftLogo {
 	pointer-events: all;
 }
 
+.overlayElement .resourceDetail {
+	transform-origin: center;
+}
+
+.overlayElement .resourceDetail[data-type="text"] * {
+	text-shadow: 1px 1px 2px #000;
+	color: #ffffff !important;
+	font-size: 22px !important;
+}
+
 .overlayElement .resourceDetail[data-type="image"] img {
 	-webkit-transform: translate3d(0,0,0);
     -moz-transform: translate3d(0,0,0);
@@ -239,7 +260,7 @@ body.userinactive #fthypervideo .ftLogo {
     backface-visibility: hidden;
     will-change: scale;
 	transform: scale(0.8, 0.8);
-	transform-origin: center;
+	transform-origin: center bottom;
 	transition-property: all;
 	transition-duration: 300ms;
 }
