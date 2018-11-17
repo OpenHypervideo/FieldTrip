@@ -53,7 +53,16 @@ var videoLinks = {
 		'links': [
 			{
 				'time': 240.7,
-				'target': '#hypervideo=6&t=18',
+				'target': '#hypervideo=13&t=509.7',
+			}
+		]
+	},
+	'10': {
+		'duration': 378.24,
+		'links': [
+			{
+				'time': 371.4,
+				'target': '#hypervideo=12&t=0',
 			}
 		]
 	},
@@ -354,7 +363,7 @@ function initEventListeners() {
 	/* Switch Button / Night Mode */
 	
 	var currentHours = new Date().getHours();  
-	if (currentHours >= 17) {
+	if ((currentHours >= 17) || (currentHours <= 7)) {
 		$('#ftSwitchCheckbox input:checkbox').prop('checked', true);
 		$('body').addClass("night");
 	}
@@ -579,7 +588,7 @@ function interfaceLeft() {
 	if (currentLayer != 'hypervideo') { return; }
 
 	$(document).trigger('mousemove');
-	
+
 	var previousTimeStep = 0;
 	var hypervideoID = location.href.split('#hypervideo=')[1].split('&')[0];
 
