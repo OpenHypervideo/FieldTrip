@@ -84,6 +84,17 @@
     align-self: auto;
 }
 
+body.userinactive .mainContainer:not(.editActive) .playerContainer .controls, body.userinactive .mainContainer:not(.editActive) .playerContainer .playerProgress {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: visibility 1.5s, opacity 1.5s;
+     -moz-transition: visibility 1.5s, opacity 1.5s;
+      -ms-transition: visibility 1.5s, opacity 1.5s;
+       -o-transition: visibility 1.5s, opacity 1.5s;
+          transition: visibility 1.5s, opacity 1.5s;
+}
+
 /* Progress Bar */
 
 .playerContainer .playerProgress {

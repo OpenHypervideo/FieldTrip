@@ -435,6 +435,8 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 
 		ViewVideo.PlayerProgress.slider('value', currentTime);
 
+		FrameTrail.triggerEvent('timeupdate', {});
+
         OverlaysController.checkMediaSynchronization();
 
 
@@ -482,6 +484,8 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 	function highPriorityUpdater_NullVideo() {
 
 		ViewVideo.PlayerProgress.slider('value', currentTime);
+
+		FrameTrail.triggerEvent('timeupdate', {});
 
         OverlaysController.checkMediaSynchronization();
 

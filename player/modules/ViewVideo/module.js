@@ -1518,6 +1518,25 @@ FrameTrail.defineModule('ViewVideo', function(FrameTrail){
 
     }
 
+    /**
+     * Toggles the visibility of the controls.
+     * (applied to the body element to simplify third party integrations)
+     *
+     * @method toggleUserActive
+     * @param {Boolean} activeState
+     */
+    function toggleUserActive(activeState) {
+
+        if (FrameTrail.getState('hv_config_autohideControls')) {
+            if (activeState) {
+                $('body').removeClass('userinactive');
+            } else {
+                $('body').addClass('userinactive');
+            }
+        }
+
+    }
+
 
     return {
 
@@ -1531,6 +1550,7 @@ FrameTrail.defineModule('ViewVideo', function(FrameTrail){
             slidePosition:   changeSlidePosition,
             xKey:            toggleGrid,
             videoWorking:    toggleVideoWorking,
+            userActive:      toggleUserActive,
 
             hv_config_areaTopVisible:               toggleConfig_areaTopVisible,
             hv_config_areaBottomVisible:            toggleConfig_areaBottomVisible,

@@ -8,7 +8,7 @@
 
         <title>Field Trip</title>
 
-        <link rel="shortcut icon" href="favicon.png">
+        <link rel="shortcut icon" href="favico.png">
 
         <!-- Library Code -->
 
@@ -166,6 +166,7 @@
         
     </head>
     <body>
+      
       <div id="ftPointer" class="custom-cursor"></div>
       
       <button id="ftStartButton" class="ftButton ftAnimatedButton ftEvent">
@@ -177,18 +178,19 @@
         <i class="fticon-right"></i>
       </button>
 
-        <div id="ftintro" class="ftLayer">
-            <i class="fticon-logo-fieldtrip ftLogo"></i>
+        <div id="ftintro" class="ftLayer active">
             <div class="ftLayerContent">
                 <video id="ftIntroVideo" preload="auto">
-                    <source src="_custom/zoom-to-black.mp4" type="video/mp4">
+                    <source src="_custom/intro.mp4" type="video/mp4">
                 </video>
             </div>
 
         </div>
 
         <div id="ftoverview" class="ftLayer">
-        
+            
+            <audio id="audioAtmoDay" src="_custom/audio/tempelhof_atmo_day.mp3" loop preload="auto" style="display: none;"></audio>
+
             <a href="#intro">
                 <i class="fticon-logo-fieldtrip ftLogo"></i>
             </a>
@@ -204,9 +206,9 @@
                         <!-- Pointers -->
                         <div style="top: 31%; left: 23%;" id="ftMapPin1" class="ftMapPin ftEvent">
                             <i class="fticon-silhouette"></i> 
-                            <a href="#hypervideo=5" class="ftMapPinDescription">
-                                <figure class="chart" data-percent="100">
-                                  <svg width="300" height="300">
+                            <a href="#hypervideo=9&t=0" class="ftMapPinDescription">
+                                <figure class="chart">
+                                  <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
                                     <circle class="circle" cx="150" cy="150" r="143"/>
                                   </svg>
                                 </figure>
@@ -219,11 +221,62 @@
                                 <span>Der Drachenbauer</span>
                             </a>
                         </div>
+                        <div style="top: 61.7%; left: 55%;" id="ftMapPin7" class="ftMapPin ftEvent">
+                            <i class="fticon-silhouette"></i> 
+                            <a href="#hypervideo=10&t=0" class="ftMapPinDescription">
+                                <figure class="chart">
+                                  <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+                                    <circle class="circle" cx="150" cy="150" r="143"/>
+                                  </svg>
+                                </figure>
+                                <div class="ftMapPinDescriptionImg">
+                                  <img src="_custom/graphics/placeholders/8.jpg" alt="" />
+                                </div>
+                                <div class="ftMapPinDescriptionContent">
+                                  <i class="fticon-right"></i>
+                                </div>
+                                <span>Der Filmemacher</span>
+                            </a>
+                        </div>
+                        <div style="top: 37%; left: 66%;" id="ftMapPin8" class="ftMapPin ftEvent">
+                            <i class="fticon-silhouette"></i> 
+                            <a href="#hypervideo=11&t=0" class="ftMapPinDescription">
+                                <figure class="chart">
+                                  <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+                                    <circle class="circle" cx="150" cy="150" r="143"/>
+                                  </svg>
+                                </figure>
+                                <div class="ftMapPinDescriptionImg">
+                                  <img src="_custom/graphics/placeholders/9.jpg" alt="" />
+                                </div>
+                                <div class="ftMapPinDescriptionContent">
+                                  <i class="fticon-right"></i>
+                                </div>
+                                <span>Die Liebende</span>
+                            </a>
+                        </div>
+                        <div style="top: 49%; right: 24%;" id="ftMapPin6" class="ftMapPin ftEvent">
+                            <i class="fticon-photo-booth"></i> 
+                            <a href="#hypervideo=30&t=0" class="ftMapPinDescription">
+                                 <figure class="chart">
+                                   <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+                                     <circle class="circle" cx="150" cy="150" r="143"/>
+                                   </svg>
+                                 </figure>
+                                <div class="ftMapPinDescriptionImg">
+                                  <img src="_custom/graphics/placeholders/7.jpg" alt="" />
+                                </div>
+                                <div class="ftMapPinDescriptionContent">
+                                  <i class="fticon-right"></i>
+                                </div>                                
+                                <span>Die StoryboXX</span>
+                            </a>
+                        </div>
                         <div style="top: 25%; left: 30%;" id="ftMapPin2" class="ftMapPin ftEvent">
                             <i class="fticon-silhouette"></i> 
-                            <a href="#hypervideo=6" class="ftMapPinDescription">
-                                <figure class="chart" data-percent="100">
-                                  <svg width="300" height="300">
+                            <a href="#hypervideo=13&t=0" class="ftMapPinDescription">
+                                <figure class="chart">
+                                  <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
                                     <circle class="circle" cx="150" cy="150" r="143"/>
                                   </svg>
                                 </figure>
@@ -236,11 +289,29 @@
                                 <span>Die Feldtänzerin</span>
                             </a>
                         </div>
-						            <div style="top: 24%; left: 47%;" id="ftMapPin3" class="ftMapPin ftEvent">
+                        <div style="top: 27%; left: 54.5%;" id="ftMapPin9" class="ftMapPin ftEvent">
                             <i class="fticon-silhouette"></i> 
-                            <a href="#hypervideo=2" class="ftMapPinDescription">
-                                <figure class="chart" data-percent="100">
-                                  <svg width="300" height="300">
+                            <a href="#hypervideo=12&t=0" class="ftMapPinDescription">
+                                <figure class="chart">
+                                  <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+                                    <circle class="circle" cx="150" cy="150" r="143"/>
+                                  </svg>
+                                </figure>
+                                <div class="ftMapPinDescriptionImg">
+                                  <img src="_custom/graphics/placeholders/10.jpg" alt="" />
+                                </div>
+                                <div class="ftMapPinDescriptionContent">
+                                  <i class="fticon-right"></i>
+                                </div>
+                                <span>Die Türöffnerin</span>
+                            </a>
+                        </div>
+                        <!--
+						<div style="top: 24%; left: 47%;" id="ftMapPin3" class="ftMapPin ftEvent">
+                            <i class="fticon-silhouette"></i> 
+                            <a href="#hypervideo=2&t=0" class="ftMapPinDescription">
+                                <figure class="chart">
+                                  <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
                                     <circle class="circle" cx="150" cy="150" r="143"/>
                                   </svg>
                                 </figure>
@@ -255,9 +326,9 @@
                         </div>
                         <div style="top: 62%; left: 57%;" id="ftMapPin4" class="ftMapPin ftEvent">
                             <i class="fticon-silhouette"></i> 
-                            <a href="#hypervideo=4" class="ftMapPinDescription">
-                              <figure class="chart" data-percent="100">
-                                <svg width="300" height="300">
+                            <a href="#hypervideo=4&t=0" class="ftMapPinDescription">
+                              <figure class="chart">
+                                <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
                                   <circle class="circle" cx="150" cy="150" r="143"/>
                                 </svg>
                               </figure>
@@ -272,9 +343,9 @@
                         </div>
                         <div style="top: 46.5%; left: 40%;" id="ftMapPin5" class="ftMapPin ftEvent">
                             <i class="fticon-silhouette"></i> 
-                            <a href="#hypervideo=8" class="ftMapPinDescription">
-                                 <figure class="chart" data-percent="100">
-                                   <svg width="300" height="300">
+                            <a href="#hypervideo=8&t=0" class="ftMapPinDescription">
+                                 <figure class="chart">
+                                   <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
                                      <circle class="circle" cx="150" cy="150" r="143"/>
                                    </svg>
                                  </figure>
@@ -287,24 +358,7 @@
                                 <span>Die Rosinensammlerin</span>
                             </a>
                         </div>
-                        
-                        <div style="top: 48%; right: 24%;" id="ftMapPin5" class="ftMapPin ftEvent">
-                            <i class="fticon-photo-booth"></i> 
-                            <a href="#" class="ftMapPinDescription">
-                                 <figure class="chart" data-percent="100">
-                                   <svg width="300" height="300">
-                                     <circle class="circle" cx="150" cy="150" r="143"/>
-                                   </svg>
-                                 </figure>
-                                <div class="ftMapPinDescriptionImg">
-                                  <img src="_custom/graphics/placeholders/7.jpg" alt="" />
-                                </div>
-                                <div class="ftMapPinDescriptionContent">
-                                  <i class="fticon-right"></i>
-                                </div>                                
-                                <span>Die StoryboXX</span>
-                            </a>
-                        </div>
+                        -->
 
                     </div>
 
@@ -340,23 +394,23 @@
                       <div class="ftScreen ftScreenReduce ftNavIconContainer ftEvent"><i class="fticon-reduce"></i></div>
                       
                       <ul class="ftNavItems">
-                        <li><div class="ftNavIconContainer ftNavUp active ftEventftEvent"><i class="fticon-up"></i></div></li>
-                        <li><div class="ftNavIconContainer ftNavDown"><i class="fticon-down"></i></div></li>
+                        <li><div class="ftNavIconContainer ftNavUp active ftEvent"><i class="fticon-up"></i></div></li>
+                        <li><div class="ftNavIconContainer ftNavDown ftEvent"><i class="fticon-down"></i></div></li>
                       </ul>
                       
                       <div class="ftNavShare ftNavIconContainer">
                         <div><i class="fticon-share ftSocialTrigger ftEvent"></i></div>
                         <ul class="ftSocialNav">
-                          <li><a href="http://"><i class="fticon-twitter"></i></a></li>
-                          <li><a href="http://"><i class="fticon-facebook"></i></a></li>
-                          <li><a href="http://"><i class="fticon-google-plus"></i></a></li>
+                          <li><a class="share-twitter transition" target="_blank" title="Twitter" href="https://twitter.com/share?url=https://fieldtrip.berlin&text=Field Trip - An open source documentary&via=FieldTripBerlin" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"><i class="fticon-twitter"></i></a>
+                          </li>
+                          <li><a class="share-facebook transition" target="_blank" title="Facebook" href="https://www.facebook.com/sharer.php?u=https://fieldtrip.berlin&t=Field Trip - An open source documentary" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"><i class="fticon-facebook"></i></a></li>
                         </ul>
                       </div>
                     </nav>
                 </div>
                 
                 <div class="ftNavAbout ftNavIconContainer">
-                  <a href="#about" class="ftNavIconContainer ftAboutIconContainer ftEvent"><i class="fticon-about"></i></a>
+                  <span class="ftNavIconContainer ftAboutIconContainer ftEvent"><i class="fticon-about"></i></span>
                 </div>
 
             </div>
@@ -394,22 +448,22 @@
                       </div>
                       <ul class="ftNavItems">
                         <li><div class="ftNavIconContainer ftNavUp active ftEvent"><i class="fticon-up"></i></div></li>
-                        <li><div class="ftNavIconContainer ftNavDown"><i class="fticon-down"></i></div></li>
+                        <li><div class="ftNavIconContainer ftNavDown ftEvent"><i class="fticon-down"></i></div></li>
                       </ul>
                       
                       <div class="ftNavShare ftNavIconContainer">
                         <div><i class="fticon-share ftSocialTrigger ftEvent"></i></div>
                         <ul class="ftSocialNav">
-                          <li><a href="http://"><i class="fticon-twitter"></i></a></li>
-                          <li><a href="http://"><i class="fticon-facebook"></i></a></li>
-                          <li><a href="http://"><i class="fticon-google-plus"></i></a></li>
+                          <li><a class="share-twitter transition" target="_blank" title="Twitter" href="https://twitter.com/share?url=https://fieldtrip.berlin&text=Field Trip - An open source documentary&via=FieldTripBerlin" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"><i class="fticon-twitter"></i></a>
+                          </li>
+                          <li><a class="share-facebook transition" target="_blank" title="Facebook" href="https://www.facebook.com/sharer.php?u=https://fieldtrip.berlin&t=Field Trip - An open source documentary" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"><i class="fticon-facebook"></i></a></li>
                         </ul>
                       </div>
                     </nav>
                 </div>
                 
                 <div class="ftNavAbout ftNavIconContainer">
-                  <a href="#about" class="ftNavIconContainer ftAboutIconContainer ftEvent"><i class="fticon-about"></i></a>
+                  <span class="ftNavIconContainer ftAboutIconContainer ftEvent"><i class="fticon-about"></i></span>
                 </div>
 
             </div>
@@ -430,19 +484,18 @@
               <div class="ftInfoNavigation">
                 <nav>
                   <ul>
-                    <li><a class="ftInfoLink highlighted highlighted--yellow is-active" href="#ueber-uns">1. Über Uns</a></li>
-                    <li><a class="ftInfoLink highlighted highlighted--yellow" href="#team">2. Team</a></li>
-                    <li><a class="ftInfoLink highlighted highlighted--yellow" href="#abspann">3. Abspann</a></li>
-                    <li><a class="ftInfoLink highlighted highlighted--yellow" href="#resourcen">4. Resourcen</a></li>
-                    <li><a class="ftInfoLink highlighted highlighted--yellow" href="#impressum">5. Impressum</a></li>
-                    <li><a class="ftInfoLink highlighted highlighted--yellow" href="#datenschutz">6. Datenschutz</a></li>
+                    <li><a id="ueber-uns-link" class="ftEvent ftInfoLink highlighted highlighted--yellow is-active">1. Über Uns</a></li>
+                    <li><a id="team-link" class="ftEvent ftInfoLink highlighted highlighted--yellow">2. Team</a></li>
+                    <li><a id="abspann-link" class="ftEvent ftInfoLink highlighted highlighted--yellow">3. Abspann</a></li>
+                    <li><a id="resourcen-link" class="ftEvent ftInfoLink highlighted highlighted--yellow">4. Resourcen</a></li>
+                    <li><a id="impressum-link" class="ftEvent ftInfoLink highlighted highlighted--yellow">5. Impressum</a></li>
+                    <li><a id="datenschutz-link" class="ftEvent ftInfoLink highlighted highlighted--yellow">6. Datenschutz</a></li>
                   </ul>
                 </nav>
               </div>
               
               <div>
                 <span id="ftCloseInfo" class="ftCloseInfo ftEvent"><i class="fticon-close"></i></span>
-                <!-- <a class="ftNextSection" href="#"><i class="fticon-down"></i></a> -->
               </div>
   
               <div id="ftInfoContainer" class="ftInfoContainer">
@@ -451,7 +504,7 @@
                 
                 <div id="ueber-uns" class="ftInfoSection vertical-aligned">
                   <div class="ftInfoContent">
-                    <p class="ftHero">Field Trip ist ein interaktiver Dokumentarfilm über einen unkonventionellen Ort: das Tempelhofer Feld – ein Rollfeld im Herzen Berlins. Field Trip erzählt die Geschichte von dem, was für die Einen ein 300 ha freies Stadtparadies voller Möglichkeiten ist, für die Anderen ein Ort der Zwangsarbeit, eine neue Heimat für jemanden Dritten. Mit der Technik des Open Hypervideo und durch intensive Online und Onsite Community Entwicklung hat Field Trip die Ambition zu einem lebenden Dokumentarfilm zu werden.
+                    <p class="ftHero">Field Trip ist ein interaktiver Dokumentarfilm über einen unkonventionellen Ort: das Tempelhofer Feld – ein Rollfeld im Herzen Berlins. Field Trip erzählt die Geschichte von dem, was für die Einen ein 300 ha freies Stadtparadies voller Möglichkeiten ist, für die Anderen ein Ort der Zwangsarbeit, eine neue Heimat für jemanden Dritten. Mit der Technik des Open Hypervideo und durch intensive Online und Onsite Community Entwicklung hat Field Trip die Ambition zu einem lebenden Dokumentarfilm zu werden.
                     </p>
                    </div>                 
                 </div>
@@ -572,7 +625,7 @@
                         
                         <li>
                           <a class="partner-logo" href="http://www.inbak.de" target="_blank">
-                            <img width="" height="" src="_custom/graphics/FT-logo" alt="logo inbak" />
+                            <img width="" height="" src="_custom/graphics/FT-logo-bbxx.svg" alt="logo inbak" />
                           </a>
                         </li>
                         
@@ -595,7 +648,7 @@
                         </li>
                         <li>
                           <a class="partner-logo" href="http://www.cc-stiftung.de" target="_blank">
-                            <img width="" height="" src="_custom/graphics/FT-logo-" alt="logo" />
+                            <img width="" height="" src="_custom/graphics/FT-logo-checkpointcharlie.svg" alt="logo" />
                           </a>
                         </li>
                         
@@ -619,7 +672,7 @@
                         
                         <li>
                           <a class="partner-logo" href="http://www.dz-ns-zwangsarbeit.de" target="_blank">
-                            <img width="" height="" src="_custom/graphics/FT-logo" alt="logo Zwangsarbeit" />
+                            <img width="" height="" src="_custom/graphics/FT-logo-ns-zwangsarbeit.svg" alt="logo Zwangsarbeit" />
                           </a>
                         </li>
                       </ul>
@@ -651,7 +704,6 @@
                        
                        <p>The code snippet repository will make the technological components of the project available in the form of re-usable bits of code. This could be a small animation, a complex effect, or even just a button. The idea is to maintain an accessible list of stand-alone components, which can be re-used in other projects (detached from the actual contents). To make this as easy as possible, the repository will provide both a searchable website, as well as an open API to retrieve and contribute snippets. Through the same API, the code snippet repository will be integrated into <a href="https://frametrail.org" target="_blank"><b>FrameTrail</b></a>, allowing users to simply drag and drop existing components into a video, as well as share their new creations with everyone else.</p>
                        
-                       
                        <h5 class="highlighted highlighted--white">How will the contents be licensed?</h5>
                        
                        <p>While all code will be released under open source licenses - with no exceptions - the content itself (eg. video footage, photos, text) will be licensed in two ways:
@@ -659,7 +711,15 @@
                        In the case of archive footage or otherwise obtained material, we are not always in control of the licenses.</p>   
                   
                        <div class="ftInfoGithub">
-                         <a href="https://github.com/twwli/fieldtrip" target="_blank"><i class="fticon-logo-github"></i></a>
+                         <a href="https://github.com/OpenHypervideo/FieldTrip" target="_blank"><i class="fticon-logo-github"></i></a><br>
+                         <p>Field Trip on Github: <br>
+                         <a style="color: #000;" href="https://github.com/OpenHypervideo/FieldTrip" target="_blank">https://github.com/OpenHypervideo/FieldTrip</a></p>
+                         <p>Code Snippet Repository: <br>
+                            <a style="color: #000;" href="https://github.com/memory-shuffle/FrameTrail-CodeSnippet-Repository" target="_blank">https://github.com/memory-shuffle/FrameTrail-CodeSnippet-Repository</a>
+                        </p>
+                        <p>Media Repository: <br>
+                            <a style="color: #000;" href="https://beta.fieldtrip.berlin/resources.html" target="_blank">https://beta.fieldtrip.berlin/resources.html</a>
+                        </p>
                        </div>     
                    </div>                   
                 </div>
@@ -677,8 +737,7 @@
                        <p>Represented by: Eva Stotz<br />
                        Contact: <a href="mailto:info@fieldtrip.berlin">info@fieldtrip.berlin</a></p>
                        
-                       <p>Design: <a href="/" target="_blank">Olivier Guillard</a><br />
-                       Programming: <a href="/" target="_blank">Joscha Jaegger</a>
+                       <p>Design: Olivier Guillard
                      </div>             
                   </div>              
                 </div>

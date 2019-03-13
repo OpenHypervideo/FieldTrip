@@ -17,8 +17,94 @@
 	box-sizing: inherit;
 }
 
+
+
+body.userinactive .mainContainer:not(.editActive) .playerContainer #playCircleContainer, 
+body.userinactive #ftPointer,
+body.userinactive #fthypervideo .ftNavigation,
+body.userinactive #fthypervideo .ftAboutIconContainer {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: visibility 1.5s, opacity 1.5s;
+     -moz-transition: visibility 1.5s, opacity 1.5s;
+      -ms-transition: visibility 1.5s, opacity 1.5s;
+       -o-transition: visibility 1.5s, opacity 1.5s;
+          transition: visibility 1.5s, opacity 1.5s;
+}
+
 .editPropertiesContainer .overlayOptionsTabs .message {
 	width: 360px;
+}
+
+#VideoPlayer .playerContainer #playCircleContainer {
+	position: absolute;
+	top: 50%;
+	left: 25%;
+	margin-top: -90px;
+	margin-left: -90px;
+	width: 180px;
+	height: 180px;
+	text-align: center;
+	font-size: 2em;
+	z-index: 30;
+	color: #fec570;
+	border-radius: 100%;
+	background: url('../graphics/FT-play.svg') no-repeat center center;
+	background-size: 25px;
+	cursor: pointer;
+}
+
+.mainContainer.editActive #playCircleContainer {
+	display: none;
+}
+
+#VideoPlayer .playerContainer #playCircleContainer.playing {
+	background-image: url('../graphics/FT-pause.svg')
+}
+
+#VideoPlayer .playerContainer #playCircleContainer .fticon-right, #VideoPlayer .playerContainer #playCircleContainer svg {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	line-height: 180px;
+}
+
+#VideoPlayer .playerContainer #playCircleContainer svg > .circle {
+	fill: transparent !important;
+	stroke: #fec570;
+	stroke-width: 3;
+	stroke-dasharray: 900;
+	transition-duration: 0ms !important;
+	/* firefox bug fix - won't rotate at 90deg angles */
+	transform: rotate(-90deg) translateX(-179px);
+	-moz-transform: rotate(-90deg) translateX(-179px);
+}
+
+#VideoPlayer .playerContainer #playCircleContainer svg > .circle-bg {
+	fill: transparent !important;
+	stroke: #FFFFFF;
+	stroke-width: 2;
+	stroke-dasharray: none;
+	transition-duration: 0ms !important;
+	/* firefox bug fix - won't rotate at 90deg angles */
+	transform: rotate(-90deg) translateX(-179px);
+	-moz-transform: rotate(-90deg) translateX(-179px);
+	opacity: .5;
+}
+
+.hypervideoContainer .videoContainer .hypervideo .captionContainer {
+	position: fixed !important;
+}
+
+.mainContainer.editActive .hypervideoContainer .videoContainer .hypervideo .captionContainer {
+	display: none !important;
+}
+
+.hypervideoContainer .videoContainer .hypervideo .captionContainer .subtitleElement {
+	margin: 16px 50px;
 }
 
 #VideoPlayer .message.statusMessage.active {
@@ -77,6 +163,7 @@
 	bottom: 0px;
 	height: 20px;
 	min-height: 0;
+	display: none;
 }
 
 #VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .controls .playButton {
@@ -155,6 +242,16 @@
 	pointer-events: all;
 }
 
+.overlayElement .resourceDetail {
+	transform-origin: center;
+}
+
+.overlayElement .resourceDetail[data-type="text"] * {
+	text-shadow: 1px 1px 2px #000;
+	color: #ffffff !important;
+	font-size: 22px !important;
+}
+
 .overlayElement .resourceDetail[data-type="image"] img {
 	-webkit-transform: translate3d(0,0,0);
     -moz-transform: translate3d(0,0,0);
@@ -163,7 +260,7 @@
     backface-visibility: hidden;
     will-change: scale;
 	transform: scale(0.8, 0.8);
-	transform-origin: center;
+	transform-origin: center bottom;
 	transition-property: all;
 	transition-duration: 300ms;
 }

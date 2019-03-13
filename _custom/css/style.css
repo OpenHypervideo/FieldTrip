@@ -1193,7 +1193,9 @@ a {
   stroke: #fec570;
   stroke-width: 5;
   stroke-dasharray: 900;
-  transition: stroke-dashoffset 1s;
+  transition-property: stroke-dashoffset;
+  transition-duration: 1s;
+  /*transition: stroke-dashoffset 1s;*/
   -webkit-animation-play-state: running;
   
   /* firefox bug fix - won't rotate at 90deg angles */
@@ -1210,23 +1212,20 @@ a {
   animation: show100 2s;
 }
 
-.chart[data-percent='75'] .outer {
-  stroke-dashoffset: 133;
-  -webkit-animation: show75 2s;
-  animation: show75 2s;
+.chart svg {
+  overflow: visible;
 }
 
-.chart[data-percent='50'] .outer {
-  stroke-dashoffset: 267;
-  -webkit-animation: show50 2s;
-  animation: show50 2s;
+.linkPointer {
+  fill: #FFF;
+  stroke: #fec570;
+  stroke-width: 2px;
 }
 
-.chart[data-percent='25'] .outer {
-  stroke-dashoffset: 401;
-  -webkit-animation: show25 2s;
-  animation: show25 2s;
+.pointer-group.active .linkPointer, .pointer-group-player.active .linkPointer {
+  fill: #fec570;
 }
+
 /* END set initial animation values */
 
 /* Keyframes for the initial animation */
@@ -1382,6 +1381,7 @@ a {
   left: 120px;
   right: 120px;
   width: auto;
+  display: none;
 }
 
 #VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .playerProgress .ui-slider-range {
@@ -1480,7 +1480,6 @@ ABOUT / CREDITS / IMPRINT
   font-size: 1.25em;
   cursor: pointer;
   z-index: 10;
-  display: none;
 }
 
 .divider {
@@ -1517,6 +1516,10 @@ ABOUT / CREDITS / IMPRINT
   font-weight: 600;
   text-transform: uppercase;
   margin: 2.5vh 0;
+}
+
+#fthyperInfo .ftInfoNavigation li a {
+  cursor: pointer;
 }
 
 #fthyperInfo .ftInfoNavigation li a:before {
@@ -1703,6 +1706,10 @@ ABOUT / CREDITS / IMPRINT
 }
 
 /* Resourcen */
+
+#resourcen {
+  height: auto;
+}
 
 .ftInfoGithub {
   margin-top: 5vh; 
@@ -1896,6 +1903,16 @@ ABOUT / CREDITS / IMPRINT
 
 @media (max-width: 650px) {
   
+  .ftLayer .ftLogo {
+    top: 10px;
+    left: 12px;
+    font-size: 2em;
+  }
+  
+  [class^="fticon-"], [class*=" fticon-"] {
+    font-size: 80%;
+  }
+  
   #ftPointer {
     display: none !important;
   }
@@ -2026,6 +2043,10 @@ ABOUT / CREDITS / IMPRINT
   
   .ftHiddenMobile {
     display: none;
+  }
+  
+  .ftCloseInfo {
+    color: #000;
   }
 }
 
