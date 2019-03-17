@@ -588,7 +588,7 @@ a {
 	display: block;
 }
 
-.ftSound, .ftNavShare, .ftScreen, .ftNavAbout, .ftEdit {
+.ftSound, .ftNavShare, .ftScreen, .ftNavAbout, .ftEdit, .ftNavVision {
 	position: absolute;  
 }
 
@@ -624,14 +624,78 @@ a {
 }
 
 .ftNavShare {
-	bottom: 0;
+	top: 120px;
+}
+
+.ftNavVision {
+  bottom: 13px;
+  right: 14px;
+  z-index: 1000;
+}
+
+.ftNavVision .btn {
+  background: #fec570;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 2px;
+  -webkit-transition: all 400ms ease-in-out;
+  -moz-transition: all 400ms ease-in-out;
+  -ms-transition: all 400ms ease-in-out;
+  -o-transition: all 400ms ease-in-out;
+  transition: all 400ms ease-in-out;
+}
+
+.ftNavVision .btn:hover {
+  background: #e2ad66;
+}
+
+.ftNavVision a {
+  display: block;
+  padding: 10px 14px 6px;
+}
+
+.ftNavVision span, .ftNavVision img {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.ftNavVision span {
+  font-family: 'Rubik', helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1em;
+  margin-right: 10px;
+}
+
+.tooltip {
+  position: absolute;
+  background: rgba(0,0,0,.5);
+  top: -85px;
+  width: 280px;
+  right: 0;
+  padding: 15px;
+  line-height: 1.25em;
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,.5);
+  
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 400ms ease-in-out;
+  -moz-transition: all 400ms ease-in-out;
+  -ms-transition: all 400ms ease-in-out;
+  -o-transition: all 400ms ease-in-out;
+  transition: all 400ms ease-in-out;
+}
+
+.tooltip.is-visible {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* SHARING BUTTONS */
 
 .ftSocialNav {
   position: absolute;
-  bottom: 55px;
+  top: 41px;
   right: 17px;
   line-height: 1;
   
@@ -1594,7 +1658,7 @@ ABOUT / CREDITS / IMPRINT
 
 #ueber-uns .ftHero {
   max-width: 700px;
-  font-size: 1.35em;
+  font-size: 1.25em;
   line-height: 1.45em;
 }
 
@@ -1656,32 +1720,10 @@ ABOUT / CREDITS / IMPRINT
 
 #abspann li {
   float: left;
-  width: 20%;
+  width: 25%;
   position: relative;
-  border-right: 1px solid #fff;
 }
 
-#abspann li:nth-child(1),
-#abspann li:nth-child(2),
-#abspann li:nth-child(3),
-#abspann li:nth-child(4),
-#abspann li:nth-child(5),
-#abspann li:nth-child(6),
-#abspann li:nth-child(7),
-#abspann li:nth-child(8),
-#abspann li:nth-child(9),
-#abspann li:nth-child(10) {
-  border-bottom: 1px solid #fff;
-}
-
-#abspann li:nth-child(5),
-#abspann li:nth-child(10) {
-  border-right: none
-}
-
-#abspann li:last-child {
-  border: none;
-}
 
 #abspann li:after {
   content: "";
@@ -1855,8 +1897,199 @@ ABOUT / CREDITS / IMPRINT
 * Media Queries
 *******************/
 
-@media (min-width: 1220px) and (max-width: 2000px) {
+@media (min-width: 2201px) {
+  
+  .ftLayer .ftLogo {
+    top: 30px;
+    left: 30px;
+    font-size: 3.25em;
+  }
+  
+  #ftoverview #ftMapContainer #ftWeatherContainer {
+    top: 30px;
+    right: 90px;
+  }
 	
+  .ftLayer .ftLayerContent .ftNavigation {
+    width: 80px;
+  }
+  
+  .ftNavIconContainer {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    font-size: 2em;
+  }
+  
+  .ftScreen {
+    top: 100px;
+  }
+  
+  .ftNavShare {
+    top: 180px;
+  }
+  
+  .ftNavShare.ftNavIconContainer {
+    font-size: 2.75em !important;
+  }
+  
+  .ftSocialNav {
+    top: 55px;    
+    right: 18px;
+  }
+  
+  .ftSocialNav li {
+    margin-top: 20px;
+  }
+  
+  .ftNavIconContainer {
+    font-size: 2em !important;
+  }
+  
+  .ftNavIconContainer.ftAboutIconContainer {
+    font-size: 1.35em !important;
+  }
+  
+  .ftNavVision {
+    bottom: 24px;
+    right: 25px;
+  }
+  
+  .ftNavVision a {
+    padding: 13px 20px 10px;
+  }
+  
+  .ftNavVision span {
+    font-size: 1.15em;
+  }
+  
+  .ftNavVision img {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  
+  .switch-container {
+    left: 90px;
+    bottom: 34px;
+  }
+  
+  .ftCloseInfo {
+    font-size: 1.75em;
+  }
+  
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription span {
+    font-size: .65em;
+  }
+  
+  #ueber-uns .ftHero {
+    max-width: 45vw;
+    font-size: 1.25vw;
+  }
+  
+  #fthyperInfo .ftInfoNavigation li {
+    font-size: 1vw;
+  }
+  
+  #team .ftTeam-member h3 {
+    font-size: 1em;
+  }
+  
+  #team .ftTeam-member h4, #team .ftTeam-member a {
+    font-size: 1.15em;
+  }
+  
+  #abspann li {
+    width: 16.6666%;  
+  }
+}
+
+@media (min-width: 1500px) and (max-width: 2200px) {
+  
+  .ftLayer .ftLogo {
+    top: 30px;
+    left: 30px;
+    font-size: 3em;
+  }
+  
+  #ftoverview #ftMapContainer #ftWeatherContainer {
+    top: 30px;
+    right: 90px;
+  }
+	
+  .ftLayer .ftLayerContent .ftNavigation {
+    width: 80px;
+  }
+  
+  .ftNavIconContainer {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    font-size: 1.75em;
+  }
+  
+  .ftScreen {
+    top: 100px;
+  }
+  
+  .ftNavShare {
+    top: 180px;
+  }
+  
+  .ftNavShare.ftNavIconContainer {
+    font-size: 2.25em !important;
+  }
+  
+  .ftSocialNav {
+    top: 55px;    
+    right: 22px;
+  }
+  
+  .ftNavIconContainer {
+    font-size: 1.5em !important;
+  }
+  
+  .ftNavVision {
+    bottom: 24px;
+    right: 25px;
+  }
+  
+  .ftNavVision a {
+    padding: 13px 20px 10px;
+  }
+  
+  .ftNavVision span {
+    font-size: 1.15em;
+  }
+  
+  .ftNavVision img {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  
+  .switch-container {
+    left: 90px;
+    bottom: 34px;
+  }
+  
+  .ftCloseInfo {
+    font-size: 1.75em;
+  }
+  
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription span {
+    font-size: .65em;
+  }
+  
+  #team .ftTeam-member h3 {
+    font-size: 1em;
+  }
+  
+  #team .ftTeam-member h4, #team .ftTeam-member a {
+    font-size: 1.15em;
+  }
+  
+  #abspann li {
+    width: 16.6666%;  
+  }
 }
 
 @media (min-width: 1010px) and (max-width: 1220px) {
@@ -1876,29 +2109,8 @@ ABOUT / CREDITS / IMPRINT
   }
   
   #abspann li {
-    width: 25%;
-  }
-  
-  #abspann li {
-    border-bottom: 1px solid #fff;
-    border-right: 1px solid #fff;
-  }
-  
-  #abspann li:nth-child(5), #abspann li:nth-child(10) {
-    border-right: 1px solid #fff;
+    width: 33.3333%;
   }  
-  
-  #abspann li:nth-child(4),
-  #abspann li:nth-child(8),
-  #abspann li:nth-child(12) {
-    border-right: none;
-  } 
- 
-  #abspann li:nth-child(13),
-  #abspann li:nth-child(14),
-  #abspann li:nth-child(15) {
-   border-bottom: none;
-  }   
 }
 
 @media (max-width: 650px) {
@@ -1948,10 +2160,37 @@ ABOUT / CREDITS / IMPRINT
     width: 40px;
     right: 0;
   }
-  
+    
   .ftNavShare {
-    bottom: 0;
+    top: 80px;
     right: 0;
+  }
+  
+  .ftSocialNav {
+    width: 65px;
+    top: 4px;
+    right: 30px;
+  }
+  
+  .ftSocialNav li {
+    float: left;
+    margin-top: 0;
+    margin-right: 10px;
+  }
+  
+  .ftNavVision span {
+    font-size: .9em;
+  }
+  
+  .ftNavVision img {
+    width: 17px !important;
+    height: 17px !important;
+  }
+  
+  .tooltip {
+    font-size: .85em;
+    width: 245px;
+    top: -80px;
   }
   
   .switch-container {
@@ -2007,36 +2246,7 @@ ABOUT / CREDITS / IMPRINT
   #abspann li {
     width: 33.333%;
   }
-  
-  #abspann li:nth-child(1),
-  #abspann li:nth-child(2),
-  #abspann li:nth-child(3),
-  #abspann li:nth-child(4),
-  #abspann li:nth-child(5),
-  #abspann li:nth-child(6),
-  #abspann li:nth-child(7),
-  #abspann li:nth-child(8),
-  #abspann li:nth-child(9),
-  #abspann li:nth-child(10),
-  #abspann li:nth-child(11),
-  #abspann li:nth-child(12) {
-    border-bottom: 1px solid #fff;
-  }
-  
-  #abspann li:nth-child(5),
-  #abspann li:nth-child(10),
-  #abspann li:nth-child(13) {
-    border-right: 1px solid #fff;
-  }
-  
-  #abspann li:nth-child(3),
-  #abspann li:nth-child(6),
-  #abspann li:nth-child(9),
-  #abspann li:nth-child(12),
-  #abspann li:nth-child(15) {
-    border-right: none;
-  }
-  
+
   .ftCloseInfo {
     display: block;
   }
@@ -2073,6 +2283,19 @@ ABOUT / CREDITS / IMPRINT
     right: 12px;
   }
   
+  .ftNavShare {
+    top: 80px;
+  }
+  
+  .ftNavVision span {
+    font-size: .9em;
+  }
+  
+  .ftNavVision img {
+    width: 17px !important;
+    height: 17px !important;
+  }
+  
   #ueber-uns .ftHero {
     margin-top: 52px;
   }
@@ -2089,20 +2312,8 @@ ABOUT / CREDITS / IMPRINT
   
   #abspann li {
     width: 50%;
-    border-bottom: 1px solid #fff !important;
   }
-  
-  #abspann li:nth-child(even) {
-    border-right: none !important;
-  }
-  
-  #abspann li:nth-child(odd) {
-    border-right: 1px solid #fff !important;
-  }
-  
-  #abspann li:last-child {
-    border-bottom: none !important;
-  }
+
   
   
 }

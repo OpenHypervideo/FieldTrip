@@ -315,6 +315,17 @@ function initEventListeners() {
 	$('#ftCloseInfo').click(function() {
 	    $('#fthyperInfo').removeClass('is-open');
 	}); 
+  
+  /* Deine Vision Tooltip */
+  
+  $( ".ftNavVision .btn" )
+    .mouseover(function() {
+      $('.tooltip').addClass("is-visible");
+    })
+    .mouseout(function() {
+      $('.tooltip').removeClass("is-visible");
+  });
+  
 	
 	/* Social Network */
 	

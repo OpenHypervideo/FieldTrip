@@ -2,14 +2,33 @@
 
 .captionContainer .subtitleElement {
 	color: #ffffff;
-    font-size: 20px;
-    font-weight: 200;
-    letter-spacing: 1px;
-    line-height: 30px;
-    margin: 10px 20px;
-    text-align: center;
+  font-size: 2vw;
+  letter-spacing: 0;
+  font-weight: 200;
+  line-height: 1;
+  margin: 1em 5vw;
+  text-align: center;
 	background: transparent;
 	display: none;
+  width: 90vw;
+}
+
+@media (min-width: 1700px) {
+	.captionContainer .subtitleElement {
+    margin: .5em 5vw;
+  }
+}
+
+@media (max-width: 920px) {
+  .captionContainer .subtitleElement {
+    font-size: 3vw;
+  }
+}
+
+@media (max-width: 650px) { 
+  .captionContainer .subtitleElement {
+    font-size: 4vw;
+  }
 }
 
 .captionContainer .subtitleElement.active {
