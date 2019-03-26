@@ -252,84 +252,608 @@ Icons
   content: "\e925";
 }
 
-
-/* Weather icon font from http://fonts.artill.de/collection/artill-weather-icons */
-
+/*!
+ *  Weather Icons 2.0.8
+ *  Updated September 19, 2015
+ *  Weather themed icons for Bootstrap
+ *  Author - Erik Flowers - erik@helloerik.com
+ *  Email: erik@helloerik.com
+ *  Twitter: http://twitter.com/Erik_UX
+ *  ------------------------------------------------------------------------------
+ *  Maintained at http://erikflowers.github.io/weather-icons
+ *
+ *  License
+ *  ------------------------------------------------------------------------------
+ *  - Font licensed under SIL OFL 1.1 -
+ *    http://scripts.sil.org/OFL
+ *  - CSS, SCSS and LESS are licensed under MIT License -
+ *    http://opensource.org/licenses/mit-license.html
+ *  - Documentation licensed under CC BY 3.0 -
+ *    http://creativecommons.org/licenses/by/3.0/
+ *  - Inspired by and works great as a companion with Font Awesome
+ *    "Font Awesome by Dave Gandy - http://fontawesome.io"
+ */
 @font-face {
-    font-family: 'weather';
-    src: url('../fonts/artill_clean_icons-webfont.eot');
-    src: url('../fonts/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/artill_clean_icons-webfont.woff') format('woff'),
-         url('../fonts/artill_clean_icons-webfont.ttf') format('truetype'),
-         url('../fonts/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'weathericons';
+  src: url('../fonts/weathericons-regular-webfont.eot');
+  src: url('../fonts/weathericons-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/weathericons-regular-webfont.woff2') format('woff2'), url('../fonts/weathericons-regular-webfont.woff') format('woff'), url('../fonts/weathericons-regular-webfont.ttf') format('truetype'), url('../fonts/weathericons-regular-webfont.svg#weather_iconsregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
-
-[class^="weathericon-"], [class*=" weathericon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'weather' !important;
-  speak: none;
+.wi {
+  display: inline-block;
+  font-family: 'weathericons';
   font-style: normal;
   font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
   line-height: 1;
-
-  /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-.weathericon-0:before { content: ":"; }
-.weathericon-1:before { content: "p"; }
-.weathericon-2:before { content: "S"; }
-.weathericon-3:before { content: "Q"; }
-.weathericon-4:before { content: "S"; }
-.weathericon-5:before { content: "W"; }
-.weathericon-6:before { content: "W"; }
-.weathericon-7:before { content: "W"; }
-.weathericon-8:before { content: "W"; }
-.weathericon-9:before { content: "I"; }
-.weathericon-10:before { content: "W"; }
-.weathericon-11:before { content: "I"; }
-.weathericon-12:before { content: "I"; }
-.weathericon-13:before { content: "I"; }
-.weathericon-14:before { content: "I"; }
-.weathericon-15:before { content: "W"; }
-.weathericon-16:before { content: "I"; }
-.weathericon-17:before { content: "W"; }
-.weathericon-18:before { content: "U"; }
-.weathericon-19:before { content: "Z"; }
-.weathericon-20:before { content: "Z"; }
-.weathericon-21:before { content: "Z"; }
-.weathericon-22:before { content: "Z"; }
-.weathericon-23:before { content: "Z"; }
-.weathericon-24:before { content: "E"; }
-.weathericon-25:before { content: "E"; }
-.weathericon-26:before { content: "3"; }
-.weathericon-27:before { content: "a"; }
-.weathericon-28:before { content: "A"; }
-.weathericon-29:before { content: "a"; }
-.weathericon-30:before { content: "A"; }
-.weathericon-31:before { content: "6"; }
-.weathericon-32:before { content: "1"; }
-.weathericon-33:before { content: "6"; }
-.weathericon-34:before { content: "1"; }
-.weathericon-35:before { content: "W"; }
-.weathericon-36:before { content: "1"; }
-.weathericon-37:before { content: "S"; }
-.weathericon-38:before { content: "S"; }
-.weathericon-39:before { content: "S"; }
-.weathericon-40:before { content: "M"; }
-.weathericon-41:before { content: "W"; }
-.weathericon-42:before { content: "I"; }
-.weathericon-43:before { content: "W"; }
-.weathericon-44:before { content: "a"; }
-.weathericon-45:before { content: "S"; }
-.weathericon-46:before { content: "U"; }
-.weathericon-47:before { content: "S"; }
-
+.wi-fw {
+  text-align: center;
+  width: 1.4em;
+}
+.wi-rotate-90 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.wi-rotate-180 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.wi-rotate-270 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.wi-flip-horizontal {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
+  -webkit-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+.wi-flip-vertical {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
+  -webkit-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
+.wi-owm-200:before {
+  content: "\f01e";
+}
+.wi-owm-201:before {
+  content: "\f01e";
+}
+.wi-owm-202:before {
+  content: "\f01e";
+}
+.wi-owm-210:before {
+  content: "\f016";
+}
+.wi-owm-211:before {
+  content: "\f016";
+}
+.wi-owm-212:before {
+  content: "\f016";
+}
+.wi-owm-221:before {
+  content: "\f016";
+}
+.wi-owm-230:before {
+  content: "\f01e";
+}
+.wi-owm-231:before {
+  content: "\f01e";
+}
+.wi-owm-232:before {
+  content: "\f01e";
+}
+.wi-owm-300:before {
+  content: "\f01c";
+}
+.wi-owm-301:before {
+  content: "\f01c";
+}
+.wi-owm-302:before {
+  content: "\f019";
+}
+.wi-owm-310:before {
+  content: "\f017";
+}
+.wi-owm-311:before {
+  content: "\f019";
+}
+.wi-owm-312:before {
+  content: "\f019";
+}
+.wi-owm-313:before {
+  content: "\f01a";
+}
+.wi-owm-314:before {
+  content: "\f019";
+}
+.wi-owm-321:before {
+  content: "\f01c";
+}
+.wi-owm-500:before {
+  content: "\f01c";
+}
+.wi-owm-501:before {
+  content: "\f019";
+}
+.wi-owm-502:before {
+  content: "\f019";
+}
+.wi-owm-503:before {
+  content: "\f019";
+}
+.wi-owm-504:before {
+  content: "\f019";
+}
+.wi-owm-511:before {
+  content: "\f017";
+}
+.wi-owm-520:before {
+  content: "\f01a";
+}
+.wi-owm-521:before {
+  content: "\f01a";
+}
+.wi-owm-522:before {
+  content: "\f01a";
+}
+.wi-owm-531:before {
+  content: "\f01d";
+}
+.wi-owm-600:before {
+  content: "\f01b";
+}
+.wi-owm-601:before {
+  content: "\f01b";
+}
+.wi-owm-602:before {
+  content: "\f0b5";
+}
+.wi-owm-611:before {
+  content: "\f017";
+}
+.wi-owm-612:before {
+  content: "\f017";
+}
+.wi-owm-615:before {
+  content: "\f017";
+}
+.wi-owm-616:before {
+  content: "\f017";
+}
+.wi-owm-620:before {
+  content: "\f017";
+}
+.wi-owm-621:before {
+  content: "\f01b";
+}
+.wi-owm-622:before {
+  content: "\f01b";
+}
+.wi-owm-701:before {
+  content: "\f014";
+}
+.wi-owm-711:before {
+  content: "\f062";
+}
+.wi-owm-721:before {
+  content: "\f0b6";
+}
+.wi-owm-731:before {
+  content: "\f063";
+}
+.wi-owm-741:before {
+  content: "\f014";
+}
+.wi-owm-761:before {
+  content: "\f063";
+}
+.wi-owm-762:before {
+  content: "\f063";
+}
+.wi-owm-771:before {
+  content: "\f011";
+}
+.wi-owm-781:before {
+  content: "\f056";
+}
+.wi-owm-800:before {
+  content: "\f00d";
+}
+.wi-owm-801:before {
+  content: "\f011";
+}
+.wi-owm-802:before {
+  content: "\f011";
+}
+.wi-owm-803:before {
+  content: "\f012";
+}
+.wi-owm-804:before {
+  content: "\f013";
+}
+.wi-owm-900:before {
+  content: "\f056";
+}
+.wi-owm-901:before {
+  content: "\f01d";
+}
+.wi-owm-902:before {
+  content: "\f073";
+}
+.wi-owm-903:before {
+  content: "\f076";
+}
+.wi-owm-904:before {
+  content: "\f072";
+}
+.wi-owm-905:before {
+  content: "\f021";
+}
+.wi-owm-906:before {
+  content: "\f015";
+}
+.wi-owm-957:before {
+  content: "\f050";
+}
+.wi-owm-day-200:before {
+  content: "\f010";
+}
+.wi-owm-day-201:before {
+  content: "\f010";
+}
+.wi-owm-day-202:before {
+  content: "\f010";
+}
+.wi-owm-day-210:before {
+  content: "\f005";
+}
+.wi-owm-day-211:before {
+  content: "\f005";
+}
+.wi-owm-day-212:before {
+  content: "\f005";
+}
+.wi-owm-day-221:before {
+  content: "\f005";
+}
+.wi-owm-day-230:before {
+  content: "\f010";
+}
+.wi-owm-day-231:before {
+  content: "\f010";
+}
+.wi-owm-day-232:before {
+  content: "\f010";
+}
+.wi-owm-day-300:before {
+  content: "\f00b";
+}
+.wi-owm-day-301:before {
+  content: "\f00b";
+}
+.wi-owm-day-302:before {
+  content: "\f008";
+}
+.wi-owm-day-310:before {
+  content: "\f008";
+}
+.wi-owm-day-311:before {
+  content: "\f008";
+}
+.wi-owm-day-312:before {
+  content: "\f008";
+}
+.wi-owm-day-313:before {
+  content: "\f008";
+}
+.wi-owm-day-314:before {
+  content: "\f008";
+}
+.wi-owm-day-321:before {
+  content: "\f00b";
+}
+.wi-owm-day-500:before {
+  content: "\f00b";
+}
+.wi-owm-day-501:before {
+  content: "\f008";
+}
+.wi-owm-day-502:before {
+  content: "\f008";
+}
+.wi-owm-day-503:before {
+  content: "\f008";
+}
+.wi-owm-day-504:before {
+  content: "\f008";
+}
+.wi-owm-day-511:before {
+  content: "\f006";
+}
+.wi-owm-day-520:before {
+  content: "\f009";
+}
+.wi-owm-day-521:before {
+  content: "\f009";
+}
+.wi-owm-day-522:before {
+  content: "\f009";
+}
+.wi-owm-day-531:before {
+  content: "\f00e";
+}
+.wi-owm-day-600:before {
+  content: "\f00a";
+}
+.wi-owm-day-601:before {
+  content: "\f0b2";
+}
+.wi-owm-day-602:before {
+  content: "\f00a";
+}
+.wi-owm-day-611:before {
+  content: "\f006";
+}
+.wi-owm-day-612:before {
+  content: "\f006";
+}
+.wi-owm-day-615:before {
+  content: "\f006";
+}
+.wi-owm-day-616:before {
+  content: "\f006";
+}
+.wi-owm-day-620:before {
+  content: "\f006";
+}
+.wi-owm-day-621:before {
+  content: "\f00a";
+}
+.wi-owm-day-622:before {
+  content: "\f00a";
+}
+.wi-owm-day-701:before {
+  content: "\f003";
+}
+.wi-owm-day-711:before {
+  content: "\f062";
+}
+.wi-owm-day-721:before {
+  content: "\f0b6";
+}
+.wi-owm-day-731:before {
+  content: "\f063";
+}
+.wi-owm-day-741:before {
+  content: "\f003";
+}
+.wi-owm-day-761:before {
+  content: "\f063";
+}
+.wi-owm-day-762:before {
+  content: "\f063";
+}
+.wi-owm-day-781:before {
+  content: "\f056";
+}
+.wi-owm-day-800:before {
+  content: "\f00d";
+}
+.wi-owm-day-801:before {
+  content: "\f000";
+}
+.wi-owm-day-802:before {
+  content: "\f000";
+}
+.wi-owm-day-803:before {
+  content: "\f000";
+}
+.wi-owm-day-804:before {
+  content: "\f00c";
+}
+.wi-owm-day-900:before {
+  content: "\f056";
+}
+.wi-owm-day-902:before {
+  content: "\f073";
+}
+.wi-owm-day-903:before {
+  content: "\f076";
+}
+.wi-owm-day-904:before {
+  content: "\f072";
+}
+.wi-owm-day-906:before {
+  content: "\f004";
+}
+.wi-owm-day-957:before {
+  content: "\f050";
+}
+.wi-owm-night-200:before {
+  content: "\f02d";
+}
+.wi-owm-night-201:before {
+  content: "\f02d";
+}
+.wi-owm-night-202:before {
+  content: "\f02d";
+}
+.wi-owm-night-210:before {
+  content: "\f025";
+}
+.wi-owm-night-211:before {
+  content: "\f025";
+}
+.wi-owm-night-212:before {
+  content: "\f025";
+}
+.wi-owm-night-221:before {
+  content: "\f025";
+}
+.wi-owm-night-230:before {
+  content: "\f02d";
+}
+.wi-owm-night-231:before {
+  content: "\f02d";
+}
+.wi-owm-night-232:before {
+  content: "\f02d";
+}
+.wi-owm-night-300:before {
+  content: "\f02b";
+}
+.wi-owm-night-301:before {
+  content: "\f02b";
+}
+.wi-owm-night-302:before {
+  content: "\f028";
+}
+.wi-owm-night-310:before {
+  content: "\f028";
+}
+.wi-owm-night-311:before {
+  content: "\f028";
+}
+.wi-owm-night-312:before {
+  content: "\f028";
+}
+.wi-owm-night-313:before {
+  content: "\f028";
+}
+.wi-owm-night-314:before {
+  content: "\f028";
+}
+.wi-owm-night-321:before {
+  content: "\f02b";
+}
+.wi-owm-night-500:before {
+  content: "\f02b";
+}
+.wi-owm-night-501:before {
+  content: "\f028";
+}
+.wi-owm-night-502:before {
+  content: "\f028";
+}
+.wi-owm-night-503:before {
+  content: "\f028";
+}
+.wi-owm-night-504:before {
+  content: "\f028";
+}
+.wi-owm-night-511:before {
+  content: "\f026";
+}
+.wi-owm-night-520:before {
+  content: "\f029";
+}
+.wi-owm-night-521:before {
+  content: "\f029";
+}
+.wi-owm-night-522:before {
+  content: "\f029";
+}
+.wi-owm-night-531:before {
+  content: "\f02c";
+}
+.wi-owm-night-600:before {
+  content: "\f02a";
+}
+.wi-owm-night-601:before {
+  content: "\f0b4";
+}
+.wi-owm-night-602:before {
+  content: "\f02a";
+}
+.wi-owm-night-611:before {
+  content: "\f026";
+}
+.wi-owm-night-612:before {
+  content: "\f026";
+}
+.wi-owm-night-615:before {
+  content: "\f026";
+}
+.wi-owm-night-616:before {
+  content: "\f026";
+}
+.wi-owm-night-620:before {
+  content: "\f026";
+}
+.wi-owm-night-621:before {
+  content: "\f02a";
+}
+.wi-owm-night-622:before {
+  content: "\f02a";
+}
+.wi-owm-night-701:before {
+  content: "\f04a";
+}
+.wi-owm-night-711:before {
+  content: "\f062";
+}
+.wi-owm-night-721:before {
+  content: "\f0b6";
+}
+.wi-owm-night-731:before {
+  content: "\f063";
+}
+.wi-owm-night-741:before {
+  content: "\f04a";
+}
+.wi-owm-night-761:before {
+  content: "\f063";
+}
+.wi-owm-night-762:before {
+  content: "\f063";
+}
+.wi-owm-night-781:before {
+  content: "\f056";
+}
+.wi-owm-night-800:before {
+  content: "\f02e";
+}
+.wi-owm-night-801:before {
+  content: "\f022";
+}
+.wi-owm-night-802:before {
+  content: "\f022";
+}
+.wi-owm-night-803:before {
+  content: "\f022";
+}
+.wi-owm-night-804:before {
+  content: "\f086";
+}
+.wi-owm-night-900:before {
+  content: "\f056";
+}
+.wi-owm-night-902:before {
+  content: "\f073";
+}
+.wi-owm-night-903:before {
+  content: "\f076";
+}
+.wi-owm-night-904:before {
+  content: "\f072";
+}
+.wi-owm-night-906:before {
+  content: "\f024";
+}
+.wi-owm-night-957:before {
+  content: "\f050";
+}
 
 /* ==========================================================================
 Theme Custom Style
@@ -802,8 +1326,8 @@ a {
 #ftWeatherIcon i {
   display: inline-block;
   vertical-align: top;
-  font-size: 50px;
-  line-height: 25px;
+  font-size: 28px;
+  line-height: 22px;
   padding: 7px 0 6px;
 }
 
