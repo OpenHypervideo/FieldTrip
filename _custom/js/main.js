@@ -207,6 +207,7 @@ $(document).ready(function() {
 		activateLayer('overview');
 	});
 
+	/*
 	$.getScript("https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js").then( function() {
 		
 		$.simpleWeather({
@@ -224,6 +225,25 @@ $(document).ready(function() {
 		});
 	  
 	});
+	*/
+	$.ajax({
+        type:   "GET",
+        url:    "openweathermap.php",
+        cache:  false,
+        dataType: "json",
+        mimeType: "application/json"
+    }).done(function(response){
+
+    	var weatherData = response.data;
+
+        $('#ftWeatherTemperature').text(Math.round(weatherData.main.temp) + '°C'),
+		$('#ftWeatherIcon').html('<i class="wi wi-owm-'+ weatherData.weather[0].id +'"></i>');
+
+    }).fail(function(error){
+
+        console.log(error.responseText);
+
+    });
 
 	updateTime();
 
