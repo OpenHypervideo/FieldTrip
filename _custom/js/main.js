@@ -43,6 +43,9 @@ var previousLayer,
 	timeInterval = null,
 	muted = false;
 
+var sunsetHour = 19,
+	sunriseHour = 6;
+
 /* Transitions / Links */
 
 //var pointerSeconds = [2.25, 4.6, 7, 8.3];
@@ -236,8 +239,14 @@ $(document).ready(function() {
 
     	var weatherData = response.data;
 
+    	var currentHours = new Date().getHours();
+    	var daylight = 'day';  
+		if ((currentHours >= sunsetHour) || (currentHours <= sunriseHour)) {
+			daylight = 'night';
+		}
+
         $('#ftWeatherTemperature').text(Math.round(weatherData.main.temp) + '°C'),
-		$('#ftWeatherIcon').html('<i class="wi wi-owm-'+ weatherData.weather[0].id +'"></i>');
+		$('#ftWeatherIcon').html('<i class="wi wi-owm-'+ daylight +'-'+ weatherData.weather[0].id +'"></i>');
 
     }).fail(function(error){
 
@@ -394,7 +403,7 @@ function initEventListeners() {
 	/* Switch Button / Night Mode */
 	
 	var currentHours = new Date().getHours();  
-	if ((currentHours >= 17) || (currentHours <= 7)) {
+	if ((currentHours >= sunsetHour) || (currentHours <= sunriseHour)) {
 		$('#ftSwitchCheckbox input:checkbox').prop('checked', true);
 		$('body').addClass("night");
 	}
