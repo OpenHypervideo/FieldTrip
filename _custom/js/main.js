@@ -43,8 +43,14 @@ var previousLayer,
 	timeInterval = null,
 	muted = false;
 
-var sunsetHour = 19,
-	sunriseHour = 6;
+/* Sunrise / Sunset Hours */
+
+var sunsetHours  = [17,18,19,21,21,22,22,21,20,19,17,17],
+	sunriseHours = [8,7,6,6,5,5,5,6,6,7,7,8],
+	currentMonth = new Date().getMonth();
+
+var sunsetHour = sunsetHours[currentMonth],
+	sunriseHour = sunriseHours[currentMonth];
 
 /* Transitions / Links */
 
@@ -239,7 +245,7 @@ $(document).ready(function() {
 
     	var weatherData = response.data;
 
-    	var currentHours = new Date().getHours();
+    	var currentHours = getLocalTime().getHours();
     	var daylight = 'day';  
 		if ((currentHours >= sunsetHour) || (currentHours <= sunriseHour)) {
 			daylight = 'night';
@@ -402,7 +408,7 @@ function initEventListeners() {
 	
 	/* Switch Button / Night Mode */
 	
-	var currentHours = new Date().getHours();  
+	var currentHours = getLocalTime().getHours();  
 	if ((currentHours >= sunsetHour) || (currentHours <= sunriseHour)) {
 		$('#ftSwitchCheckbox input:checkbox').prop('checked', true);
 		$('body').addClass("night");
@@ -795,13 +801,10 @@ function rescaleMapCanvas() {
 
 function updateTime() {
 	if (!timeInterval) {
-		var daylightSavingsOffset = (isDST(new Date()) ? 2 : 1),
-		d = new Date(),
-		utc = d.getTime() + (d.getTimezoneOffset() * 60000),
-		newDate = new Date(utc + (3600000*daylightSavingsOffset)).toLocaleString('de-DE', {
+		var newDate = getLocalTime().toLocaleString('de-DE', {
 			hour: '2-digit',
 			minute: '2-digit'
-		});
+		});;
 		$('#ftWeatherTime').text(newDate);
 
 		//console.log('UPDATING TIME');
@@ -814,6 +817,15 @@ function updateTime() {
 		timeInterval = null;
 		updateTime();
 	}
+}
+
+function getLocalTime() {
+	var daylightSavingsOffset = (isDST(new Date()) ? 2 : 1),
+		d = new Date(),
+		utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+
+	var dateObj = new Date(utc + (3600000*daylightSavingsOffset));
+	return dateObj;
 }
 
  function isDST(t) {
