@@ -25,3 +25,7 @@ pids
 
 #data folder
 _data/
+#visitors file
+visitors.db
+#avoid accidental commits of open weather map api key
+openweathermap.php
