@@ -35,7 +35,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 /* End custom cursor */
 
-var previousLayer,
+var FieldTripReady = false,
+	previousLayer,
 	currentLayer = undefined,
 	activeVideoID = undefined,
 	introTimeout,
@@ -147,6 +148,7 @@ $(document).ready(function() {
 
 	FieldTrip.on('ready', function() {
 				
+		FieldTripReady = true;
 		initPlayCircle();
 		initTransitions('.mainContainer');
 		/*
@@ -201,7 +203,7 @@ $(document).ready(function() {
 	//$('.ftLoadingIndicator').removeClass('active').fadeOut(1000);
 	//activateLayer('Overview');
 
-	window.history.replaceState({}, '', '#');
+	//window.history.replaceState({}, '', '#');
 
 	//$('#ftIntroVideo').load();
 
@@ -212,8 +214,8 @@ $(document).ready(function() {
 	});
 
 	window.setTimeout(function() {
-
-		$('#ftStartButton').show().click(function() {
+		
+		$('#ftStartButton').click(function() {
 
 			$(this).hide();
 
@@ -236,8 +238,17 @@ $(document).ready(function() {
 	$('#ftIntroVideo').on('ended', function() {
 		updateEpisodeTimings();
 
-		window.history.pushState({}, '', '#overview');
-		activateLayer('overview');
+		if (previousLayer && previousLayer == 'overview') {
+			window.history.pushState({}, '', '#overview');
+			activateLayer('overview');
+		} else {
+			$('#ftoverview').css('opacity', 0);
+			var episodes = [9,10,11,12],
+				randomEpisode = episodes[Math.floor(Math.random()*episodes.length)];
+
+			window.location.hash = '#hypervideo='+ randomEpisode;
+		}
+		
 	});
 
 	/*
@@ -307,6 +318,12 @@ $(document).ready(function() {
 	FieldTrip.on('pause', function(evt) {
 		updateEpisodeTimings();
 	});
+
+	window.setTimeout(function() {
+		$('body').animate({
+			'opacity': 1
+		}, 1000);
+	}, 3000);
 	
 }); // End Document Ready
 
@@ -318,8 +335,18 @@ $(window).resize(function() {
 
 function initEventListeners() {
 
+	if (location.hash.split('#').length == 1) {
+		$('#ftintro').addClass('active').show();
+		if (!previousLayer) {
+			$('#ftStartButton').show();
+		}
+	}
+
 	// Hash Change Listener
 	$(window).on('popstate', function() {
+		
+		if (location.hash.split('#').length == 1) { return; }
+
 		var hash = location.hash.split('#')[1].split('=');
 		if (hash[1]) {
 			activateLayer(hash[0], hash[1].split('&')[0]);
@@ -327,6 +354,8 @@ function initEventListeners() {
 			activateLayer(hash[0]);
 		}
 	});
+
+	$(window).trigger('popstate');
 
 	// Edit Button
 	$('.ftEdit').click(function() {
@@ -451,8 +480,8 @@ function initEventListeners() {
 
 	//hide = true;
 	$('#ftoverview').on("click", function (evt) {
-	    
-	    if ($(evt.target).attr('id') == 'ftMapContainer' || $(evt.target).attr('id') == 'ftMap') {
+	    //console.log(evt);
+	    if ($(evt.target).attr('id') == 'ftMapContainer' || $(evt.target).attr('id') == 'ftMap' || $(evt.target).attr('id') == 'ftMapCanvas') {
 	    	$('.ftMapPinDescription').removeClass('is-visible');
 	    }
 	    //hide = true;
@@ -522,6 +551,7 @@ function activateLayer(layerName, videoID) {
 					FieldTrip.pause();
 				});
 			}
+			
 			introTimeout = window.setTimeout(function() {
 				$('#ftIntroVideo')[0].currentTime = 0;
 				$('#ftIntroVideo')[0].play();
@@ -538,6 +568,7 @@ function activateLayer(layerName, videoID) {
 			break;
 		case 'overview':
 			// Overview
+			$('#ftoverview').css('opacity', '');
 			if (FieldTrip.pause) {
 				$('.hypervideo .video').stop(true, false).animate({
 					volume: 0
@@ -562,7 +593,9 @@ function activateLayer(layerName, videoID) {
 			// Video
 			
 			$('.hypervideo .video').prop('volume', 0);
-			initTransitions('.mainContainer');
+			if (FieldTripReady) {
+				initTransitions('.mainContainer');
+			}
 			updateMuted();
 			renderPlayCircleLinks();
 
@@ -573,7 +606,7 @@ function activateLayer(layerName, videoID) {
 			});
 			
 			//console.log(activeVideoID, videoID);
-			if (!activeVideoID) {
+			if (!activeVideoID && FieldTripReady) {
 				playTransitionLoading();
 				window.setTimeout(function() {
 					$(window).resize();
@@ -588,7 +621,7 @@ function activateLayer(layerName, videoID) {
 						});
 					}, 800);
 				}, 1600);
-			} else if (activeVideoID != videoID) {
+			} else if (activeVideoID != videoID && FieldTripReady) {
 				playTransitionLoading();
 			} else {
 				window.setTimeout(function() {
@@ -604,6 +637,8 @@ function activateLayer(layerName, videoID) {
 					}, 800);
 				}, 1600);
 			}
+
+			$('#fthypervideo #VideoPlayer').addClass('active');
 			
 			$('#ftIntroVideo')[0].pause();
 			window.clearTimeout(introTimeout);
