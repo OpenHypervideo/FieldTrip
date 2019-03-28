@@ -108,6 +108,24 @@ $(document).ready(function() {
 		});
 	}
 
+	$.ajax({
+        type:   "GET",
+        url:    "visitorcount.php",
+        cache:  false,
+        dataType: "json",
+        mimeType: "application/json"
+    }).done(function(data){
+
+        if (data.visitors) {
+            $(".ftNavVisitors").text(data.visitors);
+        }
+        
+    }).fail(function(error){
+
+        console.log(error.responseText);
+
+    });
+
 	window.FieldTrip = FrameTrail.init({
 		target:             '#VideoPlayer',
 		contentTargets:     {},
@@ -170,6 +188,12 @@ $(document).ready(function() {
 		window.history.pushState({}, '', '#overview');
 		activateLayer('overview');
 		*/
+	});
+
+	FieldTrip.on('userAction', function(evt) {
+		if (evt.detail.action == 'EditEnd') {
+			$('.ftNavAbout, .ftNavShare').show();
+		}
 	});
 
 	initEventListeners();
