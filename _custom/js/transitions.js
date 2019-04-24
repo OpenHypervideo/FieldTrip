@@ -41,19 +41,19 @@ function initTransitions(parentSelector) {
 	window.audioIn = document.createElement('audio');
 	audioIn.loop = false;
 	audioIn.setAttribute('preload', 'auto');
-	audioIn.setAttribute('src', '_custom/audio/wind_in.mp3');
+	audioIn.setAttribute('src', '_data/resources/1_1556097474_sound-wind-in.mp3');
 	transitionContainer.append(audioIn);
 
 	window.audioLoading = document.createElement('audio');
 	audioLoading.loop = true;
 	audioLoading.setAttribute('preload', 'auto');
-	audioLoading.setAttribute('src', '_custom/audio/wind_loading.mp3');
+	audioLoading.setAttribute('src', '_data/resources/1_1556097493_sound-wind-loading.mp3');
 	transitionContainer.append(audioLoading);
 
 	window.audioOut = document.createElement('audio');
 	audioOut.loop = false;
 	audioOut.setAttribute('preload', 'auto');
-	audioOut.setAttribute('src', '_custom/audio/wind_out.mp3');
+	audioOut.setAttribute('src', '_data/resources/1_1556097509_sound-wind-out.mp3');
 	transitionContainer.append(audioOut);
 
 	window.transitionIn = bodymovin.loadAnimation({

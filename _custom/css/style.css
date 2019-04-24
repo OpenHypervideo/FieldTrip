@@ -956,8 +956,7 @@ a {
  
 }
 
-/* Loading Indicator */
-
+/* 
 .ftLoadingIndicator {
 	position: absolute;
 	top: 0px;
@@ -965,14 +964,13 @@ a {
 	width: 100%;
 	height: 100%;
 	z-index: 4;
-	background: #252425 url(../graphics/ftLoadingIndicator.jpg) no-repeat center center fixed; 
+	background: #252425 url(../../_data/resources/1_1556098920_loading-indicator.jpg) no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 }
-
-
+*/
 
 .ftLayer {
 	position: absolute;
@@ -1153,16 +1151,12 @@ a {
 }
 
 .ftNavVision {
-  bottom: 13px;
-  right: 14px;
+  bottom: 20px;
+  right: 20px;
   z-index: 1000;
 }
 
 .ftNavVision .btn {
-  background: #fec570;
-  color: #fff;
-  text-transform: uppercase;
-  border-radius: 2px;
   -webkit-transition: all 400ms ease-in-out;
   -moz-transition: all 400ms ease-in-out;
   -ms-transition: all 400ms ease-in-out;
@@ -1170,13 +1164,8 @@ a {
   transition: all 400ms ease-in-out;
 }
 
-.ftNavVision .btn:hover {
-  background: #e2ad66;
-}
-
 .ftNavVision a {
   display: block;
-  padding: 10px 14px 6px;
 }
 
 .ftNavVision span, .ftNavVision img {
@@ -1192,16 +1181,36 @@ a {
 }
 
 .ftNavVisitors {
-  bottom: 40px;
-  right: 50%;
-  font-family: 'Rubik', helvetica, sans-serif;
-  font-weight: 600;
-  font-size: 1em;
-  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  top: 20px;
+  right: 125px;
+  font-size: .95em;
+  padding: 8px 10px;
   color: #fff;
-  width: 200px;
-  margin-right: -100px;
+  -moz-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
   text-align: center;
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .05);
+  text-align: left;
+}
+
+.ftNavVisitorsNumber {
+  font-family: 'Rubik', helvetica, sans-serif;
+  font-size: 2.5em;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin-right: 8px;
+}
+
+.ftNavVisitors span {
+  font-weight: 400;
+  line-height: 1.4em;
+  font-size: .85em;
 }
 
 .tooltip {
@@ -1328,11 +1337,12 @@ a {
 #ftoverview #ftMapContainer #ftWeatherContainer {
 	position: absolute;
 	top: 20px;
-	right: 80px;
+	right: 60px;
 	text-align: right;
 	color: #FFF;
 	padding: 8px 10px;
 	background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .05);
 	z-index: 10;
 }
 
@@ -1350,6 +1360,10 @@ a {
   padding-right: 10px;
   margin-right: 10px;
   border-right: 1px solid #fff;
+}
+
+#ftWeatherIcon {
+  width: 50px;
 }
 
 #ftWeatherIcon i {
@@ -2249,7 +2263,7 @@ ABOUT / CREDITS / IMPRINT
   width: 50%;
   font-size: .85em;
   line-height: 1.25em;
-  margin: 5vh 0;
+  margin: 2.5vw 0;
 }
 
 #team .ftTeam-member--portrait {
@@ -2287,7 +2301,7 @@ ABOUT / CREDITS / IMPRINT
 /* Partners */
 
 #abspann .parterns-list {
-  margin-top: 5vh;
+  margin-top: 2.5vw;
 }
 
 #abspann .partners--row {
@@ -2308,7 +2322,7 @@ ABOUT / CREDITS / IMPRINT
 #abspann li:after {
   content: "";
   display: block;
-  padding-bottom: 100%;
+  padding-bottom: 70%;
 }
 
 #abspann .partner-logo {
@@ -2534,11 +2548,7 @@ ABOUT / CREDITS / IMPRINT
     bottom: 24px;
     right: 25px;
   }
-  
-  .ftNavVision a {
-    padding: 13px 20px 10px;
-  }
-  
+    
   .ftNavVision span {
     font-size: 1.15em;
   }
@@ -2595,6 +2605,11 @@ ABOUT / CREDITS / IMPRINT
     top: 30px;
     right: 90px;
   }
+  
+  .ftNavVisitors {
+    top: 30px;
+    right: 150px;
+  }
 	
   .ftLayer .ftLayerContent .ftNavigation {
     width: 80px;
@@ -2629,12 +2644,12 @@ ABOUT / CREDITS / IMPRINT
   }
   
   .ftNavVision {
-    bottom: 24px;
-    right: 25px;
+    bottom: 30px;
+    right: 30px;
   }
   
-  .ftNavVision a {
-    padding: 13px 20px 10px;
+  .ftNavVision img {
+    width: 160px !important;
   }
   
   .ftNavVision span {
@@ -2642,8 +2657,7 @@ ABOUT / CREDITS / IMPRINT
   }
   
   .ftNavVision img {
-    width: 22px !important;
-    height: 22px !important;
+    /* width: 22px !important; */
   }
   
   .switch-container {
@@ -2762,9 +2776,13 @@ ABOUT / CREDITS / IMPRINT
     font-size: .9em;
   }
   
+  .ftNavVision {
+    bottom: 10px;
+    right: 15px;
+  }
+  
   .ftNavVision img {
-    width: 17px !important;
-    height: 17px !important;
+    width: 110px !important;
   }
   
   .tooltip {
@@ -2777,9 +2795,22 @@ ABOUT / CREDITS / IMPRINT
     left: 50px;
     bottom: 12px;
   }
+  
   #ftoverview #ftMapContainer #ftWeatherContainer {
+    font-size: .75em;
     top: 5px;
-    right: 45px;
+    right: 40px;
+  }
+  
+  #ftWeatherIcon {
+    width: 30px;
+  }
+  
+  .ftNavVisitors {
+    font-size: .75em;
+    top: 5px;
+    right: 80px;
+    padding-bottom: 9px;
   }
   
   #fthyperInfo .ftInfoNavigation ul {

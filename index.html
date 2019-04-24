@@ -181,7 +181,7 @@
         <div id="ftintro" class="ftLayer">
             <div class="ftLayerContent">
                 <video id="ftIntroVideo" preload="auto">
-                    <source src="_custom/intro.mp4" type="video/mp4">
+                    <source src="_data/resources/1_1556092260_intro.mp4" type="video/mp4">
                 </video>
             </div>
 
@@ -189,7 +189,7 @@
 
         <div id="ftoverview" class="ftLayer">
             
-            <audio id="audioAtmoDay" src="_custom/audio/tempelhof_atmo_day.mp3" loop preload="auto" style="display: none;"></audio>
+            <audio id="audioAtmoDay" src="_data/resources/1_1556097405_tempelhof-atmo-day.mp3" loop preload="auto" style="display: none;"></audio>
 
             <a href="#intro">
                 <i class="fticon-logo-fieldtrip ftLogo"></i>
@@ -198,10 +198,10 @@
             <div class="ftLayerContent">
                 
                 <div id="ftMapContainer">
-                    <img id="ftMapBackground" src="_custom/graphics/map-large.jpg" />
+                    <img id="ftMapBackground" src="_data/resources/1_1556097868_overview-map.jpg" />
                     
                     <div id="ftMapCanvas">
-                        <img id="ftMap" src="_custom/graphics/overview.svg" />
+                        <img id="ftMap" src="_data/resources/1_1556097985_overview-vector.svg" />
 
                         <!-- Pointers -->
                         <div style="top: 31%; left: 23%;" id="ftMapPin1" class="ftMapPin ftEvent">
@@ -414,10 +414,15 @@
                 
                 <div class="ftNavVision">
                   <div class="tooltip">Klick ruft für Handys direkt <br />030 54 90 75 90 an</div>
-                  <a class="btn" href="tel:00493054907590" title=""><span>Deine Vision</span><img width="20" height="20"src="_custom/graphics/FT-icon-vision.svg" alt="" /></a>
+                  <a class="btn" href="tel:00493054907590" title=""><img width="135" height=""src="_custom/graphics/FT-deine-vision.svg" alt="Deine Vision Button" /></a>
                 </div>
 
-                <div class="ftNavVisitors"></div>
+                <div class="ftNavVisitors">
+                  <div class="ftNavVisitorsNumber">15</div>
+                  <div>
+                    <span>Besucher jetzt<br />auf dem Feld</span>
+                  </div>
+                </div>
 
             </div>
 
@@ -489,12 +494,12 @@
               <div class="ftInfoNavigation">
                 <nav>
                   <ul>
-                    <li><a id="ueber-uns-link" class="ftEvent ftInfoLink highlighted highlighted--yellow is-active">1. Über Uns</a></li>
-                    <li><a id="team-link" class="ftEvent ftInfoLink highlighted highlighted--yellow">2. Team</a></li>
-                    <li><a id="abspann-link" class="ftEvent ftInfoLink highlighted highlighted--yellow">3. Abspann</a></li>
-                    <li><a id="resourcen-link" class="ftEvent ftInfoLink highlighted highlighted--yellow">4. Resourcen</a></li>
-                    <li><a id="impressum-link" class="ftEvent ftInfoLink highlighted highlighted--yellow">5. Impressum</a></li>
-                    <li><a id="datenschutz-link" class="ftEvent ftInfoLink highlighted highlighted--yellow">6. Datenschutz</a></li>
+                    <li><a id="ueber-uns-link" class="ftEvent ftInfoLink">1. Über Uns</a></li>
+                    <li><a id="team-link" class="ftEvent ftInfoLink ">2. Team</a></li>
+                    <li><a id="abspann-link" class="ftEvent ftInfoLink ">3. Abspann</a></li>
+                    <li><a id="resourcen-link" class="ftEvent ftInfoLink ">4. Resourcen</a></li>
+                    <li><a id="impressum-link" class="ftEvent ftInfoLink ">5. Impressum</a></li>
+                    <li><a id="datenschutz-link" class="ftEvent ftInfoLink ">6. Datenschutz</a></li>
                   </ul>
                 </nav>
               </div>
@@ -594,97 +599,99 @@
                     <div class="parterns-list">
                       <ul class="row partners--row clearfix">
                         <li>
-                          <a class="partner-logo" href="https://www.miz-babelsberg.de" target="_blank">
-                            <img width="" height="" src="_custom/graphics/FT-logo-miz.svg" alt="logo MIZ babelsberg" />
-                          </a>
+                           <span class="partner-logo">
+                             <img width="" height="" src="_custom/graphics/FT-logo-miz.svg" alt="logo MIZ babelsberg" />
+                           </span>
                         </li>
                         
                         <li>
-                          <a class="partner-logo" href="http://www.rudolf-augstein-stiftung.de" target="_blank">
+                          <span class="partner-logo">
                             <img width="390" height="117" src="_custom/graphics/FT-logo-rudolf-augstein.png" alt="logo Rudolf Augstein" />
-                          </a>
+                          </span>
                         </li>
                         
                         <li>
-                          <a class="partner-logo" href="https://www.tagesspiegel.de" target="_blank">
+                          <span class="partner-logo">
                             <img width="" height="" src="_custom/graphics/FT-logo-tagesspiegel.svg" alt="logo Tagesspiegel" />
-                          </a>
+                          </span>
                         </li>
                         
                         <li>
-                          <a class="partner-logo" href="http://www.stiftung-luftbrueckendank.de/#xl_xr_page_index" target="_blank">
+                          <span class="partner-logo">
                             <img width="" height="" src="_custom/graphics/FT-logo-stiftung-luftbrueckendank.svg" alt="logo Stiftung Luftbrueckendank." />
-                          </a>
+                          </span>
                         </li>
                         
                         <li>
-                          <a class="partner-logo" href="https://www.berlin.de/rbmskzl/regierender-buergermeister/wir-ueber-uns/abteilungen/artikel.181862.php" target="_blank">
+                          <span class="partner-logo">
                             <img width="" height="" src="_custom/graphics/FT-logo-berlin.svg" alt="logo berlin.de" />
-                          </a>
-                        </li>
-                        <li>
-                          <a class="partner-logo" href="https://gruen-berlin.de" target="_blank">
-                            <img width="" height="" src="_custom/graphics/FT-logo-gruenberlin.svg" alt="logo Grün Berlin" />
-                          </a>
+                          </span>
                         </li>
                         
                         <li>
-                          <a class="partner-logo" href="http://www.inbak.de" target="_blank">
-                            <img width="" height="" src="_custom/graphics/FT-logo-bbxx.svg" alt="logo inbak" />
-                          </a>
+                           <span class="partner-logo">
+                             <img width="" height="" src="_custom/graphics/FT-logo-gruenberlin.svg" alt="logo Grün Berlin" />
+                           </span>
                         </li>
                         
                         <li>
-                          <a class="partner-logo" href="https://www.hoerbert.com" target="_blank">
+                           <span class="partner-logo">
+                             <img width="" height="" src="_custom/graphics/FT-logo-bbxx.svg" alt="logo inbak" />
+                           </span>
+                        </li>
+                        
+                        <li>
+                          <span class="partner-logo">
                             <img width="" height="" src="_custom/graphics/FT-logo-hoerbert.svg" alt="logo hörbert" />
-                          </a>
+                          </span>
                         </li>
                         
                         <li>
-                          <a class="partner-logo" href="http://timeprints.de" target="_blank">
+                          <span class="partner-logo">
                             <img width="400" height="357" src="_custom/graphics/FT-logo-time-print.png" alt="logo time prints" />
-                          </a>
+                          </span>
                         </li>
                         
                         <li>
-                          <a class="partner-logo" href="http://www.topographie.de/topographie-des-terrors/stiftung/" target="_blank">
+                          <span class="partner-logo">
                             <img width="396" height="189" src="_custom/graphics/FT-logo-topography-des-terrors.png" alt="logo Topographie des Terrors" />
-                          </a>
+                          </span>
                         </li>
+                        
                         <li>
-                          <a class="partner-logo" href="http://www.cc-stiftung.de" target="_blank">
+                          <span class="partner-logo">
                             <img width="" height="" src="_custom/graphics/FT-logo-checkpointcharlie.svg" alt="logo" />
-                          </a>
+                          </span>
                         </li>
                         
                         <li>
-                          <a class="partner-logo" href="https://www.notaufnahmelager-berlin.de/de" target="_blank">
+                          <span class="partner-logo">
                             <img width="500" height="71" src="_custom/graphics/FT-logo-erinnerungsstaette.png" alt="logo nNotaufnahmelager" />
-                          </a>
+                          </span>
                         </li>
                         
                         <li>
-                          <a class="partner-logo" href="https://www.die-schweitzer.de/home/" target="_blank">
+                          <span class="partner-logo">
                             <img width="500" height="179" src="_custom/graphics/FT-logo-asg.png" alt="logo Albert-Schweitzer-Gymnasium" />
-                          </a>
+                          </span>
                         </li>
                         
                         <li>
-                          <a class="partner-logo" href="http://www.jeb-bb.de" target="_blank">
+                          <span class="partner-logo">
                             <img width="" height="" src="_custom/graphics/FT-logo-jebb.svg" alt="logo Junge Europäische Bewegung" />
-                          </a>
+                          </span>
                         </li>
                         
                         <li>
-                          <a class="partner-logo" href="http://www.dz-ns-zwangsarbeit.de" target="_blank">
+                          <span class="partner-logo">
                             <img width="" height="" src="_custom/graphics/FT-logo-ns-zwangsarbeit.svg" alt="logo Zwangsarbeit" />
-                          </a>
+                          </span>
                         </li>
                         
                         <li>
-                          <a class="partner-logo" href="http://www.alliiertenmuseum.de" target="_blank">
+                          <span class="partner-logo">
                             <img width="" height="" src="_custom/graphics/FT-logo-alliierten.svg" alt="logo Alliierten Museum" />
-                          </a>
+                          </span>
                         </li>
                       </ul>
                     </div>
