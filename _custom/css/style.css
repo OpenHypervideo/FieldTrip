@@ -2130,6 +2130,24 @@ ABOUT / CREDITS / IMPRINT
   overflow-y: scroll;
 }
 
+/* Edit Olivier 2019/04/29 */
+
+#fthyperInfo .section-footer {
+  display: block;
+  clear: both;
+  padding-top: 1.5vw;
+  max-width: 700px; 
+}
+
+#fthyperInfo h6 {
+  border-bottom: 1px solid #fff;
+  display: inline-block;
+  margin: 1.5em 0 .5em;
+  font-weight: 900;
+}
+
+/* End edit */
+
 .ftCloseInfo {
   position: fixed;
   top: 30px;
@@ -2250,11 +2268,15 @@ ABOUT / CREDITS / IMPRINT
 
 /* About */
 
+/* Edit Olivier 2019/04/29 */
+
 #ueber-uns .ftHero {
   max-width: 700px;
-  font-size: 1.25em;
+  font-size: 1.15em;
   line-height: 1.45em;
 }
+
+/* End edit */
 
 /* Team */
 
@@ -2263,7 +2285,7 @@ ABOUT / CREDITS / IMPRINT
   width: 50%;
   font-size: .85em;
   line-height: 1.25em;
-  margin: 2.5vw 0;
+  margin: 1.5vw 0;
 }
 
 #team .ftTeam-member--portrait {
@@ -2300,23 +2322,24 @@ ABOUT / CREDITS / IMPRINT
 
 /* Partners */
 
+/* Edit Olivier 2019/04/29 */
+
 #abspann .parterns-list {
-  margin-top: 2.5vw;
+  margin-top: 0;
 }
 
-#abspann .partners--row {
-  border-bottom: 1px solid #fff;
-}
-
+#abspann .partners--row,
 #abspann .partners--row:last-child {
   border: none !important;
 }
 
 #abspann li {
   float: left;
-  width: 25%;
+  width: 20%;
   position: relative;
 }
+
+/* End edit */
 
 
 #abspann li:after {
@@ -2324,6 +2347,8 @@ ABOUT / CREDITS / IMPRINT
   display: block;
   padding-bottom: 70%;
 }
+
+/* Edit Olivier 2019/04/29 */
 
 #abspann .partner-logo {
   position: absolute;
@@ -2336,6 +2361,8 @@ ABOUT / CREDITS / IMPRINT
   justify-content: center;
 }
 
+/* End edit */
+
 #abspann .partner-logo img {
   max-width: 100%;
   height: auto;
@@ -2347,14 +2374,30 @@ ABOUT / CREDITS / IMPRINT
   height: auto;
 }
 
+/* Edit Olivier 2019/04/29 */
+
+#resourcen b {
+  font-weight: 900;
+}
+
+#resourcen a {
+  border-bottom: 1px solid;
+}
+
 .ftInfoGithub {
   margin-top: 5vh; 
 }
 
-.ftInfoGithub a {
-  color: #fff;
-  opacity: .75;
+#resourcen .ftInfoGithub .ftLogoGithub {
+  border-bottom: none;
 }
+
+#resourcen .ftInfoGithub a {
+  color: #fff;
+  opacity: .75; 
+}
+
+/* End edit */
 
 .ftInfoGithub a:hover {
   opacity: .75;
