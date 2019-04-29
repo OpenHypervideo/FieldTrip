@@ -1302,6 +1302,7 @@ a {
 	z-index: 2;
 }
 
+/*
 #ftoverview #ftMapContainer #ftMapBackground, #ftoverview #ftMapContainer #ftMapCanvas {
   -moz-animation: flying 10s linear infinite;
   -moz-transform-origin:center center;
@@ -1310,12 +1311,14 @@ a {
   animation: flying 10s linear infinite;
   transform-origin:center center;
 }
+*/
 
 /* TRANSLATION OFFSET CAN BE A MAXIMUM OF 10px */
+/*
 @-moz-keyframes flying { 33%{ -moz-transform:translate3d(-4px, -3px, 0); } 66%{ -moz-transform:translate3d(3px, 5px, 0); } }
 @-webkit-keyframes flying { 33%{ -webkit-transform:translate(-4px, -3px, 0); } 66%{ -webkit-transform:translate3d(3px, 5px, 0); } }
 @keyframes flying { 33%{ transform:translate3d(-4px, -3px, 0); } 66%{ transform:translate3d(3px, 5px, 0); } }
-
+*/
 #ftoverview #ftMapContainer:after {
   content: "";
   position: absolute;
@@ -1423,10 +1426,10 @@ a {
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin {
 	position: absolute;
-	margin-left: -28px;
-	margin-top: -28px;
-	width: 56px;
-	height: 56px;
+	margin-left: -36px;
+	margin-top: -36px;
+	width: 72px;
+	height: 72px;
 	line-height: 50px;
 	font-size: 2.5em;
 	text-align: center;
@@ -1460,8 +1463,8 @@ a {
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .fticon-silhouette {
 	display: block;
-	width: 56px;
-	height: 56px;
+	width: 72px;
+	height: 72px;
 	background-image: url(../graphics/FT-pin-girl-1.png);
 	background-size: auto 100%;
 	background-repeat: no-repeat;
@@ -1474,6 +1477,7 @@ a {
 	transform-origin:center bottom;
 }
 
+/*
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:nth-child(even) .fticon-silhouette {
 	background-image: url(../graphics/FT-pin-girl-2.png);
 }
@@ -1497,6 +1501,7 @@ a {
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin9 .fticon-silhouette {
   background-image: url(../graphics/FT-pin-tueroeffnerin.png);
 }
+*/
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:nth-child(1) .fticon-silhouette {
 	animation-delay: .2s
@@ -1516,6 +1521,18 @@ a {
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:nth-child(5) .fticon-silhouette {
 	animation-delay: 1.2s
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:nth-child(6) .fticon-silhouette {
+  animation-delay: 1.4s
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:nth-child(7) .fticon-silhouette {
+  animation-delay: 1.6s
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:nth-child(8) .fticon-silhouette {
+  animation-delay: 1.8s
 }
 
 @-moz-keyframes wobble { 33%{ -moz-transform:rotate(3deg); } 66%{-moz-transform:rotate(-3deg); } }
@@ -2077,7 +2094,7 @@ a {
 #VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playButton.playerControl {
   bottom: 21px;
   left: 20px;  
-  background: url('../graphics/FT-play.svg') no-repeat center center;
+  background: url('../../_data/resources/1_1556104792_icon-play.svg') no-repeat center center;
   font-size: 0;
 }
 
@@ -2086,7 +2103,7 @@ a {
 }
 
 #VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playButton.playerControl.playing {
-  background: url('../graphics/FT-pause.svg') no-repeat center center;
+  background: url('../../_data/resources/1_1556104813_icon-pause.svg') no-repeat center center;
 }
 
 #VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .timeDisplay.playerControl {
@@ -2130,8 +2147,6 @@ ABOUT / CREDITS / IMPRINT
   overflow-y: scroll;
 }
 
-/* Edit Olivier 2019/04/29 */
-
 #fthyperInfo .section-footer {
   display: block;
   clear: both;
@@ -2145,8 +2160,6 @@ ABOUT / CREDITS / IMPRINT
   margin: 1.5em 0 .5em;
   font-weight: 900;
 }
-
-/* End edit */
 
 .ftCloseInfo {
   position: fixed;
@@ -2268,15 +2281,11 @@ ABOUT / CREDITS / IMPRINT
 
 /* About */
 
-/* Edit Olivier 2019/04/29 */
-
 #ueber-uns .ftHero {
   max-width: 700px;
   font-size: 1.15em;
   line-height: 1.45em;
 }
-
-/* End edit */
 
 /* Team */
 
@@ -2285,7 +2294,7 @@ ABOUT / CREDITS / IMPRINT
   width: 50%;
   font-size: .85em;
   line-height: 1.25em;
-  margin: 1.5vw 0;
+  margin: 2.5vw 0;
 }
 
 #team .ftTeam-member--portrait {
@@ -2322,8 +2331,6 @@ ABOUT / CREDITS / IMPRINT
 
 /* Partners */
 
-/* Edit Olivier 2019/04/29 */
-
 #abspann .parterns-list {
   margin-top: 0;
 }
@@ -2339,16 +2346,12 @@ ABOUT / CREDITS / IMPRINT
   position: relative;
 }
 
-/* End edit */
-
 
 #abspann li:after {
   content: "";
   display: block;
   padding-bottom: 70%;
 }
-
-/* Edit Olivier 2019/04/29 */
 
 #abspann .partner-logo {
   position: absolute;
@@ -2361,8 +2364,6 @@ ABOUT / CREDITS / IMPRINT
   justify-content: center;
 }
 
-/* End edit */
-
 #abspann .partner-logo img {
   max-width: 100%;
   height: auto;
@@ -2373,8 +2374,6 @@ ABOUT / CREDITS / IMPRINT
 #resourcen {
   height: auto;
 }
-
-/* Edit Olivier 2019/04/29 */
 
 #resourcen b {
   font-weight: 900;
@@ -2397,7 +2396,14 @@ ABOUT / CREDITS / IMPRINT
   opacity: .75; 
 }
 
-/* End edit */
+.ftInfoGithub {
+  margin-top: 5vh; 
+}
+
+.ftInfoGithub a {
+  color: #fff;
+  opacity: .75;
+}
 
 .ftInfoGithub a:hover {
   opacity: .75;
@@ -2498,9 +2504,11 @@ ABOUT / CREDITS / IMPRINT
 	color: #222;
 }
 
+/*
 .night #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription::after {
-  background: url('../graphics/FT-pin-description-arrow-dark.svg') no-repeat right center;
+  background: url('../../_data/resources/1_1556105451_icon-arrow-dark.svg') no-repeat right center;
 }
+*/
 
 
 /* Mobile Turn */
