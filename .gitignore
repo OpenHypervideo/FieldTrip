@@ -29,3 +29,5 @@ _data/
 visitors.db
 #avoid accidental commits of open weather map api key
 openweathermap.php
+index.html
+_custom/css/style.css
