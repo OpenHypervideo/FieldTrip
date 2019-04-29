@@ -50,7 +50,7 @@ body.userinactive #fthypervideo .ftAboutIconContainer {
 	z-index: 30;
 	color: #fec570;
 	border-radius: 100%;
-	background: url('../graphics/FT-play.svg') no-repeat center center;
+	background: url('../../_data/resources/1_1556104792_icon-play.svg') no-repeat center center;
 	background-size: 25px;
 	cursor: pointer;
 }
@@ -60,7 +60,7 @@ body.userinactive #fthypervideo .ftAboutIconContainer {
 }
 
 #VideoPlayer .playerContainer #playCircleContainer.playing {
-	background-image: url('../graphics/FT-pause.svg')
+	background-image: url('../../_data/resources/1_1556104813_icon-pause.svg')
 }
 
 #VideoPlayer .playerContainer #playCircleContainer .fticon-right, #VideoPlayer .playerContainer #playCircleContainer svg {

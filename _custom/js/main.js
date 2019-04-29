@@ -55,36 +55,141 @@ var sunsetHour = sunsetHours[currentMonth],
 
 /* Transitions / Links */
 
-//var pointerSeconds = [2.25, 4.6, 7, 8.3];
-
 var videoLinks = {
+	'1': {
+		'duration': 408.596,
+		'links': [
+			{
+				'time': 147,
+				'target': '#hypervideo=4&t=0',
+			},
+			{
+				'time': 298,
+				'target': '#hypervideo=8&t=0',
+			},
+			{
+				'time': 396,
+				'target': '#hypervideo=4&t=0',
+			}
+		]
+	},
+	'2': {
+		'duration': 393.963,
+		'links': [
+			{
+				'time': 243,
+				'target': '#hypervideo=3&t=307',
+			},
+			{
+				'time': 337,
+				'target': '#hypervideo=6&t=168',
+			}
+		]
+	},
+	'3': {
+		'duration': 413.995,
+		'links': [
+			{
+				'time': 89,
+				'target': '#hypervideo=5&t=293',
+			},
+			{
+				'time': 129,
+				'target': '#hypervideo=1&t=104',
+			}
+		]
+	},
+	'4': {
+		'duration': 311.083,
+		'links': [
+			{
+				'time': 182,
+				'target': '#hypervideo=7&t=211',
+			},
+			{
+				'time': 93,
+				'target': '#hypervideo=3&t=191',
+			}
+		]
+	},
+	'5': {
+		'duration': 422.72,
+		'links': [
+			{
+				'time': 383,
+				'target': '#hypervideo=3&t=39',
+			},
+			{
+				'time': 256,
+				'target': '#hypervideo=9&t=207',
+			}
+		]
+	},
+	'6': {
+		'duration': 386.453,
+		'links': [
+			{
+				'time': 280,
+				'target': '#hypervideo=1&t=157',
+			},
+			{
+				'time': 374,
+				'target': '#hypervideo=7&t=211',
+			}
+		]
+	},
+	'7': {
+		'duration': 325.035,
+		'links': [
+			{
+				'time': 73,
+				'target': '#hypervideo=2&t=255',
+			},
+			{
+				'time': 171,
+				'target': '#hypervideo=6&t=0',
+			},
+			{
+				'time': 253,
+				'target': '#hypervideo=4&t=103',
+			}
+		]
+	},
+	'8': {
+		'duration': 355.157,
+		'links': [
+			{
+				'time': 200,
+				'target': '#hypervideo=5&t=0',
+			},
+			{
+				'time': 341,
+				'target': '#hypervideo=2&t=255',
+			},
+			{
+				'time': 282,
+				'target': '#hypervideo=9&t=142',
+			}
+		]
+	},
 	'9': {
-		'duration': 341.48,
+		'duration': 350.165,
 		'links': [
 			{
-				'time': 240.7,
-				'target': '#hypervideo=13&t=509.7',
+				'time': 130,
+				'target': '#hypervideo=3&t=0',
+			},
+			{
+				'time': 71,
+				'target': '#hypervideo=8&t=0',
+			},
+			{
+				'time': 307,
+				'target': '#hypervideo=6&t=57',
 			}
 		]
 	},
-	'10': {
-		'duration': 378.24,
-		'links': [
-			{
-				'time': 371.4,
-				'target': '#hypervideo=12&t=0',
-			}
-		]
-	},
-	'11': {
-		'duration': 349.84,
-		'links': [
-			{
-				'time': 330.96,
-				'target': '#hypervideo=9&t=245',
-			}
-		]
-	}
+
 }
 
 /* Document Ready */
@@ -118,7 +223,7 @@ $(document).ready(function() {
     }).done(function(data){
 
         if (data.visitors) {
-            $(".ftNavVisitors").text(data.visitors);
+            $(".ftNavVisitorsNumber").text(data.visitors);
         }
         
     }).fail(function(error){
@@ -184,13 +289,13 @@ $(document).ready(function() {
 		$('#playCircleContainer').removeClass('playing');
 	});
 
+	/*
 	FieldTrip.on('ended', function() {
 		FieldTrip.play();
-		/*
-		window.history.pushState({}, '', '#overview');
-		activateLayer('overview');
-		*/
+		//window.history.pushState({}, '', '#overview');
+		//activateLayer('overview');
 	});
+	*/
 
 	FieldTrip.on('userAction', function(evt) {
 		if (evt.detail.action == 'EditEnd') {
