@@ -383,6 +383,10 @@ $(document).ready(function() {
         mimeType: "application/json"
     }).done(function(response){
 
+    	if (response.data.cod == 404) {
+    		console.log('Weather Data could not be retrieved. Invalid API Key?');
+    		return;
+    	}
     	var weatherData = response.data;
 
     	var currentHours = getLocalTime().getHours();
