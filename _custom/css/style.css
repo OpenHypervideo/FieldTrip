@@ -1137,8 +1137,9 @@ a {
 }
 
 .ftEdit {
-	top: 125px;
+	top: 200px;
 	cursor: pointer;
+  display: none !important;
 }
 
 .ftNavAbout {
