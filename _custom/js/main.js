@@ -348,7 +348,7 @@ $(document).ready(function() {
 			activateLayer('overview');
 		} else {
 			$('#ftoverview').css('opacity', 0);
-			var episodes = [9,10,11,12],
+			var episodes = [1,2,3,4,5,6,7,8,9],
 				randomEpisode = episodes[Math.floor(Math.random()*episodes.length)];
 
 			window.location.hash = '#hypervideo='+ randomEpisode;
