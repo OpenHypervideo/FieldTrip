@@ -103,12 +103,12 @@ var videoLinks = {
 		'duration': 311.083,
 		'links': [
 			{
-				'time': 182,
-				'target': '#hypervideo=7&t=211',
-			},
-			{
 				'time': 93,
 				'target': '#hypervideo=3&t=191',
+			},
+			{
+				'time': 182,
+				'target': '#hypervideo=7&t=211',
 			}
 		]
 	},
@@ -116,12 +116,12 @@ var videoLinks = {
 		'duration': 422.72,
 		'links': [
 			{
-				'time': 383,
-				'target': '#hypervideo=3&t=39',
-			},
-			{
 				'time': 256,
 				'target': '#hypervideo=9&t=207',
+			},
+			{
+				'time': 383,
+				'target': '#hypervideo=3&t=39',
 			}
 		]
 	},
@@ -163,12 +163,12 @@ var videoLinks = {
 				'target': '#hypervideo=5&t=0',
 			},
 			{
-				'time': 341,
-				'target': '#hypervideo=2&t=255',
-			},
-			{
 				'time': 282,
 				'target': '#hypervideo=9&t=142',
+			},
+			{
+				'time': 341,
+				'target': '#hypervideo=2&t=255',
 			}
 		]
 	},
@@ -176,12 +176,12 @@ var videoLinks = {
 		'duration': 350.165,
 		'links': [
 			{
-				'time': 130,
-				'target': '#hypervideo=3&t=0',
-			},
-			{
 				'time': 71,
 				'target': '#hypervideo=8&t=0',
+			},
+			{
+				'time': 130,
+				'target': '#hypervideo=3&t=0',
 			},
 			{
 				'time': 307,
@@ -823,13 +823,14 @@ function interfaceRight() {
 	var hypervideoID = location.href.split('#hypervideo=')[1].split('&')[0];
 
 	if (videoLinks[hypervideoID]) {
-		videoLinks[hypervideoID]['links'].forEach(function(videoLink){
+		for (var i=0; i<videoLinks[hypervideoID]['links'].length; i++) {
+			var videoLink = videoLinks[hypervideoID]['links'][i];
 			if (videoLink.time >= FieldTrip.currentTime) {
 				nextTimeStep = videoLink.time - 3;
 				FieldTrip.currentTime = nextTimeStep;
-				return;
+				break;
 			}
-		});
+		}
 	}
 
 	FieldTrip.currentTime = nextTimeStep;
