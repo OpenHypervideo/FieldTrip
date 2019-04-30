@@ -214,24 +214,8 @@ $(document).ready(function() {
 		});
 	}
 
-	$.ajax({
-        type:   "GET",
-        url:    "visitorcount.php",
-        cache:  false,
-        dataType: "json",
-        mimeType: "application/json"
-    }).done(function(data){
-
-        if (data.visitors) {
-            $(".ftNavVisitorsNumber").text(data.visitors);
-        }
-        
-    }).fail(function(error){
-
-        console.log(error.responseText);
-
-    });
-
+	updateVisitorsNumber();
+	
 	window.FieldTrip = FrameTrail.init({
 		target:             '#VideoPlayer',
 		contentTargets:     {},
@@ -648,7 +632,8 @@ function activateLayer(layerName, videoID) {
 	}
 
 	updateTime();
-
+	updateVisitorsNumber();
+	
 	previousLayer = (currentLayer) ? currentLayer : false;
 	currentLayer = layerName;
 	
@@ -1225,6 +1210,26 @@ function renderVideoLinkCircles() {
 		}
 	});
 
+}
+
+function updateVisitorsNumber() {
+	$.ajax({
+        type:   "GET",
+        url:    "visitorcount.php",
+        cache:  false,
+        dataType: "json",
+        mimeType: "application/json"
+    }).done(function(data){
+
+        if (data.visitors) {
+            $(".ftNavVisitorsNumber").text(data.visitors);
+        }
+        
+    }).fail(function(error){
+
+        console.log(error.responseText);
+
+    });
 }
 
 function soundOn() {
