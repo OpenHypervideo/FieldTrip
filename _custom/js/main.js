@@ -594,6 +594,10 @@ function initEventListeners() {
 	    	$('.ftMapPinDescription').removeClass('is-visible');
 	    }
 	    //hide = true;
+	    $('#audioAtmoDay')[0].play();
+		$('#audioAtmoDay').stop(true, false).animate({
+			volume: 1
+		}, 7000);
 	});
 
 	$('.ftMapPin').click(function(evt){
