@@ -327,9 +327,10 @@ $(document).ready(function() {
 	$('#ftIntroVideo').on('ended', function() {
 		updateEpisodeTimings();
 
-		if (previousLayer && previousLayer == 'overview') {
+		//if (previousLayer && previousLayer == 'overview') {
 			window.history.pushState({}, '', '#overview');
 			activateLayer('overview');
+		/*
 		} else {
 			$('#ftoverview').css('opacity', 0);
 			var episodes = [1,2,3,4,5,6,7,8,9],
@@ -337,6 +338,7 @@ $(document).ready(function() {
 
 			window.location.hash = '#hypervideo='+ randomEpisode;
 		}
+		*/
 		
 	});
 
@@ -633,7 +635,7 @@ function activateLayer(layerName, videoID) {
 
 	updateTime();
 	updateVisitorsNumber();
-	
+
 	previousLayer = (currentLayer) ? currentLayer : false;
 	currentLayer = layerName;
 	
@@ -650,6 +652,12 @@ function activateLayer(layerName, videoID) {
 				});
 			}
 			
+			/*
+			TODO: CATCH STUPID SAFARI PLAY ISSUE
+			$('#ftIntroVideo')[0].currentTime = 0;
+			$('#ftIntroVideo')[0].play();
+			*/
+
 			introTimeout = window.setTimeout(function() {
 				$('#ftIntroVideo')[0].currentTime = 0;
 				$('#ftIntroVideo')[0].play();
