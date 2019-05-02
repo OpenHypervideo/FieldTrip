@@ -36,7 +36,7 @@ FrameTrail.defineModule('ViewVideo', function(FrameTrail){
                         + '                </div>'
                         + '                <div class="videoContainer">'
                         + '                    <div class="hypervideo">'
-                        + '                        <video class="video nocolor"></video>'
+                        + '                        <video class="video nocolor" playsinline></video>'
                         + '                        <div class="overlayContainer"></div>'
                         + '                        <div class="captionContainer"></div>'
                         + '                    </div>'
@@ -332,7 +332,7 @@ FrameTrail.defineModule('ViewVideo', function(FrameTrail){
             slidePositionDown();
             showDetails(false);
 
-            alert('Safari tests are still ongoing. To avoid problems, please switch to any other browser for now.');
+            //alert('Safari tests are still ongoing. To avoid problems, please switch to any other browser for now.');
 
             /*
             window.setTimeout(function() {
