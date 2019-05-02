@@ -39,7 +39,7 @@ var FieldTripReady = false,
 	previousLayer,
 	currentLayer = undefined,
 	activeVideoID = undefined,
-	introTimeout,
+	//introTimeout,
 	episodeTimings = {},
 	timeInterval = null,
 	muted = false;
@@ -652,16 +652,10 @@ function activateLayer(layerName, videoID) {
 				});
 			}
 			
-			/*
-			TODO: CATCH STUPID SAFARI PLAY ISSUE
-			$('#ftIntroVideo')[0].currentTime = 0;
-			$('#ftIntroVideo')[0].play();
-			*/
-
-			introTimeout = window.setTimeout(function() {
+			//introTimeout = window.setTimeout(function() {
 				$('#ftIntroVideo')[0].currentTime = 0;
 				$('#ftIntroVideo')[0].play();
-			}, 2000);
+			//}, 2000);
 
 			$('#audioAtmoDay').stop(true, false).animate({
 				volume: 0
@@ -683,7 +677,7 @@ function activateLayer(layerName, videoID) {
 				});
 			}
 			$('#ftIntroVideo')[0].pause();
-			window.clearTimeout(introTimeout);
+			//window.clearTimeout(introTimeout);
 
 			$('#audioAtmoDay')[0].play();
 			$('#audioAtmoDay').stop(true, false).animate({
@@ -747,7 +741,7 @@ function activateLayer(layerName, videoID) {
 			$('#fthypervideo #VideoPlayer').addClass('active');
 			
 			$('#ftIntroVideo')[0].pause();
-			window.clearTimeout(introTimeout);
+			//window.clearTimeout(introTimeout);
 			
 			$('.ftLayer#ftintro').fadeOut(1000);
 			$('.ftLayer#ftoverview').fadeOut(1000);
