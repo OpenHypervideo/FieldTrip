@@ -1113,7 +1113,7 @@ a {
 	display: block;
 }
 
-.ftSound, .ftNavShare, .ftScreen, .ftNavAbout, .ftEdit, .ftNavVision, .ftNavVisitors {
+.ftSound, .ftNavShare, .ftScreen, .ftNavAbout, .ftEdit, .ftNavVision, .ftNavVisitors, .ftNavCooperation {
 	position: absolute;  
 }
 
@@ -1183,6 +1183,7 @@ a {
   margin-right: 10px;
 }
 
+/*
 .ftNavVisitors {
   display: flex;
   align-items: center;
@@ -1215,6 +1216,7 @@ a {
   line-height: 1.4em;
   font-size: .85em;
 }
+*/
 
 .tooltip {
   position: absolute;
@@ -1343,7 +1345,7 @@ a {
 #ftoverview #ftMapContainer #ftWeatherContainer {
 	position: absolute;
 	top: 20px;
-	right: 60px;
+	right: 250px;
 	text-align: right;
 	color: #FFF;
 	padding: 8px 10px;
@@ -1378,6 +1380,31 @@ a {
   font-size: 27px;
   line-height: 25px;
   padding: 7px 0 6px;
+}
+
+.ftNavCooperation {
+  display: block;
+  top: 20px;
+  right: 60px;
+  font-size: .95em;
+  padding: 8px 10px;
+  color: rgba(255, 255, 255, .7);
+  text-align: left;
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .05);
+  height: 57px;
+  width: 185px;
+  z-index: 10;
+}
+
+.ftNavCooperation img {
+  display: block;
+  position: relative;
+  margin-top: 4px;
+  top: auto !important;
+  left: auto !important;
+  width: 162px !important;
+  height: auto !important;
 }
 
 #ftoverview #ftMapContainer img {
@@ -2555,6 +2582,11 @@ ABOUT / CREDITS / IMPRINT
   
   #ftoverview #ftMapContainer #ftWeatherContainer {
     top: 30px;
+    right: 250px;
+  }
+
+  .ftNavCooperation {
+    top: 30px;
     right: 90px;
   }
 	
@@ -2657,12 +2689,19 @@ ABOUT / CREDITS / IMPRINT
   
   #ftoverview #ftMapContainer #ftWeatherContainer {
     top: 30px;
-    right: 90px;
+    right: 280px;
   }
   
+  /*
   .ftNavVisitors {
     top: 30px;
     right: 150px;
+  }
+  */
+
+  .ftNavCooperation {
+    top: 30px;
+    right: 90px;
   }
 	
   .ftLayer .ftLayerContent .ftNavigation {
@@ -2853,18 +2892,26 @@ ABOUT / CREDITS / IMPRINT
   #ftoverview #ftMapContainer #ftWeatherContainer {
     font-size: .75em;
     top: 5px;
-    right: 40px;
+    right: 230px;
   }
   
   #ftWeatherIcon {
     width: 30px;
   }
   
+  /*
   .ftNavVisitors {
     font-size: .75em;
     top: 5px;
     right: 80px;
     padding-bottom: 9px;
+  }
+  */
+
+  .ftNavCooperation {
+    font-size: .75em;
+    top: 5px;
+    right: 40px;
   }
   
   #fthyperInfo .ftInfoNavigation ul {

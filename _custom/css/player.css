@@ -22,6 +22,7 @@
 body.userinactive .mainContainer:not(.editActive) .playerContainer #playCircleContainer, 
 body.userinactive #ftPointer,
 body.userinactive #fthypervideo .ftNavigation,
+body.userinactive #fthypervideo .ftNavCooperation,
 body.userinactive #fthypervideo .ftAboutIconContainer {
     display: block;
     visibility: hidden;

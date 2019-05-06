@@ -216,7 +216,7 @@ $(document).ready(function() {
 	}
 	*/
 
-	updateVisitorsNumber();
+	//updateVisitorsNumber();
 	
 	window.FieldTrip = FrameTrail.init({
 		target:             '#VideoPlayer',
@@ -634,7 +634,7 @@ function activateLayer(layerName, videoID) {
 	}
 
 	updateTime();
-	updateVisitorsNumber();
+	//updateVisitorsNumber();
 
 	previousLayer = (currentLayer) ? currentLayer : false;
 	currentLayer = layerName;
@@ -1214,6 +1214,7 @@ function renderVideoLinkCircles() {
 
 }
 
+/*
 function updateVisitorsNumber() {
 	$.ajax({
         type:   "GET",
@@ -1233,6 +1234,7 @@ function updateVisitorsNumber() {
 
     });
 }
+*/
 
 function soundOn() {
 	$('.ftSoundOff').hide();
