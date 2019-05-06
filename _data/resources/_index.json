@@ -1,0 +1,587 @@
+{
+    "resources-increment": 57,
+    "resources": {
+        "1": {
+            "name": "Intro",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556092260,
+            "description": null,
+            "src": "1_1556092260_intro.mp4",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1556092260_thumb_intro.png"
+        },
+        "2": {
+            "name": "Episode 1 - Mustafa Sebnem",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556092338,
+            "description": null,
+            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2987/64007844001_6032637490001_6032627750001.mp4?pubId=64007844001&videoId=6032627750001",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1556092338_thumb_episode-1-mustafa-sebnem.png"
+        },
+        "3": {
+            "name": "Episode 2 - Farzad",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556092400,
+            "description": null,
+            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/3203/64007844001_6032636187001_6032626499001.mp4?pubId=64007844001&videoId=6032626499001",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1556092400_thumb_episode-2-farzad.png"
+        },
+        "4": {
+            "name": "Episode 3 - Boris",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556092427,
+            "description": null,
+            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/1987/64007844001_6032637427001_6032627755001.mp4?pubId=64007844001&videoId=6032627755001",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1556092427_thumb_episode-3-boris.png"
+        },
+        "5": {
+            "name": "Episode 4 - Kuebra",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556092451,
+            "description": null,
+            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/3987/64007844001_6032633215001_6032627757001.mp4?pubId=64007844001&videoId=6032627757001",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1556092451_thumb_episode-4-kuebra.png"
+        },
+        "6": {
+            "name": "Episode 5 - Molkenbuhr",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556092475,
+            "description": null,
+            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2987/64007844001_6032636272001_6032627758001.mp4?pubId=64007844001&videoId=6032627758001",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1556092475_thumb_episode-5-molkenbuhr.png"
+        },
+        "7": {
+            "name": "Episode 6 - Patrick",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556092499,
+            "description": null,
+            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/205/64007844001_6032636077001_6032628709001.mp4?pubId=64007844001&videoId=6032628709001",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1556092499_thumb_episode-6-patrick.png"
+        },
+        "8": {
+            "name": "Episode 7 - Paul",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556092548,
+            "description": null,
+            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/1205/64007844001_6032633339001_6032628710001.mp4?pubId=64007844001&videoId=6032628710001",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1556092548_thumb_episode-7-paul.png"
+        },
+        "9": {
+            "name": "Episode 8 - Halina",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556092568,
+            "description": null,
+            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2205/64007844001_6032635259001_6032628711001.mp4?pubId=64007844001&videoId=6032628711001",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1556092568_thumb_episode-8-halina.png"
+        },
+        "10": {
+            "name": "Episode 9 - Storyboxx",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556092589,
+            "description": null,
+            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/309/64007844001_6032635556001_6032627762001.mp4?pubId=64007844001&videoId=6032627762001",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1556092589_thumb_episode-9-storyboxx.png"
+        },
+        "11": {
+            "name": "Animation Heu",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556093635,
+            "description": null,
+            "src": "1_1556093635_animation-heu.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "12": {
+            "name": "Animation Mic",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556093651,
+            "description": null,
+            "src": "1_1556093651_animation-mic.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "13": {
+            "name": "Animation Tänzerin",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556093677,
+            "description": null,
+            "src": "1_1556093677_animation-tnzerin.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "14": {
+            "name": "Animation Segway",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556093704,
+            "description": null,
+            "src": "1_1556093704_animation-segway.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "15": {
+            "name": "Animation Storyboxx",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556093725,
+            "description": null,
+            "src": "1_1556093725_animation-storyboxx.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "16": {
+            "name": "Animation Molken",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556093754,
+            "description": null,
+            "src": "1_1556093754_animation-molken.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "17": {
+            "name": "Animation Winkeboy",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556093774,
+            "description": null,
+            "src": "1_1556093774_animation-winkeboy.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "18": {
+            "name": "Animation Touristguide",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556093803,
+            "description": null,
+            "src": "1_1556093803_animation-touristguide.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "19": {
+            "name": "Animation Clapping Hands",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556093828,
+            "description": null,
+            "src": "1_1556093828_animation-clapping-hands.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "20": {
+            "name": "Animation Boris",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556093860,
+            "description": null,
+            "src": "1_1556093860_animation-boris.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "21": {
+            "name": "Animation Flying Engländer",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556093885,
+            "description": null,
+            "src": "1_1556093885_animation-flying-englnder.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "22": {
+            "name": "Animation Flag",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556093905,
+            "description": null,
+            "src": "1_1556093905_animation-flag.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "23": {
+            "name": "Animation Drachen",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556093943,
+            "description": null,
+            "src": "1_1556093943_animation-drachen.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "24": {
+            "name": "Animation Immo-Schild",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556093962,
+            "description": null,
+            "src": "1_1556093962_animation-immo-schild.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "25": {
+            "name": "Animation Chairs",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556093979,
+            "description": null,
+            "src": "1_1556093979_animation-chairs.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "26": {
+            "name": "Animation Flugzeug",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556094003,
+            "description": null,
+            "src": "1_1556094003_animation-flugzeug.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "27": {
+            "name": "Animation Dancer",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556094037,
+            "description": null,
+            "src": "1_1556094037_animation-dancer.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "28": {
+            "name": "Animation Rickshaw",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556094082,
+            "description": null,
+            "src": "1_1556094082_animation-rickshaw.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "29": {
+            "name": "Animation Mann Miniatur",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556094111,
+            "description": null,
+            "src": "1_1556094111_animation-mann-miniatur.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "30": {
+            "name": "Tempelhof Atmo Day",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556097405,
+            "description": null,
+            "src": "1_1556097405_tempelhof-atmo-day.mp3",
+            "type": "audio",
+            "attributes": []
+        },
+        "31": {
+            "name": "Tempelhof Atmo Rain",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556097427,
+            "description": null,
+            "src": "1_1556097427_tempelhof-atmo-rain.mp3",
+            "type": "audio",
+            "attributes": []
+        },
+        "32": {
+            "name": "Sound Wind In",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556097474,
+            "description": null,
+            "src": "1_1556097474_sound-wind-in.mp3",
+            "type": "audio",
+            "attributes": []
+        },
+        "33": {
+            "name": "Sound Wind Loading",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556097493,
+            "description": null,
+            "src": "1_1556097493_sound-wind-loading.mp3",
+            "type": "audio",
+            "attributes": []
+        },
+        "34": {
+            "name": "Sound Wind Out",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556097509,
+            "description": null,
+            "src": "1_1556097509_sound-wind-out.mp3",
+            "type": "audio",
+            "attributes": []
+        },
+        "35": {
+            "name": "Overview Map ",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556097868,
+            "description": null,
+            "src": "1_1556097868_overview-map.jpg",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1556097868_thumb_overview-map.png"
+        },
+        "36": {
+            "name": "Overview Vector",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556097985,
+            "description": null,
+            "src": "1_1556097985_overview-vector.svg",
+            "type": "image",
+            "attributes": []
+        },
+        "38": {
+            "name": "Button Deine Vision",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556104582,
+            "description": null,
+            "src": "1_1556104582_button-deine-vision.svg",
+            "type": "image",
+            "attributes": []
+        },
+        "39": {
+            "name": "Icon Edit",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556104669,
+            "description": null,
+            "src": "1_1556104669_icon-edit.svg",
+            "type": "image",
+            "attributes": []
+        },
+        "40": {
+            "name": "Icon Play",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556104792,
+            "description": null,
+            "src": "1_1556104792_icon-play.svg",
+            "type": "image",
+            "attributes": []
+        },
+        "41": {
+            "name": "Icon Pause",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556104813,
+            "description": null,
+            "src": "1_1556104813_icon-pause.svg",
+            "type": "image",
+            "attributes": []
+        },
+        "42": {
+            "name": "Icon Arrow Bright",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556105432,
+            "description": null,
+            "src": "1_1556105432_icon-arrow-bright.svg",
+            "type": "image",
+            "attributes": []
+        },
+        "43": {
+            "name": "Icon Arrow Dark",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556105451,
+            "description": null,
+            "src": "1_1556105451_icon-arrow-dark.svg",
+            "type": "image",
+            "attributes": []
+        },
+        "44": {
+            "name": "Field Trip Logo Transparent PNG",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556105668,
+            "description": null,
+            "src": "1_1556105668_field-trip-logo-transparent-png.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1556105668_thumb_field-trip-logo-transparent-png.png"
+        },
+        "45": {
+            "name": "Field Trip Logo Transparent SVG",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556105700,
+            "description": null,
+            "src": "1_1556105700_field-trip-logo-transparent-svg.svg",
+            "type": "image",
+            "attributes": []
+        },
+        "46": {
+            "name": "Field Trip Logo BW PNG",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556105737,
+            "description": null,
+            "src": "1_1556105737_field-trip-logo-bw-png.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1556105737_thumb_field-trip-logo-bw-png.png"
+        },
+        "47": {
+            "name": "Field Trip Logo BW SVG",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556105758,
+            "description": null,
+            "src": "1_1556105758_field-trip-logo-bw-svg.svg",
+            "type": "image",
+            "attributes": []
+        },
+        "48": {
+            "name": "Icon Episode 1",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556536338,
+            "description": null,
+            "src": "1_1556536338_icon-episode-1.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1556536338_thumb_icon-episode-1.png"
+        },
+        "49": {
+            "name": "Icon Episode 2",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556536362,
+            "description": null,
+            "src": "1_1556536362_icon-episode-2.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1556536362_thumb_icon-episode-2.png"
+        },
+        "50": {
+            "name": "Icon Episode 3",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556536378,
+            "description": null,
+            "src": "1_1556536378_icon-episode-3.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1556536378_thumb_icon-episode-3.png"
+        },
+        "51": {
+            "name": "Icon Episode 4",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556536391,
+            "description": null,
+            "src": "1_1556536391_icon-episode-4.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1556536391_thumb_icon-episode-4.png"
+        },
+        "52": {
+            "name": "Icon Episode 5",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556536405,
+            "description": null,
+            "src": "1_1556536405_icon-episode-5.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1556536405_thumb_icon-episode-5.png"
+        },
+        "53": {
+            "name": "Icon Episode 6",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556536420,
+            "description": null,
+            "src": "1_1556536420_icon-episode-6.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1556536420_thumb_icon-episode-6.png"
+        },
+        "54": {
+            "name": "Icon Episode 7",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556536434,
+            "description": null,
+            "src": "1_1556536434_icon-episode-7.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1556536434_thumb_icon-episode-7.png"
+        },
+        "55": {
+            "name": "Icon Episode 8",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556536448,
+            "description": null,
+            "src": "1_1556536448_icon-episode-8.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1556536448_thumb_icon-episode-8.png"
+        },
+        "56": {
+            "name": "Icon Episode 9",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556536468,
+            "description": null,
+            "src": "1_1556536468_icon-episode-9.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1556536468_thumb_icon-episode-9.png"
+        },
+        "57": {
+            "name": "Animation Houdini",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1556631796,
+            "description": null,
+            "src": "1_1556631796_animation-houdini.gif",
+            "type": "image",
+            "attributes": {}
+        }
+    }
+}
