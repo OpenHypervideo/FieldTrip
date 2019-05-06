@@ -308,6 +308,8 @@ $(document).ready(function() {
 
 			$(this).hide();
 
+			$('#ftintro .ftLogo, #ftIntro #ftTagline, #ftIntro .ftNavCooperation').hide();
+
 			toggleNativeFullscreen();
 
 			window.setTimeout(function() {
