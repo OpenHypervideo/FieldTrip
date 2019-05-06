@@ -1300,6 +1300,31 @@ a {
   z-index: 1;
 }
 
+.ftLayer#ftintro .ftLogo {
+  top: 50%;
+  left: 25%;
+  margin-top: -180px;
+  margin-left: 180px;
+  font-size: 6em;
+}
+
+.ftLayer#ftintro #ftTagline {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  margin-top: -30px;
+  margin-left: 180px;
+  width: 50%;
+  font-size: 2em;
+  line-height: 1.2em;
+  color: #fff;
+  z-index: 28;
+}
+
+.ftLayer#ftintro .ftNavCooperation {
+  right: 20px;
+}
+
 /* OVERVIEW MAP */
 
 #ftoverview {
@@ -2590,6 +2615,10 @@ ABOUT / CREDITS / IMPRINT
     top: 30px;
     right: 90px;
   }
+
+  .ftLayer#ftintro .ftNavCooperation {
+    right: 30px;
+  }
 	
   .ftLayer .ftLayerContent .ftNavigation {
     width: 80px;
@@ -2703,6 +2732,10 @@ ABOUT / CREDITS / IMPRINT
   .ftNavCooperation {
     top: 30px;
     right: 90px;
+  }
+
+  .ftLayer#ftintro .ftNavCooperation {
+    right: 30px;
   }
 	
   .ftLayer .ftLayerContent .ftNavigation {
@@ -2924,6 +2957,10 @@ ABOUT / CREDITS / IMPRINT
   .ftNavCooperation img {
     width: 90px !important;
   }
+
+  .ftLayer#ftintro .ftNavCooperation {
+    right: 5px;
+  } 
   
   #fthyperInfo .ftInfoNavigation ul {
     display: none;

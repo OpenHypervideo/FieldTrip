@@ -168,24 +168,31 @@
     </head>
     <body style="opacity: 0;">
       
-      <div id="ftPointer" class="custom-cursor"></div>
-      
-      <button id="ftStartButton" class="ftButton ftAnimatedButton ftEvent">
-        <figure class="chart" data-percent="100">
-          <svg width="180" height="180">
-            <circle class="circle outer" cx="90" cy="90" r="88"/>
-          </svg>
-        </figure>
-        <i class="fticon-right"></i>
-      </button>
+        <div id="ftPointer" class="custom-cursor"></div>
 
         <div id="ftintro" class="ftLayer">
+            <i class="fticon-logo-fieldtrip ftLogo"></i>
+            <div class="ftNavCooperation">
+                <div>In Kooperation mit</div>
+                <img width="" height="" src="_custom/graphics/FT-logo-tagesspiegel.png" alt="logo Tagesspiegel" />
+            </div>
+            <div id="ftTagline">Ein interaktiver Dokumentarfilm <br>
+            zum Tempelhofer Feld</div>
+
             <div class="ftLayerContent">
                 <video id="ftIntroVideo" preload="auto" playsinline>
                     <source src="https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/3229/64007844001_6032630087001_6032629731001.mp4?pubId=64007844001&videoId=6032629731001" type="video/mp4">
                 </video>
             </div>
 
+            <button id="ftStartButton" class="ftButton ftAnimatedButton ftEvent">
+                <figure class="chart" data-percent="100">
+                    <svg width="180" height="180">
+                        <circle class="circle outer" cx="90" cy="90" r="88"/>
+                    </svg>
+                </figure>
+                <i class="fticon-right"></i>
+            </button>
         </div>
 
         <div id="ftoverview" class="ftLayer">

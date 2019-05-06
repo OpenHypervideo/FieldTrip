@@ -310,11 +310,8 @@ $(document).ready(function() {
 
 			toggleNativeFullscreen();
 
-			// Fake Loading Routine
 			window.setTimeout(function() {
-				
-				$('.ftLoadingIndicator').removeClass('active').fadeOut(1000);
-				
+								
 				window.history.replaceState({}, '', '#intro');
 				activateLayer('intro');
 
@@ -668,6 +665,7 @@ function activateLayer(layerName, videoID) {
 			break;
 		case 'overview':
 			// Overview
+			$('#ftStartButton').hide();
 			$('#ftoverview').css('opacity', '');
 			if (FieldTrip.pause) {
 				$('.hypervideo .video').stop(true, false).animate({
@@ -691,7 +689,7 @@ function activateLayer(layerName, videoID) {
 			break;
 		case 'hypervideo':
 			// Video
-			
+			$('#ftStartButton').hide();
 			$('.hypervideo .video').prop('volume', 0);
 			if (FieldTripReady) {
 				initTransitions('.mainContainer');
