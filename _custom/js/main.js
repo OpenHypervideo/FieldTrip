@@ -199,6 +199,7 @@ $(document).ready(function() {
 	renderVideoLinkCircles();
 
 	// Check Setup
+	/*
 	if (!!document.location.host) {
 		$.ajax({
 			"type": "POST",
@@ -213,6 +214,7 @@ $(document).ready(function() {
 			}
 		});
 	}
+	*/
 
 	updateVisitorsNumber();
 	
