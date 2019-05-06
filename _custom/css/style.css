@@ -1386,7 +1386,7 @@ a {
   display: block;
   top: 20px;
   right: 60px;
-  font-size: .95em;
+  font-size: .75em;
   padding: 8px 10px;
   color: rgba(255, 255, 255, .7);
   text-align: left;
@@ -1400,10 +1400,10 @@ a {
 .ftNavCooperation img {
   display: block;
   position: relative;
-  margin-top: 4px;
+  margin-top: 8px;
   top: auto !important;
   left: auto !important;
-  width: 162px !important;
+  width: 155px !important;
   height: auto !important;
 }
 
@@ -2909,7 +2909,6 @@ ABOUT / CREDITS / IMPRINT
   */
 
   .ftNavCooperation {
-    font-size: .75em;
     top: 5px;
     right: 40px;
   }
