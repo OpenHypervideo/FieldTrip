@@ -438,7 +438,7 @@ function initEventListeners() {
 	}
 
 	// Hash Change Listener
-	$(window).on('popstate', function() {
+	$(window).on('hashchange', function() {
 		
 		if (location.hash.split('#').length == 1) { return; }
 
@@ -450,7 +450,7 @@ function initEventListeners() {
 		}
 	});
 
-	$(window).trigger('popstate');
+	$(window).trigger('hashchange');
 
 	// Edit Button
 	$('.ftEdit').click(function() {
@@ -1041,7 +1041,7 @@ function updateEpisodeCircles() {
 		mapElementCircle[0].style.strokeDasharray = length;
 		mapElementCircle[0].style.strokeDashoffset = offset; 
 
-		//mapElement.find('.chart').find('circle')[0].style.transform = `rotate(${360 * value.lastTime / (value.duration)}deg)`;
+		//mapElement.find('.chart').find('circle')[0].style.transform = "rotate(" + (360 * value.lastTime / (value.duration)) + "deg)";
 
 		
 		var pointerElements = mapElement.find('svg').find('.pointer-group');
@@ -1169,7 +1169,7 @@ function renderPlayCircleLinks() {
 				parentSVG.appendChild(newPointerGroup);
 			}
 			
-			newPointerGroup.style.transform = `translate(88px, 88px) rotate(${(360 * parseFloat(videoLink.time) / (hypervideoDuration)) - 90}deg)`; 
+			newPointerGroup.style.transform = "translate(88px, 88px) rotate(" + ((360 * parseFloat(videoLink.time) / (hypervideoDuration)) - 90) + "deg)"; 
 
 		});
 		
@@ -1204,8 +1204,7 @@ function renderVideoLinkCircles() {
 					newPointerGroup.appendChild(newPointerCircle);
 					parentSVG.appendChild(newPointerGroup);
 
-					newPointerGroup.style.transform = `translate(143px, 143px) rotate(${(360 * parseFloat(videoLink.time) / (hypervideoDuration)) - 90}deg)`; 
-
+					newPointerGroup.style.transform = "translate(143px, 143px) rotate(" + ((360 * parseFloat(videoLink.time) / (hypervideoDuration)) - 90) + "deg)"; 
 				});
 				
 			}
