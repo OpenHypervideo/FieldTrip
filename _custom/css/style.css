@@ -1345,7 +1345,8 @@ a {
 #ftoverview #ftMapContainer #ftWeatherContainer {
 	position: absolute;
 	top: 20px;
-	right: 250px;
+	right: 212px;
+  height: 57px;
 	text-align: right;
 	color: #FFF;
 	padding: 8px 10px;
@@ -1387,23 +1388,23 @@ a {
   top: 20px;
   right: 60px;
   font-size: .75em;
-  padding: 8px 10px;
+  padding: 5px 10px;
   color: rgba(255, 255, 255, .7);
   text-align: left;
   background: rgba(255, 255, 255, .1);
   border: 1px solid rgba(255, 255, 255, .05);
   height: 57px;
-  width: 185px;
+  width: 146px;
   z-index: 10;
 }
 
 .ftNavCooperation img {
   display: block;
   position: relative;
-  margin-top: 8px;
+  margin-top: 4px;
   top: auto !important;
   left: auto !important;
-  width: 155px !important;
+  width: 120px !important;
   height: auto !important;
 }
 
@@ -2582,7 +2583,7 @@ ABOUT / CREDITS / IMPRINT
   
   #ftoverview #ftMapContainer #ftWeatherContainer {
     top: 30px;
-    right: 250px;
+    right: 242px;
   }
 
   .ftNavCooperation {
@@ -2689,7 +2690,7 @@ ABOUT / CREDITS / IMPRINT
   
   #ftoverview #ftMapContainer #ftWeatherContainer {
     top: 30px;
-    right: 280px;
+    right: 242px;
   }
   
   /*
@@ -2892,11 +2893,17 @@ ABOUT / CREDITS / IMPRINT
   #ftoverview #ftMapContainer #ftWeatherContainer {
     font-size: .75em;
     top: 5px;
-    right: 230px;
+    right: 190px;
+    height: 50px;
   }
   
   #ftWeatherIcon {
-    width: 30px;
+    width: 20px;
+  }
+
+  #ftWeatherIcon i {
+    font-size: 20px;
+    line-height: 17px;
   }
   
   /*
@@ -2911,6 +2918,11 @@ ABOUT / CREDITS / IMPRINT
   .ftNavCooperation {
     top: 5px;
     right: 40px;
+    height: 50px;
+  }
+
+  .ftNavCooperation img {
+    width: 90px !important;
   }
   
   #fthyperInfo .ftInfoNavigation ul {
