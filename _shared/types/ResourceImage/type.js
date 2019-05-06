@@ -44,9 +44,7 @@ FrameTrail.defineType(
 
                     var resourceElement = $(
                             '<div class="resourceDetail" data-type="'+ this.resourceData.type +'">'
-                        +       '<img src="'+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src) +'" title="'
-                        +       this.resourceData.name
-                        +       '">'
+                        +       '<img src="'+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src) +'">'
                         +       '<div class="licenseInformation">'+ this.resourceData.licenseType +' - '+ this.resourceData.licenseAttribution +'</div>'
                         +    '</div>'
                     ).perfectScrollbar({
