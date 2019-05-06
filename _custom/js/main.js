@@ -273,13 +273,11 @@ $(document).ready(function() {
 		$('#playCircleContainer').removeClass('playing');
 	});
 
-	/*
 	FieldTrip.on('ended', function() {
 		FieldTrip.play();
 		//window.history.pushState({}, '', '#overview');
 		//activateLayer('overview');
 	});
-	*/
 
 	FieldTrip.on('userAction', function(evt) {
 		if (evt.detail.action == 'EditEnd') {
