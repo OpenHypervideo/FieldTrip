@@ -1073,12 +1073,28 @@ function initPlayCircle() {
 
 	var playCircleContainer = $('<figure id="playCircleContainer" class="chart ftEvent"></figure>');
 
-	playCircleContainer.click(function() {
-		if ($(this).hasClass('playing')) {
-			FieldTrip.pause();
+	playCircleContainer.click(function(evt) {
+		
+		
+
+		if ($(evt.target).hasClass('linkPointer')) {
+			
+			console.log($(evt.target));
+
+			var linkElemTime = $(evt.target).parent().attr('data-time');
+			
+			if (linkElemTime) {
+				FieldTrip.currentTime = linkElemTime-3;
+			}
 		} else {
-			FieldTrip.play();
+			if ($(this).hasClass('playing')) {
+				FieldTrip.pause();
+			} else {
+				FieldTrip.play();
+			}
 		}
+
+		
 	});
 
 	playCircleContainer.on("mouseover", function() {
