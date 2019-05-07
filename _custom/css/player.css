@@ -197,6 +197,14 @@ body.userinactive #fthypervideo .ftAboutIconContainer {
 	display: none !important;
 }
 
+#VideoPlayer .mainContainer:not(.editActive) .viewOverview {
+	display: none !important;
+}
+
+#VideoPlayer .mainContainer:not(.editActive) .viewVideo {
+	display: block !important;
+}
+
 /* buttons */
 
 #VideoPlayer button, #VideoPlayer input[type="submit"], #VideoPlayer input[type="button"], #VideoPlayer .button {
