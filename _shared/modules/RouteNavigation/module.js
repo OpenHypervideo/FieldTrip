@@ -202,8 +202,8 @@ FrameTrail.defineModule('RouteNavigation', function(FrameTrail){
 	}
 
 
-	$(window).on('hashchange', routeHasChanged);
-	//$(window).on('popstate', routeHasChanged);
+	//$(window).on('hashchange', routeHasChanged);
+	$(window).on('popstate', routeHasChanged);
 
 	routeHasChanged();
 
