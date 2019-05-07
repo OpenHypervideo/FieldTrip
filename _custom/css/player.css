@@ -428,3 +428,8 @@ body.userinactive #fthypervideo .ftAboutIconContainer {
 	opacity: 0;
 }
 */
+
+/* IE fix */
+.hypervideoContainer .videoContainer {
+  min-height: 100vh !important;
+}
