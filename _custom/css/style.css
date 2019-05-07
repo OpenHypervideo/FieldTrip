@@ -1321,6 +1321,17 @@ a {
   z-index: 28;
 }
 
+.ftLayer#ftintro #ftSkipIntro {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 4px 8px;
+  z-index: 25;
+  display: none;
+}
+
 .ftLayer#ftintro .ftNavCooperation {
   right: 20px;
 }

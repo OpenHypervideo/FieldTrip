@@ -308,7 +308,7 @@ $(document).ready(function() {
 
 			$(this).hide();
 
-			$('#ftintro .ftLogo, #ftIntro #ftTagline, #ftIntro .ftNavCooperation').hide();
+			$('#ftintro .ftLogo, #ftintro #ftTagline, #ftintro .ftNavCooperation').hide();
 
 			toggleNativeFullscreen();
 
@@ -325,6 +325,8 @@ $(document).ready(function() {
 
 	$('#ftIntroVideo').on('ended', function() {
 		updateEpisodeTimings();
+
+		$('#ftSkipIntro').hide();
 
 		//if (previousLayer && previousLayer == 'overview') {
 			window.history.pushState({}, '', '#overview');
@@ -622,6 +624,11 @@ function initEventListeners() {
   document.addEventListener("webkitfullscreenchange", toggleFullscreen, false);
 	document.addEventListener("mozfullscreenchange", toggleFullscreen, false);
 
+	$('#ftSkipIntro').click(function() {
+		window.history.pushState({}, '', '#overview');
+		activateLayer('overview');
+	});
+
 }
 
 function activateLayer(layerName, videoID) {
@@ -650,6 +657,8 @@ function activateLayer(layerName, videoID) {
 					FieldTrip.pause();
 				});
 			}
+
+			$('#ftSkipIntro').show();
 			
 			//introTimeout = window.setTimeout(function() {
 				$('#ftIntroVideo')[0].currentTime = 0;
