@@ -1,15 +1,28 @@
 /* Loop  - Olivier - Just an idea! */
 
-var loops = 3 * 2;
-function removeAddClass() {
-  $("#ftMapPin3.ftMapPin").toggleClass("active");
-  if (--loops > 0)
-  setTimeout(removeAddClass, 6000);
-  else {
-    $("#ftMapPin3.ftMapPin").removeClass("active");
-  }
+highlightInteractiveElement('#ftMapPin3.ftMapPin', 2);
+
+function highlightInteractiveElement(selector, iterations) {
+
+	var interactiveElement = $(selector);
+
+	interactiveElement.addClass("active");
+
+	setTimeout(function() {
+		interactiveElement.removeClass("active");
+	}, iterations * 3000);
+	
+	/*
+	if (iterations*2 >= 0)
+		setTimeout(function() {
+			highlightInteractiveElement(selector, --iterations);
+		}, 6000);
+	else {
+		interactiveElement.removeClass("active");
+	}
+	*/
+
 }
-removeAddClass();
 
 /* Custom cursor */
 

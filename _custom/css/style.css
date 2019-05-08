@@ -1640,7 +1640,7 @@ a {
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:hover::before,
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin.active::before,
-#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:visited::before  {
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:visited::before {
   content: "";
   position: absolute;
   -webkit-animation: pulse-one 3s infinite; /* Chrome, Safari, Opera */
@@ -1678,6 +1678,44 @@ a {
   -ms-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   z-index: -1;
+}
+
+body.overlayHints .overlayElement.active .resourceDetail[data-type="image"]::before {
+  content: "";
+  position: absolute;
+  -webkit-animation: pulse-bigger-one 3s infinite; /* Chrome, Safari, Opera */
+  animation: pulse-bigger-one 3s infinite;
+  background: rgba(254, 197, 112, .5);
+  border-radius: 50%;
+  height: 0em;
+  width: 0em;
+  top: 90%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 2;
+}
+
+body.overlayHints .overlayElement.active .resourceDetail[data-type="image"]::after {
+  content: "";
+  position: absolute;
+  -webkit-animation: pulse-bigger-two 3s infinite; 
+  animation: pulse-bigger-two 3s infinite;
+  background: rgba(254, 197, 112, .25);
+  border-radius: 50%;
+  height: 0em;
+  width: 0em;
+  top: 90%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 2;
 }
 
 @-moz-keyframes pulse-one {
@@ -1816,6 +1854,145 @@ a {
     opacity: 0.2;
     height: 1em;
     width: 1em;
+  }
+}
+
+@-moz-keyframes pulse-bigger-one {
+  0% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 2em;
+    width: 2em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+}
+@-webkit-keyframes pulse-bigger-one {
+  0% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 2em;
+    width: 2em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+}
+@-o-keyframes pulse-bigger-one {
+  0% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 2em;
+    width: 2em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+}
+@keyframes pulse-bigger-one {
+  0% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 2em;
+    width: 2em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+}
+
+
+@-moz-keyframes pulse-bigger-two {
+  0% {
+    opacity: 0.2;
+    height: 2em;
+    width: 2em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 4em;
+    width: 4em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 2em;
+    width: 2em;
+  }
+}
+@-webkit-keyframes pulse-bigger-two {
+  0% {
+    opacity: 0.2;
+    height: 2em;
+    width: 2em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 4em;
+    width: 4em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 2em;
+    width: 2em;
+  }
+}
+@-o-keyframes pulse-bigger-two {
+  0% {
+    opacity: 0.2;
+    height: 2em;
+    width: 2em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 4em;
+    width: 4em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 2em;
+    width: 2em;
+  }
+}
+@keyframes pulse-bigger-two {
+  0% {
+    opacity: 0.2;
+    height: 2em;
+    width: 2em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 4em;
+    width: 4em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 2em;
+    width: 2em;
   }
 }
 
