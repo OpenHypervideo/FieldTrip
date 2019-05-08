@@ -282,6 +282,13 @@ body.userinactive #fthypervideo .ftAboutIconContainer {
   	transform: scale(1,1);
 }
 
+/* TODO: Fix sizing & scaling of overlays; */
+.overlayElement .resourceDetail[data-type="image"] .ps-scrollbar-x-rail, 
+.overlayElement .resourceDetail[data-type="image"] .ps-scrollbar-y-rail {
+	display: none !important;
+}
+
+
 .overlayElement svg {
 	top: 10px;
 	left: 10px;
@@ -438,6 +445,6 @@ body.userinactive #fthypervideo .ftAboutIconContainer {
 */
 
 /* IE fix */
-.hypervideoContainer .videoContainer {
+.mainContainer:not(.editActive) .hypervideoContainer .videoContainer {
   min-height: 100vh !important;
 }
