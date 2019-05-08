@@ -55,7 +55,8 @@ var FieldTripReady = false,
 	//introTimeout,
 	episodeTimings = {},
 	timeInterval = null,
-	muted = false;
+	muted = false,
+	firstClickPlay = false;
 
 /* Sunrise / Sunset Hours */
 
@@ -594,10 +595,15 @@ function initEventListeners() {
 	    	$('.ftMapPinDescription').removeClass('is-visible');
 	    }
 	    //hide = true;
-	    $('#audioAtmoDay')[0].play();
-		$('#audioAtmoDay').stop(true, false).animate({
-			volume: 1
-		}, 7000);
+
+	    // Attempt to deal with autoplay issues
+	    if (!firstClickPlay) {
+	    	$('#audioAtmoDay')[0].play();
+			$('#audioAtmoDay').stop(true, false).animate({
+				volume: 1
+			}, 7000);
+			firstClickPlay = true;
+	    }
 	});
 
 	$('.ftMapPin').click(function(evt){
