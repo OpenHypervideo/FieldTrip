@@ -201,9 +201,11 @@ FrameTrail.defineModule('RouteNavigation', function(FrameTrail){
 
 	}
 
-
-	//$(window).on('hashchange', routeHasChanged);
-	$(window).on('popstate', routeHasChanged);
+	if (navigator.appName == 'Microsoft Internet Explorer' ||  !!(navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/rv:11/)) || (typeof $.browser !== "undefined" && $.browser.msie == 1)) {
+		$(window).on('hashchange', routeHasChanged);
+	} else {
+		$(window).on('popstate', routeHasChanged);
+	}
 
 	routeHasChanged();
 
