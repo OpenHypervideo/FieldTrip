@@ -1,2 +1,0 @@
-1553623946
-{"coord":{"lon":13.41,"lat":52.48},"weather":[{"id":801,"main":"Clouds","description":"few clouds","icon":"02n"}],"base":"stations","main":{"temp":6.75,"pressure":1023,"humidity":65,"temp_min":5.56,"temp_max":7.78},"visibility":10000,"wind":{"speed":2.6,"deg":300},"clouds":{"all":20},"dt":1553623821,"sys":{"type":1,"id":1275,"message":0.0045,"country":"DE","sunrise":1553576146,"sunset":1553621303},"id":7290253,"name":"Berlin Tempelhof","cod":200}
