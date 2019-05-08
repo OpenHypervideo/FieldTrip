@@ -15,9 +15,12 @@
 
 	var hasHTML5Video           = true,
 		duration                = 0,
+		durationFull			= 0,
 		sourceFiles             = {
 									mp4:  ''
 								  },
+		offsetIn 				= 0,
+		offsetOut 				= null,
 
 		hypervideoName          = '',
 		description             = '',
@@ -101,6 +104,7 @@
 
 			hasHTML5Video = false;
 			duration      = videoData.duration;
+			durationFull  = videoData.duration;
 
 
 		} else {
@@ -109,6 +113,9 @@
 			sourceFiles.mp4  = database.resources[videoData.resourceId].src;
 
 		}
+
+		offsetIn  = (videoData.in) ? parseFloat(videoData.in) : 0;
+		offsetOut = (videoData.out) ? parseFloat(videoData.out) : null;
 
 		// Set subtitle files
 		subtitleFiles        = hypervideo.subtitles;
@@ -2010,6 +2017,37 @@
 		 */
 		set duration(aNumber)   { return duration = aNumber },
 		get duration()          { return duration           },
+
+		/**
+		 * The hypervideo's full duration (without taking offsets into account).
+		 *
+		 * This attribute must not be changed after the init process.
+		 * It is either set to the duration of the "null video" ({{#crossLink "HypervideoModel/initModel:method"}}HypervideoModel/initModel(){{/crossLinks}}) or
+		 * or after the video source file's meta data has loaded ({{#crossLink "HypervideoController/initController:method"}}HypervideoController/initController(){{/crossLinks}}).
+		 *
+		 * @attribute duration
+		 * @param {} aNumber
+		 */
+		set durationFull(aNumber)   { return durationFull = aNumber },
+		get durationFull()          { return durationFull           },
+
+		/**
+		 * Get or set the hypervideo time in (clipping)
+		 * @type Float
+		 * @attribute offsetIn
+		 * @param {String} aNumber
+		 */
+		get offsetIn()         { return offsetIn           },
+		set offsetIn(aNumber)  { return offsetIn = aNumber },
+
+		/**
+		 * Get or set the hypervideo time out (clipping)
+		 * @type Float
+		 * @attribute offsetOut
+		 * @param {String} aNumber
+		 */
+		get offsetOut()         { return offsetOut           },
+		set offsetOut(aNumber)  { return offsetOut = aNumber },
 
 
 

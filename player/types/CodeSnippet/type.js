@@ -277,7 +277,7 @@ FrameTrail.defineType(
 
                         drag: function(event, ui) {
 
-                            var closestGridline = FrameTrail.module('ViewVideo').closestToOffset($('.gridline'), {
+                            var closestGridline = FrameTrail.module('ViewVideo').closestToOffset($(FrameTrail.getState('target')).find('.gridline'), {
                                     left: ui.position.left,
                                     top: ui.position.top
                                 }),
@@ -285,7 +285,7 @@ FrameTrail.defineType(
 
                             if (closestGridline) {
 
-                                $('.gridline').css('background-color', '#ff9900');
+                                $(FrameTrail.getState('target')).find('.gridline').css('background-color', '#ff9900');
 
                                 if ( ui.position.left - snapTolerance < closestGridline.position().left &&
                                      ui.position.left + snapTolerance > closestGridline.position().left ) {

@@ -36,7 +36,6 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
 
 	//Check for valid URL
     $(document).on('paste blur keyup', '#resourceInputTabURL input', function(evt) {
-        console.log(this.value);
         checkResourceInput( this.value, $('.resourceNameInput')[0].value );
         evt.stopPropagation();
     });
@@ -698,7 +697,6 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
 
             for (var i in checkers) {
                 newResource = checkers[i](uriValue, nameValue);
-                console.log(newResource);
                 if (newResource !== null) {
                     $('.resourceInputMessage').attr('class', 'resourceInputMessage message active success').text('Valid '+ newResource.type +' URL' );
                     return newResource;

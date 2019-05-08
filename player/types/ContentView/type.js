@@ -164,6 +164,43 @@ FrameTrail.defineType(
                             });
 
                             break;
+
+                        case 'Timelines': 
+
+                            self.contentCollection.forEach(function (contentItem) {
+                                self.removeContentCollectionElements(contentItem);
+                            });
+
+                            self.contentCollection = FrameTrail.module('TagModel').getContentCollection(
+                                self.contentViewData.collectionFilter.tags,
+                                false,
+                                true,
+                                self.contentViewData.collectionFilter.users,
+                                self.contentViewData.collectionFilter.text,
+                                self.contentViewData.collectionFilter.types
+                            );
+
+                            var timelinesContainer = $('<div class="timelinesContainer"></div>');
+                            var timelineList = $('<div class="timelineList"></div>');
+
+                            //TODO: remove timeout (needed right now because video duration is not known)
+                            //window.setTimeout(function() {
+                                FrameTrail.module('AnnotationsController').renderAnnotationTimelines(self.contentCollection, timelineList, 'annotationType');
+
+                                timelinesContainer.append(timelineList);
+
+                                self.contentViewContainer.find('.contentViewContents').empty().append(timelinesContainer);
+                            //}, 2000);
+                            
+
+                            timelinesContainer.click(function(evt) {
+                                if ( $(evt.target).hasClass('timebased') ) {
+                                    FrameTrail.module('HypervideoController').currentTime = $(evt.target).attr('data-start') - 0.5;
+                                }
+                            });
+
+                            break;
+
                     }
 
                     FrameTrail.module('ViewLayout').updateManagedContent();
@@ -517,6 +554,8 @@ FrameTrail.defineType(
                     var self = this;
                         HypervideoDuration = FrameTrail.module('HypervideoModel').duration;
 
+                    //console.log(HypervideoDuration);
+
                     if (!self.contentViewContainer.hasClass('active')) {
                         return;
                     }
@@ -539,7 +578,49 @@ FrameTrail.defineType(
                         self.contentViewContainer.find('.transcriptContainer').perfectScrollbar('update');
                     }
 
+                    if ( self.contentViewData.type == 'Timelines' ) {
+                        self.updateCompareTimelineItems();
+                    }
+
                     self.scaleDetailElements();
+
+                },
+
+
+                updateCompareTimelineItems: function() {
+                    var self = this;
+                        HypervideoDuration = FrameTrail.module('HypervideoModel').duration,
+                        timelineList = self.contentViewContainer.find('.timelineList');
+
+                    if (HypervideoDuration && !timelineList.hasClass('initialized')) {
+                        
+                        var timelineItems = timelineList.find('.compareTimelineElement');
+
+                        timelineItems.each(function() {
+                            var originTimeStart = parseFloat($(this).data('start')),
+                                originTimeEnd   = parseFloat($(this).data('end')),
+                                timeStart       = originTimeStart - FrameTrail.module('HypervideoModel').offsetIn,
+                                timeEnd         = originTimeEnd - FrameTrail.module('HypervideoModel').offsetOut;
+                                positionLeft    = 100 * (timeStart / HypervideoDuration),
+                                width           = 100 * ((originTimeEnd - originTimeStart) / HypervideoDuration);
+
+                            $(this).css({
+                                left:  positionLeft + '%',
+                                width: width + '%'
+                            });
+
+                            $(this).removeClass('previewPositionLeft previewPositionRight');
+
+                            if (positionLeft < 10 && width < 10) {
+                                $(this).addClass('previewPositionLeft');
+                            } else if (positionLeft > 90) {
+                                $(this).addClass('previewPositionRight');
+                            }
+                        });
+
+                        timelineList.addClass('initialized');
+                    }
+                    
 
                 },
 

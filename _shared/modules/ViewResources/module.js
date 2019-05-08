@@ -82,7 +82,7 @@ FrameTrail.defineModule('ViewResources', function(FrameTrail){
 
         if (showAsDialog) {
 
-            $('.mainContainer').append(domElement);
+            $(FrameTrail.getState('target')).find('.mainContainer').append(domElement);
 
             domElement.dialog({
                 autoOpen: false,
@@ -103,7 +103,7 @@ FrameTrail.defineModule('ViewResources', function(FrameTrail){
             var wrapperElem = $('<div class="resourceManagerContent"></div>');
             
             wrapperElem.append(domElement)
-            $('.mainContainer').append(wrapperElem);
+            $(FrameTrail.getState('target')).find('.mainContainer').append(wrapperElem);
         }
 
         FrameTrail.changeState('viewSize', FrameTrail.getState('viewSize'));

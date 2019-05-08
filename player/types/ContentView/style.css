@@ -177,6 +177,10 @@
 	display: none;
 }
 
+.layoutArea .contentViewContainer[data-type="Timelines"] {
+	overflow: auto;
+}
+
 .layoutArea .contentViewContainer .slideButton {
     opacity: 0;
     display: none;
@@ -246,6 +250,10 @@
 
 .layoutArea[data-area="areaTop"] .contentViewContainer[data-size="large"] .contentViewContents, .layoutArea[data-area="areaBottom"] .contentViewContainer[data-size="large"] .contentViewContents {
     left: 10px;
+}
+
+.layoutArea[data-area="areaTop"] .contentViewContainer[data-type="Timelines"] .contentViewContents, .layoutArea[data-area="areaBottom"] .contentViewContainer[data-type="Timelines"] .contentViewContents {
+    width: calc(100% - 20px);
 }
 
 .layoutArea[data-area="areaLeft"] .contentViewContainer .contentViewContents, .layoutArea[data-area="areaRight"] .contentViewContainer .contentViewContents {

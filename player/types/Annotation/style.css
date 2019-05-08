@@ -98,7 +98,9 @@
 	position: absolute;
 	height: 20px;
 	background: #888;
-	opacity: .3;
+	opacity: .6;
+	border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
 }
 
 /* Timeline Element Preview */
@@ -119,6 +121,22 @@ body > .timelineElement .previewWrapper {
 	z-index: 2;
 	box-sizing: border-box;
 	display: none;
+}
+
+.compareTimelineElement.previewPositionLeft .previewWrapper, 
+.timelineElement.previewPositionLeft .previewWrapper, 
+body > .compareTimelineElement.previewPositionLeft .previewWrapper,
+body > .timelineElement.previewPositionLeft .previewWrapper {
+	left: 0%;
+	margin-left: 0px;
+}
+
+.compareTimelineElement.previewPositionRight .previewWrapper, 
+.timelineElement.previewPositionRight .previewWrapper, 
+body > .compareTimelineElement.previewPositionRight .previewWrapper,
+body > .timelineElement.previewPositionRight .previewWrapper {
+	left: 0%;
+	margin-left: -60px;
 }
 
 .compareTimelineElement:hover .previewWrapper,
@@ -144,6 +162,20 @@ body > .timelineElement .previewWrapper:after {
 	border-right: 12px solid transparent;
 	content: '';
 	font-weight: 300;
+}
+
+.compareTimelineElement.previewPositionLeft .previewWrapper:after, 
+.timelineElement.previewPositionLeft .previewWrapper:after, 
+body > .compareTimelineElement.previewPositionLeft .previewWrapper:after,
+body > .timelineElement.previewPositionLeft .previewWrapper:after {
+	left: 15px;
+}
+
+.compareTimelineElement.previewPositionRight .previewWrapper:after, 
+.timelineElement.previewPositionRight .previewWrapper:after, 
+body > .compareTimelineElement.previewPositionRight .previewWrapper:after,
+body > .timelineElement.previewPositionRight .previewWrapper:after {
+	left: 62px;
 }
 
 .compareTimelineElement .previewWrapper .resourceThumb, 
@@ -233,9 +265,15 @@ body > .timelineElement .previewWrapper .resourceThumb .resourceOverlay .resourc
 	top: 0px;
 	left: calc(100% - 10px);
 	font-size: 11px;
-	width: 30px;
+	width: 42px;
+	text-align: center;
 	overflow: hidden;
 	color: var(--primary-bg-color);
+}
+
+.contenViewContents .compareTimelineElement .compareTimelineElementTime .compareTimeStart,
+.contenViewContents .compareTimelineElement .compareTimelineElementTime .compareTimeEnd {
+	color: var(--primary-fg-color);
 }
 
 .compareTimelineElement .compareTimelineElementTime .compareTimeStart {
@@ -243,11 +281,11 @@ body > .timelineElement .previewWrapper .resourceThumb .resourceOverlay .resourc
 	right: calc(100% - 10px);
 }
 
-.compareTimelineElement:hover .compareTimelineElementTime {
+.compareTimelineElement:hover .compareTimelineElementTime, .compareTimelineElement.active .compareTimelineElementTime {
 	display: block;
 }
 
-.timelineElement:hover, .compareTimelineElement:hover {
+.timelineElement:hover, .compareTimelineElement:hover, .compareTimelineElement.active {
 	opacity: 1 !important;
 	z-index: 101;
 	cursor: move;

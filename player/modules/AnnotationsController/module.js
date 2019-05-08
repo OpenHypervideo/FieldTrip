@@ -554,58 +554,7 @@
 
         /* Choose Annotations of other users */
 
-        var collectedAnnotationsPerUser = [];
-
-        console.log(FrameTrail.module('Database').users);
-
-        for (var anno in annotations) {
-            var currentCreatorID = annotations[anno].data.creatorId;
-            
-            if (!collectedAnnotationsPerUser[currentCreatorID]) {
-                
-                var userInDatabase = FrameTrail.module('Database').users[currentCreatorID];
-
-                collectedAnnotationsPerUser[currentCreatorID] = {
-                    'userID': annotations[anno].data.creatorId,
-                    'userName': annotations[anno].data.creator,
-                    'userColor' : (userInDatabase) ? userInDatabase.color : '444444',
-                    'annotations': []
-                };
-            }
-
-            collectedAnnotationsPerUser[currentCreatorID]['annotations'].push(annotations[anno]);
-        }
-
-        for (var useridx in collectedAnnotationsPerUser) {
-
-            console.log(useridx);
-            
-            if (collectedAnnotationsPerUser[useridx].userID === FrameTrail.module('UserManagement').userID) {
-                continue;
-            }
-                        
-            var otherUsername =  collectedAnnotationsPerUser[useridx].userName,
-                otherUserColor = collectedAnnotationsPerUser[useridx].userColor;
-
-            var userTimelineWrapper = $(    '<div class="userTimelineWrapper">'
-                                        +   '    <div class="userLabel" style="color: #'+ otherUserColor +'">'
-                                        +   '        <span class="icon-user"></span>'
-                                        +   '        <span>'+ otherUsername + '</span>'
-                                        +   '    </div>'
-                                        +   '    <div class="userTimeline"></div>'
-                                        +   '</div>'),
-                userTimeline = userTimelineWrapper.find('.userTimeline');
-
-            for (var idx in collectedAnnotationsPerUser[useridx].annotations) {
-                var compareTimelineItem = collectedAnnotationsPerUser[useridx].annotations[idx].renderCompareTimelineItem();
-                compareTimelineItem.css('background-color', '#' + otherUserColor);
-
-                userTimeline.append(compareTimelineItem);
-            }
-            
-            timelineList.append(userTimelineWrapper);
-
-        }
+        renderAnnotationTimelines(annotations, timelineList);
 
     }
 
@@ -762,6 +711,141 @@
 
     }
 
+    /**
+     * I render a list of annotation timelines.
+     * //TODO: Improve documentation
+     * @method renderAnnotationTimelines
+     * @param {Array} annotationCollection
+     * @param {HTMLElement} targetElement
+     * @param {String} filterAspect
+     */
+    function renderAnnotationTimelines(annotationCollection, targetElement, filterAspect) {
+        
+        var collectedAnnotationsPerAspect = [];
+
+        //console.log(FrameTrail.module('Database').users);
+        if (!filterAspect) {
+            var filterAspect = 'creatorId';
+        }
+
+        for (var anno in annotationCollection) {
+            
+            //var currentAspectID = annotationCollection[anno].data[filterAspect];
+            switch (filterAspect) {
+                case 'creatorId': 
+                    var currentAspectID = annotationCollection[anno].data[filterAspect];
+                    break;
+                case 'annotationType':
+                    var currentAspectID = (annotationCollection[anno].data.source.url.body) ? annotationCollection[anno].data.source.url.body[filterAspect]: null;
+                    break;
+            }
+
+            if (!currentAspectID) {
+                return;
+            }
+            
+            if (!collectedAnnotationsPerAspect[currentAspectID]) {
+                
+                var userInDatabase = FrameTrail.module('Database').users[annotationCollection[anno].data.creatorId];
+
+                //console.log(annotationCollection[anno]);
+                switch (filterAspect) {
+
+                    case 'creatorId': 
+                        
+                        collectedAnnotationsPerAspect[currentAspectID] = {
+                            'userID': annotationCollection[anno].data.creatorId,
+                            'label': annotationCollection[anno].data.creator,
+                            'color' : (userInDatabase) ? '#'+ userInDatabase.color : '#444444',
+                            'annotations': []
+                        };
+
+                        break;
+                    
+                    case 'annotationType':
+                        
+                        collectedAnnotationsPerAspect[currentAspectID] = {
+                            'userID': annotationCollection[anno].data.source.url.creator,
+                            'label': annotationCollection[anno].data.source.url["advene:type_title"],
+                            'color' : (annotationCollection[anno].data.source.url["advene:color"]) ? annotationCollection[anno].data.source.url["advene:color"] : '444444',
+                            'annotations': []
+                        };
+
+                        break;
+                }
+                
+            }
+
+            collectedAnnotationsPerAspect[currentAspectID]['annotations'].push(annotationCollection[anno]);
+        }
+
+        //console.log('ASPECTS: ', collectedAnnotationsPerAspect);
+
+        /*
+        if (filterAspect == 'annotationType') {
+            function compare(a,b) {
+                if (a.label < b.label)
+                    return -1;
+                if (a.label > b.label)
+                    return 1;
+                return 0;
+            }
+
+            collectedAnnotationsPerAspect.sort(compare);
+        }
+        */
+
+        for (var aspectidx in collectedAnnotationsPerAspect) {
+
+            if (collectedAnnotationsPerAspect[aspectidx].userID === FrameTrail.module('UserManagement').userID) {
+                //continue;
+            }
+                        
+            var aspectLabel =  collectedAnnotationsPerAspect[aspectidx].label,
+                aspectColor = collectedAnnotationsPerAspect[aspectidx].color;
+
+            //console.log(aspectLabel);
+
+            var userTimelineWrapper = $(    '<div class="userTimelineWrapper">'
+                                        +   '    <div class="userLabel" style="color: '+ aspectColor +'">'
+                                        +   '        <span class="icon-user"></span>'
+                                        +   '        <span>'+ aspectLabel + '</span>'
+                                        +   '    </div>'
+                                        +   '    <div class="userTimeline"></div>'
+                                        +   '</div>'),
+                userTimeline = userTimelineWrapper.find('.userTimeline');
+
+            for (var idx in collectedAnnotationsPerAspect[aspectidx].annotations) {
+                var compareTimelineItem = collectedAnnotationsPerAspect[aspectidx].annotations[idx].renderCompareTimelineItem();
+                compareTimelineItem.css('background-color', '#' + aspectColor);
+
+                userTimeline.append(compareTimelineItem);
+            }
+            
+            targetElement.append(userTimelineWrapper);
+
+        }
+
+        // TRY SORTING TIMELINES (TEMPORARY SOLUTION)
+        var timelines = targetElement.find('.userTimelineWrapper');
+
+        var timelinesArr = [];
+        timelines.each(function() {
+            timelinesArr.push($(this));
+        });
+
+        timelinesArr.sort(function(a, b) {
+          return a.find('.userLabel span').eq(1).text() == b.find('.userLabel span').eq(1).text()
+                  ? 0
+                  : (a.find('.userLabel span').eq(1).text() > b.find('.userLabel span').eq(1).text() ? 1 : -1);
+        });
+
+        for (i = 0; i < timelinesArr.length; ++i) {
+          targetElement.append(timelinesArr[i]);
+        }
+
+    }
+
 
     return {
 
@@ -781,6 +865,7 @@
 
         findTopMostActiveAnnotation: findTopMostActiveAnnotation,
         renderPropertiesControls:    renderPropertiesControls,
+        renderAnnotationTimelines:   renderAnnotationTimelines,
 
         /**
          * An annotation can be selected to be

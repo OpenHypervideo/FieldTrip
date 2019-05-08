@@ -591,7 +591,8 @@ body.userinactive .mainContainer:not(.editActive) .playerContainer .controls, bo
     content: "\e836";
 }
 
-.playerContainer .controls .playerControl.timeDisplay {
+.playerContainer .controls .playerControl.timeDisplay, 
+.playerContainer .controls .playerControl.timeDisplayFull {
     color: var(--primary-fg-color);
     height: 30px;
     line-height: 16px;
@@ -600,8 +601,14 @@ body.userinactive .mainContainer:not(.editActive) .playerContainer .controls, bo
     width: auto;
 }
 
-.playerContainer .controls .playerControl.timeDisplay .totalDuration {
+.playerContainer .controls .playerControl.timeDisplay .totalDuration, 
+.playerContainer .controls .playerControl.timeDisplayFull .totalDurationFull {
     color: #acacb3;
+}
+
+.playerContainer .controls .playerControl.timeDisplayFull {
+    border-left: 1px solid #acacb3;
+    padding-left: 8px;
 }
 
 /* Hypervideo Container */

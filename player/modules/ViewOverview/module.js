@@ -30,7 +30,7 @@ FrameTrail.defineModule('ViewOverview', function(FrameTrail){
      */
     function create() {
 
-        $('.mainContainer').append(domElement);
+        $(FrameTrail.getState('target')).find('.mainContainer').append(domElement);
 
         toggleViewMode(FrameTrail.getState('viewMode'));
         toggleEditMode(FrameTrail.getState('editMode'));
@@ -242,10 +242,10 @@ FrameTrail.defineModule('ViewOverview', function(FrameTrail){
 
         if ( FrameTrail.getState('viewMode') != 'overview' ) return;
 
-        var overviewListHeight = $('.mainContainer').outerHeight()
+        var overviewListHeight = $(FrameTrail.getState('target')).find('.mainContainer').outerHeight()
                                     - (FrameTrail.getState('editMode') ? 24 : 0),
             overviewListWidth = $(FrameTrail.getState('target')).width()
-                                    - (FrameTrail.getState('sidebarOpen') ? $('.sidebar').width() : 0);
+                                    - (FrameTrail.getState('sidebarOpen') ? $(FrameTrail.getState('target')).find('.sidebar').width() : 0);
 
         OverviewList.height( overviewListHeight );
 

@@ -44,7 +44,7 @@ FrameTrail.defineType(
                 renderContent: function() {
 
                 	var splitUri = this.resourceData.src.split('://'),
-                        mobileUri = '//' + splitUri[1].substr(0, 3) + 'm.' + splitUri[1].substr(3),
+                        mobileUri = 'https://' + splitUri[1].substr(0, 3) + 'm.' + splitUri[1].substr(3),
                         hash = (mobileUri.indexOf('#') != -1) ? '' : '#section_0';
 
                     var resourceDetail = $(

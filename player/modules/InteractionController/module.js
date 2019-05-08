@@ -51,7 +51,9 @@ FrameTrail.defineModule('InteractionController', function(FrameTrail){
         scrollLeftBlocked = false,
         scrollRightBlocked = false;
 
-    	$(document).off('keydown.FrameTrail').on('keydown.FrameTrail', function(evt){
+        var namespace = 'FrameTrail'+ $(FrameTrail.getState('target')).attr('id');
+
+    	$(document).off('keydown.'+ namespace).on('keydown.'+ namespace, function(evt){
 
     		// Save when ctrl+s or command+s
             if ((evt.metaKey || evt.ctrlKey) && evt.keyCode == 83) {
@@ -70,7 +72,7 @@ FrameTrail.defineModule('InteractionController', function(FrameTrail){
 
     	});
 
-        $(document).off('mousemove.FrameTrail').on('mousemove.FrameTrail', function(evt){
+        $(document).off('mousemove.'+ namespace).on('mousemove.'+ namespace, function(evt){
 
             FrameTrail.changeState('userActivity', true);
 
@@ -79,7 +81,7 @@ FrameTrail.defineModule('InteractionController', function(FrameTrail){
         initActivityCheck();
 
         /*
-        $('body').off('mousewheel', '.viewVideo').on('mousewheel', '.viewVideo', function(evt) {
+        $('body').off('mousewheel'+ namespace, '.viewVideo').on('mousewheel'+ namespace, '.viewVideo', function(evt) {
 
             if (evt.deltaY >= scrollThreshold && !scrollUpBlocked) {
 

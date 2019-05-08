@@ -150,6 +150,14 @@ FrameTrail.defineType(
                         width: width + '%'
                     });
 
+                    this.timelineElement.removeClass('previewPositionLeft previewPositionRight');
+
+                    if (positionLeft < 10 && width < 10) {
+                        this.timelineElement.addClass('previewPositionLeft');
+                    } else if (positionLeft > 90) {
+                        this.timelineElement.addClass('previewPositionRight');
+                    }
+
                 },
 
 
@@ -337,7 +345,7 @@ FrameTrail.defineType(
 
                         drag: function(event, ui) {
 
-                            var closestGridline = FrameTrail.module('ViewVideo').closestToOffset($('.gridline'), {
+                            var closestGridline = FrameTrail.module('ViewVideo').closestToOffset($(FrameTrail.getState('target')).find('.gridline'), {
                                     left: ui.position.left,
                                     top: ui.position.top
                                 }),
@@ -345,7 +353,7 @@ FrameTrail.defineType(
 
                             if (closestGridline) {
 
-                                $('.gridline').css('background-color', '#ff9900');
+                                $(FrameTrail.getState('target')).find('.gridline').css('background-color', '#ff9900');
 
                                 if ( ui.position.left - snapTolerance < closestGridline.position().left &&
                                      ui.position.left + snapTolerance > closestGridline.position().left ) {
@@ -443,7 +451,7 @@ FrameTrail.defineType(
 
                         resize: function(event, ui) {
 
-                            var closestGridline = FrameTrail.module('ViewVideo').closestToOffset($('.gridline'), {
+                            var closestGridline = FrameTrail.module('ViewVideo').closestToOffset($(FrameTrail.getState('target')).find('.gridline'), {
                                     left: (endHandleGrabbed ? (ui.position.left + ui.helper.width()) : ui.position.left),
                                     top: ui.position.top
                                 }),
@@ -451,7 +459,7 @@ FrameTrail.defineType(
 
                             if (closestGridline) {
 
-                                $('.gridline').css('background-color', '#ff9900');
+                                $(FrameTrail.getState('target')).find('.gridline').css('background-color', '#ff9900');
 
                                 if ( !endHandleGrabbed &&
                                      ui.position.left - snapTolerance < closestGridline.position().left &&
@@ -600,7 +608,7 @@ FrameTrail.defineType(
                  * @return HTMLElement
                  */
                 renderCompareTimelineItem: function() {
-
+                    
                     var cleanStart = FrameTrail.module('HypervideoController').formatTime(this.data.start),
                         cleanEnd = FrameTrail.module('HypervideoController').formatTime(this.data.end),
                         compareTimelineElement = $(
@@ -622,14 +630,24 @@ FrameTrail.defineType(
                         +   '</div>'
                     ),
 
+                        timeStart     = this.data.start - FrameTrail.module('HypervideoModel').offsetIn,
+                        timeEnd       = this.data.end - FrameTrail.module('HypervideoModel').offsetOut;
                         videoDuration   = FrameTrail.module('HypervideoModel').duration,
-                        positionLeft    = 100 * (this.data.start / videoDuration),
+                        positionLeft    = 100 * (timeStart / videoDuration),
                         width           = 100 * ((this.data.end - this.data.start) / videoDuration);
 
                     compareTimelineElement.css({
                         left:  positionLeft + '%',
                         width: width + '%'
                     });
+
+                    compareTimelineElement.removeClass('previewPositionLeft previewPositionRight');
+
+                    if (positionLeft < 10 && width < 10) {
+                        compareTimelineElement.addClass('previewPositionLeft');
+                    } else if (positionLeft > 90) {
+                        compareTimelineElement.addClass('previewPositionRight');
+                    }
 
                     compareTimelineElement.find('.previewWrapper').append(
                         this.resourceItem.renderThumb()
@@ -657,7 +675,7 @@ FrameTrail.defineType(
 
                         drag: function( event, ui ) {
                             ui.helper.css({
-                                top: ui.position.top + ($('.slideArea').css('margin-top')*2) + "px"
+                                top: ui.position.top + ($(FrameTrail.getState('target')).find('.slideArea').css('margin-top')*2) + "px"
                             });
                         }
 
