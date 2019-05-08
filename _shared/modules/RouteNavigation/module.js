@@ -203,37 +203,7 @@ FrameTrail.defineModule('RouteNavigation', function(FrameTrail){
 
 
 	//$(window).on('hashchange', routeHasChanged);
-
 	$(window).on('popstate', routeHasChanged);
-	//$(window).on('popstate', function(event) {
-
-        /*
-        * when accessed from the overview panel,
-        * event.originalEvent.state.editMode
-        * contains the previous editMode state
-        */
-
-    	//console.log(FrameTrail.module('RouteNavigation').hypervideoID, getQueryVariable('hypervideo'));
-
-    	/*
-    	var hypervideoID = getQueryVariable('hypervideo');
-
-    	if ( hypervideoID ) {
-
-    		if ( FrameTrail.getState('editMode') ) {
-    			FrameTrail.changeState('editMode', false);
-    			FrameTrail.module('HypervideoModel').updateHypervideo(hypervideoID, true);
-    		} else if (FrameTrail.module('RouteNavigation').hypervideoID != hypervideoID) {
-    			//console.log('change');
-    			FrameTrail.module('HypervideoModel').updateHypervideo(hypervideoID);
-    		}
-
-    	}
-    	*/
-
-
-     //});
-
 
 	routeHasChanged();
 
