@@ -559,9 +559,16 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 		if (HypervideoModel.hasHTML5Video) {
 
 			var promise = videoElement.play();
-            if (promise) {
-                promise.catch(function(){});
-            }
+            
+            if (promise !== undefined) {
+
+				promise.then(_ => {
+	                onPlaySuccess();
+				}).catch(error => {
+					// play error (most likely autoplay prevented)
+				});
+
+			}
 
 		} else {
 
@@ -574,27 +581,29 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 				nullVideoStartDate = Date.now() - (currentTime * 1000)
 				_play();
 
+				onPlaySuccess();
+
 			}
 
 		}
 
-		if ( !ViewVideo.VideoStartOverlay.hasClass('inactive') ) {
-			ViewVideo.VideoStartOverlay.addClass('inactive').fadeOut();
+		function onPlaySuccess() {
+			if ( !ViewVideo.VideoStartOverlay.hasClass('inactive') ) {
+				ViewVideo.VideoStartOverlay.addClass('inactive').fadeOut();
+			}
+
+			FrameTrail.triggerEvent('play', {});
+
+			if (HypervideoModel.events.onPlay) {
+				try {
+	            	var playEvent = new Function(HypervideoModel.events.onPlay);
+	            	playEvent();
+	            } catch (exception) {
+	                // could not parse and compile JS code!
+	                console.warn('Event handler contains errors: '+ exception.message);
+	            }
+			}
 		}
-
-		FrameTrail.triggerEvent('play', {});
-
-		if (HypervideoModel.events.onPlay) {
-			try {
-            	var playEvent = new Function(HypervideoModel.events.onPlay);
-            	playEvent();
-            } catch (exception) {
-                // could not parse and compile JS code!
-                console.warn('Event handler contains errors: '+ exception.message);
-            }
-		}
-
-
 
 	};
 
