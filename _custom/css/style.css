@@ -2213,7 +2213,7 @@ ABOUT / CREDITS / IMPRINT
   transition-duration: 0;
   transform-origin: none;
   transform: none;
-  overflow-y: scroll;
+  overflow-y: scroll !important;
 }
 
 #fthyperInfo .section-footer {
@@ -2238,6 +2238,13 @@ ABOUT / CREDITS / IMPRINT
   font-size: 1.25em;
   cursor: pointer;
   z-index: 10;
+}
+
+
+#fthyperInfo .ftNavCooperation {
+  background: rgba(255, 255, 255, 0);
+  top: 10px;
+  right: 80px;
 }
 
 .divider {
@@ -2852,7 +2859,7 @@ ABOUT / CREDITS / IMPRINT
   html, body, .ftLayer .ftLayerContent, .ftLayer, .ftLayer .ftLayerContent {
     width: 100vw;
     height: 100vh;
-    overflow-x: hidden !important;
+    overflow: hidden !important;
     margin: 0;
     padding: 0;
   }
@@ -3000,6 +3007,15 @@ ABOUT / CREDITS / IMPRINT
   .ftLayer#ftintro .ftNavCooperation {
     right: 5px;
   } 
+  
+  #fthyperInfo .ftNavCooperation {
+    right: 25px;
+  }
+  
+  #fthyperInfo .ftNavCooperation img {
+   width: 100px !important;
+  }
+  
   
   #fthyperInfo .ftInfoNavigation ul {
     display: none;
