@@ -1302,13 +1302,23 @@ a {
 
 .ftLayer#ftintro .ftintroLogos {
   position: absolute;
-  top: 30px;
   left: 50%;
   margin-left: -125px;
   width: 250px;
-  height: 200px;
   text-align: center;
   z-index: 10;
+}
+
+.ftLayer#ftintro .ftintroLogos.LogosTop {
+  top: 30px;
+}
+
+.ftLayer#ftintro .ftintroLogos.LogosMiddle {
+  top: 140px;
+}
+
+.ftLayer#ftintro .ftintroLogos.LogosBottom {
+  bottom: 30px;
 }
 
 .ftLayer#ftintro .ftintroLogos .ftintroLogo {  
@@ -1317,7 +1327,12 @@ a {
   height: auto;
   font-size: 80px;
   text-align: center;
-  margin: 0 auto 60px;
+  margin: 0 auto;
+}
+
+.ftLayer#ftintro .ftintroLogos.LogosBottom  .ftintroLogo {
+  width: 180px;
+  margin: 0 auto;
 }
 
 .ftLayer#ftintro #ftTagline {
@@ -1642,6 +1657,7 @@ a {
   transform: translateX(-50%) translateY(-50%);
   z-index: -1;
 }
+
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:hover::after,
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin.active::after,
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:visited::after {
@@ -2206,6 +2222,10 @@ ABOUT / CREDITS / IMPRINT
 
 #fthyperInfo .ftLogo {
   color: #111;
+}
+
+#fthyperInfo .ftNavCooperation img {
+  margin-top: 14px;
 }
 
 #fthyperInfo .ftLayerContent {
@@ -2869,6 +2889,43 @@ ABOUT / CREDITS / IMPRINT
     overflow-x: hidden !important;    
   }
   
+  .ftLayer#ftintro .ftintroLogos .ftintroLogo {
+    width: 150px;
+    font-size: 40px;
+  }
+  
+  .ftLayer#ftintro .ftintroLogos.LogosBottom .ftintroLogo {
+    width: 110px;
+  }
+  
+  .ftLayer#ftintro .ftintroLogos.LogosTop {
+    top: 30px;
+    left: 30px;
+    margin-left: 0;
+  }
+  
+  .ftLayer#ftintro .ftintroLogos.LogosMiddle {
+    top: 30px;
+    font-size: 1.25em;
+  }
+  
+  .ftLayer#ftintro .ftintroLogos.LogosBottom {
+    top: 15px;
+    bottom: auto;
+    right: 30px;
+    left: auto;
+    margin-left: 0;
+  }
+  
+  #ftStartButton, .ftLayer#ftintro #ftTagline {
+    top: 60%;
+  }
+  
+  .ftLayer#ftintro #ftTagline {
+    margin-left: 140px;
+    font-size: 20px;
+  }
+  
   #ftoverview #ftMapContainer #ftMapCanvas {
     width: 100vw;
   }
@@ -2887,10 +2944,6 @@ ABOUT / CREDITS / IMPRINT
     display: none !important;
   }
   
-  #ftStartButton {
-    left: 50%;
-  }
-
   #fthyperInfo .ftInfoNavigation {
     width: 100%;
     height: 50px;
@@ -2977,7 +3030,7 @@ ABOUT / CREDITS / IMPRINT
   #ftoverview #ftMapContainer #ftWeatherContainer {
     font-size: .75em;
     top: 5px;
-    right: 190px;
+    right: 155px;
     height: 50px;
   }
   
@@ -2999,9 +3052,14 @@ ABOUT / CREDITS / IMPRINT
     right: 40px;
     height: 50px;
   }
+  
+  .ftNavCooperation {
+    width: 112px;
+  }
 
   .ftNavCooperation img {
     width: 90px !important;
+    margin-top: 9px;
   }
 
   .ftLayer#ftintro .ftNavCooperation {
@@ -3009,14 +3067,13 @@ ABOUT / CREDITS / IMPRINT
   } 
   
   #fthyperInfo .ftNavCooperation {
-    right: 25px;
+    right: 50px;
   }
   
   #fthyperInfo .ftNavCooperation img {
-   width: 100px !important;
+    margin-top: 0;
   }
-  
-  
+
   #fthyperInfo .ftInfoNavigation ul {
     display: none;
   }
