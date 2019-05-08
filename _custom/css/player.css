@@ -445,6 +445,6 @@ body.userinactive #fthypervideo .ftAboutIconContainer {
 */
 
 /* IE fix */
-.hypervideoContainer .videoContainer {
+.mainContainer:not(.editActive) .hypervideoContainer .videoContainer {
   min-height: 100vh !important;
 }
