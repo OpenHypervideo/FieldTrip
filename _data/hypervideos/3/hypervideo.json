@@ -24,7 +24,7 @@
     "clips": [
         {
             "resourceId": "4",
-            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/1987/64007844001_6032637427001_6032627755001.mp4?pubId=64007844001&videoId=6032627755001",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6032627755001&pubId=64007844001&secure=true",
             "duration": 0,
             "start": 0,
             "end": 0,

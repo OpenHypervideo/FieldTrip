@@ -310,11 +310,32 @@ $(document).ready(function() {
 
 	//$('#ftIntroVideo').load();
 
-	$('#ftIntroVideo').on('loadedmetadata', function() {
-		$('#ftIntroVideo')[0].play();
-		$('#ftIntroVideo')[0].pause();
-		$('#ftIntroVideo')[0].currentTime = 0;
-	});
+	var introVideoElem = document.getElementById('ftIntroVideo'),
+		introVideoSource = 'https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6032629731001&pubId=64007844001&secure=true';
+
+	if(Hls.isSupported()) {
+		var hls = new Hls();
+		hls.loadSource(introVideoSource);
+		hls.attachMedia(introVideoElem);
+		hls.on(Hls.Events.MANIFEST_PARSED,function() {
+			introVideoElem.play();
+			introVideoElem.pause();
+			introVideoElem.currentTime = 0;
+		});
+	}
+	// hls.js is not supported on platforms that do not have Media Source Extensions (MSE) enabled.
+	// When the browser has built-in HLS support (check using `canPlayType`), we can provide an HLS manifest (i.e. .m3u8 URL) directly to the video element throught the `src` property.
+	// This is using the built-in support of the plain video element, without using hls.js.
+	// Note: it would be more normal to wait on the 'canplay' event below however on Safari (where you are most likely to find built-in HLS support) the video.src URL must be on the user-driven
+	// white-list before a 'canplay' event will be emitted; the last video event that can be reliably listened-for when the URL is not on the white-list is 'loadedmetadata'.
+	else if (introVideoElem.canPlayType('application/vnd.apple.mpegurl')) {
+		$(introVideoElem).append('<source src="'+ introVideoSource +'" type="video/mp4">');
+		introVideoElem.addEventListener('loadedmetadata',function() {
+			introVideoElem.play();
+			introVideoElem.pause();
+			introVideoElem.currentTime = 0;
+		});
+	}
 
 	window.setTimeout(function() {
 		
@@ -322,7 +343,7 @@ $(document).ready(function() {
 
 			$(this).hide();
 
-			$('#ftintro .ftLogo, #ftintro #ftTagline, #ftintro .ftNavCooperation').hide();
+			$('#ftintro #ftTagline').hide();
 
 			toggleNativeFullscreen();
 
