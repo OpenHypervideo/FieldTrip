@@ -1919,6 +1919,8 @@ a {
   letter-spacing: 1px;
   line-height: 1.25em;
   margin-top: 5px;
+  margin-left: -40px;
+  width: calc(100% + 80px);
   text-shadow: 0 0 5px rgba(0, 0, 0, .15);
 }
 
