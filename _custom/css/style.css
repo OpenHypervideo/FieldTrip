@@ -2114,10 +2114,6 @@ a {
 	font-size: 100%;
 }
 
-#VideoPlayer .titlebar:not(.editActive) {
-  display: none !important;
-}
-
 #VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .controls {
   background: transparent;
   height: 60px !important;
