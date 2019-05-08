@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093203417,
-        "lastchanged": 1556707340871
+        "lastchanged": 1557307064011
     },
     "config": {
         "slidingMode": "adjust",
@@ -58,7 +58,7 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092475_episode-5-molkenbuhr.mp4",
+                "source": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2987/64007844001_6032636272001_6032627758001.mp4?pubId=64007844001&videoId=6032627758001",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -95,7 +95,7 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092475_episode-5-molkenbuhr.mp4",
+                "source": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2987/64007844001_6032636272001_6032627758001.mp4?pubId=64007844001&videoId=6032627758001",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -132,7 +132,7 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092475_episode-5-molkenbuhr.mp4",
+                "source": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2987/64007844001_6032636272001_6032627758001.mp4?pubId=64007844001&videoId=6032627758001",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -169,7 +169,7 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092475_episode-5-molkenbuhr.mp4",
+                "source": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2987/64007844001_6032636272001_6032627758001.mp4?pubId=64007844001&videoId=6032627758001",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -206,11 +206,11 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092475_episode-5-molkenbuhr.mp4",
+                "source": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2987/64007844001_6032636272001_6032627758001.mp4?pubId=64007844001&videoId=6032627758001",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=125.55609455292907,135.63533680365973&xywh=percent:7.310443272406451,12.395486390528134,86.01752678212178,64.0693049687798"
+                    "value": "t=120,135.63533680365973&xywh=percent:7.310443272406451,12.395486390528134,86.01752678212178,64.0693049687798"
                 }
             },
             "body": {
@@ -222,7 +222,7 @@
             },
             "frametrail:events": {},
             "frametrail:attributes": {
-                "text": "&lt;p style=\"text-align: center;\"&gt;2019 finden wir eine Geschichte, die in der üblichen &lt;br&gt;Luftbrücken-Erinnerung kaum vorkommt.&lt;br&gt;&lt;br&gt;Horst Bert Molkenbuhr erzählt uns, dass 1949 tausend Jugendliche &lt;br&gt;ihre Sommerferien auf dem Tempelhofer Feld, &lt;br&gt;als Hilfskräfte der Alliierten, verbrachten.&lt;br&gt;&lt;br&gt;Er war einer von ihnen. &lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+                "text": "&lt;p style=\"text-align: center;\"&gt;Horst Bert Molkenbuhr verbrachte als Kind fünf Jahre im Umerziehungslager der Nazis, &lt;br&gt;weil seine Familie der SPD nahestand.&lt;br&gt;&lt;br&gt;Er erzählt uns eine Geschichte, die in üblichen Luftbrückenerzählungen kaum vorkommt.&lt;br&gt;&lt;br&gt;Im Jahr 1949 verbrachten tausend Jugendliche ihre Sommerferien &lt;br&gt;auf dem Tempelhofer Feld als Hilfskräfte der Alliierten.&lt;br&gt;&lt;br&gt;Er war einer von Ihnen. &lt;br&gt;&lt;/p&gt;"
             }
         }
     ],
