@@ -249,7 +249,7 @@ body.userinactive #fthypervideo .ftAboutIconContainer {
 
 .overlayElement .resourceDetail[data-type="text"] * {
 	color: #ffffff !important;
-	font-size: 1vw !important;
+	font-size: 1vw;
 	background: rgba(0,0,0,.45);
 	padding: 1vw;
 	letter-spacing: 0;

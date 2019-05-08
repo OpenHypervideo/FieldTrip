@@ -1300,12 +1300,24 @@ a {
   z-index: 1;
 }
 
-.ftLayer#ftintro .ftLogo {
-  top: 50%;
-  left: 25%;
-  margin-top: -180px;
-  margin-left: 180px;
-  font-size: 6em;
+.ftLayer#ftintro .ftintroLogos {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  margin-left: -125px;
+  width: 250px;
+  height: 200px;
+  text-align: center;
+  z-index: 10;
+}
+
+.ftLayer#ftintro .ftintroLogos .ftintroLogo {  
+  display: block;
+  width: 250px;
+  height: auto;
+  font-size: 65px;
+  text-align: center;
+  margin: 0 auto 60px;
 }
 
 .ftLayer#ftintro #ftTagline {
@@ -1343,16 +1355,6 @@ a {
 	z-index: 2;
 }
 
-/*
-#ftoverview #ftMapContainer #ftMapBackground, #ftoverview #ftMapContainer #ftMapCanvas {
-  -moz-animation: flying 10s linear infinite;
-  -moz-transform-origin:center center;
-  -webkit-animation: flying 10s linear infinite;
-  -webkit-transform-origin:center center;
-  animation: flying 10s linear infinite;
-  transform-origin:center center;
-}
-*/
 
 /* TRANSLATION OFFSET CAN BE A MAXIMUM OF 10px */
 /*
@@ -1437,10 +1439,10 @@ a {
 .ftNavCooperation img {
   display: block;
   position: relative;
-  margin-top: 4px;
+  margin-top: 7px;
   top: auto !important;
   left: auto !important;
-  width: 120px !important;
+  width: 130px !important;
   height: auto !important;
 }
 
@@ -1860,7 +1862,7 @@ a {
   border-radius: 100%;
   overflow: hidden;
   top: 0;
-}
+} 
 
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription .ftMapPinDescriptionContent {
@@ -2845,7 +2847,24 @@ ABOUT / CREDITS / IMPRINT
   }  
 }
 
-@media (max-width: 650px) {
+@media (max-width: 820px) {
+  
+  html, body, .ftLayer .ftLayerContent, .ftLayer, .ftLayer .ftLayerContent {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden !important;
+    margin: 0;
+    padding: 0;
+  }
+    
+  #ftoverview #ftMapContainer img#ftMapBackground,
+  #ftoverview #ftMapContainer #ftMapCanvas {
+    overflow-x: hidden !important;    
+  }
+  
+  #ftoverview #ftMapContainer #ftMapCanvas {
+    width: 100vw;
+  }
   
   .ftLayer .ftLogo {
     top: 10px;
@@ -2867,15 +2886,25 @@ ABOUT / CREDITS / IMPRINT
 
   #fthyperInfo .ftInfoNavigation {
     width: 100%;
-    height: 80px;
+    height: 50px;
     z-index: 1;
-    background: rgba(255,255,255,.9);
+    background: rgba(255,255,255,0);
+  }
+  
+  .ftCloseInfo {
+    top: 15px;
+    right: 15px;
   }
   
   .ftNavIconContainer {
     width: 40px;
     height: 40px;
     line-height: 40px; 
+  }
+  
+  .ftLayer {
+    width: 100vw;
+    height: 100vh;
   }
   
   .ftSound {
@@ -2900,7 +2929,7 @@ ABOUT / CREDITS / IMPRINT
   
   .ftSocialNav {
     width: 65px;
-    top: 4px;
+    top: 6px;
     right: 30px;
   }
   
@@ -2925,8 +2954,12 @@ ABOUT / CREDITS / IMPRINT
   
   .tooltip {
     font-size: .85em;
-    width: 245px;
+    width: 255px;
     top: -80px;
+  }
+  
+  .tooltip a {
+    display: inline;
   }
   
   .switch-container {
@@ -2941,6 +2974,10 @@ ABOUT / CREDITS / IMPRINT
     height: 50px;
   }
   
+  .overlayElement .resourceDetail[data-type="text"] * {
+    font-size: 16px !important;
+  }
+  
   #ftWeatherIcon {
     width: 20px;
   }
@@ -2949,15 +2986,6 @@ ABOUT / CREDITS / IMPRINT
     font-size: 20px;
     line-height: 17px;
   }
-  
-  /*
-  .ftNavVisitors {
-    font-size: .75em;
-    top: 5px;
-    right: 80px;
-    padding-bottom: 9px;
-  }
-  */
 
   .ftNavCooperation {
     top: 5px;
@@ -3004,18 +3032,22 @@ ABOUT / CREDITS / IMPRINT
   #fthyperInfo .ftInfoContainer {
     margin-left: 0;
   }
-
+  
   #ueber-uns .ftHero {
-    font-size: 1em;
-    margin-top: 80px;
+    font-size: 16px;
+    margin-top: 60px;
   }
   #team .ftTeam-member {
-    width: 100%;
-    margin: 2.5vh 0;
+    width: 70%;
+    margin: 2.5vh 0 2.5vh 15%;
+  }
+  
+  .ftInfoContent p {
+    font-size: 14px;
   }
   
   #abspann li {
-    width: 33.333%;
+    width: 25%;
   }
 
   .ftCloseInfo {

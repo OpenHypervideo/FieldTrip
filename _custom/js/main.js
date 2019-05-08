@@ -1,3 +1,16 @@
+/* Loop  - Olivier - Just an idea! */
+
+var loops = 3 * 2;
+function removeAddClass() {
+  $("#ftMapPin3.ftMapPin").toggleClass("active");
+  if (--loops > 0)
+  setTimeout(removeAddClass, 6000);
+  else {
+    $("#ftMapPin3.ftMapPin").removeClass("active");
+  }
+}
+removeAddClass();
+
 /* Custom cursor */
 
 document.addEventListener("DOMContentLoaded", function(event) {
