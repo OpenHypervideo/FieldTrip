@@ -152,5 +152,10 @@
             }
         }
     ],
-    "subtitles": []
+    "subtitles": [
+        {
+            "src": "de.vtt",
+            "srclang": "de"
+        }
+    ]
 }
