@@ -626,6 +626,7 @@ function initEventListeners() {
 	$('#ftoverview').on("click", function (evt) {
 	    //console.log(evt);
 	    if ($(evt.target).attr('id') == 'ftMapContainer' || $(evt.target).attr('id') == 'ftMap' || $(evt.target).attr('id') == 'ftMapCanvas') {
+	    	$('.ftMapPin').removeClass('pinOpen');
 	    	$('.ftMapPinDescription').removeClass('is-visible');
 	    }
 	    //hide = true;
@@ -652,6 +653,9 @@ function initEventListeners() {
 		var circle = $(this).find('.circle');
 		var player = $(this).find('.ftMapPinDescriptionContent')
 		description.addClass('is-visible');
+
+		$('.ftMapPin').removeClass('pinOpen');
+		$(this).addClass('pinOpen');
 	  	//hide = false;
 
 		setTimeout(function(){
