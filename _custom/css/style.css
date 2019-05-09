@@ -1324,7 +1324,7 @@ a {
 
 .ftLayer#ftintro .ftintroLogos .ftintroLogo {  
   display: block;
-  width: 250px;
+  width: 180px;
   height: auto;
   font-size: 80px;
   text-align: center;
@@ -1332,36 +1332,52 @@ a {
 }
 
 .ftLayer#ftintro .ftintroLogos.LogosBottom  .ftintroLogo {
-  width: 180px;
+  width: 120px;
   margin: 0 auto;
+}
+
+.ftLayer#ftintro .fticon-logo-fieldtrip {
+  display: block;
+  font-size: 75px;
+  margin-bottom: .25em; 
 }
 
 .ftLayer#ftintro #ftTagline {
   position: absolute;
   top: 50%;
   left: 25%;
-  margin-top: -30px;
   margin-left: 180px;
   width: 50%;
-  font-size: 2em;
+  font-size: 1.75em;
   line-height: 1.2em;
   color: #fff;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
   z-index: 28;
 }
 
 .ftLayer#ftintro #ftIntroExplainer {
 	position: absolute;
-	top: 50%;
+	bottom: 40px;
 	left: 50%;
 	margin-top: -30px;
-	margin-left: -400px;
+  -moz-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
 	width: 800px;
-	font-size: 2em;
+	font-size: 1.75em;
 	line-height: 1.2em;
-	text-align: center;
+  letter-spacing: 0;
+	text-align: left;
 	color: #fff;
 	z-index: 80;
 	display: none;
+  
 }
 
 .ftLayer#ftintro #ftSkipIntro {
@@ -2276,12 +2292,12 @@ body.overlayHints .overlayElement.active .resourceDetail[data-type="image"]::aft
 	z-index: 1;
 }
 
-.ftLayer#fthypervideo .ftLogo {
+/* .ftLayer#fthypervideo .ftLogo {
 	top: 10px;
 	left: 10px;
 	width: 82px;
 	height: auto;
-}
+} */
 
 .ftLayer#fthypervideo #VideoPlayer {
 	position: absolute !important;
@@ -2391,10 +2407,14 @@ body.overlayHints .overlayElement.active .resourceDetail[data-type="image"]::aft
   right: 5px;
 }
 
+.titlebar .titlebarTitle {
+  top: 15px;
+  letter-spacing: 2px !important;
+}
+
 /* ==========================================================================
 ABOUT / CREDITS / IMPRINT
 ========================================================================== */
-
 
 #fthyperInfo {
   background: #fec570;
@@ -2413,6 +2433,11 @@ ABOUT / CREDITS / IMPRINT
 #fthyperInfo.is-open {
   opacity: 1;
   visibility: visible;
+}
+
+#fthyperInfo.is-open .ftLogo, 
+#fthyperInfo.is-open .fticon-about {
+  text-shadow: none;
 }
 
 #fthyperInfo .ftLogo {
@@ -2435,7 +2460,6 @@ ABOUT / CREDITS / IMPRINT
   display: block;
   clear: both;
   padding-top: 1.5vw;
-  max-width: 700px; 
 }
 
 #fthyperInfo h6 {
@@ -2536,6 +2560,7 @@ ABOUT / CREDITS / IMPRINT
 
 .ftInfoSection.padding-top {
   padding-top: 10vh;
+  padding-bottom: 10vh;
 }
 
 .ftInfoContent {
@@ -2546,7 +2571,7 @@ ABOUT / CREDITS / IMPRINT
 .ftInfoContent h5 {
   font-family: 'Rubik', helvetica, sans-serif;
   font-weight: 600;
-  
+  margin-bottom: 1em;
   line-height: 1em;
 }
 
@@ -3114,10 +3139,25 @@ ABOUT / CREDITS / IMPRINT
   #ftStartButton, .ftLayer#ftintro #ftTagline {
     top: 60%;
   }
-  
+    
   .ftLayer#ftintro #ftTagline {
     margin-left: 140px;
     font-size: 20px;
+  }
+  
+  .ftLayer#ftintro #ftSkipIntro {
+    font-size: .75em;
+    bottom: 30px;
+    right: 30px;
+  }
+  
+  .ftLayer#ftintro #ftIntroExplainer {
+    width: auto;
+    transform: none;
+    font-size: .85em;
+    left: 30px;
+    bottom: 30px;
+    right: 160px;
   }
   
   #ftoverview #ftMapContainer #ftMapCanvas {
@@ -3288,6 +3328,7 @@ ABOUT / CREDITS / IMPRINT
   
   .ftInfoSection.full-height {
     display: block;
+    height: auto;
   }
   
   .ftInfoContent {
@@ -3300,10 +3341,14 @@ ABOUT / CREDITS / IMPRINT
     margin-left: 0;
   }
   
-  #ueber-uns .ftHero {
-    font-size: 16px;
+  #ueber-uns .ftHero { 
     margin-top: 60px;
   }
+  
+  #ueber-uns .ftHero p {
+    font-size: 14px;
+  }
+  
   #team .ftTeam-member {
     width: 70%;
     margin: 2.5vh 0 2.5vh 15%;
@@ -3327,6 +3372,11 @@ ABOUT / CREDITS / IMPRINT
   
   .ftCloseInfo {
     color: #000;
+  }
+  
+  .titlebar .titlebarTitle {
+    font-size: 14px !important;
+    top: 0;
   }
 }
 
