@@ -2505,11 +2505,11 @@ ABOUT / CREDITS / IMPRINT
 
 .ftInfoSection {
   position: relative;
-  height: 100vh;
   line-height: 1.45em;
 }
 
-.ftInfoSection.vertical-aligned {
+.ftInfoSection.full-height {
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2554,9 +2554,8 @@ ABOUT / CREDITS / IMPRINT
 /* About */
 
 #ueber-uns .ftHero {
-  max-width: 700px;
-  font-size: 1.15em;
-  line-height: 1.45em;
+  font-size: 1em;
+  line-height: 1.65em;
 }
 
 /* Team */
@@ -3268,7 +3267,7 @@ ABOUT / CREDITS / IMPRINT
     padding-top: 0;
   }
   
-  .ftInfoSection.vertical-aligned {
+  .ftInfoSection.full-height {
     display: block;
   }
   
