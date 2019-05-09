@@ -508,12 +508,21 @@ function initEventListeners() {
 
 	/* Info: open/close */
 	
+  var infoImagesLoaded = false;
 	$('.ftNavAbout').click(function() {
-	    $('#fthyperInfo').toggleClass('is-open');
+    // lazy load images on info page
+    if (!infoImagesLoaded) {
+      $('#fthyperInfo').find('img[data-src]').each(function () {
+        var t = $(this);
+        t.attr('src', t.attr('data-src'));
+      });
+      infoImagesLoaded = true;
+    }  
+	  $('#fthyperInfo').toggleClass('is-open');
 	});   
 	
 	$('#ftCloseInfo').click(function() {
-	    $('#fthyperInfo').removeClass('is-open');
+	  $('#fthyperInfo').removeClass('is-open');
 	}); 
   
 	/* Deine Vision Tooltip */
