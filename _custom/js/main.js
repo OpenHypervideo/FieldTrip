@@ -222,8 +222,14 @@ $(document).ready(function() {
 	});
 
 	FieldTrip.on('ready', function() {
-				
+		
+		// Make sure play circle & transitions are never initialized twice
+		if ($('#VideoPlayer #playCircleContainer').length != 0) {
+			return;
+		}
+		
 		FieldTripReady = true;
+
 		initPlayCircle();
 		initTransitions('.mainContainer');
 		/*
