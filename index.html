@@ -60,145 +60,20 @@
         <!-- Polyfills (for IE) -->
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2CNodeList.prototype.forEach%2CCustomEvent%2CObject.keys%2CObject.assign%2CArray.prototype.filter%2CArray.prototype.map%2CWeakMap"></script>
         
-        <!-- Library Code -->
+        <!-- FrameTrail -->
 
-        <link rel="stylesheet" type="text/css" href="_lib/html5reset/html5.reset.css">
-        <link rel="stylesheet" type="text/css" href="_lib/perfectscrollbar/perfect-scrollbar.min.css">
-        <link rel="stylesheet" type="text/css" href="_lib/jquery.ui/jquery-ui.min.css">
-        <link rel="stylesheet" type="text/css" href="_lib/openlayers/ol.css">
-        <link rel="stylesheet" type="text/css" href="_lib/codemirror/codemirror.css">
-        <link rel="stylesheet" type="text/css" href="_lib/codemirror/lint.css">
-        <link rel="stylesheet" type="text/css" href="_lib/codemirror/theme/hopscotch.css">
-        <link rel="stylesheet" type="text/css" href="_lib/flexicolorpicker/colorpicker.css">
-
-        <script type="text/javascript" src="_lib/hlsjs/hls.min.js"></script>
-        <script type="text/javascript" src="_lib/parsers/vtt.min.js"></script>
-        <script type="text/javascript" src="_lib/jquery/jquery-3.1.1.min.js"></script>
-        <script type="text/javascript" src="_lib/jquery.form/jquery.form.min.js"></script>
-        <script type="text/javascript" src="_lib/jquery.ui/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="_lib/jquery.mousewheel/jquery.mousewheel.min.js"></script>
-        <script type="text/javascript" src="_lib/perfectscrollbar/perfect-scrollbar.min.js"></script>
-        <script type="text/javascript" src="_lib/openlayers/ol.js"></script>
-        <script type="text/javascript" src="_lib/raphaeljs/raphael-min.js"></script>
-        <script type="text/javascript" src="_lib/raphaeljs/raphael-connections.js"></script>
-        <script type="text/javascript" src="_lib/jquery.collisiondetection/jquery.collisiondetection.js"></script>
-        <script type="text/javascript" src="_lib/animejs/anime.min.js"></script>
-
-        <script type="text/javascript" src="_lib/codemirror/codemirror.js"></script>
-        <script type="text/javascript" src="_lib/codemirror/javascript.js"></script>
-        <script type="text/javascript" src="_lib/codemirror/jshint.js"></script>
-        <script type="text/javascript" src="_lib/codemirror/css.js"></script>
-        <script type="text/javascript" src="_lib/codemirror/css-hint.js"></script>
-        <script type="text/javascript" src="_lib/codemirror/xml.js"></script>
-        <script type="text/javascript" src="_lib/codemirror/html-hint.js"></script>
-        <script type="text/javascript" src="_lib/codemirror/lint.js"></script>
-        <script type="text/javascript" src="_lib/codemirror/javascript-lint.js"></script>
-        <script type="text/javascript" src="_lib/codemirror/css-lint.js"></script>
-        <script type="text/javascript" src="_lib/codemirror/html-lint.js"></script>
-        <script type="text/javascript" src="_lib/codemirror/formatting.js"></script>
-
-        <script type="text/javascript" src="_lib/wysihtml5/wysihtml5-parser.js"></script>
-        <script type="text/javascript" src="_lib/wysihtml5/wysihtml5.js"></script>
-        <script type="text/javascript" src="_lib/flexicolorpicker/colorpicker.js"></script>
-
-
-        <script type="text/javascript" src="_shared/frametrail-core/frametrail-core.js"></script>
+        <link rel="stylesheet" type="text/css" href="FrameTrail.css">
+        <script type="text/javascript" src="FrameTrail.js"></script>
 
         <!--
             [if lt IE 9]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
             <![endif]
         -->
-
-
-        <!-- Application Code -->
-
-        <link rel="stylesheet" type="text/css" id="FrameTrailCSSVariables" href="_shared/styles/variables.css">
-        <link rel="stylesheet" type="text/css" href="_shared/styles/frametrail-webfont.css">
-        <link rel="stylesheet" type="text/css" href="_shared/styles/generic.css">
-
-        <link rel="stylesheet" type="text/css" href="player/types/Annotation/style.css">
-        <link rel="stylesheet" type="text/css" href="player/types/Hypervideo/style.css">
-        <link rel="stylesheet" type="text/css" href="player/types/Overlay/style.css">
-        <link rel="stylesheet" type="text/css" href="_shared/types/Resource/style.css">
-        <link rel="stylesheet" type="text/css" href="_shared/types/ResourceImage/style.css">
-        <link rel="stylesheet" type="text/css" href="_shared/types/ResourceLocation/style.css">
-        <link rel="stylesheet" type="text/css" href="_shared/types/ResourcePDF/style.css">
-        <link rel="stylesheet" type="text/css" href="_shared/types/ResourceAudio/style.css">
-        <link rel="stylesheet" type="text/css" href="_shared/types/ResourceVideo/style.css">
-        <link rel="stylesheet" type="text/css" href="_shared/types/ResourceVimeo/style.css">
-        <link rel="stylesheet" type="text/css" href="_shared/types/ResourceWebpage/style.css">
-        <link rel="stylesheet" type="text/css" href="_shared/types/ResourceWikipedia/style.css">
-        <link rel="stylesheet" type="text/css" href="_shared/types/ResourceYoutube/style.css">
-        <link rel="stylesheet" type="text/css" href="_shared/types/ResourceText/style.css">
-        <link rel="stylesheet" type="text/css" href="player/types/Subtitle/style.css">
-        <link rel="stylesheet" type="text/css" href="player/types/CodeSnippet/style.css">
-        <link rel="stylesheet" type="text/css" href="player/types/ContentView/style.css">
-
-        <link rel="stylesheet" type="text/css" href="_shared/modules/ResourceManager/style.css">
-        <link rel="stylesheet" type="text/css" href="_shared/modules/UserManagement/style.css">
-        <link rel="stylesheet" type="text/css" href="_shared/modules/ViewResources/style.css">
-
-        <link rel="stylesheet" type="text/css" href="player/modules/Interface/style.css">
-        <link rel="stylesheet" type="text/css" href="player/modules/InterfaceModal/style.css">
-        <link rel="stylesheet" type="text/css" href="player/modules/Sidebar/style.css">
-        <link rel="stylesheet" type="text/css" href="player/modules/Titlebar/style.css">
-        <link rel="stylesheet" type="text/css" href="player/modules/ViewOverview/style.css">
-        <link rel="stylesheet" type="text/css" href="player/modules/ViewVideo/style.css">
-        <link rel="stylesheet" type="text/css" href="player/modules/ViewLayout/style.css">
-
-        <script type="text/javascript" src="player/types/Annotation/type.js"></script>
-        <script type="text/javascript" src="player/types/Hypervideo/type.js"></script>
-        <script type="text/javascript" src="player/types/Overlay/type.js"></script>
-        <script type="text/javascript" src="_shared/types/Resource/type.js"></script>
-        <script type="text/javascript" src="_shared/types/ResourceImage/type.js"></script>
-        <script type="text/javascript" src="_shared/types/ResourceLocation/type.js"></script>
-        <script type="text/javascript" src="_shared/types/ResourcePDF/type.js"></script>
-        <script type="text/javascript" src="_shared/types/ResourceAudio/type.js"></script>
-        <script type="text/javascript" src="_shared/types/ResourceVideo/type.js"></script>
-        <script type="text/javascript" src="_shared/types/ResourceVimeo/type.js"></script>
-        <script type="text/javascript" src="_shared/types/ResourceWebpage/type.js"></script>
-        <script type="text/javascript" src="_shared/types/ResourceWikipedia/type.js"></script>
-        <script type="text/javascript" src="_shared/types/ResourceYoutube/type.js"></script>
-        <script type="text/javascript" src="_shared/types/ResourceText/type.js"></script>
-        <script type="text/javascript" src="player/types/Subtitle/type.js"></script>
-        <script type="text/javascript" src="player/types/CodeSnippet/type.js"></script>
-        <script type="text/javascript" src="player/types/ContentView/type.js"></script>
-
-        <script type="text/javascript" src="_shared/modules/Database/module.js"></script>
-        <script type="text/javascript" src="_shared/modules/TagModel/module.js"></script>
-        <script type="text/javascript" src="_shared/modules/ResourceManager/module.js"></script>
-        <script type="text/javascript" src="_shared/modules/UserManagement/module.js"></script>
-        <script type="text/javascript" src="_shared/modules/ViewResources/module.js"></script>
-        <script type="text/javascript" src="_shared/modules/RouteNavigation/module.js"></script>
-
-        <script type="text/javascript" src="_shared/modules/UserTraces/module.js"></script>
-
-        <script type="text/javascript" src="player/modules/AnnotationsController/module.js"></script>
-        <script type="text/javascript" src="player/modules/PlayerLauncher/module.js"></script>
-        <script type="text/javascript" src="player/modules/HypervideoModel/module.js"></script>
-        <script type="text/javascript" src="player/modules/HypervideoController/module.js"></script>
-        <script type="text/javascript" src="player/modules/InteractionController/module.js"></script>
-        <script type="text/javascript" src="player/modules/Interface/module.js"></script>
-        <script type="text/javascript" src="player/modules/InterfaceModal/module.js"></script>
-        <script type="text/javascript" src="player/modules/OverlaysController/module.js"></script>
-        <script type="text/javascript" src="player/modules/Sidebar/module.js"></script>
-        <script type="text/javascript" src="player/modules/SubtitlesController/module.js"></script>
-        <script type="text/javascript" src="player/modules/Titlebar/module.js"></script>
-        <script type="text/javascript" src="player/modules/CodeSnippetsController/module.js"></script>
-        <script type="text/javascript" src="player/modules/ViewOverview/module.js"></script>
-        <script type="text/javascript" src="player/modules/ViewVideo/module.js"></script>
-        <script type="text/javascript" src="player/modules/ViewLayout/module.js"></script>
-
+        
         <!-- Custom CSS in /_data/ -->
         <link rel="stylesheet" type="text/css" href="_data/custom.css">
-
-        <!--
-            [if lt IE 9]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-            <![endif]
-        -->
-
+        
         <!-- Custom Field Trip CSS -->
 
         <link href="https://fonts.googleapis.com/css?family=Inconsolata|Rubik" rel="stylesheet">
@@ -597,7 +472,7 @@
                     <div class="ftHero">
                       <p>Field Trip ist ein interaktiver Dokumentarfilm über einen unkonventionellen Ort: das Tempelhofer Feld – ein Rollfeld im Herzen Berlins. Field Trip erzählt die Geschichte von dem, was für die Einen ein 300 ha freies Stadtparadies voller Möglichkeiten ist, für die Anderen ein Ort der Zwangsarbeit, eine neue Heimat für jemanden Dritten. Mit der Technik des Open Hypervideo und durch intensive Online und Onsite Community Entwicklung, ist Field Trip zu einem lebenden Dokumentarfilm geworden.
                       </p>
-                      <p>Field Trip ist eine Produktion der ronjafilm. Die exklusive Vorabveröffentlichung erfolgt in Kooperation mit Der Tagesspiegel. Kurz nach Vorabveröffentlichung werden Materialien (Filme, Illustrationen, Design) mit Lizenzangaben zur Verfügung gestellt. Grösstenteils unterstehen die Materialien freie Lizenzen. Ab Bereitstellung werden Sie die Materialien weiterverwenden können.</p>
+                      <p>Field Trip ist eine Produktion der ronjafilm. Die exklusive Vorabveröffentlichung erfolgt in Kooperation mit Der Tagesspiegel. Kurz nach Vorabveröffentlichung werden Materialien (Filme, Illustrationen, Design) mit Lizenzangaben zur Verfügung gestellt. Grösstenteils unterstehen die Materialien freien Lizenzen. Ab Bereitstellung werden Sie die Materialien weiterverwenden können.</p>
                     </div>
                    </div>
                 </div>
@@ -861,7 +736,7 @@
 
                        <h6>Welche Technologien werden verwendet?</h6>
 
-                       <p>Wir setzen <b>Field Trip</b>  mit der „<a href="https://frametrail.org" target="_blank"><b>FrameTrail Open Hypervideo</b></a>“.Damit können wir alle Projekt-Komponenten direkt im Browser bearbeiten und verknüpfen. <a href="https://frametrail.org" target="_blank"><b>FrameTrail</b></a> ist Open Source Software, dual lizensiert unter <b>MIT</b> und <b>GPL v3</b> Lizenzen, und wurde ausschließlich mit offenen Webtechnologien und <a href="https://frametrail.org/#principles" target="_blank">Standards</a> entwickelt. Um zusätzlich Schnitte, Übergänge und Effekte bearbeiten zu können, haben wir die <a href="http://bbc.github.io/VideoContext" target="_blank"><b>VideoContext Bibliothek</b></a> in <a href="https://frametrail.org" target="_blank"><b>FrameTrail</b></a> integriert. <b>VideoContext</b> wird von BBC Research & Development im Rahmen der Arbeit an “<a href="http://www.bbc.co.uk/rd/projects/object-based-media-toolkit" target="_blank"><b>Object-based Media</b></a>”.</p>
+                       <p>Wir setzen <b>Field Trip</b>  mit der „<a href="https://frametrail.org" target="_blank"><b>FrameTrail Open Hypervideo Umgebung</b></a>“ um. Damit können wir alle Projekt-Komponenten direkt im Browser bearbeiten und verknüpfen. <a href="https://frametrail.org" target="_blank"><b>FrameTrail</b></a> ist Open Source Software, dual lizensiert unter <b>MIT</b> und <b>GPL v3</b> Lizenzen, und wurde ausschließlich mit offenen Webtechnologien und <a href="https://frametrail.org/#principles" target="_blank">Standards</a> entwickelt. Um zusätzlich Schnitte, Übergänge und Effekte bearbeiten zu können, werden wir die <a href="http://bbc.github.io/VideoContext" target="_blank"><b>VideoContext Bibliothek</b></a> in <a href="https://frametrail.org" target="_blank"><b>FrameTrail</b></a> integrieren. <b>VideoContext</b> wird von BBC Research & Development im Rahmen der Arbeit an “<a href="http://www.bbc.co.uk/rd/projects/object-based-media-toolkit" target="_blank"><b>Object-based Media</b></a>” entwickelt.</p>
 
                        <h6>Wie funktioniert das „Code Snippet Repository“?</h6>
 
@@ -879,9 +754,11 @@
                          <p>Code Snippet Repository: <br>
                             <a style="color: #000;" href="https://github.com/memory-shuffle/FrameTrail-CodeSnippet-Repository" target="_blank">https://github.com/memory-shuffle/FrameTrail-CodeSnippet-Repository</a>
                         </p>
+                        <!--
                         <p>Media Repository: <br>
-                            <a style="color: #000;" href="https://beta.fieldtrip.berlin/resources.html" target="_blank">https://beta.fieldtrip.berlin/resources.html</a>
+                            <a style="color: #000;" href="https://fieldtrip.tagesspiegel.de/resources.html" target="_blank">https://fieldtrip.tagesspiegel.de/resources.html</a>
                         </p>
+                        -->
                        </div>
                    </div>
                 </div>
