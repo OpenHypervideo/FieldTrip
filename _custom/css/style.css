@@ -2694,7 +2694,7 @@ ABOUT / CREDITS / IMPRINT
   font-weight: 900;
 }
 
-#resourcen a {
+#resourcen a, section-footer a {
   border-bottom: 1px solid;
 }
 
@@ -2963,6 +2963,10 @@ ABOUT / CREDITS / IMPRINT
     font-size: 1.15em;
   }
   
+  .ftInfoContent p {
+    font-size: 1.25em;
+  }
+  
   #abspann li {
     width: 16.6666%;  
   }
@@ -3059,6 +3063,10 @@ ABOUT / CREDITS / IMPRINT
     font-size: .65em;
   }
   
+  .ftInfoContent p {
+    font-size: 1.15em;
+  }
+  
   #team .ftTeam-member h3 {
     font-size: 1em;
   }
@@ -3072,8 +3080,10 @@ ABOUT / CREDITS / IMPRINT
   }
 }
 
-@media (min-width: 1010px) and (max-width: 1220px) {
-	
+@media (min-width: 1010px) and (max-width: 1499px) {
+	.ftInfoContent p {
+	  font-size: .95em;
+	}
 }
 
 @media (min-width: 650px) and (max-width: 1010px) {
@@ -3162,6 +3172,11 @@ ABOUT / CREDITS / IMPRINT
   
   #ftoverview #ftMapContainer #ftMapCanvas {
     width: 100vw;
+  }
+  
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .fticon-silhouette {
+    width: 72px;
+    height: 72px;
   }
   
   .ftLayer .ftLogo {
