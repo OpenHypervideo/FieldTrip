@@ -1,12 +1,12 @@
 {
     "meta": {
-        "name": "Episode 8",
+        "name": "Die Erinnernde",
         "description": "   ",
         "thumb": "1_1556092568_thumb_episode-8-halina.png",
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093235752,
-        "lastchanged": 1556707366398
+        "lastchanged": 1557398088642
     },
     "config": {
         "slidingMode": "adjust",
@@ -24,7 +24,7 @@
     "clips": [
         {
             "resourceId": "9",
-            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2205/64007844001_6032635259001_6032628711001.mp4?pubId=64007844001&videoId=6032628711001",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034565541001&pubId=64007844001&secure=true",
             "duration": 0,
             "start": 0,
             "end": 0,
@@ -58,7 +58,7 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092568_episode-8-halina.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034565541001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -95,7 +95,7 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092568_episode-8-halina.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034565541001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -110,7 +110,7 @@
                 "frametrail:name": "Animation Drachen"
             },
             "frametrail:events": {
-                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=2&t=255';\n  }, 3000);\n}, 1000);"
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=2&t=256';\n  }, 3000);\n}, 1000);"
             },
             "frametrail:attributes": {}
         },
@@ -132,7 +132,7 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092568_episode-8-halina.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034565541001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -169,11 +169,11 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092568_episode-8-halina.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034565541001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=5,13&xywh=percent:11.089056448875068,9.537434430138294,75.96387740368496,55.9306961954578"
+                    "value": "t=1,13&xywh=percent:11.089056448875068,9.537434430138294,75.96387740368496,55.9306961954578"
                 }
             },
             "body": {
@@ -185,7 +185,7 @@
             },
             "frametrail:events": {},
             "frametrail:attributes": {
-                "text": "&lt;p style=\"text-align: center;\"&gt;Halina W. ist zum ersten Mal seit 1945 wieder auf dem Tempelhofer Feld. Sie ist mit ihrem Sohn aus dem polnischen Łódź angereist.&lt;br&gt;&lt;br&gt;Im März 1945 wurde sie von den Nationalsozialisten auf dem Tempelhofer Feld als Zwangsarbeiterin eingesetzt.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+                "text": "&lt;p style=\"text-align: center;\"&gt;Halina W. ist zum ersten Mal seit 1945 wieder auf dem Tempelhofer Feld. Sie ist mit ihrem Sohn aus dem polnischen Łódź angereist.&lt;br&gt;&lt;br&gt;Im März 1945 wurde sie von den Nationalsozialisten auf dem Tempelhofer Feld als Zwangsarbeiterin eingesetzt.&lt;br&gt;&lt;br&gt;In der Zeit des Dritten Reiches wurden hier etwa 3000 Menschen zur Arbeit gezwungen.&lt;/p&gt;&lt;br&gt;&lt;br&gt;"
             }
         }
     ],

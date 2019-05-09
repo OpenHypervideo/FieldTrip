@@ -1,6 +1,6 @@
 {
     "meta": {
-        "name": "Episode 4",
+        "name": "Die Türöffnerin",
         "description": "   ",
         "thumb": "1_1556092451_thumb_episode-4-kuebra.png",
         "creator": "Joscha",
@@ -24,7 +24,7 @@
     "clips": [
         {
             "resourceId": "5",
-            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/3987/64007844001_6032633215001_6032627757001.mp4?pubId=64007844001&videoId=6032627757001",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034568308001&pubId=64007844001&secure=true",
             "duration": 0,
             "start": 0,
             "end": 0,
@@ -185,9 +185,14 @@
             },
             "frametrail:events": {},
             "frametrail:attributes": {
-                "text": "&lt;p style=\"text-align: center;\"&gt;2016 entwickelte sich die Initiative “Die Offene Gesellschaft” als Reaktion auf die 500 000 Asylanträge, die in Deutschland im Vorjahr eingereicht wurden.&lt;br&gt;&lt;br&gt;Kübra Gümüşay ist Gast 2018 bei dem jährlichen Picknick der Initiative.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+                "text": "&lt;p style=\"text-align: center;\"&gt;2016 entwickelte sich die Initiative “Die Offene Gesellschaft” als Reaktion auf die 500 000 Asylanträge, die in Deutschland im Vorjahr eingereicht wurden.&lt;br&gt;&lt;br&gt;Kübra Gümüşay ist 2018 Gast bei dem jährlichen Picknick der Initiative.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
             }
         }
     ],
-    "subtitles": []
+    "subtitles": [
+        {
+            "src": "de.vtt",
+            "srclang": "de"
+        }
+    ]
 }

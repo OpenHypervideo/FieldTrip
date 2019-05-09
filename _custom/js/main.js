@@ -42,7 +42,9 @@ var FieldTripReady = false,
 	//introTimeout,
 	episodeTimings = {},
 	timeInterval = null,
-	muted = false;
+	muted = false,
+	firstClickPlay = false,
+	mapPinHintsInterval = null;
 
 /* Sunrise / Sunset Hours */
 
@@ -143,7 +145,7 @@ var videoLinks = {
 		'links': [
 			{
 				'time': 73,
-				'target': '#hypervideo=2&t=255',
+				'target': '#hypervideo=2&t=256',
 			},
 			{
 				'time': 171,
@@ -168,7 +170,7 @@ var videoLinks = {
 			},
 			{
 				'time': 341,
-				'target': '#hypervideo=2&t=255',
+				'target': '#hypervideo=2&t=256',
 			}
 		]
 	},
@@ -198,24 +200,6 @@ $(document).ready(function() {
 	
 	renderVideoLinkCircles();
 
-	// Check Setup
-	/*
-	if (!!document.location.host) {
-		$.ajax({
-			"type": "POST",
-			url: "_server/ajaxServer.php",
-			data: {"a":"setupCheck"},
-			dataType: "json",
-			success: function(ret) {
-				if (ret["code"] != "1") {
-					var setupUrl = window.location.href.replace('index.html', '') + 'setup.html';
-					window.location.replace(setupUrl);
-				}
-			}
-		});
-	}
-	*/
-
 	//updateVisitorsNumber();
 	
 	window.FieldTrip = FrameTrail.init({
@@ -228,8 +212,9 @@ $(document).ready(function() {
             data: "_data/resources/_index.json",
             type: "frametrail"
         }],
-        tagdefinitions:      null,
-        config:              null
+        tagdefinitions:      {},
+        config:              null,
+        users: {}
 	});
 
 	
@@ -238,8 +223,14 @@ $(document).ready(function() {
 	});
 
 	FieldTrip.on('ready', function() {
-				
+		
 		FieldTripReady = true;
+		
+		// Make sure play circle & transitions are never initialized twice
+		if ($('#VideoPlayer #playCircleContainer').length != 0) {
+			return;
+		}
+
 		initPlayCircle();
 		initTransitions('.mainContainer');
 		/*
@@ -296,11 +287,32 @@ $(document).ready(function() {
 
 	//$('#ftIntroVideo').load();
 
-	$('#ftIntroVideo').on('loadedmetadata', function() {
-		$('#ftIntroVideo')[0].play();
-		$('#ftIntroVideo')[0].pause();
-		$('#ftIntroVideo')[0].currentTime = 0;
-	});
+	var introVideoElem = document.getElementById('ftIntroVideo'),
+		introVideoSource = 'https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6032629731001&pubId=64007844001&secure=true';
+
+	if(Hls.isSupported()) {
+		var hls = new Hls();
+		hls.loadSource(introVideoSource);
+		hls.attachMedia(introVideoElem);
+		hls.on(Hls.Events.MANIFEST_PARSED,function() {
+			introVideoElem.play();
+			introVideoElem.pause();
+			introVideoElem.currentTime = 0;
+		});
+	}
+	// hls.js is not supported on platforms that do not have Media Source Extensions (MSE) enabled.
+	// When the browser has built-in HLS support (check using `canPlayType`), we can provide an HLS manifest (i.e. .m3u8 URL) directly to the video element throught the `src` property.
+	// This is using the built-in support of the plain video element, without using hls.js.
+	// Note: it would be more normal to wait on the 'canplay' event below however on Safari (where you are most likely to find built-in HLS support) the video.src URL must be on the user-driven
+	// white-list before a 'canplay' event will be emitted; the last video event that can be reliably listened-for when the URL is not on the white-list is 'loadedmetadata'.
+	else if (introVideoElem.canPlayType('application/vnd.apple.mpegurl')) {
+		$(introVideoElem).append('<source src="'+ introVideoSource +'" type="video/mp4">');
+		introVideoElem.addEventListener('loadedmetadata',function() {
+			introVideoElem.play();
+			introVideoElem.pause();
+			introVideoElem.currentTime = 0;
+		});
+	}
 
 	window.setTimeout(function() {
 		
@@ -308,9 +320,11 @@ $(document).ready(function() {
 
 			$(this).hide();
 
-			$('#ftintro .ftLogo, #ftintro #ftTagline, #ftintro .ftNavCooperation').hide();
+			$('#ftintro #ftTagline, #ftintro .ftintroLogo').hide();
 
 			toggleNativeFullscreen();
+
+			$('#ftIntroVideo')[0].play();
 
 			window.setTimeout(function() {
 								
@@ -420,6 +434,8 @@ $(document).ready(function() {
 			'opacity': 1
 		}, 1000);
 	}, 3000);
+
+	updateHints();
 	
 }); // End Document Ready
 
@@ -500,15 +516,13 @@ function initEventListeners() {
 	    $('#fthyperInfo').removeClass('is-open');
 	}); 
   
-  /* Deine Vision Tooltip */
-  
-  $( ".ftNavVision .btn" )
-    .mouseover(function() {
-      $('.tooltip').addClass("is-visible");
-    })
-    .mouseout(function() {
-      $('.tooltip').removeClass("is-visible");
-  });
+	/* Deine Vision Tooltip */
+
+	$( ".ftNavVision .btn" ).mouseover(function() {
+		$('.tooltip').addClass("is-visible");
+	}).mouseout(function() {
+		$('.tooltip').removeClass("is-visible");
+	});
   
 	
 	/* Social Network */
@@ -517,31 +531,31 @@ function initEventListeners() {
 	    $('.ftSocialNav').toggleClass('is-open');
 	});
   
-  /* Info: Go to Sections */
-  
-  $('#ueber-uns-link').click(function() {
-      document.getElementById('ueber-uns').scrollIntoView(true);
-  }); 
+	/* Info: Go to Sections */
 
-  $('#team-link').click(function() {
-    document.getElementById('team').scrollIntoView(true);
-  }); 
-  
-  $('#abspann-link').click(function() {
-    document.getElementById('abspann').scrollIntoView(true);
-  }); 
-  
-  $('#resourcen-link').click(function() {
-    document.getElementById('resourcen').scrollIntoView(true);
-  }); 
-  
-  $('#impressum-link').click(function() {
-    document.getElementById('impressum').scrollIntoView(true);
-  }); 
-  
-  $('#datenschutz-link').click(function() {
-    document.getElementById('datenschutz').scrollIntoView(true);
-  }); 
+	$('#ueber-uns-link').click(function() {
+		document.getElementById('ueber-uns').scrollIntoView(true);
+	}); 
+
+	$('#team-link').click(function() {
+		document.getElementById('team').scrollIntoView(true);
+	}); 
+
+	$('#abspann-link').click(function() {
+		document.getElementById('abspann').scrollIntoView(true);
+	}); 
+
+	$('#resourcen-link').click(function() {
+		document.getElementById('resourcen').scrollIntoView(true);
+	}); 
+
+	$('#impressum-link').click(function() {
+		document.getElementById('impressum').scrollIntoView(true);
+	}); 
+
+	$('#datenschutz-link').click(function() {
+		document.getElementById('datenschutz').scrollIntoView(true);
+	}); 
   
 	/* Toogle Mute */
 
@@ -578,13 +592,19 @@ function initEventListeners() {
 	$('#ftoverview').on("click", function (evt) {
 	    //console.log(evt);
 	    if ($(evt.target).attr('id') == 'ftMapContainer' || $(evt.target).attr('id') == 'ftMap' || $(evt.target).attr('id') == 'ftMapCanvas') {
+	    	$('.ftMapPin').removeClass('pinOpen');
 	    	$('.ftMapPinDescription').removeClass('is-visible');
 	    }
 	    //hide = true;
-	    $('#audioAtmoDay')[0].play();
-		$('#audioAtmoDay').stop(true, false).animate({
-			volume: 1
-		}, 7000);
+
+	    // Attempt to deal with autoplay issues
+	    if (!firstClickPlay) {
+	    	$('#audioAtmoDay')[0].play();
+			$('#audioAtmoDay').stop(true, false).animate({
+				volume: 1
+			}, 7000);
+			firstClickPlay = true;
+	    }
 	});
 
 	$('.ftMapPin').click(function(evt){
@@ -599,6 +619,9 @@ function initEventListeners() {
 		var circle = $(this).find('.circle');
 		var player = $(this).find('.ftMapPinDescriptionContent')
 		description.addClass('is-visible');
+
+		$('.ftMapPin').removeClass('pinOpen');
+		$(this).addClass('pinOpen');
 	  	//hide = false;
 
 		setTimeout(function(){
@@ -609,9 +632,18 @@ function initEventListeners() {
 			player.addClass('is-visible');
 		}, 1000); 
 
-	  $(".ftMapPinDescription").not($(this).find(".ftMapPinDescription")).removeClass('is-visible');
+		$(".ftMapPinDescription").not($(this).find(".ftMapPinDescription")).removeClass('is-visible');
 		$(".circle").not($(this).find(".circle")).removeClass('outer');
 		$(".ftMapPinDescriptionContent").not($(this).find(".ftMapPinDescriptionContent")).removeClass('is-visible');
+
+		localStorage.setItem('fieldtrip-map-hints', 'hide');
+		updateHints();
+
+	});
+
+	$('#VideoPlayer').on('click', '.overlayElement', function() {
+		localStorage.setItem('fieldtrip-overlay-hints', 'hide');
+		updateHints();
 	});
 
 	/* Fullscreen Button */
@@ -658,12 +690,15 @@ function activateLayer(layerName, videoID) {
 				});
 			}
 
-			$('#ftSkipIntro').show();
+			$('#ftintro #ftTagline, #ftintro .ftintroLogo').hide();
+
+			$('#ftSkipIntro, #ftIntroExplainer').show();
 			
-			//introTimeout = window.setTimeout(function() {
+			if (previousLayer) {
 				$('#ftIntroVideo')[0].currentTime = 0;
-				$('#ftIntroVideo')[0].play();
-			//}, 2000);
+			}
+
+			$('#ftIntroVideo')[0].play();
 
 			$('#audioAtmoDay').stop(true, false).animate({
 				volume: 0
@@ -758,11 +793,13 @@ function activateLayer(layerName, videoID) {
 			$('.ftLayer#fthypervideo').removeClass('zoomOut');
 
 			// TODO: Replace with parsed Video ID
+			$('.ftMapPin').removeClass('pinOpen');
+			$('.ftMapPin#ftMapPin'+ videoID).addClass('pinOpen');
 			$('.ftMapPin .ftMapPinDescription').removeClass('is-visible');
 			$('.ftMapPin .ftMapPinDescription[href^="#hypervideo='+ videoID +'"]').addClass('is-visible');
 			$('.ftMapPin .ftMapPinDescription[href^="#hypervideo='+ videoID +'"] .circle').addClass('outer');
 			$('.ftMapPin .ftMapPinDescription[href^="#hypervideo='+ videoID +'"] .ftMapPinDescriptionContent').addClass('is-visible');
-			
+						
 			activeVideoID = videoID;
 
 			break;
@@ -1073,12 +1110,28 @@ function initPlayCircle() {
 
 	var playCircleContainer = $('<figure id="playCircleContainer" class="chart ftEvent"></figure>');
 
-	playCircleContainer.click(function() {
-		if ($(this).hasClass('playing')) {
-			FieldTrip.pause();
+	playCircleContainer.click(function(evt) {
+		
+		
+
+		if ($(evt.target).hasClass('linkPointer')) {
+			
+			console.log($(evt.target));
+
+			var linkElemTime = $(evt.target).parent().attr('data-time');
+			
+			if (linkElemTime) {
+				FieldTrip.currentTime = linkElemTime-3;
+			}
 		} else {
-			FieldTrip.play();
+			if ($(this).hasClass('playing')) {
+				FieldTrip.pause();
+			} else {
+				FieldTrip.play();
+			}
 		}
+
+		
 	});
 
 	playCircleContainer.on("mouseover", function() {
@@ -1266,4 +1319,53 @@ function updateMuted() {
 	} else {
 		soundOn();
 	}
+}
+
+function updateHints() {
+	
+	/* 
+	* hidden via 
+	* localStorage.setItem('fieldtrip-overlay-hints', 'hide'); updateHints();
+	* or localStorage.setItem('fieldtrip-map-hints', 'hide'); updateHints();
+	*/
+
+	var lsOverlayHints = localStorage.getItem('fieldtrip-overlay-hints');
+
+	if (!lsOverlayHints || lsOverlayHints.length == 0 || lsOverlayHints == 'show') {
+		$('body').addClass('overlayHints');
+	} else if (lsOverlayHints == 'hide') {
+		$('body').removeClass('overlayHints');
+	}
+
+	var lsMapHints = localStorage.getItem('fieldtrip-map-hints');
+	
+	if (!lsMapHints || lsMapHints.length == 0 || lsMapHints == 'show') {
+		
+		if (mapPinHintsInterval) {
+			window.clearInterval(mapPinHintsInterval);
+		}
+
+		mapPinHintsInterval = window.setInterval(function() {
+			var episodes = [1,2,3,4,5,6,7,8,9],
+				randomEpisode = episodes[Math.floor(Math.random()*episodes.length)];
+
+			highlightInteractiveElement('.ftMapPin#ftMapPin'+ randomEpisode, 2);
+		}, 8000);
+
+	} else if (lsMapHints == 'hide') {
+		window.clearInterval(mapPinHintsInterval);
+	}
+
+}
+
+function highlightInteractiveElement(selector, iterations) {
+
+	var interactiveElement = $(selector);
+
+	interactiveElement.addClass("active");
+
+	setTimeout(function() {
+		interactiveElement.removeClass("active");
+	}, iterations * 3000);
+
 }

@@ -7,7 +7,7 @@
             "creatorId": "1",
             "created": 1556092260,
             "description": null,
-            "src": "1_1556092260_intro.mp4",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6032629731001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
             "thumb": "1_1556092260_thumb_intro.png"
@@ -18,7 +18,7 @@
             "creatorId": "1",
             "created": 1556092338,
             "description": null,
-            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2987/64007844001_6032637490001_6032627750001.mp4?pubId=64007844001&videoId=6032627750001",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034566731001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
             "thumb": "1_1556092338_thumb_episode-1-mustafa-sebnem.png"
@@ -29,7 +29,7 @@
             "creatorId": "1",
             "created": 1556092400,
             "description": null,
-            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/3203/64007844001_6032636187001_6032626499001.mp4?pubId=64007844001&videoId=6032626499001",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563427001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
             "thumb": "1_1556092400_thumb_episode-2-farzad.png"
@@ -40,7 +40,7 @@
             "creatorId": "1",
             "created": 1556092427,
             "description": null,
-            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/1987/64007844001_6032637427001_6032627755001.mp4?pubId=64007844001&videoId=6032627755001",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563428001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
             "thumb": "1_1556092427_thumb_episode-3-boris.png"
@@ -51,7 +51,7 @@
             "creatorId": "1",
             "created": 1556092451,
             "description": null,
-            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/3987/64007844001_6032633215001_6032627757001.mp4?pubId=64007844001&videoId=6032627757001",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034568308001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
             "thumb": "1_1556092451_thumb_episode-4-kuebra.png"
@@ -62,7 +62,7 @@
             "creatorId": "1",
             "created": 1556092475,
             "description": null,
-            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2987/64007844001_6032636272001_6032627758001.mp4?pubId=64007844001&videoId=6032627758001",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034568309001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
             "thumb": "1_1556092475_thumb_episode-5-molkenbuhr.png"
@@ -73,7 +73,7 @@
             "creatorId": "1",
             "created": 1556092499,
             "description": null,
-            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/205/64007844001_6032636077001_6032628709001.mp4?pubId=64007844001&videoId=6032628709001",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563429001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
             "thumb": "1_1556092499_thumb_episode-6-patrick.png"
@@ -84,7 +84,7 @@
             "creatorId": "1",
             "created": 1556092548,
             "description": null,
-            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/1205/64007844001_6032633339001_6032628710001.mp4?pubId=64007844001&videoId=6032628710001",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
             "thumb": "1_1556092548_thumb_episode-7-paul.png"
@@ -95,7 +95,7 @@
             "creatorId": "1",
             "created": 1556092568,
             "description": null,
-            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2205/64007844001_6032635259001_6032628711001.mp4?pubId=64007844001&videoId=6032628711001",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034565541001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
             "thumb": "1_1556092568_thumb_episode-8-halina.png"
@@ -106,7 +106,7 @@
             "creatorId": "1",
             "created": 1556092589,
             "description": null,
-            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/309/64007844001_6032635556001_6032627762001.mp4?pubId=64007844001&videoId=6032627762001",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034565542001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
             "thumb": "1_1556092589_thumb_episode-9-storyboxx.png"

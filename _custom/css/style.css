@@ -1091,6 +1091,7 @@ a {
 
 .ftNavIconContainer i {
   cursor: pointer;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, .6);
 }
 
 .ftNavIconContainer.inactive {
@@ -1300,25 +1301,83 @@ a {
   z-index: 1;
 }
 
-.ftLayer#ftintro .ftLogo {
-  top: 50%;
-  left: 25%;
-  margin-top: -180px;
-  margin-left: 180px;
-  font-size: 6em;
+.ftLayer#ftintro .ftintroLogos {
+  position: absolute;
+  left: 50%;
+  margin-left: -125px;
+  width: 250px;
+  text-align: center;
+  z-index: 10;
+}
+
+.ftLayer#ftintro .ftintroLogos.LogosTop {
+  top: 30px;
+}
+
+.ftLayer#ftintro .ftintroLogos.LogosMiddle {
+  top: 140px;
+}
+
+.ftLayer#ftintro .ftintroLogos.LogosBottom {
+  bottom: 30px;
+}
+
+.ftLayer#ftintro .ftintroLogos .ftintroLogo {  
+  display: block;
+  width: 180px;
+  height: auto;
+  font-size: 80px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.ftLayer#ftintro .ftintroLogos.LogosBottom  .ftintroLogo {
+  width: 120px;
+  margin: 0 auto;
+}
+
+.ftLayer#ftintro .fticon-logo-fieldtrip {
+  display: block;
+  font-size: 75px;
+  margin-bottom: .25em; 
 }
 
 .ftLayer#ftintro #ftTagline {
   position: absolute;
   top: 50%;
   left: 25%;
-  margin-top: -30px;
   margin-left: 180px;
   width: 50%;
-  font-size: 2em;
+  font-size: 1.75em;
   line-height: 1.2em;
   color: #fff;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
   z-index: 28;
+}
+
+.ftLayer#ftintro #ftIntroExplainer {
+	position: absolute;
+	bottom: 40px;
+	left: 50%;
+	margin-top: -30px;
+  -moz-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+	width: 800px;
+	font-size: 1.75em;
+	line-height: 1.2em;
+  letter-spacing: 0;
+	text-align: left;
+	color: #fff;
+	z-index: 80;
+	display: none;
+  
 }
 
 .ftLayer#ftintro #ftSkipIntro {
@@ -1343,16 +1402,6 @@ a {
 	z-index: 2;
 }
 
-/*
-#ftoverview #ftMapContainer #ftMapBackground, #ftoverview #ftMapContainer #ftMapCanvas {
-  -moz-animation: flying 10s linear infinite;
-  -moz-transform-origin:center center;
-  -webkit-animation: flying 10s linear infinite;
-  -webkit-transform-origin:center center;
-  animation: flying 10s linear infinite;
-  transform-origin:center center;
-}
-*/
 
 /* TRANSLATION OFFSET CAN BE A MAXIMUM OF 10px */
 /*
@@ -1437,10 +1486,10 @@ a {
 .ftNavCooperation img {
   display: block;
   position: relative;
-  margin-top: 4px;
+  margin-top: 7px;
   top: auto !important;
   left: auto !important;
-  width: 120px !important;
+  width: 130px !important;
   height: auto !important;
 }
 
@@ -1493,10 +1542,10 @@ a {
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin {
 	position: absolute;
-	margin-left: -36px;
-	margin-top: -36px;
-	width: 72px;
-	height: 72px;
+	margin-left: -43px;
+	margin-top: -43px;
+	width: 86px;
+	height: 86px;
 	line-height: 50px;
 	font-size: 2.5em;
 	text-align: center;
@@ -1508,6 +1557,10 @@ a {
 	transform: scale(0.8, 0.8);
 	z-index: 1000;
 	cursor: pointer;
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin.pinOpen {
+	z-index: 1010;
 }
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:before {
@@ -1530,8 +1583,8 @@ a {
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .fticon-silhouette {
 	display: block;
-	width: 72px;
-	height: 72px;
+	width: 86px;
+	height: 86px;
 	background-image: url(../graphics/FT-pin-girl-1.png);
 	background-size: auto 100%;
 	background-repeat: no-repeat;
@@ -1622,7 +1675,7 @@ a {
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:hover::before,
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin.active::before,
-#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:visited::before  {
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:visited::before {
   content: "";
   position: absolute;
   -webkit-animation: pulse-one 3s infinite; /* Chrome, Safari, Opera */
@@ -1640,6 +1693,7 @@ a {
   transform: translateX(-50%) translateY(-50%);
   z-index: -1;
 }
+
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:hover::after,
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin.active::after,
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:visited::after {
@@ -1659,6 +1713,44 @@ a {
   -ms-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   z-index: -1;
+}
+
+body.overlayHints .overlayElement.active .resourceDetail[data-type="image"]::before {
+  content: "";
+  position: absolute;
+  -webkit-animation: pulse-bigger-one 3s infinite; /* Chrome, Safari, Opera */
+  animation: pulse-bigger-one 3s infinite;
+  background: rgba(254, 197, 112, .5);
+  border-radius: 50%;
+  height: 0em;
+  width: 0em;
+  top: 90%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 2;
+}
+
+body.overlayHints .overlayElement.active .resourceDetail[data-type="image"]::after {
+  content: "";
+  position: absolute;
+  -webkit-animation: pulse-bigger-two 3s infinite; 
+  animation: pulse-bigger-two 3s infinite;
+  background: rgba(254, 197, 112, .25);
+  border-radius: 50%;
+  height: 0em;
+  width: 0em;
+  top: 90%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 2;
 }
 
 @-moz-keyframes pulse-one {
@@ -1800,6 +1892,145 @@ a {
   }
 }
 
+@-moz-keyframes pulse-bigger-one {
+  0% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 2em;
+    width: 2em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+}
+@-webkit-keyframes pulse-bigger-one {
+  0% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 2em;
+    width: 2em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+}
+@-o-keyframes pulse-bigger-one {
+  0% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 2em;
+    width: 2em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+}
+@keyframes pulse-bigger-one {
+  0% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 2em;
+    width: 2em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 1em;
+    width: 1em;
+  }
+}
+
+
+@-moz-keyframes pulse-bigger-two {
+  0% {
+    opacity: 0.2;
+    height: 2em;
+    width: 2em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 4em;
+    width: 4em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 2em;
+    width: 2em;
+  }
+}
+@-webkit-keyframes pulse-bigger-two {
+  0% {
+    opacity: 0.2;
+    height: 2em;
+    width: 2em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 4em;
+    width: 4em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 2em;
+    width: 2em;
+  }
+}
+@-o-keyframes pulse-bigger-two {
+  0% {
+    opacity: 0.2;
+    height: 2em;
+    width: 2em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 4em;
+    width: 4em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 2em;
+    width: 2em;
+  }
+}
+@keyframes pulse-bigger-two {
+  0% {
+    opacity: 0.2;
+    height: 2em;
+    width: 2em;
+  }
+  50% {
+    opacity: 0.9;
+    height: 4em;
+    width: 4em;
+  }
+  100% {
+    opacity: 0.2;
+    height: 2em;
+    width: 2em;
+  }
+}
+
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin img {
 	width: 102%;
@@ -1812,8 +2043,8 @@ a {
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription {
 	position: absolute;
-	top: -115px;
-	left: -115px;
+	top: -100px;
+	left: -100px;
 	width: 290px;
 	height: 290px;
 	border-radius: 100%;
@@ -1860,7 +2091,7 @@ a {
   border-radius: 100%;
   overflow: hidden;
   top: 0;
-}
+} 
 
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription .ftMapPinDescriptionContent {
@@ -1901,6 +2132,8 @@ a {
   letter-spacing: 1px;
   line-height: 1.25em;
   margin-top: 5px;
+  margin-left: -40px;
+  width: calc(100% + 80px);
   text-shadow: 0 0 5px rgba(0, 0, 0, .15);
 }
 
@@ -2059,12 +2292,12 @@ a {
 	z-index: 1;
 }
 
-.ftLayer#fthypervideo .ftLogo {
+/* .ftLayer#fthypervideo .ftLogo {
 	top: 10px;
 	left: 10px;
 	width: 82px;
 	height: auto;
-}
+} */
 
 .ftLayer#fthypervideo #VideoPlayer {
 	position: absolute !important;
@@ -2092,10 +2325,6 @@ a {
 
 .ftLayer#fthypervideo #VideoPlayer h3 {
 	font-size: 100%;
-}
-
-#VideoPlayer .titlebar:not(.editActive) {
-  display: none !important;
 }
 
 #VideoPlayer .mainContainer:not([data-edit-mode="overlays"]):not([data-edit-mode="codesnippets"]):not([data-edit-mode="annotations"]) .playerContainer .controls {
@@ -2178,10 +2407,14 @@ a {
   right: 5px;
 }
 
+.titlebar .titlebarTitle {
+  top: 15px;
+  letter-spacing: 2px !important;
+}
+
 /* ==========================================================================
 ABOUT / CREDITS / IMPRINT
 ========================================================================== */
-
 
 #fthyperInfo {
   background: #fec570;
@@ -2202,8 +2435,17 @@ ABOUT / CREDITS / IMPRINT
   visibility: visible;
 }
 
+#fthyperInfo.is-open .ftLogo, 
+#fthyperInfo.is-open .fticon-about {
+  text-shadow: none;
+}
+
 #fthyperInfo .ftLogo {
   color: #111;
+}
+
+#fthyperInfo .ftNavCooperation img {
+  margin-top: 14px;
 }
 
 #fthyperInfo .ftLayerContent {
@@ -2211,14 +2453,13 @@ ABOUT / CREDITS / IMPRINT
   transition-duration: 0;
   transform-origin: none;
   transform: none;
-  overflow-y: scroll;
+  overflow-y: scroll !important;
 }
 
 #fthyperInfo .section-footer {
   display: block;
   clear: both;
   padding-top: 1.5vw;
-  max-width: 700px; 
 }
 
 #fthyperInfo h6 {
@@ -2236,6 +2477,13 @@ ABOUT / CREDITS / IMPRINT
   font-size: 1.25em;
   cursor: pointer;
   z-index: 10;
+}
+
+
+#fthyperInfo .ftNavCooperation {
+  background: rgba(255, 255, 255, 0);
+  top: 10px;
+  right: 80px;
 }
 
 .divider {
@@ -2300,11 +2548,11 @@ ABOUT / CREDITS / IMPRINT
 
 .ftInfoSection {
   position: relative;
-  height: 100vh;
   line-height: 1.45em;
 }
 
-.ftInfoSection.vertical-aligned {
+.ftInfoSection.full-height {
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2312,6 +2560,7 @@ ABOUT / CREDITS / IMPRINT
 
 .ftInfoSection.padding-top {
   padding-top: 10vh;
+  padding-bottom: 10vh;
 }
 
 .ftInfoContent {
@@ -2322,7 +2571,7 @@ ABOUT / CREDITS / IMPRINT
 .ftInfoContent h5 {
   font-family: 'Rubik', helvetica, sans-serif;
   font-weight: 600;
-  
+  margin-bottom: 1em;
   line-height: 1em;
 }
 
@@ -2349,9 +2598,8 @@ ABOUT / CREDITS / IMPRINT
 /* About */
 
 #ueber-uns .ftHero {
-  max-width: 700px;
-  font-size: 1.15em;
-  line-height: 1.45em;
+  font-size: 1em;
+  line-height: 1.65em;
 }
 
 /* Team */
@@ -2446,7 +2694,7 @@ ABOUT / CREDITS / IMPRINT
   font-weight: 900;
 }
 
-#resourcen a {
+#resourcen a, section-footer a {
   border-bottom: 1px solid;
 }
 
@@ -2715,6 +2963,10 @@ ABOUT / CREDITS / IMPRINT
     font-size: 1.15em;
   }
   
+  .ftInfoContent p {
+    font-size: 1.25em;
+  }
+  
   #abspann li {
     width: 16.6666%;  
   }
@@ -2811,6 +3063,10 @@ ABOUT / CREDITS / IMPRINT
     font-size: .65em;
   }
   
+  .ftInfoContent p {
+    font-size: 1.15em;
+  }
+  
   #team .ftTeam-member h3 {
     font-size: 1em;
   }
@@ -2824,8 +3080,10 @@ ABOUT / CREDITS / IMPRINT
   }
 }
 
-@media (min-width: 1010px) and (max-width: 1220px) {
-	
+@media (min-width: 1010px) and (max-width: 1499px) {
+	.ftInfoContent p {
+	  font-size: .95em;
+	}
 }
 
 @media (min-width: 650px) and (max-width: 1010px) {
@@ -2845,7 +3103,86 @@ ABOUT / CREDITS / IMPRINT
   }  
 }
 
-@media (max-width: 650px) {
+@media (max-width: 820px) {
+  
+  .tooltip.is-visible {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  html, body, .ftLayer .ftLayerContent, .ftLayer, .ftLayer .ftLayerContent {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden !important;
+    margin: 0;
+    padding: 0;
+  }
+    
+  #ftoverview #ftMapContainer img#ftMapBackground,
+  #ftoverview #ftMapContainer #ftMapCanvas {
+    overflow-x: hidden !important;    
+  }
+  
+  .ftLayer#ftintro .ftintroLogos .ftintroLogo {
+    width: 150px;
+    font-size: 40px;
+  }
+  
+  .ftLayer#ftintro .ftintroLogos.LogosBottom .ftintroLogo {
+    width: 110px;
+  }
+  
+  .ftLayer#ftintro .ftintroLogos.LogosTop {
+    top: 30px;
+    left: 30px;
+    margin-left: 0;
+  }
+  
+  .ftLayer#ftintro .ftintroLogos.LogosMiddle {
+    top: 30px;
+    font-size: 1.25em;
+  }
+  
+  .ftLayer#ftintro .ftintroLogos.LogosBottom {
+    top: 15px;
+    bottom: auto;
+    right: 30px;
+    left: auto;
+    margin-left: 0;
+  }
+  
+  #ftStartButton, .ftLayer#ftintro #ftTagline {
+    top: 60%;
+  }
+    
+  .ftLayer#ftintro #ftTagline {
+    margin-left: 140px;
+    font-size: 20px;
+  }
+  
+  .ftLayer#ftintro #ftSkipIntro {
+    font-size: .75em;
+    bottom: 30px;
+    right: 30px;
+  }
+  
+  .ftLayer#ftintro #ftIntroExplainer {
+    width: auto;
+    transform: none;
+    font-size: .85em;
+    left: 30px;
+    bottom: 30px;
+    right: 160px;
+  }
+  
+  #ftoverview #ftMapContainer #ftMapCanvas {
+    width: 100vw;
+  }
+  
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .fticon-silhouette {
+    width: 72px;
+    height: 72px;
+  }
   
   .ftLayer .ftLogo {
     top: 10px;
@@ -2861,21 +3198,27 @@ ABOUT / CREDITS / IMPRINT
     display: none !important;
   }
   
-  #ftStartButton {
-    left: 50%;
-  }
-
   #fthyperInfo .ftInfoNavigation {
     width: 100%;
-    height: 80px;
+    height: 50px;
     z-index: 1;
-    background: rgba(255,255,255,.9);
+    background: rgba(255,255,255,0);
+  }
+  
+  .ftCloseInfo {
+    top: 15px;
+    right: 15px;
   }
   
   .ftNavIconContainer {
     width: 40px;
     height: 40px;
     line-height: 40px; 
+  }
+  
+  .ftLayer {
+    width: 100vw;
+    height: 100vh;
   }
   
   .ftSound {
@@ -2900,7 +3243,7 @@ ABOUT / CREDITS / IMPRINT
   
   .ftSocialNav {
     width: 65px;
-    top: 4px;
+    top: 6px;
     right: 30px;
   }
   
@@ -2925,8 +3268,12 @@ ABOUT / CREDITS / IMPRINT
   
   .tooltip {
     font-size: .85em;
-    width: 245px;
+    width: 255px;
     top: -80px;
+  }
+  
+  .tooltip a {
+    display: inline;
   }
   
   .switch-container {
@@ -2937,8 +3284,12 @@ ABOUT / CREDITS / IMPRINT
   #ftoverview #ftMapContainer #ftWeatherContainer {
     font-size: .75em;
     top: 5px;
-    right: 190px;
+    right: 155px;
     height: 50px;
+  }
+  
+  .overlayElement .resourceDetail[data-type="text"] * {
+    font-size: 16px !important;
   }
   
   #ftWeatherIcon {
@@ -2949,30 +3300,34 @@ ABOUT / CREDITS / IMPRINT
     font-size: 20px;
     line-height: 17px;
   }
-  
-  /*
-  .ftNavVisitors {
-    font-size: .75em;
-    top: 5px;
-    right: 80px;
-    padding-bottom: 9px;
-  }
-  */
 
   .ftNavCooperation {
     top: 5px;
     right: 40px;
     height: 50px;
   }
+  
+  .ftNavCooperation {
+    width: 112px;
+  }
 
   .ftNavCooperation img {
     width: 90px !important;
+    margin-top: 9px;
   }
 
   .ftLayer#ftintro .ftNavCooperation {
     right: 5px;
   } 
   
+  #fthyperInfo .ftNavCooperation {
+    right: 50px;
+  }
+  
+  #fthyperInfo .ftNavCooperation img {
+    margin-top: 0;
+  }
+
   #fthyperInfo .ftInfoNavigation ul {
     display: none;
   }
@@ -2991,8 +3346,9 @@ ABOUT / CREDITS / IMPRINT
     padding-top: 0;
   }
   
-  .ftInfoSection.vertical-aligned {
+  .ftInfoSection.full-height {
     display: block;
+    height: auto;
   }
   
   .ftInfoContent {
@@ -3004,18 +3360,26 @@ ABOUT / CREDITS / IMPRINT
   #fthyperInfo .ftInfoContainer {
     margin-left: 0;
   }
-
-  #ueber-uns .ftHero {
-    font-size: 1em;
-    margin-top: 80px;
+  
+  #ueber-uns .ftHero { 
+    margin-top: 60px;
   }
+  
+  #ueber-uns .ftHero p {
+    font-size: 14px;
+  }
+  
   #team .ftTeam-member {
-    width: 100%;
-    margin: 2.5vh 0;
+    width: 70%;
+    margin: 2.5vh 0 2.5vh 15%;
+  }
+  
+  .ftInfoContent p {
+    font-size: 14px;
   }
   
   #abspann li {
-    width: 33.333%;
+    width: 25%;
   }
 
   .ftCloseInfo {
@@ -3029,10 +3393,20 @@ ABOUT / CREDITS / IMPRINT
   .ftCloseInfo {
     color: #000;
   }
+  
+  .titlebar .titlebarTitle {
+    font-size: 14px !important;
+    top: 0;
+  }
 }
 
 @media screen and (max-width: 480px) {
   
+  .tooltip.is-visible {
+    opacity: 0;
+    visibility: hidden;
+  }
+
   #ftMobile-turn {
     opacity: 1;
     visibility: visible;

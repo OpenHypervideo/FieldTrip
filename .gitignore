@@ -30,4 +30,5 @@ visitors.db
 #avoid accidental commits of open weather map api key
 openweathermap.php
 deploy_dev.sh
-cache/
+cache/*
+!cache/.gitkeep

@@ -1,6 +1,6 @@
 {
     "meta": {
-        "name": "Episode 1",
+        "name": "Die Protesterfahrenen",
         "description": "   ",
         "thumb": "1_1556092338_thumb_episode-1-mustafa-sebnem.png",
         "creator": "Joscha",
@@ -24,7 +24,7 @@
     "clips": [
         {
             "resourceId": "2",
-            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2987/64007844001_6032637490001_6032627750001.mp4?pubId=64007844001&videoId=6032627750001",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034566731001&pubId=64007844001&secure=true",
             "duration": 0,
             "start": 0,
             "end": 0,
@@ -148,7 +148,7 @@
             },
             "frametrail:events": {},
             "frametrail:attributes": {
-                "text": "&lt;p style=\"text-align: center;\"&gt;Mustafa Altıoklar ist Filmemacher und ist aufgrund seiner Proteste gegen die Regierungspartei aus der Türkei geflohen. &lt;br&gt;Seit 2015 lebt er in Berlin.&lt;br&gt;&lt;br&gt;Seine Kollegin und Mitstreiterin Şebnem Sönmez ist gerade zu Besuch.&lt;br&gt;&lt;/p&gt;"
+                "text": "&lt;p style=\"text-align: center;\"&gt;Mustafa Altıoklar ist Filmemacher und ist aus der Türkei geflohen, weil er gegen die Regierungspartei protestiert hat. &lt;br&gt;Seit 2015 lebt er in Berlin.&lt;br&gt;&lt;br&gt;Seine Kollegin und Mitstreiterin Şebnem Sönmez ist gerade zu Besuch.&lt;br&gt;&lt;/p&gt;"
             }
         },
         {

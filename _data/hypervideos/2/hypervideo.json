@@ -1,6 +1,6 @@
 {
     "meta": {
-        "name": "Episode 2",
+        "name": "Der Drachenbauer",
         "description": "   ",
         "thumb": "1_1556092400_thumb_episode-2-farzad.png",
         "creator": "Joscha",
@@ -24,7 +24,7 @@
     "clips": [
         {
             "resourceId": "3",
-            "src": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/3203/64007844001_6032636187001_6032626499001.mp4?pubId=64007844001&videoId=6032626499001",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563427001&pubId=64007844001&secure=true",
             "duration": 0,
             "start": 0,
             "end": 0,
@@ -148,7 +148,7 @@
             },
             "frametrail:events": {},
             "frametrail:attributes": {
-                "text": "&lt;p style=\"text-align: center;\"&gt;Farzad H. flüchtete aus Afghanistan.&lt;br&gt;&lt;br&gt;Im Sommer 2015 ist er in die Notunterkunft in den ehemaligen Flughafengaragen im Hangar 5 eingezogen.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+                "text": "&lt;p style=\"text-align: center;\"&gt;Farzad H. flüchtete aus Afghanistan.&lt;br&gt;&lt;br&gt;Im Sommer 2015 ist er in die Notunterkunft im Hangar 5 des ehemaligen Flughafens eingezogen.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
             }
         }
     ],

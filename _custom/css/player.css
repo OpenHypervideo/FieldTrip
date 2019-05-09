@@ -23,7 +23,8 @@ body.userinactive .mainContainer:not(.editActive) .playerContainer #playCircleCo
 body.userinactive #ftPointer,
 body.userinactive #fthypervideo .ftNavigation,
 body.userinactive #fthypervideo .ftNavCooperation,
-body.userinactive #fthypervideo .ftAboutIconContainer {
+body.userinactive #fthypervideo .ftAboutIconContainer,
+body.userinactive #VideoPlayer .titlebar:not(.editActive) {
     display: block;
     visibility: hidden;
     opacity: 0;
@@ -96,6 +97,39 @@ body.userinactive #fthypervideo .ftAboutIconContainer {
 	opacity: .5;
 }
 
+/* Subtitle Element */
+
+.captionContainer .subtitleElement {
+	color: #ffffff;
+	font-size: 2vw;
+	letter-spacing: 0;
+	font-weight: 200;
+	line-height: 1;
+	margin: 1em 5vw;
+	text-align: center;
+	background: transparent;
+	display: none;
+	width: 90vw;
+}
+
+@media (min-width: 1700px) {
+	.captionContainer .subtitleElement {
+    	margin: .5em 5vw;
+	}
+}
+
+@media (max-width: 920px) {
+	.captionContainer .subtitleElement {
+		font-size: 3vw;
+	}
+}
+
+@media (max-width: 650px) { 
+	.captionContainer .subtitleElement {
+		font-size: 4vw;
+	}
+}
+
 .hypervideoContainer .videoContainer .hypervideo .captionContainer {
 	position: fixed !important;
 }
@@ -126,13 +160,19 @@ body.userinactive #fthypervideo .ftAboutIconContainer {
 	top: 0px;
 	left: 0px;
 	flex: none;
-	height: 23px;
-	background: var(--secondary-bg-color);
+	height: 60px;
+	background: transparent;
+	pointer-events: none;
 }
 
 #VideoPlayer .titlebar:not(.editActive) .titlebarTitle {
-	line-height: 20px;
-	font-size: 13px;
+	font-family: 'Rubik', helvetica, sans-serif;
+	font-weight: 600;
+	font-size: 1.2em;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	line-height: 58px;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, .6);
 }
 
 #VideoPlayer .titlebar:not(.editActive) .titlebarActionButtonContainer, 
@@ -197,6 +237,14 @@ body.userinactive #fthypervideo .ftAboutIconContainer {
 	display: none !important;
 }
 
+#VideoPlayer .mainContainer:not(.editActive) .viewOverview {
+	display: none !important;
+}
+
+#VideoPlayer .mainContainer:not(.editActive) .viewVideo {
+	display: block !important;
+}
+
 /* buttons */
 
 #VideoPlayer button, #VideoPlayer input[type="submit"], #VideoPlayer input[type="button"], #VideoPlayer .button {
@@ -249,7 +297,7 @@ body.userinactive #fthypervideo .ftAboutIconContainer {
 
 .overlayElement .resourceDetail[data-type="text"] * {
 	color: #ffffff !important;
-	font-size: 1vw !important;
+	font-size: 1vw;
 	background: rgba(0,0,0,.45);
 	padding: 1vw;
 	letter-spacing: 0;
@@ -273,6 +321,13 @@ body.userinactive #fthypervideo .ftAboutIconContainer {
 	cursor: pointer;
   	transform: scale(1,1);
 }
+
+/* TODO: Fix sizing & scaling of overlays; */
+.overlayElement .resourceDetail[data-type="image"] .ps-scrollbar-x-rail, 
+.overlayElement .resourceDetail[data-type="image"] .ps-scrollbar-y-rail {
+	display: none !important;
+}
+
 
 .overlayElement svg {
 	top: 10px;
@@ -430,6 +485,6 @@ body.userinactive #fthypervideo .ftAboutIconContainer {
 */
 
 /* IE fix */
-.hypervideoContainer .videoContainer {
+.mainContainer:not(.editActive) .hypervideoContainer .videoContainer {
   min-height: 100vh !important;
 }
