@@ -24,7 +24,7 @@
     "clips": [
         {
             "resourceId": "7",
-            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6032628709001&pubId=64007844001&secure=true",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563429001&pubId=64007844001&secure=true",
             "duration": 0,
             "start": 0,
             "end": 0,
