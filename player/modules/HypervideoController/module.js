@@ -584,9 +584,9 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
             
             if (promise !== undefined) {
 
-				promise.then(_ => {
+				promise.then(function(_) {
 	                onPlaySuccess();
-				}).catch(error => {
+				}).catch(function(error) {
 					// play error (most likely autoplay prevented)
 				});
 
