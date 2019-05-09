@@ -170,7 +170,7 @@ var videoLinks = {
 		'links': [
 			{
 				'time': 73,
-				'target': '#hypervideo=2&t=255',
+				'target': '#hypervideo=2&t=256',
 			},
 			{
 				'time': 171,
@@ -195,7 +195,7 @@ var videoLinks = {
 			},
 			{
 				'time': 341,
-				'target': '#hypervideo=2&t=255',
+				'target': '#hypervideo=2&t=256',
 			}
 		]
 	},
