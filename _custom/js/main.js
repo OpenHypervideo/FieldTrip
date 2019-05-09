@@ -323,6 +323,8 @@ $(document).ready(function() {
 
 			toggleNativeFullscreen();
 
+			$('#ftIntroVideo')[0].play();
+
 			window.setTimeout(function() {
 								
 				window.history.replaceState({}, '', '#intro');
@@ -691,10 +693,11 @@ function activateLayer(layerName, videoID) {
 
 			$('#ftSkipIntro, #ftIntroExplainer').show();
 			
-			//introTimeout = window.setTimeout(function() {
+			if (previousLayer) {
 				$('#ftIntroVideo')[0].currentTime = 0;
-				$('#ftIntroVideo')[0].play();
-			//}, 2000);
+			}
+
+			$('#ftIntroVideo')[0].play();
 
 			$('#audioAtmoDay').stop(true, false).animate({
 				volume: 0
