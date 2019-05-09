@@ -212,7 +212,7 @@ $(document).ready(function() {
             data: "_data/resources/_index.json",
             type: "frametrail"
         }],
-        tagdefinitions:      null,
+        tagdefinitions:      {},
         config:              null,
         users: {}
 	});
@@ -224,12 +224,12 @@ $(document).ready(function() {
 
 	FieldTrip.on('ready', function() {
 		
+		FieldTripReady = true;
+		
 		// Make sure play circle & transitions are never initialized twice
 		if ($('#VideoPlayer #playCircleContainer').length != 0) {
 			return;
 		}
-		
-		FieldTripReady = true;
 
 		initPlayCircle();
 		initTransitions('.mainContainer');
