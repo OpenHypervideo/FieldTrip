@@ -1511,10 +1511,10 @@ a {
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin {
 	position: absolute;
-	margin-left: -36px;
-	margin-top: -36px;
-	width: 72px;
-	height: 72px;
+	margin-left: -43px;
+	margin-top: -43px;
+	width: 86px;
+	height: 86px;
 	line-height: 50px;
 	font-size: 2.5em;
 	text-align: center;
@@ -1526,6 +1526,10 @@ a {
 	transform: scale(0.8, 0.8);
 	z-index: 1000;
 	cursor: pointer;
+}
+
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin.pinOpen {
+	z-index: 1010;
 }
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:before {
@@ -1548,8 +1552,8 @@ a {
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .fticon-silhouette {
 	display: block;
-	width: 72px;
-	height: 72px;
+	width: 86px;
+	height: 86px;
 	background-image: url(../graphics/FT-pin-girl-1.png);
 	background-size: auto 100%;
 	background-repeat: no-repeat;
@@ -2008,8 +2012,8 @@ body.overlayHints .overlayElement.active .resourceDetail[data-type="image"]::aft
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription {
 	position: absolute;
-	top: -115px;
-	left: -115px;
+	top: -100px;
+	left: -100px;
 	width: 290px;
 	height: 290px;
 	border-radius: 100%;
