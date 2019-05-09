@@ -73,7 +73,7 @@
                 "frametrail:name": "Animation Drachen"
             },
             "frametrail:events": {
-                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=2&t=255';\n  }, 3000);\n}, 1000);"
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=2&t=256';\n  }, 3000);\n}, 1000);"
             },
             "frametrail:attributes": {}
         },
