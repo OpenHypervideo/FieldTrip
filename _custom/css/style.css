@@ -2835,7 +2835,7 @@ ABOUT / CREDITS / IMPRINT
   bottom: 0;
   left: 0;
   
-  background: rgba(0,0,0,.85);
+  background: rgba(0,0,0,.9);
   color: #fff;
   z-index: 100;
   
@@ -2848,8 +2848,15 @@ ABOUT / CREDITS / IMPRINT
 }
 
 #ftMobile-turn span {
+  display: block;
   font-size: 6vw;
   line-height: 1.15em;
+  margin-bottom: 1em;
+}
+
+#ftMobile-turn img {
+  display: block;
+  margin: 0 auto;
 }
 
 
