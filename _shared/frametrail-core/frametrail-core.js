@@ -83,6 +83,7 @@
                 resources:          options.resources || [],
                 tagdefinitions:     options.tagdefinitions,
                 config:             options.config,
+                users:              options.users,
 
                 loggedIn:           false,
                 username:           '',

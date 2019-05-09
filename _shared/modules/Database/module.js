@@ -174,8 +174,13 @@
      * @param {Function} fail
      */
     function loadUserData(success, fail) {
+        
+        if (FrameTrail.getState('users')) {
+            
+            users = FrameTrail.getState('users');
+            success.call(this);
 
-        if (!FrameTrail.module('RouteNavigation').environment.server) {
+        } else if (!FrameTrail.module('RouteNavigation').environment.server) {
 
             $.ajax({
                 type:   "GET",

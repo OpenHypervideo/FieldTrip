@@ -213,7 +213,8 @@ $(document).ready(function() {
             type: "frametrail"
         }],
         tagdefinitions:      null,
-        config:              null
+        config:              null,
+        users: {}
 	});
 
 	
