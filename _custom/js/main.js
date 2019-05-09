@@ -356,7 +356,7 @@ $(document).ready(function() {
 
 			$(this).hide();
 
-			$('#ftintro #ftTagline').hide();
+			$('#ftintro #ftTagline, #ftintro .ftintroLogo').hide();
 
 			toggleNativeFullscreen();
 
@@ -715,7 +715,9 @@ function activateLayer(layerName, videoID) {
 				});
 			}
 
-			$('#ftSkipIntro').show();
+			$('#ftintro #ftTagline, #ftintro .ftintroLogo').hide();
+
+			$('#ftSkipIntro, #ftIntroExplainer').show();
 			
 			//introTimeout = window.setTimeout(function() {
 				$('#ftIntroVideo')[0].currentTime = 0;
