@@ -783,11 +783,13 @@ function activateLayer(layerName, videoID) {
 			$('.ftLayer#fthypervideo').removeClass('zoomOut');
 
 			// TODO: Replace with parsed Video ID
+			$('.ftMapPin').removeClass('pinOpen');
+			$('.ftMapPin#ftMapPin'+ videoID).addClass('pinOpen');
 			$('.ftMapPin .ftMapPinDescription').removeClass('is-visible');
 			$('.ftMapPin .ftMapPinDescription[href^="#hypervideo='+ videoID +'"]').addClass('is-visible');
 			$('.ftMapPin .ftMapPinDescription[href^="#hypervideo='+ videoID +'"] .circle').addClass('outer');
 			$('.ftMapPin .ftMapPinDescription[href^="#hypervideo='+ videoID +'"] .ftMapPinDescriptionContent').addClass('is-visible');
-			
+						
 			activeVideoID = videoID;
 
 			break;
