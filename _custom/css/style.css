@@ -1798,6 +1798,31 @@ body.overlayHints .overlayElement.active .resourceDetail[data-type="image"]::aft
   z-index: 2;
 }
 
+body.overlayHints .overlayElement.active .resourceDetail[data-type="image"] .resourceTooltip {
+  display: block;
+}
+
+body.overlayHints .overlayElement.active .resourceDetail[data-type="image"] .resourceTooltip::after {
+  position: absolute;
+  content: 'In weitere Story springen';
+  background: rgba(0,0,0,.5);
+  pointer-events: none;
+  padding: 15px;
+  line-height: 1.25em;
+  border-radius: 5px;
+  font-size: 1.25em;
+  border: 1px solid rgba(0,0,0,.6);
+  top: 70%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  white-space: nowrap;
+}
+
+
 @-moz-keyframes pulse-one {
   0% {
     opacity: 0.2;
