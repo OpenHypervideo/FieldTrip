@@ -1373,9 +1373,9 @@ function updateHints() {
 	var lsOverviewHint = localStorage.getItem('fieldtrip-overview-hint');
 
 	if (!lsOverviewHint || lsOverviewHint.length == 0 || lsOverviewHint == 'show') {
-		$('.ftLayer#ftHypervideo .ftNavUp .tooltip').addClass('is-visible');
+		$('.ftLayer#fthypervideo .ftNavUp .tooltip').addClass('is-visible');
 	} else if (lsOverviewHint == 'hide') {
-		$('.ftLayer#ftHypervideo .ftNavUp .tooltip').removeClass('is-visible');
+		$('.ftLayer#fthypervideo .ftNavUp .tooltip').removeClass('is-visible');
 	}
 
 }
