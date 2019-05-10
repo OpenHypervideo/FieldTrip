@@ -9,7 +9,7 @@ $return["code"] = "404";
 $return["string"] = "No action was taken";
 
 $city = "7290253"; // Berlin Tempelhof
-$appid = ""; // Open Weather Map API Code / APP ID
+$appid = "29da08fd88015c5b317d9aa3df52fa38"; // Open Weather Map API Code / APP ID
 $url = "http://api.openweathermap.org/data/2.5/weather?id=".$city."&units=metric&appid=".$appid."";
 
 $cacheFile = 'cache' . DIRECTORY_SEPARATOR . md5($url);
