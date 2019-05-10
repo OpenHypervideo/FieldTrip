@@ -1170,7 +1170,7 @@ function initPlayCircle() {
 	var playCircleContainer = $('<figure id="playCircleContainer" class="chart ftEvent"></figure>');
 
 	playCircleContainer.click(function(evt) {
-
+    evt.stopPropagation();
 
 
 		if ($(evt.target).hasClass('linkPointer')) {
@@ -1180,14 +1180,13 @@ function initPlayCircle() {
 			if (linkElemTime) {
 				FieldTrip.currentTime = linkElemTime-3;
 			}
-		} else {
+		} else if ($(evt.target).hasClass('inner')) {
 			if ($(this).hasClass('playing')) {
 				FieldTrip.pause();
 			} else {
 				FieldTrip.play();
 			}
-		}
-
+    }
 
 	});
 
@@ -1209,14 +1208,22 @@ function initPlayCircle() {
 	playCircleBG.setAttribute('cy', '90');
 	playCircleBG.setAttribute('r', '88');
 
+	var playCircleProgress = document.createElementNS(ns, 'circle');
+	playCircleProgress.classList.add('circle');
+	playCircleProgress.classList.add('progress');
+	playCircleProgress.setAttribute('cx', '90');
+	playCircleProgress.setAttribute('cy', '90');
+	playCircleProgress.setAttribute('r', '88');
+
 	var playCircle = document.createElementNS(ns, 'circle');
 	playCircle.classList.add('circle');
-	playCircle.classList.add('outer');
+	playCircle.classList.add('inner');
 	playCircle.setAttribute('cx', '90');
 	playCircle.setAttribute('cy', '90');
-	playCircle.setAttribute('r', '88');
+	playCircle.setAttribute('r', '80');
 
 	playCircleSVG.appendChild(playCircleBG);
+	playCircleSVG.appendChild(playCircleProgress);
 	playCircleSVG.appendChild(playCircle);
 
 	playCircleContainer[0].appendChild(playCircleSVG);
@@ -1225,6 +1232,19 @@ function initPlayCircle() {
 
 	renderPlayCircleLinks();
 
+  $(playCircleProgress).on('click', function (evt) {
+    evt.stopPropagation();
+    console.log('SKIPPING');
+    console.log(evt);
+  });
+  
+  $(playCircleProgress).on('mouseenter', function (evt) {
+    TweenLite.to(playCircleProgress, 0.17, { 'stroke-width': 8 });
+  });
+  
+  $(playCircleProgress).on('mouseleave', function (evt) {
+    TweenLite.to(playCircleProgress, 0.5, { 'stroke-width': 3 });
+  });
 }
 
 function updatePlayCircle() {
@@ -1234,7 +1254,7 @@ function updatePlayCircle() {
 	if (!parentSVG) {
 		return;
 	}
-	var svgCircle = parentSVG.querySelector('.chart svg > .circle');
+	var svgCircle = parentSVG.querySelector('.chart svg > .circle.progress');
 
 	var length = Math.PI * 2 * parseInt(svgCircle.getAttribute('r'));
 	var offset = - length - length * FieldTrip.currentTime / (FieldTrip.duration);
