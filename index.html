@@ -60,9 +60,6 @@
         <!-- Polyfills (for IE) -->
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2CNodeList.prototype.forEach%2CCustomEvent%2CObject.keys%2CObject.assign%2CArray.prototype.filter%2CArray.prototype.map%2CWeakMap"></script>
 
-        <!-- temp: screenfull as seperate asset -->
-        <script src="_lib/screenfull.min.js"></script>
-
         <!-- FrameTrail -->
 
         <link rel="stylesheet" type="text/css" href="FrameTrail.min.css">
@@ -115,6 +112,7 @@
 
             <div class="ftLayerContent">
                 <video id="ftIntroVideo" preload="auto" poster="_custom/graphics/intro-video-poster.jpg" playsinline webkit-playsinline></video>
+                <img id="ftIntroVideoPoster" src="_custom/graphics/intro-video-poster.jpg">
             </div>
 
             <button id="ftStartButton" class="ftButton ftAnimatedButton ftEvent">

@@ -1,6 +1,9 @@
 /* Custom cursor */
 
+var FULLSCREEN_POSSIBLE = !!screenfull;
+
 document.addEventListener("DOMContentLoaded", function(event) {
+
   var cursor = document.querySelector(".custom-cursor");
   var links = document.querySelectorAll(".ftEvent");
   var initCursor = true;
@@ -214,6 +217,9 @@ $(document).ready(function() {
 	document.documentElement.className +=
     (("ontouchstart" in document.documentElement) ? ' touch' : ' no-touch');
 
+    document.documentElement.className += 
+    ((FULLSCREEN_POSSIBLE) ? ' fullscreen-yes' : ' fullscreen-no');
+
 	renderVideoLinkCircles();
 
 	//updateVisitorsNumber();
@@ -321,6 +327,11 @@ $(document).ready(function() {
 	var introVideoElem = document.getElementById('ftIntroVideo'),
 		introVideoSource = 'https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6035118373001&pubId=64007844001&secure=true';
 
+	if (!FULLSCREEN_POSSIBLE) {
+		introVideoElem.removeAttribute('playsinline');
+		introVideoElem.removeAttribute('webkit-playsinline');
+	}
+		
 	if(Hls.isSupported()) {
 		var hls = new Hls();
 		hls.loadSource(introVideoSource);
@@ -358,6 +369,9 @@ $(document).ready(function() {
 			toggleNativeFullscreen();
 
 			$('#ftIntroVideo')[0].play();
+			$('#ftIntroVideo').on('play', function () {
+        $('#ftIntroVideoPoster').hide();
+      });
 
 			window.setTimeout(function() {
 
@@ -708,10 +722,16 @@ function initEventListeners() {
 	$('.ftScreen').click(function() {
 		toggleNativeFullscreen();
 	});
+<<<<<<< HEAD
 
 	screenfull.on('change', toggleFullscreen);
+=======
+  
+	if (FULLSCREEN_POSSIBLE) screenfull.on('change', toggleFullscreen);
+>>>>>>> fe2d5d1e7c4e3387abdaf8e491eb2c861dbb0829
 
 	$('#ftSkipIntro').click(function() {
+    $('ftIntroVideoPoster').hide();
 		window.history.pushState({}, '', '#overview');
 		activateLayer('overview');
 	});
@@ -767,6 +787,7 @@ function activateLayer(layerName, videoID) {
 			break;
 		case 'overview':
 			// Overview
+      $('#ftIntroVideoPoster').hide();
 			$('#ftStartButton').hide();
 			$('#ftoverview').css('opacity', '');
 			if (FieldTrip.pause) {
@@ -791,6 +812,7 @@ function activateLayer(layerName, videoID) {
 			break;
 		case 'hypervideo':
 			// Video
+      $('#ftIntroVideoPoster').hide();
 			$('#ftStartButton').hide();
 			$('.hypervideo .video').prop('volume', 0);
 			if (FieldTripReady) {
@@ -949,16 +971,18 @@ function updateButtonStates() {
 }
 
 function toggleNativeFullscreen() {
-  screenfull.toggle();
+  if (FULLSCREEN_POSSIBLE) screenfull.toggle();
 }
 
 function toggleFullscreen() {
-  if (screenfull.isFullscreen) {
-    $('.ftScreen').removeClass('ftScreenEnlarge').addClass('ftScreenReduce');
-    $('.ftScreen > i').removeClass('fticon-enlarge').addClass('fticon-reduce');
-  } else {
-    $('.ftScreen').removeClass('ftScreenReduce').addClass('ftScreenEnlarge');
-    $('.ftScreen > i').removeClass('fticon-reduce').addClass('fticon-enlarge');
+  if (FULLSCREEN_POSSIBLE) {
+    if (screenfull.isFullscreen) {
+      $('.ftScreen').removeClass('ftScreenEnlarge').addClass('ftScreenReduce');
+      $('.ftScreen > i').removeClass('fticon-enlarge').addClass('fticon-reduce');
+    } else {
+      $('.ftScreen').removeClass('ftScreenReduce').addClass('ftScreenEnlarge');
+      $('.ftScreen > i').removeClass('fticon-reduce').addClass('fticon-enlarge');
+    }
   }
 }
 
