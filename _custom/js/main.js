@@ -220,7 +220,17 @@ $(document).ready(function() {
         users: {}
 	});
 
-	
+  var bgmapReplaced = false;
+  function checkBgImg() {
+    var bgmap = $('#ftMapBackground');
+    if (bgmap.length && !bgmapReplaced && $(window).innerWidth() > 700) {
+      bgmapReplaced = true;
+      bgmap.attr('src', bgmap.attr('src').replace('.jpg', '-desktop.jpg'));
+    }
+  }
+  checkBgImg();
+  $(window).on('resize', checkBgImg);
+
 	FieldTrip.on('timeupdate', function() {
 		updatePlayCircle();
 	});
@@ -228,6 +238,8 @@ $(document).ready(function() {
 	FieldTrip.on('ready', function() {
 		
 		FieldTripReady = true;
+    
+    checkBgImg();
 		
 		// Make sure play circle & transitions are never initialized twice
 		if ($('#VideoPlayer #playCircleContainer').length != 0) {
