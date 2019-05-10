@@ -298,6 +298,7 @@ $(document).ready(function() {
 		hls.loadSource(introVideoSource);
 		hls.attachMedia(introVideoElem);
 		hls.on(Hls.Events.MANIFEST_PARSED,function() {
+			$('#ftIntroVideo').load();
 			introVideoElem.play();
 			introVideoElem.pause();
 			introVideoElem.currentTime = 0;
@@ -311,6 +312,7 @@ $(document).ready(function() {
 	else if (introVideoElem.canPlayType('application/vnd.apple.mpegurl')) {
 		$(introVideoElem).append('<source src="'+ introVideoSource +'" type="video/mp4">');
 		introVideoElem.addEventListener('loadedmetadata',function() {
+			$('#ftIntroVideo').load();
 			introVideoElem.play();
 			introVideoElem.pause();
 			introVideoElem.currentTime = 0;
