@@ -1106,8 +1106,6 @@ function initPlayCircle() {
 
 		if ($(evt.target).hasClass('linkPointer')) {
 			
-			console.log($(evt.target));
-
 			var linkElemTime = $(evt.target).parent().attr('data-time');
 			
 			if (linkElemTime) {
@@ -1212,7 +1210,7 @@ function renderPlayCircleLinks() {
 
 			newPointerCircle.setAttribute('cx', '88');
 			newPointerCircle.setAttribute('cy', '0');
-			newPointerCircle.setAttribute('r', '8');
+			newPointerCircle.setAttribute('r', '16');
 			newPointerCircle.classList.add('linkPointer');
 
 			newPointerGroup.appendChild(newPointerCircle);
