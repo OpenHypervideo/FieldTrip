@@ -2966,6 +2966,11 @@ ABOUT / CREDITS / IMPRINT
     right: 242px;
   }
 
+  .ftNavUp .tooltip {
+    top: 18px;
+    right: 70px;
+  }
+
   .ftNavCooperation {
     top: 30px;
     right: 90px;
@@ -3088,6 +3093,11 @@ ABOUT / CREDITS / IMPRINT
   }
   */
 
+  .ftNavUp .tooltip {
+    top: 18px;
+    right: 70px;
+  }
+
   .ftNavCooperation {
     top: 30px;
     right: 90px;
@@ -3201,7 +3211,7 @@ ABOUT / CREDITS / IMPRINT
 
 @media (max-width: 820px) {
   
-  .tooltip.is-visible {
+  .ftNavVision .tooltip.is-visible {
     opacity: 0;
     visibility: hidden;
   }
@@ -3364,7 +3374,7 @@ ABOUT / CREDITS / IMPRINT
   }
   
   .ftNavUp .tooltip {
-    top: -5px;
+    top: 0px;
     right: 40px;
   }
   
@@ -3494,7 +3504,7 @@ ABOUT / CREDITS / IMPRINT
 
 @media screen and (max-width: 480px) {
   
-  .tooltip.is-visible {
+  .ftNavVision .tooltip.is-visible {
     opacity: 0;
     visibility: hidden;
   }
