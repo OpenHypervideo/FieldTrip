@@ -1222,16 +1222,10 @@ a {
 .tooltip {
   position: absolute;
   background: rgba(0,0,0,.5);
-  top: -85px;
-  width: 280px;
-  right: 0;
   padding: 15px;
   line-height: 1.25em;
   border-radius: 5px;
   border: 1px solid rgba(0,0,0,.5);
-  
-  opacity: 0;
-  visibility: hidden;
   -webkit-transition: all 400ms ease-in-out;
   -moz-transition: all 400ms ease-in-out;
   -ms-transition: all 400ms ease-in-out;
@@ -1239,7 +1233,22 @@ a {
   transition: all 400ms ease-in-out;
 }
 
-.tooltip.is-visible {
+.ftNavUp .tooltip {
+  top: 0;
+  width: 250px;
+  right: 60px;
+}
+
+
+.ftNavVision .tooltip {
+  top: -85px;
+  width: 280px;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.ftNavVision .tooltip.is-visible {
   opacity: 1;
   visibility: visible;
 }
@@ -3280,6 +3289,12 @@ ABOUT / CREDITS / IMPRINT
   
   .tooltip a {
     display: inline;
+  }
+  
+  .ftNavUp .tooltip {
+    width: 220px;
+    top: -5px;
+    right: 40px;
   }
   
   .switch-container {
