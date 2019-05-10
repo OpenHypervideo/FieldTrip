@@ -217,6 +217,9 @@ $(document).ready(function() {
 	document.documentElement.className += 
     (("ontouchstart" in document.documentElement) ? ' touch' : ' no-touch');
 
+    document.documentElement.className += 
+    ((FULLSCREEN_POSSIBLE) ? ' fullscreen-yes' : ' fullscreen-no');
+
 	renderVideoLinkCircles();
 
 	//updateVisitorsNumber();
@@ -322,6 +325,11 @@ $(document).ready(function() {
 	var introVideoElem = document.getElementById('ftIntroVideo'),
 		introVideoSource = 'https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6035118373001&pubId=64007844001&secure=true';
 
+	if (!FULLSCREEN_POSSIBLE) {
+		introVideoElem.removeAttribute('playsinline');
+		introVideoElem.removeAttribute('webkit-playsinline');
+	}
+		
 	if(Hls.isSupported()) {
 		var hls = new Hls();
 		hls.loadSource(introVideoSource);
