@@ -1222,6 +1222,7 @@ a {
   width: 250px;
   right: 60px;
   border-color: transparent;
+  display: none;
 }
 
 .arrow_box-right:before {
@@ -1237,6 +1238,10 @@ a {
 	width: 0;
 	position: absolute;
 	pointer-events: none;
+}
+
+.ftNavUp .tooltip.is-visible {
+  display: block;
 }
 
 .ftNavVision .tooltip {
