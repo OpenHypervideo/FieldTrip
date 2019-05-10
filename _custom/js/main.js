@@ -299,9 +299,14 @@ $(document).ready(function() {
 	});
 
 	FieldTrip.on('ended', function() {
-		FieldTrip.play();
+    function immediatelyStop() {
+      FieldTrip.stop()
+      FieldTrip.off('play', immediatelyStop);
+    }
+    FieldTrip.on('play', immediatelyStop);
+    FieldTrip.play();
 		//window.history.pushState({}, '', '#overview');
-		//activateLayer('overview');
+		activateLayer('overview');
 	});
 
 	FieldTrip.on('userAction', function(evt) {
