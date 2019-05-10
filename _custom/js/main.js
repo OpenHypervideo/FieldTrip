@@ -484,7 +484,13 @@ function initEventListeners() {
 	});
 
 	// Navigation
-	$('.ftNavUp').click(interfaceUp);
+	$('.ftNavUp').click(function(evt) {
+		interfaceUp();
+		if ( $(evt.target).parents('#fthypervideo').length !== 0 ) {
+			localStorage.setItem('fieldtrip-overview-hint', 'hide');
+			updateHints();
+		}
+	});
 	$('.ftNavDown').click(interfaceDown);
 
 	// Key Listeners
@@ -1329,7 +1335,8 @@ function updateHints() {
 	/* 
 	* hidden via 
 	* localStorage.setItem('fieldtrip-overlay-hints', 'hide'); updateHints();
-	* or localStorage.setItem('fieldtrip-map-hints', 'hide'); updateHints();
+	* localStorage.setItem('fieldtrip-map-hints', 'hide'); updateHints();
+	* localStorage.setItem('fieldtrip-overview-hint', 'hide'); updateHints();
 	*/
 
 	var lsOverlayHints = localStorage.getItem('fieldtrip-overlay-hints');
@@ -1344,6 +1351,8 @@ function updateHints() {
 	
 	if (!lsMapHints || lsMapHints.length == 0 || lsMapHints == 'show') {
 		
+		$('.ftPulsingHint').addClass('is-visible');
+
 		if (mapPinHintsInterval) {
 			window.clearInterval(mapPinHintsInterval);
 		}
@@ -1357,6 +1366,16 @@ function updateHints() {
 
 	} else if (lsMapHints == 'hide') {
 		window.clearInterval(mapPinHintsInterval);
+		// TODO: add when styling is done
+		//$('.ftPulsingHint').removeClass('is-visible');
+	}
+
+	var lsOverviewHint = localStorage.getItem('fieldtrip-overview-hint');
+
+	if (!lsOverviewHint || lsOverviewHint.length == 0 || lsOverviewHint == 'show') {
+		$('.ftLayer#ftHypervideo .ftNavUp .tooltip').addClass('is-visible');
+	} else if (lsOverviewHint == 'hide') {
+		$('.ftLayer#ftHypervideo .ftNavUp .tooltip').removeClass('is-visible');
 	}
 
 }
