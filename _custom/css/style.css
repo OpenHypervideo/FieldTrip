@@ -1221,7 +1221,7 @@ a {
   top: 0;
   width: 250px;
   right: 60px;
-  background: #6e6f68;
+  background: #373734;
   border: 1px solid #373734;
 }
 
@@ -1238,13 +1238,13 @@ a {
 
 .arrow_box-right:after {
 	border-color: rgba(110, 111, 104, 0);
-	border-left-color: #6e6f68;
+	border-left-color: #373734;
 	border-width: 8px;
 	margin-top: -8px;
 }
 .arrow_box-right:before {
 	border-color: rgba(55, 55, 52, 0);
-	border-left-color: #373734;
+	border-left-color: #111;
 	border-width: 9px;
 	margin-top: -9px;
 }
@@ -3042,6 +3042,12 @@ ABOUT / CREDITS / IMPRINT
   
   #abspann li {
     width: 16.6666%;  
+  }
+  
+  .ftNavUp .tooltip {
+    width: 310px;
+    right: 80px;
+    top: 10px;
   }
 }
 
