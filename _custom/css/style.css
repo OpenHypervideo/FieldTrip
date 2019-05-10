@@ -1221,34 +1221,23 @@ a {
   top: 0;
   width: 250px;
   right: 60px;
-  background: #6e6f68;
-  border: 1px solid #373734;
+  border-color: transparent;
 }
 
-.arrow_box-right:after, .arrow_box-right:before {
-	left: 100%;
+.arrow_box-right:before {
+	left: calc(100% + 1px);
 	top: 50%;
 	border: solid transparent;
+  border-color: transparent;
+  border-left-color: rgba(0,0,0,.5);
+  border-width: 9px;
+  margin-top: -9px;
 	content: " ";
 	height: 0;
 	width: 0;
 	position: absolute;
 	pointer-events: none;
 }
-
-.arrow_box-right:after {
-	border-color: rgba(110, 111, 104, 0);
-	border-left-color: #6e6f68;
-	border-width: 8px;
-	margin-top: -8px;
-}
-.arrow_box-right:before {
-	border-color: rgba(55, 55, 52, 0);
-	border-left-color: #373734;
-	border-width: 9px;
-	margin-top: -9px;
-}
-
 
 .ftNavVision .tooltip {
   top: -85px;
