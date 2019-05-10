@@ -1227,14 +1227,14 @@ function initPlayCircle() {
 	playCircleProgressInteraction.classList.add('progress-interaction');
 	playCircleProgressInteraction.setAttribute('cx', '90');
 	playCircleProgressInteraction.setAttribute('cy', '90');
-	playCircleProgressInteraction.setAttribute('r', '94');
+	playCircleProgressInteraction.setAttribute('r', '98');
 
 	var playCircle = document.createElementNS(ns, 'circle');
 	playCircle.classList.add('circle');
 	playCircle.classList.add('inner');
 	playCircle.setAttribute('cx', '90');
 	playCircle.setAttribute('cy', '90');
-	playCircle.setAttribute('r', '80');
+	playCircle.setAttribute('r', '78');
 
 	playCircleSVG.appendChild(playCircleBG);
 	playCircleSVG.appendChild(playCircleProgressMove);
@@ -1261,7 +1261,7 @@ function initPlayCircle() {
   
   $(playCircleProgressInteraction).on('mouseenter', function (evt) {
     TweenLite.to(playCircleProgress, 0.17, { 'stroke-width': 6 });
-    TweenLite.to(playCircleProgressMove, 0.17, { 'opacity': 0.3 });
+    TweenLite.to(playCircleProgressMove, 0.17, { 'opacity': 0.45 });
   });
   
   $(playCircleProgressInteraction).on('mouseleave', function (evt) {
