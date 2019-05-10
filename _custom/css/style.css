@@ -1253,9 +1253,9 @@ a {
 
 .ftNavVision .tooltip {
   /* top: -85px; */
-  bottom: 52px;
+  bottom: 0;
   width: 280px;
-  right: 0;
+  right: 155px;
   opacity: 0;
   visibility: hidden;
 }
@@ -3390,6 +3390,10 @@ ABOUT / CREDITS / IMPRINT
     top: -80px;
   }
 
+  .ftNavVision .tooltip {
+    top: auto !important;
+  }
+
   .tooltip a {
     display: inline;
   }
@@ -3524,11 +3528,6 @@ ABOUT / CREDITS / IMPRINT
 }
 
 @media screen and (max-width: 480px) {
-
-  .ftNavVision .tooltip.is-visible {
-    opacity: 0;
-    visibility: hidden;
-  }
 
   #ftMobile-turn {
     opacity: 1;

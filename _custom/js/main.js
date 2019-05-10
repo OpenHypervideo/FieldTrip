@@ -598,7 +598,7 @@ function initEventListeners() {
   */
 
 	$( ".ftNavVision .btn" ).click(function() {
-		$('.ftNavVision .tooltip').addClass("is-visible");
+		$('.ftNavVision .tooltip').toggleClass("is-visible");
   });
 	$( ".ftNavVision a" ).click(function(e) {
     e.stopPropagation();
