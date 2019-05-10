@@ -220,7 +220,18 @@ $(document).ready(function() {
         users: {}
 	});
 
-	
+  var bgmapReplaced = false;
+  function checkBgImg() {
+    var bgmap = $('#ftMapBackground');
+    var win = $(window);
+    if (bgmap.length && !bgmapReplaced && (win.innerWidth() > 700 || win.innerHeight() > 650)) {
+      bgmapReplaced = true;
+      bgmap.attr('src', bgmap.attr('src').replace('.jpg', '-desktop.jpg'));
+    }
+  }
+  checkBgImg();
+  $(window).on('resize', checkBgImg);
+
 	FieldTrip.on('timeupdate', function() {
 		updatePlayCircle();
 	});
@@ -228,6 +239,8 @@ $(document).ready(function() {
 	FieldTrip.on('ready', function() {
 		
 		FieldTripReady = true;
+    
+    checkBgImg();
 		
 		// Make sure play circle & transitions are never initialized twice
 		if ($('#VideoPlayer #playCircleContainer').length != 0) {
@@ -519,12 +532,21 @@ function initEventListeners() {
 
 	/* Info: open/close */
 	
+  var infoImagesLoaded = false;
 	$('.ftNavAbout').click(function() {
-	    $('#fthyperInfo').toggleClass('is-open');
+    // lazy load images on info page
+    if (!infoImagesLoaded) {
+      $('#fthyperInfo').find('img[data-src]').each(function () {
+        var t = $(this);
+        t.attr('src', t.attr('data-src'));
+      });
+      infoImagesLoaded = true;
+    }  
+	  $('#fthyperInfo').toggleClass('is-open');
 	});   
 	
 	$('#ftCloseInfo').click(function() {
-	    $('#fthyperInfo').removeClass('is-open');
+	  $('#fthyperInfo').removeClass('is-open');
 	}); 
   
 	/* Deine Vision Tooltip */
@@ -663,9 +685,7 @@ function initEventListeners() {
 		toggleNativeFullscreen();
 	});
   
-	document.addEventListener("fullscreenchange", toggleFullscreen, false);
-  document.addEventListener("webkitfullscreenchange", toggleFullscreen, false);
-	document.addEventListener("mozfullscreenchange", toggleFullscreen, false);
+	screenfull.on('change', toggleFullscreen);
 
 	$('#ftSkipIntro').click(function() {
 		window.history.pushState({}, '', '#overview');
@@ -904,61 +924,17 @@ function updateButtonStates() {
 }
 
 function toggleNativeFullscreen() {
-
-	var element = $('body')[0];
-
-	if (element.requestFullScreen) {
-		if (!document.fullScreen) {
-			element.requestFullscreen();
-		} else {
-			document.exitFullScreen();
-		}
-	} else if (element.mozRequestFullScreen) {
-		if (!document.mozFullScreen) {
-			element.mozRequestFullScreen();
-		} else {
-			document.mozCancelFullScreen();
-		}
-	} else if (element.webkitRequestFullScreen) {
-		if (!document.webkitIsFullScreen) {
-			element.webkitRequestFullScreen();
-		} else {
-			document.webkitCancelFullScreen();
-		}
-	}
-
+  screenfull.toggle();
 }
 
 function toggleFullscreen() {
-
-	var element = $('body')[0];
-
-	if (element.requestFullScreen) {
-		if (document.fullScreen) {
-			$('.ftScreen').removeClass('ftScreenEnlarge').addClass('ftScreenReduce');
-			$('.ftScreen > i').removeClass('fticon-enlarge').addClass('fticon-reduce');
-		} else {
-			$('.ftScreen').removeClass('ftScreenReduce').addClass('ftScreenEnlarge');
-			$('.ftScreen > i').removeClass('fticon-reduce').addClass('fticon-enlarge');
-		}
-	} else if (element.mozRequestFullScreen) {
-		if (document.mozFullScreen) {
-			$('.ftScreen').removeClass('ftScreenEnlarge').addClass('ftScreenReduce');
-			$('.ftScreen > i').removeClass('fticon-enlarge').addClass('fticon-reduce');
-		} else {
-			$('.ftScreen').removeClass('ftScreenReduce').addClass('ftScreenEnlarge');
-			$('.ftScreen > i').removeClass('fticon-reduce').addClass('fticon-enlarge');
-		}
-	} else if (element.webkitRequestFullScreen) {
-		if (document.webkitIsFullScreen) {
-			$('.ftScreen').removeClass('ftScreenEnlarge').addClass('ftScreenReduce');
-			$('.ftScreen > i').removeClass('fticon-enlarge').addClass('fticon-reduce');
-		} else {
-			$('.ftScreen').removeClass('ftScreenReduce').addClass('ftScreenEnlarge');
-			$('.ftScreen > i').removeClass('fticon-reduce').addClass('fticon-enlarge');
-		}
-	}
-
+  if (screenfull.isFullscreen) {
+    $('.ftScreen').removeClass('ftScreenEnlarge').addClass('ftScreenReduce');
+    $('.ftScreen > i').removeClass('fticon-enlarge').addClass('fticon-reduce');
+  } else {
+    $('.ftScreen').removeClass('ftScreenReduce').addClass('ftScreenEnlarge');
+    $('.ftScreen > i').removeClass('fticon-reduce').addClass('fticon-enlarge');
+  }
 }
 
 function getScaleOffsets(containerElement, targetImage) {
