@@ -1,6 +1,9 @@
 /* Custom cursor */
 
+var FULLSCREEN_POSSIBLE = !!screenfull;
+
 document.addEventListener("DOMContentLoaded", function(event) {
+
   var cursor = document.querySelector(".custom-cursor");
   var links = document.querySelectorAll(".ftEvent");
   var initCursor = true;
@@ -343,6 +346,9 @@ $(document).ready(function() {
 			toggleNativeFullscreen();
 
 			$('#ftIntroVideo')[0].play();
+			$('#ftIntroVideo').on('play', function () {
+        $('#ftIntroVideoPoster').hide();
+      });
 
 			window.setTimeout(function() {
 								
@@ -685,9 +691,10 @@ function initEventListeners() {
 		toggleNativeFullscreen();
 	});
   
-	screenfull.on('change', toggleFullscreen);
+	if (FULLSCREEN_POSSIBLE) screenfull.on('change', toggleFullscreen);
 
 	$('#ftSkipIntro').click(function() {
+    $('ftIntroVideoPoster').hide();
 		window.history.pushState({}, '', '#overview');
 		activateLayer('overview');
 	});
@@ -742,6 +749,7 @@ function activateLayer(layerName, videoID) {
 			break;
 		case 'overview':
 			// Overview
+      $('#ftIntroVideoPoster').hide();
 			$('#ftStartButton').hide();
 			$('#ftoverview').css('opacity', '');
 			if (FieldTrip.pause) {
@@ -766,6 +774,7 @@ function activateLayer(layerName, videoID) {
 			break;
 		case 'hypervideo':
 			// Video
+      $('#ftIntroVideoPoster').hide();
 			$('#ftStartButton').hide();
 			$('.hypervideo .video').prop('volume', 0);
 			if (FieldTripReady) {
@@ -924,16 +933,18 @@ function updateButtonStates() {
 }
 
 function toggleNativeFullscreen() {
-  screenfull.toggle();
+  if (FULLSCREEN_POSSIBLE) screenfull.toggle();
 }
 
 function toggleFullscreen() {
-  if (screenfull.isFullscreen) {
-    $('.ftScreen').removeClass('ftScreenEnlarge').addClass('ftScreenReduce');
-    $('.ftScreen > i').removeClass('fticon-enlarge').addClass('fticon-reduce');
-  } else {
-    $('.ftScreen').removeClass('ftScreenReduce').addClass('ftScreenEnlarge');
-    $('.ftScreen > i').removeClass('fticon-reduce').addClass('fticon-enlarge');
+  if (FULLSCREEN_POSSIBLE) {
+    if (screenfull.isFullscreen) {
+      $('.ftScreen').removeClass('ftScreenEnlarge').addClass('ftScreenReduce');
+      $('.ftScreen > i').removeClass('fticon-enlarge').addClass('fticon-reduce');
+    } else {
+      $('.ftScreen').removeClass('ftScreenReduce').addClass('ftScreenEnlarge');
+      $('.ftScreen > i').removeClass('fticon-reduce').addClass('fticon-enlarge');
+    }
   }
 }
 

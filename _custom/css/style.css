@@ -1374,6 +1374,15 @@ a {
 	object-fit: cover;
 }
 
+#ftIntroVideoPoster {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
 .ftLayer#ftintro::after {
   content: "";
   position: absolute;
