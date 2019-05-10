@@ -1363,27 +1363,6 @@ a {
   z-index: 28;
 }
 
-.ftLayer#ftintro #ftIntroExplainer {
-	position: absolute;
-	bottom: 40px;
-	left: 50%;
-	margin-top: -30px;
-  -moz-transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-	width: 800px;
-	font-size: 1.75em;
-	line-height: 1.2em;
-  letter-spacing: 0;
-	text-align: left;
-	color: #fff;
-	z-index: 80;
-	display: none;
-  
-}
-
 .ftLayer#ftintro #ftSkipIntro {
   position: absolute;
   bottom: 40px;
@@ -3174,15 +3153,6 @@ ABOUT / CREDITS / IMPRINT
     font-size: .75em;
     bottom: 30px;
     right: 30px;
-  }
-  
-  .ftLayer#ftintro #ftIntroExplainer {
-    width: auto;
-    transform: none;
-    font-size: .85em;
-    left: 30px;
-    bottom: 30px;
-    right: 160px;
   }
   
   #ftoverview #ftMapContainer #ftMapCanvas {
