@@ -1123,6 +1123,10 @@ a {
 	top: 70px;
 }
 
+.fullscreen-no .ftScreen {
+  display: none;
+}
+
 .ftEdit {
 	top: 200px;
 	cursor: pointer;
