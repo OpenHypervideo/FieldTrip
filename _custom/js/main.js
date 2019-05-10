@@ -194,6 +194,19 @@ var videoLinks = {
 
 }
 
+// Set the name of the hidden property and the change event for visibility
+var hidden, visibilityChange; 
+if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support 
+  hidden = "hidden";
+  visibilityChange = "visibilitychange";
+} else if (typeof document.msHidden !== "undefined") {
+  hidden = "msHidden";
+  visibilityChange = "msvisibilitychange";
+} else if (typeof document.webkitHidden !== "undefined") {
+  hidden = "webkitHidden";
+  visibilityChange = "webkitvisibilitychange";
+}
+
 /* Document Ready */
 
 $(document).ready(function() {
@@ -486,6 +499,14 @@ function initEventListeners() {
 	});
 
 	$(window).trigger('hashchange');
+
+	if (typeof document.addEventListener === "undefined" || hidden === undefined) {
+		// browser doesn't support addEventListener or the Page Visibility API
+	} else {
+		document.addEventListener(visibilityChange, handleVisibilityChange, false);
+	}
+
+	handleVisibilityChange();
 
 	// Edit Button
 	$('.ftEdit').click(function() {
@@ -1305,6 +1326,14 @@ function updateMuted() {
 	if (muted) {
 		soundOff();
 	} else {
+		soundOn();
+	}
+}
+
+function handleVisibilityChange() {
+	if (document[hidden]) {
+		soundOff();
+	} else if (!muted) {
 		soundOn();
 	}
 }
