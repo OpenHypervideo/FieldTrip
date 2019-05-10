@@ -223,7 +223,8 @@ $(document).ready(function() {
   var bgmapReplaced = false;
   function checkBgImg() {
     var bgmap = $('#ftMapBackground');
-    if (bgmap.length && !bgmapReplaced && $(window).innerWidth() > 700) {
+    var win = $(window);
+    if (bgmap.length && !bgmapReplaced && (win.innerWidth() > 700 || win.innerHeight() > 650)) {
       bgmapReplaced = true;
       bgmap.attr('src', bgmap.attr('src').replace('.jpg', '-desktop.jpg'));
     }
