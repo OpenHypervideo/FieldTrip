@@ -304,7 +304,7 @@ $(document).ready(function() {
 	//$('#ftIntroVideo').load();
 
 	var introVideoElem = document.getElementById('ftIntroVideo'),
-		introVideoSource = 'https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6032629731001&pubId=64007844001&secure=true';
+		introVideoSource = 'https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6035118373001&pubId=64007844001&secure=true';
 
 	if(Hls.isSupported()) {
 		var hls = new Hls();
