@@ -299,14 +299,9 @@ $(document).ready(function() {
 	});
 
 	FieldTrip.on('ended', function() {
-    function immediatelyStop() {
-      FieldTrip.stop()
-      FieldTrip.off('play', immediatelyStop);
-    }
-    FieldTrip.on('play', immediatelyStop);
-    FieldTrip.play();
+		FieldTrip.play();
 		//window.history.pushState({}, '', '#overview');
-		activateLayer('overview');
+		//activateLayer('overview');
 	});
 
 	FieldTrip.on('userAction', function(evt) {
