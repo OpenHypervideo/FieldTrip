@@ -83,11 +83,22 @@ body.userinactive #VideoPlayer .titlebar:not(.editActive) {
 	/* firefox bug fix - won't rotate at 90deg angles */
 	transform: rotate(-90deg) translateX(-179px);
 	-moz-transform: rotate(-90deg) translateX(-179px);
-  transition: stroke-width 0.5s linear;
 }
 
 #VideoPlayer .playerContainer #playCircleContainer svg > .circle.inner {
 	stroke-width: 0;
+}
+
+#VideoPlayer .playerContainer #playCircleContainer svg > .circle.progress-interaction {
+	stroke-width: 0;
+}
+
+#VideoPlayer .playerContainer #playCircleContainer svg > .circle.progress-move {
+	fill: transparent !important;
+	stroke: #fec570;
+	stroke-width: 6;
+  opacity: 0;
+	stroke-dasharray: 900;
 }
 
 #VideoPlayer .playerContainer #playCircleContainer svg > .circle-bg {
