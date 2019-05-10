@@ -54074,7 +54074,7 @@ FrameTrail.defineModule('ViewVideo', function(FrameTrail){
                         + '                </div>'
                         + '                <div class="videoContainer">'
                         + '                    <div class="hypervideo">'
-                        + '                        <video class="video nocolor" playsinline></video>'
+                        + '                        <video class="video nocolor" playsinline webkit-playsinline></video>'
                         + '                        <div class="overlayContainer"></div>'
                         + '                        <div class="captionContainer"></div>'
                         + '                    </div>'
