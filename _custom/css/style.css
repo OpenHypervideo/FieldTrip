@@ -3592,3 +3592,10 @@ ABOUT / CREDITS / IMPRINT
   display: inline-block;
   margin-top: 10px;
 }
+
+
+/* ATTEMPT IPHONE FIX */ 
+
+.fullscreen-no #fthypervideo {
+  display: none !important;
+}
