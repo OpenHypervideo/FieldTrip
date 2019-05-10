@@ -41147,6 +41147,7 @@ FrameTrail.defineType(
         if (typeof configInitOptions === 'object' && configInitOptions !== null) {
 
             config = configInitOptions;
+            FrameTrail.changeState('config', config);
 
             // TODO: Check if this makes sense here
             if (config.theme) {
@@ -41162,12 +41163,13 @@ FrameTrail.defineType(
         $.ajax({
             type:   "GET",
             url:    configInitOptions || ('_data/config.json'),
-            cache:  false,
+            cache:  (config.allowCaching) ? config.allowCaching : false,
             dataType: "json",
             mimeType: "application/json"
         }).done(function(data){
 
             config = data;
+            FrameTrail.changeState('config', config);
 
             // TODO: Check if this makes sense here
             if (config.theme) {
@@ -41213,7 +41215,7 @@ FrameTrail.defineType(
                     $.ajax({
                         type:   "GET",
                         url:    initOptionsResources[i].data,
-                        cache:  false,
+                        cache:  (config.allowCaching) ? config.allowCaching : false,
                         dataType: "json",
                         mimeType: "application/json"
                     }).done(function(data){
@@ -41275,7 +41277,7 @@ FrameTrail.defineType(
             $.ajax({
                 type:   "GET",
                 url:    ('_data/users.json'),
-                cache:  false,
+                cache:  (config.allowCaching) ? config.allowCaching : false,
                 dataType: "json",
                 mimeType: "application/json"
             }).done(function(data){
@@ -41296,7 +41298,7 @@ FrameTrail.defineType(
 
                 type:   "POST",
                 url:    ('_server/ajaxServer.php'),
-                cache:  false,
+                cache:  (config.allowCaching) ? config.allowCaching : false,
                 dataType: "json",
                 mimeType: "application/json",
                 data:   {
@@ -41432,7 +41434,7 @@ FrameTrail.defineType(
         $.ajax({
             type:   "GET",
             url:    urlpath + '_index.json',
-            cache:  false,
+            cache:  (config.allowCaching) ? config.allowCaching : false,
             dataType: "json",
             mimeType: "application/json"
         }).done(function(data){
@@ -41453,7 +41455,7 @@ FrameTrail.defineType(
                     $.ajax({
                         type:   "GET",
                         url:    (urlpath + data.hypervideos[hypervideoID] + '/hypervideo.json'),
-                        cache:  false,
+                        cache:  (config.allowCaching) ? config.allowCaching : false,
                         dataType: "json",
                         mimeType: "application/json"
                     }).done(function (hypervideoData) {
@@ -41461,7 +41463,7 @@ FrameTrail.defineType(
                         $.ajax({
                             type:   "GET",
                             url:    (urlpath + data.hypervideos[hypervideoID] + '/annotations/_index.json'),
-                            cache:  false,
+                            cache:  (config.allowCaching) ? config.allowCaching : false,
                             dataType: "json",
                             mimeType: "application/json"
                         }).done(function (annotationsIndex) {
@@ -41533,7 +41535,7 @@ FrameTrail.defineType(
         $.ajax({
             type:   "GET",
             url:    url,
-            cache:  false,
+            cache:  (config.allowCaching) ? config.allowCaching : false,
             dataType: "json",
             mimeType: "application/json"
         }).done(function (hypervideoData) {
@@ -41743,7 +41745,7 @@ FrameTrail.defineType(
                 $.ajax({
                     type: "GET",
                     url: (url + hypervideoID + '/annotations/' + id + '.json'),
-                    cache: false,
+                    cache: (config.allowCaching) ? config.allowCaching : false,
                     dataType: "json",
                     mimeType: "application/json"
                 }).done(function(data){
@@ -41851,7 +41853,7 @@ FrameTrail.defineType(
                 $.ajax({
                     type: "GET",
                     url: initAnnotations[i],
-                    cache: false,
+                    cache: (config.allowCaching) ? config.allowCaching : false,
                     dataType: "json",
                     mimeType: "application/json"
                 }).done(function(data){
@@ -42018,7 +42020,7 @@ FrameTrail.defineType(
 
                         type: "GET",
                         url: ('_data/hypervideos/' + hypervideoID + '/subtitles/' + currentSubtitles.src),
-                        cache: false
+                        cache: (config.allowCaching) ? config.allowCaching : false
 
                     }).done(function(data){
 
@@ -42424,7 +42426,7 @@ FrameTrail.defineType(
         $.ajax({
             type:   'POST',
             url:    '_server/ajaxServer.php',
-            cache:  false,
+            cache:  (config.allowCaching) ? config.allowCaching : false,
 
             data: {
                 a:              'configChange',
@@ -42478,7 +42480,7 @@ FrameTrail.defineType(
         $.ajax({
             type:   'POST',
             url:    '_server/ajaxServer.php',
-            cache:  false,
+            cache:  (config.allowCaching) ? config.allowCaching : false,
 
             data: {
                 a:              'globalCSSChange',
@@ -42535,7 +42537,7 @@ FrameTrail.defineType(
         $.ajax({
             type:   'POST',
             url:    '_server/ajaxServer.php',
-            cache:  false,
+            cache:  (config.allowCaching) ? config.allowCaching : false,
 
             data: {
                 a:              'hypervideoChange',
@@ -42708,7 +42710,7 @@ FrameTrail.defineType(
         $.ajax({
             type:   'POST',
             url:    '_server/ajaxServer.php',
-            cache:  false,
+            cache:  (config.allowCaching) ? config.allowCaching : false,
 
             data: {
 
@@ -42924,13 +42926,15 @@ FrameTrail.defineType(
  FrameTrail.defineModule('TagModel', function(FrameTrail){
 
 
-    var tags        = {};
+    var tags        = {},
+        config      = {};
 
 
 
 
     function initTagModel (success, fail) {
 
+        config = FrameTrail.getState('config');
         updateTagModel(success, fail);
 
     }
@@ -42952,7 +42956,7 @@ FrameTrail.defineType(
             url:      typeof tagInitOptions === 'string'
                         ? tagInitOptions
                         : '_data/tagdefinitions.json',
-            cache:    false,
+            cache:    (config.allowCaching) ? config.allowCaching : false,
             dataType: "json",
             mimeType: "application/json"
         }).done(function(data){
@@ -42987,7 +42991,7 @@ FrameTrail.defineType(
         $.ajax({
             type:   'POST',
             url:    '_server/ajaxServer.php',
-            cache:  false,
+            cache:  (config.allowCaching) ? config.allowCaching : false,
             data: {
                 a:              'tagSet',
                 tagName:        tagname,
@@ -43007,7 +43011,7 @@ FrameTrail.defineType(
         $.ajax({
             type:   'POST',
             url:    '_server/ajaxServer.php',
-            cache:  false,
+            cache:  (config.allowCaching) ? config.allowCaching : false,
             data: {
                 a:              'tagLangDelete',
                 tagName:        tagname,
@@ -43025,7 +43029,7 @@ FrameTrail.defineType(
         $.ajax({
             type:   'POST',
             url:    '_server/ajaxServer.php',
-            cache:  false,
+            cache:  (config.allowCaching) ? config.allowCaching : false,
             data: {
                 a:              'tagDelete',
                 tagName:        tagname
