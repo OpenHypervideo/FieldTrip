@@ -198,6 +198,9 @@ var videoLinks = {
 
 $(document).ready(function() {
 	
+	document.documentElement.className += 
+    (("ontouchstart" in document.documentElement) ? ' touch' : ' no-touch');
+	
 	renderVideoLinkCircles();
 
 	//updateVisitorsNumber();

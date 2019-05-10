@@ -910,6 +910,10 @@ a {
   pointer-events: none;
 }
 
+.touch #ftPointer {
+  display: none !important;
+}
+
 #ftPointer.custom-cursor-outline {
   border: 2px solid #fec570;
   background: none;
