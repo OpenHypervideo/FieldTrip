@@ -578,11 +578,25 @@ function initEventListeners() {
   
 	/* Deine Vision Tooltip */
 
+  /*
 	$( ".ftNavVision .btn" ).mouseover(function() {
 		$('.tooltip').addClass("is-visible");
 	}).mouseout(function() {
 		$('.tooltip').removeClass("is-visible");
 	});
+  */
+	$( ".ftNavVision .btn" ).click(function() {
+		$('.ftNavVision .tooltip').addClass("is-visible");
+  });
+	$( ".ftNavVision a" ).click(function(e) {
+    e.stopPropagation();
+  });
+	$( ".ftNavVision .tooltip" ).click(function(e) {
+		$('.ftNavVision .tooltip').removeClass("is-visible");
+  });
+	$( "#ftMapCanvas" ).click(function(e) {
+		$('.ftNavVision .tooltip').removeClass("is-visible");
+  });
   
 	
 	/* Social Network */

@@ -1142,6 +1142,7 @@ a {
   bottom: 20px;
   right: 20px;
   z-index: 1000;
+  cursor: pointer;
 }
 
 .ftNavVision .btn {
@@ -1247,7 +1248,8 @@ a {
 }
 
 .ftNavVision .tooltip {
-  top: -85px;
+  /* top: -85px; */
+  bottom: 52px;
   width: 280px;
   right: 0;
   opacity: 0;
@@ -3220,11 +3222,6 @@ ABOUT / CREDITS / IMPRINT
 
 @media (max-width: 820px) {
   
-  .ftNavVision .tooltip.is-visible {
-    opacity: 0;
-    visibility: hidden;
-  }
-  
   html, body, .ftLayer .ftLayerContent, .ftLayer, .ftLayer .ftLayerContent {
     width: 100vw;
     height: 100vh;
@@ -3572,4 +3569,12 @@ ABOUT / CREDITS / IMPRINT
 
   
   
+}
+
+.ftNavVision a {
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 4px 8px;
+  display: inline-block;
+  margin-top: 10px;
 }
