@@ -891,8 +891,11 @@ function updateButtonStates() {
 
 	if (currentLayer == 'hypervideo') {
 		$('.ftNavIconContainer.ftNavDown').addClass('inactive');
-	} else if (currentLayer == 'overview' && !activeVideoID) {
-		$('.ftNavIconContainer.ftNavDown').addClass('inactive');
+	} else if (currentLayer == 'overview') {
+		$('.ftNavIconContainer.ftNavUp').addClass('inactive');
+		if (!activeVideoID) {
+			$('.ftNavIconContainer.ftNavDown').addClass('inactive');
+		}
 	} else if (currentLayer == 'intro') {
 		$('.ftNavIconContainer.ftNavUp').addClass('inactive');
 	}
