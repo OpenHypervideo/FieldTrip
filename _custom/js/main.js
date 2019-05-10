@@ -210,6 +210,14 @@ if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and 
   visibilityChange = "webkitvisibilitychange";
 }
 
+var touched = false;
+function wasTouched() {
+  touched = true;
+  console.log('touched');
+  $(document).off('touchstart', wasTouched);
+}
+$(document).on('touchstart', wasTouched);
+
 /* Document Ready */
 
 $(document).ready(function() {
@@ -696,7 +704,15 @@ function initEventListeners() {
 	    }
 	});
 
-	$('.ftMapPin').click(function(evt){
+  $('.ftMapPin').on('mouseleave', function(evt){
+    if (!touched) {
+      $('.ftMapPin').removeClass('pinOpen');
+      $('.ftMapPinDescription').removeClass('is-visible');
+    }
+  });
+
+	function pinClick (evt, t){
+    console.log(evt);
 
 	  	if ($(evt.target).parent().hasClass('ftMapPin')) {
 	  		resetEpisodeCircles();
@@ -704,13 +720,13 @@ function initEventListeners() {
 
 		$('#fthypervideo #VideoPlayer').addClass('active');
 
-		var description = $(this).find('.ftMapPinDescription');
-		var circle = $(this).find('.circle');
-		var player = $(this).find('.ftMapPinDescriptionContent')
+		var description = $(t).find('.ftMapPinDescription');
+		var circle = $(t).find('.circle');
+		var player = $(t).find('.ftMapPinDescriptionContent')
 		description.addClass('is-visible');
 
 		$('.ftMapPin').removeClass('pinOpen');
-		$(this).addClass('pinOpen');
+		$(t).addClass('pinOpen');
 	  	//hide = false;
 
 		setTimeout(function(){
@@ -721,14 +737,22 @@ function initEventListeners() {
 			player.addClass('is-visible');
 		}, 1000);
 
-		$(".ftMapPinDescription").not($(this).find(".ftMapPinDescription")).removeClass('is-visible');
-		$(".circle").not($(this).find(".circle")).removeClass('outer');
-		$(".ftMapPinDescriptionContent").not($(this).find(".ftMapPinDescriptionContent")).removeClass('is-visible');
+		$(".ftMapPinDescription").not($(t).find(".ftMapPinDescription")).removeClass('is-visible');
+		$(".circle").not($(t).find(".circle")).removeClass('outer');
+		$(".ftMapPinDescriptionContent").not($(t).find(".ftMapPinDescriptionContent")).removeClass('is-visible');
 
 		localStorage.setItem('fieldtrip-map-hints', 'hide');
 		updateHints();
 
-	});
+	}
+  $('.ftMapPin').on('mouseenter', function (evt) {
+    evt.stopPropagation();
+    if (!touched) pinClick(evt, this);
+  });
+  $('.ftMapPin').on('click', function (evt) {
+    evt.stopPropagation();
+    if (touched) pinClick(evt, this);
+  });
 
 	$('#VideoPlayer').on('click', '.overlayElement', function() {
 		localStorage.setItem('fieldtrip-overlay-hints', 'hide');
