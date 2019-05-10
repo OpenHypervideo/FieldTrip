@@ -1,6 +1,7 @@
 {
     "updateServiceURL": "https://update.frametrail.org",
     "autoUpdate": false,
+    "allowCaching": true,
     "defaultUserRole": "user",
     "captureUserTraces": false,
     "userTracesStartAction": "",
