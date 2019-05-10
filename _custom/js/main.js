@@ -1344,6 +1344,8 @@ function updateHints() {
 	
 	if (!lsMapHints || lsMapHints.length == 0 || lsMapHints == 'show') {
 		
+		$('.ftPulsingHint').addClass('is-visible');
+
 		if (mapPinHintsInterval) {
 			window.clearInterval(mapPinHintsInterval);
 		}
@@ -1357,6 +1359,8 @@ function updateHints() {
 
 	} else if (lsMapHints == 'hide') {
 		window.clearInterval(mapPinHintsInterval);
+		// TODO: add when styling is done
+		//$('.ftPulsingHint').removeClass('is-visible');
 	}
 
 }
