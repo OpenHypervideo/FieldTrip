@@ -1783,6 +1783,7 @@ body.overlayHints .overlayElement.active .resourceDetail[data-type="image"]::bef
   animation: pulse-bigger-one 3s infinite;
   background: rgba(254, 197, 112, .5);
   border-radius: 50%;
+  pointer-events: none;
   height: 0em;
   width: 0em;
   top: 90%;
@@ -1802,6 +1803,7 @@ body.overlayHints .overlayElement.active .resourceDetail[data-type="image"]::aft
   animation: pulse-bigger-two 3s infinite;
   background: rgba(254, 197, 112, .25);
   border-radius: 50%;
+  pointer-events: none;
   height: 0em;
   width: 0em;
   top: 90%;
