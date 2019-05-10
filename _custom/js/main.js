@@ -361,6 +361,7 @@ $(document).ready(function() {
 	window.setTimeout(function() {
 
 		$('#ftStartButton').click(function() {
+      initialLoading = false;
 
 			$(this).hide();
 
@@ -493,6 +494,9 @@ $(window).resize(function() {
 	rescaleMapCanvas();
 });
 
+
+var initialLoading = true;
+
 function initEventListeners() {
 
 	if (location.hash.split('#').length == 1) {
@@ -504,7 +508,6 @@ function initEventListeners() {
 
 	// Hash Change Listener
 	$(window).on('hashchange', function() {
-
 		if (location.hash.split('#').length == 1) { return; }
 
 		var hash = location.hash.split('#')[1].split('=');
@@ -516,7 +519,7 @@ function initEventListeners() {
 	});
 
 	$(window).trigger('hashchange');
-
+	
 	if (typeof document.addEventListener === "undefined" || hidden === undefined) {
 		// browser doesn't support addEventListener or the Page Visibility API
 	} else {
@@ -749,6 +752,7 @@ function initEventListeners() {
 }
 
 function activateLayer(layerName, videoID) {
+  console.log('DEBUG ACTIVATE LAYER ', layerName);
 
 	if (layerName == 'ueber-uns' || layerName == 'team' || layerName == 'abspann' || layerName == 'resourcen' || layerName == 'impressum' || layerName == 'datenschutz') {
 		$('.ftInfoLink').removeClass('is-active');
@@ -775,7 +779,13 @@ function activateLayer(layerName, videoID) {
 				});
 			}
 
-			$('#ftintro #ftTagline, #ftintro .ftintroLogo').hide();
+      console.log('IL ', initialLoading);
+      if (!initialLoading) {
+        $('#ftintro #ftTagline, #ftintro .ftintroLogo').hide();
+      } else {
+        $('#ftStartButton').show();
+        initialLoading = false;
+      }
 
 			$('#ftSkipIntro').show();
       $('#ftIntroAudio').show();
