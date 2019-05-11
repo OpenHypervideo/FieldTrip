@@ -1390,6 +1390,42 @@ a {
 	object-fit: cover;
 }
 
+#ftIntroCaptionsContainer {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+#ftIntroCaptionsContainer .ftIntroCaption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  color: #ffffff !important;
+  width: 60%;
+  text-align: center;
+  font-size: 2em;
+  background: rgba(0,0,0,.45);
+  padding: 1vw;
+  letter-spacing: 0;
+  line-height: 1.15em;
+  opacity: 0;
+  visibility: visible;
+  pointer-events: none;
+  transition-property: opacity;
+  transition-duration: 800ms;
+}
+
+#ftIntroCaptionsContainer .ftIntroCaption.active {
+  opacity: 1;
+}
+
 .ftLayer#ftintro::after {
   content: "";
   position: absolute;
@@ -3416,8 +3452,12 @@ ABOUT / CREDITS / IMPRINT
     height: 50px;
   }
 
-  .overlayElement .resourceDetail[data-type="text"] * {
+  .overlayElement .resourceDetail[data-type="text"] *  {
     font-size: 16px !important;
+  }
+
+  #ftIntroCaptionsContainer .ftIntroCaption {
+    font-size: 24px !important;
   }
 
   #ftWeatherIcon {

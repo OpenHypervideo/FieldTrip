@@ -324,8 +324,10 @@ $(document).ready(function() {
 
 	//$('#ftIntroVideo').load();
 
+	$('#ftIntroVideo').on('timeupdate', updateStatesOfIntroCaptions);
+
 	var introVideoElem = document.getElementById('ftIntroVideo'),
-		introVideoSource = 'https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6035118373001&pubId=64007844001&secure=true';
+		introVideoSource = 'https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6035479757001&pubId=64007844001&secure=true';
 
 	if (!FULLSCREEN_POSSIBLE) {
 		introVideoElem.removeAttribute('playsinline');
@@ -337,6 +339,7 @@ $(document).ready(function() {
 		hls.loadSource(introVideoSource);
 		hls.attachMedia(introVideoElem);
 		hls.on(Hls.Events.MANIFEST_PARSED,function() {
+			initIntroCaptions();
 			$('#ftIntroVideo').load();
 			introVideoElem.play();
 			introVideoElem.pause();
@@ -351,6 +354,7 @@ $(document).ready(function() {
 	else if (introVideoElem.canPlayType('application/vnd.apple.mpegurl')) {
 		$(introVideoElem).append('<source src="'+ introVideoSource +'" type="video/mp4">');
 		introVideoElem.addEventListener('loadedmetadata',function() {
+			initIntroCaptions();
 			$('#ftIntroVideo').load();
 			introVideoElem.play();
 			introVideoElem.pause();
@@ -1499,5 +1503,80 @@ function highlightInteractiveElement(selector, iterations) {
 	setTimeout(function() {
 		interactiveElement.removeClass("active");
 	}, iterations * 3000);
+
+}
+
+function initIntroCaptions() {
+
+	var VTTsource = '_custom/intro-video-captions.vtt';
+	
+	if (!!screenfull) {
+    	
+    	$('#ftIntroCaptionsContainer').empty();
+
+        $.ajax({
+            type: "GET",
+            url: VTTsource,
+            cache: true
+        }).done(function(data){
+	        // parse webvtt contents
+	        var parser = new WebVTT.Parser(window, WebVTT.StringDecoder());
+	        parser.onregion = function(region) {};
+	        parser.oncue = function(cue) {
+	            var cueElem = '<div class="ftIntroCaption" data-start="'+ cue.startTime +'" data-end="'+ cue.endTime +'">'+ cue.text +'</div>';
+	            $('#ftIntroCaptionsContainer').append(cueElem);
+	        };
+	        parser.onparsingerror = function(e) {
+	            console.log(e);
+	        };
+	        parser.parse(data);
+	        parser.flush();
+	    });
+
+    } else {
+        
+        $('#ftIntroCaptionsContainer').empty();
+        
+        var videoElement = $('#ftIntroVideo')[0];
+
+        console.log(videoElement);
+                
+        var track = document.createElement('track');
+        track.kind = 'captions';
+        track.label = 'Deutsch';
+        track.srclang = 'de';
+        track.src = VTTsource;
+		track.setAttribute('default', '');
+
+        track.addEventListener('load', function() {
+           this.mode = 'showing';
+           videoElement.textTracks[0].mode = 'showing';
+        });
+
+        videoElement.appendChild(track);
+    }
+}
+
+function updateStatesOfIntroCaptions() {
+
+	var currentTime = ($('#ftIntroVideo')[0].currentTime) ? $('#ftIntroVideo')[0].currentTime : 0;
+
+	$('#ftIntroCaptionsContainer .ftIntroCaption').each(function() {
+		var startTime = $(this).data('start'),
+			endTime = $(this).data('end');
+
+		if (    startTime <= currentTime
+             && endTime   >= currentTime) {
+            if (!$(this).hasClass('active')) {
+                $(this).addClass('active')
+            }
+        } else {
+
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active')
+            }
+
+        }
+	});
 
 }
