@@ -918,7 +918,7 @@ function activateLayer(layerName, videoID) {
 
 	if (!FULLSCREEN_POSSIBLE && layerName == 'hypervideo') {
 		$('.ftLayer#ftoverview').addClass('active').show();
-		$('.ftLayer#fthypervideo').removeClass('active zoomOut').hide();
+		$('.ftLayer#fthypervideo').removeClass('active zoomOut');
 	} else {
 		$('.ftLayer#ft'+ layerName).addClass('active').fadeIn(1000);
 	}
