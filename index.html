@@ -105,6 +105,11 @@
 
             <button id="ftSkipIntro">Intro überspringen</button>
 
+            <div id="ftIntroAudio">
+              <div class="ftSound ftSoundOff ftNavIconContainer ftEvent"><i class="fticon-sound-off"></i></div>
+              <div class="ftSound ftSoundOn ftNavIconContainer ftEvent"><i class="fticon-sound-on"></i></div>
+            </div>
+
             <div class="ftLayerContent">
                 <video id="ftIntroVideo" preload="auto" poster="_custom/graphics/intro-video-poster.jpg" playsinline webkit-playsinline></video>
                 <img id="ftIntroVideoPoster" src="_custom/graphics/intro-video-poster.jpg">
@@ -352,8 +357,11 @@
                 </div>
 
                 <div class="ftNavVision">
-                  <div class="tooltip">Hinterlassen Sie Ihre Story!</div>
-                  <a class="btn" href="tel:00493054907590" title=""><img width="135" height=""src="_data/resources/1_1556104582_button-deine-vision.svg" alt="Deine Vision Button" /></a>
+                  <div class="tooltip">
+                    Haben Sie eine eigene Geschichte zu erzählen? Unter 030 54907590 können Sie Ihre Story einem Anrufbeantworter hinterlassen. Die besten werden veröffentlicht.
+                    <br><a href="tel:00493054907590">Direkt anrufen</a>
+                  </div>
+                  <div id="ftVisionButton" class="btn"><img width="135" height=""src="_data/resources/1_1556104582_button-deine-vision.svg" alt="Deine Vision Button" /></div>
                 </div>
 
                 <!--
@@ -745,20 +753,20 @@
 
                        <h6>Was ist ein „Open Source Documentary”?</h6>
 
-                       <p>Die Idee hinter <b>Field Trip</b> ist es, ein dauerhaft offenes und veränderbares Projekt zu sein, welches auf offene Webtechnologien setzt. Das heißt alle Interaktionsmöglichkeiten, Visualisierungen, Übergänge, Effekte und alles andere außer dem Rohmaterial, wird über kleine, wiederverwendbare Code-Bausteine (Code Snippets) umgesetzt. Anstatt konventioneller Postproduktions-Software verwenden wir <b>HTML</b>, <b>Javascript</b> und <b>CSS</b> – wenn immer es technisch möglich ist. Außerdem machen wir diese Code-Bausteine in einem offenen Repository unter <b>MIT</b> und <b>GPL v3</b> Lizenzen zugänglich.</p>
+                       <p>Die Idee hinter <b>Field Trip</b> ist es, ein dauerhaft offenes und veränderbares Projekt zu sein, welches auf offene Webtechnologien setzt. Das heißt, alle Interaktionsmöglichkeiten, Visualisierungen, Übergänge, Effekte und alles andere außer dem Rohmaterial, wird über kleine, wiederverwendbare Code-Bausteine (Code Snippets) umgesetzt. Anstatt konventioneller Postproduktions-Software verwenden wir <b>HTML</b>, <b>Javascript</b> und <b>CSS</b> – wenn immer es technisch möglich ist. Außerdem machen wir diese Code-Bausteine in einem offenen Repository unter <b>MIT</b> und <b>GPL v3</b> Lizenzen zugänglich.</p>
 
                        <h6>Welche Technologien werden verwendet?</h6>
 
-                        <p>Für <b>Field Trip</b> verwenden wir die „<a href="https://frametrail.org" target="_blank"><b>FrameTrail Open Hypervideo</b></a>“ Technologie. Damit können wir alle Projekt-Komponenten direkt im Browser bearbeiten und verknüpfen. <a href="https://frametrail.org" target="_blank">FrameTrail</a> ist Open Source Software, dual lizensiert unter MIT und GPL v3 Lizenzen, und wurde ausschließlich mit offenen Webtechnologien und <a href="https://frametrail.org/#principles" target="_blank"><b>Standards entwickelt</b></a>. Um zusätzlich Schnitte, Übergänge und Effekte bearbeiten zu können, haben wir die <a href="http://bbc.github.io/VideoContext" target="_blank"><b>VideoContext Bibliothek</b></a> in <a href="https://frametrail.org" target="_blank"><b>FrameTrail</b></a> integriert. VideoContext wird von BBC Research & Development im Rahmen der Arbeit an “<a href="http://www.bbc.co.uk/rd/projects/object-based-media-toolkit" target="_blank"><b>Object-based Media</b></a>” verwendet.</p>
+                        <p>Für <b>Field Trip</b> verwenden wir die „<a href="https://frametrail.org" target="_blank"><b>FrameTrail Open Hypervideo</b></a>“ Technologie. Damit können wir alle Projekt-Komponenten direkt im Browser bearbeiten und verknüpfen. <a href="https://frametrail.org" target="_blank">FrameTrail</a> ist Open Source Software, dual lizenziert unter MIT und GPL v3 Lizenzen, und wurde ausschließlich mit offenen Webtechnologien und <a href="https://frametrail.org/#principles" target="_blank"><b>Standards entwickelt</b></a>. Um zusätzlich Schnitte, Übergänge und Effekte bearbeiten zu können, haben wir die <a href="http://bbc.github.io/VideoContext" target="_blank"><b>VideoContext Bibliothek</b></a> in <a href="https://frametrail.org" target="_blank"><b>FrameTrail</b></a> integriert. VideoContext wird von BBC Research & Development im Rahmen der Arbeit an “<a href="http://www.bbc.co.uk/rd/projects/object-based-media-toolkit" target="_blank"><b>Object-based Media</b></a>” verwendet.</p>
 
                        <h6>Wie funktioniert das „Code Snippet Repository“?</h6>
 
                        <p>Über das <a href="https://github.com/memory-shuffle/FrameTrail-CodeSnippet-Repository">Code Snippet Repository</a> werden die technischen Komponenten des Projekts in Form wiederverwendbarer Code-Bausteine verfügbar gemacht. Das kann eine kleine Animation sein, ein komplexer Effekt oder einfach ein Button. Die Idee ist es, eigenständige Komponenten zu erstellen, die in anderen Projekten verwendet werden können (losgelöst von den tatsächlichen Inhalten). Um dies so einfach wie möglich zu machen, bietet das Repository sowohl eine durchsuchbare Website als auch eine offene Schnittstelle an, über welche einzelne Bausteine abgerufen und neu hinzugefügt werden können. Über dieselbe Schnittstelle ist das Repository in FrameTrail integriert, damit Nutzer existierende Komponenten sowohl per einfachem „Drag and Drop“ in Videos einfügen als auch neue Bausteine mit anderen Nutzern teilen können.</p>
 
-                       <h6>Wie sind die Inhalte lizensiert?</h6>
+                       <h6>Wie sind die Inhalte lizenziert?</h6>
 
                        <p>
-                         Während sämtlicher Code unter Open Source Lizenzen veröffentlicht wird, gelten für die Inhalte (z.B. Videomaterial, Fotos, Texte) unterschiedliche Bedingungen: Im Normalfall nutzen wir die “<b>Creative Commons Attribution-ShareAlike 4.0 International License</b>”, welche es erlaubt, Inhalte frei zu verwenden, zu verändern und weiter zu verbreiten (auch kommerziell), solange die Autoren korrekt genannt werden und die Arbeiten unter denselben Bedingungen weitergegeben werden. Im Falle von Archivmaterial oder anderweitig bezogenen Inhalten haben wir aber nicht immer Kontrolle über die Lizenzen. Jegliche Einschränkungen dieser Art werden in der Liste aller Materialien und Lizenzen in unserem „Media Repository“ klar kommuniziert.
+                         Während sämtlicher Code unter Open Source Lizenzen veröffentlicht wird, gelten für die Inhalte (z. B. Videomaterial, Fotos, Texte) unterschiedliche Bedingungen: Im Normalfall nutzen wir die “<b>Creative Commons Attribution-ShareAlike 4.0 International License</b>”, welche es erlaubt, Inhalte frei zu verwenden, zu verändern und weiter zu verbreiten (auch kommerziell), solange die Autoren korrekt genannt werden und die Arbeiten unter denselben Bedingungen weitergegeben werden. Im Falle von Archivmaterial oder anderweitig bezogenen Inhalten haben wir aber nicht immer Kontrolle über die Lizenzen. Jegliche Einschränkungen dieser Art werden in der Liste aller Materialien und Lizenzen in unserem „Media Repository“ klar kommuniziert.
                        </p>
 
                        <div class="ftInfoGithub">
