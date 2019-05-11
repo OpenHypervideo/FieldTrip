@@ -239,19 +239,17 @@ $(document).ready(function() {
         users: {}
 	});
 
-  var bgmapReplaced = false;
-  function checkBgImg() {
-    var bgmap = $('#ftMapBackground');
-    var win = $(window);
-    if (bgmap.length && !bgmapReplaced && (win.innerWidth() > 700 || win.innerHeight() > 650)) {
-      bgmapReplaced = true;
-      bgmap.attr('src', bgmap.attr('src').replace('.jpg', '-desktop.jpg'));
-    }
-  }
-  checkBgImg();
-  $(window).on('resize', checkBgImg);
-
-  // $(fsdfsdfsdf).click(function () ...);
+	var bgmapReplaced = false;
+	function checkBgImg() {
+		var bgmap = $('#ftMapBackground');
+		var win = $(window);
+		if (bgmap.length && !bgmapReplaced && (win.innerWidth() > 700 || win.innerHeight() > 650)) {
+			bgmapReplaced = true;
+			bgmap.attr('src', bgmap.attr('src').replace('.jpg', '-desktop.jpg'));
+		}
+	}
+  	checkBgImg();
+  	$(window).on('resize', checkBgImg);
 
 	FieldTrip.on('timeupdate', function() {
 		updatePlayCircle();
@@ -261,7 +259,7 @@ $(document).ready(function() {
 
 		FieldTripReady = true;
 
-    checkBgImg();
+    	checkBgImg();
 
 		// Make sure play circle & transitions are never initialized twice
 		if ($('#VideoPlayer #playCircleContainer').length != 0) {
@@ -297,6 +295,7 @@ $(document).ready(function() {
 
 	FieldTrip.on('play', function() {
 		$('#playCircleContainer').addClass('playing');
+		if (!FULLSCREEN_POSSIBLE) goToOverviewFake();
 	});
 
 	FieldTrip.on('pause', function() {
@@ -304,7 +303,7 @@ $(document).ready(function() {
 	});
 
 	FieldTrip.on('ended', function() {
-		FieldTrip.play();
+		if (FULLSCREEN_POSSIBLE) FieldTrip.play();
 		//window.history.pushState({}, '', '#overview');
 		//activateLayer('overview');
 	});
@@ -329,10 +328,12 @@ $(document).ready(function() {
 	var introVideoElem = document.getElementById('ftIntroVideo'),
 		introVideoSource = 'https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6035479757001&pubId=64007844001&secure=true';
 
+	/*
 	if (!FULLSCREEN_POSSIBLE) {
 		introVideoElem.removeAttribute('playsinline');
 		introVideoElem.removeAttribute('webkit-playsinline');
 	}
+	*/
 		
 	if(Hls.isSupported()) {
 		var hls = new Hls();
@@ -371,6 +372,8 @@ $(document).ready(function() {
 			$(this).hide();
 
 			$('#ftintro #ftTagline, #ftintro .ftintroLogo').hide();
+
+		  if (!FULLSCREEN_POSSIBLE) $('#ftSkipIntro').css('bottom', 'auto').css('top', window.innerHeight - 50);
 
 			toggleNativeFullscreen();
 
@@ -522,6 +525,7 @@ function initEventListeners() {
 		} else if (hash) {
 			activateLayer(hash[0]);
 		}
+    initialLoading = false;
 	});
 
 	$(window).trigger('hashchange');
@@ -687,12 +691,10 @@ function initEventListeners() {
 	$('#ftoverview').on("click", function (evt) {
 	    //console.log(evt);
 
-	    /*
 	    if (!FULLSCREEN_POSSIBLE) {
 	    	window.history.replaceState({}, '', '#overview');
 			activateLayer('overview');
 	    }
-	    */
 
 	    if ($(evt.target).attr('id') == 'ftMapContainer' || $(evt.target).attr('id') == 'ftMap' || $(evt.target).attr('id') == 'ftMapCanvas') {
 	    	$('.ftMapPin').removeClass('pinOpen');
@@ -792,9 +794,12 @@ function activateLayer(layerName, videoID) {
 				});
 			}
 
-      if (!initialLoading || !introVideoPlayed) {
+      console.log(initialLoading);
+      console.log(introVideoPlayed);
+      if (!initialLoading || introVideoPlayed) {
         $('#ftintro #ftTagline, #ftintro .ftintroLogo').hide();
       } else {
+        if (!introVideoPlayed) $('#ftintro #ftTagline, #ftintro .ftintroLogo').show();
         $('#ftStartButton').show();
         initialLoading = false;
       }
@@ -819,7 +824,7 @@ function activateLayer(layerName, videoID) {
 			break;
 		case 'overview':
 			// Overview
-      $('#ftIntroVideoPoster').hide();
+      		$('#ftIntroVideoPoster').hide();
 			$('#ftStartButton').hide();
 			$('#ftoverview').css('opacity', '');
 			if (FieldTrip.pause) {
@@ -836,7 +841,6 @@ function activateLayer(layerName, videoID) {
 			$('#audioAtmoDay').stop(true, false).animate({
 				volume: 1
 			}, 7000);
-
 
 			$('.ftLayer#ftintro').fadeOut(1000);
 			$('.ftLayer#ftoverview').removeClass('zoomOut');
@@ -916,6 +920,9 @@ function activateLayer(layerName, videoID) {
 		default:
 			// Default
 			break;
+
+    initialLoading = false;
+    introVideoPlayed = true;
 	}
 
 	
@@ -1525,7 +1532,8 @@ function initIntroCaptions() {
 
 	var VTTsource = '_custom/intro-video-captions.vtt';
 	
-	if (!!screenfull) {
+	
+	//if (!!screenfull) {
     	
     	$('#ftIntroCaptionsContainer').empty();
 
@@ -1548,6 +1556,7 @@ function initIntroCaptions() {
 	        parser.flush();
 	    });
 
+    /*
     } else {
         
         $('#ftIntroCaptionsContainer').empty();
@@ -1570,6 +1579,7 @@ function initIntroCaptions() {
 
         videoElement.appendChild(track);
     }
+    */
 }
 
 function updateStatesOfIntroCaptions() {
@@ -1594,4 +1604,13 @@ function updateStatesOfIntroCaptions() {
         }
 	});
 
+}
+
+function goToOverviewFake() {
+	$('#ftIntroVideoPoster').hide();
+	$('#ftStartButton').hide();
+	$('#ftoverview').css('opacity', '').addClass('active').show();
+	$('.ftLayer#ftintro').fadeOut(1000);
+	$('.ftLayer#ftoverview').removeClass('zoomOut');
+	$('.ftLayer#fthypervideo').removeClass('active zoomOut');
 }
