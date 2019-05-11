@@ -1525,6 +1525,13 @@ a {
   display: none;
 }
 
+@media (max-width: 800px) {
+  .ftLayer#ftintro #ftIntroAudio {
+    top: 20px;
+    right: 20px;
+  }
+}
+
 .ftLayer#ftintro .ftNavCooperation {
   right: 20px;
 }
@@ -3648,3 +3655,20 @@ ABOUT / CREDITS / IMPRINT
   margin-top: 10px;
 }
 
+@media (max-height: 300px) {
+  .ftLayer#ftintro #ftTagline {
+    transform: translateY(-50%) scale(0.65);
+    margin-left: 92px;
+  }
+  .ftLayer#ftintro .ftintroLogos {
+    transform: scale(0.8);
+    transform-origin: center
+  }
+  .ftLayer#ftintro .ftintroLogos.LogosTop {
+    margin-top: -5px;
+  }
+  #ftStartButton {
+    transform: scale(0.8);
+    margin-left: -76px;
+  }
+}

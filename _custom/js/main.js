@@ -373,6 +373,8 @@ $(document).ready(function() {
 
 			$('#ftintro #ftTagline, #ftintro .ftintroLogo').hide();
 
+		  if (!FULLSCREEN_POSSIBLE) $('#ftSkipIntro').css('bottom', 'auto').css('top', window.innerHeight - 50);
+
 			toggleNativeFullscreen();
 
 			$('#ftIntroVideo')[0].play();
@@ -523,6 +525,7 @@ function initEventListeners() {
 		} else if (hash) {
 			activateLayer(hash[0]);
 		}
+    initialLoading = false;
 	});
 
 	$(window).trigger('hashchange');
@@ -791,9 +794,12 @@ function activateLayer(layerName, videoID) {
 				});
 			}
 
-      if (!initialLoading || !introVideoPlayed) {
+      console.log(initialLoading);
+      console.log(introVideoPlayed);
+      if (!initialLoading || introVideoPlayed) {
         $('#ftintro #ftTagline, #ftintro .ftintroLogo').hide();
       } else {
+        if (!introVideoPlayed) $('#ftintro #ftTagline, #ftintro .ftintroLogo').show();
         $('#ftStartButton').show();
         initialLoading = false;
       }
@@ -914,6 +920,9 @@ function activateLayer(layerName, videoID) {
 		default:
 			// Default
 			break;
+
+    initialLoading = false;
+    introVideoPlayed = true;
 	}
 
 	
