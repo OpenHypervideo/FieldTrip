@@ -874,7 +874,7 @@ function activateLayer(layerName, videoID) {
 						$(window).resize();
 						updateMuted();
 						renderPlayCircleLinks();
-						FieldTrip.play();
+						if (currentLayer == 'hypervideo') FieldTrip.play();
 						$('.hypervideo .video').stop(true, false).animate({
 							volume: 1
 						}, 2000);
