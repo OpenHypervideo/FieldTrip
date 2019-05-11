@@ -52193,6 +52193,8 @@ FrameTrail.defineModule('SubtitlesController', function(FrameTrail){
      */
     function initSubtitles() {
 
+        var hypervideoID = FrameTrail.module('RouteNavigation').hypervideoID;
+
         subtitles = FrameTrail.module('HypervideoModel').subtitles;
         subtitleFiles = FrameTrail.module('HypervideoModel').subtitleFiles;
 
@@ -52205,31 +52207,62 @@ FrameTrail.defineModule('SubtitlesController', function(FrameTrail){
 
         } else {
 
-            for (var s = 0; s < subtitleFiles.length; s++) {
-                var captionSelect = $('<div class="captionSelect" data-lang="'+ subtitleFiles[s].srclang +'" data-config="hv_config_captionsVisible">'+ FrameTrail.module('Database').subtitles[subtitleFiles[s].srclang].label +'</div>')
-                        .click(function(evt) {
-                            HypervideoModel.selectedLang = $(this).attr('data-lang');
-                            subtitles = HypervideoModel.subtitles;
+            if (!!screenfull) {
+                
+                for (var s = 0; s < subtitleFiles.length; s++) {
+                    var captionSelect = $('<div class="captionSelect" data-lang="'+ subtitleFiles[s].srclang +'" data-config="hv_config_captionsVisible">'+ FrameTrail.module('Database').subtitles[subtitleFiles[s].srclang].label +'</div>')
+                            .click(function(evt) {
+                                HypervideoModel.selectedLang = $(this).attr('data-lang');
+                                subtitles = HypervideoModel.subtitles;
 
-                            initSubtitles();
+                                initSubtitles();
 
-                            FrameTrail.changeState('hv_config_captionsVisible', true);
+                                FrameTrail.changeState('hv_config_captionsVisible', true);
 
+                            });
+                    ViewVideo.CaptionsButton.find('.captionSelectList').append(captionSelect);
+                }
+
+
+                for (var i = 0; i < subtitles.length; i++) {
+                    subtitles[i].renderInDOM();
+                }
+
+                ViewVideo.CaptionsButton.show();
+                updateStatesOfSubtitles(FrameTrail.module('HypervideoController').currentTime);
+
+                // update state
+                var captionsVisible = FrameTrail.getState('hv_config_captionsVisible');
+                FrameTrail.changeState('hv_config_captionsVisible', captionsVisible);
+
+            } else {
+                
+                ViewVideo.CaptionContainer.css('display', 'none !important');
+                
+                var videoElement = FrameTrail.module('ViewVideo').Video;
+                
+                for (var s=0; s<HypervideoModel.subtitleFiles.length; s++) {
+                    var vttSource = '_data/hypervideos/' + hypervideoID + '/subtitles/' + HypervideoModel.subtitleFiles[s].src;
+                    
+                    var track = document.createElement('track');
+                    track.kind = 'captions';
+                    track.label = HypervideoModel.subtitleFiles[s].srclang;
+                    track.srclang = HypervideoModel.subtitleFiles[s].srclang;
+                    track.src = vttSource;
+
+                    if (s == 0) {
+                        
+                        track.setAttribute('default', '');
+
+                        track.addEventListener('load', function() {
+                           this.mode = 'showing';
+                           videoElement.textTracks[0].mode = 'showing';
                         });
-                ViewVideo.CaptionsButton.find('.captionSelectList').append(captionSelect);
+                    }
+
+                    videoElement.appendChild(track);
+                }
             }
-
-
-            for (var i = 0; i < subtitles.length; i++) {
-                subtitles[i].renderInDOM();
-            }
-
-            ViewVideo.CaptionsButton.show();
-            updateStatesOfSubtitles(FrameTrail.module('HypervideoController').currentTime);
-
-            // update state
-            var captionsVisible = FrameTrail.getState('hv_config_captionsVisible');
-            FrameTrail.changeState('hv_config_captionsVisible', captionsVisible);
 
         }
 
