@@ -790,7 +790,7 @@ function activateLayer(layerName, videoID) {
       }
 
 			$('#ftSkipIntro').show();
-      $('#ftIntroAudio').show();
+      		$('#ftIntroAudio').show();
 
 			if (previousLayer) {
 				$('#ftIntroVideo')[0].currentTime = 0;
