@@ -1002,6 +1002,11 @@ a {
 	transform: scale(1.6) rotate(0deg);
 }
 
+.fullscreen-no .ftLayer#fthypervideo .ftContent {
+  transition-duration: 0ms;
+  transform: scale(1) rotate(0deg) !important;
+}
+
 .ftLayer#ftoverview .ftLayerContent {
 	transform: scale(1) rotate(0deg);
 }
