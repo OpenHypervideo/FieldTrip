@@ -1266,9 +1266,16 @@ a {
 }
 
 .ftPulsingHint {
+
+  /* fix positioning on iphones */ 
+  position: fixed;
+  top: calc(100vh - 61px);
+  /* old */
+  /*
   position: absolute;
-  background: rgba(0,0,0,.5);
   bottom: 20px;
+  */
+  background: rgba(0,0,0,.5);
   width: auto;
   white-space: nowrap;
   left: 50%;

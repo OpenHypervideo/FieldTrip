@@ -366,6 +366,7 @@ $(document).ready(function() {
 
 		$('#ftStartButton').click(function() {
       initialLoading = false;
+      introVideoPlayed = true;
 
 			$(this).hide();
 
@@ -500,6 +501,7 @@ $(window).resize(function() {
 
 
 var initialLoading = true;
+var introVideoPlayed = false;
 
 function initEventListeners() {
 
@@ -788,7 +790,7 @@ function activateLayer(layerName, videoID) {
 				});
 			}
 
-      if (!initialLoading) {
+      if (!initialLoading || !introVideoPlayed) {
         $('#ftintro #ftTagline, #ftintro .ftintroLogo').hide();
       } else {
         $('#ftStartButton').show();
