@@ -687,10 +687,12 @@ function initEventListeners() {
 	$('#ftoverview').on("click", function (evt) {
 	    //console.log(evt);
 
+	    /*
 	    if (!FULLSCREEN_POSSIBLE) {
 	    	window.history.replaceState({}, '', '#overview');
 			activateLayer('overview');
 	    }
+	    */
 
 	    if ($(evt.target).attr('id') == 'ftMapContainer' || $(evt.target).attr('id') == 'ftMap' || $(evt.target).attr('id') == 'ftMapCanvas') {
 	    	$('.ftMapPin').removeClass('pinOpen');
@@ -896,7 +898,7 @@ function activateLayer(layerName, videoID) {
 			//window.clearTimeout(introTimeout);
 
 			$('.ftLayer#ftintro').fadeOut(1000);
-			if (FULLSCREEN_POSSIBLE) $('.ftLayer#ftoverview').fadeOut(1000);
+			/*if (FULLSCREEN_POSSIBLE)*/ $('.ftLayer#ftoverview').fadeOut(1000);
 			$('.ftLayer#ftoverview').removeClass('zoomOut');
 			$('.ftLayer#fthypervideo').removeClass('zoomOut');
 
@@ -916,12 +918,13 @@ function activateLayer(layerName, videoID) {
 			break;
 	}
 
-	if (!FULLSCREEN_POSSIBLE && layerName == 'hypervideo') {
-		$('.ftLayer#ftoverview').addClass('active').show();
-		$('.ftLayer#fthypervideo').removeClass('active zoomOut');
-	} else {
+	
+	//if (!FULLSCREEN_POSSIBLE && layerName == 'hypervideo') {
+	//	$('.ftLayer#ftoverview').addClass('active').show();
+	//	$('.ftLayer#fthypervideo').removeClass('active zoomOut');
+	//} else {
 		$('.ftLayer#ft'+ layerName).addClass('active').fadeIn(1000);
-	}
+	//}
 	
 	rescaleMapCanvas();
 	updateButtonStates();
