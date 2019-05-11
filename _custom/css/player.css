@@ -85,6 +85,22 @@ body.userinactive #VideoPlayer .titlebar:not(.editActive) {
 	-moz-transform: rotate(-90deg) translateX(-179px);
 }
 
+#VideoPlayer .playerContainer #playCircleContainer svg > .circle.inner {
+	stroke-width: 0;
+}
+
+#VideoPlayer .playerContainer #playCircleContainer svg > .circle.progress-interaction {
+	stroke-width: 0;
+}
+
+#VideoPlayer .playerContainer #playCircleContainer svg > .circle.progress-move {
+	fill: transparent !important;
+	stroke: #fec570;
+	stroke-width: 6;
+  opacity: 0;
+	stroke-dasharray: 900;
+}
+
 #VideoPlayer .playerContainer #playCircleContainer svg > .circle-bg {
 	fill: transparent !important;
 	stroke: #FFFFFF;
@@ -95,6 +111,12 @@ body.userinactive #VideoPlayer .titlebar:not(.editActive) {
 	transform: rotate(-90deg) translateX(-179px);
 	-moz-transform: rotate(-90deg) translateX(-179px);
 	opacity: .5;
+}
+
+
+#VideoPlayer .playerContainer #playCircleContainer svg > .circle.progress--activated {
+	stroke-width: 6;
+  transition: stroke-width 0.5s linear;
 }
 
 /* Subtitle Element */

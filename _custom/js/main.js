@@ -1170,7 +1170,7 @@ function initPlayCircle() {
 	var playCircleContainer = $('<figure id="playCircleContainer" class="chart ftEvent"></figure>');
 
 	playCircleContainer.click(function(evt) {
-
+    evt.stopPropagation();
 
 
 		if ($(evt.target).hasClass('linkPointer')) {
@@ -1180,25 +1180,24 @@ function initPlayCircle() {
 			if (linkElemTime) {
 				FieldTrip.currentTime = linkElemTime-3;
 			}
-		} else {
+		} else if ($(evt.target).hasClass('inner')) {
 			if ($(this).hasClass('playing')) {
 				FieldTrip.pause();
 			} else {
 				FieldTrip.play();
 			}
-		}
-
+    }
 
 	});
 
 	playCircleContainer.on("mouseover", function() {
-      $('.custom-cursor').addClass("custom-cursor-outline");
-    });
-    playCircleContainer.on("mouseout", function() {
-      $('.custom-cursor').removeClass("custom-cursor-outline");
-    });
-
-	var ns = 'http://www.w3.org/2000/svg';
+    $('.custom-cursor').addClass("custom-cursor-outline");
+  });
+  playCircleContainer.on("mouseout", function() {
+    $('.custom-cursor').removeClass("custom-cursor-outline");
+  });
+	
+  var ns = 'http://www.w3.org/2000/svg';
 	var playCircleSVG = document.createElementNS(ns, 'svg');
 	playCircleSVG.setAttribute('width', '180');
 	playCircleSVG.setAttribute('height', '180');
@@ -1209,14 +1208,38 @@ function initPlayCircle() {
 	playCircleBG.setAttribute('cy', '90');
 	playCircleBG.setAttribute('r', '88');
 
+  var playCircleProgressMove = document.createElementNS(ns, 'circle');
+	playCircleProgressMove.classList.add('circle');
+	playCircleProgressMove.classList.add('progress-move');
+	playCircleProgressMove.setAttribute('cx', '90');
+	playCircleProgressMove.setAttribute('cy', '90');
+	playCircleProgressMove.setAttribute('r', '88');
+
+	var playCircleProgress = document.createElementNS(ns, 'circle');
+	playCircleProgress.classList.add('circle');
+	playCircleProgress.classList.add('progress');
+	playCircleProgress.setAttribute('cx', '90');
+	playCircleProgress.setAttribute('cy', '90');
+	playCircleProgress.setAttribute('r', '88');
+
+	var playCircleProgressInteraction = document.createElementNS(ns, 'circle');
+	playCircleProgressInteraction.classList.add('circle');
+	playCircleProgressInteraction.classList.add('progress-interaction');
+	playCircleProgressInteraction.setAttribute('cx', '90');
+	playCircleProgressInteraction.setAttribute('cy', '90');
+	playCircleProgressInteraction.setAttribute('r', '98');
+
 	var playCircle = document.createElementNS(ns, 'circle');
 	playCircle.classList.add('circle');
-	playCircle.classList.add('outer');
+	playCircle.classList.add('inner');
 	playCircle.setAttribute('cx', '90');
 	playCircle.setAttribute('cy', '90');
-	playCircle.setAttribute('r', '88');
+	playCircle.setAttribute('r', '78');
 
 	playCircleSVG.appendChild(playCircleBG);
+	playCircleSVG.appendChild(playCircleProgressMove);
+	playCircleSVG.appendChild(playCircleProgress);
+	playCircleSVG.appendChild(playCircleProgressInteraction);
 	playCircleSVG.appendChild(playCircle);
 
 	playCircleContainer[0].appendChild(playCircleSVG);
@@ -1225,6 +1248,38 @@ function initPlayCircle() {
 
 	renderPlayCircleLinks();
 
+  $(playCircleProgressInteraction).on('click', function (evt) {
+    evt.stopPropagation();
+    console.log('SKIPPING');
+    var posX = $(this).offset().left;
+    var posY = $(this).offset().top;
+    var x = evt.pageX - posX - 90;
+    var y = evt.pageY - posY - 90;
+    var d =  (1 - Math.atan2(x, y) / Math.PI) / 2;
+    FieldTrip.currentTime = FieldTrip.duration * d;
+  });
+  
+  $(playCircleProgressInteraction).on('mouseenter', function (evt) {
+    TweenLite.to(playCircleProgress, 0.17, { 'stroke-width': 6 });
+    TweenLite.to(playCircleProgressMove, 0.17, { 'opacity': 0.45 });
+  });
+  
+  $(playCircleProgressInteraction).on('mouseleave', function (evt) {
+    TweenLite.to(playCircleProgress, 0.5, { 'stroke-width': 3 });
+    TweenLite.to(playCircleProgressMove, 0.3, { 'opacity': 0 });
+  });
+
+  $(playCircleProgressInteraction).on('mousemove', function (evt) {
+    var posX = $(this).offset().left;
+    var posY = $(this).offset().top;
+    var x = evt.pageX - posX - 90;
+    var y = evt.pageY - posY - 90;
+    var d =  (1 - Math.atan2(x, y) / Math.PI) / 2;
+    var length = Math.PI * 2 * parseInt(playCircleProgressMove.getAttribute('r'));
+	  var offset = - length - length * d;
+    playCircleProgressMove.style.strokeDasharray = length;
+	  playCircleProgressMove.style.strokeDashoffset = offset;
+  });
 }
 
 function updatePlayCircle() {
@@ -1234,7 +1289,7 @@ function updatePlayCircle() {
 	if (!parentSVG) {
 		return;
 	}
-	var svgCircle = parentSVG.querySelector('.chart svg > .circle');
+	var svgCircle = parentSVG.querySelector('.chart svg > .circle.progress');
 
 	var length = Math.PI * 2 * parseInt(svgCircle.getAttribute('r'));
 	var offset = - length - length * FieldTrip.currentTime / (FieldTrip.duration);
