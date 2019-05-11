@@ -756,7 +756,8 @@ function initEventListeners() {
 }
 
 function activateLayer(layerName, videoID) {
-  console.log('DEBUG ACTIVATE LAYER ', layerName);
+	
+	//console.log('DEBUG ACTIVATE LAYER ', layerName);
 
 	if (layerName == 'ueber-uns' || layerName == 'team' || layerName == 'abspann' || layerName == 'resourcen' || layerName == 'impressum' || layerName == 'datenschutz') {
 		$('.ftInfoLink').removeClass('is-active');
@@ -783,16 +784,16 @@ function activateLayer(layerName, videoID) {
 				});
 			}
 
-      console.log('IL ', initialLoading);
-      if (!initialLoading) {
-        $('#ftintro #ftTagline, #ftintro .ftintroLogo').hide();
-      } else {
-        $('#ftStartButton').show();
-        initialLoading = false;
-      }
+			//console.log('IL ', initialLoading);
+			if (!initialLoading) {
+				$('#ftintro #ftTagline, #ftintro .ftintroLogo').hide();
+			} else {
+			$('#ftStartButton').show();
+				initialLoading = false;
+			}
 
 			$('#ftSkipIntro').show();
-      $('#ftIntroAudio').show();
+      		$('#ftIntroAudio').show();
 
 			if (previousLayer) {
 				$('#ftIntroVideo')[0].currentTime = 0;
