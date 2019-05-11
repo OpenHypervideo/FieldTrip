@@ -1254,7 +1254,7 @@ a {
 .ftNavVision .tooltip {
   /* top: -85px; */
   bottom: 0;
-  width: 280px;
+  width: 295px;
   right: 155px;
   opacity: 0;
   visibility: hidden;
@@ -3429,6 +3429,7 @@ ABOUT / CREDITS / IMPRINT
 
   .ftNavVision .tooltip {
     top: auto !important;
+    width: 311px;
   }
 
   .tooltip a {
