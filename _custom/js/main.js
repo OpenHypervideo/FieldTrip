@@ -303,7 +303,7 @@ $(document).ready(function() {
 	});
 
 	FieldTrip.on('ended', function() {
-		FieldTrip.play();
+		if (FULLSCREEN_POSSIBLE) FieldTrip.play();
 		//window.history.pushState({}, '', '#overview');
 		//activateLayer('overview');
 	});
