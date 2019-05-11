@@ -487,7 +487,7 @@ $(document).ready(function() {
 		$('body').animate({
 			'opacity': 1
 		}, 1000);
-	}, 3000);
+	}, 1000);
 
 	updateHints();
 
