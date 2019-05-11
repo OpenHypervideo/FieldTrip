@@ -7,10 +7,10 @@
             "creatorId": "1",
             "created": 1556092260,
             "description": null,
-            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6032629731001&pubId=64007844001&secure=true",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6035479757001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092260_thumb_intro.png"
+            "thumb": "1_1556092260_thumb_intro.jpg"
         },
         "2": {
             "name": "Episode 1 - Mustafa Sebnem",
@@ -21,7 +21,7 @@
             "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034566731001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092338_thumb_episode-1-mustafa-sebnem.png"
+            "thumb": "1_1556092338_thumb_episode-1-mustafa-sebnem.jpg"
         },
         "3": {
             "name": "Episode 2 - Farzad",
@@ -32,7 +32,7 @@
             "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563427001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092400_thumb_episode-2-farzad.png"
+            "thumb": "1_1556092400_thumb_episode-2-farzad.jpg"
         },
         "4": {
             "name": "Episode 3 - Boris",
@@ -43,7 +43,7 @@
             "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563428001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092427_thumb_episode-3-boris.png"
+            "thumb": "1_1556092427_thumb_episode-3-boris.jpg"
         },
         "5": {
             "name": "Episode 4 - Kuebra",
@@ -54,7 +54,7 @@
             "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034568308001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092451_thumb_episode-4-kuebra.png"
+            "thumb": "1_1556092451_thumb_episode-4-kuebra.jpg"
         },
         "6": {
             "name": "Episode 5 - Molkenbuhr",
@@ -65,7 +65,7 @@
             "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034568309001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092475_thumb_episode-5-molkenbuhr.png"
+            "thumb": "1_1556092475_thumb_episode-5-molkenbuhr.jpg"
         },
         "7": {
             "name": "Episode 6 - Patrick",
@@ -76,7 +76,7 @@
             "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563429001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092499_thumb_episode-6-patrick.png"
+            "thumb": "1_1556092499_thumb_episode-6-patrick.jpg"
         },
         "8": {
             "name": "Episode 7 - Paul",
@@ -87,7 +87,7 @@
             "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092548_thumb_episode-7-paul.png"
+            "thumb": "1_1556092548_thumb_episode-7-paul.jpg"
         },
         "9": {
             "name": "Episode 8 - Halina",
@@ -98,7 +98,7 @@
             "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034565541001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092568_thumb_episode-8-halina.png"
+            "thumb": "1_1556092568_thumb_episode-8-halina.jpg"
         },
         "10": {
             "name": "Episode 9 - Storyboxx",
@@ -109,7 +109,7 @@
             "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034565542001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092589_thumb_episode-9-storyboxx.png"
+            "thumb": "1_1556092589_thumb_episode-9-storyboxx.jpg"
         },
         "11": {
             "name": "Animation Heu",

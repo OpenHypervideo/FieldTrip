@@ -1,6 +1,9 @@
 /* Custom cursor */
 
+var FULLSCREEN_POSSIBLE = !!screenfull;
+
 document.addEventListener("DOMContentLoaded", function(event) {
+
   var cursor = document.querySelector(".custom-cursor");
   var links = document.querySelectorAll(".ftEvent");
   var initCursor = true;
@@ -194,14 +197,33 @@ var videoLinks = {
 
 }
 
+// Set the name of the hidden property and the change event for visibility
+var hidden, visibilityChange;
+if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support
+  hidden = "hidden";
+  visibilityChange = "visibilitychange";
+} else if (typeof document.msHidden !== "undefined") {
+  hidden = "msHidden";
+  visibilityChange = "msvisibilitychange";
+} else if (typeof document.webkitHidden !== "undefined") {
+  hidden = "webkitHidden";
+  visibilityChange = "webkitvisibilitychange";
+}
+
 /* Document Ready */
 
 $(document).ready(function() {
-	
+
+	document.documentElement.className +=
+    (("ontouchstart" in document.documentElement) ? ' touch' : ' no-touch');
+
+    document.documentElement.className += 
+    ((FULLSCREEN_POSSIBLE) ? ' fullscreen-yes' : ' fullscreen-no');
+
 	renderVideoLinkCircles();
 
 	//updateVisitorsNumber();
-	
+
 	window.FieldTrip = FrameTrail.init({
 		target:             '#VideoPlayer',
 		contentTargets:     {},
@@ -217,15 +239,30 @@ $(document).ready(function() {
         users: {}
 	});
 
-	
+  var bgmapReplaced = false;
+  function checkBgImg() {
+    var bgmap = $('#ftMapBackground');
+    var win = $(window);
+    if (bgmap.length && !bgmapReplaced && (win.innerWidth() > 700 || win.innerHeight() > 650)) {
+      bgmapReplaced = true;
+      bgmap.attr('src', bgmap.attr('src').replace('.jpg', '-desktop.jpg'));
+    }
+  }
+  checkBgImg();
+  $(window).on('resize', checkBgImg);
+
+  // $(fsdfsdfsdf).click(function () ...);
+
 	FieldTrip.on('timeupdate', function() {
 		updatePlayCircle();
 	});
 
 	FieldTrip.on('ready', function() {
-		
+
 		FieldTripReady = true;
-		
+
+    checkBgImg();
+
 		// Make sure play circle & transitions are never initialized twice
 		if ($('#VideoPlayer #playCircleContainer').length != 0) {
 			return;
@@ -239,7 +276,7 @@ $(document).ready(function() {
 		}
 		*/
 		$('.hypervideo .video').prop('volume', 0);
-		
+
 		if (FieldTrip.play && previousLayer) {
 			window.setTimeout(function() {
 				$(window).resize();
@@ -257,7 +294,7 @@ $(document).ready(function() {
 		}
 
 	});
-  	
+
 	FieldTrip.on('play', function() {
 		$('#playCircleContainer').addClass('playing');
 	});
@@ -287,14 +324,23 @@ $(document).ready(function() {
 
 	//$('#ftIntroVideo').load();
 
-	var introVideoElem = document.getElementById('ftIntroVideo'),
-		introVideoSource = 'https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6032629731001&pubId=64007844001&secure=true';
+	$('#ftIntroVideo').on('timeupdate', updateStatesOfIntroCaptions);
 
+	var introVideoElem = document.getElementById('ftIntroVideo'),
+		introVideoSource = 'https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6035479757001&pubId=64007844001&secure=true';
+
+	if (!FULLSCREEN_POSSIBLE) {
+		introVideoElem.removeAttribute('playsinline');
+		introVideoElem.removeAttribute('webkit-playsinline');
+	}
+		
 	if(Hls.isSupported()) {
 		var hls = new Hls();
 		hls.loadSource(introVideoSource);
 		hls.attachMedia(introVideoElem);
 		hls.on(Hls.Events.MANIFEST_PARSED,function() {
+			initIntroCaptions();
+			$('#ftIntroVideo').load();
 			introVideoElem.play();
 			introVideoElem.pause();
 			introVideoElem.currentTime = 0;
@@ -308,6 +354,8 @@ $(document).ready(function() {
 	else if (introVideoElem.canPlayType('application/vnd.apple.mpegurl')) {
 		$(introVideoElem).append('<source src="'+ introVideoSource +'" type="video/mp4">');
 		introVideoElem.addEventListener('loadedmetadata',function() {
+			initIntroCaptions();
+			$('#ftIntroVideo').load();
 			introVideoElem.play();
 			introVideoElem.pause();
 			introVideoElem.currentTime = 0;
@@ -315,8 +363,10 @@ $(document).ready(function() {
 	}
 
 	window.setTimeout(function() {
-		
+
 		$('#ftStartButton').click(function() {
+      initialLoading = false;
+      introVideoPlayed = true;
 
 			$(this).hide();
 
@@ -325,9 +375,12 @@ $(document).ready(function() {
 			toggleNativeFullscreen();
 
 			$('#ftIntroVideo')[0].play();
+			$('#ftIntroVideo').on('play', function () {
+        $('#ftIntroVideoPoster').hide();
+      });
 
 			window.setTimeout(function() {
-								
+
 				window.history.replaceState({}, '', '#intro');
 				activateLayer('intro');
 
@@ -341,6 +394,7 @@ $(document).ready(function() {
 		updateEpisodeTimings();
 
 		$('#ftSkipIntro').hide();
+    $('#ftIntroAudio').hide();
 
 		//if (previousLayer && previousLayer == 'overview') {
 			window.history.pushState({}, '', '#overview');
@@ -354,12 +408,12 @@ $(document).ready(function() {
 			window.location.hash = '#hypervideo='+ randomEpisode;
 		}
 		*/
-		
+
 	});
 
 	/*
 	$.getScript("https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js").then( function() {
-		
+
 		$.simpleWeather({
 			location: 'Berlin, DE',
 			woeid: '20065632',
@@ -367,13 +421,13 @@ $(document).ready(function() {
 			success: function(weather) {
 				//console.log(weather);
 				$('#ftWeatherTemperature').text(weather.temp + '°C'),
-				$('#ftWeatherIcon').html('<i class="weathericon-'+weather.code+'"></i>');	
+				$('#ftWeatherIcon').html('<i class="weathericon-'+weather.code+'"></i>');
 			},
 			error: function(error) {
-				
+
 			}
 		});
-	  
+
 	});
 	*/
 	$.ajax({
@@ -391,7 +445,7 @@ $(document).ready(function() {
     	var weatherData = response.data;
 
     	var currentHours = getLocalTime().getHours();
-    	var daylight = 'day';  
+    	var daylight = 'day';
 		if ((currentHours >= sunsetHour) || (currentHours <= sunriseHour)) {
 			daylight = 'night';
 		}
@@ -413,7 +467,7 @@ $(document).ready(function() {
 		episodeTimings = {};
 
 		$('.ftMapPinDescription').each(function() {
-			
+
 			var thisID = $(this).attr('href').split('hypervideo=')[1].split('&')[0];
 
 			episodeTimings[thisID] = {
@@ -433,10 +487,10 @@ $(document).ready(function() {
 		$('body').animate({
 			'opacity': 1
 		}, 1000);
-	}, 3000);
+	}, 1000);
 
 	updateHints();
-	
+
 }); // End Document Ready
 
 /* End Info Smoothscroll */
@@ -444,6 +498,10 @@ $(document).ready(function() {
 $(window).resize(function() {
 	rescaleMapCanvas();
 });
+
+
+var initialLoading = true;
+var introVideoPlayed = false;
 
 function initEventListeners() {
 
@@ -456,7 +514,6 @@ function initEventListeners() {
 
 	// Hash Change Listener
 	$(window).on('hashchange', function() {
-		
 		if (location.hash.split('#').length == 1) { return; }
 
 		var hash = location.hash.split('#')[1].split('=');
@@ -468,6 +525,14 @@ function initEventListeners() {
 	});
 
 	$(window).trigger('hashchange');
+	
+	if (typeof document.addEventListener === "undefined" || hidden === undefined) {
+		// browser doesn't support addEventListener or the Page Visibility API
+	} else {
+		document.addEventListener(visibilityChange, handleVisibilityChange, false);
+	}
+
+	handleVisibilityChange();
 
 	// Edit Button
 	$('.ftEdit').click(function() {
@@ -481,7 +546,13 @@ function initEventListeners() {
 	});
 
 	// Navigation
-	$('.ftNavUp').click(interfaceUp);
+	$('.ftNavUp').click(function(evt) {
+		interfaceUp();
+		if ( $(evt.target).parents('#fthypervideo').length !== 0 ) {
+			localStorage.setItem('fieldtrip-overview-hint', 'hide');
+			updateHints();
+		}
+	});
 	$('.ftNavDown').click(interfaceDown);
 
 	// Key Listeners
@@ -507,56 +578,80 @@ function initEventListeners() {
 	});
 
 	/* Info: open/close */
-	
+
+  var infoImagesLoaded = false;
 	$('.ftNavAbout').click(function() {
-	    $('#fthyperInfo').toggleClass('is-open');
-	});   
-	
+    // lazy load images on info page
+    if (!infoImagesLoaded) {
+      $('#fthyperInfo').find('img[data-src]').each(function () {
+        var t = $(this);
+        t.attr('src', t.attr('data-src'));
+      });
+      infoImagesLoaded = true;
+    }
+	  $('#fthyperInfo').toggleClass('is-open');
+	});
+
 	$('#ftCloseInfo').click(function() {
-	    $('#fthyperInfo').removeClass('is-open');
-	}); 
-  
+	  $('#fthyperInfo').removeClass('is-open');
+	});
+
 	/* Deine Vision Tooltip */
 
+  /*
 	$( ".ftNavVision .btn" ).mouseover(function() {
 		$('.tooltip').addClass("is-visible");
 	}).mouseout(function() {
 		$('.tooltip').removeClass("is-visible");
 	});
+  */
+
+	$( ".ftNavVision .btn" ).click(function() {
+		$('.ftNavVision .tooltip').toggleClass("is-visible");
+  });
+	$( ".ftNavVision a" ).click(function(e) {
+    e.stopPropagation();
+  });
+	$( ".ftNavVision .tooltip" ).click(function(e) {
+		$('.ftNavVision .tooltip').removeClass("is-visible");
+  });
+	$( "#ftMapCanvas" ).click(function(e) {
+		$('.ftNavVision .tooltip').removeClass("is-visible");
+  });
   
 	
 	/* Social Network */
-	
+
 	$('.ftSocialTrigger').click(function() {
 	    $('.ftSocialNav').toggleClass('is-open');
 	});
-  
+
 	/* Info: Go to Sections */
 
 	$('#ueber-uns-link').click(function() {
 		document.getElementById('ueber-uns').scrollIntoView(true);
-	}); 
+	});
 
 	$('#team-link').click(function() {
 		document.getElementById('team').scrollIntoView(true);
-	}); 
+	});
 
 	$('#abspann-link').click(function() {
 		document.getElementById('abspann').scrollIntoView(true);
-	}); 
+	});
 
 	$('#resourcen-link').click(function() {
 		document.getElementById('resourcen').scrollIntoView(true);
-	}); 
+	});
 
 	$('#impressum-link').click(function() {
 		document.getElementById('impressum').scrollIntoView(true);
-	}); 
+	});
 
 	$('#datenschutz-link').click(function() {
 		document.getElementById('datenschutz').scrollIntoView(true);
-	}); 
-  
+	});
+
 	/* Toogle Mute */
 
 	$('.ftSound').click(function() {
@@ -568,10 +663,10 @@ function initEventListeners() {
 			muted = true;
 		}
 	});
-	
+
 	/* Switch Button / Night Mode */
-	
-	var currentHours = getLocalTime().getHours();  
+
+	var currentHours = getLocalTime().getHours();
 	if ((currentHours >= sunsetHour) || (currentHours <= sunriseHour)) {
 		$('#ftSwitchCheckbox input:checkbox').prop('checked', true);
 		$('body').addClass("night");
@@ -591,6 +686,14 @@ function initEventListeners() {
 	//hide = true;
 	$('#ftoverview').on("click", function (evt) {
 	    //console.log(evt);
+
+	    /*
+	    if (!FULLSCREEN_POSSIBLE) {
+	    	window.history.replaceState({}, '', '#overview');
+			activateLayer('overview');
+	    }
+	    */
+
 	    if ($(evt.target).attr('id') == 'ftMapContainer' || $(evt.target).attr('id') == 'ftMap' || $(evt.target).attr('id') == 'ftMapCanvas') {
 	    	$('.ftMapPin').removeClass('pinOpen');
 	    	$('.ftMapPinDescription').removeClass('is-visible');
@@ -608,7 +711,7 @@ function initEventListeners() {
 	});
 
 	$('.ftMapPin').click(function(evt){
-	  	
+
 	  	if ($(evt.target).parent().hasClass('ftMapPin')) {
 	  		resetEpisodeCircles();
 	  	}
@@ -627,10 +730,10 @@ function initEventListeners() {
 		setTimeout(function(){
 			circle.addClass('outer');
 			updateEpisodeCircles();
-		}, 500); 
+		}, 500);
 		setTimeout(function(){
 			player.addClass('is-visible');
-		}, 1000); 
+		}, 1000);
 
 		$(".ftMapPinDescription").not($(this).find(".ftMapPinDescription")).removeClass('is-visible');
 		$(".circle").not($(this).find(".circle")).removeClass('outer');
@@ -652,11 +755,10 @@ function initEventListeners() {
 		toggleNativeFullscreen();
 	});
   
-	document.addEventListener("fullscreenchange", toggleFullscreen, false);
-  document.addEventListener("webkitfullscreenchange", toggleFullscreen, false);
-	document.addEventListener("mozfullscreenchange", toggleFullscreen, false);
+	if (FULLSCREEN_POSSIBLE) screenfull.on('change', toggleFullscreen);
 
 	$('#ftSkipIntro').click(function() {
+    $('ftIntroVideoPoster').hide();
 		window.history.pushState({}, '', '#overview');
 		activateLayer('overview');
 	});
@@ -676,9 +778,9 @@ function activateLayer(layerName, videoID) {
 
 	previousLayer = (currentLayer) ? currentLayer : false;
 	currentLayer = layerName;
-	
+
 	$('.ftLayer').removeClass('active');
-	
+
 	switch (layerName) {
 		case 'intro':
 			// Intro
@@ -690,10 +792,16 @@ function activateLayer(layerName, videoID) {
 				});
 			}
 
-			$('#ftintro #ftTagline, #ftintro .ftintroLogo').hide();
+      if (!initialLoading || !introVideoPlayed) {
+        $('#ftintro #ftTagline, #ftintro .ftintroLogo').hide();
+      } else {
+        $('#ftStartButton').show();
+        initialLoading = false;
+      }
 
-			$('#ftSkipIntro, #ftIntroExplainer').show();
-			
+			$('#ftSkipIntro').show();
+      		$('#ftIntroAudio').show();
+
 			if (previousLayer) {
 				$('#ftIntroVideo')[0].currentTime = 0;
 			}
@@ -705,12 +813,13 @@ function activateLayer(layerName, videoID) {
 			}, 4000, function() {
 				$('#audioAtmoDay')[0].pause();
 			});
-			
+
 			$('.ftLayer#ftoverview').addClass('zoomOut');
 			$('.ftLayer#fthypervideo').addClass('zoomOut');
 			break;
 		case 'overview':
 			// Overview
+      $('#ftIntroVideoPoster').hide();
 			$('#ftStartButton').hide();
 			$('#ftoverview').css('opacity', '');
 			if (FieldTrip.pause) {
@@ -735,6 +844,7 @@ function activateLayer(layerName, videoID) {
 			break;
 		case 'hypervideo':
 			// Video
+      		$('#ftIntroVideoPoster').hide();
 			$('#ftStartButton').hide();
 			$('.hypervideo .video').prop('volume', 0);
 			if (FieldTripReady) {
@@ -748,7 +858,7 @@ function activateLayer(layerName, videoID) {
 			}, 4000, function() {
 				$('#audioAtmoDay')[0].pause();
 			});
-			
+
 			//console.log(activeVideoID, videoID);
 			if (!activeVideoID && FieldTripReady) {
 				playTransitionLoading();
@@ -774,7 +884,7 @@ function activateLayer(layerName, videoID) {
 						$(window).resize();
 						updateMuted();
 						renderPlayCircleLinks();
-						FieldTrip.play();
+						if (currentLayer == 'hypervideo') FieldTrip.play();
 						$('.hypervideo .video').stop(true, false).animate({
 							volume: 1
 						}, 2000);
@@ -783,12 +893,12 @@ function activateLayer(layerName, videoID) {
 			}
 
 			$('#fthypervideo #VideoPlayer').addClass('active');
-			
+
 			$('#ftIntroVideo')[0].pause();
 			//window.clearTimeout(introTimeout);
-			
+
 			$('.ftLayer#ftintro').fadeOut(1000);
-			$('.ftLayer#ftoverview').fadeOut(1000);
+			/*if (FULLSCREEN_POSSIBLE)*/ $('.ftLayer#ftoverview').fadeOut(1000);
 			$('.ftLayer#ftoverview').removeClass('zoomOut');
 			$('.ftLayer#fthypervideo').removeClass('zoomOut');
 
@@ -799,7 +909,7 @@ function activateLayer(layerName, videoID) {
 			$('.ftMapPin .ftMapPinDescription[href^="#hypervideo='+ videoID +'"]').addClass('is-visible');
 			$('.ftMapPin .ftMapPinDescription[href^="#hypervideo='+ videoID +'"] .circle').addClass('outer');
 			$('.ftMapPin .ftMapPinDescription[href^="#hypervideo='+ videoID +'"] .ftMapPinDescriptionContent').addClass('is-visible');
-						
+
 			activeVideoID = videoID;
 
 			break;
@@ -808,7 +918,14 @@ function activateLayer(layerName, videoID) {
 			break;
 	}
 
-	$('.ftLayer#ft'+ layerName).addClass('active').fadeIn(1000);
+	
+	//if (!FULLSCREEN_POSSIBLE && layerName == 'hypervideo') {
+	//	$('.ftLayer#ftoverview').addClass('active').show();
+	//	$('.ftLayer#fthypervideo').removeClass('active zoomOut');
+	//} else {
+		$('.ftLayer#ft'+ layerName).addClass('active').fadeIn(1000);
+	//}
+	
 	rescaleMapCanvas();
 	updateButtonStates();
 
@@ -882,69 +999,30 @@ function updateButtonStates() {
 
 	if (currentLayer == 'hypervideo') {
 		$('.ftNavIconContainer.ftNavDown').addClass('inactive');
-	} else if (currentLayer == 'overview' && !activeVideoID) {
-		$('.ftNavIconContainer.ftNavDown').addClass('inactive');
+	} else if (currentLayer == 'overview') {
+		$('.ftNavIconContainer.ftNavUp').addClass('inactive');
+		if (!activeVideoID) {
+			$('.ftNavIconContainer.ftNavDown').addClass('inactive');
+		}
 	} else if (currentLayer == 'intro') {
 		$('.ftNavIconContainer.ftNavUp').addClass('inactive');
 	}
 }
 
 function toggleNativeFullscreen() {
-
-	var element = $('body')[0];
-
-	if (element.requestFullScreen) {
-		if (!document.fullScreen) {
-			element.requestFullscreen();
-		} else {
-			document.exitFullScreen();
-		}
-	} else if (element.mozRequestFullScreen) {
-		if (!document.mozFullScreen) {
-			element.mozRequestFullScreen();
-		} else {
-			document.mozCancelFullScreen();
-		}
-	} else if (element.webkitRequestFullScreen) {
-		if (!document.webkitIsFullScreen) {
-			element.webkitRequestFullScreen();
-		} else {
-			document.webkitCancelFullScreen();
-		}
-	}
-
+  if (FULLSCREEN_POSSIBLE) screenfull.toggle();
 }
 
 function toggleFullscreen() {
-
-	var element = $('body')[0];
-
-	if (element.requestFullScreen) {
-		if (document.fullScreen) {
-			$('.ftScreen').removeClass('ftScreenEnlarge').addClass('ftScreenReduce');
-			$('.ftScreen > i').removeClass('fticon-enlarge').addClass('fticon-reduce');
-		} else {
-			$('.ftScreen').removeClass('ftScreenReduce').addClass('ftScreenEnlarge');
-			$('.ftScreen > i').removeClass('fticon-reduce').addClass('fticon-enlarge');
-		}
-	} else if (element.mozRequestFullScreen) {
-		if (document.mozFullScreen) {
-			$('.ftScreen').removeClass('ftScreenEnlarge').addClass('ftScreenReduce');
-			$('.ftScreen > i').removeClass('fticon-enlarge').addClass('fticon-reduce');
-		} else {
-			$('.ftScreen').removeClass('ftScreenReduce').addClass('ftScreenEnlarge');
-			$('.ftScreen > i').removeClass('fticon-reduce').addClass('fticon-enlarge');
-		}
-	} else if (element.webkitRequestFullScreen) {
-		if (document.webkitIsFullScreen) {
-			$('.ftScreen').removeClass('ftScreenEnlarge').addClass('ftScreenReduce');
-			$('.ftScreen > i').removeClass('fticon-enlarge').addClass('fticon-reduce');
-		} else {
-			$('.ftScreen').removeClass('ftScreenReduce').addClass('ftScreenEnlarge');
-			$('.ftScreen > i').removeClass('fticon-reduce').addClass('fticon-enlarge');
-		}
-	}
-
+  if (FULLSCREEN_POSSIBLE) {
+    if (screenfull.isFullscreen) {
+      $('.ftScreen').removeClass('ftScreenEnlarge').addClass('ftScreenReduce');
+      $('.ftScreen > i').removeClass('fticon-enlarge').addClass('fticon-reduce');
+    } else {
+      $('.ftScreen').removeClass('ftScreenReduce').addClass('ftScreenEnlarge');
+      $('.ftScreen > i').removeClass('fticon-reduce').addClass('fticon-enlarge');
+    }
+  }
 }
 
 function getScaleOffsets(containerElement, targetImage) {
@@ -956,13 +1034,13 @@ function getScaleOffsets(containerElement, targetImage) {
 		imageNaturalWidth = targetImage[0].naturalWidth,
 		imageNaturalHeight = targetImage[0].naturalHeight,
 		aspectRatio = imageNaturalWidth / imageNaturalHeight;
-	
+
 	var xScale = containerWidth / imageNaturalWidth,
 		yScale = containerHeight / imageNaturalHeight;
 
 	var	actualImageWidth,
 		actualImageHeight;
-	
+
 	if (xScale > yScale) {
 		actualImageWidth = containerWidth;
 		actualImageHeight = containerWidth / aspectRatio;
@@ -987,7 +1065,7 @@ function getScaleOffsets(containerElement, targetImage) {
 	}
 
 	return scaleOffsets;
-	
+
 }
 
 function rescaleMapCanvas() {
@@ -1037,11 +1115,11 @@ function getLocalTime() {
  function isDST(t) {
     var jan = new Date(t.getFullYear(),0,1);
     var jul = new Date(t.getFullYear(),6,1);
-    return Math.min(jan.getTimezoneOffset(),jul.getTimezoneOffset()) == t.getTimezoneOffset();  
+    return Math.min(jan.getTimezoneOffset(),jul.getTimezoneOffset()) == t.getTimezoneOffset();
 }
 
 function updateEpisodeTimings() {
-	
+
 	if (activeVideoID) {
 		episodeTimings[activeVideoID] = {
 			'lastTime': FieldTrip.currentTime,
@@ -1054,12 +1132,12 @@ function updateEpisodeTimings() {
 	//console.log(episodeTimings);
 
 	updateEpisodeCircles();
-	
+
 }
 
 function resetEpisodeCircles() {
 	$('.ftMapPinDescription svg > circle').css('transition-duration', '0ms');
-	
+
 	var circleLength = Math.PI * (2 * parseInt($('.ftMapPinDescription svg > circle').eq(0).attr('r')));
 
 	$('.ftMapPinDescription svg > circle').css({
@@ -1071,7 +1149,7 @@ function resetEpisodeCircles() {
 
 function updateEpisodeCircles() {
 	$.each(episodeTimings, function(key, value) {
-		
+
 		var mapElement = $('.ftMapPinDescription[href^="#hypervideo='+ key +'&"]');
 
 		if (mapElement.length == 0) {
@@ -1080,20 +1158,20 @@ function updateEpisodeCircles() {
 		var mapElementCircle = mapElement.find('.chart').find('svg').children('circle');
 
 		mapElement.attr('href', '#hypervideo='+ key +'&t='+ value.lastTime);
-		
+
 		var length = Math.PI * 2 * parseInt(mapElementCircle.attr('r'));
 		var offset = - length - length * value.lastTime / (value.duration);
-		
+
 		mapElementCircle[0].style.strokeDasharray = length;
-		mapElementCircle[0].style.strokeDashoffset = offset; 
+		mapElementCircle[0].style.strokeDashoffset = offset;
 
 		//mapElement.find('.chart').find('circle')[0].style.transform = "rotate(" + (360 * value.lastTime / (value.duration)) + "deg)";
 
-		
+
 		var pointerElements = mapElement.find('svg').find('.pointer-group');
 
 		pointerElements.each(function(){
-			
+
 			var pointerTime = parseFloat($(this).attr('data-time'));
 
 			if (value.lastTime >= pointerTime) {
@@ -1111,63 +1189,116 @@ function initPlayCircle() {
 	var playCircleContainer = $('<figure id="playCircleContainer" class="chart ftEvent"></figure>');
 
 	playCircleContainer.click(function(evt) {
-		
-		
+    evt.stopPropagation();
+
 
 		if ($(evt.target).hasClass('linkPointer')) {
-			
-			console.log($(evt.target));
 
 			var linkElemTime = $(evt.target).parent().attr('data-time');
-			
+
 			if (linkElemTime) {
 				FieldTrip.currentTime = linkElemTime-3;
 			}
-		} else {
+		} else if ($(evt.target).hasClass('inner')) {
 			if ($(this).hasClass('playing')) {
 				FieldTrip.pause();
 			} else {
 				FieldTrip.play();
 			}
-		}
+    }
 
-		
 	});
 
 	playCircleContainer.on("mouseover", function() {
-      $('.custom-cursor').addClass("custom-cursor-outline");
-    });
-    playCircleContainer.on("mouseout", function() {
-      $('.custom-cursor').removeClass("custom-cursor-outline");
-    });
-
-	var ns = 'http://www.w3.org/2000/svg';
+    $('.custom-cursor').addClass("custom-cursor-outline");
+  });
+  playCircleContainer.on("mouseout", function() {
+    $('.custom-cursor').removeClass("custom-cursor-outline");
+  });
+	
+  var ns = 'http://www.w3.org/2000/svg';
 	var playCircleSVG = document.createElementNS(ns, 'svg');
 	playCircleSVG.setAttribute('width', '180');
 	playCircleSVG.setAttribute('height', '180');
-	
+
 	var playCircleBG = document.createElementNS(ns, 'circle');
 	playCircleBG.classList.add('circle-bg');
 	playCircleBG.setAttribute('cx', '90');
 	playCircleBG.setAttribute('cy', '90');
 	playCircleBG.setAttribute('r', '88');
 
+  var playCircleProgressMove = document.createElementNS(ns, 'circle');
+	playCircleProgressMove.classList.add('circle');
+	playCircleProgressMove.classList.add('progress-move');
+	playCircleProgressMove.setAttribute('cx', '90');
+	playCircleProgressMove.setAttribute('cy', '90');
+	playCircleProgressMove.setAttribute('r', '88');
+
+	var playCircleProgress = document.createElementNS(ns, 'circle');
+	playCircleProgress.classList.add('circle');
+	playCircleProgress.classList.add('progress');
+	playCircleProgress.setAttribute('cx', '90');
+	playCircleProgress.setAttribute('cy', '90');
+	playCircleProgress.setAttribute('r', '88');
+
+	var playCircleProgressInteraction = document.createElementNS(ns, 'circle');
+	playCircleProgressInteraction.classList.add('circle');
+	playCircleProgressInteraction.classList.add('progress-interaction');
+	playCircleProgressInteraction.setAttribute('cx', '90');
+	playCircleProgressInteraction.setAttribute('cy', '90');
+	playCircleProgressInteraction.setAttribute('r', '98');
+
 	var playCircle = document.createElementNS(ns, 'circle');
 	playCircle.classList.add('circle');
-	playCircle.classList.add('outer');
+	playCircle.classList.add('inner');
 	playCircle.setAttribute('cx', '90');
 	playCircle.setAttribute('cy', '90');
-	playCircle.setAttribute('r', '88');
+	playCircle.setAttribute('r', '78');
 
 	playCircleSVG.appendChild(playCircleBG);
+	playCircleSVG.appendChild(playCircleProgressMove);
+	playCircleSVG.appendChild(playCircleProgress);
+	playCircleSVG.appendChild(playCircleProgressInteraction);
 	playCircleSVG.appendChild(playCircle);
-	
+
 	playCircleContainer[0].appendChild(playCircleSVG);
 
 	$('.playerContainer').append(playCircleContainer);
 
 	renderPlayCircleLinks();
 
+  $(playCircleProgressInteraction).on('click', function (evt) {
+    evt.stopPropagation();
+    console.log('SKIPPING');
+    var posX = $(this).offset().left;
+    var posY = $(this).offset().top;
+    var x = evt.pageX - posX - 90;
+    var y = evt.pageY - posY - 90;
+    var d =  (1 - Math.atan2(x, y) / Math.PI) / 2;
+    FieldTrip.currentTime = FieldTrip.duration * d;
+  });
+  
+  $(playCircleProgressInteraction).on('mouseenter', function (evt) {
+    TweenLite.to(playCircleProgress, 0.17, { 'stroke-width': 6 });
+    TweenLite.to(playCircleProgressMove, 0.17, { 'opacity': 0.45 });
+  });
+  
+  $(playCircleProgressInteraction).on('mouseleave', function (evt) {
+    TweenLite.to(playCircleProgress, 0.5, { 'stroke-width': 3 });
+    TweenLite.to(playCircleProgressMove, 0.3, { 'opacity': 0 });
+  });
+
+  $(playCircleProgressInteraction).on('mousemove', function (evt) {
+    var posX = $(this).offset().left;
+    var posY = $(this).offset().top;
+    var x = evt.pageX - posX - 90;
+    var y = evt.pageY - posY - 90;
+    var d =  (1 - Math.atan2(x, y) / Math.PI) / 2;
+    var length = Math.PI * 2 * parseInt(playCircleProgressMove.getAttribute('r'));
+	  var offset = - length - length * d;
+    playCircleProgressMove.style.strokeDasharray = length;
+	  playCircleProgressMove.style.strokeDashoffset = offset;
+  });
 }
 
 function updatePlayCircle() {
@@ -1177,18 +1308,18 @@ function updatePlayCircle() {
 	if (!parentSVG) {
 		return;
 	}
-	var svgCircle = parentSVG.querySelector('.chart svg > .circle');
-		
+	var svgCircle = parentSVG.querySelector('.chart svg > .circle.progress');
+
 	var length = Math.PI * 2 * parseInt(svgCircle.getAttribute('r'));
 	var offset = - length - length * FieldTrip.currentTime / (FieldTrip.duration);
-	
+
 	svgCircle.style.strokeDasharray = length;
-	svgCircle.style.strokeDashoffset = offset; 
-	
+	svgCircle.style.strokeDashoffset = offset;
+
 	var pointerElements = parentSVG.querySelectorAll('.pointer-group-player');
 
 	pointerElements.forEach(function(pointerElem){
-				
+
 		var pointerTime = parseFloat(pointerElem.getAttribute('data-time'));
 
 		if (FieldTrip.currentTime >= pointerTime) {
@@ -1209,11 +1340,11 @@ function renderPlayCircleLinks() {
 		parentSVG = document.querySelector('.playerContainer #playCircleContainer svg');
 
 	if (videoLinks[hypervideoID] && parentSVG) {
-		
+
 		var hypervideoDuration = FieldTrip.duration;
 
 		videoLinks[hypervideoID]['links'].forEach(function(videoLink){
-      
+
 			var newPointerGroup = document.createElementNS("http://www.w3.org/2000/svg", 'g');
 			var newPointerCircle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
 
@@ -1222,7 +1353,7 @@ function renderPlayCircleLinks() {
 
 			newPointerCircle.setAttribute('cx', '88');
 			newPointerCircle.setAttribute('cy', '0');
-			newPointerCircle.setAttribute('r', '8');
+			newPointerCircle.setAttribute('r', '16');
 			newPointerCircle.classList.add('linkPointer');
 
 			newPointerGroup.appendChild(newPointerCircle);
@@ -1230,11 +1361,11 @@ function renderPlayCircleLinks() {
 			if (!parentSVG.querySelector('.pointer-group-player[data-time="'+ videoLink.time +'"]')) {
 				parentSVG.appendChild(newPointerGroup);
 			}
-			
-			newPointerGroup.style.transform = "translate(88px, 88px) rotate(" + ((360 * parseFloat(videoLink.time) / (hypervideoDuration)) - 90) + "deg)"; 
+
+			newPointerGroup.style.transform = "translate(88px, 88px) rotate(" + ((360 * parseFloat(videoLink.time) / (hypervideoDuration)) - 90) + "deg)";
 
 		});
-		
+
 	}
 }
 
@@ -1247,11 +1378,11 @@ function renderVideoLinkCircles() {
 				parentSVG = document.querySelectorAll('.ftMapPinDescription[href^="#hypervideo='+ hypervideoID +'"]')[0].querySelector('svg');
 
 			if (videoLinks[hypervideoID]) {
-				
+
 				var hypervideoDuration = videoLinks[hypervideoID].duration;
 
 				videoLinks[hypervideoID]['links'].forEach(function(videoLink){
-		      
+
 					var newPointerGroup = document.createElementNS("http://www.w3.org/2000/svg", 'g');
 					var newPointerCircle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
 
@@ -1266,9 +1397,9 @@ function renderVideoLinkCircles() {
 					newPointerGroup.appendChild(newPointerCircle);
 					parentSVG.appendChild(newPointerGroup);
 
-					newPointerGroup.style.transform = "translate(143px, 143px) rotate(" + ((360 * parseFloat(videoLink.time) / (hypervideoDuration)) - 90) + "deg)"; 
+					newPointerGroup.style.transform = "translate(143px, 143px) rotate(" + ((360 * parseFloat(videoLink.time) / (hypervideoDuration)) - 90) + "deg)";
 				});
-				
+
 			}
 		}
 	});
@@ -1288,7 +1419,7 @@ function updateVisitorsNumber() {
         if (data.visitors) {
             $(".ftNavVisitorsNumber").text(data.visitors);
         }
-        
+
     }).fail(function(error){
 
         console.log(error.responseText);
@@ -1321,12 +1452,21 @@ function updateMuted() {
 	}
 }
 
+function handleVisibilityChange() {
+	if (document[hidden]) {
+		soundOff();
+	} else if (!muted) {
+		soundOn();
+	}
+}
+
 function updateHints() {
-	
-	/* 
-	* hidden via 
+
+	/*
+	* hidden via
 	* localStorage.setItem('fieldtrip-overlay-hints', 'hide'); updateHints();
-	* or localStorage.setItem('fieldtrip-map-hints', 'hide'); updateHints();
+	* localStorage.setItem('fieldtrip-map-hints', 'hide'); updateHints();
+	* localStorage.setItem('fieldtrip-overview-hint', 'hide'); updateHints();
 	*/
 
 	var lsOverlayHints = localStorage.getItem('fieldtrip-overlay-hints');
@@ -1338,9 +1478,11 @@ function updateHints() {
 	}
 
 	var lsMapHints = localStorage.getItem('fieldtrip-map-hints');
-	
+
 	if (!lsMapHints || lsMapHints.length == 0 || lsMapHints == 'show') {
-		
+
+		$('.ftPulsingHint').addClass('is-visible');
+
 		if (mapPinHintsInterval) {
 			window.clearInterval(mapPinHintsInterval);
 		}
@@ -1354,6 +1496,15 @@ function updateHints() {
 
 	} else if (lsMapHints == 'hide') {
 		window.clearInterval(mapPinHintsInterval);
+		$('.ftPulsingHint').removeClass('is-visible');
+	}
+
+	var lsOverviewHint = localStorage.getItem('fieldtrip-overview-hint');
+
+	if (!lsOverviewHint || lsOverviewHint.length == 0 || lsOverviewHint == 'show') {
+		$('.ftLayer#fthypervideo .ftNavUp .tooltip').addClass('is-visible');
+	} else if (lsOverviewHint == 'hide') {
+		$('.ftLayer#fthypervideo .ftNavUp .tooltip').removeClass('is-visible');
 	}
 
 }
@@ -1367,5 +1518,80 @@ function highlightInteractiveElement(selector, iterations) {
 	setTimeout(function() {
 		interactiveElement.removeClass("active");
 	}, iterations * 3000);
+
+}
+
+function initIntroCaptions() {
+
+	var VTTsource = '_custom/intro-video-captions.vtt';
+	
+	if (!!screenfull) {
+    	
+    	$('#ftIntroCaptionsContainer').empty();
+
+        $.ajax({
+            type: "GET",
+            url: VTTsource,
+            cache: true
+        }).done(function(data){
+	        // parse webvtt contents
+	        var parser = new WebVTT.Parser(window, WebVTT.StringDecoder());
+	        parser.onregion = function(region) {};
+	        parser.oncue = function(cue) {
+	            var cueElem = '<div class="ftIntroCaption" data-start="'+ cue.startTime +'" data-end="'+ cue.endTime +'">'+ cue.text +'</div>';
+	            $('#ftIntroCaptionsContainer').append(cueElem);
+	        };
+	        parser.onparsingerror = function(e) {
+	            console.log(e);
+	        };
+	        parser.parse(data);
+	        parser.flush();
+	    });
+
+    } else {
+        
+        $('#ftIntroCaptionsContainer').empty();
+        
+        var videoElement = $('#ftIntroVideo')[0];
+
+        console.log(videoElement);
+                
+        var track = document.createElement('track');
+        track.kind = 'captions';
+        track.label = 'Deutsch';
+        track.srclang = 'de';
+        track.src = VTTsource;
+		track.setAttribute('default', '');
+
+        track.addEventListener('load', function() {
+           this.mode = 'showing';
+           videoElement.textTracks[0].mode = 'showing';
+        });
+
+        videoElement.appendChild(track);
+    }
+}
+
+function updateStatesOfIntroCaptions() {
+
+	var currentTime = ($('#ftIntroVideo')[0].currentTime) ? $('#ftIntroVideo')[0].currentTime : 0;
+
+	$('#ftIntroCaptionsContainer .ftIntroCaption').each(function() {
+		var startTime = $(this).data('start'),
+			endTime = $(this).data('end');
+
+		if (    startTime <= currentTime
+             && endTime   >= currentTime) {
+            if (!$(this).hasClass('active')) {
+                $(this).addClass('active')
+            }
+        } else {
+
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active')
+            }
+
+        }
+	});
 
 }
