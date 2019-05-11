@@ -3672,3 +3672,13 @@ ABOUT / CREDITS / IMPRINT
     margin-left: -76px;
   }
 }
+
+.fullscreen-no .linkPointer {
+  display: none !important;
+}
+.fullscreen-no circle.progress {
+  display: none !important;
+}
+.fullscreen-no circle.progress-move {
+  display: none !important;
+}
