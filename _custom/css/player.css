@@ -284,15 +284,15 @@ body.userinactive #VideoPlayer .titlebar:not(.editActive) {
 
 /* Start iOS / Safari */
 .fullscreen-no #VideoPlayer .mainContainer:not(.editActive) .videoContainer {
-	width: 100% !important;
-	height: 100% !important;
+	width: 100vw !important;
+	height: 100vh !important;
 }
 
 .fullscreen-no #VideoPlayer .mainContainer:not(.editActive) .videoContainer .hypervideo {
 	top: 0%;
 	left: 0%;
-	width: 100% !important;
-	height: 100% !important;
+	width: 100vw !important;
+	height: 100vh !important;
 	margin-left: 0px !important;
 	margin-top: 0px !important;
 	min-height: none !important
@@ -301,9 +301,13 @@ body.userinactive #VideoPlayer .titlebar:not(.editActive) {
 .fullscreen-no #VideoPlayer .mainContainer:not(.editActive) .videoContainer video {
 	top: 0%;
 	left: 0%;
-	width: 100% !important;
-	height: 100% !important;
+	width: 100vw !important;
+	height: 100vh !important;
 	object-fit: contain;
+}
+
+.fullscreen-no #VideoPlayer .mainContainer:not(.editActive) .slideArea {
+	min-height: 0 !important;
 }
 /* End iOS / Safari */
 
