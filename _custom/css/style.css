@@ -3660,7 +3660,7 @@ ABOUT / CREDITS / IMPRINT
   margin-top: 10px;
 }
 
-@media (max-height: 300px) {
+@media (max-height: 321px) {
   .ftLayer#ftintro #ftTagline {
     transform: translateY(-50%) scale(0.65);
     margin-left: 92px;
