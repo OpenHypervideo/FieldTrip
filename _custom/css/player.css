@@ -281,6 +281,33 @@ body.userinactive #VideoPlayer .titlebar:not(.editActive) {
 	letter-spacing: 0px;
 }
 
+
+/* Start iOS / Safari */
+.fullscreen-no #VideoPlayer .mainContainer:not(.editActive) .videoContainer {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.fullscreen-no #VideoPlayer .mainContainer:not(.editActive) .videoContainer .hypervideo {
+	top: 0%;
+	left: 0%;
+	width: 100% !important;
+	height: 100% !important;
+	margin-left: 0px !important;
+	margin-top: 0px !important;
+	min-height: none !important
+}
+
+.fullscreen-no #VideoPlayer .mainContainer:not(.editActive) .videoContainer video {
+	top: 0%;
+	left: 0%;
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: contain;
+}
+/* End iOS / Safari */
+
+
 /* Inside Hypervideo */
 .hypervideo .video {
 	-webkit-transform: translate3d(0,0,0);
