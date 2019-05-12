@@ -221,12 +221,14 @@ $(document).ready(function() {
     ((FULLSCREEN_POSSIBLE) ? ' fullscreen-yes' : ' fullscreen-no');
 
   // try to hide safari menu bar
+  /*
   if (!FULLSCREEN_POSSIBLE) {
     $('body').css('height', 'calc(100% + 1px)'); // needs real document scrolling
     setTimeout(function () {
       window.scrollTo(0, 1);
     }, 1);
   }
+  */
 
 	renderVideoLinkCircles();
 
