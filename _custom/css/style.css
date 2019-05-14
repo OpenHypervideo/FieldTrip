@@ -3069,6 +3069,10 @@ ABOUT / CREDITS / IMPRINT
   background: rgba(255,255,255,.25);
 }
 
+.startnext-crowfunding small {
+  font-size: .75em;
+}
+
 
 /*******************
 * Media Queries
