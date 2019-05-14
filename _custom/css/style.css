@@ -3036,6 +3036,39 @@ ABOUT / CREDITS / IMPRINT
   margin: 0 auto;
 }
 
+/* Crowfunding */
+
+.ftInfoContent p.startnext-crowfunding {
+  display: inline-block;
+  background: rgba(255,255,255,.15);
+  padding: 5px 10px;
+  border: 1px solid rgba(255,255,255,.15);
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+.startnext-crowfunding img,
+.startnext-crowfunding b {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.startnext-crowfunding b {
+  font-weight: bold;
+  font-size: 1.05em;
+}
+
+.startnext-crowfunding img {
+  margin-right: 10px;
+}
+
+.ftInfoContent p.startnext-crowfunding:hover {
+  background: rgba(255,255,255,.25);
+}
+
 
 /*******************
 * Media Queries
