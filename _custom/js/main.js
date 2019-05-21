@@ -193,7 +193,7 @@ var videoLinks = {
 				'target': '#hypervideo=6&t=57',
 			}
 		]
-	},
+	}
 
 }
 
