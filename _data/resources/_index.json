@@ -1,5 +1,5 @@
 {
-    "resources-increment": 57,
+    "resources-increment": 59,
     "resources": {
         "1": {
             "name": "Intro",
@@ -581,7 +581,29 @@
             "description": null,
             "src": "1_1556631796_animation-houdini.gif",
             "type": "image",
-            "attributes": {}
+            "attributes": []
+        },
+        "58": {
+            "name": "Icon Episode 10",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1558436701,
+            "description": null,
+            "src": "1_1558436701_icon-episode-10.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1558436701_thumb_icon-episode-10.png"
+        },
+        "59": {
+            "name": "Icon Episode 11",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1558436811,
+            "description": null,
+            "src": "1_1558436811_icon-episode-11.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1558436811_thumb_icon-episode-11.png"
         }
     }
 }
