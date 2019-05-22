@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1558510803519,
-        "lastchanged": 1558521869388
+        "lastchanged": 1558538569740
     },
     "config": {
         "slidingMode": "adjust",
@@ -58,7 +58,7 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1558509677_episode-11-garten.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6039742348001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -95,7 +95,7 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1558509677_episode-11-garten.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6039742348001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -132,11 +132,11 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1558509677_episode-11-garten.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6039742348001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=30,33.2&xywh=percent:12.5,80.79936441471823,75,19.200639244463805"
+                    "value": "t=31.5,34.8&xywh=percent:12.5,80.79936441471823,75,19.200639244463805"
                 }
             },
             "body": {
@@ -169,7 +169,7 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1558509677_episode-11-garten.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6039742348001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -206,7 +206,7 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1558509677_episode-11-garten.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6039742348001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -243,11 +243,11 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1558509677_episode-11-garten.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6039742348001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=180,188&xywh=percent:65.78012352373283,0,23.388038010190346,61.89048273100269"
+                    "value": "t=180,188&xywh=percent:59.03327192494389,0.9592326139088728,23.388040068480123,61.88648690422662"
                 }
             },
             "body": {
@@ -255,8 +255,7 @@
                 "frametrail:type": "image",
                 "format": "image/gif",
                 "source": "1_1556093905_animation-flag.gif",
-                "frametrail:name": "Animation Flag",
-                "frametrail:resourceId": "22"
+                "frametrail:name": "Animation Flag"
             },
             "frametrail:events": {
                 "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=1&t=157';\n  }, 3000);\n}, 1000);"

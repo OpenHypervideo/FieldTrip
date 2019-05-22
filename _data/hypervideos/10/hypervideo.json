@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1558510725220,
-        "lastchanged": 1558521567186
+        "lastchanged": 1558537245738
     },
     "config": {
         "slidingMode": "adjust",
@@ -58,7 +58,7 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1558509646_episode-10-brigitte.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6039739726001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -95,11 +95,11 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1558509646_episode-10-brigitte.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6039739726001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=386,394&xywh=percent:16.679406794299297,0,19.88084395808795,66.20303366681655"
+                    "value": "t=386,394&xywh=percent:67.66411732383469,7.673860911270983,17.048110300620632,56.84652351361099"
                 }
             },
             "body": {
@@ -132,7 +132,7 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1558509646_episode-10-brigitte.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6039739726001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -144,8 +144,7 @@
                 "frametrail:type": "image",
                 "format": "image/gif",
                 "source": "1_1556093725_animation-storyboxx.gif",
-                "frametrail:name": "Animation Storyboxx",
-                "frametrail:resourceId": "15"
+                "frametrail:name": "Animation Storyboxx"
             },
             "frametrail:events": {
                 "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=9&t=186';\n  }, 3000);\n}, 1000);"
