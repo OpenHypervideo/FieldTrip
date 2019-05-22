@@ -25,6 +25,8 @@ pids
 
 #data folder
 #_data/
+#server folder
+_server/
 #visitors file
 visitors.db
 #avoid accidental commits of open weather map api key

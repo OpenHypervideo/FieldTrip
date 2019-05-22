@@ -194,7 +194,28 @@ var videoLinks = {
 			}
 		]
 	},
-
+	'10': {
+		'duration': 452.331,
+		'links': [
+			{
+				'time': 386,
+				'target': '#hypervideo=2&t=0',
+			},
+			{
+				'time': 442,
+				'target': '#hypervideo=9&t=186',
+			}
+		]
+	},
+	'11': {
+		'duration': 436.562,
+		'links': [
+			{
+				'time': 180,
+				'target': '#hypervideo=1&t=157',
+			}
+		]
+	}
 }
 
 // Set the name of the hidden property and the change event for visibility
@@ -476,7 +497,7 @@ $(document).ready(function() {
 
 	episodeTimings = JSON.parse(localStorage.getItem('fieldtrip-episode-timings'));
 
-	if (!episodeTimings || Object.keys(episodeTimings).length == 0) {
+	if (!episodeTimings || Object.keys(episodeTimings).length == 0 || Object.keys(episodeTimings).length != Object.keys(videoLinks).length) {
 		episodeTimings = {};
 
 		$('.ftMapPinDescription').each(function() {
@@ -804,15 +825,15 @@ function activateLayer(layerName, videoID) {
 				});
 			}
 
-      console.log(initialLoading);
-      console.log(introVideoPlayed);
-      if (!initialLoading || introVideoPlayed) {
-        $('#ftintro #ftTagline, #ftintro .ftintroLogo').hide();
-      } else {
-        if (!introVideoPlayed) $('#ftintro #ftTagline, #ftintro .ftintroLogo').show();
-        $('#ftStartButton').show();
-        initialLoading = false;
-      }
+			//console.log(initialLoading);
+			//console.log(introVideoPlayed);
+			if (!initialLoading || introVideoPlayed) {
+				$('#ftintro #ftTagline, #ftintro .ftintroLogo').hide();
+			} else {
+			if (!introVideoPlayed) $('#ftintro #ftTagline, #ftintro .ftintroLogo').show();
+				$('#ftStartButton').show();
+				initialLoading = false;
+			}
 
 			$('#ftSkipIntro').show();
       		$('#ftIntroAudio').show();
@@ -920,9 +941,9 @@ function activateLayer(layerName, videoID) {
 			$('.ftMapPin').removeClass('pinOpen');
 			$('.ftMapPin#ftMapPin'+ videoID).addClass('pinOpen');
 			$('.ftMapPin .ftMapPinDescription').removeClass('is-visible');
-			$('.ftMapPin .ftMapPinDescription[href^="#hypervideo='+ videoID +'"]').addClass('is-visible');
-			$('.ftMapPin .ftMapPinDescription[href^="#hypervideo='+ videoID +'"] .circle').addClass('outer');
-			$('.ftMapPin .ftMapPinDescription[href^="#hypervideo='+ videoID +'"] .ftMapPinDescriptionContent').addClass('is-visible');
+			$('.ftMapPin .ftMapPinDescription[href^="#hypervideo='+ videoID +'&"]').addClass('is-visible');
+			$('.ftMapPin .ftMapPinDescription[href^="#hypervideo='+ videoID +'&"] .circle').addClass('outer');
+			$('.ftMapPin .ftMapPinDescription[href^="#hypervideo='+ videoID +'&"] .ftMapPinDescriptionContent').addClass('is-visible');
 
 			activeVideoID = videoID;
 
@@ -1286,7 +1307,7 @@ function initPlayCircle() {
 
   $(playCircleProgressInteraction).on('click', function (evt) {
     evt.stopPropagation();
-    console.log('SKIPPING');
+    //console.log('SKIPPING');
     var posX = $(this).offset().left;
     var posY = $(this).offset().top;
     var x = evt.pageX - posX - 90;
