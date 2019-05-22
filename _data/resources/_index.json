@@ -1,5 +1,5 @@
 {
-    "resources-increment": 59,
+    "resources-increment": 61,
     "resources": {
         "1": {
             "name": "Intro",
@@ -604,6 +604,28 @@
             "type": "image",
             "attributes": [],
             "thumb": "1_1558436701_thumb_icon-episode-11.png"
+        },
+        "60": {
+            "name": "Episode 10 - Brigitte",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1558509646,
+            "description": null,
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6039739726001&pubId=64007844001&secure=true",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1558509646_thumb_episode-10-brigitte.png"
+        },
+        "61": {
+            "name": "Episode 11 - Garten",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1558509677,
+            "description": null,
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6039742348001&pubId=64007844001&secure=true",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1558509677_thumb_episode-11-garten.png"
         }
     }
 }
