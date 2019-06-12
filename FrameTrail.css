@@ -3082,7 +3082,7 @@ body > .timelineElement .previewWrapper .resourceThumb .resourceOverlay .resourc
 
 .resourceThumb {
 	background-repeat: no-repeat;
-	background-size: 100% 100%;
+	background-size: cover;
 	background-color: var(--primary-bg-color);
 	outline: 1px solid var(--primary-bg-color);
 	cursor: pointer;
@@ -3144,7 +3144,7 @@ body > .timelineElement .previewWrapper .resourceThumb .resourceOverlay .resourc
 	top: 0;
 	left: 0;
 	width: 100%;
-	max-height: 100%;
+	max-height: 50px;
 	background-color: var(--semi-transparent-bg-color);
 	font-size: 13px;
 	padding: 6px 5px 3px 5px;
@@ -4227,6 +4227,7 @@ body .codeSnippetElement {
 	box-sizing: border-box;
 	background: var(--secondary-bg-color);
 	color: var(--primary-fg-color);
+	overflow: hidden;
 	display: none;
 }
 
@@ -4578,6 +4579,38 @@ body .codeSnippetElement {
 	height: 80px;
 	margin: 6px;
 }
+
+/* Upload Form */
+
+.uploadForm .resourceInput {
+	width: 230px;
+}
+
+.uploadForm .resourceNameInput {
+	width: 239px;
+}
+
+.uploadForm .corsWarning {
+	position: absolute;
+	top: 78px;
+	right: 170px;
+	width: 180px;
+	height: 110px;
+}
+
+.uploadForm .resourceURLPreview {
+	position: absolute;
+	top: 80px;
+	right: 10px;
+	width: 150px;
+	height: 110px;
+}
+
+.uploadForm .resourceURLPreview .resourceThumb {
+	width: 100%;
+	height: 100%;
+	cursor: default;
+}
 .userLoginOverlay {
 	display: none;
 }
@@ -4658,6 +4691,18 @@ body .codeSnippetElement {
 	width: 100%;
 	padding: 10px 0;
 	clear: both;
+}
+
+.viewResources .resourcesFilter input[type="radio"] {
+	margin: 0px 5px 3px 10px;
+}
+
+.viewResources .resourcesFilter input[type="radio"]:hover {
+	cursor: pointer;
+}
+
+.viewResources .resourcesFilter label {
+	cursor: pointer;
 }
 
 .viewResources .resourcesList {
@@ -4799,6 +4844,7 @@ body {
 	transition: all 200ms linear; /* Standard */
 }
 
+/*
 .titlebar {
 	background: var(--primary-bg-color);
 	font-weight: 200;
@@ -4826,11 +4872,13 @@ body {
 	background: var(--secondary-fg-color);
 	color: var(--primary-bg-color);
 }
+*/
 
 .resourcesControls {
 	display: none;
 }
 
+/*
 .mainContainer {
 	width: 100%;
 	background: var(--primary-bg-color);
@@ -4839,9 +4887,10 @@ body {
 
 .mainContainer.editActive {
 	border-top: 1px solid rgba(73, 76, 81, .6);
-	background-color: #ffffff;
+	background-color: var(--primary-fg-color);
 	color: var(--primary-bg-color);
 }
+*/
 
 .mainContainer .resourceManagerContent {
 	background: var(--secondary-bg-color);
@@ -4851,14 +4900,14 @@ body {
 }
 
 .mainContainer.editActive .resourceManagerContent {
-	background: transparent;
+	background: var(--primary-fg-color);
 }
 
-.mainContainer .viewResources {
+.mainContainer .resourceManagerContent .viewResources {
 	color: var(--primary-fg-color);
 }
 
-.mainContainer.editActive .viewResources {
+.mainContainer.editActive .resourceManagerContent .viewResources {
 	color: var(--primary-bg-color);
 }
 
@@ -5655,6 +5704,16 @@ body.userinactive .mainContainer:not(.editActive) .playerContainer .controls, bo
     min-width: 400px;
 }
 
+.areaTopContainer.closed, .areaBottomContainer.closed {
+    min-height: 36px !important;
+    flex-basis: 36px !important;
+}
+
+.areaLeftContainer.closed, .areaRightContainer.closed {
+    flex: 0 0 36px;
+    min-width: 36px;
+}
+
 /* Annotations */
 
 .playerContainer .annotationTimeline {
@@ -5972,6 +6031,7 @@ body.userinactive .mainContainer:not(.editActive) .playerContainer .controls, bo
 }
 
 .playerContainer .controls .playerControl.timeDisplayFull {
+    display: none;
     border-left: 1px solid #acacb3;
     padding-left: 8px;
 }
@@ -6494,6 +6554,8 @@ body.userinactive .mainContainer:not(.editActive) .playerContainer .controls, bo
 
 .layoutArea {
     overflow: hidden;
+    transition-property: flex, min-height, min-width;
+    transition-duration: 200ms;
 }
 
 /* Layout Area Tabs */
@@ -6581,6 +6643,94 @@ body.userinactive .mainContainer:not(.editActive) .playerContainer .controls, bo
     position: absolute;
     box-sizing: border-box;
     overflow: hidden;
+}
+
+/* Open & Close Mechanism */
+
+.layoutArea .layoutAreaToggleCloseButton {
+    position: absolute;
+    z-index: 2;
+    width: 30px;
+    height: 30px;
+    opacity: .7;
+}
+
+.layoutArea .layoutAreaToggleCloseButton:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.layoutArea .layoutAreaToggleCloseButton:after {
+    display: block;
+    font-family: "frametrail-webfont";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    text-decoration: inherit;
+    width: 100%;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 30px;
+    font-size: 120%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3);
+    color: var(--primary-fg-color);
+}
+
+.layoutArea[data-area="areaTop"] .layoutAreaToggleCloseButton, .layoutArea[data-area="areaBottom"] .layoutAreaToggleCloseButton {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.layoutArea[data-area="areaLeft"] .layoutAreaToggleCloseButton, .layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.layoutArea[data-area="areaTop"] .layoutAreaToggleCloseButton {
+    bottom: 3px;
+}
+
+.layoutArea[data-area="areaBottom"] .layoutAreaToggleCloseButton {
+    top: 3px;
+}
+
+.layoutArea[data-area="areaLeft"] .layoutAreaToggleCloseButton {
+    right: 3px;
+}
+
+.layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
+    left: 3px;
+}
+
+.layoutArea[data-area="areaTop"] .layoutAreaToggleCloseButton:after {
+    content: '\f102';
+}
+.layoutArea[data-area="areaTop"].closed .layoutAreaToggleCloseButton:after {
+    content: '\f103';
+}
+
+.layoutArea[data-area="areaBottom"] .layoutAreaToggleCloseButton:after {
+    content: '\f103';
+}
+.layoutArea[data-area="areaBottom"].closed .layoutAreaToggleCloseButton:after {
+    content: '\f102';
+}
+
+.layoutArea[data-area="areaLeft"] .layoutAreaToggleCloseButton:after {
+    content: '\f100';
+}
+.layoutArea[data-area="areaLeft"].closed .layoutAreaToggleCloseButton:after {
+    content: '\f101';
+}
+
+.layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton:after {
+    content: '\f101';
+}
+.layoutArea[data-area="areaRight"].closed .layoutAreaToggleCloseButton:after {
+    content: '\f100';
 }
 
 
