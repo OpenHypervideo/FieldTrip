@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093223024,
-        "lastchanged": 1556632964034
+        "lastchanged": 1560160555823
     },
     "config": {
         "slidingMode": "adjust",
@@ -18,7 +18,25 @@
             "areaTop": [],
             "areaBottom": [],
             "areaLeft": [],
-            "areaRight": []
+            "areaRight": [
+                {
+                    "type": "CustomHTML",
+                    "contentSize": "large",
+                    "name": "Credits",
+                    "description": "",
+                    "cssClass": "",
+                    "collectionFilter": {
+                        "tags": [],
+                        "types": [],
+                        "users": [],
+                        "text": ""
+                    },
+                    "onClickContentItem": "",
+                    "html": "<h3>Lorem Ipsum</h3>\n<p>Dolor Sit Amet</p>",
+                    "transcriptSource": "",
+                    "initClosed": true
+                }
+            ]
         }
     },
     "clips": [
@@ -52,13 +70,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 09:41:02 GMT+0200 (Central European Summer Time)",
+            "created": "Mon Apr 29 2019 08:41:02 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092548_episode-7-paul.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -89,13 +107,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 09:43:14 GMT+0200 (Central European Summer Time)",
+            "created": "Mon Apr 29 2019 08:43:14 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092548_episode-7-paul.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -126,13 +144,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 09:44:37 GMT+0200 (Central European Summer Time)",
+            "created": "Mon Apr 29 2019 08:44:37 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092548_episode-7-paul.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -163,13 +181,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 10:48:05 GMT+0200 (Central European Summer Time)",
+            "created": "Tue Apr 30 2019 09:48:05 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092548_episode-7-paul.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
