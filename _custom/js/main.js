@@ -290,6 +290,10 @@ $(document).ready(function() {
 
 		FieldTripReady = true;
 
+		$('#ftCreditLink').click(function () {
+			$('#VideoPlayer .areaRightContainer').toggleClass('closed');
+		});
+
     	checkBgImg();
 
 		// Make sure play circle & transitions are never initialized twice
