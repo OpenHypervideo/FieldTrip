@@ -215,6 +215,18 @@ var videoLinks = {
 				'target': '#hypervideo=1&t=157',
 			}
 		]
+	},
+	'12': {
+		'duration': 499,
+		'links': []
+	},
+	'13': {
+		'duration': 488,
+		'links': []
+	},
+	'14': {
+		'duration': 161,
+		'links': []
 	}
 }
 
