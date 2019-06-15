@@ -4872,13 +4872,7 @@ body {
 	background: var(--secondary-fg-color);
 	color: var(--primary-bg-color);
 }
-*/
 
-.resourcesControls {
-	display: none;
-}
-
-/*
 .mainContainer {
 	width: 100%;
 	background: var(--primary-bg-color);
