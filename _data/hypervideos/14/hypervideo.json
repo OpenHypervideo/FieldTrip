@@ -1,0 +1,63 @@
+{
+    "meta": {
+        "name": "Der Mutläufer",
+        "description": "   ",
+        "thumb": "1_1560580632_thumb_episode-14-mutlauf.png",
+        "creator": "Joscha",
+        "creatorId": "1",
+        "created": 1560581087482,
+        "lastchanged": 1560581087482
+    },
+    "config": {
+        "slidingMode": "adjust",
+        "slidingTrigger": "key",
+        "autohideControls": true,
+        "captionsVisible": true,
+        "clipTimeVisible": false,
+        "hidden": false,
+        "layoutArea": {
+            "areaTop": [],
+            "areaBottom": [],
+            "areaLeft": [],
+            "areaRight": [
+                {
+                    "type": "CustomHTML",
+                    "contentSize": "large",
+                    "name": "Credits",
+                    "description": "",
+                    "cssClass": "",
+                    "collectionFilter": {
+                        "tags": [],
+                        "types": [],
+                        "users": [],
+                        "text": ""
+                    },
+                    "onClickContentItem": "",
+                    "html": "<h3>Lorem Ipsum</h3>\n<p>Dolor Sit Amet</p>",
+                    "transcriptSource": "",
+                    "initClosed": true
+                }
+            ]
+        }
+    },
+    "clips": [
+        {
+            "resourceId": "64",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048174388001&pubId=64007844001&secure=true",
+            "duration": 0,
+            "start": 0,
+            "end": 0,
+            "in": 0,
+            "out": 0
+        }
+    ],
+    "globalEvents": {
+        "onReady": "",
+        "onPlay": "",
+        "onPause": "",
+        "onEnded": ""
+    },
+    "customCSS": "",
+    "contents": [],
+    "subtitles": []
+}

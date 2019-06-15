@@ -13,6 +13,7 @@
         "slidingTrigger": "key",
         "autohideControls": true,
         "captionsVisible": true,
+        "clipTimeVisible": false,
         "hidden": false,
         "layoutArea": {
             "areaTop": [],

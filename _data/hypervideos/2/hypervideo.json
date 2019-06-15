@@ -13,12 +13,31 @@
         "slidingTrigger": "key",
         "autohideControls": true,
         "captionsVisible": true,
+        "clipTimeVisible": false,
         "hidden": false,
         "layoutArea": {
             "areaTop": [],
             "areaBottom": [],
             "areaLeft": [],
-            "areaRight": []
+            "areaRight": [
+                {
+                    "type": "CustomHTML",
+                    "contentSize": "large",
+                    "name": "Credits",
+                    "description": "",
+                    "cssClass": "",
+                    "collectionFilter": {
+                        "tags": [],
+                        "types": [],
+                        "users": [],
+                        "text": ""
+                    },
+                    "onClickContentItem": "",
+                    "html": "<h3>Lorem Ipsum</h3>\n<p>Dolor Sit Amet</p>",
+                    "transcriptSource": "",
+                    "initClosed": true
+                }
+            ]
         }
     },
     "clips": [
