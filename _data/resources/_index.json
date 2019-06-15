@@ -1,5 +1,5 @@
 {
-    "resources-increment": 61,
+    "resources-increment": 64,
     "resources": {
         "1": {
             "name": "Intro",
@@ -626,6 +626,39 @@
             "attributes": [],
             "type": "video",
             "thumb": "1_1558509677_thumb_episode-11-garten.png"
+        },
+        "62": {
+            "name": "Episode 12 - Mansour",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560580554,
+            "description": null,
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1560580554_thumb_episode-12-mansour.png"
+        },
+        "63": {
+            "name": "Episode 13 - Zaun",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560580595,
+            "description": null,
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048176637001&pubId=64007844001&secure=true",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1560580595_thumb_episode-13-zaun.png"
+        },
+        "64": {
+            "name": "Episode 14 - Mutlauf",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560580632,
+            "description": null,
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048174388001&pubId=64007844001&secure=true",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1560580632_thumb_episode-14-mutlauf.png"
         }
     }
 }
