@@ -66,15 +66,15 @@ var videoLinks = {
 		'links': [
 			{
 				'time': 147,
-				'target': '#hypervideo=4&t=0',
+				'target': '#hypervideo=4&t=0'
 			},
 			{
 				'time': 298,
-				'target': '#hypervideo=8&t=0',
+				'target': '#hypervideo=8&t=0'
 			},
 			{
 				'time': 396,
-				'target': '#hypervideo=4&t=0',
+				'target': '#hypervideo=4&t=0'
 			}
 		]
 	},
@@ -83,11 +83,11 @@ var videoLinks = {
 		'links': [
 			{
 				'time': 243,
-				'target': '#hypervideo=3&t=307',
+				'target': '#hypervideo=3&t=307'
 			},
 			{
 				'time': 337,
-				'target': '#hypervideo=6&t=168',
+				'target': '#hypervideo=6&t=168'
 			}
 		]
 	},
@@ -96,11 +96,15 @@ var videoLinks = {
 		'links': [
 			{
 				'time': 89,
-				'target': '#hypervideo=5&t=293',
+				'target': '#hypervideo=5&t=293'
 			},
 			{
 				'time': 129,
-				'target': '#hypervideo=1&t=104',
+				'target': '#hypervideo=1&t=104'
+			},
+			{
+				'time': 400,
+				'target': '#hypervideo=13&t=108'
 			}
 		]
 	},
@@ -109,11 +113,11 @@ var videoLinks = {
 		'links': [
 			{
 				'time': 93,
-				'target': '#hypervideo=3&t=191',
+				'target': '#hypervideo=3&t=191'
 			},
 			{
 				'time': 182,
-				'target': '#hypervideo=7&t=211',
+				'target': '#hypervideo=7&t=211'
 			}
 		]
 	},
@@ -122,11 +126,11 @@ var videoLinks = {
 		'links': [
 			{
 				'time': 256,
-				'target': '#hypervideo=9&t=207',
+				'target': '#hypervideo=9&t=207'
 			},
 			{
 				'time': 383,
-				'target': '#hypervideo=3&t=39',
+				'target': '#hypervideo=3&t=39'
 			}
 		]
 	},
@@ -135,11 +139,11 @@ var videoLinks = {
 		'links': [
 			{
 				'time': 280,
-				'target': '#hypervideo=1&t=157',
+				'target': '#hypervideo=1&t=157'
 			},
 			{
-				'time': 374,
-				'target': '#hypervideo=7&t=211',
+				'time': 357,
+				'target': '#hypervideo=12&t=0'
 			}
 		]
 	},
@@ -148,15 +152,15 @@ var videoLinks = {
 		'links': [
 			{
 				'time': 73,
-				'target': '#hypervideo=2&t=256',
+				'target': '#hypervideo=2&t=256'
 			},
 			{
 				'time': 171,
-				'target': '#hypervideo=6&t=0',
+				'target': '#hypervideo=14&t=29'
 			},
 			{
 				'time': 253,
-				'target': '#hypervideo=4&t=103',
+				'target': '#hypervideo=4&t=103'
 			}
 		]
 	},
@@ -165,15 +169,15 @@ var videoLinks = {
 		'links': [
 			{
 				'time': 200,
-				'target': '#hypervideo=5&t=0',
+				'target': '#hypervideo=5&t=0'
 			},
 			{
 				'time': 282,
-				'target': '#hypervideo=9&t=142',
+				'target': '#hypervideo=9&t=142'
 			},
 			{
 				'time': 341,
-				'target': '#hypervideo=2&t=256',
+				'target': '#hypervideo=2&t=256'
 			}
 		]
 	},
@@ -182,15 +186,15 @@ var videoLinks = {
 		'links': [
 			{
 				'time': 71,
-				'target': '#hypervideo=8&t=0',
+				'target': '#hypervideo=12&t=439'
 			},
 			{
 				'time': 130,
-				'target': '#hypervideo=3&t=0',
+				'target': '#hypervideo=3&t=0'
 			},
 			{
 				'time': 307,
-				'target': '#hypervideo=6&t=57',
+				'target': '#hypervideo=6&t=57'
 			}
 		]
 	},
@@ -199,11 +203,11 @@ var videoLinks = {
 		'links': [
 			{
 				'time': 386,
-				'target': '#hypervideo=2&t=0',
+				'target': '#hypervideo=2&t=0'
 			},
 			{
 				'time': 442,
-				'target': '#hypervideo=9&t=186',
+				'target': '#hypervideo=9&t=186'
 			}
 		]
 	},
@@ -212,21 +216,56 @@ var videoLinks = {
 		'links': [
 			{
 				'time': 180,
-				'target': '#hypervideo=1&t=157',
+				'target': '#hypervideo=1&t=157'
+			},
+			{
+				'time': 264,
+				'target': '#hypervideo=14&t=0'
 			}
 		]
 	},
 	'12': {
 		'duration': 499,
-		'links': []
+		'links': [
+			{
+				'time': 183,
+				'target': '#hypervideo=11&t=102'
+			},
+			{
+				'time': 375,
+				'target': '#hypervideo=8&t=0'
+			},
+			{
+				'time': 474,
+				'target': '#hypervideo=13&t=62'
+			}
+		]
 	},
 	'13': {
 		'duration': 488,
-		'links': []
+		'links': [
+			{
+				'time': 281,
+				'target': '#hypervideo=10&t=38',
+			},
+			{
+				'time': 322,
+				'target': '#hypervideo=11&t=294'
+			}
+		]
 	},
 	'14': {
 		'duration': 161,
-		'links': []
+		'links': [
+			{
+				'time': 78,
+				'target': '#hypervideo=10&t=6'
+			},
+			{
+				'time': 149,
+				'target': '#hypervideo=12&t=193'
+			}
+		]
 	}
 }
 
