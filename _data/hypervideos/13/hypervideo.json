@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1560581055450,
-        "lastchanged": 1560581055450
+        "lastchanged": 1560772146267
     },
     "config": {
         "slidingMode": "adjust",
@@ -58,6 +58,81 @@
         "onEnded": ""
     },
     "customCSS": "",
-    "contents": [],
+    "contents": [
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Jun 17 2019 12:46:08 GMT+0100 (Western European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048176637001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=1.1,6.1&xywh=percent:33.608650177209235,72.97482697860055,30.899107087301083,27.025173021399457"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;September 2004&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+            }
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Jun 17 2019 12:47:24 GMT+0100 (Western European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048176637001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=28.1,40.1&xywh=percent:16.147856032184894,57.64683913311642,67.32671268219806,42.353164358597326"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;Bis zur Schließung des Flughafens, standen täglich Menschen am Flughafenzaun an der Oderstrasse. Manche warteten oft stundenlang auf die immer seltener startenden und landenden Flieger.&lt;br&gt;&lt;br&gt;Was ging in ihnen vor?&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+            }
+        }
+    ],
     "subtitles": []
 }

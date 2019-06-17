@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1560581087482,
-        "lastchanged": 1560581087482
+        "lastchanged": 1560772281068
     },
     "config": {
         "slidingMode": "adjust",
@@ -58,6 +58,44 @@
         "onEnded": ""
     },
     "customCSS": "",
-    "contents": [],
+    "contents": [
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Jun 17 2019 12:50:13 GMT+0100 (Western European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048174388001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=15.1,21.1&xywh=percent:17.265570152420686,69.99999860331451,65.13848183943128,30.000001396685498"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;2017 findet der sog. Mut-Lauf statt.&lt;br&gt;Dies ist ein Lauf für die Entstigmatisierung von Depression und seelischer Erkrankung.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+            }
+        }
+    ],
     "subtitles": []
 }
