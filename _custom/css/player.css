@@ -40,9 +40,13 @@
 }
 
 .layoutArea .contentViewContainer .contentViewContents .customhtmlContainer {
-  padding: 5px 13px;
+  padding: 110px 66px 13px 15px;
   margin: 0;
   max-height: 100%;
+}
+
+.layoutArea .contentViewContainer .contentViewContents .customhtmlContainer td {
+	padding: 4px 10px;
 }
 
 .layoutArea .layoutAreaToggleCloseButton::after {
@@ -75,7 +79,7 @@
     right: 10px;
   }
 
-  .areaLeftContainer[data-size="large"], .areaRightContainer[data-size="large"] {
+  .areaLeftContainer[data-size="large"]:not(.closed), .areaRightContainer[data-size="large"]:not(.closed) {
     flex: 0 0 100%;
   }
   
@@ -458,6 +462,10 @@ body.userinactive #VideoPlayer .titlebar:not(.editActive) {
 .overlayElement .resourceDetail[data-type="image"] img:hover {
 	cursor: pointer;
   	transform: scale(1,1);
+}
+
+.overlayElement .resourceDetail[data-type="image"] img[src="_data/resources/1_1560762493_animation-plane-head.gif"] {
+	transform-origin: right center;
 }
 
 /* TODO: Fix sizing & scaling of overlays; */
