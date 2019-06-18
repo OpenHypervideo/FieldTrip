@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093223024,
-        "lastchanged": 1560160555823
+        "lastchanged": 1560851941460
     },
     "config": {
         "slidingMode": "adjust",
@@ -33,9 +33,8 @@
                         "text": ""
                     },
                     "onClickContentItem": "",
-                    "html": "<h3>Lorem Ipsum</h3>\n<p>Dolor Sit Amet</p>",
-                    "transcriptSource": "",
-                    "initClosed": true
+                    "html": "<table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Ton</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sounddesign</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unseren Protagonisten Paul Ingenbleek</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
+                    "transcriptSource": ""
                 }
             ]
         }
@@ -93,43 +92,6 @@
             },
             "frametrail:events": {
                 "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=2&t=256';\n  }, 3000);\n}, 1000);"
-            },
-            "frametrail:attributes": {}
-        },
-        {
-            "@context": [
-                "http://www.w3.org/ns/anno.jsonld",
-                {
-                    "frametrail": "http://frametrail.org/ns/"
-                }
-            ],
-            "creator": {
-                "nickname": "Joscha",
-                "type": "Person",
-                "id": "1"
-            },
-            "created": "Mon Apr 29 2019 08:43:14 GMT+0100 (Western European Summer Time)",
-            "type": "Annotation",
-            "frametrail:type": "Overlay",
-            "frametrail:tags": [],
-            "target": {
-                "type": "Video",
-                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
-                "selector": {
-                    "conformsTo": "http://www.w3.org/TR/media-frags/",
-                    "type": "FragmentSelector",
-                    "value": "t=171,179&xywh=percent:8.410228680131773,42.33031411596179,25.815451298660474,45.2551263710062"
-                }
-            },
-            "body": {
-                "type": "Image",
-                "frametrail:type": "image",
-                "format": "image/gif",
-                "source": "1_1556093962_animation-immo-schild.gif",
-                "frametrail:name": "Animation Immo-Schild"
-            },
-            "frametrail:events": {
-                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=6&t=0';\n  }, 3000);\n}, 1000);"
             },
             "frametrail:attributes": {}
         },
@@ -206,6 +168,43 @@
             "frametrail:attributes": {
                 "text": "&lt;p style=\"text-align: center;\"&gt;Beim Volksentscheid im Mai 2014 stimmte die Mehrheit&lt;br&gt;gegen eine Bebauung des Tempelhofer Feldes.&lt;br&gt;Das daraufhin verabschiedete “Gesetz zum Erhalt des Tempelhofer Feldes”&lt;br&gt;könnte eines Tages aber auch wieder gekippt werden.&lt;br&gt;Für diesen Fall planen schon heute Architekten.&lt;br&gt;Zum Beispiel Paul Ingenbleek.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
             }
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Jun 18 2019 08:53:47 GMT+0100 (Western European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=171,179&xywh=percent:37.386567153156676,58.52402745995423,30.384229241944194,39.145690079957454"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1560762387_animation-mutlufer.gif",
+                "frametrail:name": "Animation Mutläufer"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=14&t=29';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
         }
     ],
     "subtitles": []

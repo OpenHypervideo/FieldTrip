@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093180218,
-        "lastchanged": 1556629704298
+        "lastchanged": 1560851342127
     },
     "config": {
         "slidingMode": "adjust",
@@ -33,9 +33,8 @@
                         "text": ""
                     },
                     "onClickContentItem": "",
-                    "html": "<h3>Lorem Ipsum</h3>\n<p>Dolor Sit Amet</p>",
-                    "transcriptSource": "",
-                    "initClosed": true
+                    "html": "<table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera</td><td>Emma Rosa Simon, Agnes Pakozdi, Tom Akinleminu</td>\n  </tr>\n  <tr>\n    <td>Ton</td><td>Wolfgang Kick</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Calle Overweg</td>\n  </tr>\n  <tr>\n    <td>O-Ton Schnitt</td><td>Clemens Nürnberg</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unseren Protagonisten Boris Charmatz <br>\n    alle Berlinerinnen und Berliner die wir filmen durften! </td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
+                    "transcriptSource": ""
                 }
             ]
         }
@@ -71,13 +70,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 09:11:01 GMT+0200 (Central European Summer Time)",
+            "created": "Mon Apr 29 2019 08:11:01 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092427_episode-3-boris.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563428001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -108,13 +107,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 09:13:03 GMT+0200 (Central European Summer Time)",
+            "created": "Mon Apr 29 2019 08:13:03 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092427_episode-3-boris.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563428001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -145,13 +144,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 10:22:50 GMT+0200 (Central European Summer Time)",
+            "created": "Tue Apr 30 2019 09:22:50 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092427_episode-3-boris.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563428001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -169,6 +168,43 @@
             "frametrail:attributes": {
                 "text": "&lt;p style=\"text-align: center;\"&gt;Im September 2017 lud die Volksbühne Berlin Boris Charmatz auf das Vorfeld des ehemaligen Flughafens ein.&amp;nbsp; &lt;br&gt;Der Choreograph aus Rennes inszenierte hier “Fous de danse”, eine partizipative Tanzperformance.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
             }
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Jun 18 2019 08:46:47 GMT+0100 (Western European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563428001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=400,408&xywh=percent:18.72224525896935,10.709382849372497,30.899107087301083,46.24332454166369"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1560762346_animation-t-shirt.gif",
+                "frametrail:name": "Animation T-Shirt"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=13&t=108';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
         }
     ],
     "subtitles": [
