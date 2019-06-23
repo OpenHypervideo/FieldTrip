@@ -33603,8 +33603,9 @@ FrameTrail.defineType(
                  */
                 updateTimelineElement: function () {
 
-                    var videoDuration   = FrameTrail.module('HypervideoModel').duration,
-                        positionLeft    = 100 * (this.data.start / videoDuration),
+                    var HypervideoModel = FrameTrail.module('HypervideoModel'),
+                        videoDuration   = HypervideoModel.duration,
+                        positionLeft    = 100 * ((this.data.start - HypervideoModel.offsetIn) / videoDuration),
                         width           = 100 * ((this.data.end - this.data.start) / videoDuration);
 
                     this.timelineElement.css({
@@ -33829,15 +33830,16 @@ FrameTrail.defineType(
                                 }
                             }
 
-                            var videoDuration = FrameTrail.module('HypervideoModel').duration,
+                            var HypervideoModel = FrameTrail.module('HypervideoModel'),
+                                videoDuration = HypervideoModel.duration,
                                 leftPercent   = 100 * (ui.helper.position().left / ui.helper.parent().width()),
                                 widthPercent  = 100 * (ui.helper.width() / ui.helper.parent().width()),
-                                newStartValue = leftPercent * (videoDuration / 100),
-                                newEndValue   = (leftPercent + widthPercent) * (videoDuration / 100);
+                                newStartValue = (leftPercent * (videoDuration / 100)) + HypervideoModel.offsetIn,
+                                newEndValue   = ((leftPercent + widthPercent) * (videoDuration / 100)) + HypervideoModel.offsetIn;
 
                             FrameTrail.module('HypervideoController').currentTime = newStartValue;
                             FrameTrail.module('AnnotationsController').updateControlsStart(newStartValue);
-                            FrameTrail.module('AnnotationsController').updateControlsEnd( newEndValue );
+                            FrameTrail.module('AnnotationsController').updateControlsEnd(newEndValue);
 
                         },
 
@@ -33858,12 +33860,27 @@ FrameTrail.defineType(
                             }
 
 
-                            var videoDuration = FrameTrail.module('HypervideoModel').duration,
+                            var HypervideoModel = FrameTrail.module('HypervideoModel'),
+                                videoDuration = HypervideoModel.duration,
                                 leftPercent   = 100 * (ui.helper.position().left / ui.helper.parent().width()),
                                 widthPercent  = 100 * (ui.helper.width() / ui.helper.parent().width());
 
-                            self.data.start = leftPercent * (videoDuration / 100);
-                            self.data.end   = (leftPercent + widthPercent) * (videoDuration / 100);
+                            self.data.start = (leftPercent * (videoDuration / 100)) + HypervideoModel.offsetIn;
+                            self.data.end   = ((leftPercent + widthPercent) * (videoDuration / 100)) + HypervideoModel.offsetIn;
+
+                            try {
+                                if (TogetherJS && TogetherJS.running && !event.relatedTarget) {
+                                    var elementFinder = TogetherJS.require("elementFinder");
+                                    var location = elementFinder.elementLocation(ui.helper[0]);
+                                    TogetherJS.send({
+                                        type: "simulate-annotation-change", 
+                                        element: location,
+                                        containerElement: '.annotationTimeline',
+                                        startTime: self.data.start,
+                                        endTime: self.data.end
+                                    });
+                                }
+                            } catch (e) {}
 
                             self.updateTimelineElement();
 
@@ -33946,20 +33963,21 @@ FrameTrail.defineType(
                             }
 
 
-                            var videoDuration = FrameTrail.module('HypervideoModel').duration,
+                            var HypervideoModel = FrameTrail.module('HypervideoModel'),
+                                videoDuration = HypervideoModel.duration,
                                 leftPercent   = 100 * (ui.position.left / ui.helper.parent().width()),
                                 widthPercent  = 100 * (ui.helper.width() / ui.helper.parent().width()),
                                 newValue;
 
                             if ( endHandleGrabbed ) {
 
-                                newValue = (leftPercent + widthPercent) * (videoDuration / 100);
+                                newValue = ((leftPercent + widthPercent) * (videoDuration / 100)) + HypervideoModel.offsetIn;
                                 FrameTrail.module('HypervideoController').currentTime = newValue;
                                 FrameTrail.module('AnnotationsController').updateControlsEnd(newValue);
 
                             } else {
 
-                                newValue = leftPercent * (videoDuration / 100);
+                                newValue = (leftPercent * (videoDuration / 100)) + HypervideoModel.offsetIn;
                                 FrameTrail.module('HypervideoController').currentTime = newValue;
                                 FrameTrail.module('AnnotationsController').updateControlsStart(newValue);
 
@@ -33986,14 +34004,29 @@ FrameTrail.defineType(
                             }
 
 
-                            var videoDuration = FrameTrail.module('HypervideoModel').duration,
+                            var HypervideoModel = FrameTrail.module('HypervideoModel'),
+                                videoDuration = HypervideoModel.duration,
                                 leftPercent  = 100 * (ui.helper.position().left / ui.helper.parent().width()),
                                 widthPercent = 100 * (ui.helper.width() / ui.helper.parent().width());
 
 
-                            self.data.start = leftPercent * (videoDuration / 100);
-                            self.data.end   = (leftPercent + widthPercent) * (videoDuration / 100);
+                            self.data.start = (leftPercent * (videoDuration / 100)) + HypervideoModel.offsetIn;
+                            self.data.end   = ((leftPercent + widthPercent) * (videoDuration / 100)) + HypervideoModel.offsetIn;
 
+                            try {
+                                if (TogetherJS && TogetherJS.running && !event.relatedTarget) {
+                                    var elementFinder = TogetherJS.require("elementFinder");
+                                    var location = elementFinder.elementLocation(ui.helper[0]);
+                                    TogetherJS.send({
+                                        type: "simulate-annotation-change", 
+                                        element: location,
+                                        containerElement: '.annotationTimeline',
+                                        startTime: self.data.start,
+                                        endTime: self.data.end
+                                    });
+                                }
+                            } catch (e) {}
+                            
                             FrameTrail.module('AnnotationsController').stackTimelineView();
 
                             FrameTrail.module('HypervideoModel').newUnsavedChange('annotations');
@@ -34094,9 +34127,10 @@ FrameTrail.defineType(
                         +   '</div>'
                     ),
 
-                        timeStart     = this.data.start - FrameTrail.module('HypervideoModel').offsetIn,
-                        timeEnd       = this.data.end - FrameTrail.module('HypervideoModel').offsetOut;
-                        videoDuration   = FrameTrail.module('HypervideoModel').duration,
+                        HypervideoModel = FrameTrail.module('HypervideoModel'),
+                        timeStart       = this.data.start - HypervideoModel.offsetIn,
+                        timeEnd         = this.data.end - HypervideoModel.offsetOut;
+                        videoDuration   = HypervideoModel.duration,
                         positionLeft    = 100 * (timeStart / videoDuration),
                         width           = 100 * ((this.data.end - this.data.start) / videoDuration);
 
@@ -34525,8 +34559,9 @@ FrameTrail.defineType(
                  */
                 updateTimelineElement: function () {
 
-                    var videoDuration   = FrameTrail.module('HypervideoModel').duration,
-                        positionLeft    = 100 * (this.data.start / videoDuration),
+                    var HypervideoModel = FrameTrail.module('HypervideoModel'),
+                        videoDuration   = HypervideoModel.duration,
+                        positionLeft    = 100 * ((this.data.start - HypervideoModel.offsetIn) / videoDuration),
                         width           = 100 * ((this.data.end - this.data.start) / videoDuration);
 
                     this.timelineElement.css({
@@ -34877,11 +34912,12 @@ FrameTrail.defineType(
                                 }
                             }
 
-                            var videoDuration = FrameTrail.module('HypervideoModel').duration,
+                            var HypervideoModel = FrameTrail.module('HypervideoModel'),
+                                videoDuration = HypervideoModel.duration,
                                 leftPercent   = 100 * (ui.helper.position().left / ui.helper.parent().width()),
                                 widthPercent  = 100 * (ui.helper.width() / ui.helper.parent().width()),
-                                newStartValue = leftPercent * (videoDuration / 100),
-                                newEndValue   = (leftPercent + widthPercent) * (videoDuration / 100);
+                                newStartValue = (leftPercent * (videoDuration / 100)) + HypervideoModel.offsetIn,
+                                newEndValue   = ((leftPercent + widthPercent) * (videoDuration / 100)) + HypervideoModel.offsetIn;
 
                             FrameTrail.module('HypervideoController').currentTime = newStartValue;
                             FrameTrail.module('OverlaysController').updateControlsStart(newStartValue);
@@ -34905,12 +34941,13 @@ FrameTrail.defineType(
                             }
 
 
-                            var videoDuration = FrameTrail.module('HypervideoModel').duration,
+                            var HypervideoModel = FrameTrail.module('HypervideoModel'),
+                                videoDuration = HypervideoModel.duration,
                                 leftPercent   = 100 * (ui.helper.position().left / ui.helper.parent().width()),
                                 widthPercent  = 100 * (ui.helper.width() / ui.helper.parent().width());
 
-                            self.data.start = leftPercent * (videoDuration / 100);
-                            self.data.end   = (leftPercent + widthPercent) * (videoDuration / 100);
+                            self.data.start = (leftPercent * (videoDuration / 100)) + HypervideoModel.offsetIn;
+                            self.data.end   = ((leftPercent + widthPercent) * (videoDuration / 100)) + HypervideoModel.offsetIn;
 
                             self.updateTimelineElement();
 
@@ -34976,20 +35013,21 @@ FrameTrail.defineType(
                             }
 
 
-                            var videoDuration = FrameTrail.module('HypervideoModel').duration,
+                            var HypervideoModel = FrameTrail.module('HypervideoModel'),
+                                videoDuration = HypervideoModel.duration,
                                 leftPercent   = 100 * (ui.position.left / ui.helper.parent().width()),
                                 widthPercent  = 100 * (ui.helper.width() / ui.helper.parent().width()),
                                 newValue;
 
                             if ( endHandleGrabbed ) {
 
-                                newValue = (leftPercent + widthPercent) * (videoDuration / 100);
+                                newValue = ((leftPercent + widthPercent) * (videoDuration / 100)) + HypervideoModel.offsetIn;
                                 FrameTrail.module('HypervideoController').currentTime = newValue;
                                 FrameTrail.module('OverlaysController').updateControlsEnd( newValue );
 
                             } else {
 
-                                newValue = leftPercent * (videoDuration / 100);
+                                newValue = (leftPercent * (videoDuration / 100)) + HypervideoModel.offsetIn;
                                 FrameTrail.module('HypervideoController').currentTime = newValue;
                                 FrameTrail.module('OverlaysController').updateControlsStart(newValue);
 
@@ -35017,13 +35055,14 @@ FrameTrail.defineType(
                             }
 
 
-                            var videoDuration = FrameTrail.module('HypervideoModel').duration,
+                            var HypervideoModel = FrameTrail.module('HypervideoModel'),
+                                videoDuration = HypervideoModel.duration,
                                 leftPercent  = 100 * (ui.helper.position().left / ui.helper.parent().width()),
                                 widthPercent = 100 * (ui.helper.width() / ui.helper.parent().width());
 
 
-                            self.data.start = leftPercent * (videoDuration / 100);
-                            self.data.end   = (leftPercent + widthPercent) * (videoDuration / 100);
+                            self.data.start = (leftPercent * (videoDuration / 100)) + HypervideoModel.offsetIn;
+                            self.data.end   = ((leftPercent + widthPercent) * (videoDuration / 100)) + HypervideoModel.offsetIn;
 
                             FrameTrail.module('OverlaysController').stackTimelineView();
 
@@ -35284,6 +35323,18 @@ FrameTrail.defineType(
                             height: 400,
                             modal: true,
                             close: function() {
+                                
+                                try {
+                                    if (TogetherJS && TogetherJS.running) {
+                                        var elementFinder = TogetherJS.require("elementFinder");
+                                        var location = elementFinder.elementLocation($(this)[0]);
+                                        TogetherJS.send({
+                                            type: "simulate-dialog-close", 
+                                            element: location
+                                        });
+                                    }
+                                } catch (e) {}
+
                                 $(this).dialog('close');
                                 $(this).remove();
                                 animationDiv.animate({
@@ -36102,6 +36153,17 @@ FrameTrail.defineType(
 
                     controlsContainer.find('.deleteAnnotation').click(function(){
 
+                        try {
+                            if (TogetherJS && TogetherJS.running) {
+                                var elementFinder = TogetherJS.require("elementFinder");
+                                var location = elementFinder.elementLocation($(this)[0]);
+                                TogetherJS.send({
+                                    type: "simulate-special-click", 
+                                    element: location
+                                });
+                            }
+                        } catch (e) {}
+                        
                         FrameTrail.module('AnnotationsController').deleteAnnotation(annotation);
 
                     });
@@ -36491,23 +36553,27 @@ FrameTrail.defineType(
 
                 	var resourceDetail = $('<div class="resourceDetail" data-type="'+ this.resourceData.type +'"></div>');
 
-                    var iFrameSource = (this.resourceData.src.indexOf('//') != -1) ? this.resourceData.src.replace('http:', '') : FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src),
-                        pdfjsViewerPathPrefix = (this.resourceData.src.indexOf('//') != -1) ? '' : '../../../';
+                    var documentSource = (this.resourceData.src.indexOf('//') != -1) ? this.resourceData.src.replace('http:', '') : FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src);
 
-                    if ( iFrameSource.substr( (iFrameSource.lastIndexOf('.') +1) ) == 'pdf' ) {
-                        iFrameSource = '_lib/pdfjs/web/viewer.html?file='+ pdfjsViewerPathPrefix + iFrameSource;
-                    }
+                    var pdfDocument = $(
+                        '<object'
+                    +   ' data="'+ documentSource +'"'
+                    +   ' type="application/pdf"'
+                    +   ' width="100%"'
+                    +   ' height="100%">'
+                    +   ' <iframe webkitAllowFullScreen mozallowfullscreen allowFullScreen '
+                    +   ' src="'+ documentSource +'"'
+                    +   ' width="100%"'
+                    +   ' height="100%"'
+                    +   ' sandbox="allow-same-origin allow-scripts allow-popups allow-forms"'
+                    +   ' frameborder="0"'
+                    +   ' style="border: none;">'
+                    +   ' <p>Your browser does not support PDFs.'
+                    +   ' <a href="'+ documentSource +'">Download the PDF</a>.</p>'
+                    +   ' </iframe>'
+                    +   '</object>');
 
-                    var iFrame = $(
-                            '<iframe frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen src="'
-                        +   iFrameSource
-                        +   '" sandbox="allow-same-origin allow-scripts allow-popups allow-forms">'
-                        +    '</iframe>'
-                    ).bind('error, message', function() {
-                        return true;
-                    });
-
-                    resourceDetail.append(iFrame);
+                    resourceDetail.append(pdfDocument);
 
                     resourceDetail.append('<div class="licenseInformation">'+ this.resourceData.licenseType +' - '+ this.resourceData.licenseAttribution +'</div>');
 
@@ -37152,23 +37218,36 @@ FrameTrail.defineType(
 
                 	var resourceDetail = $('<div class="resourceDetail" data-type="'+ this.resourceData.type +'"></div>');
 
-                    var iFrameSource = (this.resourceData.src.indexOf('//') != -1) ? this.resourceData.src/*.replace('http:', '')*/ : FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src),
-                        pdfjsViewerPathPrefix = (this.resourceData.src.indexOf('//') != -1) ? '' : '../../';
+                    if (this.resourceData.attributes.embed && this.resourceData.attributes.embed == 'forbidden') {
 
-                    if ( iFrameSource.substr( (iFrameSource.lastIndexOf('.') +1) ) == 'pdf' ) {
-                        iFrameSource = '_lib/pdfjs/web/viewer.html?file='+ pdfjsViewerPathPrefix + iFrameSource;
+                        var thumbSource = (this.resourceData.thumb) ? this.resourceData.thumb : '';
+                        
+                        var embedFallback = $(
+                                '<div class="embedFallback">'
+                            +   '    <div class="resourceDetailPreviewTitle">'+ this.resourceData.name +'</div>'
+                            +   '    <img class="resourceDetailPreviewThumb" src="'+ thumbSource +'"/>'
+                            +   '</div>'
+                        );
+
+                        resourceDetail.append(embedFallback);
+
+                    } else {
+
+                        var iFrameSource = (this.resourceData.src.indexOf('//') != -1) ? this.resourceData.src/*.replace('http:', '')*/ : FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src);
+
+                        var iFrame = $(
+                                '<iframe frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen src="'
+                            +   iFrameSource
+                            +   '" sandbox="allow-same-origin allow-scripts allow-popups allow-forms">'
+                            +    '</iframe>'
+                        ).bind('error, message', function() {
+                            return true;
+                        });
+
+                        resourceDetail.append(iFrame);
+
                     }
-
-                    var iFrame = $(
-                            '<iframe frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen src="'
-                        +   iFrameSource
-                        +   '" sandbox="allow-same-origin allow-scripts allow-popups allow-forms">'
-                        +    '</iframe>'
-                    ).bind('error, message', function() {
-                        return true;
-                    });
-
-                    resourceDetail.append(iFrame);
+                    
 
                     return resourceDetail;
 
@@ -38599,8 +38678,9 @@ FrameTrail.defineType(
                  */
                 updateTimelineElement: function () {
 
-                    var videoDuration   = FrameTrail.module('HypervideoModel').duration,
-                        positionLeft    = 100 * (this.data.start / videoDuration);
+                    var HypervideoModel = FrameTrail.module('HypervideoModel'),
+                        videoDuration   = HypervideoModel.duration,
+                        positionLeft    = 100 * ((this.data.start - HypervideoModel.offsetIn) / videoDuration);
 
                     this.timelineElement.css({
                         top: '',
@@ -38756,9 +38836,10 @@ FrameTrail.defineType(
                                 }
                             }
 
-                            var videoDuration = FrameTrail.module('HypervideoModel').duration,
+                            var HypervideoModel = FrameTrail.module('HypervideoModel'),
+                                videoDuration = HypervideoModel.duration,
                                 leftPercent   = 100 * (ui.helper.position().left / ui.helper.parent().width()),
-                                newStartValue = leftPercent * (videoDuration / 100);
+                                newStartValue = (leftPercent * (videoDuration / 100)) + HypervideoModel.offsetIn;
 
                             FrameTrail.module('HypervideoController').currentTime = newStartValue;
 
@@ -38779,10 +38860,11 @@ FrameTrail.defineType(
                             }
 
 
-                            var videoDuration = FrameTrail.module('HypervideoModel').duration,
+                            var HypervideoModel = FrameTrail.module('HypervideoModel'),
+                                videoDuration = HypervideoModel.duration,
                                 leftPercent   = 100 * (ui.helper.position().left / ui.helper.parent().width());
 
-                            self.data.start = leftPercent * (videoDuration / 100);
+                            self.data.start = (leftPercent * (videoDuration / 100)) + HypervideoModel.offsetIn;
 
                             self.updateTimelineElement();
 
@@ -38930,6 +39012,7 @@ FrameTrail.defineType(
                 contentViewData.transcriptSource       = contentViewData.transcriptSource || "";
                 contentViewData.contentSize            = contentViewData.contentSize || "small";
                 contentViewData.onClickContentItem     = contentViewData.onClickContentItem || "";
+                contentViewData.initClosed             = contentViewData.initClosed || false;
 
                 this.contentViewData = contentViewData;
 
@@ -38961,6 +39044,10 @@ FrameTrail.defineType(
 
                     self.contentViewContainer.attr('data-type', self.contentViewData.type);
                     self.contentViewContainer.attr('data-size', self.contentViewData.contentSize);
+
+                    if (self.contentViewData.initClosed) {
+                        self.getLayoutAreaContainer().addClass('closed');
+                    }
 
                     switch (this.contentViewData.type) {
 
@@ -40046,7 +40133,7 @@ FrameTrail.defineType(
 
                         startTime   = annotations[i].data.start;
                         endTime     = annotations[i].data.end;
-                        middleTime  = startTime + ( (endTime-startTime)/2 );
+                        middleTime  = (startTime + ( (endTime-startTime)/2 )) - FrameTrail.module('HypervideoModel').offsetIn;
 
                         desiredPosition = ( (sliderParent.width() / videoDuration) * middleTime ) - ( thisElement.width()/2 );
                         //console.log(desiredPosition);
@@ -40139,7 +40226,7 @@ FrameTrail.defineType(
 
                             groupStartTime  = parseInt(groupCollection.eq(0).attr('data-in'));
                             groupEndTime    = parseInt(groupCollection.eq(groupCollection.length-1).attr('data-out'));
-                            groupMiddleTime = groupStartTime + ( (groupEndTime-groupStartTime)/2 );
+                            groupMiddleTime = (groupStartTime + ( (groupEndTime-groupStartTime)/2 )) - FrameTrail.module('HypervideoModel').offsetIn;
 
                             desiredGroupPosition = ( (sliderParent.width() / videoDuration) * groupMiddleTime ) - ( totalWidth/2 );
 
@@ -42257,6 +42344,7 @@ FrameTrail.defineType(
         		"slidingTrigger": hypervideos[thisHypervideoID].config.slidingTrigger,
         		"autohideControls": hypervideos[thisHypervideoID].config.autohideControls,
         		"captionsVisible": hypervideos[thisHypervideoID].config.captionsVisible,
+                "clipTimeVisible": hypervideos[thisHypervideoID].config.clipTimeVisible,
         		"hidden": hypervideos[thisHypervideoID].hidden,
                 "layoutArea": FrameTrail.module('ViewLayout').getLayoutAreaData()
         	},
@@ -43184,7 +43272,8 @@ FrameTrail.defineType(
 FrameTrail.defineModule('ResourceManager', function(FrameTrail){
 
 	var maxUploadBytes,
-        tmpObj;
+        tmpObj,
+        previewXHR;
 
 
 
@@ -43201,8 +43290,14 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
 
 
 	//Check for valid URL
-    $(document).on('paste blur keyup', '#resourceInputTabURL input', function(evt) {
-        checkResourceInput( this.value, $('.resourceNameInput')[0].value );
+    var previewTimeout = null;
+    $(document).on('change paste keyup', '#resourceInputTabURL input', function(evt) {
+        clearTimeout(previewTimeout);
+        previewTimeout = setTimeout(function() {
+            $('#resourceInputTabURL .resourceURLPreview').empty();
+            $('.resourceInput[name="thumbnail"]').val('');
+            checkResourceInput( $('#resourceInputTabURL input')[0].value, $('.resourceNameInput')[0].value );
+        }, 800);
         evt.stopPropagation();
     });
 
@@ -43213,6 +43308,7 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
         } else {
             $('.newResourceConfirm').button('disable');
         }
+        $('.resourceURLPreview .resourceTitle').text($(this).val());
         evt.stopPropagation();
     });
 
@@ -43252,6 +43348,10 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
                                         + '            <div id="resourceInputTabURL">'
                                         + '                <div class="resourceInputMessage message active">Paste any URL (eg. http://example.com).<br>Some types will be detected automatically (ie. Image, Wikipedia, Youtube, Vimeo).</div>'
                                         + '                <input type="text" name="url" placeholder="URL" class="resourceInput">'
+                                        + '                <input type="hidden" name="thumbnail" class="resourceInput">'
+                                        + '                <input type="hidden" name="embed" class="resourceInput">'
+                                        + '                <div class="corsWarning message warning">The site owner does not allow this URL to be embedded in other pages (Same Origin Policy). This means it can not be shown inside FrameTrail. </div>'
+                                        + '                <div class="resourceURLPreview"></div>'
                                         + '            </div>'
                                         + '            <div id="resourceInputTabImage">'
                                         + '                <div class="message active">Add image file in the format <b>jpg, jpeg, gif, png</b>. Maximum File Size: <b>3 MB</b></div>'
@@ -43379,12 +43479,14 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
                         url:        '_server/ajaxServer.php',
                         beforeSerialize: function() {
 
+                            if (previewXHR) { previewXHR.abort() };
+
                             uploadDialog.find('.message.error').remove();
 
                             var tmpType = uploadDialog.find('.nameInputContainer input[name="type"]').val();
 
                             if (tmpType == 'url') {
-                                tmpObj = checkResourceInput( uploadDialog.find('.resourceInput').val(), uploadDialog.find('.resourceNameInput').val() );
+                                tmpObj = checkResourceInput( uploadDialog.find('.resourceInput').val(), uploadDialog.find('.resourceNameInput').val(), uploadDialog.find('.resourceInput[name="thumbnail"]').val() );
                                 uploadDialog.find('.nameInputContainer input[name="attributes"]').val(JSON.stringify(tmpObj));
                                 tmpObj = [];
                             }
@@ -43667,6 +43769,7 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
                         height: 'auto',
                         modal: true,
                         close: function() {
+                            if (previewXHR) { previewXHR.abort() };
                             $(this).dialog('close');
                             //$(this).find('.uploadForm').resetForm();
                             $(this).remove();
@@ -43677,7 +43780,7 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
                                 class: 'newResourceConfirm',
                                 text: 'Add Resource',
                                 click: function() {
-                                    //addResource( checkResourceInput( $('.resourceInput')[0].value, $('.resourceNameInput')[0].value ) );
+                                    if (previewXHR) { previewXHR.abort() };
                                     $('.uploadForm').submit();
                                 }
                             },
@@ -43721,9 +43824,10 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
      * @method checkResourceInput
      * @param {String} uriValue
      * @param {String} nameValue
+     * @param {String} thumbValue
      * @return
      */
-    function checkResourceInput(uriValue, nameValue) {
+    function checkResourceInput(uriValue, nameValue, thumbValue) {
 
         if ( uriValue.length > 3 ) {
 
@@ -43732,10 +43836,11 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
             var checkers = [
                 function (src, name) {
                     // Wikipedia
+                    var thumbSrc = (thumbValue) ? thumbValue : null;
                     var res = /wikipedia\.org\/wiki\//.exec(src);
 
                     if (res !== null) {
-                        return createResource(src, "wikipedia", name);
+                        return createResource(src, "wikipedia", name, thumbSrc);
                     }
                     return null;
                 },
@@ -43749,11 +43854,13 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
                     for (var i in yt_list) {
                         var res = yt_list[i].exec(src);
                         if (res !== null) {
-                            return createResource("//www.youtube.com/embed/" + res[1],
+                            var timeCode = /t=([0-9]*)/.exec(src),
+                                tcString = (timeCode) ? '?start=' + timeCode[1] : '';
+                            return createResource("//www.youtube.com/embed/" + res[1] + tcString,
                                                    "youtube", name, "http://img.youtube.com/vi/" + res[1] + "/2.jpg");
                         }
-                        return null;
                     }
+                    return null;
                 },
                 function (src, name) {
                     // Vimeo
@@ -43814,7 +43921,7 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
                 function (src, name) {
                     // Video
                     if (/\.(mp4)$/i.exec(src)) {
-                        return createResource(src, "video", name, src);
+                        return createResource(src, "video", name);
                     } else {
                         // We should do a HEAD request and check the
                         // content-type but it is not possible to do sync
@@ -43826,8 +43933,9 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
                 },
                 function (src, name) {
                     // Audio
+                    var thumbSrc = (thumbValue) ? thumbValue : null;
                     if (/\.(mp3)$/i.exec(src)) {
-                        return createResource(src, "audio", name, src);
+                        return createResource(src, "audio", name, thumbSrc);
                     } else {
                         // We should do a HEAD request and check the
                         // content-type but it is not possible to do sync
@@ -43839,8 +43947,9 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
                 },
                 function (src, name) {
                     // PDF
-                    if (/\.(pdf)$/i.exec(src)) {
-                        return createResource(src, "pdf", name, src);
+                    var thumbSrc = (thumbValue) ? thumbValue : null;
+                    if (/\.(pdf)/i.exec(src)) {
+                        return createResource(src, "pdf", name, thumbSrc);
                     } else {
                         // We should do a HEAD request and check the
                         // content-type but it is not possible to do sync
@@ -43852,8 +43961,9 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
                 },
                 function (src, name) {
                     // Default fallback, will work for any URL
+                    var thumbSrc = (thumbValue) ? thumbValue : null;
                     if (/(http|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])/.exec(src)) {
-                        var r = createResource(src, "webpage", name);
+                        var r = createResource(src, "webpage", name, thumbSrc);
                             //r.thumb = "http://immediatenet.com/t/l3?Size=1024x768&URL="+src;
                         return r;
                     }
@@ -43865,10 +43975,11 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
                 newResource = checkers[i](uriValue, nameValue);
                 if (newResource !== null) {
                     $('.resourceInputMessage').attr('class', 'resourceInputMessage message active success').text('Valid '+ newResource.type +' URL' );
+                    renderWebsitePreview(uriValue, newResource.type, newResource);
                     return newResource;
                     break;
                 } else {
-                    $('.resourceInputMessage').attr('class', 'resourceInputMessage message active error').text('Not a valid URL (try adding http://)');
+                    $('.resourceInputMessage').attr('class', 'resourceInputMessage message active error').text('Not a valid URL (try adding https://)');
                 }
             }
 
@@ -43879,6 +43990,108 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
     }
 
 
+
+
+    /**
+     * I render a preview of a resource
+     * @method renderWebsitePreview
+     * @param {String} uriValue
+     * @param {String} resourceType
+     * @param {Object} resourceObj (optional)
+     * @return
+     */
+    function renderWebsitePreview(uriValue, resourceType, resourceObj) {
+
+        $('#resourceInputTabURL .resourceURLPreview').empty();
+        $('.resourceInput[name="thumbnail"]').val('');
+        $('.resourceInput[name="embed"]').val('');
+        $('.uploadForm .corsWarning').removeClass('active');
+
+        $('#resourceInputTabURL .resourceURLPreview').append('<div class="workingSpinner dark"></div>');
+
+        if ( uriValue.length > 3 ) {
+
+            if (previewXHR) { previewXHR.abort(); }
+
+            if (resourceType == 'webpage' || resourceType == 'wikipedia') {
+                previewXHR = $.ajax({
+                    type:   'POST',
+                    url:    '_server/ajaxServer.php',
+                    cache:  false,
+                    data: {
+                        a:          'fileGetUrlInfo',
+                        url: uriValue
+                    }
+                }).done(function(data) {
+
+                    //console.log(data);
+                    if (data.code == 0) {
+                        if (data.urlInfo.image == 'https://en.wikipedia.org/static/apple-touch/wikipedia.png') {
+                            data.urlInfo.image = null;
+                        }
+                        if (!data.urlInfo.title) {
+                            data.urlInfo.title = '';
+                        }
+                        if (!data.urlInfo.description) {
+                            data.urlInfo.description = '';
+                        }
+                        renderResourcePreviewElement(resourceType, data.urlInfo.title, data.urlInfo.image, data.urlInfo.description, data.embed);
+                    } else if (data.code == 1) {
+                        console.log(data.string);
+                    }
+
+                });
+            } else {
+                renderResourcePreviewElement(resourceType, resourceObj.name, resourceObj.description, resourceObj.thumb);
+            }
+            
+
+        } else {
+            // uri value length <= 3
+        }
+
+    }
+
+    /**
+     * I render the actual preview element
+     * @method renderResourcePreviewElement
+     * @param {String} resourceType
+     * @param {String} resourceTitle
+     * @param {String} resourceThumb
+     * @param {String} resourceDescription
+     * @param {String} embed (optional)
+     * @return
+     */
+    function renderResourcePreviewElement(resourceType, resourceTitle, resourceThumb, resourceDescription, embed) {
+        $('.resourceInput[name="thumbnail"]').val(resourceThumb);
+        $('.resourceInput[name="embed"]').val(embed);
+
+        if ($('.resourceNameInput').val().length < 3 && 
+            resourceTitle != 'YouTube') {
+            $('.resourceNameInput').val(resourceTitle);
+            $('.resourceNameInput').trigger('change');
+        }
+        
+        var previewTitle = ($('.resourceNameInput').val().length > 3) ? $('.resourceNameInput').val() : resourceTitle;
+        var previewImageString = (resourceThumb) ? 'background-image:url('+ resourceThumb +')' : '';
+        
+        var previewElem = $('<div class="resourceThumb" data-type="'+ resourceType +'" style="'+ previewImageString +'">'
+                           +'    <div class="resourceOverlay">'
+                           +'    </div>'
+                           +'    <div class="resourceTitle">'+ previewTitle +'</div>'
+                           +'</div>');
+        
+        $('#resourceInputTabURL .resourceURLPreview .resourceThumb').remove();
+        $('#resourceInputTabURL .resourceURLPreview').append(previewElem);
+
+        if (embed && embed == 'forbidden') {
+            $('.uploadForm .corsWarning').addClass('active');
+        } else {
+            $('.uploadForm .corsWarning').removeClass('active');
+        }
+
+        $('#resourceInputTabURL .resourceURLPreview .workingSpinner').remove();
+    }
 
 
     /**
@@ -43899,10 +44112,13 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
         r.name = name;
         if (! r.name) {
             // Use the url basename.
-            r.name = src.substring(src.lastIndexOf('/') + 1).replace(/_/g, " ").replace(/-/g, " ");
+            r.name = src.replace(/^(\w+:)?\/\/([^\/]+\/?).*$/,'$2').replace(/www./g, "").replace(/_/g, " ").replace(/-/g, " ").replace(/\//g, "");
         }
         r.thumb = thumb;
         r.attributes = {};
+        if ($('.resourceInput[name="embed"]').val() == 'forbidden') {
+            r.attributes['embed'] = 'forbidden';
+        }
         return r;
     }
 
@@ -44830,6 +45046,27 @@ FrameTrail.defineModule('UserManagement', function(FrameTrail){
 						resizable: false,
 						modal: true,
 						close: function() {
+							
+							try {
+								if (TogetherJS && TogetherJS.running) {
+	                                var elementFinder = TogetherJS.require("elementFinder");
+	                                var location = elementFinder.elementLocation($(this)[0]);
+	                                TogetherJS.send({
+	                                    type: "simulate-dialog-close", 
+	                                    element: location
+	                                });
+	                          	}
+	                        } catch (e) {}
+
+							FrameTrail.triggerEvent('userAction', {
+								action: 'UserLogout'
+							});
+
+							if (FrameTrail.module('Database').config.alwaysForceLogin) {
+								FrameTrail.module('InterfaceModal').hideMessage();
+								FrameTrail.module('UserManagement').ensureAuthenticated(function() {}, function() {}, true);
+							}
+
 							loggedOutDialog.remove();
 							/*
 							window.setTimeout(function() {
@@ -44839,15 +45076,6 @@ FrameTrail.defineModule('UserManagement', function(FrameTrail){
 						},
 						buttons: {
 							"OK": function() {
-								FrameTrail.triggerEvent('userAction', {
-									action: 'UserLogout'
-								});
-
-								if (FrameTrail.module('Database').config.alwaysForceLogin) {
-									FrameTrail.module('InterfaceModal').hideMessage();
-									FrameTrail.module('UserManagement').ensureAuthenticated(function() {}, function() {}, true);
-								}
-
 								$( this ).dialog( "close" );
 							}
 						}
@@ -45115,16 +45343,16 @@ FrameTrail.defineModule('ViewResources', function(FrameTrail){
                         +  '        <div style="clear: both;"></div>'
                         +  '    </div>'
                         +  '    <div class="resourcesFilter">'
-                        +  '        <input name="ResourceFilterType" type="radio" value="ALL" checked>All Types</input>'
-                        +  '        <input name="ResourceFilterType" type="radio" value="video">Video</input>'
-                        +  '        <input name="ResourceFilterType" type="radio" value="image">Image</input>'
-                        +  '        <input name="ResourceFilterType" type="radio" value="pdf">PDF</input>'
-                        +  '        <input name="ResourceFilterType" type="radio" value="audio">Audio</input>'
-                        +  '        <input name="ResourceFilterType" type="radio" value="webpage">Webpage</input>'
-                        +  '        <input name="ResourceFilterType" type="radio" value="location">Location</input>'
-                        +  '        <input name="ResourceFilterType" type="radio" value="wikipedia">Wikipedia</input>'
-                        +  '        <input name="ResourceFilterType" type="radio" value="youtube">Youtube</input>'
-                        +  '        <input name="ResourceFilterType" type="radio" value="vimeo">Vimeo</input>'
+                        +  '        <input id="cbAll" name="ResourceFilterType" type="radio" value="ALL" checked /><label for="cbAll">All Types</label>'
+                        +  '        <input id="cbVideo" name="ResourceFilterType" type="radio" value="video" /><label for="cbVideo">Video</label>'
+                        +  '        <input id="cbImage" name="ResourceFilterType" type="radio" value="image" /><label for="cbImage">Image</label>'
+                        +  '        <input id="cbPDF" name="ResourceFilterType" type="radio" value="pdf" /><label for="cbPDF">PDF</label>'
+                        +  '        <input id="cbAudio" name="ResourceFilterType" type="radio" value="audio" /><label for="cbAudio">Audio</label>'
+                        +  '        <input id="cbWebpage" name="ResourceFilterType" type="radio" value="webpage" /><label for="cbWebpage">Webpage</label>'
+                        +  '        <input id="cbLocation" name="ResourceFilterType" type="radio" value="location" /><label for="cbLocation">Location</label>'
+                        +  '        <input id="cbWikipedia" name="ResourceFilterType" type="radio" value="wikipedia" /><label for="cbWikipedia">Wikipedia</label>'
+                        +  '        <input id="cbYoutube" name="ResourceFilterType" type="radio" value="youtube" /><label for="cbYoutube">Youtube</label>'
+                        +  '        <input id="cbVimeo" name="ResourceFilterType" type="radio" value="vimeo" /><label for="cbVimeo">Vimeo</label>'
                         +  '    </div>'
                         +  '    <div class="resourcesList"></div>'
                         +  '</div>'),
@@ -45446,9 +45674,12 @@ FrameTrail.defineModule('ViewResources', function(FrameTrail){
      */
     function appendTitlebar() {
 
-        var titlebar = $(  '<div class="titlebar">Resource Manager'
-                         + '    <button type="button" class="startEditButton" data-tooltip-bottom-left="Edit"><span class="icon-edit"></span></button>'
-                         + '    <button type="button" class="logoutButton" data-tooltip-bottom-right="Logout"><span class="icon-logout"></span></button>'
+        var titlebar = $(  '<div class="titlebar">'
+                         + '    <div class="titlebarTitle">Resource Manager</div>'
+                         + '    <div class="titlebarActionButtonContainer">'
+                         + '        <button type="button" class="startEditButton" data-tooltip-bottom-left="Edit"><span class="icon-edit"></span></button>'
+                         + '        <button type="button" class="logoutButton" data-tooltip-bottom-right="Logout"><span class="icon-logout"></span></button>'
+                         + '    </div>'
                          + '</div>');
 
         titlebar.appendTo($(FrameTrail.getState('target')));
@@ -45567,7 +45798,8 @@ FrameTrail.defineModule('RouteNavigation', function(FrameTrail){
 	 */
 	function getResourceURL(src) {
 
-		if (/^https?:/.exec(src)) {
+		//if (/^https?:/.exec(src)) {
+		if (/^https?:/.exec(src) || /^\/\//.exec(src) || /^file:/.exec(src)) {
 
 	        return src;
 
@@ -46666,6 +46898,11 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
 
         }
 
+        // just to be sure
+        window.setTimeout(function() {
+            stackTimelineView();
+        }, 500);
+
     }
 
 
@@ -46782,6 +47019,19 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
 
                 drop: function( event, ui ) {
 
+                    //console.log(ui);
+                    try {
+                        if (TogetherJS && TogetherJS.running && !event.relatedTarget) {
+                            var elementFinder = TogetherJS.require("elementFinder");
+                            var location = elementFinder.elementLocation(ui.draggable[0]);
+                            TogetherJS.send({
+                                type: "simulate-annotation-add", 
+                                element: location,
+                                containerElement: '.annotationTimeline'
+                            });
+                        }
+                    } catch (e) {}
+                    
                     var resourceID      = ui.helper.attr('data-resourceID'),
                         videoDuration   = FrameTrail.module('HypervideoModel').duration,
                         startTime,
@@ -46929,9 +47179,21 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
                     var currentAspectID = annotationCollection[anno].data[filterAspect];
                     break;
                 case 'annotationType':
-                    var currentAspectID = (annotationCollection[anno].data.source.url.body) ? annotationCollection[anno].data.source.url.body[filterAspect]: null;
+                    var currentAspectID;
+                    if (annotationCollection[anno].data.source.url.body) {
+                        if (Array.isArray(annotationCollection[anno].data.source.url.body)) {
+                            currentAspectID = annotationCollection[anno].data.source.url.body[0][filterAspect];
+                        } else {
+                            currentAspectID = annotationCollection[anno].data.source.url.body[filterAspect] ;
+                        }
+                        
+                    } else {
+                        currentAspectID = null;
+                    } 
                     break;
             }
+
+            //console.log(currentAspectID);
 
             if (!currentAspectID) {
                 return;
@@ -49539,7 +49801,9 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 			initVideo(
 				function(){
 
-					HypervideoModel.duration = videoElement.duration;
+					HypervideoModel.offsetOut = (HypervideoModel.offsetOut) ? HypervideoModel.offsetOut : videoElement.duration;
+					HypervideoModel.durationFull = videoElement.duration;
+					HypervideoModel.duration = HypervideoModel.offsetOut - HypervideoModel.offsetIn;
 
 					if (update) {
 						AnnotationsController.updateController();
@@ -49571,7 +49835,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 					if (RouteNavigation.hashTime) {
 						setCurrentTime(RouteNavigation.hashTime);
 					} else {
-						setCurrentTime(0);
+						setCurrentTime(HypervideoModel.offsetIn);
 					}
 
 					FrameTrail.changeState('viewSize', FrameTrail.getState('viewSize'));
@@ -49587,6 +49851,10 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 			highPriorityUpdater = highPriorityUpdater_NullVideo;
 			lowPriorityUpdater  = lowPriorityUpdater_NullVideo;
 
+			HypervideoModel.offsetOut = (HypervideoModel.offsetOut) ? HypervideoModel.offsetOut : HypervideoModel.duration;
+			HypervideoModel.durationFull = HypervideoModel.duration;
+			HypervideoModel.duration = HypervideoModel.offsetOut - HypervideoModel.offsetIn;		
+			
 			if (update) {
 				AnnotationsController.updateController();
 			} else {
@@ -49617,7 +49885,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 			if (RouteNavigation.hashTime) {
 				setCurrentTime(RouteNavigation.hashTime);
 			} else {
-				setCurrentTime(0);
+				setCurrentTime(HypervideoModel.offsetIn);
 			}
 
 			FrameTrail.changeState('viewSize', FrameTrail.getState('viewSize'));
@@ -49732,6 +50000,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 	function initProgressBar() {
 
 		ViewVideo.duration = formatTime(HypervideoModel.duration);
+		ViewVideo.durationFull = formatTime(HypervideoModel.durationFull, true);
 
 		ViewVideo.PlayerProgress.slider({
 			value: 0,
@@ -49756,7 +50025,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 					},
 
 			slide:  function(evt, ui) {
-						setCurrentTime(ui.value);
+						setCurrentTime(HypervideoModel.offsetIn+ui.value);
 					},
 
 			start: 	function(evt, ui) {
@@ -49764,7 +50033,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 					},
 
 			stop: 	function(evt, ui) {
-						setCurrentTime(ui.value);
+						setCurrentTime(HypervideoModel.offsetIn+ui.value);
 
 						FrameTrail.triggerEvent('userAction', {
 							action: 'VideoJumpTime',
@@ -49839,7 +50108,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 		currentTime = videoElement.currentTime;
 
 		if (ViewVideo.PlayerProgress.data('ui-slider')) {
-			ViewVideo.PlayerProgress.slider('value', currentTime);
+			ViewVideo.PlayerProgress.slider('value', currentTime-HypervideoModel.offsetIn);
 		}
 
 		FrameTrail.triggerEvent('timeupdate', {});
@@ -49865,7 +50134,11 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 	 */
 	function lowPriorityUpdater_HTML5() {
 
-		ViewVideo.currentTime = formatTime(currentTime);
+		//console.log('CURRENTTIME: '+currentTime);
+		//console.log('CURRENTTIMEOFFSET: ', HypervideoModel.offsetIn);
+
+		ViewVideo.currentTime = formatTime(currentTime-HypervideoModel.offsetIn);
+		ViewVideo.currentTimeFull = formatTime(currentTime, true);
 
 		OverlaysController.updateStatesOfOverlays(currentTime);
 		CodeSnippetsController.updateStatesOfCodeSnippets(currentTime);
@@ -49891,7 +50164,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 	function highPriorityUpdater_NullVideo() {
 
 		if (ViewVideo.PlayerProgress.data('ui-slider')) {
-			ViewVideo.PlayerProgress.slider('value', currentTime);
+			ViewVideo.PlayerProgress.slider('value', currentTime-HypervideoModel.offsetIn);
 		}
 
 		FrameTrail.triggerEvent('timeupdate', {});
@@ -49916,7 +50189,8 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 	 */
 	function lowPriorityUpdater_NullVideo() {
 
-		ViewVideo.currentTime = formatTime(currentTime);
+		ViewVideo.currentTime = formatTime(currentTime-HypervideoModel.offsetIn);
+		ViewVideo.currentTimeFull = formatTime(currentTime, true);
 
 		OverlaysController.updateStatesOfOverlays(currentTime);
 		CodeSnippetsController.updateStatesOfCodeSnippets(currentTime);
@@ -49939,9 +50213,9 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 
 		currentTime = (Date.now() - nullVideoStartDate) / 1000;
 
-		if (currentTime >= HypervideoModel.duration) {
-			currentTime = HypervideoModel.duration;
-			pause();
+		if (currentTime >= HypervideoModel.offsetIn+HypervideoModel.duration) {
+			currentTime = HypervideoModel.duration;					currentTime = HypervideoModel.offsetIn+HypervideoModel.duration;
+			pause();					pause();
 		}
 
 	};
@@ -50054,7 +50328,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 	            }
 			}
 
-		} else if (!HypervideoModel.hasHTML5Video && currentTime == HypervideoModel.duration) {
+		} else if (!HypervideoModel.hasHTML5Video && currentTime == HypervideoModel.offsetIn+HypervideoModel.duration) {
 
 			FrameTrail.triggerEvent('ended', {});
 
@@ -50273,9 +50547,10 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 	 *
 	 * @method formatTime
 	 * @param {Number} aNumber
+	 * @param {Boolean} forceHourDisplay
 	 * @return String
 	 */
-	function formatTime(aNumber) {
+	function formatTime(aNumber, forceHourDisplay) {
 
 		var hours, minutes, seconds, hourValue;
 
@@ -50287,7 +50562,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 		seconds 	= Math.ceil(seconds % (60*60) % 60);
 		seconds 	= (seconds >= 10) ? seconds : '0' + seconds;
 
-		if (hours >= 1) {
+		if (hours >= 1 || forceHourDisplay == true) {
 			hourValue = hours + ':';
 		} else {
 			hourValue = '';
@@ -52761,6 +53036,7 @@ FrameTrail.defineModule('Titlebar', function(FrameTrail){
                         "theme": "",
                         "autohideControls": false,
                         "captionsVisible": false,
+                        "clipTimeVisible": false,
                         "hidden": $('.newHypervideoForm').find('input[name="hidden"]').is(':checked'),
                         "layoutArea": {
                             "areaTop": [],
@@ -54265,6 +54541,7 @@ FrameTrail.defineModule('ViewVideo', function(FrameTrail){
                         + '        <div class="areaTopContainer layoutArea" data-area="areaTop">'
                         + '            <div class="layoutAreaTabs"></div>'
                         + '            <div class="layoutAreaContent"></div>'
+                        + '            <div class="layoutAreaToggleCloseButton"></div>'
                         + '        </div>'
                         + '        <div class="playerContainer">'
                         + '            <div class="playerProgress"></div>'
@@ -54272,6 +54549,7 @@ FrameTrail.defineModule('ViewVideo', function(FrameTrail){
                         + '                <div class="areaLeftContainer layoutArea" data-area="areaLeft">'
                         + '                    <div class="layoutAreaTabs"></div>'
                         + '                    <div class="layoutAreaContent"></div>'
+                        + '                    <div class="layoutAreaToggleCloseButton"></div>'
                         + '                </div>'
                         + '                <div class="videoContainer">'
                         + '                    <div class="hypervideo">'
@@ -54292,6 +54570,7 @@ FrameTrail.defineModule('ViewVideo', function(FrameTrail){
                         + '                <div class="areaRightContainer layoutArea" data-area="areaRight">'
                         + '                    <div class="layoutAreaTabs"></div>'
                         + '                    <div class="layoutAreaContent"></div>'
+                        + '                    <div class="layoutAreaToggleCloseButton"></div>'
                         + '                </div>'
                         + '                <div class="infoAreaRight">'
                         + '                    <div class="editPropertiesContainer"></div>'
@@ -54352,6 +54631,7 @@ FrameTrail.defineModule('ViewVideo', function(FrameTrail){
                         + '        <div class="areaBottomContainer layoutArea" data-area="areaBottom">'
                         + '            <div class="layoutAreaTabs"></div>'
                         + '            <div class="layoutAreaContent"></div>'
+                        + '            <div class="layoutAreaToggleCloseButton"></div>'
                         + '        </div>'
                         + '        <div class="areaBottomDetails layoutAreaDetails" data-area="areaBottom"></div>'
                         + '    </div>'
@@ -54534,6 +54814,14 @@ FrameTrail.defineModule('ViewVideo', function(FrameTrail){
 
     });
 
+    domElement.find('.layoutAreaToggleCloseButton').click(function() {
+        $(this).parent('.layoutArea').toggleClass('closed');
+        changeSlidePosition('middle');
+        window.setTimeout(function() {
+            adjustHypervideo();
+        }, 250);
+    });
+
     document.addEventListener("fullscreenchange", toggleFullscreenState, false);
     document.addEventListener("webkitfullscreenchange", toggleFullscreenState, false);
     document.addEventListener("mozfullscreenchange", toggleFullscreenState, false);
@@ -54553,9 +54841,13 @@ FrameTrail.defineModule('ViewVideo', function(FrameTrail){
             fixGoddamnSafariBug();
         };
 
+        if (FrameTrail.getState('hv_config_clipTimeVisible')) {
+            Controls.find('.timeDisplayFull').show();
+        }
+
         toggleViewMode(FrameTrail.getState('viewMode'));
 
-        toggleConfig_captionsVisible(FrameTrail.getState('hv_config_captionsVisible'))
+        toggleConfig_captionsVisible(FrameTrail.getState('hv_config_captionsVisible'));
 
         FrameTrail.changeState('hv_config_overlaysVisible', true);
 
@@ -55168,7 +55460,7 @@ FrameTrail.defineModule('ViewVideo', function(FrameTrail){
      * @method enterPreviewMode
      */
     function enterPreviewMode() {
-
+        FrameTrail.module('ViewLayout').updateContentInContentViews();
     }
 
     /**

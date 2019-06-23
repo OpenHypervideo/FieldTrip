@@ -1,12 +1,12 @@
 {
     "meta": {
-        "name": "Die Pflanzenden",
+        "name": "Der Wartende",
         "description": "   ",
-        "thumb": "1_1558509677_thumb_episode-11-garten.png",
+        "thumb": "1_1560580554_thumb_episode-12-mansour.png",
         "creator": "Joscha",
         "creatorId": "1",
-        "created": 1558510803519,
-        "lastchanged": 1560852764201
+        "created": 1560581008937,
+        "lastchanged": 1560852962598
     },
     "config": {
         "slidingMode": "adjust",
@@ -34,7 +34,7 @@
                         "text": ""
                     },
                     "onClickContentItem": "",
-                    "html": "<table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera</td><td>Jenny Lou Ziegel, Emma Rosa Simon, Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Ton</td><td>Garip Özdem, Claudia Meyer</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sounddesign</td><td>Clemens Nürnberger</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Felix Trolldenier</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>Vanessa Klueber, Christian Calderón Carranza, Fabian Gonzalez\n</td>\n  </tr>\n  <tr>\n    <td>Archivmaterial</td><td>Michael Nebe</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unsere Protagonist*innen Christophe, Vanessa, Christian, Fabian <br>\n    alle Gärtner*innen</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
+                    "html": "<table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Regie Interview</td><td>Kamil Bembnista</td>\n  </tr>\n  <tr>\n    <td>Kamera 2015</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera 2019</td><td>Emma Rosa Simon</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sounddesign</td><td>Clemens Nürnberger</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Felix Trolldenier</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Übersetzung</td><td>Kinda Al Raheb</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unsere Protagonisten Mansour und Momo <br>\n    Dem Team von Tamaja: <br>\n    Michael Elias, Mohammad Khodro, Hanna Wittges-Stoelben</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
                     "transcriptSource": ""
                 }
             ]
@@ -42,8 +42,8 @@
     },
     "clips": [
         {
-            "resourceId": "61",
-            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050727949001&pubId=64007844001&secure=true",
+            "resourceId": "62",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
             "duration": 0,
             "start": 0,
             "end": 0,
@@ -71,17 +71,17 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Wed May 22 2019 09:04:46 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Jun 17 2019 12:28:24 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050727949001&pubId=64007844001&secure=true",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=10.9,19.2&xywh=percent:12.5,64.00879784453687,75,35.99120581464516"
+                    "value": "t=9.1,16.1&xywh=percent:14.844065483358193,67.99904022654012,72.54411584018932,32.00095540131402"
                 }
             },
             "body": {
@@ -93,7 +93,7 @@
             },
             "frametrail:events": {},
             "frametrail:attributes": {
-                "text": "&lt;p style=\"text-align: center;\"&gt;Im Mai 2011, ein Jahr nach der Öffnung des ehemaligen Flughafens, wurden 8000 Quadratmeter des Tempelhofer Feldes drei Stadtgarten-Projekten zugesprochen.&lt;br&gt;Inzwischen bewirtschaften etwa 600 Menschen die Beete.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+                "text": "&lt;p style=\"text-align: center;\"&gt;2017 wurden temporäre Unterkünfte für 1000 Geflüchtete&lt;br&gt;auf dem Tempelhofer Feld errichtet - die Tempohomes.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
             }
         },
         {
@@ -108,17 +108,17 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Wed May 22 2019 09:06:08 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Jun 17 2019 12:31:01 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050727949001&pubId=64007844001&secure=true",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=21,29.3&xywh=percent:12.5,63.99680304584457,75,36.00319695415543"
+                    "value": "t=62.040250447227194,74.51524908512778&xywh=percent:17.029585127999812,63.82532883563358,66.55439591416273,36.174674656080164"
                 }
             },
             "body": {
@@ -130,7 +130,7 @@
             },
             "frametrail:events": {},
             "frametrail:attributes": {
-                "text": "&lt;p style=\"text-align: center;\"&gt;Die grün wuchernde Insel ist ein komplexes Universum inmitten der sonstigen Weite des Feldes.&lt;br&gt;Für manche sind die Gärten politisches Statement, für andere ein ökologisches Experimentierfeld oder soziales Experiment:&lt;br&gt;Alle Gärten sind frei zugänglich und haben keinen Zaun.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+                "text": "&lt;p style=\"text-align: center;\"&gt;Anfangs lebten überwiegend syrische Männer in den Containern. Sie flohen vor dem Krieg oder vor der Möglichkeit vom Militär eingezogen zu werden. Das Nachholen ihrer Familien wurde mit der steigenden Zahl der Asylsuchenden in Deutschland immer schwieriger.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
             }
         },
         {
@@ -145,17 +145,17 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Wed May 22 2019 09:10:00 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Jun 17 2019 12:33:20 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050727949001&pubId=64007844001&secure=true",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=31.5,34.8&xywh=percent:12.5,80.79936441471823,75,19.200639244463805"
+                    "value": "t=79.49930025213307,86.11990024791847&xywh=percent:24.128462635216714,73.21129281679062,53.42286605696715,26.788710674923127"
                 }
             },
             "body": {
@@ -167,7 +167,7 @@
             },
             "frametrail:events": {},
             "frametrail:attributes": {
-                "text": "&lt;p style=\"text-align: center;\"&gt;Christophe forscht weltweit zu Urban Gardening.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+                "text": "&lt;p style=\"text-align: center;\"&gt;Mansour A. lebt seit 2018 in den Tempohomes und wartet auf seine Familie.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
             }
         },
         {
@@ -182,17 +182,17 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Wed May 22 2019 09:13:09 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Jun 17 2019 12:35:01 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050727949001&pubId=64007844001&secure=true",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=193.89570696728234,198.27024479934798&xywh=percent:12.5,77.91767074621553,74.9955005785441,22.0823329129665"
+                    "value": "t=485.1562753312277,496.7386084950674&xywh=percent:18.979684181647798,60.85050046034755,63.0789704580037,39.14950303136621"
                 }
             },
             "body": {
@@ -204,7 +204,7 @@
             },
             "frametrail:events": {},
             "frametrail:attributes": {
-                "text": "&lt;p style=\"text-align: center;\"&gt;Vanessa trifft sich jeden Sonntag mit anderen Musikern auf dem Feld.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+                "text": "&lt;p style=\"text-align: center;\"&gt;Mansours Familie kam im Mai 2019 schließlich nach Berlin.&lt;br&gt;Aufgrund des Tempelhof-Gesetzes werden die Container im Juni 2019 wieder abgebaut. Mansour, seine Frau und seine Tochter müssen in eine Gemeinschaftsunterkunft ziehen.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
             }
         },
         {
@@ -219,65 +219,28 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Wed May 22 2019 09:15:50 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Jun 18 2019 09:11:17 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050727949001&pubId=64007844001&secure=true",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=305,309.9&xywh=percent:12.5,69.52438537451289,74.9955005785441,30.47561828466914"
-                }
-            },
-            "body": {
-                "type": "TextualBody",
-                "frametrail:type": "text",
-                "format": "text/html",
-                "value": "",
-                "frametrail:name": "Custom Text/HTML"
-            },
-            "frametrail:events": {},
-            "frametrail:attributes": {
-                "text": "&lt;p style=\"text-align: center;\"&gt;Christian ist einer der Gärtner der ersten Stunde.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
-            }
-        },
-        {
-            "@context": [
-                "http://www.w3.org/ns/anno.jsonld",
-                {
-                    "frametrail": "http://frametrail.org/ns/"
-                }
-            ],
-            "creator": {
-                "nickname": "Joscha",
-                "type": "Person",
-                "id": "1"
-            },
-            "created": "Wed May 22 2019 11:43:31 GMT+0100 (Western European Summer Time)",
-            "type": "Annotation",
-            "frametrail:type": "Overlay",
-            "frametrail:tags": [],
-            "target": {
-                "type": "Video",
-                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050727949001&pubId=64007844001&secure=true",
-                "selector": {
-                    "conformsTo": "http://www.w3.org/TR/media-frags/",
-                    "type": "FragmentSelector",
-                    "value": "t=180,188&xywh=percent:59.03327192494389,0.9592326139088728,23.388040068480123,61.88648690422662"
+                    "value": "t=183,191&xywh=percent:26.991019895823488,6.834975369458128,58.24462539124541,59.724959951316194"
                 }
             },
             "body": {
                 "type": "Image",
                 "frametrail:type": "image",
                 "format": "image/gif",
-                "source": "1_1556093905_animation-flag.gif",
-                "frametrail:name": "Animation Flag"
+                "source": "1_1560762432_animation-hochbeet.gif",
+                "frametrail:name": "Animation Hochbeet"
             },
             "frametrail:events": {
-                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=1&t=157';\n  }, 3000);\n}, 1000);"
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=11&t=102';\n  }, 3000);\n}, 1000);"
             },
             "frametrail:attributes": {}
         },
@@ -293,28 +256,65 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Jun 18 2019 09:01:40 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Jun 18 2019 09:12:51 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050727949001&pubId=64007844001&secure=true",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=264,272&xywh=percent:23.87102371253827,39.30968889109875,47.246476713279286,58.1464509942166"
+                    "value": "t=375,383&xywh=percent:20.713967676655614,24.748624060764783,37.90071056710097,55.40289130092653"
                 }
             },
             "body": {
                 "type": "Image",
                 "frametrail:type": "image",
                 "format": "image/gif",
-                "source": "1_1560762314_animation-trommel.gif",
-                "frametrail:name": "Animation Trommel"
+                "source": "1_1560762516_animation-frau.gif",
+                "frametrail:name": "Animation Frau"
             },
             "frametrail:events": {
-                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=14&t=0';\n  }, 3000);\n}, 1000);"
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=8&t=0';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Jun 18 2019 09:14:35 GMT+0100 (Western European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=474,482&xywh=percent:51.92764982799658,0.10879158039939622,42.13154712004526,99.89120443558257"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1560762448_animation-hand.gif",
+                "frametrail:name": "Animation Hand"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=13&t=62';\n  }, 3000);\n}, 1000);"
             },
             "frametrail:attributes": {}
         }

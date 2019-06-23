@@ -6,25 +6,44 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093214017,
-        "lastchanged": 1556632467931
+        "lastchanged": 1560851863468
     },
     "config": {
         "slidingMode": "adjust",
         "slidingTrigger": "key",
         "autohideControls": true,
         "captionsVisible": true,
+        "clipTimeVisible": false,
         "hidden": false,
         "layoutArea": {
             "areaTop": [],
             "areaBottom": [],
             "areaLeft": [],
-            "areaRight": []
+            "areaRight": [
+                {
+                    "type": "CustomHTML",
+                    "contentSize": "large",
+                    "name": "Credits",
+                    "description": "",
+                    "cssClass": "",
+                    "initClosed": true,
+                    "collectionFilter": {
+                        "tags": [],
+                        "types": [],
+                        "users": [],
+                        "text": ""
+                    },
+                    "onClickContentItem": "",
+                    "html": "<table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera</td><td>Emma Rosa Simon</td>\n  </tr>\n  <tr>\n    <td>Ton</td><td>Garip Özdem</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sounddesign</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Grip</td><td>Ahmad Akidi</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unseren Protagonisten Patrick Steinberg</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
+                    "transcriptSource": ""
+                }
+            ]
         }
     },
     "clips": [
         {
             "resourceId": "7",
-            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563429001&pubId=64007844001&secure=true",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050725044001&pubId=64007844001&secure=true",
             "duration": 0,
             "start": 0,
             "end": 0,
@@ -52,13 +71,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 09:30:07 GMT+0200 (Central European Summer Time)",
+            "created": "Mon Apr 29 2019 08:30:07 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092499_episode-6-patrick.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050725044001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -89,50 +108,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 09:32:16 GMT+0200 (Central European Summer Time)",
+            "created": "Tue Apr 30 2019 09:45:51 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092499_episode-6-patrick.mp4",
-                "selector": {
-                    "conformsTo": "http://www.w3.org/TR/media-frags/",
-                    "type": "FragmentSelector",
-                    "value": "t=374,382&xywh=percent:56.05150476545735,20.01589591808983,27.103004946729143,68.14814737198974"
-                }
-            },
-            "body": {
-                "type": "Image",
-                "frametrail:type": "image",
-                "format": "image/gif",
-                "source": "1_1556093803_animation-touristguide.gif",
-                "frametrail:name": "Animation Touristguide"
-            },
-            "frametrail:events": {
-                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=7&t=211';\n  }, 3000);\n}, 1000);"
-            },
-            "frametrail:attributes": {}
-        },
-        {
-            "@context": [
-                "http://www.w3.org/ns/anno.jsonld",
-                {
-                    "frametrail": "http://frametrail.org/ns/"
-                }
-            ],
-            "creator": {
-                "nickname": "Joscha",
-                "type": "Person",
-                "id": "1"
-            },
-            "created": "Tue Apr 30 2019 10:45:51 GMT+0200 (Central European Summer Time)",
-            "type": "Annotation",
-            "frametrail:type": "Overlay",
-            "frametrail:tags": [],
-            "target": {
-                "type": "Video",
-                "source": "1_1556092499_episode-6-patrick.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050725044001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -163,13 +145,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 10:46:38 GMT+0200 (Central European Summer Time)",
+            "created": "Tue Apr 30 2019 09:46:38 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092499_episode-6-patrick.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050725044001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -187,6 +169,43 @@
             "frametrail:attributes": {
                 "text": "&lt;p style=\"text-align: center;\"&gt;Angesichts der Wohnungsnot in Berlin gibt es immer wieder Pläne, die 380 Hektar zu bebauen. &lt;br&gt;Kritiker befürchten auch hier Spekulation mit dem Boden.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
             }
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Jun 18 2019 08:50:28 GMT+0100 (Western European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050725044001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=357,365&xywh=percent:44.337418065474715,10.938215801317577,48.14751294265385,52.65064719612593"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1560762366_animation-container.gif",
+                "frametrail:name": "Animation Container"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=12&t=0';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
         }
     ],
     "subtitles": []
