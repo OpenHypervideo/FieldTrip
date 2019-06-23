@@ -73,7 +73,7 @@
             "creatorId": "1",
             "created": 1556092499,
             "description": null,
-            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563429001&pubId=64007844001&secure=true",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050725044001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
             "thumb": "1_1556092499_thumb_episode-6-patrick.jpg"
@@ -611,7 +611,7 @@
             "creatorId": "1",
             "created": 1558509646,
             "description": null,
-            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6039739726001&pubId=64007844001&secure=true",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050729428001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
             "thumb": "1_1558509646_thumb_episode-10-brigitte.png"
@@ -622,7 +622,7 @@
             "creatorId": "1",
             "created": 1558509677,
             "description": null,
-            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6039742348001&pubId=64007844001&secure=true",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050727949001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
             "thumb": "1_1558509677_thumb_episode-11-garten.png"
