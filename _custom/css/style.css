@@ -2315,6 +2315,16 @@ body.overlayHints .overlayElement.active .resourceDetail[data-type="image"] .res
   text-shadow: 0 0 5px rgba(0, 0, 0, .15);
 }
 
+/* ZAUNGÄSTE Title -> top */
+/*
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin1 .ftMapPinDescription span,
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin8 .ftMapPinDescription span,
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin10 .ftMapPinDescription span,
+*/
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin13 .ftMapPinDescription span {
+  position: absolute;
+  top: -50px;
+}
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin.active .ftMapPinDescription {
 	transform: scale(1, 1);
