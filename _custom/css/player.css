@@ -30,10 +30,6 @@
 	display: none;
 }
 
-.layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
-
-}
-
 .layoutArea[data-area="areaRight"] .contentViewContainer {
   left: 40px; 
   width: calc(100% - 40px);
@@ -49,12 +45,19 @@
 	padding: 4px 10px;
 }
 
+.layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
+	top: 28px;
+}
+
 .layoutArea .layoutAreaToggleCloseButton::after {
-  background-image: url(../graphics/FT-angle.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 35%;
-  text-indent: -9999px;
+	font-family: 'fieldtrip' !important;
+	content: "\e90e" !important;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 .layoutArea .contentViewContainer .contentViewContents .customhtmlContainer {
@@ -81,6 +84,10 @@
 
   .areaLeftContainer[data-size="large"]:not(.closed), .areaRightContainer[data-size="large"]:not(.closed) {
     flex: 0 0 100%;
+  }
+
+  .layoutAreaToggleCloseButton {
+  	top: 70px !important;
   }
   
   .layoutArea {

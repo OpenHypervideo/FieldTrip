@@ -2753,7 +2753,7 @@ ABOUT / CREDITS / IMPRINT
   line-height: 1em;
 }
 
-.ftInfoContent p {
+.ftInfoContent p, .areaRightContainer .customhtmlContainer {
   font-size: .85em;
   line-height: 1.45em;
   margin: 1em 0;
@@ -3189,7 +3189,7 @@ ABOUT / CREDITS / IMPRINT
     font-size: 1.15em;
   }
 
-  .ftInfoContent p {
+  .ftInfoContent p, .areaRightContainer .customhtmlContainer {
     font-size: 1.25em;
   }
 
@@ -3294,7 +3294,7 @@ ABOUT / CREDITS / IMPRINT
     font-size: .65em;
   }
 
-  .ftInfoContent p {
+  .ftInfoContent p, .areaRightContainer .customhtmlContainer {
     font-size: 1.15em;
   }
 
@@ -3312,7 +3312,7 @@ ABOUT / CREDITS / IMPRINT
 }
 
 @media (min-width: 1010px) and (max-width: 1499px) {
-	.ftInfoContent p {
+	.ftInfoContent p, .areaRightContainer .customhtmlContainer {
 	  font-size: .95em;
 	}
 }
@@ -3605,7 +3605,7 @@ ABOUT / CREDITS / IMPRINT
     margin: 2.5vh 0 2.5vh 15%;
   }
 
-  .ftInfoContent p {
+  .ftInfoContent p, .areaRightContainer .customhtmlContainer {
     font-size: 14px;
   }
 
