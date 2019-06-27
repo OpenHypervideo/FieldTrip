@@ -208,5 +208,10 @@
             "frametrail:attributes": {}
         }
     ],
-    "subtitles": []
+    "subtitles": [
+        {
+            "src": "de.vtt",
+            "srclang": "de"
+        }
+    ]
 }
