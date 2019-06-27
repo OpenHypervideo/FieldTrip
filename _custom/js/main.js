@@ -1356,7 +1356,7 @@ function initPlayCircle() {
 
 	playCircleContainer[0].appendChild(playCircleSVG);
 
-	$('.playerContainer').append(playCircleContainer);
+	$('.playerContainer .videoContainer').append(playCircleContainer);
 
 	renderPlayCircleLinks();
 
