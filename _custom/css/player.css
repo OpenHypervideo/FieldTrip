@@ -47,6 +47,7 @@
 
 .layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
 	top: 28px;
+	opacity: 1 !important;
 }
 
 .layoutArea .layoutAreaToggleCloseButton::after {
