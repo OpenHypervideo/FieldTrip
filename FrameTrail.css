@@ -2616,6 +2616,18 @@ body > .timelineElement.previewPositionRight .previewWrapper:after {
 	left: 62px;
 }
 
+.compareTimelineElement .previewWrapper:before, 
+.timelineElement .previewWrapper:before, 
+body > .compareTimelineElement .previewWrapper:before,
+body > .timelineElement .previewWrapper:before {
+	position: absolute;
+	bottom: -8px;
+	height: 8px;
+	left: 0px;
+	width: 100%;
+	content: '';
+}
+
 .compareTimelineElement .previewWrapper .resourceThumb, 
 .timelineElement .previewWrapper .resourceThumb, 
 body > .compareTimelineElement .previewWrapper .resourceThumb,
@@ -3952,6 +3964,87 @@ body > .timelineElement .previewWrapper .resourceThumb .resourceOverlay .resourc
 .editPropertiesContainer .wysihtml5-sandbox {
 	width: 100%;
 	height: 100%;
+}
+.resourceDetail[data-type="entity"] {
+    
+}
+
+.resourceDetail[data-type="entity"] iframe {
+	width: 133%;
+    height: 133%;
+    zoom: 0.75;
+    -moz-transform: scale(0.75);
+    -moz-transform-origin: 0 0;
+    -webkit-transform: scale(0.75);
+    -webkit-transform-origin: 0 0;
+    transform: scale(0.75);
+    transform-origin: 0 0;
+}
+
+.resourceThumb[data-type="entity"] .resourceTextPreview {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    color: var(--primary-fg-color) !important;
+    line-height: 1.2em !important;
+    opacity: .6;
+    overflow: hidden;
+}
+
+.resourceThumb[data-type="entity"] .resourceTextPreview * {
+    font-size: 100% !important;
+    color: var(--primary-fg-color) !important;
+    line-height: 1.2em !important;
+}
+
+.resourceThumb[data-type="entity"] .resourceTextPreview:after {
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    height: 40%;
+    background-image: linear-gradient(to top, var(--primary-bg-color) 0%, var(--primary-bg-color) 30%, transparent 100%);
+    width: 100%;
+}
+
+.editingOptions .resourceThumb[data-type="entity"] {
+    float: left;
+    height: 80px;
+    margin: 6px;
+    position: relative;
+    width: 120px;
+}
+
+.resourceThumb[data-type="entity"] .resourceOverlay {
+    background: transparent;
+}
+
+.resourceThumb[data-type="entity"] .resourceTitle {
+    display: none;
+}
+
+.editingOptions .resourceThumb[data-type="entity"] .resourceTitle, body > .resourceThumb[data-type="entity"]:not(.resourceAnimationDiv) .resourceTitle {
+    display: block;
+}
+
+.contentViewContainer[data-size="small"] .resourceThumb[data-type="entity"] .resourceTextPreview {
+    display: none;
+}
+
+/* Annotation Tile */
+
+.tileElement[data-type="entity"] [class^="icon-"]::before, .tileElement[data-type="entity"] [class*=" icon-"]::before {
+    content: '\e8b4';
+}
+
+/* Edit Webpage Overlay Properties */
+
+.editPropertiesContainer .propertiesTypeIcon[data-type="entity"] [class^="icon-"]::before, .editPropertiesContainer .propertiesTypeIcon[data-type="entity"] [class*=" icon-"]::before {
+    content: '\e8b4';
 }
 /* Subtitle Element */
 
