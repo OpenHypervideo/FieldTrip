@@ -292,6 +292,10 @@ $(document).ready(function() {
     document.documentElement.className += 
     ((FULLSCREEN_POSSIBLE) ? ' fullscreen-yes' : ' fullscreen-no');
 
+    $('body').on('click', '#ftCreditLink', function () {
+		$('#VideoPlayer .areaRightContainer').toggleClass('closed');
+	});
+
   // try to hide safari menu bar
   /*
   if (!FULLSCREEN_POSSIBLE) {
@@ -340,10 +344,6 @@ $(document).ready(function() {
 	FieldTrip.on('ready', function() {
 
 		FieldTripReady = true;
-
-		$('#ftCreditLink').click(function () {
-			$('#VideoPlayer .areaRightContainer').toggleClass('closed');
-		});
 
     	checkBgImg();
 
