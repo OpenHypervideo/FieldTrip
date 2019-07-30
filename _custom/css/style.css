@@ -2666,6 +2666,9 @@ ABOUT / CREDITS / IMPRINT
   cursor: pointer;
   z-index: 10;
 }
+.layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
+  font-size: 1.25em;
+}
 
 
 #fthyperInfo .ftNavCooperation {
@@ -3177,6 +3180,9 @@ ABOUT / CREDITS / IMPRINT
   .ftCloseInfo {
     font-size: 1.75em;
   }
+  .layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
+    font-size: 1.75em;
+  }
 
   #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription span {
     font-size: .65em;
@@ -3297,6 +3303,9 @@ ABOUT / CREDITS / IMPRINT
   }
 
   .ftCloseInfo {
+    font-size: 1.75em;
+  }
+  .layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
     font-size: 1.75em;
   }
 
@@ -3662,6 +3671,9 @@ ABOUT / CREDITS / IMPRINT
     font-size: 1em;
     top: 17px;
     right: 12px;
+  }
+  .layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
+    font-size: 1em;
   }
 
   .ftNavShare {
