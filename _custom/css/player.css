@@ -21,6 +21,11 @@
 	z-index: 12;
 }
 
+.areaRightContainer[data-size="large"] {
+	flex: 0 0 500px;
+	min-width: 500px;
+}
+
 .areaRightContainer.closed {
 	flex: 0 0 0px;
 	min-width: 0px;
@@ -36,7 +41,7 @@
 }
 
 .layoutArea .contentViewContainer .contentViewContents .customhtmlContainer {
-  padding: 110px 66px 13px 15px;
+  padding: 10px 13px 13px 13px;
   margin: 0;
   max-height: 100%;
 }
@@ -74,6 +79,42 @@
   margin-bottom: .75em;
 }
 
+body:not(.creditsClosed) #fthypervideo .ftNavigation, body:not(.creditsClosed) #fthypervideo #ftCreditLink, body:not(.creditsClosed) #fthypervideo .ftNavCooperation {
+	display: none !important;
+}
+
+body:not(.creditsClosed) .ftAboutIconContainer {
+	display: none;
+}
+
+@media (max-width: 1400px) {
+
+  .areaLeftContainer[data-size="large"]:not(.closed), .areaRightContainer[data-size="large"]:not(.closed) {
+    flex: 0 0 100%;
+  }
+
+  .layoutAreaToggleCloseButton {
+  	top: 90px !important;
+  }
+  
+  .layoutArea {
+    transition-duration: 600ms;
+  }
+  
+  .layoutArea .contentViewContainer .contentViewContents .customhtmlContainer {
+    padding: 100px 13px 10px 13px;
+  }
+
+  body:not(.creditsClosed) .fticon-about {
+  	font-size: 100%;
+  }
+
+  body:not(.creditsClosed) .ftAboutIconContainer  {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+  }
+}
 
 @media (max-width: 820px) {
 
@@ -83,20 +124,12 @@
     right: 10px;
   }
 
-  .areaLeftContainer[data-size="large"]:not(.closed), .areaRightContainer[data-size="large"]:not(.closed) {
-    flex: 0 0 100%;
-  }
-
   .layoutAreaToggleCloseButton {
   	top: 70px !important;
   }
   
-  .layoutArea {
-    transition-duration: 600ms;
-  }
-  
   .layoutArea .contentViewContainer .contentViewContents .customhtmlContainer {
-    padding: 55px 45px 10px 13px;
+    padding: 55px 13px 10px 13px;
   }
 }
 

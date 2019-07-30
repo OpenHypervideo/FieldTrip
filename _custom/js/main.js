@@ -294,7 +294,13 @@ $(document).ready(function() {
 
     $('body').on('click', '#ftCreditLink', function () {
 		$('#VideoPlayer .areaRightContainer').toggleClass('closed');
+		$('body').toggleClass('creditsClosed');
 	});
+
+    $('body').on('click', '.layoutAreaToggleCloseButton', function () {
+		$('body').addClass('creditsClosed');
+	});
+
 
   // try to hide safari menu bar
   /*
@@ -381,6 +387,7 @@ $(document).ready(function() {
 
 	FieldTrip.on('play', function() {
 		$('#playCircleContainer').addClass('playing');
+		$('#VideoPlayer .areaRightContainer').addClass('closed');
 		if (!FULLSCREEN_POSSIBLE) goToOverviewFake();
 	});
 
