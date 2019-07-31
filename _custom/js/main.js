@@ -387,7 +387,7 @@ $(document).ready(function() {
 
 	FieldTrip.on('play', function() {
 		$('#playCircleContainer').addClass('playing');
-		$('#VideoPlayer .areaRightContainer').addClass('closed');
+		//$('#VideoPlayer .areaRightContainer').addClass('closed');
 		if (!FULLSCREEN_POSSIBLE) goToOverviewFake();
 	});
 
