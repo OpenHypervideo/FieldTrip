@@ -6,19 +6,38 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093194892,
-        "lastchanged": 1556630696484
+        "lastchanged": 1560851596385
     },
     "config": {
         "slidingMode": "adjust",
         "slidingTrigger": "key",
         "autohideControls": true,
         "captionsVisible": true,
+        "clipTimeVisible": false,
         "hidden": false,
         "layoutArea": {
             "areaTop": [],
             "areaBottom": [],
             "areaLeft": [],
-            "areaRight": []
+            "areaRight": [
+                {
+                    "type": "CustomHTML",
+                    "contentSize": "large",
+                    "name": "Credits",
+                    "description": "",
+                    "cssClass": "",
+                    "initClosed": true,
+                    "collectionFilter": {
+                        "tags": [],
+                        "types": [],
+                        "users": [],
+                        "text": ""
+                    },
+                    "onClickContentItem": "",
+                    "html": "<table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Ton</td><td>Garip Özdem</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>O-Ton Schnitt</td><td>Clemens Nürnberger</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>n.n.</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unsere Protagonistin Kübra Gümüşay <br>\n    Die Initiative “Die offene Gesellschaft“<br>\n    und alle Teilnehmer*innen des Picknicks</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
+                    "transcriptSource": ""
+                }
+            ]
         }
     },
     "clips": [
@@ -52,13 +71,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 09:15:18 GMT+0200 (Central European Summer Time)",
+            "created": "Mon Apr 29 2019 08:15:18 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092451_episode-4-kuebra.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034568308001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -89,13 +108,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 09:22:24 GMT+0200 (Central European Summer Time)",
+            "created": "Mon Apr 29 2019 08:22:24 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092451_episode-4-kuebra.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034568308001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -126,13 +145,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 10:24:19 GMT+0200 (Central European Summer Time)",
+            "created": "Tue Apr 30 2019 09:24:19 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092451_episode-4-kuebra.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034568308001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -163,13 +182,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 10:25:32 GMT+0200 (Central European Summer Time)",
+            "created": "Tue Apr 30 2019 09:25:32 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092451_episode-4-kuebra.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034568308001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",

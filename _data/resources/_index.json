@@ -1,5 +1,5 @@
 {
-    "resources-increment": 57,
+    "resources-increment": 77,
     "resources": {
         "1": {
             "name": "Intro",
@@ -7,10 +7,10 @@
             "creatorId": "1",
             "created": 1556092260,
             "description": null,
-            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6032629731001&pubId=64007844001&secure=true",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6035479757001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092260_thumb_intro.png"
+            "thumb": "1_1556092260_thumb_intro.jpg"
         },
         "2": {
             "name": "Episode 1 - Mustafa Sebnem",
@@ -21,7 +21,7 @@
             "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034566731001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092338_thumb_episode-1-mustafa-sebnem.png"
+            "thumb": "1_1556092338_thumb_episode-1-mustafa-sebnem.jpg"
         },
         "3": {
             "name": "Episode 2 - Farzad",
@@ -32,7 +32,7 @@
             "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563427001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092400_thumb_episode-2-farzad.png"
+            "thumb": "1_1556092400_thumb_episode-2-farzad.jpg"
         },
         "4": {
             "name": "Episode 3 - Boris",
@@ -43,7 +43,7 @@
             "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563428001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092427_thumb_episode-3-boris.png"
+            "thumb": "1_1556092427_thumb_episode-3-boris.jpg"
         },
         "5": {
             "name": "Episode 4 - Kuebra",
@@ -54,7 +54,7 @@
             "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034568308001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092451_thumb_episode-4-kuebra.png"
+            "thumb": "1_1556092451_thumb_episode-4-kuebra.jpg"
         },
         "6": {
             "name": "Episode 5 - Molkenbuhr",
@@ -65,7 +65,7 @@
             "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034568309001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092475_thumb_episode-5-molkenbuhr.png"
+            "thumb": "1_1556092475_thumb_episode-5-molkenbuhr.jpg"
         },
         "7": {
             "name": "Episode 6 - Patrick",
@@ -73,10 +73,10 @@
             "creatorId": "1",
             "created": 1556092499,
             "description": null,
-            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563429001&pubId=64007844001&secure=true",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050725044001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092499_thumb_episode-6-patrick.png"
+            "thumb": "1_1556092499_thumb_episode-6-patrick.jpg"
         },
         "8": {
             "name": "Episode 7 - Paul",
@@ -87,7 +87,7 @@
             "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092548_thumb_episode-7-paul.png"
+            "thumb": "1_1556092548_thumb_episode-7-paul.jpg"
         },
         "9": {
             "name": "Episode 8 - Halina",
@@ -98,7 +98,7 @@
             "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034565541001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092568_thumb_episode-8-halina.png"
+            "thumb": "1_1556092568_thumb_episode-8-halina.jpg"
         },
         "10": {
             "name": "Episode 9 - Storyboxx",
@@ -109,7 +109,7 @@
             "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034565542001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
-            "thumb": "1_1556092589_thumb_episode-9-storyboxx.png"
+            "thumb": "1_1556092589_thumb_episode-9-storyboxx.jpg"
         },
         "11": {
             "name": "Animation Heu",
@@ -580,6 +580,216 @@
             "created": 1556631796,
             "description": null,
             "src": "1_1556631796_animation-houdini.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "58": {
+            "name": "Icon Episode 10",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1558436811,
+            "description": null,
+            "src": "1_1558436811_icon-episode-10.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1558436811_thumb_icon-episode-10.png"
+        },
+        "59": {
+            "name": "Icon Episode 11",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1558436701,
+            "description": null,
+            "src": "1_1558436701_icon-episode-11.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1558436701_thumb_icon-episode-11.png"
+        },
+        "60": {
+            "name": "Episode 10 - Brigitte",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1558509646,
+            "description": null,
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050729428001&pubId=64007844001&secure=true",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1558509646_thumb_episode-10-brigitte.png"
+        },
+        "61": {
+            "name": "Episode 11 - Garten",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1558509677,
+            "description": null,
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050727949001&pubId=64007844001&secure=true",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1558509677_thumb_episode-11-garten.png"
+        },
+        "62": {
+            "name": "Episode 12 - Mansour",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560580554,
+            "description": null,
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1560580554_thumb_episode-12-mansour.png"
+        },
+        "63": {
+            "name": "Episode 13 - Zaun",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560580595,
+            "description": null,
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048176637001&pubId=64007844001&secure=true",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1560580595_thumb_episode-13-zaun.png"
+        },
+        "64": {
+            "name": "Episode 14 - Mutlauf",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560580632,
+            "description": null,
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048174388001&pubId=64007844001&secure=true",
+            "attributes": [],
+            "type": "video",
+            "thumb": "1_1560580632_thumb_episode-14-mutlauf.png"
+        },
+        "65": {
+            "name": "Icon Episode 12",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560761898,
+            "description": null,
+            "src": "1_1560761898_icon-episode-12.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1560761898_thumb_icon-episode-12.png"
+        },
+        "66": {
+            "name": "Icon Episode 13",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560761928,
+            "description": null,
+            "src": "1_1560761928_icon-episode-13.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1560761928_thumb_icon-episode-13.png"
+        },
+        "67": {
+            "name": "Icon Episode 14",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560761949,
+            "description": null,
+            "src": "1_1560761949_icon-episode-14.png",
+            "type": "image",
+            "attributes": [],
+            "thumb": "1_1560761949_thumb_icon-episode-14.png"
+        },
+        "68": {
+            "name": "Animation Trommel",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560762314,
+            "description": null,
+            "src": "1_1560762314_animation-trommel.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "69": {
+            "name": "Animation T-Shirt",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560762346,
+            "description": null,
+            "src": "1_1560762346_animation-t-shirt.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "70": {
+            "name": "Animation Container",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560762366,
+            "description": null,
+            "src": "1_1560762366_animation-container.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "71": {
+            "name": "Animation Mutläufer",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560762387,
+            "description": null,
+            "src": "1_1560762387_animation-mutlufer.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "72": {
+            "name": "Animation Hochfliegen",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560762414,
+            "description": null,
+            "src": "1_1560762414_animation-hochfliegen.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "73": {
+            "name": "Animation Hochbeet",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560762432,
+            "description": null,
+            "src": "1_1560762432_animation-hochbeet.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "74": {
+            "name": "Animation Hand",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560762448,
+            "description": null,
+            "src": "1_1560762448_animation-hand.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "75": {
+            "name": "Animation Sonnenblume",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560762467,
+            "description": null,
+            "src": "1_1560762467_animation-sonnenblume.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "76": {
+            "name": "Animation Plane-Head",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560762493,
+            "description": null,
+            "src": "1_1560762493_animation-plane-head.gif",
+            "type": "image",
+            "attributes": []
+        },
+        "77": {
+            "name": "Animation Frau",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1560762516,
+            "description": null,
+            "src": "1_1560762516_animation-frau.gif",
             "type": "image",
             "attributes": {}
         }

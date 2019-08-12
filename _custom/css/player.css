@@ -5,6 +5,136 @@
 	box-sizing: initial;
 }
 
+/* START CREDITS */
+#ftCreditLink {
+	position: absolute;
+	bottom: 25px;
+	right: 20px;
+	font-family: 'Rubik', helvetica, sans-serif;
+	font-weight: 600;
+	font-size: .85em;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	line-height: 1em;
+	text-shadow: 0 0 2px rgba(0, 0, 0, .5);
+	cursor: pointer;
+	z-index: 12;
+}
+
+.areaRightContainer[data-size="large"] {
+	flex: 0 0 500px;
+	min-width: 500px;
+}
+
+.areaRightContainer.closed {
+	flex: 0 0 0px;
+	min-width: 0px;
+}
+
+.layoutArea[data-area="areaRight"] .layoutAreaTabs {
+	display: none;
+}
+
+.layoutArea[data-area="areaRight"] .contentViewContainer {
+  left: 40px; 
+  width: calc(100% - 40px);
+}
+
+.layoutArea .contentViewContainer .contentViewContents .customhtmlContainer {
+  padding: 10px 13px 13px 13px;
+  margin: 0;
+  max-height: 100%;
+}
+
+.layoutArea .contentViewContainer .contentViewContents .customhtmlContainer td {
+	padding: 4px 10px;
+}
+
+.layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
+	top: 28px;
+	opacity: 1 !important;
+}
+
+.layoutArea .layoutAreaToggleCloseButton::after {
+	font-family: 'fieldtrip' !important;
+	content: "\e90e" !important;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.layoutArea .contentViewContainer .contentViewContents .customhtmlContainer {
+  line-height: 1.45em;
+}
+
+.ftLayer#fthypervideo #VideoPlayer h3 {
+  font-size: 1.15em;
+}
+
+.ftLayer#fthypervideo #VideoPlayer h3,
+.ftLayer#fthypervideo #VideoPlayer p {
+  margin-bottom: .75em;
+}
+
+body:not(.creditsClosed) #fthypervideo .ftNavigation, body:not(.creditsClosed) #fthypervideo #ftCreditLink, body:not(.creditsClosed) #fthypervideo .ftNavCooperation {
+	display: none !important;
+}
+
+body:not(.creditsClosed) .ftAboutIconContainer {
+	display: none;
+}
+
+@media (max-width: 1400px) {
+
+  .areaLeftContainer[data-size="large"]:not(.closed), .areaRightContainer[data-size="large"]:not(.closed) {
+    flex: 0 0 100%;
+  }
+
+  .layoutAreaToggleCloseButton {
+  	top: 90px !important;
+  }
+  
+  .layoutArea {
+    transition-duration: 600ms;
+  }
+  
+  .layoutArea .contentViewContainer .contentViewContents .customhtmlContainer {
+    padding: 100px 13px 10px 13px;
+  }
+
+  body:not(.creditsClosed) .fticon-about {
+  	font-size: 100%;
+  }
+
+  body:not(.creditsClosed) .ftAboutIconContainer  {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+  }
+}
+
+@media (max-width: 820px) {
+
+  #ftCreditLink {
+    font-size: .65em;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .layoutAreaToggleCloseButton {
+  	top: 70px !important;
+  }
+  
+  .layoutArea .contentViewContainer .contentViewContents .customhtmlContainer {
+    padding: 55px 13px 10px 13px;
+  }
+}
+
+/* END CREDITS */
+
 .frametrail-body .mainContainer ::before, 
 .frametrail-body .mainContainer ::after, 
 .frametrail-body .ui-resizable-handle {
@@ -85,6 +215,22 @@ body.userinactive #VideoPlayer .titlebar:not(.editActive) {
 	-moz-transform: rotate(-90deg) translateX(-179px);
 }
 
+#VideoPlayer .playerContainer #playCircleContainer svg > .circle.inner {
+	stroke-width: 0;
+}
+
+#VideoPlayer .playerContainer #playCircleContainer svg > .circle.progress-interaction {
+	stroke-width: 0;
+}
+
+#VideoPlayer .playerContainer #playCircleContainer svg > .circle.progress-move {
+	fill: transparent !important;
+	stroke: #fec570;
+	stroke-width: 6;
+  opacity: 0;
+	stroke-dasharray: 900;
+}
+
 #VideoPlayer .playerContainer #playCircleContainer svg > .circle-bg {
 	fill: transparent !important;
 	stroke: #FFFFFF;
@@ -95,6 +241,12 @@ body.userinactive #VideoPlayer .titlebar:not(.editActive) {
 	transform: rotate(-90deg) translateX(-179px);
 	-moz-transform: rotate(-90deg) translateX(-179px);
 	opacity: .5;
+}
+
+
+#VideoPlayer .playerContainer #playCircleContainer svg > .circle.progress--activated {
+	stroke-width: 6;
+  transition: stroke-width 0.5s linear;
 }
 
 /* Subtitle Element */
@@ -259,6 +411,37 @@ body.userinactive #VideoPlayer .titlebar:not(.editActive) {
 	letter-spacing: 0px;
 }
 
+
+/* Start iOS / Safari */
+.fullscreen-no #VideoPlayer .mainContainer:not(.editActive) .videoContainer {
+	width: 100vw !important;
+	height: 100vh !important;
+}
+
+.fullscreen-no #VideoPlayer .mainContainer:not(.editActive) .videoContainer .hypervideo {
+	top: 0%;
+	left: 0%;
+	width: 100vw !important;
+	height: 100vh !important;
+	margin-left: 0px !important;
+	margin-top: 0px !important;
+	min-height: none !important
+}
+
+.fullscreen-no #VideoPlayer .mainContainer:not(.editActive) .videoContainer video {
+	top: 0%;
+	left: 0%;
+	width: 100vw !important;
+	height: 100vh !important;
+	object-fit: contain;
+}
+
+.fullscreen-no #VideoPlayer .mainContainer:not(.editActive) .slideArea {
+	min-height: 0 !important;
+}
+/* End iOS / Safari */
+
+
 /* Inside Hypervideo */
 .hypervideo .video {
 	-webkit-transform: translate3d(0,0,0);
@@ -320,6 +503,10 @@ body.userinactive #VideoPlayer .titlebar:not(.editActive) {
 .overlayElement .resourceDetail[data-type="image"] img:hover {
 	cursor: pointer;
   	transform: scale(1,1);
+}
+
+.overlayElement .resourceDetail[data-type="image"] img[src="_data/resources/1_1560762493_animation-plane-head.gif"] {
+	transform-origin: right center;
 }
 
 /* TODO: Fix sizing & scaling of overlays; */

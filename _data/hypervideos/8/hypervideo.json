@@ -6,19 +6,38 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093235752,
-        "lastchanged": 1557398088642
+        "lastchanged": 1560852293679
     },
     "config": {
         "slidingMode": "adjust",
         "slidingTrigger": "key",
         "autohideControls": true,
         "captionsVisible": true,
+        "clipTimeVisible": false,
         "hidden": false,
         "layoutArea": {
             "areaTop": [],
             "areaBottom": [],
             "areaLeft": [],
-            "areaRight": []
+            "areaRight": [
+                {
+                    "type": "CustomHTML",
+                    "contentSize": "large",
+                    "name": "Credits",
+                    "description": "",
+                    "cssClass": "",
+                    "initClosed": true,
+                    "collectionFilter": {
+                        "tags": [],
+                        "types": [],
+                        "users": [],
+                        "text": ""
+                    },
+                    "onClickContentItem": "",
+                    "html": "<table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera</td><td>Ben Bernhard</td>\n  </tr>\n  <tr>\n    <td>Ton</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Diana Näcke, Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sounddesign</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Übersetzung</td><td>Karolina Szulejewska</td>\n  </tr>\n  <tr>\n    <td>Archivmaterial</td><td>Foto (3 Mädchen) aus Privatbesitz von Halina Wojciechowska</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unsere Protagonist*innen Halina Wojciechowska und Andrzej Wojciechowski <br>\n    das Dokumentationszentrum NS-Zwangsarbeit Schöneweide <br>\n    Christian Krüger vom Berliner Senat</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
+                    "transcriptSource": ""
+                }
+            ]
         }
     },
     "clips": [
@@ -52,7 +71,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 09:46:46 GMT+0200 (Central European Summer Time)",
+            "created": "Mon Apr 29 2019 08:46:46 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -89,7 +108,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 09:47:56 GMT+0200 (Central European Summer Time)",
+            "created": "Mon Apr 29 2019 08:47:56 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -126,7 +145,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 09:49:55 GMT+0200 (Central European Summer Time)",
+            "created": "Mon Apr 29 2019 08:49:55 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -163,7 +182,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 10:50:01 GMT+0200 (Central European Summer Time)",
+            "created": "Tue Apr 30 2019 09:50:01 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],

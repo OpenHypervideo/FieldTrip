@@ -6,19 +6,38 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093167667,
-        "lastchanged": 1556707310738
+        "lastchanged": 1560851204411
     },
     "config": {
         "slidingMode": "adjust",
         "slidingTrigger": "key",
         "autohideControls": true,
         "captionsVisible": true,
+        "clipTimeVisible": false,
         "hidden": false,
         "layoutArea": {
             "areaTop": [],
             "areaBottom": [],
             "areaLeft": [],
-            "areaRight": []
+            "areaRight": [
+                {
+                    "type": "CustomHTML",
+                    "contentSize": "large",
+                    "name": "Credits",
+                    "description": "",
+                    "cssClass": "",
+                    "initClosed": true,
+                    "collectionFilter": {
+                        "tags": [],
+                        "types": [],
+                        "users": [],
+                        "text": ""
+                    },
+                    "onClickContentItem": "",
+                    "html": "<table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera</td><td>Emma Rosa Simon</td>\n  </tr>\n  <tr>\n    <td>Ton</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sounddesign</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Übersetzung</td><td>Ali Sagri</td>\n  </tr>\n  <tr>\n    <td>Archivmaterial</td><td>“Mein Herz sieht die Welt schwarz” von Helga Reidemeister, Ohne Gepäck Filmproduktion <br>\n      “Cousins in Ghorband Afghanistan eating fresh fruits..” von <a target=\"_blank\" href=\"https://www.youtube.com/channel/UC_YN6Lhx-mzuz9dFmAZZzJQ\">Ahmad Nadeem Ezzat</a> </td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unseren Protagonisten Farzad H.</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
+                    "transcriptSource": ""
+                }
+            ]
         }
     },
     "clips": [
@@ -52,13 +71,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 09:05:28 GMT+0200 (Central European Summer Time)",
+            "created": "Mon Apr 29 2019 08:05:28 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092400_episode-2-farzad.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563427001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -89,13 +108,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 09:07:54 GMT+0200 (Central European Summer Time)",
+            "created": "Mon Apr 29 2019 08:07:54 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092400_episode-2-farzad.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563427001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -126,13 +145,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 10:21:13 GMT+0200 (Central European Summer Time)",
+            "created": "Tue Apr 30 2019 09:21:13 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092400_episode-2-farzad.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563427001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",

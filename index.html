@@ -6,9 +6,9 @@
         <meta http-equiv="cache-control" content="no-cache">
         <meta http-equiv="Expires" content="-1">
         <meta name="viewport" content="width=device-width,  initial-scale=1, maximum-scale=1, minimum-scale=1">
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  
+        <!--<meta name="apple-mobile-web-app-capable" content="yes" />-->
+        <!--<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">-->
+
         <!-- meta tags -->
         <title>Field Trip</title>
         <meta itemprop="name" content="Field Trip">
@@ -20,9 +20,9 @@
         <meta name="twitter:description" content="Ein interaktiver Dokumentarfilm zum Tempelhofer Feld">
         <meta property="og:description" content="Ein interaktiver Dokumentarfilm zum Tempelhofer Feld">
 
-        <meta itemprop="image" content="https://fieldtrip.tagesspiegel.de/_custom/graphics/social-media/preview.png">
-        <meta name="twitter:image" content="https://fieldtrip.tagesspiegel.de/_custom/graphics/social-media/preview.png">
-        <meta property="og:image" content="https://fieldtrip.tagesspiegel.de/_custom/graphics/social-media/preview.png">
+        <meta itemprop="image" content="https://fieldtrip.tagesspiegel.de/_custom/graphics/social-media/preview2.jpg">
+        <meta name="twitter:image" content="https://fieldtrip.tagesspiegel.de/_custom/graphics/social-media/preview2.jpg">
+        <meta property="og:image" content="https://fieldtrip.tagesspiegel.de/_custom/graphics/social-media/preview2.jpg">
 
         <meta name="twitter:card" content="summary_large_image">
         <meta property="og:type" content="article">
@@ -59,7 +59,7 @@
 
         <!-- Polyfills (for IE) -->
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2CNodeList.prototype.forEach%2CCustomEvent%2CObject.keys%2CObject.assign%2CArray.prototype.filter%2CArray.prototype.map%2CWeakMap"></script>
-        
+
         <!-- FrameTrail -->
 
         <link rel="stylesheet" type="text/css" href="FrameTrail.min.css">
@@ -70,10 +70,10 @@
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
             <![endif]
         -->
-        
+
         <!-- Custom CSS in /_data/ -->
         <link rel="stylesheet" type="text/css" href="_data/custom.css">
-        
+
         <!-- Custom Field Trip CSS -->
 
         <link href="https://fonts.googleapis.com/css?family=Inconsolata|Rubik" rel="stylesheet">
@@ -82,14 +82,14 @@
         <link rel="stylesheet" type="text/css" href="_custom/css/player.css">
 
         <!-- Custom Field Trip JS -->
-        <script type="text/javascript" src="_custom/js/TweenMax.min.js"></script>
-        <script type="text/javascript" src="_custom/js/jquery.zoomooz.min.js"></script>
+        <script type="text/javascript" src="_custom/js/TweenLite.min.js"></script>
+        <script type="text/javascript" src="_custom/js/CSSPlugin.min.js"></script>
         <script type="text/javascript" src="_custom/js/bodymovin.js"></script>
         <script type="text/javascript" src="_custom/js/main.js"></script>
         <script type="text/javascript" src="_custom/js/transitions.js"></script>
 
     </head>
-    <body style="opacity: 0;">
+    <body class="creditsClosed" style="opacity: 0;">
 
         <div id="ftPointer" class="custom-cursor"></div>
 
@@ -97,7 +97,7 @@
             <div class="ftintroLogos LogosTop">
               <a href="https://www.tagesspiegel.de" target="_blank"><img class="ft-logo-tagesspiel ftintroLogo" width="" height="" src="_custom/graphics/FT-logo-tagesspiegel.png" alt="logo Tagesspiegel" /></a>
             </div>
-            
+
             <div id="ftTagline" class="">
               <i class="fticon-logo-fieldtrip"></i>
               <div>Ein interaktiver Dokumentarfilm <br>zum Tempelhofer Feld</div>
@@ -105,9 +105,17 @@
 
             <button id="ftSkipIntro">Intro überspringen</button>
 
-            <div class="ftLayerContent">
-                <video id="ftIntroVideo" preload="auto" playsinline></video>
+            <div id="ftIntroAudio">
+              <div class="ftSound ftSoundOff ftNavIconContainer ftEvent"><i class="fticon-sound-off"></i></div>
+              <div class="ftSound ftSoundOn ftNavIconContainer ftEvent"><i class="fticon-sound-on"></i></div>
             </div>
+
+            <div class="ftLayerContent">
+                <video id="ftIntroVideo" preload="auto" poster="_custom/graphics/intro-video-poster.jpg" playsinline webkit-playsinline></video>
+                <img id="ftIntroVideoPoster" src="_custom/graphics/intro-video-poster.jpg">
+            </div>
+
+            <div id="ftIntroCaptionsContainer"></div>
 
             <button id="ftStartButton" class="ftButton ftAnimatedButton ftEvent">
                 <figure class="chart" data-percent="100">
@@ -117,7 +125,7 @@
                 </figure>
                 <i class="fticon-right"></i>
             </button>
-            
+
             <div class="ftintroLogos LogosBottom">
               <a href="https://www.ronjafilm.com/" target="_blank"><img class="ft-logo-ronjafilm ftintroLogo" width="" height="" src="_custom/graphics/FT-logo-ronjafilm.svg" alt="logo Ronja Film" /></a>
             </div>
@@ -276,7 +284,7 @@
                                 <span>Die Erinnernde</span>
                             </a>
                         </div>
-                        <div style="top: 49%; right: 24%;" id="ftMapPin9" class="ftMapPin ftEvent">
+                        <div style="top: 46%; right: 24%;" id="ftMapPin9" class="ftMapPin ftEvent">
                             <i class="fticon-silhouette" style="background-image: url(_data/resources/1_1556536468_icon-episode-9.png)"></i>
                             <a href="#hypervideo=9&t=0" class="ftMapPinDescription">
                                  <figure class="chart">
@@ -291,6 +299,91 @@
                                   <i class="fticon-right"></i>
                                 </div>
                                 <span>Die StoryboXX</span>
+                            </a>
+                        </div>
+                        <div style="top: 62.5%; left: 31%;" id="ftMapPin10" class="ftMapPin ftEvent">
+                            <i class="fticon-silhouette" style="background-image: url(_data/resources/1_1558436811_icon-episode-10.png)"></i>
+                            <a href="#hypervideo=10&t=0" class="ftMapPinDescription">
+                                 <figure class="chart">
+                                   <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+                                     <circle class="circle" cx="150" cy="150" r="143"/>
+                                   </svg>
+                                 </figure>
+                                <div class="ftMapPinDescriptionImg">
+                                  <img src="_custom/graphics/placeholders/10.jpg" alt="" />
+                                </div>
+                                <div class="ftMapPinDescriptionContent">
+                                  <i class="fticon-right"></i>
+                                </div>
+                                <span>Die Übersiedlerin</span>
+                            </a>
+                        </div>
+                        <div style="top: 54%; right: 22%;" id="ftMapPin11" class="ftMapPin ftEvent">
+                            <i class="fticon-silhouette" style="background-image: url(_data/resources/1_1558436701_icon-episode-11.png)"></i>
+                            <a href="#hypervideo=11&t=0" class="ftMapPinDescription">
+                                 <figure class="chart">
+                                   <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+                                     <circle class="circle" cx="150" cy="150" r="143"/>
+                                   </svg>
+                                 </figure>
+                                <div class="ftMapPinDescriptionImg">
+                                  <img src="_custom/graphics/placeholders/11.jpg" alt="" />
+                                </div>
+                                <div class="ftMapPinDescriptionContent">
+                                  <i class="fticon-right"></i>
+                                </div>
+                                <span>Die Pflanzenden</span>
+                            </a>
+                        </div>
+                        <div style="top: 22%; left: 44%;" id="ftMapPin12" class="ftMapPin ftEvent">
+                            <i class="fticon-silhouette" style="background-image: url(_data/resources/1_1560761898_icon-episode-12.png)"></i>
+                            <a href="#hypervideo=12&t=0" class="ftMapPinDescription">
+                                 <figure class="chart">
+                                   <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+                                     <circle class="circle" cx="150" cy="150" r="143"/>
+                                   </svg>
+                                 </figure>
+                                <div class="ftMapPinDescriptionImg">
+                                  <img src="_custom/graphics/placeholders/12.jpg" alt="" />
+                                </div>
+                                <div class="ftMapPinDescriptionContent">
+                                  <i class="fticon-right"></i>
+                                </div>
+                                <span>Der Wartende</span>
+                            </a>
+                        </div>
+                        <div style="top: 68%; right: 21%;" id="ftMapPin13" class="ftMapPin ftEvent">
+                            <i class="fticon-silhouette" style="background-image: url(_data/resources/1_1560761928_icon-episode-13.png)"></i>
+                            <a href="#hypervideo=13&t=0" class="ftMapPinDescription">
+                                 <figure class="chart">
+                                   <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+                                     <circle class="circle" cx="150" cy="150" r="143"/>
+                                   </svg>
+                                 </figure>
+                                <div class="ftMapPinDescriptionImg">
+                                  <img src="_custom/graphics/placeholders/13.jpg" alt="" />
+                                </div>
+                                <div class="ftMapPinDescriptionContent">
+                                  <i class="fticon-right"></i>
+                                </div>
+                                <span>Die Zaungäste</span>
+                            </a>
+                        </div>
+                        <div style="top: 34%; right: 33%;" id="ftMapPin14" class="ftMapPin ftEvent">
+                            <i class="fticon-silhouette" style="background-image: url(_data/resources/1_1560761949_icon-episode-14.png)"></i>
+                            <a href="#hypervideo=14&t=0" class="ftMapPinDescription">
+                                 <figure class="chart">
+                                   <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+                                     <circle class="circle" cx="150" cy="150" r="143"/>
+                                   </svg>
+                                 </figure>
+                                <div class="ftMapPinDescriptionImg">
+                                  <img src="_custom/graphics/placeholders/14.jpg" alt="" />
+                                </div>
+                                <div class="ftMapPinDescriptionContent">
+                                  <i class="fticon-right"></i>
+                                </div>
+                                <span>Der Mutläufer</span>
                             </a>
                         </div>
                     </div>
@@ -338,9 +431,9 @@
                       <div class="ftNavShare ftNavIconContainer">
                         <div><i class="fticon-share ftSocialTrigger ftEvent"></i></div>
                         <ul class="ftSocialNav">
-                          <li><a class="share-twitter transition" target="_blank" title="Twitter" href="https://twitter.com/share?url=https://fieldtrip.berlin&text=Field Trip - An open source documentary&via=FieldTripBerlin" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"><i class="fticon-twitter"></i></a>
+                          <li><a class="share-twitter transition" target="_blank" title="Twitter" href="https://twitter.com/share?url=https://fieldtrip.tagesspiegel.de&text=Field Trip - Ein interaktiver Dokumentarfilm zum Tempelhofer Feld&via=FieldTripBerlin" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"><i class="fticon-twitter"></i></a>
                           </li>
-                          <li><a class="share-facebook transition" target="_blank" title="Facebook" href="https://www.facebook.com/sharer.php?u=https://fieldtrip.berlin&t=Field Trip - An open source documentary" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"><i class="fticon-facebook"></i></a></li>
+                          <li><a class="share-facebook transition" target="_blank" title="Facebook" href="https://www.facebook.com/sharer.php?u=https://fieldtrip.tagesspiegel.de&t=Field Trip - Ein interaktiver Dokumentarfilm zum Tempelhofer Feld" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"><i class="fticon-facebook"></i></a></li>
                         </ul>
                       </div>
                     </nav>
@@ -351,8 +444,11 @@
                 </div>
 
                 <div class="ftNavVision">
-                  <div class="tooltip">Hinterlassen Sie Ihre Story! <br />030 54 90 75 90 an</div>
-                  <a class="btn" href="tel:00493054907590" title=""><img width="135" height=""src="_data/resources/1_1556104582_button-deine-vision.svg" alt="Deine Vision Button" /></a>
+                  <div class="tooltip">
+                    Hast du eine eigene Geschichte zu erzählen? Unter 030 54907590 kannst du deine Story auf einem Anrufbeantworter hinterlassen. Die Interessantesten werden veröffentlicht.
+                    <br><a id="ftPhone" href="tel:00493054907590">Direkt anrufen</a>
+                  </div>
+                  <div id="ftVisionButton" class="btn"><img width="135" height=""src="_data/resources/1_1556104582_button-deine-vision.svg" alt="Deine Vision Button" /></div>
                 </div>
 
                 <!--
@@ -386,6 +482,7 @@
                 <iframe src="player/index.html?hypervideo=8#t=2" frameborder="0" scrolling="no" allowfullscreen></iframe>
                 -->
                 <div id="VideoPlayer"></div>
+                <div id="ftCreditLink" class="ftEvent">Credits</div>
 
                 <!-- Kooperation Tagesspiegel -->
                 <div class="ftNavCooperation">
@@ -406,7 +503,7 @@
                       <ul class="ftNavItems">
                         <li>
                           <div class="ftNavIconContainer ftNavUp active ftEvent"><i class="fticon-up"></i>
-                            <div class="tooltip arrow_box-right">Zurück zur Übersicht</div>
+                            <div class="tooltip arrow_box-right is-visible">Zurück zur Übersicht</div>
                           </div>
                         </li>
                         <li><div class="ftNavIconContainer ftNavDown ftEvent"><i class="fticon-down"></i></div></li>
@@ -415,9 +512,9 @@
                       <div class="ftNavShare ftNavIconContainer">
                         <div><i class="fticon-share ftSocialTrigger ftEvent"></i></div>
                         <ul class="ftSocialNav">
-                          <li><a class="share-twitter transition" target="_blank" title="Twitter" href="https://twitter.com/share?url=https://fieldtrip.berlin&text=Field Trip - An open source documentary&via=FieldTripBerlin" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"><i class="fticon-twitter"></i></a>
+                          <li><a class="share-twitter transition" target="_blank" title="Twitter" href="https://twitter.com/share?url=https://fieldtrip.tagesspiegel.de&text=Field Trip - Ein interaktiver Dokumentarfilm zum Tempelhofer Feld&via=FieldTripBerlin" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"><i class="fticon-twitter"></i></a>
                           </li>
-                          <li><a class="share-facebook transition" target="_blank" title="Facebook" href="https://www.facebook.com/sharer.php?u=https://fieldtrip.berlin&t=Field Trip - An open source documentary" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"><i class="fticon-facebook"></i></a></li>
+                          <li><a class="share-facebook transition" target="_blank" title="Facebook" href="https://www.facebook.com/sharer.php?u=https://fieldtrip.tagesspiegel.de&t=Field Trip - Ein interaktiver Dokumentarfilm zum Tempelhofer Feld" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"><i class="fticon-facebook"></i></a></li>
                         </ul>
                       </div>
                     </nav>
@@ -439,7 +536,7 @@
           <a href="#overview">
               <i class="fticon-logo-fieldtrip ftLogo"></i>
           </a>
-          
+
           <!-- Kooperation Tagesspiegel -->
           <div class="ftNavCooperation">
               <a href="https://www.tagesspiegel.de" target="_blank"><img width="" height="" src="_custom/graphics/FT-logo-tagesspiegel.png" alt="logo Tagesspiegel" /></a>
@@ -471,15 +568,24 @@
                 <div id="ueber-uns" class="ftInfoSection full-height">
                   <div class="ftInfoContent">
                     <div class="ftHero">
-                      <p>Field Trip ist ein interaktiver Dokumentarfilm über das Tempelhofer Feld, ein ehemaliges Flughafenrollfeld, was als eines der größten Stadtparks der Welt genutzt wird.<br />  Was für die einen ein 300 Hektar großer Freiraum voller Möglichkeiten ist, ist für die anderen ein Ort der Unterdrückung und dunkler Episoden deutscher Geschichte. Für wieder andere ist es eine Heimat fern der Heimat geworden. Field Trip erzählt ihre Geschichten.</p>
-                      
+                      <p>Field Trip ist ein interaktiver Dokumentarfilm über das Tempelhofer Feld, ein ehemaliges Flughafenrollfeld, was als eines der größten Stadtparks der Welt genutzt wird. Was für die einen ein 300 Hektar großer Freiraum voller Möglichkeiten ist, ist für die anderen ein Ort der Unterdrückung und dunkler Episoden deutscher Geschichte. Für wieder andere ist es eine Heimat fern der Heimat geworden. Field Trip erzählt ihre Geschichten.</p>
+
                       <p>Mit interaktiven Dokumentarfilmen und Einbeziehung der Leute vor Ort ist Field Trip zu einem lebendigen Spiegelbild eines der spannendsten Orte Berlins geworden.</p>
-                      
+
                       <p>Der Tagesspiegel veröffentlicht das Projekt anlässlich des 70-jährigen Jubiläums des Endes der Berlin-Blockade exklusiv vorab. Field Trip ist eine Produktion von ronjafilm.</p>
+
+                      <p>Nach Vorabveröffentlichung stellen wir von Field Trip einen großen Teil der Materialien (Filme, Illustrationen, Software, Design) der Allgemeinheit zur Verfügung. Größtenteils unterstehen die Materialien freien Lizenzen.</p>
+
+                      <!--
+                      <p>In den nächsten Wochen wird die Dokumentation noch weiterwachsen und neue Protagonisten werden hinzukommen. Doch Field Trip will noch mehr Menschen und ihre Geschichten zu diesem besonderen Ort zu Wort kommen lassen. Dafür brauchen wir Ihre Hilfe!</p>
                       
-                      <p>Nach Vorabveröffentlichung stellen wir von Field Trip einen großen Teil der Materialien (Filme, Illustrationen, Software, Design) der Allgemeinheit zur Verfügung.  Größtenteils unterstehen die Materialien freie Lizenzen.</p> 
-                      
-                      <p>In den nächsten Wochen wird die Dokumentation noch weiterwachsen und neue Protagonisten werden hinzukommen. Doch Field Trip will noch mehr Menschen und ihre Geschichten zu diesem besonderen Ort zu Wort kommen lassen. Dafür brauchen wir Ihre Hilfe! Unterstützen Sie unsere Crowdfundingkampagne unter <a href="https://www.startnext.com/www-fieldtrip-berlin" target="_blank">https://www.startnext.com/www-fieldtrip-berlin</a></p>
+                      <p class="startnext-crowfunding">
+                        <a href="https://www.startnext.com/www-fieldtrip-berlin" target="_blank">
+                        <img width="60" height=" 62"src="_custom/graphics/FT-logo-startnext.png" alt="startnext.com logo" /> <b>Field Trip macht Crowdfunding! <br />Unterstützt uns jetzt! <br />
+                        <small>https://www.startnext.com/www-fieldtrip-berlin</small></b>
+                        </a>
+                      </p>
+                      -->
                     </div>
                    </div>
                 </div>
@@ -493,7 +599,7 @@
                     </div>
                     <div class="ftTeam-member clearfix">
                       <div class="ftTeam-member--portrait">
-                        <img src="_custom/graphics/FT-team-eva.jpg" alt="" />
+                        <img data-src="_custom/graphics/FT-team-eva.jpg" alt="" />
                       </div>
                       <div class="ftTeam-member--details">
                         <h3 class="highlighted highlighted--white">Eva Stotz</h3>
@@ -504,7 +610,7 @@
 
                     <div class="ftTeam-member clearfix">
                       <div class="ftTeam-member--portrait">
-                        <img src="_custom/graphics/FT-team-frederic.jpg" alt="" />
+                        <img data-src="_custom/graphics/FT-team-frederic.jpg" alt="" />
                       </div>
                       <div class="ftTeam-member--details">
                         <h3 class="highlighted highlighted--white">Frédéric Dubois</h3>
@@ -515,7 +621,7 @@
 
                     <div class="ftTeam-member clearfix">
                       <div class="ftTeam-member--portrait">
-                        <img src="_custom/graphics/FT-team-svenja.jpg" alt="" />
+                        <img data-src="_custom/graphics/FT-team-svenja.jpg" alt="" />
                       </div>
                       <div class="ftTeam-member--details">
                         <h3 class="highlighted highlighted--white">Svenja Klüh</h3>
@@ -526,7 +632,7 @@
 
                     <div class="ftTeam-member clearfix">
                       <div class="ftTeam-member--portrait">
-                        <img src="_custom/graphics/FT-team-joscha.jpg" alt="" />
+                        <img data-src="_custom/graphics/FT-team-joscha.jpg" alt="" />
                       </div>
                       <div class="ftTeam-member--details">
                         <h3 class="highlighted highlighted--white">Joscha Jäger</h3>
@@ -537,7 +643,7 @@
 
                     <div class="ftTeam-member clearfix">
                       <div class="ftTeam-member--portrait">
-                        <img src="_custom/graphics/FT-team-olivier.jpg" alt="" />
+                        <img data-src="_custom/graphics/FT-team-olivier.jpg" alt="" />
                       </div>
                       <div class="ftTeam-member--details">
                         <h3 class="highlighted highlighted--white">Olivier Guillard</h3>
@@ -548,7 +654,7 @@
 
                     <div class="ftTeam-member clearfix">
                       <div class="ftTeam-member--portrait">
-                        <img src="_custom/graphics/FT-team-filippo.jpg" alt="" />
+                        <img data-src="_custom/graphics/FT-team-filippo.jpg" alt="" />
                       </div>
                       <div class="ftTeam-member--details">
                         <h3 class="highlighted highlighted--white">Filippo Letizi</h3>
@@ -559,23 +665,23 @@
 
                     <div class="ftTeam-member clearfix">
                       <div class="ftTeam-member--portrait">
-                        <img src="_custom/graphics/FT-team-michal.jpg" alt="" />
+                        <img data-src="_custom/graphics/FT-team-michal.jpg" alt="" />
                       </div>
                       <div class="ftTeam-member--details">
                         <h3 class="highlighted highlighted--white">Michał Kuleba</h3>
                         <h4>Filmeditor</h4>
-                        <a class="contact-email" href="mailto:michal@fieldtrip.info" target="_blank">michal@fieldtrip.info</a>
+                        <a class="contact-email" href="mailto:michal@fieldtrip.berlin" target="_blank">michal@fieldtrip.berlin</a>
                       </div>
                     </div>
 
                     <div class="ftTeam-member clearfix">
                       <div class="ftTeam-member--portrait">
-                        <img src="_custom/graphics/FT-team-frieder.jpg" alt="" />
+                        <img data-src="_custom/graphics/FT-team-frieder.jpg" alt="" />
                       </div>
                       <div class="ftTeam-member--details">
                         <h3 class="highlighted highlighted--white">Frieder Nagel</h3>
                         <h4>Komponist & Sounddesigner</h4>
-                        <a class="contact-email" href="mailto:frieder@fieldtrip.info" target="_blank">frieder@fieldtrip.info</a>
+                        <a class="contact-email" href="mailto:frieder@fieldtrip.berlin" target="_blank">frieder@fieldtrip.berlin</a>
                       </div>
                     </div>
 
@@ -593,136 +699,146 @@
                   <div class="ftInfoContent">
                     <h5 class="highlighted highlighted--white">Abspann</h5>
                     <div class="parterns-list">
-                      
-                      
+
+
                       <h6>Förderer</h6>
                       <ul class="row partners--row clearfix">
                         <li>
                            <span class="partner-logo">
-                             <img width="" height="" src="_custom/graphics/FT-logo-miz.svg" alt="logo MIZ babelsberg" />
+                             <img width="" height="" data-src="_custom/graphics/FT-logo-miz.svg" alt="logo MIZ babelsberg" />
                            </span>
                         </li>
-                        
+
                         <li>
                           <span class="partner-logo">
-                            <img width="390" height="117" src="_custom/graphics/FT-logo-rudolf-augstein.png" alt="logo Rudolf Augstein" />
+                            <img width="390" height="117" data-src="_custom/graphics/FT-logo-rudolf-augstein.png" alt="logo Rudolf Augstein" />
                           </span>
                         </li>
-                        
+
                         <li>
                           <span class="partner-logo">
-                            <img width="" height="" src="_custom/graphics/FT-logo-blfpb.png" alt="logo  Berliner Landeszentrale für politische Bildung " />
+                            <img width="" height="" data-src="_custom/graphics/FT-logo-blfpb.png" alt="logo  Berliner Landeszentrale für politische Bildung " />
                           </span>
                         </li>
-                        
+
                         <li>
                           <span class="partner-logo">
-                            <img width="" height="" src="_custom/graphics/FT-logo-stiftung-luftbrueckendank.svg" alt="logo Stiftung Luftbrueckendank." />
+                            <img width="" height="" data-src="_custom/graphics/FT-logo-stiftung-luftbrueckendank.svg" alt="logo Stiftung Luftbrueckendank." />
                           </span>
                         </li>
-                        
+
                         <li>
                           <span class="partner-logo">
-                            <img width="" height="" src="_custom/graphics/FT-logo-berlin.svg" alt="logo berlin.de" />
+                            <img width="" height="" data-src="_custom/graphics/FT-logo-berlin.svg" alt="logo berlin.de" />
                           </span>
                         </li>
-                        
+
                         <li>
                           <span class="partner-logo">
-                            <img width="" height="" src="_custom/graphics/FT-logo-checkpointcharlie.svg" alt="logo" />
+                            <img width="" height="" data-src="_custom/graphics/FT-logo-checkpointcharlie.svg" alt="logo" />
                           </span>
                         </li>
- 
+
+                        <li>
+                          <span class="partner-logo">
+                            <img width="" height="" style="width: 80%;" data-src="_custom/graphics/FT-logo-EW.svg" alt="logo EW" />
+                          </span>
+                        </li>
+
+                        <li>
+                          <span class="partner-logo">
+                            <img width="" height="" data-src="_custom/graphics/FT-logo-AMI.svg" alt="logo AMI" />
+                          </span>
+                        </li>
+
                       </ul>
-                      
-     
+
+
                       <h6>Unterstützer</h6>
                       <ul class="row partners--row clearfix">
                         <li>
                            <span class="partner-logo">
-                             <img width="" height="" src="_custom/graphics/FT-logo-gruenberlin.svg" alt="logo Grün Berlin" />
+                             <img width="" height="" data-src="_custom/graphics/FT-logo-gruenberlin.svg" alt="logo Grün Berlin" />
                            </span>
                         </li>
 
                         <li>
                            <span class="partner-logo">
-                             <img width="" height="" src="_custom/graphics/FT-logo-bbxx.svg" alt="logo inbak" />
+                             <img width="" height="" data-src="_custom/graphics/FT-logo-bbxx.svg" alt="logo inbak" />
                            </span>
                         </li>
 
                         <li>
                           <span class="partner-logo">
-                            <img width="" height="" src="_custom/graphics/FT-logo-hoerbert.svg" alt="logo hörbert" />
+                            <img width="" height="" data-src="_custom/graphics/FT-logo-hoerbert.svg" alt="logo hörbert" />
                           </span>
                         </li>
 
                         <li>
                           <span class="partner-logo">
-                            <img width="400" height="357" style="width: 80%;" src="_custom/graphics/FT-logo-time-print.png" alt="logo time prints" />
+                            <img width="400" height="357" style="width: 80%;" data-src="_custom/graphics/FT-logo-time-print.png" alt="logo time prints" />
                           </span>
                         </li>
 
                         <li>
                           <span class="partner-logo">
-                            <img width="396" height="189" src="_custom/graphics/FT-logo-topography-des-terrors.png" alt="logo Topographie des Terrors" />
+                            <img width="396" height="189" data-src="_custom/graphics/FT-logo-topography-des-terrors.png" alt="logo Topographie des Terrors" />
                           </span>
                         </li>
 
                         <li>
                           <span class="partner-logo">
-                            <img width="500" height="71" src="_custom/graphics/FT-logo-erinnerungsstaette.png" alt="logo nNotaufnahmelager" />
+                            <img width="500" height="71" data-src="_custom/graphics/FT-logo-erinnerungsstaette.png" alt="logo nNotaufnahmelager" />
                           </span>
                         </li>
 
                         <li>
                           <span class="partner-logo">
-                            <img width="500" height="179" src="_custom/graphics/FT-logo-asg.png" alt="logo Albert-Schweitzer-Gymnasium" />
+                            <img width="500" height="179" data-src="_custom/graphics/FT-logo-asg.png" alt="logo Albert-Schweitzer-Gymnasium" />
                           </span>
                         </li>
 
                         <li>
                           <span class="partner-logo">
-                            <img width="" height="" src="_custom/graphics/FT-logo-jebb.svg" alt="logo Junge Europäische Bewegung" />
+                            <img width="" height="" data-src="_custom/graphics/FT-logo-jebb.svg" alt="logo Junge Europäische Bewegung" />
                           </span>
                         </li>
 
                         <li>
                           <span class="partner-logo">
-                            <img width="" height="" src="_custom/graphics/FT-logo-alliierten.svg" alt="logo Alliierten Museum" />
+                            <img width="" height="" data-src="_custom/graphics/FT-logo-alliierten.svg" alt="logo Alliierten Museum" />
                           </span>
                         </li>
 
                         <li>
                           <span class="partner-logo">
-                            <img width="" height="" src="_custom/graphics/FT-logo-ns-zwangsarbeit.svg" alt="logo Zwangsarbeit" />
+                            <img width="" height="" data-src="_custom/graphics/FT-logo-ns-zwangsarbeit.svg" alt="logo Zwangsarbeit" />
                           </span>
                         </li>
 
                         <li>
                           <span class="partner-logo">
-                            <img width="" height="" src="_custom/graphics/FT-logo-filmuni.svg" alt="logo Filmuni" />
+                            <img width="" height="" data-src="_custom/graphics/FT-logo-filmuni.svg" alt="logo Filmuni" />
                           </span>
                         </li>
 
                         <li>
                           <span class="partner-logo">
-                            <img width="" height="" style="width: 80%;" src="_custom/graphics/FT-logo-ohnegepaeck.png" alt="logo Ohne Gepäck Filmproduktion " />
+                            <img width="" height="" style="width: 80%;" data-src="_custom/graphics/FT-logo-ohnegepaeck.png" alt="logo Ohne Gepäck Filmproduktion " />
                           </span>
                         </li>
 
                         <li>
                           <span class="partner-logo">
-                            <img width="" height="" style="width: 80%;" src="_custom/graphics/FT-logo-bbc-r&d.png" alt="logo BBC R&D" />
+                            <img width="" height="" style="width: 80%;" data-src="_custom/graphics/FT-logo-bbc-r&d.png" alt="logo BBC R&D" />
                           </span>
                         </li>
                       </ul>
                       <div class="section-footer">
-                        <p>Als Teil unserer <a href="https://www.startnext.com/www-fieldtrip-berlin/" target="_blank">Crowdfunding Kampagne</a> - die noch bis zum 24.05.2019 um 23:59 Uhr läuft - haben uns folgende Personen unterstützt. Wir danken für die Großzügigkeit:</p>
-                        <h6>Big Shout Out</h6>
-                        <p>Ulrich Deiters, Maya Eriksson, Andreas Hackenberg, Verena Hansen, Tom Kimmig, Marianne Klüh, Daniel Kunle, Sarah Maske, Frank Masurat, Agnes Müller, Nina Riedel, Philippe Rives, Fritz Schumann, Mike + Nina Trobridge, Sandra Trostel, Dorothee Wenner, Tobias Weyrauch, Christian Zipfel</p>
-                        <h6>Weitere Unterstützer*innen</h6>
-                        <p>Veronique Benoit, Noel Bush, Benjamin Cölle, Manuel Feifel, Elizabeth Grenier, Lorenz Grünewald-Schukalla, Nicola Hens, Urs Kind, Bernadette Klausberger, Arne Klüh, Martin Kohlisch, Andreas Louis, Matthias Luthardt, Lorenz Matzat, Uta Meier-Hahn, Rick Minnich, Sebastian Prüfer, Alessandro Rais, Wolfgang Rebernik, Rebecca Scharlach, Placidus Schelbert, Katja Schmitz-Dräger, Lydia Schuth, Hendrik Send, Steffen Sommer, Samen Spender, Sandra Trostel, Stefan Westphal</p>
-                        <p>(Stand: 09.05.2019)</p>
+                        <p>Als Teil unserer <a href="https://www.startnext.com/www-fieldtrip-berlin/" target="_blank">Crowdfunding Kampagne</a> haben uns folgende Personen unterstützt. Wir danken für die Großzügigkeit:</p>
+                        <h6> Big Shout Out und weitere Unterstützer*innen</h6>
+                        <p>Daniel Acero, Andreas Antic, Csongor Baranyai, Veronique Benoit, Marcus Bösch, Maren Boeschel, Roland Borchers, Angelika Brauckmann, Linda Brieda, Roswitha + Norbert Bruchholz, Christine Brugger, Robin Burgauer, Noel Bush, Raban von Buttlar, Gerard Charrier, Benjamin Cölle, Alina Cyranek, Ulrich Deiters, Pierre Depaz, Berivan Dr. Dogan, Mechthild Dubois-Utters, Marylise Dumont, Jens Eder, Juliane Elting, Maya Eriksson, Saskia Esken, Bene Fecher, Georg Fischer, Victoria Geier, Alban Gerhardt, Detlef Gericke, Teresa Goessl, Alima de Graaf, Elizabeth Grenier, ZWEEnHALB der Grill, Michael Grotenhoff, Lorenz Grünewald-Schukalla, Kristin Günther, Andreas Hackenberg, Verena Hansen, Jule Hartung, Katja Hefter, Caroline Heinrich, Nicola Hens, Edouard Herbillon, Tilmann Heuser, Christine Hinz, Philipp Horn, Susanna Kahlefeld, Katarina Kezeric, Tom Kimmig, Urs Kind, Melih Kirlidog, Bernadette Klausberger, Agata Klimek, Arne Klüh, Marianne Klüh, Martin Kohlisch, Daniel Krebs, Julia Kreckel, Saskia Kress, Daniel Kunle, Stefanie + Peter Lange, Paul Lehman, Erik Lemke, Philipp Lemmerich, Maria-Raphaela Lenz, Paul Lettich, Marc Linke, Gladys Lizarazu, Amelie Losier, Andreas Louis, Florian Lüdtke, Matthias Luthardt, Daniel Mack, Sarah Maske, Gulce Masrabaci, Frank Masurat, Lorenz Matzat, Uta Meier-Hahn, Rick Minnich, Beatrice Möller, Lauren Moffatt, Agnes Müller, Horst Niesyto, Ksenia Panasyuk, Jonas Parnow, Anke Petersen, Bettina Pohlmann, Sebastian Prüfer, Wolfgang Rebernik, Edouard Richard, Nina Riedel, Philippe Rives, Judith Röhrich, Lies van Roessel, Rebecca Scharlach, Placidus Schelbert, Heike Schluckebier, Michael Scholl, Benjamin Schreuder, Katarina Schröter, Fritz Schumann, Hendrik Send, Steffen Sommer, Samen Spender, Sabine und Werner Spieß, Verena Stackelberg, Christian Steinfurth, Björn Stockleben, Florian Thalhofer, Lena Thiele, Helge Thomas, Mike + Nina Trobridge, Sandra Trostel, Nyascha Utters, Cory Verbauwhede, Marta Wegner, Nancy Wegner, Pola Weiß, Barbara Wenders, Hella Wenders, Dorothee Wenner, Stefan Westphal, Tobias Weyrauch, Jonas-Raoul Witsch, Gerhard M. Wolz, Christian Zipfel, Peter Zorn, Lili Zsofi, Marlon Zwergnashorn</p>
+                        <p><b>sowie 18 anonyme Unterstützer*innen!</b></p>
                       </div>
                     </div>
                    </div>
@@ -739,25 +855,25 @@
                        <h6>Was ist ein „Web Documentary”?</h6>
 
                        <p>Eine Web Documentary ist ein mit Webtechnologien wie HTML, CSS und JavaScript umgesetzter Dokumentarfilm, der im Browser abgespielt wird.</p>
-                       
+
                        <p>Im Fall von <b>Field Trip</b> war es zwingend, eine Web-Documentary zu produzieren. Ohne diese Techniken könnte das nicht-lineare Erzählkonzept nicht funktionieren. Wie das Web über Hypertext Links funktioniert, funktioniert Field Trip über Hypervideo Links, welche es der Nutzerin erlauben, sich interaktiv durch ein filmisches Netzwerk aus verbundenen Erzählsträngen zu navigieren.</p>
 
                        <h6>Was ist ein „Open Source Documentary”?</h6>
 
-                       <p>Die Idee hinter <b>Field Trip</b> ist es, ein dauerhaft offenes und veränderbares Projekt zu sein, welches auf offene Webtechnologien setzt. Das heißt alle Interaktionsmöglichkeiten, Visualisierungen, Übergänge, Effekte und alles andere außer dem Rohmaterial, wird über kleine, wiederverwendbare Code-Bausteine (Code Snippets) umgesetzt. Anstatt konventioneller Postproduktions-Software verwenden wir <b>HTML</b>, <b>Javascript</b> und <b>CSS</b> – wenn immer es technisch möglich ist. Außerdem machen wir diese Code-Bausteine in einem offenen Repository unter <b>MIT</b> und <b>GPL v3</b> Lizenzen zugänglich.</p>
+                       <p>Die Idee hinter <b>Field Trip</b> ist es, ein dauerhaft offenes und veränderbares Projekt zu sein, welches auf offene Webtechnologien setzt. Das heißt, alle Interaktionsmöglichkeiten, Visualisierungen, Übergänge, Effekte und alles andere außer dem Rohmaterial, wird über kleine, wiederverwendbare Code-Bausteine (Code Snippets) umgesetzt. Anstatt konventioneller Postproduktions-Software verwenden wir <b>HTML</b>, <b>Javascript</b> und <b>CSS</b> – wenn immer es technisch möglich ist. Außerdem machen wir diese Code-Bausteine in einem offenen Repository unter <b>MIT</b> und <b>GPL v3</b> Lizenzen zugänglich.</p>
 
                        <h6>Welche Technologien werden verwendet?</h6>
 
-                        <p>Für <b>Field Trip</b> verwenden wir die „<a href="https://frametrail.org" target="_blank"><b>FrameTrail Open Hypervideo</b></a>“ Technologie. Damit können wir alle Projekt-Komponenten direkt im Browser bearbeiten und verknüpfen. <a href="https://frametrail.org" target="_blank">FrameTrail</a> ist Open Source Software, dual lizensiert unter MIT und GPL v3 Lizenzen, und wurde ausschließlich mit offenen Webtechnologien und <a href="https://frametrail.org/#principles" target="_blank"><b>Standards entwickelt</b></a>. Um zusätzlich Schnitte, Übergänge und Effekte bearbeiten zu können, haben wir die <a href="http://bbc.github.io/VideoContext" target="_blank"><b>VideoContext Bibliothek</b></a> in <a href="https://frametrail.org" target="_blank"><b>FrameTrail</b></a> integriert. VideoContext wird von BBC Research & Development im Rahmen der Arbeit an “<a href="http://www.bbc.co.uk/rd/projects/object-based-media-toolkit" target="_blank"><b>Object-based Media</b></a>” verwendet.</p>
+                        <p>Für <b>Field Trip</b> verwenden wir die „<a href="https://frametrail.org" target="_blank"><b>FrameTrail Open Hypervideo</b></a>“ Technologie. Damit können wir alle Projekt-Komponenten direkt im Browser bearbeiten und verknüpfen. <a href="https://frametrail.org" target="_blank">FrameTrail</a> ist Open Source Software, dual lizenziert unter MIT und GPL v3 Lizenzen, und wurde ausschließlich mit offenen Webtechnologien und <a href="https://frametrail.org/#principles" target="_blank"><b>Standards entwickelt</b></a>. Um zusätzlich Schnitte, Übergänge und Effekte bearbeiten zu können, haben wir die <a href="http://bbc.github.io/VideoContext" target="_blank"><b>VideoContext Bibliothek</b></a> in <a href="https://frametrail.org" target="_blank"><b>FrameTrail</b></a> integriert. VideoContext wird von BBC Research & Development im Rahmen der Arbeit an “<a href="http://www.bbc.co.uk/rd/projects/object-based-media-toolkit" target="_blank"><b>Object-based Media</b></a>” verwendet.</p>
 
                        <h6>Wie funktioniert das „Code Snippet Repository“?</h6>
 
                        <p>Über das <a href="https://github.com/memory-shuffle/FrameTrail-CodeSnippet-Repository">Code Snippet Repository</a> werden die technischen Komponenten des Projekts in Form wiederverwendbarer Code-Bausteine verfügbar gemacht. Das kann eine kleine Animation sein, ein komplexer Effekt oder einfach ein Button. Die Idee ist es, eigenständige Komponenten zu erstellen, die in anderen Projekten verwendet werden können (losgelöst von den tatsächlichen Inhalten). Um dies so einfach wie möglich zu machen, bietet das Repository sowohl eine durchsuchbare Website als auch eine offene Schnittstelle an, über welche einzelne Bausteine abgerufen und neu hinzugefügt werden können. Über dieselbe Schnittstelle ist das Repository in FrameTrail integriert, damit Nutzer existierende Komponenten sowohl per einfachem „Drag and Drop“ in Videos einfügen als auch neue Bausteine mit anderen Nutzern teilen können.</p>
 
-                       <h6>Wie sind die Inhalte lizensiert?</h6>
+                       <h6>Wie sind die Inhalte lizenziert?</h6>
 
                        <p>
-                         Während sämtlicher Code unter Open Source Lizenzen veröffentlicht wird, gelten für die Inhalte (z.B. Videomaterial, Fotos, Texte) unterschiedliche Bedingungen: Im Normalfall nutzen wir die “<b>Creative Commons Attribution-ShareAlike 4.0 International License</b>”, welche es erlaubt, Inhalte frei zu verwenden, zu verändern und weiter zu verbreiten (auch kommerziell), solange die Autoren korrekt genannt werden und die Arbeiten unter denselben Bedingungen weitergegeben werden. Im Falle von Archivmaterial oder anderweitig bezogenen Inhalten haben wir aber nicht immer Kontrolle über die Lizenzen. Jegliche Einschränkungen dieser Art werden in der Liste aller Materialien und Lizenzen in unserem „Media Repository“ klar kommuniziert.
+                         Während sämtlicher Code unter Open Source Lizenzen veröffentlicht wird, gelten für die Inhalte (z. B. Videomaterial, Fotos, Texte) unterschiedliche Bedingungen: Im Normalfall nutzen wir die “<b>Creative Commons Attribution-ShareAlike 4.0 International License</b>”, welche es erlaubt, Inhalte frei zu verwenden, zu verändern und weiter zu verbreiten (auch kommerziell), solange die Autoren korrekt genannt werden und die Arbeiten unter denselben Bedingungen weitergegeben werden. Im Falle von Archivmaterial oder anderweitig bezogenen Inhalten haben wir aber nicht immer Kontrolle über die Lizenzen. Jegliche Einschränkungen dieser Art werden in der Liste aller Materialien und Lizenzen in unserem „Media Repository“ klar kommuniziert.
                        </p>
 
                        <div class="ftInfoGithub">
@@ -823,5 +939,6 @@
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W66BGDX"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
+        <!-- field trip -->
     </body>
 </html>

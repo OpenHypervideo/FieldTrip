@@ -6,19 +6,38 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093203417,
-        "lastchanged": 1557307064011
+        "lastchanged": 1560851741105
     },
     "config": {
         "slidingMode": "adjust",
         "slidingTrigger": "key",
         "autohideControls": true,
         "captionsVisible": true,
+        "clipTimeVisible": false,
         "hidden": false,
         "layoutArea": {
             "areaTop": [],
             "areaBottom": [],
             "areaLeft": [],
-            "areaRight": []
+            "areaRight": [
+                {
+                    "type": "CustomHTML",
+                    "contentSize": "large",
+                    "name": "Credits",
+                    "description": "",
+                    "cssClass": "",
+                    "initClosed": true,
+                    "collectionFilter": {
+                        "tags": [],
+                        "types": [],
+                        "users": [],
+                        "text": ""
+                    },
+                    "onClickContentItem": "",
+                    "html": "<table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Ton</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sounddesign</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Archivmaterial</td><td>Alliiertenmuseum, Bernd von Kostka</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unsere Protagonist*innen Bert und Christa Molkenbuhr</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
+                    "transcriptSource": ""
+                }
+            ]
         }
     },
     "clips": [
@@ -52,13 +71,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 09:25:24 GMT+0200 (Central European Summer Time)",
+            "created": "Mon Apr 29 2019 08:25:24 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2987/64007844001_6032636272001_6032627758001.mp4?pubId=64007844001&videoId=6032627758001",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034568309001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -89,13 +108,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 09:27:47 GMT+0200 (Central European Summer Time)",
+            "created": "Mon Apr 29 2019 08:27:47 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2987/64007844001_6032636272001_6032627758001.mp4?pubId=64007844001&videoId=6032627758001",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034568309001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -126,13 +145,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 10:40:09 GMT+0200 (Central European Summer Time)",
+            "created": "Tue Apr 30 2019 09:40:09 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2987/64007844001_6032636272001_6032627758001.mp4?pubId=64007844001&videoId=6032627758001",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034568309001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -148,7 +167,7 @@
             },
             "frametrail:events": {},
             "frametrail:attributes": {
-                "text": "&lt;p style=\"text-align: center;\"&gt;1948 wurde Berlin unter den vier Siegermächten aufgeteilt.&lt;br&gt;West-Berlin, verwaltet von Frankreich, Großbritanien und den USA, lag als Enklave in der sowjetischen Besatzungszone. &lt;br&gt;&lt;br&gt;Im Sommer 1948 blockierten die Sowjets&lt;br&gt; die Land- und Wasserwege nach West-Berlin.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+                "text": "&lt;p style=\"text-align: center;\"&gt;1948 wurde Berlin unter den vier Siegermächten aufgeteilt.&lt;br&gt;West-Berlin, verwaltet von Frankreich, Großbritannien und den USA, lag als Enklave in der sowjetischen Besatzungszone. &lt;br&gt;&lt;br&gt;Im Sommer 1948 blockierten die Sowjets&lt;br&gt; die Land- und Wasserwege nach West-Berlin.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
             }
         },
         {
@@ -163,13 +182,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 10:41:34 GMT+0200 (Central European Summer Time)",
+            "created": "Tue Apr 30 2019 09:41:34 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2987/64007844001_6032636272001_6032627758001.mp4?pubId=64007844001&videoId=6032627758001",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034568309001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -200,13 +219,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 10:44:12 GMT+0200 (Central European Summer Time)",
+            "created": "Tue Apr 30 2019 09:44:12 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "https://brightcove.hs.llnwd.net/v1/uds/pd/64007844001/201905/2987/64007844001_6032636272001_6032627758001.mp4?pubId=64007844001&videoId=6032627758001",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034568309001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",

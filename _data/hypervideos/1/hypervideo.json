@@ -6,19 +6,38 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093101650,
-        "lastchanged": 1556707275022
+        "lastchanged": 1560851173104
     },
     "config": {
         "slidingMode": "adjust",
         "slidingTrigger": "key",
         "autohideControls": true,
         "captionsVisible": true,
+        "clipTimeVisible": false,
         "hidden": false,
         "layoutArea": {
             "areaTop": [],
             "areaBottom": [],
             "areaLeft": [],
-            "areaRight": []
+            "areaRight": [
+                {
+                    "type": "CustomHTML",
+                    "contentSize": "large",
+                    "name": "Credits",
+                    "description": "",
+                    "cssClass": "",
+                    "initClosed": true,
+                    "collectionFilter": {
+                        "tags": [],
+                        "types": [],
+                        "users": [],
+                        "text": ""
+                    },
+                    "onClickContentItem": "",
+                    "html": "<table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera</td><td>Emma Rosa Simon</td>\n  </tr>\n  <tr>\n    <td>Ton</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Diana Näcke, Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sounddesign</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Musik Ende</td><td>Tuluyhan Uğurlu</td>\n  </tr>\n  <tr>\n    <td>Archivmaterial</td><td>Cenk Kose<br> “One Million Steps” von Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unsere Protagonist*innen Şebnem Sönmez und Mustafa Altıoklar</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
+                    "transcriptSource": ""
+                }
+            ]
         }
     },
     "clips": [
@@ -52,13 +71,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 07:56:08 GMT+0200 (Central European Summer Time)",
+            "created": "Mon Apr 29 2019 06:56:08 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092338_episode-1-mustafa-sebnem.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034566731001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -89,13 +108,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 08:08:50 GMT+0200 (Central European Summer Time)",
+            "created": "Mon Apr 29 2019 07:08:50 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092338_episode-1-mustafa-sebnem.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034566731001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -126,13 +145,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 10:05:55 GMT+0200 (Central European Summer Time)",
+            "created": "Tue Apr 30 2019 09:05:55 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092338_episode-1-mustafa-sebnem.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034566731001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -163,13 +182,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 10:12:31 GMT+0200 (Central European Summer Time)",
+            "created": "Tue Apr 30 2019 09:12:31 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092338_episode-1-mustafa-sebnem.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034566731001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -200,13 +219,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 10:14:13 GMT+0200 (Central European Summer Time)",
+            "created": "Tue Apr 30 2019 09:14:13 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092338_episode-1-mustafa-sebnem.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034566731001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -237,13 +256,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 10:19:25 GMT+0200 (Central European Summer Time)",
+            "created": "Tue Apr 30 2019 09:19:25 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092338_episode-1-mustafa-sebnem.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034566731001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -274,13 +293,13 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 15:45:28 GMT+0200 (Central European Summer Time)",
+            "created": "Tue Apr 30 2019 14:45:28 GMT+0100 (Western European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "1_1556092338_episode-1-mustafa-sebnem.mp4",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034566731001&pubId=64007844001&secure=true",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -298,6 +317,43 @@
                 "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=8&t=0';\n  }, 3000);\n}, 1000);"
             },
             "frametrail:attributes": {}
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Wed May 22 2019 12:52:21 GMT+0100 (Western European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034566731001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=205,211&xywh=percent:10.26985990061119,64.17721518987342,79.83765138262815,35.822784810126585"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;Çarşı ist ein Fussballfanclub in Istanbul,&lt;br&gt;der erheblich dazu beigetragen hat,&lt;br&gt;dass sich Menschen aus der ganzen Türkei&lt;br&gt;den Protesten im Gezi-Park angeschlossen haben.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+            }
         }
     ],
     "subtitles": [
