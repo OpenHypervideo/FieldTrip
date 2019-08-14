@@ -296,10 +296,16 @@ $(document).ready(function() {
     $('body').on('click', '#ftCreditLink', function () {
 		$('#VideoPlayer .areaRightContainer').toggleClass('closed');
 		$('body').toggleClass('creditsClosed');
+		setTimeout(function() {
+			$(window).resize();
+		}, 1000);
 	});
 
     $('body').on('click', '.layoutAreaToggleCloseButton', function () {
 		$('body').addClass('creditsClosed');
+		setTimeout(function() {
+			$(window).resize();
+		}, 1000);
 	});
 
 
