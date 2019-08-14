@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093244546,
-        "lastchanged": 1560852244754
+        "lastchanged": 1565764418786
     },
     "config": {
         "slidingMode": "adjust",
@@ -71,7 +71,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 08:52:06 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Apr 29 2019 09:52:06 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -108,7 +108,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 08:56:27 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Apr 29 2019 09:56:27 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -145,7 +145,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 09:51:31 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Apr 30 2019 10:51:31 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -182,7 +182,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Wed May 01 2019 11:57:59 GMT+0100 (Western European Summer Time)",
+            "created": "Wed May 01 2019 12:57:59 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -192,7 +192,7 @@
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=16,24&xywh=percent:8.690987124463518,60.610395803528846,82.78254562181463,39.34191702432045"
+                    "value": "t=16,24&xywh=percent:8.261802575107296,56.79542203147353,82.7807577894481,39.34191702432045"
                 }
             },
             "body": {
@@ -219,7 +219,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Jun 18 2019 08:58:20 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Jun 18 2019 09:58:20 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],

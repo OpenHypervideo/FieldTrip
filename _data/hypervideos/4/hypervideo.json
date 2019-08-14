@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093194892,
-        "lastchanged": 1560851596385
+        "lastchanged": 1565764104806
     },
     "config": {
         "slidingMode": "adjust",
@@ -71,7 +71,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 08:15:18 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Apr 29 2019 09:15:18 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -108,7 +108,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 08:22:24 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Apr 29 2019 09:22:24 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -145,7 +145,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 09:24:19 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Apr 30 2019 10:24:19 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -155,7 +155,7 @@
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=29,39&xywh=percent:13.893061953041174,67.96057705203863,73.51931461448832,31.99173577581068"
+                    "value": "t=29,39&xywh=percent:13.893061953041174,57.27865049028373,73.51931461448832,31.99173577581068"
                 }
             },
             "body": {
@@ -182,7 +182,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 09:25:32 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Apr 30 2019 10:25:32 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -192,7 +192,7 @@
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=41,50&xywh=percent:9.792560364555392,12.395486390528134,81.1480673597606,48.72993029010938"
+                    "value": "t=41,50&xywh=percent:9.57618025751073,22.886664263680256,81.1480673597606,48.72675192145774"
                 }
             },
             "body": {

@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1558510725220,
-        "lastchanged": 1560852627225
+        "lastchanged": 1565764454727
     },
     "config": {
         "slidingMode": "adjust",
@@ -71,7 +71,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Wed May 22 2019 09:02:19 GMT+0100 (Western European Summer Time)",
+            "created": "Wed May 22 2019 10:02:19 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -81,7 +81,7 @@
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=43,55&xywh=percent:16.214029533659048,45.30375821413182,68.70952476064971,54.69624178586818"
+                    "value": "t=43,55&xywh=percent:16.21244700681498,40.915593705293276,68.70886675789633,54.69400808819146"
                 }
             },
             "body": {
@@ -108,7 +108,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Wed May 22 2019 11:34:37 GMT+0100 (Western European Summer Time)",
+            "created": "Wed May 22 2019 12:34:37 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -145,7 +145,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Wed May 22 2019 11:38:56 GMT+0100 (Western European Summer Time)",
+            "created": "Wed May 22 2019 12:38:56 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],

@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093235752,
-        "lastchanged": 1560852293679
+        "lastchanged": 1565764363947
     },
     "config": {
         "slidingMode": "adjust",
@@ -71,7 +71,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 08:46:46 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Apr 29 2019 09:46:46 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -108,7 +108,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 08:47:56 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Apr 29 2019 09:47:56 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -145,7 +145,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 08:49:55 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Apr 29 2019 09:49:55 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -182,7 +182,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 09:50:01 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Apr 30 2019 10:50:01 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -192,7 +192,7 @@
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=1,13&xywh=percent:11.089056448875068,9.537434430138294,75.96387740368496,55.9306961954578"
+                    "value": "t=1,13&xywh=percent:11.51824099823129,25.36957558416786,75.96387740368496,55.9306961954578"
                 }
             },
             "body": {
