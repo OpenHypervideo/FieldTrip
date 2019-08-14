@@ -50,9 +50,30 @@
 	padding: 4px 10px;
 }
 
+.layoutArea .contentViewContainer .contentViewContents .customhtmlContainer h2 {
+	font-family: 'Rubik', helvetica, sans-serif;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	line-height: 58px;
+}
+
+.layoutArea[data-area="areaRight"] .contentViewContainer {
+	left: 0px;
+	width: 100%;
+}
+
 .layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
-	top: 28px;
+	position: fixed;
+	top: 30px;
+	right: 30px;
+	left: auto;
+	transform: translateY(0%);
 	opacity: 1 !important;
+}
+
+.creditsClosed .layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
+	display: none;
 }
 
 .layoutArea .layoutAreaToggleCloseButton::after {
@@ -93,9 +114,11 @@ body:not(.creditsClosed) .ftAboutIconContainer {
     flex: 0 0 100%;
   }
 
+  /*
   .layoutAreaToggleCloseButton {
   	top: 90px !important;
   }
+  */
   
   .layoutArea {
     transition-duration: 600ms;
@@ -125,7 +148,7 @@ body:not(.creditsClosed) .ftAboutIconContainer {
   }
 
   .layoutAreaToggleCloseButton {
-  	top: 70px !important;
+  	top: 20px !important;
   }
   
   .layoutArea .contentViewContainer .contentViewContents .customhtmlContainer {
