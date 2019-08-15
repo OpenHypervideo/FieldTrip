@@ -21,6 +21,11 @@
 	z-index: 12;
 }
 
+.areaRightContainer[data-size="large"] {
+	flex: 0 0 500px;
+	min-width: 500px;
+}
+
 .areaRightContainer.closed {
 	flex: 0 0 0px;
 	min-width: 0px;
@@ -30,17 +35,13 @@
 	display: none;
 }
 
-.layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
-
-}
-
 .layoutArea[data-area="areaRight"] .contentViewContainer {
   left: 40px; 
   width: calc(100% - 40px);
 }
 
 .layoutArea .contentViewContainer .contentViewContents .customhtmlContainer {
-  padding: 110px 66px 13px 15px;
+  padding: 10px 13px 13px 13px;
   margin: 0;
   max-height: 100%;
 }
@@ -49,12 +50,41 @@
 	padding: 4px 10px;
 }
 
+.layoutArea .contentViewContainer .contentViewContents .customhtmlContainer h2 {
+	font-family: 'Rubik', helvetica, sans-serif;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	line-height: 58px;
+}
+
+.layoutArea[data-area="areaRight"] .contentViewContainer {
+	left: 0px;
+	width: 100%;
+}
+
+.layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
+	position: fixed;
+	top: 30px;
+	right: 30px;
+	left: auto;
+	transform: translateY(0%);
+	opacity: 1 !important;
+}
+
+.creditsClosed .layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
+	display: none;
+}
+
 .layoutArea .layoutAreaToggleCloseButton::after {
-  background-image: url(../graphics/FT-angle.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 35%;
-  text-indent: -9999px;
+	font-family: 'fieldtrip' !important;
+	content: "\e90e" !important;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 .layoutArea .contentViewContainer .contentViewContents .customhtmlContainer {
@@ -70,6 +100,44 @@
   margin-bottom: .75em;
 }
 
+body:not(.creditsClosed) #fthypervideo .ftNavigation, body:not(.creditsClosed) #fthypervideo #ftCreditLink, body:not(.creditsClosed) #fthypervideo .ftNavCooperation {
+	display: none !important;
+}
+
+body:not(.creditsClosed) .ftAboutIconContainer {
+	display: none;
+}
+
+@media (max-width: 1400px) {
+
+  .areaLeftContainer[data-size="large"]:not(.closed), .areaRightContainer[data-size="large"]:not(.closed) {
+    flex: 0 0 100%;
+  }
+
+  /*
+  .layoutAreaToggleCloseButton {
+  	top: 90px !important;
+  }
+  */
+  
+  .layoutArea {
+    transition-duration: 600ms;
+  }
+  
+  .layoutArea .contentViewContainer .contentViewContents .customhtmlContainer {
+    padding: 100px 13px 10px 13px;
+  }
+
+  body:not(.creditsClosed) .fticon-about {
+  	font-size: 100%;
+  }
+
+  body:not(.creditsClosed) .ftAboutIconContainer  {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+  }
+}
 
 @media (max-width: 820px) {
 
@@ -79,16 +147,12 @@
     right: 10px;
   }
 
-  .areaLeftContainer[data-size="large"]:not(.closed), .areaRightContainer[data-size="large"]:not(.closed) {
-    flex: 0 0 100%;
-  }
-  
-  .layoutArea {
-    transition-duration: 600ms;
+  .layoutAreaToggleCloseButton {
+  	top: 20px !important;
   }
   
   .layoutArea .contentViewContainer .contentViewContents .customhtmlContainer {
-    padding: 55px 45px 10px 13px;
+    padding: 55px 13px 10px 13px;
   }
 }
 

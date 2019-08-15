@@ -1912,14 +1912,19 @@ body.overlayHints .overlayElement.active .resourceDetail[data-type="image"] .res
 
 body.overlayHints .overlayElement.active .resourceDetail[data-type="image"] .resourceTooltip::after {
   position: absolute;
-  content: 'In weitere Story springen';
+  content: 'In weitere Story springen →';
   background: rgba(0,0,0,.5);
   pointer-events: none;
   padding: 15px;
   line-height: 1.25em;
-  border-radius: 5px;
-  font-size: 1.25em;
-  border: 1px solid rgba(0,0,0,.6);
+  border-radius: 0;
+  font-family: 'Rubik', helvetica, sans-serif;
+  font-size: 1.15em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fec570;
+  text-transform: uppercase;
+  border: 3px solid #fec570;
   top: 70%;
   left: 50%;
   -moz-transform: translateX(-50%) translateY(-50%);
@@ -2309,12 +2314,35 @@ body.overlayHints .overlayElement.active .resourceDetail[data-type="image"] .res
   text-transform: uppercase;
   letter-spacing: 1px;
   line-height: 1.25em;
-  margin-top: 5px;
-  margin-left: -40px;
-  width: calc(100% + 80px);
   text-shadow: 0 0 5px rgba(0, 0, 0, .15);
+  
+  position: absolute;
+  bottom: -55px;
+  background: rgba(12, 0, 12, .65);
+  padding: 6px 10px;
+  left: 50%;
+  -moz-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin.ftLabelUp .ftMapPinDescription span {
+  top: -55px;
+  bottom: auto;
+}
+
+/* ZAUNGÄSTE Title -> top */
+/*
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin1 .ftMapPinDescription span,
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin8 .ftMapPinDescription span,
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin10 .ftMapPinDescription span,
+*/
+#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin13 .ftMapPinDescription span {
+  position: absolute;
+  top: -50px;
+}
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin.active .ftMapPinDescription {
 	transform: scale(1, 1);
@@ -2656,6 +2684,9 @@ ABOUT / CREDITS / IMPRINT
   cursor: pointer;
   z-index: 10;
 }
+.layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
+  font-size: 1.25em;
+}
 
 
 #fthyperInfo .ftNavCooperation {
@@ -2753,7 +2784,7 @@ ABOUT / CREDITS / IMPRINT
   line-height: 1em;
 }
 
-.ftInfoContent p {
+.ftInfoContent p, .areaRightContainer .customhtmlContainer {
   font-size: .85em;
   line-height: 1.45em;
   margin: 1em 0;
@@ -3167,6 +3198,9 @@ ABOUT / CREDITS / IMPRINT
   .ftCloseInfo {
     font-size: 1.75em;
   }
+  .layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
+    font-size: 1.75em;
+  }
 
   #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription span {
     font-size: .65em;
@@ -3189,7 +3223,7 @@ ABOUT / CREDITS / IMPRINT
     font-size: 1.15em;
   }
 
-  .ftInfoContent p {
+  .ftInfoContent p, .areaRightContainer .customhtmlContainer {
     font-size: 1.25em;
   }
 
@@ -3289,12 +3323,15 @@ ABOUT / CREDITS / IMPRINT
   .ftCloseInfo {
     font-size: 1.75em;
   }
+  .layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
+    font-size: 1.75em;
+  }
 
   #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription span {
     font-size: .65em;
   }
 
-  .ftInfoContent p {
+  .ftInfoContent p, .areaRightContainer .customhtmlContainer {
     font-size: 1.15em;
   }
 
@@ -3312,7 +3349,7 @@ ABOUT / CREDITS / IMPRINT
 }
 
 @media (min-width: 1010px) and (max-width: 1499px) {
-	.ftInfoContent p {
+	.ftInfoContent p, .areaRightContainer .customhtmlContainer {
 	  font-size: .95em;
 	}
 }
@@ -3605,7 +3642,7 @@ ABOUT / CREDITS / IMPRINT
     margin: 2.5vh 0 2.5vh 15%;
   }
 
-  .ftInfoContent p {
+  .ftInfoContent p, .areaRightContainer .customhtmlContainer {
     font-size: 14px;
   }
 
@@ -3652,6 +3689,9 @@ ABOUT / CREDITS / IMPRINT
     font-size: 1em;
     top: 17px;
     right: 12px;
+  }
+  .layoutArea[data-area="areaRight"] .layoutAreaToggleCloseButton {
+    font-size: 1em;
   }
 
   .ftNavShare {

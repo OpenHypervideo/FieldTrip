@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093214017,
-        "lastchanged": 1560851863468
+        "lastchanged": 1565764281478
     },
     "config": {
         "slidingMode": "adjust",
@@ -34,7 +34,7 @@
                         "text": ""
                     },
                     "onClickContentItem": "",
-                    "html": "<table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera</td><td>Emma Rosa Simon</td>\n  </tr>\n  <tr>\n    <td>Ton</td><td>Garip Özdem</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sounddesign</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Grip</td><td>Ahmad Akidi</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unseren Protagonisten Patrick Steinberg</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
+                    "html": "<h2>Credits für diese Episode</h2><table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera</td><td>Emma Rosa Simon</td>\n  </tr>\n  <tr>\n    <td>Ton</td><td>Garip Özdem</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sounddesign</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Grip</td><td>Ahmad Akidi</td>\n  </tr>\n  <tr>\n    <td>Archivmaterial</td><td>Berliner Zeitung, Frauke Hinrichsen <br>\n    “Sonntagnachmittag auf dem Tempelhofer Feld” von Hans Baluschek, 1889</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unseren Protagonisten Patrick Steinberg</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
                     "transcriptSource": ""
                 }
             ]
@@ -71,7 +71,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 08:30:07 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Apr 29 2019 09:30:07 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -108,7 +108,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 09:45:51 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Apr 30 2019 10:45:51 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -118,7 +118,7 @@
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=3.56797603350391,15.509767557052394&xywh=percent:14.951717393081076,65.23922987079757,71.45207613834495,34.71308295705174"
+                    "value": "t=3.56797603350391,15.509767557052394&xywh=percent:14.844421255742018,58.75377445830353,71.45207613834495,34.71308295705174"
                 }
             },
             "body": {
@@ -145,7 +145,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 09:46:38 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Apr 30 2019 10:46:38 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -155,7 +155,7 @@
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=42.08753819650423,55.61804424092618&xywh=percent:13.460301738951852,8.020982937865105,73.82331815400349,39.043077606215725"
+                    "value": "t=42.08753819650423,55.61804424092618&xywh=percent:13.782190150969017,18.89365818822276,73.82331815400349,39.043077606215725"
                 }
             },
             "body": {
@@ -182,7 +182,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Jun 18 2019 08:50:28 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Jun 18 2019 09:50:28 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -208,5 +208,10 @@
             "frametrail:attributes": {}
         }
     ],
-    "subtitles": []
+    "subtitles": [
+        {
+            "src": "de.vtt",
+            "srclang": "de"
+        }
+    ]
 }

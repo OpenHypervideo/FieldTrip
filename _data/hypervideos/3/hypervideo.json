@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093180218,
-        "lastchanged": 1560851342127
+        "lastchanged": 1565764057373
     },
     "config": {
         "slidingMode": "adjust",
@@ -34,7 +34,7 @@
                         "text": ""
                     },
                     "onClickContentItem": "",
-                    "html": "<table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera</td><td>Emma Rosa Simon, Agnes Pakozdi, Tom Akinleminu</td>\n  </tr>\n  <tr>\n    <td>Ton</td><td>Wolfgang Kick</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Calle Overweg</td>\n  </tr>\n  <tr>\n    <td>O-Ton Schnitt</td><td>Clemens Nürnberg</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unseren Protagonisten Boris Charmatz <br>\n    alle Berlinerinnen und Berliner die wir filmen durften! </td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
+                    "html": "<h2>Credits für diese Episode</h2><table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera</td><td>Emma Rosa Simon, Agnes Pakozdi, Tom Akinleminu</td>\n  </tr>\n  <tr>\n    <td>Ton</td><td>Wolfgang Kick</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Calle Overweg</td>\n  </tr>\n  <tr>\n    <td>O-Ton Schnitt</td><td>Clemens Nürnberger</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unseren Protagonisten Boris Charmatz <br>\n    alle Berliner*innen, die wir filmen durften! </td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
                     "transcriptSource": ""
                 }
             ]
@@ -71,7 +71,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 08:11:01 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Apr 29 2019 09:11:01 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -108,7 +108,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 08:13:03 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Apr 29 2019 09:13:03 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -145,7 +145,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 09:22:50 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Apr 30 2019 10:22:50 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -155,7 +155,7 @@
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=29,37&xywh=percent:12.501787832366551,66.54268118331247,73.18669265943537,33.40963455513084"
+                    "value": "t=29,37&xywh=percent:12.394491695027494,61.010969213832254,73.18669265943537,33.40963455513084"
                 }
             },
             "body": {
@@ -182,7 +182,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Jun 18 2019 08:46:47 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Jun 18 2019 09:46:47 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],

@@ -1,5 +1,5 @@
 {
-    "resources-increment": 77,
+    "resources-increment": 78,
     "resources": {
         "1": {
             "name": "Intro",
@@ -791,6 +791,16 @@
             "description": null,
             "src": "1_1560762516_animation-frau.gif",
             "type": "image",
+            "attributes": []
+        },
+        "78": {
+            "name": "Tempelhof Atmo Night",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1565762803,
+            "description": null,
+            "src": "1_1565762803_tempelhof-atmo-night.mp3",
+            "type": "audio",
             "attributes": {}
         }
     }

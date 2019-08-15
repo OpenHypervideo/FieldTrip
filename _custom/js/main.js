@@ -1,6 +1,7 @@
 /* Custom cursor */
 
 var FULLSCREEN_POSSIBLE = !!screenfull;
+var audioAtmoSelector = 'audioAtmoDay';
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
@@ -292,6 +293,22 @@ $(document).ready(function() {
     document.documentElement.className += 
     ((FULLSCREEN_POSSIBLE) ? ' fullscreen-yes' : ' fullscreen-no');
 
+    $('body').on('click', '#ftCreditLink', function () {
+		$('#VideoPlayer .areaRightContainer').toggleClass('closed');
+		$('body').toggleClass('creditsClosed');
+		setTimeout(function() {
+			$(window).resize();
+		}, 1000);
+	});
+
+    $('body').on('click', '.layoutAreaToggleCloseButton', function () {
+		$('body').addClass('creditsClosed');
+		setTimeout(function() {
+			$(window).resize();
+		}, 1000);
+	});
+
+
   // try to hide safari menu bar
   /*
   if (!FULLSCREEN_POSSIBLE) {
@@ -341,10 +358,6 @@ $(document).ready(function() {
 
 		FieldTripReady = true;
 
-		$('#ftCreditLink').click(function () {
-			$('#VideoPlayer .areaRightContainer').toggleClass('closed');
-		});
-
     	checkBgImg();
 
 		// Make sure play circle & transitions are never initialized twice
@@ -381,6 +394,7 @@ $(document).ready(function() {
 
 	FieldTrip.on('play', function() {
 		$('#playCircleContainer').addClass('playing');
+		//$('#VideoPlayer .areaRightContainer').addClass('closed');
 		if (!FULLSCREEN_POSSIBLE) goToOverviewFake();
 	});
 
@@ -760,14 +774,21 @@ function initEventListeners() {
 	if ((currentHours >= sunsetHour) || (currentHours <= sunriseHour)) {
 		$('#ftSwitchCheckbox input:checkbox').prop('checked', true);
 		$('body').addClass("night");
+		audioAtmoSelector = 'audioAtmoNight';
 	}
 
 	$('#ftSwitchCheckbox input:checkbox').change(function(){
 	    if ($(this).is(':checked')) {
 	        $('body').addClass("night");
+	        audioAtmoSelector = 'audioAtmoNight';
+	        $('#audioAtmoDay')[0].pause();
+	        $('#audioAtmoNight')[0].play();
 	    }
 	    else {
 	        $('body').removeClass("night");
+	        audioAtmoSelector = 'audioAtmoDay';
+	        $('#audioAtmoNight')[0].pause();
+	        $('#audioAtmoDay')[0].play();
 	    }
 	});
 
@@ -790,8 +811,8 @@ function initEventListeners() {
 
 	    // Attempt to deal with autoplay issues
 	    if (!firstClickPlay) {
-	    	$('#audioAtmoDay')[0].play();
-			$('#audioAtmoDay').stop(true, false).animate({
+	    	$('#'+audioAtmoSelector)[0].play();
+			$('#'+audioAtmoSelector).stop(true, false).animate({
 				volume: 1
 			}, 7000);
 			firstClickPlay = true;
@@ -899,10 +920,10 @@ function activateLayer(layerName, videoID) {
 
 			$('#ftIntroVideo')[0].play();
 
-			$('#audioAtmoDay').stop(true, false).animate({
+			$('#'+audioAtmoSelector).stop(true, false).animate({
 				volume: 0
 			}, 4000, function() {
-				$('#audioAtmoDay')[0].pause();
+				$('#'+audioAtmoSelector)[0].pause();
 			});
 
 			$('.ftLayer#ftoverview').addClass('zoomOut');
@@ -923,8 +944,8 @@ function activateLayer(layerName, videoID) {
 			$('#ftIntroVideo')[0].pause();
 			//window.clearTimeout(introTimeout);
 
-			$('#audioAtmoDay')[0].play();
-			$('#audioAtmoDay').stop(true, false).animate({
+			$('#'+audioAtmoSelector)[0].play();
+			$('#'+audioAtmoSelector).stop(true, false).animate({
 				volume: 1
 			}, 7000);
 
@@ -943,10 +964,10 @@ function activateLayer(layerName, videoID) {
 			updateMuted();
 			renderPlayCircleLinks();
 
-			$('#audioAtmoDay').stop(true, false).animate({
+			$('#'+audioAtmoSelector).stop(true, false).animate({
 				volume: 0
 			}, 4000, function() {
-				$('#audioAtmoDay')[0].pause();
+				$('#'+audioAtmoSelector)[0].pause();
 			});
 
 			//console.log(activeVideoID, videoID);
@@ -1356,7 +1377,7 @@ function initPlayCircle() {
 
 	playCircleContainer[0].appendChild(playCircleSVG);
 
-	$('.playerContainer').append(playCircleContainer);
+	$('.playerContainer .videoContainer').append(playCircleContainer);
 
 	renderPlayCircleLinks();
 

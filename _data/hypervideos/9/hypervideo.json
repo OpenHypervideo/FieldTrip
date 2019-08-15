@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093244546,
-        "lastchanged": 1560852244754
+        "lastchanged": 1565764418786
     },
     "config": {
         "slidingMode": "adjust",
@@ -34,7 +34,7 @@
                         "text": ""
                     },
                     "onClickContentItem": "",
-                    "html": "<table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera (Aufbau)</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera (Winter)</td><td>Juan Sarmiento G.</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sounddesign</td><td>Clemens Nürnberger</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Archivmaterial</td><td>aus THF - Zentralflughafen (Regie: Karim Aïnouz)</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
+                    "html": "<h2>Credits für diese Episode</h2><table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera (Aufbau)</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera (Winter)</td><td>Juan Sarmiento G.</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sounddesign</td><td>Clemens Nürnberger</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Archivmaterial</td><td>“THF - Zentralflughafen“ von Karim Aïnouz</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>Konrad Kutt, Die BücherboXX und alle Anrufer*innen! </td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
                     "transcriptSource": ""
                 }
             ]
@@ -71,7 +71,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 08:52:06 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Apr 29 2019 09:52:06 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -108,7 +108,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 08:56:27 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Apr 29 2019 09:56:27 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -145,7 +145,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 09:51:31 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Apr 30 2019 10:51:31 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -182,7 +182,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Wed May 01 2019 11:57:59 GMT+0100 (Western European Summer Time)",
+            "created": "Wed May 01 2019 12:57:59 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -192,7 +192,7 @@
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=16,24&xywh=percent:8.690987124463518,60.610395803528846,82.78254562181463,39.34191702432045"
+                    "value": "t=16,24&xywh=percent:8.261802575107296,56.79542203147353,82.7807577894481,39.34191702432045"
                 }
             },
             "body": {
@@ -219,7 +219,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Jun 18 2019 08:58:20 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Jun 18 2019 09:58:20 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],

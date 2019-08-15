@@ -89,7 +89,7 @@
         <script type="text/javascript" src="_custom/js/transitions.js"></script>
 
     </head>
-    <body style="opacity: 0;">
+    <body class="creditsClosed" style="opacity: 0;">
 
         <div id="ftPointer" class="custom-cursor"></div>
 
@@ -134,6 +134,7 @@
         <div id="ftoverview" class="ftLayer">
 
             <audio id="audioAtmoDay" src="_data/resources/1_1556097405_tempelhof-atmo-day.mp3" loop preload="auto" style="display: none;"></audio>
+            <audio id="audioAtmoNight" src="_data/resources/1_1565762803_tempelhof-atmo-night.mp3" loop preload="auto" style="display: none;"></audio>
 
             <a href="#intro">
                 <i class="fticon-logo-fieldtrip ftLogo"></i>
@@ -148,7 +149,7 @@
                         <img id="ftMap" src="_data/resources/1_1556097985_overview-vector.svg" />
 
                         <!-- Pointers -->
-                        <div style="top: 62%; left: 51%;" id="ftMapPin1" class="ftMapPin ftEvent">
+                        <div style="top: 62%; left: 51%;" id="ftMapPin1" class="ftMapPin ftEvent ftLabelUp">
                             <i class="fticon-silhouette" style="background-image: url(_data/resources/1_1556536338_icon-episode-1.png)"></i>
                             <a href="#hypervideo=1&t=0" class="ftMapPinDescription">
                                 <figure class="chart">
@@ -162,7 +163,7 @@
                                 <div class="ftMapPinDescriptionContent">
                                   <i class="fticon-right"></i>
                                 </div>
-                                <span>Die Protesterfahrenen</span>
+                                <span>Die&nbspProtesterfahrenen</span>
                             </a>
                         </div>
                         <div style="top: 33.7%; left: 29%;" id="ftMapPin2" class="ftMapPin ftEvent">
@@ -179,7 +180,7 @@
                                 <div class="ftMapPinDescriptionContent">
                                   <i class="fticon-right"></i>
                                 </div>
-                                <span>Der Drachenbauer</span>
+                                <span>Der&nbspDrachenbauer</span>
                             </a>
                         </div>
                         <div style="top: 25%; left: 26%;" id="ftMapPin3" class="ftMapPin ftEvent">
@@ -196,7 +197,7 @@
                                 <div class="ftMapPinDescriptionContent">
                                   <i class="fticon-right"></i>
                                 </div>
-                                <span>Der Feldtänzer</span>
+                                <span>Der&nbspFeldtänzer</span>
                             </a>
                         </div>
                         <div style="top: 27%; left: 54%;" id="ftMapPin4" class="ftMapPin ftEvent">
@@ -213,7 +214,7 @@
                                 <div class="ftMapPinDescriptionContent">
                                   <i class="fticon-right"></i>
                                 </div>
-                                <span>Die Türöffnerin</span>
+                                <span>Die&nbspTüröffnerin</span>
                             </a>
                         </div>
                         <div style="top: 22%; left: 34%;" id="ftMapPin5" class="ftMapPin ftEvent">
@@ -230,10 +231,10 @@
                                 <div class="ftMapPinDescriptionContent">
                                   <i class="fticon-right"></i>
                                 </div>
-                                <span>Der Kohlenjunge</span>
+                                <span>Der&nbspKohlenjunge</span>
                             </a>
                         </div>
-                        <div style="top: 45%; left: 54%;" id="ftMapPin6" class="ftMapPin ftEvent">
+                        <div style="top: 45%; left: 54%;" id="ftMapPin6" class="ftMapPin ftEvent ftLabelUp">
                             <i class="fticon-silhouette" style="background-image: url(_data/resources/1_1556536420_icon-episode-6.png)"></i>
                             <a href="#hypervideo=6&t=0" class="ftMapPinDescription">
                                 <figure class="chart">
@@ -247,10 +248,10 @@
                                 <div class="ftMapPinDescriptionContent">
                                   <i class="fticon-right"></i>
                                 </div>
-                                <span>Der Investor</span>
+                                <span>Der&nbspInvestor</span>
                             </a>
                         </div>
-                        <div style="top: 46%; left: 40%;" id="ftMapPin7" class="ftMapPin ftEvent">
+                        <div style="top: 46%; left: 40%;" id="ftMapPin7" class="ftMapPin ftEvent ftLabelUp">
                             <i class="fticon-silhouette" style="background-image: url(_data/resources/1_1556536434_icon-episode-7.png)"></i>
                             <a href="#hypervideo=7&t=0" class="ftMapPinDescription">
                                 <figure class="chart">
@@ -264,10 +265,10 @@
                                 <div class="ftMapPinDescriptionContent">
                                   <i class="fticon-right"></i>
                                 </div>
-                                <span>Der Architekt</span>
+                                <span>Der&nbspArchitekt</span>
                             </a>
                         </div>
-                        <div style="top: 62%; left: 66%;" id="ftMapPin8" class="ftMapPin ftEvent">
+                        <div style="top: 62%; left: 66%;" id="ftMapPin8" class="ftMapPin ftEvent ftLabelUp">
                             <i class="fticon-silhouette" style="background-image: url(_data/resources/1_1556536448_icon-episode-8.png)"></i>
                             <a href="#hypervideo=8&t=0" class="ftMapPinDescription">
                                 <figure class="chart">
@@ -281,10 +282,10 @@
                                 <div class="ftMapPinDescriptionContent">
                                   <i class="fticon-right"></i>
                                 </div>
-                                <span>Die Erinnernde</span>
+                                <span>Die&nbspErinnernde</span>
                             </a>
                         </div>
-                        <div style="top: 46%; right: 24%;" id="ftMapPin9" class="ftMapPin ftEvent">
+                        <div style="top: 46%; right: 24%;" id="ftMapPin9" class="ftMapPin ftEvent ftLabelUp">
                             <i class="fticon-silhouette" style="background-image: url(_data/resources/1_1556536468_icon-episode-9.png)"></i>
                             <a href="#hypervideo=9&t=0" class="ftMapPinDescription">
                                  <figure class="chart">
@@ -298,10 +299,10 @@
                                 <div class="ftMapPinDescriptionContent">
                                   <i class="fticon-right"></i>
                                 </div>
-                                <span>Die StoryboXX</span>
+                                <span>Die&nbspStoryboXX</span>
                             </a>
                         </div>
-                        <div style="top: 62.5%; left: 31%;" id="ftMapPin10" class="ftMapPin ftEvent">
+                        <div style="top: 62.5%; left: 31%;" id="ftMapPin10" class="ftMapPin ftEvent ftLabelUp">
                             <i class="fticon-silhouette" style="background-image: url(_data/resources/1_1558436811_icon-episode-10.png)"></i>
                             <a href="#hypervideo=10&t=0" class="ftMapPinDescription">
                                  <figure class="chart">
@@ -315,10 +316,10 @@
                                 <div class="ftMapPinDescriptionContent">
                                   <i class="fticon-right"></i>
                                 </div>
-                                <span>Die Übersiedlerin</span>
+                                <span>Die&nbspÜbersiedlerin</span>
                             </a>
                         </div>
-                        <div style="top: 54%; right: 22%;" id="ftMapPin11" class="ftMapPin ftEvent">
+                        <div style="top: 54%; right: 22%;" id="ftMapPin11" class="ftMapPin ftEvent ftLabelUp">
                             <i class="fticon-silhouette" style="background-image: url(_data/resources/1_1558436701_icon-episode-11.png)"></i>
                             <a href="#hypervideo=11&t=0" class="ftMapPinDescription">
                                  <figure class="chart">
@@ -332,7 +333,7 @@
                                 <div class="ftMapPinDescriptionContent">
                                   <i class="fticon-right"></i>
                                 </div>
-                                <span>Die Pflanzenden</span>
+                                <span>Die&nbspPflanzenden</span>
                             </a>
                         </div>
                         <div style="top: 22%; left: 44%;" id="ftMapPin12" class="ftMapPin ftEvent">
@@ -349,10 +350,10 @@
                                 <div class="ftMapPinDescriptionContent">
                                   <i class="fticon-right"></i>
                                 </div>
-                                <span>Der Wartende</span>
+                                <span>Der&nbspWartende</span>
                             </a>
                         </div>
-                        <div style="top: 68%; right: 21%;" id="ftMapPin13" class="ftMapPin ftEvent">
+                        <div style="top: 68%; right: 21%;" id="ftMapPin13" class="ftMapPin ftEvent ftLabelUp">
                             <i class="fticon-silhouette" style="background-image: url(_data/resources/1_1560761928_icon-episode-13.png)"></i>
                             <a href="#hypervideo=13&t=0" class="ftMapPinDescription">
                                  <figure class="chart">
@@ -366,7 +367,7 @@
                                 <div class="ftMapPinDescriptionContent">
                                   <i class="fticon-right"></i>
                                 </div>
-                                <span>Die Zaungäste</span>
+                                <span>Die&nbspZaungäste</span>
                             </a>
                         </div>
                         <div style="top: 34%; right: 33%;" id="ftMapPin14" class="ftMapPin ftEvent">
@@ -383,7 +384,7 @@
                                 <div class="ftMapPinDescriptionContent">
                                   <i class="fticon-right"></i>
                                 </div>
-                                <span>Der Mutläufer</span>
+                                <span>Der&nbspMutläufer</span>
                             </a>
                         </div>
                     </div>
@@ -482,7 +483,7 @@
                 <iframe src="player/index.html?hypervideo=8#t=2" frameborder="0" scrolling="no" allowfullscreen></iframe>
                 -->
                 <div id="VideoPlayer"></div>
-                <!--<div id="ftCreditLink" class="ftEvent">Credits</div>-->
+                <div id="ftCreditLink" class="ftEvent">Credits</div>
 
                 <!-- Kooperation Tagesspiegel -->
                 <div class="ftNavCooperation">
@@ -831,6 +832,12 @@
                         <li>
                           <span class="partner-logo">
                             <img width="" height="" style="width: 80%;" data-src="_custom/graphics/FT-logo-bbc-r&d.png" alt="logo BBC R&D" />
+                          </span>
+                        </li>
+                        
+                        <li>
+                          <span class="partner-logo">
+                            <img width="" height="" style="width: 70%;" data-src="_custom/graphics/FT-logo-reportero.svg" alt="logo Reportero" />
                           </span>
                         </li>
                       </ul>

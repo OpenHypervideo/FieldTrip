@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1560581008937,
-        "lastchanged": 1560852962598
+        "lastchanged": 1565764670978
     },
     "config": {
         "slidingMode": "adjust",
@@ -34,7 +34,7 @@
                         "text": ""
                     },
                     "onClickContentItem": "",
-                    "html": "<table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Regie Interview</td><td>Kamil Bembnista</td>\n  </tr>\n  <tr>\n    <td>Kamera 2015</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera 2019</td><td>Emma Rosa Simon</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sounddesign</td><td>Clemens Nürnberger</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Felix Trolldenier</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Übersetzung</td><td>Kinda Al Raheb</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unsere Protagonisten Mansour und Momo <br>\n    Dem Team von Tamaja: <br>\n    Michael Elias, Mohammad Khodro, Hanna Wittges-Stoelben</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
+                    "html": "<h2>Credits für diese Episode</h2><table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Regie Interview</td><td>Kamil Bembnista</td>\n  </tr>\n  <tr>\n    <td>Kamera 2015</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera 2019</td><td>Emma Rosa Simon</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sounddesign</td><td>Clemens Nürnberger</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Felix Trolldenier</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Übersetzung</td><td>Kinda Al Raheb</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unsere Protagonisten Mansour und Momo <br>\n    Dem Team von Tamaja: <br>\n    Michael Elias, Mohammad Khodro, Hanna Wittges-Stoelben</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
                     "transcriptSource": ""
                 }
             ]
@@ -71,7 +71,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Jun 17 2019 12:28:24 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Jun 17 2019 13:28:24 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -108,7 +108,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Jun 17 2019 12:31:01 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Jun 17 2019 13:31:01 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -118,7 +118,7 @@
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=62.040250447227194,74.51524908512778&xywh=percent:17.029585127999812,63.82532883563358,66.55439591416273,36.174674656080164"
+                    "value": "t=62.040250447227194,74.51524908512778&xywh=percent:16.813306030797346,54.47782662918753,66.55400484928245,36.1723121712193"
                 }
             },
             "body": {
@@ -145,7 +145,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Jun 17 2019 12:33:20 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Jun 17 2019 13:33:20 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -155,7 +155,7 @@
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=79.49930025213307,86.11990024791847&xywh=percent:24.128462635216714,73.21129281679062,53.42286605696715,26.788710674923127"
+                    "value": "t=79.49930025213307,86.11990024791847&xywh=percent:24.020028830597838,69.20362771779625,53.422746126232234,26.787474363488016"
                 }
             },
             "body": {
@@ -182,7 +182,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Jun 17 2019 12:35:01 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Jun 17 2019 13:35:01 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -192,7 +192,7 @@
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=485.1562753312277,496.7386084950674&xywh=percent:18.979684181647798,60.85050046034755,63.0789704580037,39.14950303136621"
+                    "value": "t=485.1562753312277,496.7386084950674&xywh=percent:18.549713658672545,54.36337625178827,63.07582609643241,39.147989967066046"
                 }
             },
             "body": {
@@ -219,7 +219,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Jun 18 2019 09:11:17 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Jun 18 2019 10:11:17 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -256,7 +256,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Jun 18 2019 09:12:51 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Jun 18 2019 10:12:51 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -293,7 +293,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Jun 18 2019 09:14:35 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Jun 18 2019 10:14:35 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],

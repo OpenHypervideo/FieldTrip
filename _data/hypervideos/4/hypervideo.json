@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093194892,
-        "lastchanged": 1560851596385
+        "lastchanged": 1565764104806
     },
     "config": {
         "slidingMode": "adjust",
@@ -34,7 +34,7 @@
                         "text": ""
                     },
                     "onClickContentItem": "",
-                    "html": "<table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Ton</td><td>Garip Özdem</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>O-Ton Schnitt</td><td>Clemens Nürnberg</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>n.n.</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unsere Protagonistin Kübra Gümüşay <br>\n    Die Initiative <a target=\"_blank\" href=\"https://www.die-offene-gesellschaft.de/\">Die offene Gesellschaft</a><br>\n    und alle Teilnehmer des Picknicks</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
+                    "html": "<h2>Credits für diese Episode</h2><table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Ton</td><td>Garip Özdem</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>O-Ton Schnitt</td><td>Clemens Nürnberger</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>n.n.</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unsere Protagonistin Kübra Gümüşay <br>\n    Die Initiative “Die offene Gesellschaft“<br>\n    und alle Teilnehmer*innen des Picknicks</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
                     "transcriptSource": ""
                 }
             ]
@@ -71,7 +71,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 08:15:18 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Apr 29 2019 09:15:18 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -108,7 +108,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 08:22:24 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Apr 29 2019 09:22:24 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -145,7 +145,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 09:24:19 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Apr 30 2019 10:24:19 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -155,7 +155,7 @@
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=29,39&xywh=percent:13.893061953041174,67.96057705203863,73.51931461448832,31.99173577581068"
+                    "value": "t=29,39&xywh=percent:13.893061953041174,57.27865049028373,73.51931461448832,31.99173577581068"
                 }
             },
             "body": {
@@ -182,7 +182,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 09:25:32 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Apr 30 2019 10:25:32 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -192,7 +192,7 @@
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=41,50&xywh=percent:9.792560364555392,12.395486390528134,81.1480673597606,48.72993029010938"
+                    "value": "t=41,50&xywh=percent:9.57618025751073,22.886664263680256,81.1480673597606,48.72675192145774"
                 }
             },
             "body": {

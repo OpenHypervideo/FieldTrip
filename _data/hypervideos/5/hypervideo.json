@@ -6,7 +6,7 @@
         "creator": "Joscha",
         "creatorId": "1",
         "created": 1556093203417,
-        "lastchanged": 1560851741105
+        "lastchanged": 1565764221114
     },
     "config": {
         "slidingMode": "adjust",
@@ -34,7 +34,7 @@
                         "text": ""
                     },
                     "onClickContentItem": "",
-                    "html": "<table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Ton</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sounddesign</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Archivmaterial</td><td>Alliiertenmuseum, Bernd v. Kostka</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unsere Protagonisten Bert und Christa Molkenbuhr</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
+                    "html": "<h2>Credits für diese Episode</h2><table>\n  <tr>\n    <td>Regie</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Kamera</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Ton</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Schnitt</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sounddesign</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Farbkorrektur</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Musik</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Archivmaterial</td><td>Alliiertenmuseum, Bernd von Kostka</td>\n  </tr>\n  <tr>\n    <td>Dank an</td><td>unsere Protagonist*innen Bert und Christa Molkenbuhr</td>\n  </tr>\n</table>\n<hr>\n<div>Eine Episode aus Field Trip</div>\n<table>\n  <tr>\n    <td>Autorin, Regisseurin, Produzentin</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producerin</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>produziert von ronjafilm</div>\n<br>",
                     "transcriptSource": ""
                 }
             ]
@@ -71,7 +71,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 08:25:24 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Apr 29 2019 09:25:24 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -108,7 +108,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Mon Apr 29 2019 08:27:47 GMT+0100 (Western European Summer Time)",
+            "created": "Mon Apr 29 2019 09:27:47 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -145,7 +145,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 09:40:09 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Apr 30 2019 10:40:09 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -182,7 +182,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 09:41:34 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Apr 30 2019 10:41:34 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -219,7 +219,7 @@
                 "type": "Person",
                 "id": "1"
             },
-            "created": "Tue Apr 30 2019 09:44:12 GMT+0100 (Western European Summer Time)",
+            "created": "Tue Apr 30 2019 10:44:12 GMT+0200 (Central European Summer Time)",
             "type": "Annotation",
             "frametrail:type": "Overlay",
             "frametrail:tags": [],
@@ -229,7 +229,7 @@
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
-                    "value": "t=120,135.63533680365973&xywh=percent:7.310443272406451,12.395486390528134,86.01752678212178,64.0693049687798"
+                    "value": "t=120,135.63533680365973&xywh=percent:7.0958509977283395,23.64965901809132,86.01752678212178,64.0693049687798"
                 }
             },
             "body": {
@@ -241,7 +241,7 @@
             },
             "frametrail:events": {},
             "frametrail:attributes": {
-                "text": "&lt;p style=\"text-align: center;\"&gt;Horst Bert Molkenbuhr verbrachte als Kind fünf Jahre im Umerziehungslager der Nazis, &lt;br&gt;weil seine Familie der SPD nahestand.&lt;br&gt;&lt;br&gt;Er erzählt uns eine Geschichte, die in üblichen Luftbrückenerzählungen kaum vorkommt.&lt;br&gt;&lt;br&gt;Im Jahr 1949 verbrachten tausend Jugendliche ihre Sommerferien &lt;br&gt;auf dem Tempelhofer Feld als Hilfskräfte der Alliierten.&lt;br&gt;&lt;br&gt;Er war einer von Ihnen. &lt;br&gt;&lt;/p&gt;"
+                "text": "&lt;p style=\"text-align: center;\"&gt;Horst Bert Molkenbuhr verbrachte als Kind fünf Jahre im Umerziehungslager der Nazis, weil seine Familie der SPD nahestand.&lt;br&gt;&lt;br&gt;Er erzählt uns eine Geschichte, die in üblichen Luftbrückenerzählungen kaum vorkommt.&lt;br&gt;&lt;br&gt;Im Jahr 1949 verbrachten tausend Jugendliche ihre Sommerferien &lt;br&gt;auf dem Tempelhofer Feld als Hilfskräfte der Alliierten.&lt;br&gt;&lt;br&gt;Er war einer von Ihnen. &lt;br&gt;&lt;/p&gt;"
             }
         }
     ],
