@@ -1935,6 +1935,10 @@ body.overlayHints .overlayElement.active .resourceDetail[data-type="image"] .res
   white-space: nowrap;
 }
 
+html[lang="en"] body.overlayHints .overlayElement.active .resourceDetail[data-type="image"] .resourceTooltip::after {
+  content: 'Jump to next story →';
+}
+
 
 @-moz-keyframes pulse-one {
   0% {
