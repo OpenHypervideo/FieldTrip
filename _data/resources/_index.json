@@ -1,5 +1,5 @@
 {
-    "resources-increment": 78,
+    "resources-increment": 79,
     "resources": {
         "1": {
             "name": "Intro",
@@ -801,6 +801,16 @@
             "description": null,
             "src": "1_1565762803_tempelhof-atmo-night.mp3",
             "type": "audio",
+            "attributes": []
+        },
+        "79": {
+            "name": "Button Your Vision",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1567763024,
+            "description": null,
+            "src": "1_1567763024_button-your-vision.svg",
+            "type": "image",
             "attributes": {}
         }
     }
