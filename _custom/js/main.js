@@ -1637,7 +1637,12 @@ function highlightInteractiveElement(selector, iterations) {
 
 function initIntroCaptions() {
 
-	var VTTsource = '_custom/intro-video-captions.vtt';
+	var VTTsource = $('#ftIntroVideo').attr('data-vtt-source');
+
+	// Fallback to DE
+	if (!VTTsource || VTTsource.length == 0) {
+		VTTsource = '_custom/intro-video-captions.vtt';
+	}
 	
 	
 	//if (!!screenfull) {
