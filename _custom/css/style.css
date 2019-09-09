@@ -1586,6 +1586,10 @@ a {
 	z-index: 10;
 }
 
+body.nobranding #ftoverview #ftMapContainer #ftWeatherContainer {
+  right: 60px;
+}
+
 #ftWeatherData span {
   display: block;
   font-size: .95em;
@@ -3126,6 +3130,10 @@ ABOUT / CREDITS / IMPRINT
     right: 242px;
   }
 
+  body.nobranding #ftoverview #ftMapContainer #ftWeatherContainer {
+    right: 90px;
+  }
+
   .ftNavUp .tooltip {
     top: 18px;
     right: 70px;
@@ -3247,6 +3255,10 @@ ABOUT / CREDITS / IMPRINT
   #ftoverview #ftMapContainer #ftWeatherContainer {
     top: 30px;
     right: 242px;
+  }
+
+  body.nobranding #ftoverview #ftMapContainer #ftWeatherContainer {
+    right: 90px;
   }
 
   /*
@@ -3554,6 +3566,10 @@ ABOUT / CREDITS / IMPRINT
     top: 5px;
     right: 155px;
     height: 50px;
+  }
+
+  body.nobranding #ftoverview #ftMapContainer #ftWeatherContainer {
+    right: 40px;
   }
 
   .overlayElement .resourceDetail[data-type="text"] *  {
