@@ -1943,6 +1943,10 @@ html[lang="en"] body.overlayHints .overlayElement.active .resourceDetail[data-ty
   content: 'Jump to next story →';
 }
 
+html[lang="pl"] body.overlayHints .overlayElement.active .resourceDetail[data-type="image"] .resourceTooltip::after {
+  content: 'Przejście do kolejnej historii →';
+}
+
 
 @-moz-keyframes pulse-one {
   0% {
