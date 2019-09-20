@@ -1,0 +1,217 @@
+{
+    "meta": {
+        "name": "INWESTOR",
+        "description": "   ",
+        "thumb": "1_1556092499_thumb_episode-6-patrick.png",
+        "creator": "Joscha",
+        "creatorId": "1",
+        "created": 1556093214017,
+        "lastchanged": 1565764281478
+    },
+    "config": {
+        "slidingMode": "adjust",
+        "slidingTrigger": "key",
+        "autohideControls": true,
+        "captionsVisible": true,
+        "clipTimeVisible": false,
+        "hidden": false,
+        "layoutArea": {
+            "areaTop": [],
+            "areaBottom": [],
+            "areaLeft": [],
+            "areaRight": [
+                {
+                    "type": "CustomHTML",
+                    "contentSize": "large",
+                    "name": "Credits",
+                    "description": "",
+                    "cssClass": "",
+                    "initClosed": true,
+                    "collectionFilter": {
+                        "tags": [],
+                        "types": [],
+                        "users": [],
+                        "text": ""
+                    },
+                    "onClickContentItem": "",
+                    "html": "<h2>Czołówka odcinka</h2><table>\n  <tr>\n    <td>Reżyseria</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Zdjęcia</td><td>Emma Rosa Simon</td>\n  </tr>\n  <tr>\n    <td>Dźwięk</td><td>Garip Özdem</td>\n  </tr>\n  <tr>\n    <td>Montaż</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Opracowanie dźwiękowe</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Korekcja kolorów</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Muzyka</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Grip</td><td>Ahmad Akidi</td>\n  </tr>\n  <tr>\n    <td>Materiał archiwalny</td><td>Berliner Zeitung, Frauke Hinrichsen <br>\n    “Niedzielne popołudnie na polu Tempelhof” Hans Baluschek, 1889</td>\n  </tr>\n  <tr>\n    <td>Dziękujemy bohaterowi odcinka</td><td>our protagonist Patrickowi Steinbergowi</td>\n  </tr>\n</table>\n<hr>\n<div>Odcinek z cyklu Field Trip</div>\n<table>\n  <tr>\n    <td>Autorka, reżyserka i producentka</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor i producent interaktywny</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producentka</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Ilustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>Produkcja ronjafilm</div>\n<br>",
+                    "transcriptSource": ""
+                }
+            ]
+        }
+    },
+    "clips": [
+        {
+            "resourceId": "7",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050725044001&pubId=64007844001&secure=true",
+            "duration": 0,
+            "start": 0,
+            "end": 0,
+            "in": 0,
+            "out": 0
+        }
+    ],
+    "globalEvents": {
+        "onReady": "",
+        "onPlay": "",
+        "onPause": "",
+        "onEnded": ""
+    },
+    "customCSS": "",
+    "contents": [
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Apr 29 2019 09:30:07 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050725044001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=280,288&xywh=percent:73.75536742640155,0,26.244635848016696,49.26402720031593"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1556093905_animation-flag.gif",
+                "frametrail:name": "Animation Flag"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=1&t=157';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Apr 30 2019 10:45:51 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050725044001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=3.56797603350391,15.509767557052394&xywh=percent:14.844421255742018,58.75377445830353,71.45207613834495,34.71308295705174"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;Żeby poznać perspektywę inwestorską na Pole Tempelhofskie, spotykamy się z Patrickiem Steinbergiem, inwestorem na rynku nieruchomości. &lt;br&gt; Patrick nie jest bezpośrednio zaangażowany w plany dotyczące przyszłości pola.&lt;br&gt;&lt;/p&gt;"
+            }
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Apr 30 2019 10:46:38 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050725044001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=42.08753819650423,55.61804424092618&xywh=percent:13.782190150969017,18.89365818822276,73.82331815400349,39.043077606215725"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;W obliczu kryzysu mieszkaniowego w Berlinie wciąż pojawiają się plany, by zabudować 300 hektary Pola. &lt;br&gt;Przeciwnicy obawiają się, że i tu dojdzie do spekulacji ziemią.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+            }
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Jun 18 2019 09:50:28 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050725044001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=357,365&xywh=percent:44.337418065474715,10.938215801317577,48.14751294265385,52.65064719612593"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1560762366_animation-container.gif",
+                "frametrail:name": "Animation Container"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=12&t=0';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        }
+    ],
+    "subtitles": [
+        {
+            "src": "pl.vtt",
+            "srclang": "pl"
+        }
+    ]
+}

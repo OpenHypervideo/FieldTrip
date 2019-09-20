@@ -1,0 +1,180 @@
+{
+    "meta": {
+        "name": "PRZESIEDLONA",
+        "description": "   ",
+        "thumb": "1_1558509646_thumb_episode-10-brigitte.png",
+        "creator": "Joscha",
+        "creatorId": "1",
+        "created": 1558510725220,
+        "lastchanged": 1565764454727
+    },
+    "config": {
+        "slidingMode": "adjust",
+        "slidingTrigger": "key",
+        "autohideControls": true,
+        "captionsVisible": true,
+        "clipTimeVisible": false,
+        "hidden": false,
+        "layoutArea": {
+            "areaTop": [],
+            "areaBottom": [],
+            "areaLeft": [],
+            "areaRight": [
+                {
+                    "type": "CustomHTML",
+                    "contentSize": "large",
+                    "name": "Credits",
+                    "description": "",
+                    "cssClass": "",
+                    "initClosed": true,
+                    "collectionFilter": {
+                        "tags": [],
+                        "types": [],
+                        "users": [],
+                        "text": ""
+                    },
+                    "onClickContentItem": "",
+                    "html": "<h2>Czołówka odcinka</h2><table>\n  <tr>\n    <td>Reżyseria</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Zdjęcia</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Dźwięk</td><td>Garip Özdem</td>\n  </tr>\n  <tr>\n    <td>Montaż</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Opracowanie dźwiękowe</td><td>Clemens Nürnberger</td>\n  </tr>\n  <tr>\n    <td>Korekcja kolorów</td><td>Felix Trolldenier</td>\n  </tr>\n  <tr>\n    <td>Muzyka</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Materiał archiwalny</td><td>Media library of the Stasi Records Agency <br>\n    U.S. National Archives</td>\n  </tr>\n  <tr>\n    <td>Dziękujemy bohaterom odcinka: </td><td>Brigitte Jerate-Kammermeier <br>\n    Topography of Terror Foundation <br>\n    Marienfelde Refugee Transit Camp</td>\n  </tr>\n</table>\n<hr>\n<div>Odcinek z cyklu Field Trip</div>\n<table>\n  <tr>\n    <td>Autorka, reżyserka i producentka</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor i producent interaktywny</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producentka</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Ilustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>Produkcja ronjafilm</div>\n<br>",
+                    "transcriptSource": ""
+                }
+            ]
+        }
+    },
+    "clips": [
+        {
+            "resourceId": "60",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050729428001&pubId=64007844001&secure=true",
+            "duration": 0,
+            "start": 0,
+            "end": 0,
+            "in": 0,
+            "out": 0
+        }
+    ],
+    "globalEvents": {
+        "onReady": "",
+        "onPlay": "",
+        "onPause": "",
+        "onEnded": ""
+    },
+    "customCSS": "",
+    "contents": [
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Wed May 22 2019 10:02:19 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050729428001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=43,55&xywh=percent:16.21244700681498,40.915593705293276,68.70886675789633,54.69400808819146"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;W latach 1952-1961 co miesiąc z NRD&lt;br&gt;wylatywało tysiące osób.&lt;br&gt;&lt;br&gt;Droga powietrzna była jedynym bezpiecznym&lt;br&gt;połączeniem między Berlinem Zachodnim a RFN.&lt;br&gt;&lt;br&gt;W 1956 także 11-letnia Brigitte Jerate-Kammermeier&lt;br&gt;opuściła w ten sposób NRD.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+            }
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Wed May 22 2019 12:34:37 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050729428001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=386,394&xywh=percent:67.66411732383469,7.673860911270983,17.048110300620632,56.84652351361099"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1556093943_animation-drachen.gif",
+                "frametrail:name": "Animation Drachen"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=2&t=0';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Wed May 22 2019 12:38:56 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6050729428001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=442,450&xywh=percent:16.949190952153327,14.340528309774056,19.34127564237989,46.0671440874644"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1556093725_animation-storyboxx.gif",
+                "frametrail:name": "Animation Storyboxx"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=9&t=186';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        }
+    ],
+    "subtitles": [
+        {
+            "src": "pl.vtt",
+            "srclang": "pl"
+        }
+    ]
+}
