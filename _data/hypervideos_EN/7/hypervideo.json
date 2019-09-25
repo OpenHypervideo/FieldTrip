@@ -210,8 +210,8 @@
     ],
     "subtitles": [
         {
-            "src": "de.vtt",
-            "srclang": "de"
+            "src": "en.vtt",
+            "srclang": "en"
         }
     ]
 }
