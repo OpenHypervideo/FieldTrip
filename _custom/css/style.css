@@ -1944,7 +1944,7 @@ html[lang="en"] body.overlayHints .overlayElement.active .resourceDetail[data-ty
 }
 
 html[lang="pl"] body.overlayHints .overlayElement.active .resourceDetail[data-type="image"] .resourceTooltip::after {
-  content: 'Przejście do kolejnej historii →';
+  content: 'Do kolejnej historii →';
 }
 
 
