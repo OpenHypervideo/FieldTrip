@@ -167,7 +167,7 @@
             },
             "frametrail:events": {},
             "frametrail:attributes": {
-                "text": "&lt;p style=\"text-align: center;\"&gt;W przeprowadzonym w maju 2014 r. plebiscycie większość &lt;br&gt;opowiedziała się przeciw zabudowaniu Pola Tempelhofskiego. &lt;br&gt;Uchwalona w rezultacie Ustawa o zachowaniu Pola Tempelhofskiego może jednak któregoś dnia zostać obalona. &lt;br&gt;Już teraz architekci przygotowują się na taką ewentualność.&lt;br&gt;Na przykład Paul Ingenbleek.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+                "text": "&lt;p style=\"text-align: center;\"&gt;W przeprowadzonym w maju 2014 r. plebiscycie większość &lt;br&gt;opowiedziała się przeciw zabudowaniu Pola Tempelhof. &lt;br&gt;Uchwalona w rezultacie Ustawa o zachowaniu Pola Tempelhof może jednak któregoś dnia zostać obalona. &lt;br&gt;Już teraz architekci przygotowują się na taką ewentualność.&lt;br&gt;Na przykład Paul Ingenbleek.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
             }
         },
         {
@@ -210,8 +210,8 @@
     ],
     "subtitles": [
         {
-            "src": "de.vtt",
-            "srclang": "de"
+            "src": "pl.vtt",
+            "srclang": "pl"
         }
     ]
 }
