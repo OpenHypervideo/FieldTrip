@@ -1,5 +1,5 @@
 {
-    "resources-increment": 79,
+    "resources-increment": 80,
     "resources": {
         "1": {
             "name": "Intro",
@@ -810,6 +810,16 @@
             "created": 1567763024,
             "description": null,
             "src": "1_1567763024_button-your-vision.svg",
+            "type": "image",
+            "attributes": []
+        },
+        "80": {
+            "name": "Button Twoja Perpektywa",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1569479004,
+            "description": null,
+            "src": "1_1569479004_button-twoja-perpektywa.svg",
             "type": "image",
             "attributes": {}
         }
