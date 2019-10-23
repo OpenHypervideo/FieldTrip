@@ -296,9 +296,18 @@ $(document).ready(function() {
     $('body').on('click', '#ftCreditLink', function () {
 		$('#VideoPlayer .areaRightContainer').toggleClass('closed');
 		$('body').toggleClass('creditsClosed');
+		
+		FieldTrip.pause();
+		
 		setTimeout(function() {
 			$(window).resize();
-		}, 1000);
+			setTimeout(function() {
+				$(window).resize();
+				setTimeout(function() {
+					$(window).resize();
+				}, 600);
+			}, 600);
+		}, 600);
 	});
 
     $('body').on('click', '.layoutAreaToggleCloseButton', function () {
