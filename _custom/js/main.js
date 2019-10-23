@@ -842,7 +842,7 @@ function initEventListeners() {
 		}, 500);
 		setTimeout(function(){
 			player.addClass('is-visible');
-		}, 1000);
+		}, 500);
 
 		$(".ftMapPinDescription").not($(this).find(".ftMapPinDescription")).removeClass('is-visible');
 		$(".circle").not($(this).find(".circle")).removeClass('outer');
