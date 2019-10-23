@@ -21,6 +21,10 @@
 	z-index: 12;
 }
 
+.areaRightContainer {
+	border: none !important;
+}
+
 .areaRightContainer[data-size="large"] {
 	flex: 0 0 500px;
 	min-width: 500px;
@@ -303,6 +307,10 @@ body.userinactive #VideoPlayer .titlebar:not(.editActive) {
 	.captionContainer .subtitleElement {
 		font-size: 4vw;
 	}
+}
+
+.hypervideoContainer .videoContainer {
+	border: 0px !important;
 }
 
 .hypervideoContainer .videoContainer .hypervideo .captionContainer {
