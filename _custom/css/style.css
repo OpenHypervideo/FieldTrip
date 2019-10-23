@@ -3448,26 +3448,52 @@ ABOUT / CREDITS / IMPRINT
 
   /* Alternate Pin Positions for Mobile Visibility */
   #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin1 {
+    top: 68% !important;
     left: 44% !important;
   }
   #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin2 {
-    top: 42% !important;
+    top: 49% !important;
   }
   #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin3 {
+    top: 32% !important;
     left: 23% !important;
   }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin4 {
+    top: 33% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin5 {
+    top: 29% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin6 {
+    top: 52% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin7 {
+    top: 51% !important;
+  }
   #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin8 {
+    top: 69% !important;
     left: 56% !important;
   }
   #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin9 {
-    top: 36% !important;
+    top: 41% !important;
     right: 19% !important;
   }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin10 {
+    top: 67% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin11 {
+    top: 56% !important;
+  }
   #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin12 {
+    top: 27% !important;
     left: 47% !important;
   }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin13 {
+    top: 70% !important;
+  }
   #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin14 {
-    right: 29% !important;
+    top: 41% !important;
+    right: 31% !important;
   }
 
   /* Alternate Size of Open Pins for Mobile Visibility */
