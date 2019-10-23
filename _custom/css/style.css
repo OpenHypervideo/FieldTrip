@@ -3453,6 +3453,29 @@ ABOUT / CREDITS / IMPRINT
     right: 29% !important;
   }
 
+  /* Alternate Size of Open Pins for Mobile Visibility */
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription {
+    top: -80px;
+    left: -80px;
+    width: 260px;
+    height: 260px;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription .ftMapPinDescriptionImg {
+    width: 260px;
+    height: 260px;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription .chart {
+    height: 260px;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription svg {
+    -moz-transform: scale(0.9);
+    -moz-transform-origin: top left;
+    -webkit-transform: scale(0.9);
+    -webkit-transform-origin: top left;
+    transform: scale(0.9);
+    transform-origin: top left;
+  }
+
   #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .fticon-silhouette {
     width: 72px;
     height: 72px;
