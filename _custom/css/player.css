@@ -507,6 +507,9 @@ body.userinactive #VideoPlayer .titlebar:not(.editActive) {
 
 .overlayElement .resourceDetail {
 	transform-origin: center;
+}
+
+.mainContainer:not(.editActive) .overlayElement .resourceDetail {
 	overflow: visible !important;
 }
 
