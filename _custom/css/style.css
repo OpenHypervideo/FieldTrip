@@ -3348,6 +3348,14 @@ ABOUT / CREDITS / IMPRINT
 	.ftInfoContent p, .areaRightContainer .customhtmlContainer {
 	  font-size: .95em;
 	}
+  .areaRightContainer .customhtmlContainer table {
+    float: left;
+    width: 47%;
+    margin-right: 2%;
+  }
+  .areaRightContainer .customhtmlContainer hr {
+    display: none;
+  }
 }
 
 @media (min-width: 650px) and (max-width: 1010px) {
@@ -3360,6 +3368,15 @@ ABOUT / CREDITS / IMPRINT
 
   #fthyperInfo .ftInfoContainer {
     margin-left: 25%;
+  }
+
+  .areaRightContainer .customhtmlContainer table {
+    float: left;
+    width: 47%;
+    margin-right: 2%;
+  }
+  .areaRightContainer .customhtmlContainer hr {
+    display: none;
   }
 
   #abspann li {
@@ -3691,6 +3708,15 @@ ABOUT / CREDITS / IMPRINT
 
   .ftInfoContent p, .areaRightContainer .customhtmlContainer {
     font-size: 14px;
+  }
+
+  .areaRightContainer .customhtmlContainer table {
+    float: left;
+    width: 47%;
+    margin-right: 2%;
+  }
+  .areaRightContainer .customhtmlContainer hr {
+    display: none;
   }
 
   #abspann li {
