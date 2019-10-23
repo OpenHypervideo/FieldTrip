@@ -1734,8 +1734,10 @@ function updateStatesOfIntroCaptions() {
 function goToOverviewFake() {
 	$('#ftIntroVideoPoster').hide();
 	$('#ftStartButton').hide();
-	$('#ftoverview').css('opacity', '').addClass('active').show();
 	$('.ftLayer#ftintro').fadeOut(1000);
-	$('.ftLayer#ftoverview').removeClass('zoomOut');
-	$('.ftLayer#fthypervideo').removeClass('active zoomOut');
+	setTimeout(function() {
+		$('#ftoverview').css('opacity', '').addClass('active').show();
+		$('.ftLayer#ftoverview').removeClass('zoomOut');
+		$('.ftLayer#fthypervideo').removeClass('active zoomOut');
+	}, 600);
 }
