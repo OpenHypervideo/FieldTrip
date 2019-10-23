@@ -1752,32 +1752,6 @@ body.nobranding #ftoverview #ftMapContainer #ftWeatherContainer {
 	transform-origin:center bottom;
 }
 
-/*
-#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:nth-child(even) .fticon-silhouette {
-	background-image: url(../graphics/FT-pin-girl-2.png);
-}
-
-#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin1 .fticon-silhouette {
-  background-image: url(../graphics/FT-pin-drachenbauer.png);
-}
-
-#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin6 .fticon-silhouette {
-  background-image: url(../graphics/FT-pin-storyboxx.png);
-}
-
-#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin7 .fticon-silhouette {
-  background-image: url(../graphics/FT-pin-filmemacher.png);
-}
-
-#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin8 .fticon-silhouette {
-  background-image: url(../graphics/FT-pin-liebende.png);
-}
-
-#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin9 .fticon-silhouette {
-  background-image: url(../graphics/FT-pin-tueroeffnerin.png);
-}
-*/
-
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:nth-child(1) .fticon-silhouette {
 	animation-delay: .2s
 }
@@ -3453,6 +3427,30 @@ ABOUT / CREDITS / IMPRINT
 
   #ftoverview #ftMapContainer #ftMapCanvas {
     width: 100vw;
+  }
+
+  /* Alternate Pin Positions for Mobile Visibility */
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin1 {
+    left: 44% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin2 {
+    top: 42% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin3 {
+    left: 23% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin8 {
+    left: 56% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin9 {
+    top: 36% !important;
+    right: 19% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin12 {
+    left: 47% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin14 {
+    right: 29% !important;
   }
 
   #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .fticon-silhouette {
