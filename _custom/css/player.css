@@ -470,6 +470,10 @@ body.userinactive #VideoPlayer .titlebar:not(.editActive) {
 .fullscreen-no #VideoPlayer .mainContainer:not(.editActive) .slideArea {
 	min-height: 0 !important;
 }
+
+.fullscreen-no #VideoPlayer .mainContainer:not(.editActive) .overlayElement .resourceDetail[data-type="text"] {
+	display: none !important;
+}
 /* End iOS / Safari */
 
 
