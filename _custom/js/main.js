@@ -369,6 +369,10 @@ $(document).ready(function() {
 
     	checkBgImg();
 
+    	setTimeout(function() {
+			$(window).resize();
+		}, 600);
+
 		// Make sure play circle & transitions are never initialized twice
 		if ($('#VideoPlayer #playCircleContainer').length != 0) {
 			return;
