@@ -2375,6 +2375,7 @@ html[lang="pl"] body.overlayHints .overlayElement.active .resourceDetail[data-ty
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription figure {
   position: relative;
   z-index: 10;
+  border-radius: 50%;
 }
 
 .circle {
@@ -2407,6 +2408,7 @@ html[lang="pl"] body.overlayHints .overlayElement.active .resourceDetail[data-ty
 
 .chart svg {
   overflow: visible;
+  border-radius: 50%;
 }
 
 .linkPointer {
