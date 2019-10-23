@@ -1,0 +1,217 @@
+{
+    "meta": {
+        "name": "The Field Dancer",
+        "description": "   ",
+        "thumb": "1_1556092427_thumb_episode-3-boris.png",
+        "creator": "Joscha",
+        "creatorId": "1",
+        "created": 1556093180218,
+        "lastchanged": 1565764057373
+    },
+    "config": {
+        "slidingMode": "adjust",
+        "slidingTrigger": "key",
+        "autohideControls": true,
+        "captionsVisible": true,
+        "clipTimeVisible": false,
+        "hidden": false,
+        "layoutArea": {
+            "areaTop": [],
+            "areaBottom": [],
+            "areaLeft": [],
+            "areaRight": [
+                {
+                    "type": "CustomHTML",
+                    "contentSize": "large",
+                    "name": "Credits",
+                    "description": "",
+                    "cssClass": "",
+                    "initClosed": true,
+                    "collectionFilter": {
+                        "tags": [],
+                        "types": [],
+                        "users": [],
+                        "text": ""
+                    },
+                    "onClickContentItem": "",
+                    "html": "<h2>Credits for this episode</h2><table>\n  <tr>\n    <td>Director</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Camera</td><td>Emma Rosa Simon, Agnes Pakozdi, Tom Akinleminu</td>\n  </tr>\n  <tr>\n    <td>Sound</td><td>Wolfgang Kick</td>\n  </tr>\n  <tr>\n    <td>Editing</td><td>Calle Overweg</td>\n  </tr>\n  <tr>\n    <td>Original Sound Editing</td><td>Clemens Nürnberger</td>\n  </tr>\n  <tr>\n    <td>Colour Correction</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Music</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>With thanks to</td><td>our protagonist Boris Charmatz <br>\n    all the Berliners who agreed to be filmed! </td>\n  </tr>\n</table>\n<hr>\n<div>An episode of Field Trip</div>\n<table>\n  <tr>\n    <td>Author, Director, Producer</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Author, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producer</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>Produced by ronjafilm</div>\n<br>",
+                    "transcriptSource": ""
+                }
+            ]
+        }
+    },
+    "clips": [
+        {
+            "resourceId": "4",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563428001&pubId=64007844001&secure=true",
+            "duration": 0,
+            "start": 0,
+            "end": 0,
+            "in": 0,
+            "out": 0
+        }
+    ],
+    "globalEvents": {
+        "onReady": "",
+        "onPlay": "",
+        "onPause": "",
+        "onEnded": ""
+    },
+    "customCSS": "",
+    "contents": [
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Apr 29 2019 09:11:01 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563428001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=89,97&xywh=percent:21.13733905579399,1.5259895088221267,30.858369753596097,31.902718168812587"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1556093754_animation-molken.gif",
+                "frametrail:name": "Animation Molken"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=5&t=293';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Apr 29 2019 09:13:03 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563428001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=129,137&xywh=percent:15.343347639484978,48.71403553625716,18.412017822265625,36.483865063930615"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1556093774_animation-winkeboy.gif",
+                "frametrail:name": "Animation Winkeboy"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=1&t=104';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Apr 30 2019 10:22:50 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563428001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=29,37&xywh=percent:12.394491695027494,61.010969213832254,73.18669265943537,33.40963455513084"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;In September 2017, a Berlin theatre, Volksbühne, invited Boris Charmatz to put on a show on the tarmac of the former airport.&amp;nbsp; &lt;br&gt;The choreographer from Rennes staged “Fous de danse”, a participatory dance performance.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+            }
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Jun 18 2019 09:46:47 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563428001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=400,408&xywh=percent:18.72224525896935,10.709382849372497,30.899107087301083,46.24332454166369"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1560762346_animation-t-shirt.gif",
+                "frametrail:name": "Animation T-Shirt"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=13&t=108';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        }
+    ],
+    "subtitles": [
+        {
+            "src": "en.vtt",
+            "srclang": "en"
+        }
+    ]
+}

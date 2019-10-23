@@ -296,9 +296,18 @@ $(document).ready(function() {
     $('body').on('click', '#ftCreditLink', function () {
 		$('#VideoPlayer .areaRightContainer').toggleClass('closed');
 		$('body').toggleClass('creditsClosed');
+		
+		FieldTrip.pause();
+		
 		setTimeout(function() {
 			$(window).resize();
-		}, 1000);
+			setTimeout(function() {
+				$(window).resize();
+				setTimeout(function() {
+					$(window).resize();
+				}, 600);
+			}, 600);
+		}, 600);
 	});
 
     $('body').on('click', '.layoutAreaToggleCloseButton', function () {
@@ -359,6 +368,10 @@ $(document).ready(function() {
 		FieldTripReady = true;
 
     	checkBgImg();
+
+    	setTimeout(function() {
+			$(window).resize();
+		}, 600);
 
 		// Make sure play circle & transitions are never initialized twice
 		if ($('#VideoPlayer #playCircleContainer').length != 0) {
@@ -842,7 +855,7 @@ function initEventListeners() {
 		}, 500);
 		setTimeout(function(){
 			player.addClass('is-visible');
-		}, 1000);
+		}, 500);
 
 		$(".ftMapPinDescription").not($(this).find(".ftMapPinDescription")).removeClass('is-visible');
 		$(".circle").not($(this).find(".circle")).removeClass('outer');
@@ -1637,7 +1650,12 @@ function highlightInteractiveElement(selector, iterations) {
 
 function initIntroCaptions() {
 
-	var VTTsource = '_custom/intro-video-captions.vtt';
+	var VTTsource = $('#ftIntroVideo').attr('data-vtt-source');
+
+	// Fallback to DE
+	if (!VTTsource || VTTsource.length == 0) {
+		VTTsource = '_custom/intro-video-captions.vtt';
+	}
 	
 	
 	//if (!!screenfull) {
@@ -1716,8 +1734,10 @@ function updateStatesOfIntroCaptions() {
 function goToOverviewFake() {
 	$('#ftIntroVideoPoster').hide();
 	$('#ftStartButton').hide();
-	$('#ftoverview').css('opacity', '').addClass('active').show();
 	$('.ftLayer#ftintro').fadeOut(1000);
-	$('.ftLayer#ftoverview').removeClass('zoomOut');
-	$('.ftLayer#fthypervideo').removeClass('active zoomOut');
+	setTimeout(function() {
+		$('#ftoverview').css('opacity', '').addClass('active').show();
+		$('.ftLayer#ftoverview').removeClass('zoomOut');
+		$('.ftLayer#fthypervideo').removeClass('active zoomOut');
+	}, 600);
 }

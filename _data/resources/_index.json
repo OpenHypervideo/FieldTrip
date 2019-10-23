@@ -1,5 +1,5 @@
 {
-    "resources-increment": 78,
+    "resources-increment": 80,
     "resources": {
         "1": {
             "name": "Intro",
@@ -62,7 +62,7 @@
             "creatorId": "1",
             "created": 1556092475,
             "description": null,
-            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034568309001&pubId=64007844001&secure=true",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6097007842001&pubId=64007844001&secure=true",
             "attributes": [],
             "type": "video",
             "thumb": "1_1556092475_thumb_episode-5-molkenbuhr.jpg"
@@ -801,6 +801,26 @@
             "description": null,
             "src": "1_1565762803_tempelhof-atmo-night.mp3",
             "type": "audio",
+            "attributes": []
+        },
+        "79": {
+            "name": "Button Your Vision",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1567763024,
+            "description": null,
+            "src": "1_1567763024_button-your-vision.svg",
+            "type": "image",
+            "attributes": []
+        },
+        "80": {
+            "name": "Button Twoja Perpektywa",
+            "creator": "Joscha",
+            "creatorId": "1",
+            "created": 1569479004,
+            "description": null,
+            "src": "1_1569479004_button-twoja-perpektywa.svg",
+            "type": "image",
             "attributes": {}
         }
     }

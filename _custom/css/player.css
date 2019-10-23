@@ -21,6 +21,10 @@
 	z-index: 12;
 }
 
+.areaRightContainer {
+	border: none !important;
+}
+
 .areaRightContainer[data-size="large"] {
 	flex: 0 0 500px;
 	min-width: 500px;
@@ -47,7 +51,7 @@
 }
 
 .layoutArea .contentViewContainer .contentViewContents .customhtmlContainer td {
-	padding: 4px 10px;
+	padding: 0px 10px;
 }
 
 .layoutArea .contentViewContainer .contentViewContents .customhtmlContainer h2 {
@@ -305,6 +309,10 @@ body.userinactive #VideoPlayer .titlebar:not(.editActive) {
 	}
 }
 
+.hypervideoContainer .videoContainer {
+	border: 0px !important;
+}
+
 .hypervideoContainer .videoContainer .hypervideo .captionContainer {
 	position: fixed !important;
 }
@@ -462,6 +470,10 @@ body.userinactive #VideoPlayer .titlebar:not(.editActive) {
 .fullscreen-no #VideoPlayer .mainContainer:not(.editActive) .slideArea {
 	min-height: 0 !important;
 }
+
+.fullscreen-no #VideoPlayer .mainContainer:not(.editActive) .overlayElement .resourceDetail[data-type="text"] {
+	display: none !important;
+}
 /* End iOS / Safari */
 
 
@@ -499,6 +511,10 @@ body.userinactive #VideoPlayer .titlebar:not(.editActive) {
 
 .overlayElement .resourceDetail {
 	transform-origin: center;
+}
+
+.mainContainer:not(.editActive) .overlayElement .resourceDetail {
+	overflow: visible !important;
 }
 
 .overlayElement .resourceDetail[data-type="text"] * {

@@ -1,0 +1,328 @@
+{
+    "meta": {
+        "name": "The Father on hold",
+        "description": "   ",
+        "thumb": "1_1560580554_thumb_episode-12-mansour.png",
+        "creator": "Joscha",
+        "creatorId": "1",
+        "created": 1560581008937,
+        "lastchanged": 1565764670978
+    },
+    "config": {
+        "slidingMode": "adjust",
+        "slidingTrigger": "key",
+        "autohideControls": true,
+        "captionsVisible": true,
+        "clipTimeVisible": false,
+        "hidden": false,
+        "layoutArea": {
+            "areaTop": [],
+            "areaBottom": [],
+            "areaLeft": [],
+            "areaRight": [
+                {
+                    "type": "CustomHTML",
+                    "contentSize": "large",
+                    "name": "Credits",
+                    "description": "",
+                    "cssClass": "",
+                    "initClosed": true,
+                    "collectionFilter": {
+                        "tags": [],
+                        "types": [],
+                        "users": [],
+                        "text": ""
+                    },
+                    "onClickContentItem": "",
+                    "html": "<h2>Credits for this episode</h2><table>\n  <tr>\n    <td>Director</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Interview directed by</td><td>Kamil Bembnista</td>\n  </tr>\n  <tr>\n    <td>Camera 2015</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Camera 2019</td><td>Emma Rosa Simon</td>\n  </tr>\n  <tr>\n    <td>Editing</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sound Design</td><td>Clemens Nürnberger</td>\n  </tr>\n  <tr>\n    <td>Colour Correction</td><td>Felix Trolldenier</td>\n  </tr>\n  <tr>\n    <td>Music</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Translation</td><td>Kinda Al Raheb</td>\n  </tr>\n  <tr>\n    <td>With thanks to</td><td>our protagonists Mansour and Momo <br>\n    the Tamaja team: <br>\n    Michael Elias, Mohammad Khodro, Hanna Wittges-Stoelben</td>\n  </tr>\n</table>\n<hr>\n<div>An episode of Field Trip</div>\n<table>\n  <tr>\n    <td>Author, Director, Producer</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Author, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producer</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>Produced by ronjafilm</div>\n<br>",
+                    "transcriptSource": ""
+                }
+            ]
+        }
+    },
+    "clips": [
+        {
+            "resourceId": "62",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
+            "duration": 0,
+            "start": 0,
+            "end": 0,
+            "in": 0,
+            "out": 0
+        }
+    ],
+    "globalEvents": {
+        "onReady": "",
+        "onPlay": "",
+        "onPause": "",
+        "onEnded": ""
+    },
+    "customCSS": "",
+    "contents": [
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Jun 17 2019 13:28:24 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=9.1,16.1&xywh=percent:14.844065483358193,67.99904022654012,72.54411584018932,32.00095540131402"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;In 2017, temporary accommodation for 1000 refugees&lt;br&gt;was built on Tempelhof Field – the so-called Tempohomes.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+            }
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Jun 17 2019 13:31:01 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=62.040250447227194,74.51524908512778&xywh=percent:16.813306030797346,54.47782662918753,66.55400484928245,36.1723121712193"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;At the start, it was mainly Syrian men who lived in the prefabs. They had fled the war or the risk of conscription into the army. With the rising number of asylum seekers in Germany, getting permission for their families to join them became increasingly difficult.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+            }
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Jun 17 2019 13:33:20 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=79.49930025213307,86.11990024791847&xywh=percent:24.020028830597838,69.20362771779625,53.422746126232234,26.787474363488016"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;Mansour A. has been living in the Tempohomes since 2018, waiting for his family.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+            }
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Jun 17 2019 13:35:01 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=485.1562753312277,496.7386084950674&xywh=percent:18.549713658672545,54.36337625178827,63.07582609643241,39.147989967066046"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;Mansour’s family eventually came to Berlin in May 2019.&lt;br&gt;Due to the laws surrounding Tempelhof Field, the prefabs were taken down again in June 2019. Mansour, his wife and his daughter had to move into shared accommodation.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+            }
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Jun 18 2019 10:11:17 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=183,191&xywh=percent:26.991019895823488,6.834975369458128,58.24462539124541,59.724959951316194"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1560762432_animation-hochbeet.gif",
+                "frametrail:name": "Animation Hochbeet"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=11&t=102';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Jun 18 2019 10:12:51 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=375,383&xywh=percent:20.713967676655614,24.748624060764783,37.90071056710097,55.40289130092653"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1560762516_animation-frau.gif",
+                "frametrail:name": "Animation Frau"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=8&t=0';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Jun 18 2019 10:14:35 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6048173771001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=474,482&xywh=percent:51.92764982799658,0.10879158039939622,42.13154712004526,99.89120443558257"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1560762448_animation-hand.gif",
+                "frametrail:name": "Animation Hand"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=13&t=62';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        }
+    ],
+    "subtitles": [
+        {
+            "src": "en.vtt",
+            "srclang": "en"
+        }
+    ]
+}

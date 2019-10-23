@@ -1,0 +1,180 @@
+{
+    "meta": {
+        "name": "The Kite Builder",
+        "description": "   ",
+        "thumb": "1_1556092400_thumb_episode-2-farzad.png",
+        "creator": "Joscha",
+        "creatorId": "1",
+        "created": 1556093167667,
+        "lastchanged": 1560851204411
+    },
+    "config": {
+        "slidingMode": "adjust",
+        "slidingTrigger": "key",
+        "autohideControls": true,
+        "captionsVisible": true,
+        "clipTimeVisible": false,
+        "hidden": false,
+        "layoutArea": {
+            "areaTop": [],
+            "areaBottom": [],
+            "areaLeft": [],
+            "areaRight": [
+                {
+                    "type": "CustomHTML",
+                    "contentSize": "large",
+                    "name": "Credits",
+                    "description": "",
+                    "cssClass": "",
+                    "initClosed": true,
+                    "collectionFilter": {
+                        "tags": [],
+                        "types": [],
+                        "users": [],
+                        "text": ""
+                    },
+                    "onClickContentItem": "",
+                    "html": "<h2>Credits for this episode</h2><table>\n  <tr>\n    <td>Director</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Camera</td><td>Emma Rosa Simon</td>\n  </tr>\n  <tr>\n    <td>Sound</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Editing</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sound Design</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Colour Correction</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Music</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Translation</td><td>Ali Sagri</td>\n  </tr>\n  <tr>\n    <td>Archival Material</td><td>“Mein Herz sieht die Welt schwarz” by Helga Reidemeister, Ohne Gepäck Filmproduktion <br>\n      “Cousins in Ghorband Afghanistan eating fresh fruits..” by <a target=\"_blank\" href=\"https://www.youtube.com/channel/UC_YN6Lhx-mzuz9dFmAZZzJQ\">Ahmad Nadeem Ezzat</a> </td>\n  </tr>\n  <tr>\n    <td>With thanks to</td><td>our protagonist Farzad H.</td>\n  </tr>\n</table>\n<hr>\n<div>An episode of Field Trip</div>\n<table>\n  <tr>\n    <td>Author, Director, Producer</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Author, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producer</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>Produced by ronjafilm</div>\n<br>",
+                    "transcriptSource": ""
+                }
+            ]
+        }
+    },
+    "clips": [
+        {
+            "resourceId": "3",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563427001&pubId=64007844001&secure=true",
+            "duration": 0,
+            "start": 0,
+            "end": 0,
+            "in": 0,
+            "out": 0
+        }
+    ],
+    "globalEvents": {
+        "onReady": "",
+        "onPlay": "",
+        "onPause": "",
+        "onEnded": ""
+    },
+    "customCSS": "",
+    "contents": [
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Apr 29 2019 08:05:28 GMT+0100 (Western European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563427001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=243,251&xywh=percent:51.283977983335575,26.59036602698796,21.62911411007075,60.324272770624695"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1556093677_animation-tnzerin.gif",
+                "frametrail:name": "Animation Tänzerin"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=3&t=307';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Apr 29 2019 08:07:54 GMT+0100 (Western European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563427001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=337,345&xywh=percent:6.437768240343347,5.042123862772711,23.776824689218415,63.567000476871726"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1556093704_animation-segway.gif",
+                "frametrail:name": "Animation Segway"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=6&t=168';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Apr 30 2019 09:21:13 GMT+0100 (Western European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034563427001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=62.34705665221466,72.41544215689342&xywh=percent:15.926325065383583,54.90065444124046,67.05472233981023,45.05166129720285"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;Farzad H. fled from Afghanistan.&lt;br&gt;&lt;br&gt;In summer 2015 he moved into the emergency accommodation in Hangar 5 of the former airport.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+            }
+        }
+    ],
+    "subtitles": [
+        {
+            "src": "en.vtt",
+            "srclang": "en"
+        }
+    ]
+}

@@ -1,0 +1,217 @@
+{
+    "meta": {
+        "name": "ARCHITEKT",
+        "description": "   ",
+        "thumb": "1_1556092548_thumb_episode-7-paul.png",
+        "creator": "Joscha",
+        "creatorId": "1",
+        "created": 1556093223024,
+        "lastchanged": 1565764313808
+    },
+    "config": {
+        "slidingMode": "adjust",
+        "slidingTrigger": "key",
+        "autohideControls": true,
+        "captionsVisible": true,
+        "clipTimeVisible": false,
+        "hidden": false,
+        "layoutArea": {
+            "areaTop": [],
+            "areaBottom": [],
+            "areaLeft": [],
+            "areaRight": [
+                {
+                    "type": "CustomHTML",
+                    "contentSize": "large",
+                    "name": "Credits",
+                    "description": "",
+                    "cssClass": "",
+                    "initClosed": true,
+                    "collectionFilter": {
+                        "tags": [],
+                        "types": [],
+                        "users": [],
+                        "text": ""
+                    },
+                    "onClickContentItem": "",
+                    "html": "<h2>Czołówka odcinka</h2><table>\n  <tr>\n    <td>Reżyseria</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Zdjęcia</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Dźwięk</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Montaż</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Opracowanie dźwiękowe</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Korekcja kolorów</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Muzyka</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Dziękujemy bohaterowi odcinka</td><td>Dziękujemy bohaterowi odcinka Paulowi Ingenbleek</td>\n  </tr>\n</table>\n<hr>\n<div>Odcinek z cyklu Field Trip</div>\n<table>\n  <tr>\n    <td>Autorka, reżyserka i producentka</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor i producent interaktywny</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producentka</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Ilustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>Produkcja ronjafilm</div>\n<br>",
+                    "transcriptSource": ""
+                }
+            ]
+        }
+    },
+    "clips": [
+        {
+            "resourceId": "8",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
+            "duration": 0,
+            "start": 0,
+            "end": 0,
+            "in": 0,
+            "out": 0
+        }
+    ],
+    "globalEvents": {
+        "onReady": "",
+        "onPlay": "",
+        "onPause": "",
+        "onEnded": ""
+    },
+    "customCSS": "",
+    "contents": [
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Apr 29 2019 09:41:02 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=73,81&xywh=percent:55.36480686695279,15.97520267048164,30.000000654883653,83.97711015736766"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1556093943_animation-drachen.gif",
+                "frametrail:name": "Animation Drachen"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=2&t=256';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Apr 29 2019 09:44:37 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=253,261&xywh=percent:28.433476394849787,46.91146101107982,30.42918520423987,30.18915834003934"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1556093979_animation-chairs.gif",
+                "frametrail:name": "Animation Chairs"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=4&t=103';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Apr 30 2019 10:48:05 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=1.6647044276835645,15.349786136457265&xywh=percent:7.652002752083053,49.72500416797061,84.97675294016564,43.73549359948736"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;W przeprowadzonym w maju 2014 r. plebiscycie większość &lt;br&gt;opowiedziała się przeciw zabudowaniu Pola Tempelhof. &lt;br&gt;Uchwalona w rezultacie Ustawa o zachowaniu Pola Tempelhof może jednak któregoś dnia zostać obalona. &lt;br&gt;Już teraz architekci przygotowują się na taką ewentualność.&lt;br&gt;Na przykład Paul Ingenbleek.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+            }
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Jun 18 2019 09:53:47 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=171,179&xywh=percent:37.386567153156676,58.52402745995423,30.384229241944194,39.145690079957454"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1560762387_animation-mutlufer.gif",
+                "frametrail:name": "Animation Mutläufer"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=14&t=29';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        }
+    ],
+    "subtitles": [
+        {
+            "src": "pl.vtt",
+            "srclang": "pl"
+        }
+    ]
+}

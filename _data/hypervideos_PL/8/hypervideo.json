@@ -1,0 +1,217 @@
+{
+    "meta": {
+        "name": "PAMIĘTAJĄCA",
+        "description": "   ",
+        "thumb": "1_1556092568_thumb_episode-8-halina.png",
+        "creator": "Joscha",
+        "creatorId": "1",
+        "created": 1556093235752,
+        "lastchanged": 1565764363947
+    },
+    "config": {
+        "slidingMode": "adjust",
+        "slidingTrigger": "key",
+        "autohideControls": true,
+        "captionsVisible": true,
+        "clipTimeVisible": false,
+        "hidden": false,
+        "layoutArea": {
+            "areaTop": [],
+            "areaBottom": [],
+            "areaLeft": [],
+            "areaRight": [
+                {
+                    "type": "CustomHTML",
+                    "contentSize": "large",
+                    "name": "Credits",
+                    "description": "",
+                    "cssClass": "",
+                    "initClosed": true,
+                    "collectionFilter": {
+                        "tags": [],
+                        "types": [],
+                        "users": [],
+                        "text": ""
+                    },
+                    "onClickContentItem": "",
+                    "html": "<h2>Czołówka odcinka</h2><table>\n  <tr>\n    <td>Reżyseria</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Zdjęcia</td><td>Ben Bernhard</td>\n  </tr>\n  <tr>\n    <td>Dźwięk</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Montaż</td><td>Diana Näcke, Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Opracowanie dźwiękowe</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Korekcja kolorów</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Muzyka</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Tłumaczenia</td><td>Karolina Szulejewska</td>\n  </tr>\n  <tr>\n    <td>Materiał archiwalny</td><td>Zdjęcie (trzech dziewczyn) własność prywatna Haliny Wojciechowskiej</td>\n  </tr>\n  <tr>\n    <td>Dziękujemy bohaterom odcinka</td><td>Halinie i Andrzejowi Wojciechowskim<br>\n    Centrum Dokumentacji Nazistowskiej Pracy Przymusowej Schöneweide <br>\n    Christianowi Krügerowi z berlińskiego Senatu</td>\n  </tr>\n</table>\n<hr>\n<div>Odcinek z cyklu Field Trip</div>\n<table>\n  <tr>\n    <td>Autorka, reżyserka i producentka</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Autor i producent interaktywny</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producentka</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Ilustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>Produkcja ronjafilm</div>\n<br>",
+                    "transcriptSource": ""
+                }
+            ]
+        }
+    },
+    "clips": [
+        {
+            "resourceId": "9",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034565541001&pubId=64007844001&secure=true",
+            "duration": 0,
+            "start": 0,
+            "end": 0,
+            "in": 0,
+            "out": 0
+        }
+    ],
+    "globalEvents": {
+        "onReady": "",
+        "onPlay": "",
+        "onPause": "",
+        "onEnded": ""
+    },
+    "customCSS": "",
+    "contents": [
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Apr 29 2019 09:46:46 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034565541001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=200,208&xywh=percent:61.69527896995708,46.14528788801711,37.18884185660039,49.83309489747258"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1556094003_animation-flugzeug.gif",
+                "frametrail:name": "Animation Flugzeug"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=5&t=0';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Apr 29 2019 09:47:56 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034565541001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=341,349&xywh=percent:69.09871244635193,28.787157225165416,12.081545719261333,41.06183359039699"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1556093943_animation-drachen.gif",
+                "frametrail:name": "Animation Drachen"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=2&t=256';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Apr 29 2019 09:49:55 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034565541001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=286.69695618750774,295.69163257316785&xywh=percent:3.4334763948497855,10.284534430697127,25.493562886643307,77.30408442492251"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1556093725_animation-storyboxx.gif",
+                "frametrail:name": "Animation Storyboxx"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=9&t=142';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Apr 30 2019 10:50:01 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034565541001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=1,13&xywh=percent:11.51824099823129,25.36957558416786,75.96387740368496,55.9306961954578"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;Halina W. jest na polu Tempelhof po raz pierwszy od 1945 r. Przyjechała z synem z Łodzi.&lt;br&gt;&lt;br&gt;W marcu 1945 r. jako robotnica przymusowa została tu skierowana do pracy przez nazistów.&lt;br&gt;&lt;br&gt;Za III Rzeszy na Polu pracowało około 3000 robotników przymusowych.&lt;/p&gt;&lt;br&gt;&lt;br&gt;"
+            }
+        }
+    ],
+    "subtitles": [
+        {
+            "src": "pl.vtt",
+            "srclang": "pl"
+        }
+    ]
+}

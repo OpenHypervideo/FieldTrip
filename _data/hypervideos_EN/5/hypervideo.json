@@ -1,0 +1,254 @@
+{
+    "meta": {
+        "name": "The Coal Boy",
+        "description": "   ",
+        "thumb": "1_1556092475_thumb_episode-5-molkenbuhr.png",
+        "creator": "Joscha",
+        "creatorId": "1",
+        "created": 1556093203417,
+        "lastchanged": 1565764221114
+    },
+    "config": {
+        "slidingMode": "adjust",
+        "slidingTrigger": "key",
+        "autohideControls": true,
+        "captionsVisible": true,
+        "clipTimeVisible": false,
+        "hidden": false,
+        "layoutArea": {
+            "areaTop": [],
+            "areaBottom": [],
+            "areaLeft": [],
+            "areaRight": [
+                {
+                    "type": "CustomHTML",
+                    "contentSize": "large",
+                    "name": "Credits",
+                    "description": "",
+                    "cssClass": "",
+                    "initClosed": true,
+                    "collectionFilter": {
+                        "tags": [],
+                        "types": [],
+                        "users": [],
+                        "text": ""
+                    },
+                    "onClickContentItem": "",
+                    "html": "<h2>Credits for this episode</h2><table>\n  <tr>\n    <td>Director</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Camera</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Sound</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Editing</td><td>Michał Kuleba</td>\n  </tr>\n  <tr>\n    <td>Sound Design</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Colour Correction</td><td>Rasmus Sievers</td>\n  </tr>\n  <tr>\n    <td>Music</td><td>Frieder Nagel</td>\n  </tr>\n  <tr>\n    <td>Archival Material</td><td>Alliiertenmuseum, Bernd von Kostka</td>\n  </tr>\n  <tr>\n    <td>With thanks to</td><td>our protagonists Bert and Christa Molkenbuhr</td>\n  </tr>\n</table>\n<hr>\n<div>An episode of Field Trip</div>\n<table>\n  <tr>\n    <td>Author, Director, Producer</td><td>Eva Stotz</td>\n  </tr>\n  <tr>\n    <td>Author, Interactive Producer</td><td>Frédéric Dubois</td>\n  </tr>\n  <tr>\n    <td>Creative Technologist</td><td>Joscha Jäger</td>\n  </tr>\n  <tr>\n    <td>Producer</td><td>Svenja Klüh</td>\n  </tr>\n  <tr>\n    <td>Web Designer</td><td>Olivier Guillard</td>\n  </tr>\n  <tr>\n    <td>Illustrator</td><td>Filippo Letizi</td>\n  </tr>\n</table>\n<hr>\n<div>Produced by ronjafilm</div>\n<br>",
+                    "transcriptSource": ""
+                }
+            ]
+        }
+    },
+    "clips": [
+        {
+            "resourceId": "6",
+            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6097007842001&pubId=64007844001&secure=true",
+            "duration": 0,
+            "start": 0,
+            "end": 0,
+            "in": 0,
+            "out": 0
+        }
+    ],
+    "globalEvents": {
+        "onReady": "",
+        "onPlay": "",
+        "onPause": "",
+        "onEnded": ""
+    },
+    "customCSS": "",
+    "contents": [
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Apr 29 2019 09:25:24 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6097007842001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=383,391&xywh=percent:5.257510729613734,32.986806743077906,24.74248992526992,61.08726752503576"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1556093860_animation-boris.gif",
+                "frametrail:name": "Animation Boris"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=3&t=39';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Mon Apr 29 2019 09:27:47 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6097007842001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=256,264&xywh=percent:48.86266356374061,3.0519790176442534,37.72532254329567,39.15434670436934"
+                }
+            },
+            "body": {
+                "type": "Image",
+                "frametrail:type": "image",
+                "format": "image/gif",
+                "source": "1_1556093885_animation-flying-englnder.gif",
+                "frametrail:name": "Animation Flying Engländer"
+            },
+            "frametrail:events": {
+                "onClick": "this.overlayElement.css({\n  opacity: 0,\n\ttransform: 'scale(4, 4) !important',\n\tpointerEvents: 'none'\n});\nwindow.setTimeout(function() {\n\tplayTransitionIn();\n  window.setTimeout(function() {\n    window.location.hash = '#hypervideo=9&t=207';\n  }, 3000);\n}, 1000);"
+            },
+            "frametrail:attributes": {}
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Apr 30 2019 10:40:09 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6097007842001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=26,36&xywh=percent:14.6,49.8,71.9,50.23366830777599"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;In 1948, Berlin was divided up between the four victorious powers.&lt;br&gt;West Berlin, administered by France, the UK and the US, was an enclave within the Soviet occupation zone. &lt;br&gt;&lt;br&gt;In the summer of 1948, the Soviets blocked all land and water routes to West Berlin.&lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+            }
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Apr 30 2019 10:41:34 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6097007842001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=38,46&xywh=percent:14.295422468062636,49.79812702111648,71.89735117900014,31.349548136102168"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;The Western Allies’ response &lt;br&gt;was to bring supplies to the city by air.&lt;br&gt;&lt;br&gt;The Berlin Airlift lasted from 24th June 1948 &lt;br&gt;until 12th May 1949. &lt;br&gt;&lt;/p&gt;&lt;br&gt;"
+            }
+        },
+        {
+            "@context": [
+                "http://www.w3.org/ns/anno.jsonld",
+                {
+                    "frametrail": "http://frametrail.org/ns/"
+                }
+            ],
+            "creator": {
+                "nickname": "Joscha",
+                "type": "Person",
+                "id": "1"
+            },
+            "created": "Tue Apr 30 2019 10:44:12 GMT+0200 (Central European Summer Time)",
+            "type": "Annotation",
+            "frametrail:type": "Overlay",
+            "frametrail:tags": [],
+            "target": {
+                "type": "Video",
+                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6097007842001&pubId=64007844001&secure=true",
+                "selector": {
+                    "conformsTo": "http://www.w3.org/TR/media-frags/",
+                    "type": "FragmentSelector",
+                    "value": "t=120,135.63533680365973&xywh=percent:7.0958509977283395,23.64965901809132,86.01752678212178,64.0693049687798"
+                }
+            },
+            "body": {
+                "type": "TextualBody",
+                "frametrail:type": "text",
+                "format": "text/html",
+                "value": "",
+                "frametrail:name": "Custom Text/HTML"
+            },
+            "frametrail:events": {},
+            "frametrail:attributes": {
+                "text": "&lt;p style=\"text-align: center;\"&gt;Horst Bert Molkenbuhr spent five years in a Nazi re-education camp as a child because his family was close to the left-wing Social Democratic Party. &lt;br&gt;&lt;br&gt;He tells us a story that is rarely mentioned in the usual reports about the airlift.&lt;br&gt;&lt;br&gt;In 1949, thousands of teenagers spent their summer holidays &lt;br&gt;on Tempelhof Field assisting the Allies.&lt;br&gt;&lt;br&gt;He was one of them. &lt;br&gt;&lt;/p&gt;"
+            }
+        }
+    ],
+    "subtitles": [
+        {
+            "src": "en.vtt",
+            "srclang": "en"
+        }
+    ]
+}

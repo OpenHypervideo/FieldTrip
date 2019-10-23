@@ -1583,7 +1583,11 @@ a {
 	padding: 8px 10px;
 	background: rgba(255, 255, 255, .1);
   border: 1px solid rgba(255, 255, 255, .05);
-	z-index: 10;
+	z-index: 8;
+}
+
+body.nobranding #ftoverview #ftMapContainer #ftWeatherContainer {
+  right: 60px;
 }
 
 #ftWeatherData span {
@@ -1626,7 +1630,7 @@ a {
   border: 1px solid rgba(255, 255, 255, .05);
   height: 57px;
   width: 146px;
-  z-index: 10;
+  z-index: 8;
 }
 
 #fthypervideo .ftNavCooperation {
@@ -1747,32 +1751,6 @@ a {
 	animation: wobble 1s linear infinite;
 	transform-origin:center bottom;
 }
-
-/*
-#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:nth-child(even) .fticon-silhouette {
-	background-image: url(../graphics/FT-pin-girl-2.png);
-}
-
-#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin1 .fticon-silhouette {
-  background-image: url(../graphics/FT-pin-drachenbauer.png);
-}
-
-#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin6 .fticon-silhouette {
-  background-image: url(../graphics/FT-pin-storyboxx.png);
-}
-
-#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin7 .fticon-silhouette {
-  background-image: url(../graphics/FT-pin-filmemacher.png);
-}
-
-#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin8 .fticon-silhouette {
-  background-image: url(../graphics/FT-pin-liebende.png);
-}
-
-#ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin9 .fticon-silhouette {
-  background-image: url(../graphics/FT-pin-tueroeffnerin.png);
-}
-*/
 
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin:nth-child(1) .fticon-silhouette {
 	animation-delay: .2s
@@ -1933,6 +1911,14 @@ body.overlayHints .overlayElement.active .resourceDetail[data-type="image"] .res
   -ms-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   white-space: nowrap;
+}
+
+html[lang="en"] body.overlayHints .overlayElement.active .resourceDetail[data-type="image"] .resourceTooltip::after {
+  content: 'Jump to next story →';
+}
+
+html[lang="pl"] body.overlayHints .overlayElement.active .resourceDetail[data-type="image"] .resourceTooltip::after {
+  content: 'Do kolejnej historii →';
 }
 
 
@@ -2363,6 +2349,7 @@ body.overlayHints .overlayElement.active .resourceDetail[data-type="image"] .res
 #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription figure {
   position: relative;
   z-index: 10;
+  border-radius: 50%;
 }
 
 .circle {
@@ -2395,6 +2382,7 @@ body.overlayHints .overlayElement.active .resourceDetail[data-type="image"] .res
 
 .chart svg {
   overflow: visible;
+  border-radius: 50%;
 }
 
 .linkPointer {
@@ -3122,6 +3110,10 @@ ABOUT / CREDITS / IMPRINT
     right: 242px;
   }
 
+  body.nobranding #ftoverview #ftMapContainer #ftWeatherContainer {
+    right: 90px;
+  }
+
   .ftNavUp .tooltip {
     top: 18px;
     right: 70px;
@@ -3245,6 +3237,10 @@ ABOUT / CREDITS / IMPRINT
     right: 242px;
   }
 
+  body.nobranding #ftoverview #ftMapContainer #ftWeatherContainer {
+    right: 90px;
+  }
+
   /*
   .ftNavVisitors {
     top: 30px;
@@ -3352,6 +3348,14 @@ ABOUT / CREDITS / IMPRINT
 	.ftInfoContent p, .areaRightContainer .customhtmlContainer {
 	  font-size: .95em;
 	}
+  .areaRightContainer .customhtmlContainer table {
+    float: left;
+    width: 47%;
+    margin-right: 2%;
+  }
+  .areaRightContainer .customhtmlContainer hr {
+    display: none;
+  }
 }
 
 @media (min-width: 650px) and (max-width: 1010px) {
@@ -3364,6 +3368,15 @@ ABOUT / CREDITS / IMPRINT
 
   #fthyperInfo .ftInfoContainer {
     margin-left: 25%;
+  }
+
+  .areaRightContainer .customhtmlContainer table {
+    float: left;
+    width: 47%;
+    margin-right: 2%;
+  }
+  .areaRightContainer .customhtmlContainer hr {
+    display: none;
   }
 
   #abspann li {
@@ -3431,6 +3444,79 @@ ABOUT / CREDITS / IMPRINT
 
   #ftoverview #ftMapContainer #ftMapCanvas {
     width: 100vw;
+  }
+
+  /* Alternate Pin Positions for Mobile Visibility */
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin1 {
+    top: 68% !important;
+    left: 44% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin2 {
+    top: 49% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin3 {
+    top: 32% !important;
+    left: 23% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin4 {
+    top: 33% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin5 {
+    top: 29% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin6 {
+    top: 52% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin7 {
+    top: 51% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin8 {
+    top: 69% !important;
+    left: 56% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin9 {
+    top: 41% !important;
+    right: 19% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin10 {
+    top: 67% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin11 {
+    top: 56% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin12 {
+    top: 27% !important;
+    left: 47% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin13 {
+    top: 70% !important;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin#ftMapPin14 {
+    top: 41% !important;
+    right: 31% !important;
+  }
+
+  /* Alternate Size of Open Pins for Mobile Visibility */
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription {
+    top: -80px;
+    left: -80px;
+    width: 260px;
+    height: 260px;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription .ftMapPinDescriptionImg {
+    width: 260px;
+    height: 260px;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription .chart {
+    height: 260px;
+  }
+  #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .ftMapPinDescription svg {
+    -moz-transform: scale(0.9);
+    -moz-transform-origin: top left;
+    -webkit-transform: scale(0.9);
+    -webkit-transform-origin: top left;
+    transform: scale(0.9);
+    transform-origin: top left;
   }
 
   #ftoverview #ftMapContainer #ftMapCanvas .ftMapPin .fticon-silhouette {
@@ -3552,6 +3638,10 @@ ABOUT / CREDITS / IMPRINT
     height: 50px;
   }
 
+  body.nobranding #ftoverview #ftMapContainer #ftWeatherContainer {
+    right: 40px;
+  }
+
   .overlayElement .resourceDetail[data-type="text"] *  {
     font-size: 16px !important;
   }
@@ -3644,6 +3734,15 @@ ABOUT / CREDITS / IMPRINT
 
   .ftInfoContent p, .areaRightContainer .customhtmlContainer {
     font-size: 14px;
+  }
+
+  .areaRightContainer .customhtmlContainer table {
+    float: left;
+    width: 47%;
+    margin-right: 2%;
+  }
+  .areaRightContainer .customhtmlContainer hr {
+    display: none;
   }
 
   #abspann li {
