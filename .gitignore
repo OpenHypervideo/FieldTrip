@@ -18,7 +18,7 @@ pids
 
 # Video files
 #*.m4v
-#*.mp4
+*.mp4
 #*.webm
 #*.mov
 #*.mpg
