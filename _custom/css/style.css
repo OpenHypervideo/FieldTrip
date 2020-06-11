@@ -1648,6 +1648,10 @@ body.nobranding #ftoverview #ftMapContainer #ftWeatherContainer {
   height: auto !important;
 }
 
+.ftNavCooperation img.ft-logo-exberliner {
+  margin-top: 3px;
+}
+
 #ftoverview #ftMapContainer img {
 	position: absolute;
 	top: 0px;
