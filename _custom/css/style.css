@@ -1454,7 +1454,7 @@ a {
   position: absolute;
   left: 50%;
   margin-left: -125px;
-  width: 250px;
+  width: auto;
   text-align: center;
   z-index: 10;
 }
@@ -1496,6 +1496,8 @@ a {
 
 .ftLayer#ftintro .ftintroAwards .ft-award-laurel {
   width: 100px;
+  vertical-align: middle;
+  margin-right: 10px;
 }
 
 .ftLayer#ftintro .fticon-logo-fieldtrip {
@@ -3449,6 +3451,10 @@ ABOUT / CREDITS / IMPRINT
     bottom: auto;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  .ftLayer#ftintro .ftintroAwards .ft-award-laurel {
+    width: 80px;
   }
 
   #ftStartButton, .ftLayer#ftintro #ftTagline {
