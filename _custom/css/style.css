@@ -1667,6 +1667,11 @@ body.nobranding #ftoverview #ftMapContainer #ftWeatherContainer {
   margin-top: 3px;
 }
 
+.ftNavCooperation img.ft-logo-outriders {
+  margin-top: 10px;
+  padding-right: 7px;
+}
+
 #ftoverview #ftMapContainer img {
 	position: absolute;
 	top: 0px;
