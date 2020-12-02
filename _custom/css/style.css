@@ -1500,6 +1500,10 @@ a {
   margin-right: 10px;
 }
 
+.ftLayer#ftintro .ftintroAwards .ft-award-laurel.laurel-bigger {
+  width: 110px;
+}
+
 .ftLayer#ftintro .fticon-logo-fieldtrip {
   display: block;
   font-size: 75px;
@@ -3460,6 +3464,10 @@ ABOUT / CREDITS / IMPRINT
 
   .ftLayer#ftintro .ftintroAwards .ft-award-laurel {
     width: 80px;
+  }
+
+  .ftLayer#ftintro .ftintroAwards .ft-award-laurel.laurel-bigger {
+    width: 96px;
   }
 
   #ftStartButton, .ftLayer#ftintro #ftTagline {
