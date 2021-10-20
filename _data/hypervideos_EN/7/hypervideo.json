@@ -43,7 +43,7 @@
     "clips": [
         {
             "resourceId": "8",
-            "src": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
+            "src": "https://interaktiv.tagesspiegel.de/fieldtrip/videos/6276642028001.mp4",
             "duration": 0,
             "start": 0,
             "end": 0,
@@ -77,7 +77,7 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
+                "source": "https://interaktiv.tagesspiegel.de/fieldtrip/videos/6276642028001.mp4",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -114,7 +114,7 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
+                "source": "https://interaktiv.tagesspiegel.de/fieldtrip/videos/6276642028001.mp4",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -151,7 +151,7 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
+                "source": "https://interaktiv.tagesspiegel.de/fieldtrip/videos/6276642028001.mp4",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",
@@ -188,7 +188,7 @@
             "frametrail:tags": [],
             "target": {
                 "type": "Video",
-                "source": "https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6034560713001&pubId=64007844001&secure=true",
+                "source": "https://interaktiv.tagesspiegel.de/fieldtrip/videos/6276642028001.mp4",
                 "selector": {
                     "conformsTo": "http://www.w3.org/TR/media-frags/",
                     "type": "FragmentSelector",

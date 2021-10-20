@@ -439,7 +439,8 @@ $(document).ready(function() {
 	$('#ftIntroVideo').on('timeupdate', updateStatesOfIntroCaptions);
 
 	var introVideoElem = document.getElementById('ftIntroVideo'),
-		introVideoSource = 'https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6035479757001&pubId=64007844001&secure=true';
+		//introVideoSource = 'https://secure.brightcove.com/services/mobile/streaming/index/master.m3u8?videoId=6035479757001&pubId=64007844001&secure=true';
+    introVideoSource = 'https://interaktiv.tagesspiegel.de/fieldtrip/videos/6276642023001.mp4';
 
 	/*
 	if (!FULLSCREEN_POSSIBLE) {
