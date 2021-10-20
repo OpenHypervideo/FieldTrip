@@ -1454,7 +1454,7 @@ a {
   position: absolute;
   left: 50%;
   margin-left: -125px;
-  width: 250px;
+  width: auto;
   text-align: center;
   z-index: 10;
 }
@@ -1468,6 +1468,8 @@ a {
 }
 
 .ftLayer#ftintro .ftintroLogos.LogosBottom {
+  left: auto;
+  right: 10%;
   bottom: 30px;
 }
 
@@ -1480,9 +1482,26 @@ a {
   margin: 0 auto;
 }
 
-.ftLayer#ftintro .ftintroLogos.LogosBottom  .ftintroLogo {
+.ftLayer#ftintro .ftintroLogos.LogosBottom .ftintroLogo {
   width: 120px;
   margin: 0 auto;
+}
+
+.ftLayer#ftintro .ftintroAwards {
+  position: absolute;
+  bottom: 30px;
+  left: 10%;
+  z-index: 10;
+}
+
+.ftLayer#ftintro .ftintroAwards .ft-award-laurel {
+  width: 100px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.ftLayer#ftintro .ftintroAwards .ft-award-laurel.laurel-bigger {
+  width: 110px;
 }
 
 .ftLayer#ftintro .fticon-logo-fieldtrip {
@@ -1646,6 +1665,15 @@ body.nobranding #ftoverview #ftMapContainer #ftWeatherContainer {
   left: auto !important;
   width: 130px !important;
   height: auto !important;
+}
+
+.ftNavCooperation img.ft-logo-exberliner {
+  margin-top: 3px;
+}
+
+.ftNavCooperation img.ft-logo-outriders {
+  margin-top: 10px;
+  padding-right: 7px;
 }
 
 #ftoverview #ftMapContainer img {
@@ -3409,8 +3437,8 @@ ABOUT / CREDITS / IMPRINT
   }
 
   .ftLayer#ftintro .ftintroLogos.LogosTop {
-    top: 30px;
-    left: 30px;
+    top: 15px;
+    left: 15px;
     margin-left: 0;
   }
 
@@ -3422,9 +3450,24 @@ ABOUT / CREDITS / IMPRINT
   .ftLayer#ftintro .ftintroLogos.LogosBottom {
     top: 15px;
     bottom: auto;
-    right: 30px;
+    right: 15px;
     left: auto;
     margin-left: 0;
+  }
+
+  .ftLayer#ftintro .ftintroAwards {
+    top: 15px;
+    bottom: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .ftLayer#ftintro .ftintroAwards .ft-award-laurel {
+    width: 80px;
+  }
+
+  .ftLayer#ftintro .ftintroAwards .ft-award-laurel.laurel-bigger {
+    width: 96px;
   }
 
   #ftStartButton, .ftLayer#ftintro #ftTagline {
@@ -3843,6 +3886,10 @@ ABOUT / CREDITS / IMPRINT
   }
   .ftLayer#ftintro .ftintroLogos {
     transform: scale(0.8);
+    transform-origin: center
+  }
+  .ftLayer#ftintro .ftintroAwards {
+    transform: translateX(-50%) scale(0.8);
     transform-origin: center
   }
   .ftLayer#ftintro .ftintroLogos.LogosTop {

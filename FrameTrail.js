@@ -1375,8 +1375,19 @@ return drawTrapezoid;
     };
     CollisionDetection.prototype.sort = function (els) {
         var o = this.opts, t = this, x = els.sort(function (a, b) {
-            //sort elements by left positioning
-            var a_left = $(a).position().left, b_left = $(b).position().left, ret;
+            //sort elements by left positioning, if same then width
+            var a_left = $(a).position().left, 
+                b_left = $(b).position().left, 
+                a_width = $(a).width(),
+                b_width = $(b).width(),
+                ret;
+            
+            if (a_left == b_left) {
+                return (a_width < b_width) ? -1 : (a_width > b_width) ? 1 : 0;
+            } else {
+                return (a_left < b_left) ? -1 : 1;
+            }
+            /*
             if (a_left < b_left) {
                 ret = -1;
             } else if (a_left > b_left) {
@@ -1385,6 +1396,7 @@ return drawTrapezoid;
                 ret = 0;
             }
             return ret;
+            */
         }).detach();
         //reattach elements
         t.container.append(x);
@@ -33498,7 +33510,7 @@ FrameTrail.defineType(
                     data
                 )
 
-                this.timelineElement   = $('<div class="timelineElement"><div class="previewWrapper"></div></div>');
+                this.timelineElement   = $('<div class="timelineElement" data-type="'+ this.data.type +'" data-uri="'+ this.data.uri +'"><div class="previewWrapper"></div></div>');
                 this.contentViewElements = [];
                 this.contentViewDetailElements = [];
 
@@ -33876,6 +33888,7 @@ FrameTrail.defineType(
                                         type: "simulate-annotation-change", 
                                         element: location,
                                         containerElement: '.annotationTimeline',
+                                        resourceID: self.data.resourceId,
                                         startTime: self.data.start,
                                         endTime: self.data.end
                                     });
@@ -34021,6 +34034,7 @@ FrameTrail.defineType(
                                         type: "simulate-annotation-change", 
                                         element: location,
                                         containerElement: '.annotationTimeline',
+                                        resourceID: self.data.resourceId,
                                         startTime: self.data.start,
                                         endTime: self.data.end
                                     });
@@ -34110,7 +34124,11 @@ FrameTrail.defineType(
                         cleanEnd = FrameTrail.module('HypervideoController').formatTime(this.data.end),
                         compareTimelineElement = $(
                             '<div class="compareTimelineElement" '
-                        +   ' data-start="'
+                        +   ' data-type="'
+                        +   this.data.type
+                        +   '" data-uri="'
+                        +   this.data.uri
+                        +   '" data-start="'
                         +   this.data.start
                         +   '" data-end="'
                         +   this.data.end
@@ -34133,6 +34151,35 @@ FrameTrail.defineType(
                         videoDuration   = HypervideoModel.duration,
                         positionLeft    = 100 * (timeStart / videoDuration),
                         width           = 100 * ((this.data.end - this.data.start) / videoDuration);
+
+                    var numericValue = false,
+                        maxNumericValue = '5'; 
+                    if (this.data.source.url.body) {
+                        if (Array.isArray(this.data.source.url.body)) {
+                            numericValue = this.data.source.url.body[1].annotationNumericValue;
+                            maxNumericValue = this.data.source.url.body[1].maxNumericValue;
+                        } else {
+                            numericValue = this.data.source.url.body.annotationNumericValue;
+                            maxNumericValue = this.data.source.url.body.maxNumericValue;
+                        }
+                    }
+
+                    //console.log('ORIGIN BODY:', this.data.source.url.body);
+                    //console.log('NumericValue:', numericValue);
+
+                    if (numericValue) {
+                        var numericRatio = numericValue / maxNumericValue,
+                            relativeHeight = 100 * (numericRatio),
+                            timelineColor = Math.round(numericRatio * 10);
+                        compareTimelineElement.attr({
+                            'data-numeric-value': numericValue,
+                            'data-numeric-min': '0',
+                            'data-numeric-max': maxNumericValue,
+                            'data-timeline-color': timelineColor
+                        });
+                        compareTimelineElement.css('height', relativeHeight + '%');
+                        compareTimelineElement.css('opacity', numericRatio);
+                    }
 
                     compareTimelineElement.css({
                         left:  positionLeft + '%',
@@ -34180,7 +34227,7 @@ FrameTrail.defineType(
                     });
 
                     compareTimelineElement.click(function() {
-                        FrameTrail.module('HypervideoController').currentTime = parseFloat($(this).data('start')) + 0.5;
+                        FrameTrail.module('HypervideoController').currentTime = parseFloat($(this).data('start')) + 0.05;
                     });
 
 
@@ -36251,12 +36298,23 @@ FrameTrail.defineType(
                  */
                 renderContent: function() {
 
+                    var licenseType = (this.resourceData.licenseType && this.resourceData.licenseType == 'CC-BY-SA-3.0') ? '<a href="https://creativecommons.org/licenses/by-sa/3.0/" title="License: '+ this.resourceData.licenseType +'" target="_blank"><span class="cc-by-sa-bg-image"></span></a>' : this.resourceData.licenseType;
+                    var licenseString = (licenseType) ? licenseType +' - '+ this.resourceData.licenseAttribution : '';
+
+                    var downloadButton = '';
+                    if (this.resourceData.licenseType != 'Copyright') {
+                        downloadButton = '<a download class="button" href="'+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src) +'" data-tooltip-right="Download"><span class="icon-download"></span></a>';
+                    }
+
                     var resourceElement = $(
-                            '<div class="resourceDetail" data-type="'+ this.resourceData.type +'">'
-                        +       '<img src="'+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src) +'">'
-                        +       '<div class="licenseInformation">'+ this.resourceData.licenseType +' - '+ this.resourceData.licenseAttribution +'</div>'
-                        +       '<div class="resourceTooltip"></div>'
-                        +    '</div>'
+                          '<div class="resourceDetail" data-type="'+ this.resourceData.type +'">'
+                        + '    <img src="'+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src) +'">'
+                        + '    <div class="resourceOptions">'
+                        + '        <div class="licenseInformation">'+ licenseString +'</div>'
+                        + '        <div class="resourceButtons">'+ downloadButton +'</div>'
+                        + '    </div>'
+                        + '    <div class="resourceTooltip"></div>'
+                        + '</div>'
                     ).perfectScrollbar({
                         wheelSpeed: 4,
                         suppressScrollX: true
@@ -36291,7 +36349,7 @@ FrameTrail.defineType(
                     var thumbUrl = (this.resourceData.thumb ? FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.thumb)
                                     : FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src) );
 
-                    var thumbElement = $('<div class="resourceThumb" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="background-image:url('+ thumbUrl +');">'
+                    var thumbElement = $('<div class="resourceThumb" data-license-type="'+ this.resourceData.licenseType +'" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="background-image:url('+ thumbUrl +');">'
                         + '                  <div class="resourceOverlay">'
                         + '                      <div class="resourceIcon"><span class="icon-picture"></span></div>'
                         + '                  </div>'
@@ -36453,7 +36511,7 @@ FrameTrail.defineType(
                     var thumbBackground = (this.resourceData.thumb ?
                             'background-image: url('+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.thumb) +');' : '' );
 
-                    var thumbElement = $('<div class="resourceThumb" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="'+ thumbBackground +'">'
+                    var thumbElement = $('<div class="resourceThumb" data-license-type="'+ this.resourceData.licenseType +'" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="'+ thumbBackground +'">'
                         + '                  <div class="resourceOverlay">'
                         + '                      <div class="resourceIcon"><span class="icon-location-2"></span></div>'
                         + '                  </div>'
@@ -36559,6 +36617,14 @@ FrameTrail.defineType(
 
                     var documentSource = (this.resourceData.src.indexOf('//') != -1) ? this.resourceData.src.replace('http:', '') : FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src);
 
+                    var licenseType = (this.resourceData.licenseType && this.resourceData.licenseType == 'CC-BY-SA-3.0') ? '<a href="https://creativecommons.org/licenses/by-sa/3.0/" title="License: '+ this.resourceData.licenseType +'" target="_blank"><span class="cc-by-sa-bg-image"></span></a>' : this.resourceData.licenseType;
+                    var licenseString = (licenseType) ? licenseType +' - '+ this.resourceData.licenseAttribution : '';
+
+                    var downloadButton = '';
+                    if (this.resourceData.licenseType != 'Copyright') {
+                        downloadButton = '<a download class="button" href="'+ documentSource +'" data-tooltip-right="Download"><span class="icon-download"></span></a>';
+                    }
+
                     var pdfDocument = $(
                         '<object'
                     +   ' data="'+ documentSource +'"'
@@ -36579,7 +36645,10 @@ FrameTrail.defineType(
 
                     resourceDetail.append(pdfDocument);
 
-                    resourceDetail.append('<div class="licenseInformation">'+ this.resourceData.licenseType +' - '+ this.resourceData.licenseAttribution +'</div>');
+                    resourceDetail.append('<div class="resourceOptions">'
+                                       +  '    <div class="licenseInformation">'+ licenseString +'</div>'
+                                       +  '    <div class="resourceButtons">'+ downloadButton +'</div>'
+                                       +  '</div>');
 
                     return resourceDetail;
 
@@ -36610,7 +36679,7 @@ FrameTrail.defineType(
                     var thumbBackground = (this.resourceData.thumb ?
                             'background-image: url('+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.thumb) +');' : '' );
 
-                    var thumbElement = $('<div class="resourceThumb" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="'+ thumbBackground +'">'
+                    var thumbElement = $('<div class="resourceThumb" data-license-type="'+ this.resourceData.licenseType +'" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="'+ thumbBackground +'">'
                         + '                  <div class="resourceOverlay">'
                         + '                      <div class="resourceIcon"><span class="icon-file-pdf"></span></div>'
                         + '                  </div>'
@@ -36710,11 +36779,22 @@ FrameTrail.defineType(
                  */
                 renderContent: function() {
 
+                    var licenseType = (this.resourceData.licenseType && this.resourceData.licenseType == 'CC-BY-SA-3.0') ? '<a href="https://creativecommons.org/licenses/by-sa/3.0/" title="License: '+ this.resourceData.licenseType +'" target="_blank"><span class="cc-by-sa-bg-image"></span></a>' : this.resourceData.licenseType;
+                    var licenseString = (licenseType) ? licenseType +' - '+ this.resourceData.licenseAttribution : '';
+
+                    var downloadButton = '';
+                    if (this.resourceData.licenseType != 'Copyright') {
+                        downloadButton = '<a download class="button" href="'+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src) +'" data-tooltip-bottom-right="Download"><span class="icon-download"></span></a>';
+                    }
+
                     return $('<div class="resourceDetail" data-type="'+ this.resourceData.type +'">'
                            + '    <audio controls autobuffer>'
                            +        '<source src="'+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src) +'" type="audio/mp3">'
                            + '    </audio>'
-                           + '    <div class="licenseInformation">'+ this.resourceData.licenseType +' - '+ this.resourceData.licenseAttribution +'</div>'
+                           + '    <div class="resourceOptions">'
+                           + '        <div class="licenseInformation">'+ licenseString +'</div>'
+                           + '        <div class="resourceButtons">'+ downloadButton +'</div>'
+                           + '    </div>'
                            + '</div>');
 
                 },
@@ -36744,7 +36824,7 @@ FrameTrail.defineType(
                     var thumbBackground = (this.resourceData.thumb ?
                             'background-image: url('+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.thumb) +');' : '' );
 
-                    var thumbElement = $('<div class="resourceThumb" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="'+ thumbBackground +'">'
+                    var thumbElement = $('<div class="resourceThumb" data-license-type="'+ this.resourceData.licenseType +'" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="'+ thumbBackground +'">'
                         + '                  <div class="resourceOverlay">'
                         + '                      <div class="resourceIcon"><span class="icon-volume-up"></span></div>'
                         + '                  </div>'
@@ -36881,11 +36961,22 @@ FrameTrail.defineType(
                  */
                 renderContent: function() {
 
+                    var licenseType = (this.resourceData.licenseType && this.resourceData.licenseType == 'CC-BY-SA-3.0') ? '<a href="https://creativecommons.org/licenses/by-sa/3.0/" title="License: '+ this.resourceData.licenseType +'" target="_blank"><span class="cc-by-sa-bg-image"></span></a>' : this.resourceData.licenseType;
+                    var licenseString = (licenseType) ? licenseType +' - '+ this.resourceData.licenseAttribution : '';
+
+                    var downloadButton = '';
+                    if (this.resourceData.licenseType != 'Copyright') {
+                        downloadButton = '<a download class="button" href="'+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src) +'" data-tooltip-bottom-right="Download"><span class="icon-download"></span></a>';
+                    }
+
                     var resourceDetailElement = $('<div class="resourceDetail" data-type="'+ this.resourceData.type +'">'
                            + '    <video controls autobuffer>'
                            +        '<source src="'+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.src) +'" type="video/mp4">'
                            + '    </video>'
-                           + '    <div class="licenseInformation">'+ this.resourceData.licenseType +' - '+ this.resourceData.licenseAttribution +'</div>'
+                           + '    <div class="resourceOptions">'
+                           + '        <div class="licenseInformation">'+ licenseString +'</div>'
+                           + '        <div class="resourceButtons">'+ downloadButton +'</div>'
+                           + '    </div>'
                            + '</div>');
                     
                     var videoElement = resourceDetailElement.find('video').eq(0)[0];
@@ -36947,7 +37038,7 @@ FrameTrail.defineType(
                     var thumbBackground = (this.resourceData.thumb ?
                             'background-image: url('+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.thumb) +');' : '' );
 
-                    var thumbElement = $('<div class="resourceThumb" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="'+ thumbBackground +'">'
+                    var thumbElement = $('<div class="resourceThumb" data-license-type="'+ this.resourceData.licenseType +'" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="'+ thumbBackground +'">'
                         + '                  <div class="resourceOverlay">'
                         + '                      <div class="resourceIcon"><span class="icon-play-1"></span></div>'
                         + '                  </div>'
@@ -37120,7 +37211,7 @@ FrameTrail.defineType(
                     var thumbBackground = (this.resourceData.thumb ?
                             'background-image: url('+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.thumb) +');' : '' );
 
-                    var thumbElement = $('<div class="resourceThumb" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="'+ thumbBackground +'">'
+                    var thumbElement = $('<div class="resourceThumb" data-license-type="'+ this.resourceData.licenseType +'" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="'+ thumbBackground +'">'
                         + '                  <div class="resourceOverlay">'
                         + '                      <div class="resourceIcon"><span class="icon-vimeo-squared"></span></div>'
                         + '                  </div>'
@@ -37282,7 +37373,7 @@ FrameTrail.defineType(
                     var thumbBackground = (this.resourceData.thumb ?
                             'background-image: url('+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.thumb) +');' : '' );
 
-                    var thumbElement = $('<div class="resourceThumb" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="'+ thumbBackground +'">'
+                    var thumbElement = $('<div class="resourceThumb" data-license-type="'+ this.resourceData.licenseType +'" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="'+ thumbBackground +'">'
                         + '                  <div class="resourceOverlay">'
                         + '                      <div class="resourceIcon"><span class="icon-window"></span></div>'
                         + '                  </div>'
@@ -37426,7 +37517,7 @@ FrameTrail.defineType(
                     var thumbBackground = (this.resourceData.thumb ?
                             'background-image: url('+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.thumb) +');' : '' );
 
-                    var thumbElement = $('<div class="resourceThumb" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="'+ thumbBackground +'">'
+                    var thumbElement = $('<div class="resourceThumb" data-license-type="'+ this.resourceData.licenseType +'" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="'+ thumbBackground +'">'
                         + '                  <div class="resourceOverlay">'
                         + '                      <div class="resourceIcon"><span class="icon-wikipedia-w"></span></div>'
                         + '                  </div>'
@@ -37573,7 +37664,7 @@ FrameTrail.defineType(
                     var thumbBackground = (this.resourceData.thumb ?
                             'background-image: url('+ FrameTrail.module('RouteNavigation').getResourceURL(this.resourceData.thumb) +');' : '' );
 
-                    var thumbElement = $('<div class="resourceThumb" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="'+ thumbBackground +'">'
+                    var thumbElement = $('<div class="resourceThumb" data-license-type="'+ this.resourceData.licenseType +'" data-resourceID="'+ trueID +'" data-type="'+ this.resourceData.type +'" style="'+ thumbBackground +'">'
                         + '                  <div class="resourceOverlay">'
                         + '                      <div class="resourceIcon"><span class="icon-youtube"></span></div>'
                         + '                  </div>'
@@ -37708,6 +37799,9 @@ FrameTrail.defineType(
 
                     var self = this;
 
+                    var licenseType = (this.resourceData.licenseType && this.resourceData.licenseType == 'CC-BY-SA-3.0') ? '<a href="https://creativecommons.org/licenses/by-sa/3.0/" title="License: '+ this.resourceData.licenseType +'" target="_blank"><span class="cc-by-sa-bg-image"></span></a>' : this.resourceData.licenseType;
+                    var licenseString = (licenseType) ? licenseType +' - '+ this.resourceData.licenseAttribution : '';
+
                     var resourceDetail = $('<div class="resourceDetail" data-type="'+ this.resourceData.type +'" style="width: 100%; height: 100%;"></div>'),
                         unescapeHelper = document.createElement('div'),
                         child,
@@ -37720,7 +37814,7 @@ FrameTrail.defineType(
 
                     resourceDetail.html(unescapedString);
 
-                    //resourceDetail.append('<div class="licenseInformation">'+ this.resourceData.licenseType +' - '+ this.resourceData.licenseAttribution +'</div>');
+                    resourceDetail.append('<div class="resourceOptions"><div class="licenseInformation">'+ licenseString +'</div><div class="resourceButtons"></div>');
 
                 	return resourceDetail;
 
@@ -37741,7 +37835,7 @@ FrameTrail.defineType(
                         child,
                         unescapedString;
 
-                    var thumbElement = $('<div class="resourceThumb" data-type="'+ this.resourceData.type +'">'
+                    var thumbElement = $('<div class="resourceThumb" data-license-type="'+ this.resourceData.licenseType +'" data-type="'+ this.resourceData.type +'">'
                         + '                  <div class="resourceOverlay">'
                         + '                      <div class="resourceIcon"><span class="icon-doc-text"></span></div>'
                         + '                  </div>'
@@ -37856,6 +37950,13 @@ FrameTrail.defineType(
                         htmlEditorContent.show();
                         if (window.htmlCodeEditor) {
                             window.htmlCodeEditor.refresh();
+
+                            try {
+                                if (TogetherJS && TogetherJS.running) {
+                                    TogetherJS.reinitialize();
+                                }
+                            } catch (e) {}
+
                         }
                     });
 
@@ -38498,8 +38599,6 @@ FrameTrail.defineType(
 
                     }
                     
-                    //resourceDetail.append('<div class="licenseInformation">'+ this.resourceData.licenseType +' - '+ this.resourceData.licenseAttribution +'</div>');
-
                 	return resourceDetail;
 
                 },
@@ -38519,7 +38618,7 @@ FrameTrail.defineType(
                         child,
                         unescapedString;
 
-                    var thumbElement = $('<div class="resourceThumb" data-type="'+ this.resourceData.type +'">'
+                    var thumbElement = $('<div class="resourceThumb" data-license-type="'+ this.resourceData.licenseType +'" data-type="'+ this.resourceData.type +'">'
                         + '                  <div class="resourceOverlay">'
                         + '                      <div class="resourceIcon"><span class="icon-tag-1"></span></div>'
                         + '                  </div>'
@@ -39178,6 +39277,8 @@ FrameTrail.defineType(
                 contentViewData.contentSize            = contentViewData.contentSize || "small";
                 contentViewData.onClickContentItem     = contentViewData.onClickContentItem || "";
                 contentViewData.initClosed             = contentViewData.initClosed || false;
+                contentViewData.filterAspect           = contentViewData.filterAspect || "creatorId";
+                contentViewData.zoomControls           = contentViewData.zoomControls || false;
 
                 this.contentViewData = contentViewData;
 
@@ -39331,11 +39432,11 @@ FrameTrail.defineType(
                             );
 
                             var timelinesContainer = $('<div class="timelinesContainer"></div>');
-                            var timelineList = $('<div class="timelineList"></div>');
+                            var timelineList = $('<div class="timelineList" data-zoom-level="1"></div>');
 
                             //TODO: remove timeout (needed right now because video duration is not known)
                             //window.setTimeout(function() {
-                                FrameTrail.module('AnnotationsController').renderAnnotationTimelines(self.contentCollection, timelineList, 'annotationType');
+                                FrameTrail.module('AnnotationsController').renderAnnotationTimelines(self.contentCollection, timelineList, self.contentViewData.filterAspect, self.contentViewData.zoomControls);
 
                                 timelinesContainer.append(timelineList);
 
@@ -39691,6 +39792,16 @@ FrameTrail.defineType(
                                 }
 
                             }
+
+                            break;
+
+                        case 'Timelines':
+                            
+                            var HypervideoModel = FrameTrail.module('HypervideoModel'),
+                                timeWithOffset = currentTime-HypervideoModel.offsetIn,
+                                timePercent = 100 * (timeWithOffset / HypervideoModel.duration);
+                                
+                            self.contentViewContainer.find('.timelineProgressRange').css('width', timePercent + '%');
 
                             break;
                     }
@@ -42017,6 +42128,15 @@ FrameTrail.defineType(
                             "creatorId": data[i].creator.id,
                             "created": (new Date(data[i].created)).getTime(),
                             "type": data[i].body['frametrail:type'],
+                            "uri": (function () {
+                                        if (data[i]["frametrail:uri"]) { 
+                                            return data[i]["frametrail:uri"]; 
+                                        } else if (data[i].body["frametrail:type"] == 'entity') {
+                                            return data[i].body.source
+                                        } else {
+                                            return null;
+                                        }
+                                    })(),
                             "src": (function () {
                                         if (data[i].body["frametrail:type"] === 'location') { return null; }
                                         return (['codesnippet', 'text', 'webpage', 'wikipedia'].indexOf( data[i].body["frametrail:type"] ) >= 0)
@@ -42125,6 +42245,15 @@ FrameTrail.defineType(
                             "creatorId": data[i].creator.id,
                             "created": (new Date(data[i].created)).getTime(),
                             "type": data[i].body['frametrail:type'],
+                            "uri": (function () {
+                                        if (data[i]["frametrail:uri"]) { 
+                                            return data[i]["frametrail:uri"]; 
+                                        } else if (data[i].body["frametrail:type"] == 'entity') {
+                                            return data[i].body.source
+                                        } else {
+                                            return null;
+                                        }
+                                    })(),
                             "src": (function () {
                                         if (data[i].body["frametrail:type"] === 'location') { return null; }
                                         return (['codesnippet', 'text', 'webpage', 'wikipedia',].indexOf( data[i].body["frametrail:type"] ) >= 0)
@@ -42180,15 +42309,31 @@ FrameTrail.defineType(
 
                 for (var i in initAnnotations) {
 
+                    var originalAnnoObject = initAnnotations[i];
+
+                    //console.log('ORIGINAL 1: ', originalAnnoObject.body);
+
+                    if (Array.isArray(initAnnotations[i].body)) {
+                        initAnnotations[i].body = initAnnotations[i].body[0];
+                    }
+
+                    //console.log('ORIGINAL 2: ', originalAnnoObject.body);
+
                     annotations.push({
-                        "source": {
-                            frametrail: false
-                        },
                         "name": initAnnotations[i].body['frametrail:name'],
                         "creator": initAnnotations[i].creator.nickname,
                         "creatorId": initAnnotations[i].creator.id,
                         "created": (new Date(initAnnotations[i].created)).getTime(),
                         "type": initAnnotations[i].body['frametrail:type'],
+                        "uri": (function () {
+                                        if (initAnnotations[i]["frametrail:uri"]) { 
+                                            return initAnnotations[i]["frametrail:uri"]; 
+                                        } else if (initAnnotations[i].body["frametrail:type"] == 'entity') {
+                                            return initAnnotations[i].body.source
+                                        } else {
+                                            return null;
+                                        }
+                                    })(),
                         "src": (function () {
                                     if (initAnnotations[i].body["frametrail:type"] === 'location') { return null; }
                                     return (['codesnippet', 'text', 'webpage', 'wikipedia',].indexOf( initAnnotations[i].body["frametrail:type"] ) >= 0)
@@ -42203,7 +42348,7 @@ FrameTrail.defineType(
                         "tags": initAnnotations[i]['frametrail:tags'],
                         "source": {
                             frametrail: false,
-                            url: initAnnotations[i]
+                            url: originalAnnoObject
                         }
                     });
 
@@ -42539,7 +42684,7 @@ FrameTrail.defineType(
             			"frametrail:tags": overlays[i].tags || [],
             			"target": {
             				"type": "Video",
-            				"source": FrameTrail.module('HypervideoModel').sourceFiles.mp4,
+            				"source": FrameTrail.module('HypervideoModel').sourcePath,
             				"selector": {
             					"conformsTo": "http://www.w3.org/TR/media-frags/",
             					"type": "FragmentSelector",
@@ -42644,7 +42789,7 @@ FrameTrail.defineType(
             			"frametrail:tags": codeSnippetItem.tags,
             			"target": {
             				"type": "Video",
-            				"source": FrameTrail.module('HypervideoModel').sourceFiles.mp4,
+            				"source": FrameTrail.module('HypervideoModel').sourcePath,
             				"selector": {
             					"conformsTo": "http://www.w3.org/TR/media-frags/",
             					"type": "FragmentSelector",
@@ -42889,9 +43034,10 @@ FrameTrail.defineType(
         		"type": "Annotation",
         		"frametrail:type": "Annotation",
         		"frametrail:tags": annotationItem.tags || [],
+                "frametrail:uri": annotationItem.uri || null,
         		"target": {
         			"type": "Video",
-        			"source": FrameTrail.module('HypervideoModel').sourceFiles.mp4,
+        			"source": FrameTrail.module('HypervideoModel').sourcePath,
         			"selector": {
         				"conformsTo": "http://www.w3.org/TR/media-frags/",
         				"type": "FragmentSelector",
@@ -44442,10 +44588,10 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
 	 * @param {HTMLElement} targetElement
 	 * @param {String} key
 	 * @param {String} condition
-	 * @param {String} value
+	 * @param {Array} values
 	 * @private
 	 */
-	function getFilteredList(targetElement, key, condition, value) {
+	function getFilteredList(targetElement, key, condition, values) {
 
 		$.ajax({
 
@@ -44457,7 +44603,7 @@ FrameTrail.defineModule('ResourceManager', function(FrameTrail){
             	a: 			'fileGetByFilter',
             	key: 		key,
             	condition: 	condition,
-            	value: 		value
+            	values: 	values
             }
 
         }).done(function(data){
@@ -45520,6 +45666,9 @@ FrameTrail.defineModule('ViewResources', function(FrameTrail){
                         +  '        <input id="cbWikipedia" name="ResourceFilterType" type="radio" value="wikipedia" /><label for="cbWikipedia">Wikipedia</label>'
                         +  '        <input id="cbYoutube" name="ResourceFilterType" type="radio" value="youtube" /><label for="cbYoutube">Youtube</label>'
                         +  '        <input id="cbVimeo" name="ResourceFilterType" type="radio" value="vimeo" /><label for="cbVimeo">Vimeo</label>'
+                        +  '        <div class="resourcesCheckboxes">'
+                        +  '            <input type="checkbox" id="onlyCC" name="onlyCC" /><label for="onlyCC">Show only Creative Commons</label>'
+                        +  '        </div>'
                         +  '    </div>'
                         +  '    <div class="resourcesList"></div>'
                         +  '</div>'),
@@ -45552,6 +45701,14 @@ FrameTrail.defineModule('ViewResources', function(FrameTrail){
 
     domElement.find('input[name=ResourceFilterType]').change(updateList);
 
+    domElement.find('input[name=onlyCC]').change( function (evt) {
+     if ($(this).is(':checked')) {
+        ResourcesList.addClass('onlyCC');
+     } else {
+        ResourcesList.removeClass('onlyCC');
+     }   
+    });
+
 
 
 
@@ -45573,7 +45730,7 @@ FrameTrail.defineModule('ViewResources', function(FrameTrail){
 
             domElement.dialog({
                 autoOpen: false,
-                width: 814,
+                width: 954,
                 height: 600,
                 modal: true,
                 close: function() {
@@ -45743,7 +45900,7 @@ FrameTrail.defineModule('ViewResources', function(FrameTrail){
      */
     function changeViewSize(arrayWidthAndHeight) {
 
-        ResourcesList.height( domElement.height() - ResourcesControls.outerHeight() - ResourcesFilter.outerHeight() );
+        
 
     }
 
@@ -46506,11 +46663,11 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
 			'timestamp': currentTime,
 			'sessionTime': sessionTime.hours +':'+ sessionTime.minutes +':'+ sessionTime.seconds,
 			'currentVideo': {
-				'id': FrameTrail.module('RouteNavigation').hypervideoID,
-				'name': FrameTrail.module('HypervideoModel').hypervideoName
+				'id': (FrameTrail.module('RouteNavigation')) ? FrameTrail.module('RouteNavigation').hypervideoID : null,
+				'name': (FrameTrail.module('HypervideoModel')) ? FrameTrail.module('HypervideoModel').hypervideoName : null
 			},
-			'currentVideoTime': FrameTrail.module('HypervideoController').currentTime,
-			'playing': FrameTrail.module('HypervideoController').isPlaying,
+			'currentVideoTime': (FrameTrail.module('HypervideoController')) ? FrameTrail.module('HypervideoController').currentTime : null,
+			'playing': (FrameTrail.module('HypervideoController')) ? FrameTrail.module('HypervideoController').isPlaying : null,
 			'editing': FrameTrail.getState('editMode'),
 			'attributes': (attributes ? attributes : {})
 		}
@@ -47096,7 +47253,7 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
                                   +   '    <div id="CustomAnnotation"></div>'
                                   +   '    <div id="OtherUsers">'
                                   +   '        <div class="message active">Drag Annotations from the User Timelines to your Annotation Timeline</div>'
-                                  +   '        <div class="timelineList"></div>'
+                                  +   '        <div class="timelineList" data-zoom-level="1"></div>'
                                   +   '    </div>'
                                   +   '</div>')
                                   .tabs({
@@ -47151,7 +47308,7 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
 
         /* Choose Annotations of other users */
 
-        renderAnnotationTimelines(annotations, timelineList);
+        renderAnnotationTimelines(annotations, timelineList, 'creatorId', true);
 
     }
 
@@ -47328,8 +47485,9 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
      * @param {Array} annotationCollection
      * @param {HTMLElement} targetElement
      * @param {String} filterAspect
+     * @param {Boolean} zoomControls
      */
-    function renderAnnotationTimelines(annotationCollection, targetElement, filterAspect) {
+    function renderAnnotationTimelines(annotationCollection, targetElement, filterAspect, zoomControls) {
         
         var collectedAnnotationsPerAspect = [];
 
@@ -47340,11 +47498,10 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
 
         for (var anno in annotationCollection) {
             
+            //console.log(annotationCollection[anno].data);
+
             //var currentAspectID = annotationCollection[anno].data[filterAspect];
             switch (filterAspect) {
-                case 'creatorId': 
-                    var currentAspectID = annotationCollection[anno].data[filterAspect];
-                    break;
                 case 'annotationType':
                     var currentAspectID;
                     if (annotationCollection[anno].data.source.url.body) {
@@ -47357,6 +47514,9 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
                     } else {
                         currentAspectID = null;
                     } 
+                    break;
+                default:  
+                    var currentAspectID = annotationCollection[anno].data[filterAspect];
                     break;
             }
 
@@ -47373,17 +47533,6 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
                 //console.log(annotationCollection[anno]);
                 switch (filterAspect) {
 
-                    case 'creatorId': 
-                        
-                        collectedAnnotationsPerAspect[currentAspectID] = {
-                            'userID': annotationCollection[anno].data.creatorId,
-                            'label': annotationCollection[anno].data.creator,
-                            'color' : (userInDatabase) ? '#'+ userInDatabase.color : '#444444',
-                            'annotations': []
-                        };
-
-                        break;
-                    
                     case 'annotationType':
                         
                         collectedAnnotationsPerAspect[currentAspectID] = {
@@ -47394,6 +47543,29 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
                         };
 
                         break;
+
+                    case 'creatorId': 
+                        
+                        collectedAnnotationsPerAspect[currentAspectID] = {
+                            'userID': annotationCollection[anno].data.creatorId,
+                            'label': annotationCollection[anno].data.creator,
+                            'color' : (userInDatabase) ? '#'+ userInDatabase.color : '#444444',
+                            'annotations': []
+                        };
+
+                        break;
+
+                    default: 
+                        
+                        collectedAnnotationsPerAspect[currentAspectID] = {
+                            'userID': annotationCollection[anno].data.creatorId,
+                            'label': currentAspectID,
+                            'color' : (userInDatabase) ? '#'+ userInDatabase.color : '#444444',
+                            'annotations': []
+                        };
+
+                        break;
+
                 }
                 
             }
@@ -47417,6 +47589,77 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
         }
         */
 
+        var timelineZoomWrapper = $('<div class="timelineZoomWrapper"></div>'),
+            timelineZoomScroller = $('<div class="timelineZoomScroller"></div>');
+
+        timelineZoomScroller.appendTo(timelineZoomWrapper);
+        
+        if (zoomControls) {
+            
+            timelineZoomWrapper.on('scroll', function(evt) {
+                var scrollLeftVal = $(this).scrollLeft();
+                $(this).find('.userLabel').css('left', scrollLeftVal + 'px');
+            });
+
+            var zoomControlsWrapper = $('<div class="zoomControlsWrapper"></div>'),
+                zoomMinus = $('<button class="button zoomMinus"><span class="icon-minus"></span></button>'),
+                zoomPlus = $('<button class="button zoomPlus"><span class="icon-plus"></span></button>');
+            
+            zoomMinus.click(function() {
+                var currentZoomLevel = parseFloat($(this).parent().parent().attr('data-zoom-level'));
+                zoomTimelines(timelineZoomWrapper, currentZoomLevel-0.5 );
+            });
+            zoomPlus.click(function() {
+                var currentZoomLevel = parseFloat($(this).parent().parent().attr('data-zoom-level'));
+                zoomTimelines(timelineZoomWrapper, currentZoomLevel+0.5);
+                //console.log(currentZoomLevel);
+            });
+            zoomControlsWrapper.append(zoomPlus, zoomMinus);
+
+            targetElement.append(zoomControlsWrapper);
+
+            var timelineProgress = $('<div class="timelineProgressWrapper"><div class="timelineProgressRange"></div></div>');
+            timelineZoomScroller.append(timelineProgress);
+
+            var leftStart;
+
+            /*
+            targetElement.draggable({
+                axis: 'x',
+                start: function(event, ui) {
+                    $(ui.helper).find('.userTimeline, .timelineProgressWrapper').css('transition-duration', '0ms');
+                    leftStart = parseInt($(ui.helper).find('.userTimeline').eq(0).css('left'));
+                    //console.log(leftStart);
+                },
+                drag: function(event, ui) {                    
+                    
+                    if ( $(ui.helper).attr('data-zoom-level') == '1' ) {
+                        ui.position.left = 0;
+                        return;
+                    }
+
+                    ui.position.left = ui.position.left + leftStart;
+
+                    if (ui.position.left > 0) {
+                        ui.position.left = 0;
+                    } else if (($(ui.helper).find('.userTimeline').eq(0).width() - $(ui.helper).width()) + ui.position.left < 0) {
+                        ui.position.left = ($(ui.helper).find('.userTimeline').eq(0).width() - $(ui.helper).width()) * -1;
+                    }
+
+                    //console.log(($(ui.helper).find('.userTimeline').eq(0).width() - $(ui.helper).width()) + ui.position.left)
+
+                    $(ui.helper).find('.userTimeline, .timelineProgressWrapper').each(function() {
+                        $(this).css('left', ui.position.left);
+                    });
+                    ui.position.left = 0;
+                },
+                stop: function(event, ui) {
+                    $(ui.helper).find('.userTimeline, .timelineProgressWrapper').css('transition-duration', '');
+                }
+            });
+            */
+        }
+
         for (var aspectidx in collectedAnnotationsPerAspect) {
 
             if (collectedAnnotationsPerAspect[aspectidx].userID === FrameTrail.module('UserManagement').userID) {
@@ -47437,14 +47680,24 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
                                         +   '</div>'),
                 userTimeline = userTimelineWrapper.find('.userTimeline');
 
+            var firstAnnotation = (collectedAnnotationsPerAspect[aspectidx].annotations[0]) ? collectedAnnotationsPerAspect[aspectidx].annotations[0] : null;
+            if (firstAnnotation && firstAnnotation.data.source.url.body && firstAnnotation.data.source.url.body.maxNumericValue) {
+                var gridLevels = firstAnnotation.data.source.url.body.maxNumericValue;
+                //console.log(gridLevels);
+                for (var gl=1; gl<gridLevels; gl++) {
+                    var bottomValue = 100 * (gl / gridLevels);
+                    userTimeline.append('<div class="horizontalGridLine" style="bottom: '+ bottomValue +'%;"></div>');
+                }
+            }
+            
             for (var idx in collectedAnnotationsPerAspect[aspectidx].annotations) {
                 var compareTimelineItem = collectedAnnotationsPerAspect[aspectidx].annotations[idx].renderCompareTimelineItem();
                 compareTimelineItem.css('background-color', '#' + aspectColor);
 
                 userTimeline.append(compareTimelineItem);
             }
-            
-            targetElement.append(userTimelineWrapper);
+
+            timelineZoomScroller.append(userTimelineWrapper);
 
         }
 
@@ -47465,6 +47718,54 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
         for (i = 0; i < timelinesArr.length; ++i) {
           targetElement.append(timelinesArr[i]);
         }
+
+        targetElement.append(timelineZoomWrapper);
+
+    }
+
+    /**
+     * I control the zoom level of all timelines which are children of the targetElement.
+     * @method zoomTimelines
+     * @param {HTMLElement} targetElement
+     * @param {Float} zoomLevel
+     */
+    function zoomTimelines(targetElement, zoomLevel) {
+
+        if (zoomLevel < 1) {
+            zoomLevel = 1;
+        }
+
+        var zoomPercent = zoomLevel*100,
+            currentLeft = parseInt(targetElement.eq(0).scrollLeft()),
+            currentWidth = targetElement.find('.timelineZoomScroller').eq(0).width(),
+            focusPoint = 2,
+            positionLeft = (targetElement.width() * (zoomLevel/focusPoint)) + (targetElement.width()/focusPoint),
+            currentOffset = currentLeft + (currentLeft + currentWidth - targetElement.width());
+
+        /*
+        console.log('Left: '+ currentLeft);
+        console.log('Right: '+ (currentLeft + currentWidth - targetElement.width()));
+        console.log('Offset: '+ currentOffset / zoomLevel);
+        */
+
+        positionLeft = (positionLeft + (currentOffset / zoomLevel));
+
+        if (positionLeft > 0 || zoomLevel == 1) {
+            positionLeft = 0;
+        }
+
+        if ( (targetElement.width()*zoomLevel) - targetElement.width() + currentOffset < 0  ) {
+            positionLeft = (targetElement.width()*zoomLevel) - targetElement.width();
+        }
+
+        targetElement.find('.timelineZoomScroller').css({
+            width: zoomPercent + '%'
+        });
+
+        //TODO: FIX POSITIONING
+        //targetElement.scrollLeft(positionLeft);
+
+        targetElement.parent().attr('data-zoom-level', zoomLevel);
 
     }
 
@@ -47742,12 +48043,10 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
  FrameTrail.defineModule('HypervideoModel', function(FrameTrail){
 
 
-	var hasHTML5Video           = true,
+	var videoType           	= 'native',
 		duration                = 0,
 		durationFull			= 0,
-		sourceFiles             = {
-									mp4:  ''
-								  },
+		sourcePath              = '',
 		offsetIn 				= 0,
 		offsetOut 				= null,
 
@@ -47771,14 +48070,14 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
 
 		annotations             = [],
 
-		unsavedSettings         = false;
+		unsavedSettings         = false,
 		unsavedOverlays         = false,
 		unsavedCodeSnippets     = false,
 		unsavedEvents           = false,
 		unsavedCustomCSS        = false,
-		unsavedAnnotations      = false;
-		unsavedLayout           = false;
-		unsavedConfig           = false;
+		unsavedAnnotations      = false,
+		unsavedLayout           = false,
+		unsavedConfig           = false,
 		unsavedGlobalCSS        = false;
 
 
@@ -47824,14 +48123,30 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
 			FrameTrail.changeState('hv_config_' + key, hypervideo.config[key]);
 		}
 
-		// Set video source or NullVideo
+		// Set video source and type or NullVideo
 		if (videoData.src && videoData.src.length > 3) {
 
-			sourceFiles.mp4  = videoData.src;
+			sourcePath  = videoData.src;
+
+			var yt_list = [ /youtube\.com\/watch\?v=([^\&\?\/]+)/,
+                            /youtube\.com\/embed\/([^\&\?\/]+)/,
+                            /youtube\.com\/v\/([^\&\?\/]+)/,
+                            /youtu\.be\/([^\&\?\/]+)/ ];
+            for (var i in yt_list) {
+                var yt_res = yt_list[i].exec(sourcePath);
+                if (yt_res !== null) {
+                    videoType = 'youtube';
+                }
+            }
+            
+            var vimeo_res = /^(http\:\/\/|https\:\/\/)?(www\.)?(vimeo\.com\/)([0-9]+)$/.exec(sourcePath);
+            if (vimeo_res !== null) {
+            	videoType = 'vimeo';
+            }
 
 		} else if (!videoData.resourceId) {
 
-			hasHTML5Video = false;
+			videoType	  = 'canvas';
 			duration      = videoData.duration;
 			durationFull  = videoData.duration;
 
@@ -47839,7 +48154,7 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
 		} else {
 
 			// TODO: Remove when compatibility no longer needed
-			sourceFiles.mp4  = database.resources[videoData.resourceId].src;
+			sourcePath  = database.resources[videoData.resourceId].src;
 
 		}
 
@@ -49560,22 +49875,21 @@ FrameTrail.defineModule('UserTraces', function(FrameTrail){
 	return {
 
 		/**
-		 * Wether the current hypervideo has a playable html5 video source file,
-		 * or (otherwise) only has a duration (then we are in "Null Player" mode).
-		 * @attribute hasHTML5Video
-		 * @type Boolean
+		 * I return the video type (native, canvas, youtube, vimeo, ...).
+		 * @attribute videoType
+		 * @type String
 		 * @readOnly
 		 */
-		get hasHTML5Video()     { return hasHTML5Video   },
+		get videoType()         { return videoType   },
 
 
 		/**
-		 * I contain a map to the .mp4 source filename.
-		 * @attribute sourceFiles
+		 * I contain the video source path.
+		 * @attribute sourcePath
 		 * @readOnly
 		 * @type {}
 		 */
-		get sourceFiles()       { return sourceFiles     },
+		get sourcePath()        { return sourcePath     },
 
 		/**
 		 * The hypervideo's creator name
@@ -49866,7 +50180,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 
 		videoElement           = ViewVideo.Video;
 
-
+	window.player_youtube = {};
 
 
 	/**
@@ -49888,21 +50202,23 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 			hypervideoID    = RouteNavigation.hypervideoID,
 			_video		    = $(videoElement);
 
+		HypervideoModel     = FrameTrail.module('HypervideoModel');
+
 		updateDescriptions();
 
 		_video.width(1920).height(1080);
 
-		if (HypervideoModel.hasHTML5Video) {
+		if (HypervideoModel.videoType == 'native') {
 
 			highPriorityUpdater = highPriorityUpdater_HTML5;
 			lowPriorityUpdater  = lowPriorityUpdater_HTML5;
 
 			FrameTrail.changeState('videoWorking', true);
 
-			if (HypervideoModel.sourceFiles.mp4.indexOf('.m3u8') != -1) {
+			if (HypervideoModel.sourcePath.indexOf('.m3u8') != -1) {
 				if(Hls.isSupported()) {
 					var hls = new Hls();
-					hls.loadSource(FrameTrail.module('RouteNavigation').getResourceURL(HypervideoModel.sourceFiles.mp4));
+					hls.loadSource(FrameTrail.module('RouteNavigation').getResourceURL(HypervideoModel.sourcePath));
 					hls.attachMedia(videoElement);
 					/*
 					hls.on(Hls.Events.MANIFEST_PARSED,function() {
@@ -49916,7 +50232,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 				// Note: it would be more normal to wait on the 'canplay' event below however on Safari (where you are most likely to find built-in HLS support) the video.src URL must be on the user-driven
 				// white-list before a 'canplay' event will be emitted; the last video event that can be reliably listened-for when the URL is not on the white-list is 'loadedmetadata'.
 				else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
-					_video.append('<source src="'+ FrameTrail.module('RouteNavigation').getResourceURL(HypervideoModel.sourceFiles.mp4)  +'" type="video/mp4"></source>');
+					_video.append('<source src="'+ FrameTrail.module('RouteNavigation').getResourceURL(HypervideoModel.sourcePath)  +'" type="video/mp4"></source>');
 					/*
 					videoElement.addEventListener('loadedmetadata',function() {
 						//videoElement.play();
@@ -49924,7 +50240,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 					*/
 				}
 			} else {
-				_video.append('<source src="'+ FrameTrail.module('RouteNavigation').getResourceURL(HypervideoModel.sourceFiles.mp4)  +'" type="video/mp4"></source>');
+				_video.append('<source src="'+ FrameTrail.module('RouteNavigation').getResourceURL(HypervideoModel.sourcePath)  +'" type="video/mp4"></source>');
 			}
 
 			_video.on('play',  _play);
@@ -50012,6 +50328,151 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 				},
 				failCallback
 			);
+
+		} else if (HypervideoModel.videoType == 'youtube') {
+
+			highPriorityUpdater = highPriorityUpdater_HTML5;
+			lowPriorityUpdater  = lowPriorityUpdater_HTML5;
+
+			FrameTrail.changeState('videoWorking', true);
+
+			window.lastYoutubePlayerID = 'yt_' + Date.now();
+			var yt_options = 'autoplay=0&controls=0&rel=0&disablekb=1&enablejsapi=1&fs=0&modestbranding=1&playsinline=1&color=white&origin='+ window.location.origin;
+			var yt_iframe = $('<iframe id="'+ window.lastYoutubePlayerID +'" class="player_youtube" type="text/html" width="720" height="405" src="https:'+ HypervideoModel.sourcePath +'?'+ yt_options +'" frameborder="0" allowfullscreen>');
+						
+			_video.after(yt_iframe);
+
+			if (!window.YT) {
+				var tag = document.createElement('script');
+				tag.src = "https://www.youtube.com/iframe_api";
+				var firstScriptTag = document.getElementsByTagName('script')[0];
+				firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+			} else {
+				window.onYouTubeIframeAPIReady();
+			}
+
+			window.onYouTubeIframeAPIReady = function() {
+				
+				window.player_youtube[window.lastYoutubePlayerID] = new window.YT.Player(window.lastYoutubePlayerID, {
+					events: {
+						'onReady': onPlayerReady,
+						'onStateChange': onPlayerStateChange,
+						'onError': onError
+					}
+				});
+				
+				function onPlayerReady(event) {
+					
+					//console.log('Player READY', window.lastYoutubePlayerID, event.target.getDuration());
+					var HypervideoModel = FrameTrail.module('HypervideoModel');
+					HypervideoModel.offsetOut = (HypervideoModel.offsetOut) ? HypervideoModel.offsetOut : event.target.getDuration();
+					HypervideoModel.durationFull = event.target.getDuration();
+					HypervideoModel.duration = HypervideoModel.offsetOut - HypervideoModel.offsetIn;
+
+					if (update) {
+						AnnotationsController.updateController();
+					} else {
+						AnnotationsController.initController();
+					}
+
+					OverlaysController.initController();
+					CodeSnippetsController.initController();
+					SubtitlesController.initController();
+
+					initPlayButton();
+					initProgressBar();
+
+					InteractionController.initController();
+
+					FrameTrail.triggerEvent('ready', {});
+
+					if (HypervideoModel.events.onReady) {
+						try {
+		                	var readyEvent = new Function(HypervideoModel.events.onReady);
+		                	readyEvent();
+			            } catch (exception) {
+			                // could not parse and compile JS code!
+			                console.warn('Event handler contains errors: '+ exception.message);
+			            }
+					}
+
+					if (RouteNavigation.hashTime) {
+						setCurrentTime(RouteNavigation.hashTime);
+					} else {
+						setCurrentTime(HypervideoModel.offsetIn);
+					}
+
+					FrameTrail.changeState('viewSize', FrameTrail.getState('viewSize'));
+
+					callback.call();
+				}
+
+				function onPlayerStateChange(event) {
+					switch(event.data) {
+						case -1:
+							// unstarted
+							break;
+						case 0:
+							// ended
+							_pause();
+							break;
+						case 1:
+							// playing
+							_play();
+							FrameTrail.changeState('videoWorking', false);
+							break;
+						case 2:
+							// paused
+							_pause();
+							break;
+						case 3:
+							// buffering
+							FrameTrail.changeState('videoWorking', true);
+							break;
+						case 5:
+							// video cued
+							break;
+						default:
+						// default
+					} 
+				}
+
+				function onError(event) {
+					switch(event.data) {
+						case 2:
+							// invalid parameter value
+							FrameTrail.module('InterfaceModal').showErrorMessage('Youtube Error: invalid parameter value.');
+							break;
+						case 5:
+							// error in HTML5 player
+							FrameTrail.module('InterfaceModal').showErrorMessage('Youtube Error: HTML5 playback error.');
+							break;
+						case 100:
+							// video has not been found (private?)
+							FrameTrail.module('InterfaceModal').showErrorMessage('Youtube Error: video not found or private.');
+							break;
+						case 101:
+							// owner does not allow embedding
+							FrameTrail.module('InterfaceModal').showErrorMessage('Youtube Error: owner does not allow embedding.');
+							break;
+						case 101:
+							// owner does not allow embedding
+							FrameTrail.module('InterfaceModal').showErrorMessage('Youtube Error: owner does not allow embedding.');
+							break;
+						default:
+						// default
+					} 
+				}
+			}
+
+		} else if (HypervideoModel.videoType == 'vimeo') {
+
+			highPriorityUpdater = highPriorityUpdater_NullVideo;
+			lowPriorityUpdater  = lowPriorityUpdater_NullVideo;
+
+			FrameTrail.changeState('videoWorking', true);
+
+			console.log('VIMEO API');
 
 		} else {
 
@@ -50132,6 +50593,8 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 	 */
 	function initPlayButton(){
 
+		var ViewVideo = FrameTrail.module('ViewVideo');
+
 		ViewVideo.PlayButton.click(function(){
 
 			if ( isPlaying ) {
@@ -50165,6 +50628,9 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 	 * @private
 	 */
 	function initProgressBar() {
+
+		var HypervideoModel = FrameTrail.module('HypervideoModel');
+		var ViewVideo = FrameTrail.module('ViewVideo');
 
 		ViewVideo.duration = formatTime(HypervideoModel.duration);
 		ViewVideo.durationFull = formatTime(HypervideoModel.durationFull, true);
@@ -50272,7 +50738,13 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 	 */
 	function highPriorityUpdater_HTML5() {
 
-		currentTime = videoElement.currentTime;
+		var ViewVideo = FrameTrail.module('ViewVideo');
+
+		if (HypervideoModel.videoType == 'youtube') {
+			currentTime = window.player_youtube[window.lastYoutubePlayerID].getCurrentTime();
+		} else {
+			currentTime = videoElement.currentTime;
+		}
 
 		if (ViewVideo.PlayerProgress.data('ui-slider')) {
 			ViewVideo.PlayerProgress.slider('value', currentTime-HypervideoModel.offsetIn);
@@ -50304,6 +50776,8 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 		//console.log('CURRENTTIME: '+currentTime);
 		//console.log('CURRENTTIMEOFFSET: ', HypervideoModel.offsetIn);
 
+		var ViewVideo = FrameTrail.module('ViewVideo');
+		
 		ViewVideo.currentTime = formatTime(currentTime-HypervideoModel.offsetIn);
 		ViewVideo.currentTimeFull = formatTime(currentTime, true);
 
@@ -50381,8 +50855,8 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 		currentTime = (Date.now() - nullVideoStartDate) / 1000;
 
 		if (currentTime >= HypervideoModel.offsetIn+HypervideoModel.duration) {
-			currentTime = HypervideoModel.duration;					currentTime = HypervideoModel.offsetIn+HypervideoModel.duration;
-			pause();					pause();
+			currentTime = HypervideoModel.offsetIn+HypervideoModel.duration;
+			pause();
 		}
 
 	};
@@ -50406,7 +50880,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 
         FrameTrail.changeState('videoWorking', false);
 
-		if (HypervideoModel.hasHTML5Video) {
+		if (HypervideoModel.videoType == 'native') {
 
 			var promise = videoElement.play();
             
@@ -50419,6 +50893,12 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 				});
 
 			}
+
+		} else if (HypervideoModel.videoType == 'youtube') {
+
+			window.player_youtube[window.lastYoutubePlayerID].playVideo();
+			_play();
+			onPlaySuccess();
 
 		} else {
 
@@ -50471,9 +50951,16 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 	 */
 	function pause() {
 
-		if (HypervideoModel.hasHTML5Video) {
+		if (HypervideoModel.videoType == 'native') {
 
 			videoElement.pause();
+
+		} else if (HypervideoModel.videoType == 'youtube') {
+
+			if (window.player_youtube[window.lastYoutubePlayerID]) {
+				window.player_youtube[window.lastYoutubePlayerID].pauseVideo();
+			}
+			_pause();
 
 		} else {
 
@@ -50495,7 +50982,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 	            }
 			}
 
-		} else if (!HypervideoModel.hasHTML5Video && currentTime == HypervideoModel.offsetIn+HypervideoModel.duration) {
+		} else if (HypervideoModel.videoType == 'canvas' && currentTime == HypervideoModel.offsetIn+HypervideoModel.duration) {
 
 			FrameTrail.triggerEvent('ended', {});
 
@@ -50526,10 +51013,12 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 	 */
 	function _play() {
 
+		var ViewVideo = FrameTrail.module('ViewVideo');
+
 		highPriorityIntervalID = window.setInterval(highPriorityUpdater, highPriorityInterval);
 		lowPriorityIntervalID  = window.setInterval(lowPriorityUpdater,  lowPriorityInterval);
 
-		if (!HypervideoModel.hasHTML5Video) {
+		if (HypervideoModel.videoType == 'canvas') {
 			nullVideoIntervalID = window.setInterval(nullVideoUpdater,  nullVideoInterval);
 		}
 
@@ -50553,10 +51042,12 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 	 */
 	function _pause() {
 
+		var ViewVideo = FrameTrail.module('ViewVideo');
+
 		window.clearInterval(highPriorityIntervalID);
 		window.clearInterval(lowPriorityIntervalID);
 
-		if (!HypervideoModel.hasHTML5Video) {
+		if (HypervideoModel.videoType == 'canvas') {
 			window.clearInterval(nullVideoIntervalID);
 		}
 
@@ -50588,7 +51079,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 
                 FrameTrail.changeState('videoWorking', true);
 
-                if (HypervideoModel.hasHTML5Video) {
+                if (HypervideoModel.videoType == 'native') {
                     videoElement.pause();
                 } else {
                     window.clearInterval(nullVideoIntervalID);
@@ -50614,7 +51105,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 
                 if (isStalled) {
 
-                    if (HypervideoModel.hasHTML5Video) {
+                    if (HypervideoModel.videoType == 'native') {
             			var promise = videoElement.play();
                         if (promise) {
                             promise.catch(function(){ videoElement.play() });
@@ -50662,9 +51153,14 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 			return;
 		}
 
-		if (HypervideoModel.hasHTML5Video) {
+		if (HypervideoModel.videoType == 'native') {
 
 			videoElement.currentTime = currentTime = aNumberAsFloat;
+
+		} else if (HypervideoModel.videoType == 'youtube') {
+
+			currentTime = aNumberAsFloat;
+			window.player_youtube[window.lastYoutubePlayerID].seekTo(currentTime, true);
 
 		} else {
 
@@ -50695,9 +51191,17 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 	 */
 	function setMuted(muted) {
 
-		if (HypervideoModel.hasHTML5Video) {
+		if (HypervideoModel.videoType == 'native') {
 
 			videoElement.muted = muted;
+
+		} else if (HypervideoModel.videoType == 'youtube') {
+
+			if (muted) {
+				window.player_youtube[window.lastYoutubePlayerID].mute();
+			} else {
+				window.player_youtube[window.lastYoutubePlayerID].unMute();
+			}
 
 		}
 
@@ -50751,7 +51255,7 @@ FrameTrail.defineModule('HypervideoController', function(FrameTrail){
 		window.clearInterval(highPriorityIntervalID);
 		window.clearInterval(lowPriorityIntervalID);
 
-		if (!HypervideoModel.hasHTML5Video) {
+		if (HypervideoModel.videoType == 'canvas') {
 			window.clearInterval(nullVideoIntervalID);
 		}
 
@@ -53156,7 +53660,7 @@ FrameTrail.defineModule('Titlebar', function(FrameTrail){
         FrameTrail.module('ResourceManager').renderList(newDialog.find('.newHypervideoDialogResources'), true,
             'type',
             'contains',
-            'video'
+            ['video', 'youtube']
         );
 
         $('body').on('click.hypervideoAddResourcesItem', '.resourceThumb', function() {
