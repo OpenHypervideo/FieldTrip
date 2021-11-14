@@ -448,7 +448,7 @@ $(document).ready(function() {
 		introVideoElem.removeAttribute('webkit-playsinline');
 	}
 	*/
-		
+	/*
 	if(Hls.isSupported()) {
 		var hls = new Hls();
 		hls.loadSource(introVideoSource);
@@ -476,6 +476,15 @@ $(document).ready(function() {
 			introVideoElem.currentTime = 0;
 		});
 	}
+	*/
+	$(introVideoElem).append('<source src="'+ introVideoSource +'" type="video/mp4">');
+	introVideoElem.addEventListener('loadedmetadata',function() {
+		initIntroCaptions();
+		$('#ftIntroVideo').load();
+		introVideoElem.play();
+		introVideoElem.pause();
+		introVideoElem.currentTime = 0;
+	});
 
 	window.setTimeout(function() {
 
