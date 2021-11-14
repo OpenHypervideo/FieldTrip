@@ -3,6 +3,7 @@
 var FULLSCREEN_POSSIBLE = !!screenfull;
 var audioAtmoSelector = 'audioAtmoDay';
 
+
 document.addEventListener("DOMContentLoaded", function(event) {
 
   var cursor = document.querySelector(".custom-cursor");
